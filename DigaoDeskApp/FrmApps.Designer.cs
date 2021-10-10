@@ -175,18 +175,14 @@ namespace DigaoDeskApp
             // 
             // edLog
             // 
-            this.edLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.edLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edLog.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.edLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.edLog.Location = new System.Drawing.Point(0, 184);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
             this.edLog.Size = new System.Drawing.Size(1186, 266);
             this.edLog.TabIndex = 3;
             this.edLog.Text = "";
-            this.edLog.WordWrap = false;
             // 
             // toolBar
             // 
