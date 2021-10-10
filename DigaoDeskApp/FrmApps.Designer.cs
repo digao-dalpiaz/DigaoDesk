@@ -81,7 +81,7 @@ namespace DigaoDeskApp
             this.colLogStatistics,
             this.colError});
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
-            this.g.Location = new System.Drawing.Point(0, 31);
+            this.g.Location = new System.Drawing.Point(0, 39);
             this.g.MultiSelect = false;
             this.g.Name = "g";
             this.g.ReadOnly = true;
@@ -177,10 +177,10 @@ namespace DigaoDeskApp
             // 
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.edLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edLog.Location = new System.Drawing.Point(0, 184);
+            this.edLog.Location = new System.Drawing.Point(0, 192);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
-            this.edLog.Size = new System.Drawing.Size(1186, 266);
+            this.edLog.Size = new System.Drawing.Size(1186, 258);
             this.edLog.TabIndex = 3;
             this.edLog.Text = "";
             // 
@@ -199,7 +199,7 @@ namespace DigaoDeskApp
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.ShowItemToolTips = false;
-            this.toolBar.Size = new System.Drawing.Size(1186, 31);
+            this.toolBar.Size = new System.Drawing.Size(1186, 39);
             this.toolBar.TabIndex = 0;
             // 
             // btnAdd
@@ -208,7 +208,7 @@ namespace DigaoDeskApp
             this.btnAdd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(57, 28);
+            this.btnAdd.Size = new System.Drawing.Size(65, 36);
             this.btnAdd.Text = "Add";
             this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -218,7 +218,7 @@ namespace DigaoDeskApp
             this.btnEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(55, 28);
+            this.btnEdit.Size = new System.Drawing.Size(63, 36);
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -228,14 +228,14 @@ namespace DigaoDeskApp
             this.btnDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(68, 28);
+            this.btnDelete.Size = new System.Drawing.Size(76, 36);
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // btnStart
             // 
@@ -243,7 +243,7 @@ namespace DigaoDeskApp
             this.btnStart.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(59, 28);
+            this.btnStart.Size = new System.Drawing.Size(67, 36);
             this.btnStart.Text = "Start";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -253,14 +253,14 @@ namespace DigaoDeskApp
             this.btnStop.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnStop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(59, 28);
+            this.btnStop.Size = new System.Drawing.Size(67, 36);
             this.btnStop.Text = "Stop";
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // btnClearLog
             // 
@@ -268,14 +268,14 @@ namespace DigaoDeskApp
             this.btnClearLog.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnClearLog.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(85, 28);
+            this.btnClearLog.Size = new System.Drawing.Size(93, 36);
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
             // splitter
             // 
             this.splitter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter.Location = new System.Drawing.Point(0, 181);
+            this.splitter.Location = new System.Drawing.Point(0, 189);
             this.splitter.Name = "splitter";
             this.splitter.Size = new System.Drawing.Size(1186, 3);
             this.splitter.TabIndex = 2;
