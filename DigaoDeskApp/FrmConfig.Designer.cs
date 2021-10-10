@@ -45,6 +45,7 @@ namespace DigaoDeskApp
             this.selFont = new System.Windows.Forms.FontDialog();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.pages.SuspendLayout();
             this.tabApplications.SuspendLayout();
             this.boxLog.SuspendLayout();
@@ -61,6 +62,7 @@ namespace DigaoDeskApp
             // 
             // tabApplications
             // 
+            this.tabApplications.Controls.Add(this.ckNotifyWhenAppStops);
             this.tabApplications.Controls.Add(this.boxLog);
             this.tabApplications.Location = new System.Drawing.Point(4, 24);
             this.tabApplications.Name = "tabApplications";
@@ -192,6 +194,16 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // ckNotifyWhenAppStops
+            // 
+            this.ckNotifyWhenAppStops.AutoSize = true;
+            this.ckNotifyWhenAppStops.Location = new System.Drawing.Point(16, 312);
+            this.ckNotifyWhenAppStops.Name = "ckNotifyWhenAppStops";
+            this.ckNotifyWhenAppStops.Size = new System.Drawing.Size(184, 19);
+            this.ckNotifyWhenAppStops.TabIndex = 10;
+            this.ckNotifyWhenAppStops.Text = "Notify when application stops";
+            this.ckNotifyWhenAppStops.UseVisualStyleBackColor = true;
+            // 
             // FrmConfig
             // 
             this.AcceptButton = this.btnOK;
@@ -211,6 +223,7 @@ namespace DigaoDeskApp
             this.Load += new System.EventHandler(this.FrmConfig_Load);
             this.pages.ResumeLayout(false);
             this.tabApplications.ResumeLayout(false);
+            this.tabApplications.PerformLayout();
             this.boxLog.ResumeLayout(false);
             this.boxLog.PerformLayout();
             this.ResumeLayout(false);
@@ -235,5 +248,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.GroupBox boxLog;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox ckNotifyWhenAppStops;
     }
 }

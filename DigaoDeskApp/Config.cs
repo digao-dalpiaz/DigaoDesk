@@ -9,6 +9,7 @@ namespace DigaoDeskApp
     {
 
         public ConfigLog Log;
+        public bool NotifyAppStops = true;
 
         public class ConfigLog
         {

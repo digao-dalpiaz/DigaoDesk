@@ -127,6 +127,12 @@ namespace DigaoDeskApp
                 ProcCount = null;
                 InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this));
                 Vars.FrmMainObj.UpdateTrayIcon();
+
+                if (Vars.Config.NotifyAppStops)
+                {
+                    Vars.FrmMainObj.Invoke(new MethodInvoker(() =>
+                        Vars.FrmMainObj.tray.ShowBalloonTip(5000, "Process stopped", $"The application \"{Name}\" has stopped!", ToolTipIcon.Info)));
+                }
             };         
             
             try

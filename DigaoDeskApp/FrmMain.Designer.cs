@@ -140,8 +140,6 @@ namespace DigaoDeskApp
         }
 
         #endregion
-
-        private System.Windows.Forms.NotifyIcon tray;
         private System.Windows.Forms.ContextMenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem miApplications;
         private System.Windows.Forms.ToolStripSeparator miSeparator;
@@ -151,6 +149,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripMenuItem miVersion;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem miConfig;
+        public System.Windows.Forms.NotifyIcon tray;
     }
 }
 
