@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,6 +13,8 @@ namespace DigaoDeskApp
 
         private BindingSource _gridBind;
         private bool _updatingGrid;
+
+        private int _nextLogLineToRead;
 
         public FrmApps()
         {
@@ -128,7 +130,8 @@ namespace DigaoDeskApp
         {
             var app = GetSelApp();
             app.Logs.Clear();
-            edLog.Clear();
+
+            RecordSelected();
 
             Vars.FrmMainObj.UpdateTrayIcon(); //if current log ends with an error, the tray icon may switch when there is no other app with error
         }
@@ -141,9 +144,17 @@ namespace DigaoDeskApp
         }
 
         private void RecordSelected()
-        {
+        {           
             UpdateButtons();
-            ReloadSelectedLog();
+
+            _nextLogLineToRead = 0;
+
+            edLog.Clear();
+            var app = GetSelApp();
+            if (app != null)
+            {                
+                AddRemainingLog(app);
+            }
         }
 
         private void UpdateButtons()
@@ -157,33 +168,7 @@ namespace DigaoDeskApp
             btnStart.Enabled = selected && !app.Running;
             btnStop.Enabled = selected && app.Running;
 
-            btnClearLog.Enabled = selected;
-        }
-
-        private void ReloadSelectedLog()
-        {
-            var app = GetSelApp();
-            if (app == null)
-            {
-                edLog.Clear();
-                return;
-            }
-
-            var newLog = new List<string>();            
-            foreach (var item in app.Logs)
-            {
-                newLog.Add(item.Text);
-            }
-            newLog.Add(null);
-
-            edLog.Lines = newLog.ToArray();
-            GotoEndOfLog();
-        }
-
-        private void GotoEndOfLog()
-        {
-            edLog.SelectionStart = edLog.TextLength;
-            edLog.ScrollToCaret();
+            btnClearLog.Enabled = selected && app.Logs.Any();
         }
 
         public void EventUpdated(DigaoApplication app)
@@ -194,16 +179,6 @@ namespace DigaoDeskApp
             {
                 UpdateButtons();
             }
-        }
-
-        public void UpdateLog(DigaoApplication app, string text)
-        {
-            ReloadGrid();
-
-            if (app == GetSelApp()) {
-                edLog.AppendText(text + Environment.NewLine);
-                GotoEndOfLog();
-            }            
         }
 
         private void timerMonitor_Tick(object sender, EventArgs e)
@@ -229,6 +204,13 @@ namespace DigaoDeskApp
                     this.Invoke(new MethodInvoker(() =>
                     {
                         ReloadGrid();
+
+                        var app = GetSelApp();
+                        if (app != null)
+                        {
+                            AddRemainingLog(app);
+                        }
+
                         timerMonitor.Enabled = true;
                     }));
                 }
@@ -237,6 +219,32 @@ namespace DigaoDeskApp
                     if (Vars.FrmAppsObj != null) throw;
                 }
             }
+        }
+
+        private void AddRemainingLog(DigaoApplication app)
+        {
+            if (_nextLogLineToRead == app.Logs.Count) return;
+
+            StringBuilder sb = new();
+            for (int i = _nextLogLineToRead; i < app.Logs.Count; i++) {
+                sb.AppendLine(app.Logs[i].Text);
+            }
+
+            _nextLogLineToRead = app.Logs.Count;
+
+            Utils.BeginUpdate(edLog);
+            try
+            {
+                edLog.AppendText(sb.ToString());
+
+                edLog.SelectionStart = edLog.TextLength;
+                edLog.ScrollToCaret();
+            } 
+            finally
+            {
+                Utils.EndUpdate(edLog);
+            }
+            
         }
                 
     }

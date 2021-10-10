@@ -280,7 +280,7 @@ namespace DigaoDeskApp
             // timerMonitor
             // 
             this.timerMonitor.Enabled = true;
-            this.timerMonitor.Interval = 2500;
+            this.timerMonitor.Interval = 2000;
             this.timerMonitor.Tick += new System.EventHandler(this.timerMonitor_Tick);
             // 
             // FrmApps

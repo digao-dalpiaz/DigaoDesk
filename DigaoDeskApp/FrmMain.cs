@@ -30,12 +30,7 @@ namespace DigaoDeskApp
         {
             ApplicationsStore.LoadApplications();
             UpdateTrayIcon();
-        }
-
-        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //
-        }
+        }       
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -74,8 +69,11 @@ namespace DigaoDeskApp
 
             if (idx != _lastTrayIndex)
             {
-                tray.Icon = Icon.FromHandle((images.Images[idx] as Bitmap).GetHicon());
-                _lastTrayIndex = idx;
+                this.Invoke(new MethodInvoker(() => //using invoke because could be called by thread
+                {
+                    tray.Icon = Icon.FromHandle((images.Images[idx] as Bitmap).GetHicon());
+                    _lastTrayIndex = idx;
+                }));                
             }
         }
 

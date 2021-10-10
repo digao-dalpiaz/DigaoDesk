@@ -128,5 +128,22 @@ namespace DigaoDeskApp
             return ret;
         }
 
+        //-----------------------------------------------------------------
+
+        public static void BeginUpdate(Control ctrl)
+        {
+            SendMessage(ctrl.Handle, WM_SETREDRAW, (IntPtr)0, IntPtr.Zero);
+        }
+
+        public static void EndUpdate(Control ctrl)
+        {
+            SendMessage(ctrl.Handle, WM_SETREDRAW, (IntPtr)1, IntPtr.Zero);
+            ctrl.Invalidate();
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+        private const int WM_SETREDRAW = 0x0b;
+
     }
 }
