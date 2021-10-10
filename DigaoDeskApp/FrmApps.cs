@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -225,17 +226,19 @@ namespace DigaoDeskApp
         {
             if (_nextLogLineToRead == app.Logs.Count) return;
 
-            StringBuilder sb = new();
-            for (int i = _nextLogLineToRead; i < app.Logs.Count; i++) {
-                sb.AppendLine(app.Logs[i].Text);
-            }
-
-            _nextLogLineToRead = app.Logs.Count;
-
             Utils.BeginUpdate(edLog);
             try
-            {
-                edLog.AppendText(sb.ToString());
+            {               
+                for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
+                {
+                    var log = app.Logs[i];
+
+                    edLog.SelectionStart = edLog.TextLength;
+                    edLog.SelectionColor = log.Error ? Color.Red : Color.Lime;
+                    edLog.SelectedText = log.Text + Environment.NewLine;
+
+                    _nextLogLineToRead = i + 1;
+                }
 
                 edLog.SelectionStart = edLog.TextLength;
                 edLog.ScrollToCaret();
@@ -244,7 +247,6 @@ namespace DigaoDeskApp
             {
                 Utils.EndUpdate(edLog);
             }
-            
         }
                 
     }

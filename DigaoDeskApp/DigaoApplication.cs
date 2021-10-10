@@ -47,6 +47,13 @@ namespace DigaoDeskApp
         public string RunningTime { get; set; }
         public string LastLogTime { get; set; }
         public string HasError { get; set; }
+        public string LogStatistics
+        {
+            get
+            {
+                return $"Lines: {Logs.Count}";
+            }
+        }
 
         public string Memory { get; set; }
         public string Processor { get; set; }
