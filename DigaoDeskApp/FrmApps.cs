@@ -257,10 +257,21 @@ namespace DigaoDeskApp
                 _nextLogLineToRead = i + 1;
             }
 
+            var contents = sb.ToString();
+            if (!edLog.Lines.Any())
+            {
+                var len = contents.Length;
+                const int MAX = 1000000;
+                if (len > MAX)
+                {
+                    contents = "[...]" + contents.Substring(len - MAX);
+                }
+            }
+
             Utils.BeginUpdate(edLog);
             try
             {
-                edLog.AppendText(sb.ToString());
+                edLog.AppendText(contents);
 
                 if (Vars.Config.Log.AutoScroll)
                 {
