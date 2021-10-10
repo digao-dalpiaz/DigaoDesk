@@ -223,9 +223,9 @@ namespace DigaoDeskApp
             } 
             catch (AbortAnalyzeException)
             {
-                Memory = "?";
-                Processor = "?";
-                ProcCount = "?";
+                Memory = null;
+                Processor = null;
+                ProcCount = null;
             }
         }
 
