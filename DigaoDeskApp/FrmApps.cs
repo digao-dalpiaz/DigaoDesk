@@ -188,7 +188,6 @@ namespace DigaoDeskApp
 
         public void EventUpdated(DigaoApplication app)
         {
-            Vars.FrmMainObj.UpdateTrayIcon();
             ReloadGrid();
 
             if (app == GetSelApp())
@@ -199,7 +198,6 @@ namespace DigaoDeskApp
 
         public void UpdateLog(DigaoApplication app, string text)
         {
-            Vars.FrmMainObj.UpdateTrayIcon();
             ReloadGrid();
 
             if (app == GetSelApp()) {

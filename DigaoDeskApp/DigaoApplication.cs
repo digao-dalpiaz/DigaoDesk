@@ -109,6 +109,7 @@ namespace DigaoDeskApp
                 Processor = null;
                 ProcCount = null;
                 InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this));
+                InvokeUpdateTrayIcon();
             };         
             
             try
@@ -126,6 +127,7 @@ namespace DigaoDeskApp
             _lastProcessorTime = TimeSpan.Zero;
             _lastProcessorCapture = DateTime.UtcNow;
             InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this)); //no need to use invoke
+            InvokeUpdateTrayIcon(); //no need to use invoke
 
             _process.BeginOutputReadLine();
             _process.BeginErrorReadLine();
@@ -163,6 +165,7 @@ namespace DigaoDeskApp
             HasError = error ? "# ERROR #" : "OK";
 
             InvokeInForm(() => Vars.FrmAppsObj.UpdateLog(this, text));
+            InvokeUpdateTrayIcon();
         }
 
         private void InvokeInForm(Action proc)
@@ -178,6 +181,11 @@ namespace DigaoDeskApp
                     if (Vars.FrmAppsObj != null) throw;
                 }
             }
+        }
+
+        private void InvokeUpdateTrayIcon()
+        {
+            Vars.FrmMainObj.Invoke(new MethodInvoker(Vars.FrmMainObj.UpdateTrayIcon));
         }
 
         private class Resources
