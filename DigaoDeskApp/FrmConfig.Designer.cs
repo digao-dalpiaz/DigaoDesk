@@ -31,6 +31,7 @@ namespace DigaoDeskApp
         {
             this.pages = new System.Windows.Forms.TabControl();
             this.tabApplications = new System.Windows.Forms.TabPage();
+            this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.boxLog = new System.Windows.Forms.GroupBox();
             this.btnLogFont = new System.Windows.Forms.Button();
             this.ckLogAutoScroll = new System.Windows.Forms.CheckBox();
@@ -45,7 +46,6 @@ namespace DigaoDeskApp
             this.selFont = new System.Windows.Forms.FontDialog();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.pages.SuspendLayout();
             this.tabApplications.SuspendLayout();
             this.boxLog.SuspendLayout();
@@ -71,6 +71,16 @@ namespace DigaoDeskApp
             this.tabApplications.TabIndex = 0;
             this.tabApplications.Text = "Applications";
             this.tabApplications.UseVisualStyleBackColor = true;
+            // 
+            // ckNotifyWhenAppStops
+            // 
+            this.ckNotifyWhenAppStops.AutoSize = true;
+            this.ckNotifyWhenAppStops.Location = new System.Drawing.Point(16, 312);
+            this.ckNotifyWhenAppStops.Name = "ckNotifyWhenAppStops";
+            this.ckNotifyWhenAppStops.Size = new System.Drawing.Size(184, 19);
+            this.ckNotifyWhenAppStops.TabIndex = 10;
+            this.ckNotifyWhenAppStops.Text = "Notify when application stops";
+            this.ckNotifyWhenAppStops.UseVisualStyleBackColor = true;
             // 
             // boxLog
             // 
@@ -174,6 +184,10 @@ namespace DigaoDeskApp
             this.label3.TabIndex = 4;
             this.label3.Text = "Font";
             // 
+            // selFont
+            // 
+            this.selFont.ShowEffects = false;
+            // 
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(224, 424);
@@ -193,16 +207,6 @@ namespace DigaoDeskApp
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // ckNotifyWhenAppStops
-            // 
-            this.ckNotifyWhenAppStops.AutoSize = true;
-            this.ckNotifyWhenAppStops.Location = new System.Drawing.Point(16, 312);
-            this.ckNotifyWhenAppStops.Name = "ckNotifyWhenAppStops";
-            this.ckNotifyWhenAppStops.Size = new System.Drawing.Size(184, 19);
-            this.ckNotifyWhenAppStops.TabIndex = 10;
-            this.ckNotifyWhenAppStops.Text = "Notify when application stops";
-            this.ckNotifyWhenAppStops.UseVisualStyleBackColor = true;
             // 
             // FrmConfig
             // 
