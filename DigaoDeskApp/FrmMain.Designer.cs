@@ -37,9 +37,9 @@ namespace DigaoDeskApp
             this.miVersion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.miApplications = new System.Windows.Forms.ToolStripMenuItem();
+            this.miConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.miSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.miConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.images = new System.Windows.Forms.ImageList(this.components);
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +93,15 @@ namespace DigaoDeskApp
             this.miApplications.Text = "Applications";
             this.miApplications.Click += new System.EventHandler(this.miApplications_Click);
             // 
+            // miConfig
+            // 
+            this.miConfig.Image = ((System.Drawing.Image)(resources.GetObject("miConfig.Image")));
+            this.miConfig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.miConfig.Name = "miConfig";
+            this.miConfig.Size = new System.Drawing.Size(156, 38);
+            this.miConfig.Text = "Settings";
+            this.miConfig.Click += new System.EventHandler(this.miConfig_Click);
+            // 
             // miSeparator
             // 
             this.miSeparator.Name = "miSeparator";
@@ -106,13 +115,6 @@ namespace DigaoDeskApp
             this.miExit.Size = new System.Drawing.Size(156, 38);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
-            // 
-            // miConfig
-            // 
-            this.miConfig.Name = "miConfig";
-            this.miConfig.Size = new System.Drawing.Size(156, 38);
-            this.miConfig.Text = "Settings";
-            this.miConfig.Click += new System.EventHandler(this.miConfig_Click);
             // 
             // images
             // 
