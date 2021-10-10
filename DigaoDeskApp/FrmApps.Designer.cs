@@ -30,10 +30,10 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +59,7 @@ namespace DigaoDeskApp
             this.splitter = new System.Windows.Forms.Splitter();
             this.timerMonitor = new System.Windows.Forms.Timer(this.components);
             this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.stFunInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMonitoring = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
@@ -122,8 +123,8 @@ namespace DigaoDeskApp
             // colRunningTime
             // 
             this.colRunningTime.DataPropertyName = "RunningTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.colRunningTime.HeaderText = "Running Time";
             this.colRunningTime.Name = "colRunningTime";
             this.colRunningTime.ReadOnly = true;
@@ -132,8 +133,8 @@ namespace DigaoDeskApp
             // colMemory
             // 
             this.colMemory.DataPropertyName = "Memory";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colMemory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colMemory.DefaultCellStyle = dataGridViewCellStyle6;
             this.colMemory.HeaderText = "Memory";
             this.colMemory.Name = "colMemory";
             this.colMemory.ReadOnly = true;
@@ -142,8 +143,8 @@ namespace DigaoDeskApp
             // colProcessor
             // 
             this.colProcessor.DataPropertyName = "Processor";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle7;
             this.colProcessor.HeaderText = "Processor";
             this.colProcessor.Name = "colProcessor";
             this.colProcessor.ReadOnly = true;
@@ -152,8 +153,8 @@ namespace DigaoDeskApp
             // colProcCount
             // 
             this.colProcCount.DataPropertyName = "ProcCount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle8;
             this.colProcCount.HeaderText = "Thread Count";
             this.colProcCount.Name = "colProcCount";
             this.colProcCount.ReadOnly = true;
@@ -300,12 +301,20 @@ namespace DigaoDeskApp
             // statusBar
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stFunInfo,
             this.stMonitoring});
             this.statusBar.Location = new System.Drawing.Point(0, 428);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(1186, 22);
             this.statusBar.TabIndex = 4;
             this.statusBar.Text = "statusStrip1";
+            // 
+            // stFunInfo
+            // 
+            this.stFunInfo.Image = ((System.Drawing.Image)(resources.GetObject("stFunInfo.Image")));
+            this.stFunInfo.Name = "stFunInfo";
+            this.stFunInfo.Size = new System.Drawing.Size(296, 17);
+            this.stFunInfo.Text = "Have a coffee! I am taking care of your applications.";
             // 
             // stMonitoring
             // 
@@ -370,5 +379,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogHealth;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel stMonitoring;
+        private System.Windows.Forms.ToolStripStatusLabel stFunInfo;
     }
 }
