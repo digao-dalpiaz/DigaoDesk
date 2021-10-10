@@ -39,6 +39,10 @@ namespace DigaoDeskApp
             this.label3 = new System.Windows.Forms.Label();
             this.edDir = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnSelCmd = new System.Windows.Forms.Button();
+            this.btnSelDir = new System.Windows.Forms.Button();
+            this.dlgFile = new System.Windows.Forms.OpenFileDialog();
+            this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -62,7 +66,7 @@ namespace DigaoDeskApp
             this.btnOK.Location = new System.Drawing.Point(240, 248);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(96, 32);
-            this.btnOK.TabIndex = 4;
+            this.btnOK.TabIndex = 11;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -73,7 +77,7 @@ namespace DigaoDeskApp
             this.btnCancel.Location = new System.Drawing.Point(344, 248);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 32);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -83,7 +87,7 @@ namespace DigaoDeskApp
             this.edCmd.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.edCmd.Location = new System.Drawing.Point(16, 88);
             this.edCmd.Name = "edCmd";
-            this.edCmd.Size = new System.Drawing.Size(648, 23);
+            this.edCmd.Size = new System.Drawing.Size(624, 23);
             this.edCmd.TabIndex = 1;
             // 
             // label2
@@ -100,7 +104,7 @@ namespace DigaoDeskApp
             this.edArgs.Location = new System.Drawing.Point(16, 144);
             this.edArgs.Name = "edArgs";
             this.edArgs.Size = new System.Drawing.Size(648, 23);
-            this.edArgs.TabIndex = 2;
+            this.edArgs.TabIndex = 3;
             // 
             // label3
             // 
@@ -117,8 +121,8 @@ namespace DigaoDeskApp
             this.edDir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
             this.edDir.Location = new System.Drawing.Point(16, 200);
             this.edDir.Name = "edDir";
-            this.edDir.Size = new System.Drawing.Size(648, 23);
-            this.edDir.TabIndex = 3;
+            this.edDir.Size = new System.Drawing.Size(624, 23);
+            this.edDir.TabIndex = 4;
             // 
             // label4
             // 
@@ -129,6 +133,32 @@ namespace DigaoDeskApp
             this.label4.TabIndex = 8;
             this.label4.Text = "Working directory";
             // 
+            // btnSelCmd
+            // 
+            this.btnSelCmd.Location = new System.Drawing.Point(640, 87);
+            this.btnSelCmd.Name = "btnSelCmd";
+            this.btnSelCmd.Size = new System.Drawing.Size(24, 25);
+            this.btnSelCmd.TabIndex = 2;
+            this.btnSelCmd.TabStop = false;
+            this.btnSelCmd.Text = "...";
+            this.btnSelCmd.UseVisualStyleBackColor = true;
+            this.btnSelCmd.Click += new System.EventHandler(this.btnSelCmd_Click);
+            // 
+            // btnSelDir
+            // 
+            this.btnSelDir.Location = new System.Drawing.Point(640, 199);
+            this.btnSelDir.Name = "btnSelDir";
+            this.btnSelDir.Size = new System.Drawing.Size(24, 25);
+            this.btnSelDir.TabIndex = 5;
+            this.btnSelDir.TabStop = false;
+            this.btnSelDir.Text = "...";
+            this.btnSelDir.UseVisualStyleBackColor = true;
+            this.btnSelDir.Click += new System.EventHandler(this.btnSelDir_Click);
+            // 
+            // dlgFile
+            // 
+            this.dlgFile.FileName = "openFileDialog1";
+            // 
             // FrmAppEditor
             // 
             this.AcceptButton = this.btnOK;
@@ -136,6 +166,8 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(681, 301);
+            this.Controls.Add(this.btnSelDir);
+            this.Controls.Add(this.btnSelCmd);
             this.Controls.Add(this.edDir);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.edArgs);
@@ -171,5 +203,9 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox edDir;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSelCmd;
+        private System.Windows.Forms.Button btnSelDir;
+        private System.Windows.Forms.OpenFileDialog dlgFile;
+        private System.Windows.Forms.FolderBrowserDialog dlgFolder;
     }
 }

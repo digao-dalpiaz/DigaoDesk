@@ -87,5 +87,23 @@ namespace DigaoDeskApp
             DialogResult = DialogResult.OK;
         }
 
+        private void btnSelCmd_Click(object sender, EventArgs e)
+        {
+            dlgFile.FileName = edCmd.Text;
+            if (dlgFile.ShowDialog() == DialogResult.OK)
+            {
+                edCmd.Text = dlgFile.FileName;
+            }
+        }
+
+        private void btnSelDir_Click(object sender, EventArgs e)
+        {
+            dlgFolder.SelectedPath = edDir.Text;
+            if (dlgFolder.ShowDialog() == DialogResult.OK)
+            {
+                edDir.Text = dlgFolder.SelectedPath;
+            }
+        }
+
     }
 }
