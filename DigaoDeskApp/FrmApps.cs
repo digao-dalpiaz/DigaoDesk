@@ -203,6 +203,7 @@ namespace DigaoDeskApp
         private void timerMonitor_Tick(object sender, EventArgs e)
         {
             timerMonitor.Enabled = false;
+            stMonitoring.Visible = true;
             Task.Run(Analyze);
         }
 
@@ -231,6 +232,7 @@ namespace DigaoDeskApp
                             AddRemainingLog(app);
                         }
 
+                        stMonitoring.Visible = false;
                         timerMonitor.Enabled = true;
                     }));
                 }
