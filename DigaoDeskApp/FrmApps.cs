@@ -127,6 +127,7 @@ namespace DigaoDeskApp
         private void btnStart_Click(object sender, EventArgs e)
         {
             edLog.Clear(); //clear control manually, because log object is not sinchronyzed when app already selected!
+            _nextLogLineToRead = 0;
 
             var app = GetSelApp();
             app.Start();
