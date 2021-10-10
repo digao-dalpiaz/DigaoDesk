@@ -44,9 +44,20 @@ namespace DigaoDeskApp
                 return _startTime.Value.ToString(Vars.DATETIME_FMT);
             }
         }
+
         public string RunningTime { get; set; }
+
         public string LastLogTime { get; set; }
-        public string HasError { get; set; }
+
+        public bool LastLogIsError;
+        public string LogHealth
+        {
+            get
+            {
+                return LastLogIsError ? "# ERROR #" : "OK";
+            }
+        }
+
         public string LogStatistics
         {
             get
@@ -66,7 +77,6 @@ namespace DigaoDeskApp
         {
             public DateTime Timestamp;
             public string Text;
-            public bool Error;
         }
 
         public List<LogRecord> Logs = new();
@@ -111,7 +121,7 @@ namespace DigaoDeskApp
                 _startTime = null;
                 RunningTime = null;
                 LastLogTime = null;
-                HasError = null;
+                LastLogIsError = false;
                 Memory = null;
                 Processor = null;
                 ProcCount = null;
@@ -165,11 +175,10 @@ namespace DigaoDeskApp
             LogRecord r = new();
             r.Timestamp = DateTime.Now;
             r.Text = text;
-            r.Error = error;
             Logs.Add(r);
 
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
-            HasError = error ? "# ERROR #" : "OK";
+            LastLogIsError = error;
                         
             Vars.FrmMainObj.UpdateTrayIcon();
         }

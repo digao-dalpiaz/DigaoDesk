@@ -143,7 +143,9 @@ namespace DigaoDeskApp
         {
             var app = GetSelApp();
             app.Logs.Clear();
+            app.LastLogIsError = false;
 
+            ReloadGrid();
             RecordSelected();
 
             Vars.FrmMainObj.UpdateTrayIcon(); //if current log ends with an error, the tray icon may switch when there is no other app with error

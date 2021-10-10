@@ -69,7 +69,7 @@ namespace DigaoDeskApp
             if (appsRunning.Any())
             {
                 idx = 1;
-                if (appsRunning.Any(x => x.Logs.Any() && x.Logs.Last().Error))
+                if (appsRunning.Any(x => x.LastLogIsError))
                 {
                     idx = 2;
                 } 
