@@ -39,6 +39,7 @@ namespace DigaoDeskApp
             this.miApplications = new System.Windows.Forms.ToolStripMenuItem();
             this.miSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.miConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.images = new System.Windows.Forms.ImageList(this.components);
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -56,10 +57,11 @@ namespace DigaoDeskApp
             this.miVersion,
             this.toolStripMenuItem1,
             this.miApplications,
+            this.miConfig,
             this.miSeparator,
             this.miExit});
             this.menu.Name = "Menu";
-            this.menu.Size = new System.Drawing.Size(157, 168);
+            this.menu.Size = new System.Drawing.Size(157, 206);
             // 
             // miDigaoDesk
             // 
@@ -105,6 +107,13 @@ namespace DigaoDeskApp
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
+            // miConfig
+            // 
+            this.miConfig.Name = "miConfig";
+            this.miConfig.Size = new System.Drawing.Size(156, 38);
+            this.miConfig.Text = "Settings";
+            this.miConfig.Click += new System.EventHandler(this.miConfig_Click);
+            // 
             // images
             // 
             this.images.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -139,6 +148,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripMenuItem miDigaoDesk;
         private System.Windows.Forms.ToolStripMenuItem miVersion;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem miConfig;
     }
 }
 

@@ -13,9 +13,12 @@ namespace DigaoDeskApp
         public const string DATETIME_FMT = "dd/MM/yyyy HH:mm:ss";
 
         public static FrmMain FrmMainObj;
+        public static FrmConfig FrmConfigObj;
         public static FrmApps FrmAppsObj;
 
         public static List<DigaoApplication> AppList;
+
+        public static Config Config;
 
     }
 }

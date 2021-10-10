@@ -30,7 +30,7 @@ namespace DigaoDeskApp
         public static void SaveApplications()
         {
             var path = GetApplicationsFile();
-            var data = JsonConvert.SerializeObject(Vars.AppList);
+            var data = JsonConvert.SerializeObject(Vars.AppList, Formatting.Indented);
             File.WriteAllText(path, data);
         }
 

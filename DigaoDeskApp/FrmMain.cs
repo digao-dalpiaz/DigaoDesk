@@ -28,6 +28,7 @@ namespace DigaoDeskApp
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            Config.Load();
             ApplicationsStore.LoadApplications();
             UpdateTrayIcon();
         }       
@@ -41,9 +42,16 @@ namespace DigaoDeskApp
             }
         }
 
+        private void miConfig_Click(object sender, EventArgs e)
+        {
+            if (Vars.FrmConfigObj == null) Vars.FrmConfigObj = new();
+            Vars.FrmConfigObj.Show();
+            Vars.FrmConfigObj.Restore();
+        }
+
         private void miApplications_Click(object sender, EventArgs e)
         {
-            if (Vars.FrmAppsObj == null) Vars.FrmAppsObj = new FrmApps();
+            if (Vars.FrmAppsObj == null) Vars.FrmAppsObj = new();
             Vars.FrmAppsObj.Show();
             Vars.FrmAppsObj.Restore();
         }
@@ -86,5 +94,6 @@ namespace DigaoDeskApp
         {
             Process.Start("explorer", Vars.GITHUB_LINK + "/releases");
         }
+        
     }
 }

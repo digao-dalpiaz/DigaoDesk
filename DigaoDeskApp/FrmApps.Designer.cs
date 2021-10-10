@@ -30,12 +30,22 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
             this.g = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRunningTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProcessor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProcCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLastLogTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLogStatistics = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colError = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edLog = new System.Windows.Forms.RichTextBox();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
@@ -48,16 +58,6 @@ namespace DigaoDeskApp
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter = new System.Windows.Forms.Splitter();
             this.timerMonitor = new System.Windows.Forms.Timer(this.components);
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRunningTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProcessor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProcCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLastLogTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLogStatistics = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colError = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +92,87 @@ namespace DigaoDeskApp
             this.g.TabIndex = 1;
             this.g.SelectionChanged += new System.EventHandler(this.g_SelectionChanged);
             // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 300;
+            // 
+            // colStatus
+            // 
+            this.colStatus.DataPropertyName = "StrRunning";
+            this.colStatus.HeaderText = "Status";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            // 
+            // colStartTime
+            // 
+            this.colStartTime.DataPropertyName = "StartTime";
+            this.colStartTime.HeaderText = "Start Time";
+            this.colStartTime.Name = "colStartTime";
+            this.colStartTime.ReadOnly = true;
+            this.colStartTime.Width = 120;
+            // 
+            // colRunningTime
+            // 
+            this.colRunningTime.DataPropertyName = "RunningTime";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colRunningTime.HeaderText = "Running Time";
+            this.colRunningTime.Name = "colRunningTime";
+            this.colRunningTime.ReadOnly = true;
+            // 
+            // colMemory
+            // 
+            this.colMemory.DataPropertyName = "Memory";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colMemory.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colMemory.HeaderText = "Memory";
+            this.colMemory.Name = "colMemory";
+            this.colMemory.ReadOnly = true;
+            // 
+            // colProcessor
+            // 
+            this.colProcessor.DataPropertyName = "Processor";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colProcessor.HeaderText = "Processor";
+            this.colProcessor.Name = "colProcessor";
+            this.colProcessor.ReadOnly = true;
+            // 
+            // colProcCount
+            // 
+            this.colProcCount.DataPropertyName = "ProcCount";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colProcCount.HeaderText = "Thread Count";
+            this.colProcCount.Name = "colProcCount";
+            this.colProcCount.ReadOnly = true;
+            // 
+            // colLastLogTime
+            // 
+            this.colLastLogTime.DataPropertyName = "LastLogTime";
+            this.colLastLogTime.HeaderText = "Last Log Time";
+            this.colLastLogTime.Name = "colLastLogTime";
+            this.colLastLogTime.ReadOnly = true;
+            this.colLastLogTime.Width = 120;
+            // 
+            // colLogStatistics
+            // 
+            this.colLogStatistics.DataPropertyName = "LogStatistics";
+            this.colLogStatistics.HeaderText = "Log Statistics";
+            this.colLogStatistics.Name = "colLogStatistics";
+            this.colLogStatistics.ReadOnly = true;
+            // 
+            // colError
+            // 
+            this.colError.DataPropertyName = "HasError";
+            this.colError.HeaderText = "Log Health";
+            this.colError.Name = "colError";
+            this.colError.ReadOnly = true;
+            // 
             // edLog
             // 
             this.edLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -99,14 +180,13 @@ namespace DigaoDeskApp
             this.edLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edLog.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.edLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.edLog.HideSelection = false;
             this.edLog.Location = new System.Drawing.Point(0, 184);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
-            this.edLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.edLog.Size = new System.Drawing.Size(1186, 266);
             this.edLog.TabIndex = 3;
             this.edLog.Text = "";
+            this.edLog.WordWrap = false;
             // 
             // toolBar
             // 
@@ -210,87 +290,6 @@ namespace DigaoDeskApp
             this.timerMonitor.Enabled = true;
             this.timerMonitor.Interval = 2000;
             this.timerMonitor.Tick += new System.EventHandler(this.timerMonitor_Tick);
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 300;
-            // 
-            // colStatus
-            // 
-            this.colStatus.DataPropertyName = "StrRunning";
-            this.colStatus.HeaderText = "Status";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            // 
-            // colStartTime
-            // 
-            this.colStartTime.DataPropertyName = "StartTime";
-            this.colStartTime.HeaderText = "Start Time";
-            this.colStartTime.Name = "colStartTime";
-            this.colStartTime.ReadOnly = true;
-            this.colStartTime.Width = 120;
-            // 
-            // colRunningTime
-            // 
-            this.colRunningTime.DataPropertyName = "RunningTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colRunningTime.HeaderText = "Running Time";
-            this.colRunningTime.Name = "colRunningTime";
-            this.colRunningTime.ReadOnly = true;
-            // 
-            // colMemory
-            // 
-            this.colMemory.DataPropertyName = "Memory";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colMemory.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colMemory.HeaderText = "Memory";
-            this.colMemory.Name = "colMemory";
-            this.colMemory.ReadOnly = true;
-            // 
-            // colProcessor
-            // 
-            this.colProcessor.DataPropertyName = "Processor";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colProcessor.HeaderText = "Processor";
-            this.colProcessor.Name = "colProcessor";
-            this.colProcessor.ReadOnly = true;
-            // 
-            // colProcCount
-            // 
-            this.colProcCount.DataPropertyName = "ProcCount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colProcCount.HeaderText = "Thread Count";
-            this.colProcCount.Name = "colProcCount";
-            this.colProcCount.ReadOnly = true;
-            // 
-            // colLastLogTime
-            // 
-            this.colLastLogTime.DataPropertyName = "LastLogTime";
-            this.colLastLogTime.HeaderText = "Last Log Time";
-            this.colLastLogTime.Name = "colLastLogTime";
-            this.colLastLogTime.ReadOnly = true;
-            this.colLastLogTime.Width = 120;
-            // 
-            // colLogStatistics
-            // 
-            this.colLogStatistics.DataPropertyName = "LogStatistics";
-            this.colLogStatistics.HeaderText = "Log Statistics";
-            this.colLogStatistics.Name = "colLogStatistics";
-            this.colLogStatistics.ReadOnly = true;
-            // 
-            // colError
-            // 
-            this.colError.DataPropertyName = "HasError";
-            this.colError.HeaderText = "Log Health";
-            this.colError.Name = "colError";
-            this.colError.ReadOnly = true;
             // 
             // FrmApps
             // 

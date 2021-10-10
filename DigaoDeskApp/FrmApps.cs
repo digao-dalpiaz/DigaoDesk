@@ -29,6 +29,8 @@ namespace DigaoDeskApp
             Utils.StringToGridColumns((string)r.GetValue("GridCols", string.Empty), g);
 
             Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position
+
+            LoadConfig();
                         
             LoadGrid();
             UpdateButtons();
@@ -43,6 +45,15 @@ namespace DigaoDeskApp
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
             Vars.FrmAppsObj = null;
+        }
+
+        public void LoadConfig()
+        {
+            edLog.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
+            edLog.ForeColor = Vars.Config.Log.TextColor;
+            edLog.BackColor = Vars.Config.Log.BgColor;
+
+            edLog.WordWrap = Vars.Config.Log.WordWrap;            
         }
 
         private void LoadGrid()
@@ -147,13 +158,17 @@ namespace DigaoDeskApp
         private void RecordSelected()
         {           
             UpdateButtons();
+            ReloadSelectedLog();            
+        }
 
+        public void ReloadSelectedLog()
+        {
             _nextLogLineToRead = 0;
 
             edLog.Clear();
             var app = GetSelApp();
             if (app != null)
-            {                
+            {
                 AddRemainingLog(app);
             }
         }
@@ -226,22 +241,27 @@ namespace DigaoDeskApp
         {
             if (_nextLogLineToRead == app.Logs.Count) return;
 
+            StringBuilder sb = new();
+            for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
+            {
+                var log = app.Logs[i];
+                var text = log.Text;
+                if (Vars.Config.Log.ShowTimestamp) text = DateTime.Now.ToString(Vars.DATETIME_FMT) + " - " + text;
+                sb.AppendLine(text);
+
+                _nextLogLineToRead = i + 1;
+            }
+
             Utils.BeginUpdate(edLog);
             try
-            {               
-                for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
+            {
+                edLog.AppendText(sb.ToString());
+
+                if (Vars.Config.Log.AutoScroll)
                 {
-                    var log = app.Logs[i];
-
                     edLog.SelectionStart = edLog.TextLength;
-                    edLog.SelectionColor = log.Error ? Color.Red : Color.Lime;
-                    edLog.SelectedText = log.Text + Environment.NewLine;
-
-                    _nextLogLineToRead = i + 1;
+                    edLog.ScrollToCaret();
                 }
-
-                edLog.SelectionStart = edLog.TextLength;
-                edLog.ScrollToCaret();
             } 
             finally
             {
