@@ -223,6 +223,7 @@ namespace DigaoDeskApp
                     this.Invoke(new MethodInvoker(() =>
                     {
                         ReloadGrid();
+                        UpdateButtons();
 
                         var app = GetSelApp();
                         if (app != null)
@@ -242,7 +243,8 @@ namespace DigaoDeskApp
 
         private void AddRemainingLog(DigaoApplication app)
         {
-            if (_nextLogLineToRead == app.Logs.Count) return;
+            if (_nextLogLineToRead > app.Logs.Count) throw new Exception("Log index control out of sync!");
+            if (_nextLogLineToRead == app.Logs.Count) return; //everything already sync
 
             StringBuilder sb = new();
             for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
