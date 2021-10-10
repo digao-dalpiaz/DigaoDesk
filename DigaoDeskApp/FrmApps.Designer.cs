@@ -330,7 +330,7 @@ namespace DigaoDeskApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmApps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Applications";
+            this.Text = "Applications - Digao Desk";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmApps_FormClosed);
             this.Load += new System.EventHandler(this.FrmApps_Load);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
