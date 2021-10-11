@@ -11,4 +11,4 @@ If we are developing applications, we will have some services running directly i
 
 For these cases, I developed this tool, where you can add all local applications, allowing them to run simultaneously and monitor the output of each one.
 
-You will be able to configure backend and frondend applications.
+You will be able to configure backend and frontend applications.
