@@ -30,10 +30,10 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,8 +123,8 @@ namespace DigaoDeskApp
             // colRunningTime
             // 
             this.colRunningTime.DataPropertyName = "RunningTime";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle1;
             this.colRunningTime.HeaderText = "Running Time";
             this.colRunningTime.Name = "colRunningTime";
             this.colRunningTime.ReadOnly = true;
@@ -133,8 +133,8 @@ namespace DigaoDeskApp
             // colMemory
             // 
             this.colMemory.DataPropertyName = "Memory";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colMemory.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colMemory.DefaultCellStyle = dataGridViewCellStyle2;
             this.colMemory.HeaderText = "Memory";
             this.colMemory.Name = "colMemory";
             this.colMemory.ReadOnly = true;
@@ -143,8 +143,8 @@ namespace DigaoDeskApp
             // colProcessor
             // 
             this.colProcessor.DataPropertyName = "Processor";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle3;
             this.colProcessor.HeaderText = "Processor";
             this.colProcessor.Name = "colProcessor";
             this.colProcessor.ReadOnly = true;
@@ -153,8 +153,8 @@ namespace DigaoDeskApp
             // colProcCount
             // 
             this.colProcCount.DataPropertyName = "ProcCount";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle4;
             this.colProcCount.HeaderText = "Thread Count";
             this.colProcCount.Name = "colProcCount";
             this.colProcCount.ReadOnly = true;
@@ -191,7 +191,7 @@ namespace DigaoDeskApp
             this.edLog.Location = new System.Drawing.Point(0, 195);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
-            this.edLog.Size = new System.Drawing.Size(1186, 255);
+            this.edLog.Size = new System.Drawing.Size(1186, 233);
             this.edLog.TabIndex = 3;
             this.edLog.Text = "";
             // 
@@ -331,8 +331,8 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 450);
-            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.edLog);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.splitter);
             this.Controls.Add(this.g);
             this.Controls.Add(this.toolBar);
