@@ -1,5 +1,6 @@
 ﻿using LibGit2Sharp;
 using System.IO;
+using System.Linq;
 
 namespace DigaoDeskApp
 {
@@ -14,13 +15,19 @@ namespace DigaoDeskApp
             }
         }
 
-        private string _path;
-
         public string Branch
         {
             get
             {
                 return _repoCtrl.Head.FriendlyName;
+            }
+        }
+
+        public int Difs
+        {
+            get
+            {
+                return _repoCtrl.Diff.Compare<TreeChanges>().Count;
             }
         }
 
@@ -31,8 +38,6 @@ namespace DigaoDeskApp
         public DigaoRepository(string path)
         {
             _name = Path.GetFileName(path);
-            _path = path;
-
             _repoCtrl = new(path);            
         }
 
