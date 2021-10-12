@@ -27,18 +27,21 @@ namespace DigaoDeskApp
         {
             get
             {
+                //_repoCtrl.Diff.Compare<Commit>();
                 return _repoCtrl.Diff.Compare<TreeChanges>().Count;
             }
         }
 
-        private Repository _repoCtrl;
+        public Repository _repoCtrl;
 
         //private FileSystemWatcher _mon = new();
 
         public DigaoRepository(string path)
         {
             _name = Path.GetFileName(path);
-            _repoCtrl = new(path);            
+            _repoCtrl = new(path);  
+            
+            
         }
 
         private void EnableMonitoring()

@@ -32,6 +32,7 @@ namespace DigaoDeskApp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edLog = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,11 +59,20 @@ namespace DigaoDeskApp
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
             // 
+            // edLog
+            // 
+            this.edLog.Location = new System.Drawing.Point(32, 328);
+            this.edLog.Name = "edLog";
+            this.edLog.Size = new System.Drawing.Size(720, 272);
+            this.edLog.TabIndex = 1;
+            this.edLog.Text = "";
+            // 
             // FrmRepos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 648);
+            this.Controls.Add(this.edLog);
             this.Controls.Add(this.g);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRepos";
@@ -78,5 +88,6 @@ namespace DigaoDeskApp
 
         private System.Windows.Forms.DataGridView g;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.RichTextBox edLog;
     }
 }

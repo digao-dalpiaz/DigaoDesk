@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibGit2Sharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -56,7 +57,12 @@ namespace DigaoDeskApp
                 if (!Directory.Exists(Path.Combine(subfolder, ".git"))) continue;
 
                 DigaoRepository r = new(subfolder);
-                _repos.Add(r);                
+                _repos.Add(r);
+
+                foreach (var item in r._repoCtrl.RetrieveStatus())
+                {
+                    edLog.AppendText(item.FilePath + "/" + item.State.ToString() + Environment.NewLine);
+                }
             }
 
             _gridBind.ResetBindings(false);
