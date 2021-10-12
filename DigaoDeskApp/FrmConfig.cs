@@ -6,9 +6,14 @@ namespace DigaoDeskApp
     public partial class FrmConfig : Form
     {
 
+        private FontDialog _dlgFont;
+
         public FrmConfig()
         {
             InitializeComponent();
+
+            _dlgFont = new();
+            _dlgFont.ShowEffects = false;
         }
 
         private void FrmConfig_FormClosed(object sender, FormClosedEventArgs e)
@@ -19,7 +24,7 @@ namespace DigaoDeskApp
         private void FrmConfig_Load(object sender, System.EventArgs e)
         {
             //--Apps tab
-            selFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
+            _dlgFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
             UpdateFontButton();
 
             btnLogTextColor.BackColor = Vars.Config.Log.TextColor;
@@ -39,14 +44,14 @@ namespace DigaoDeskApp
 
         private void UpdateFontButton()
         {
-            btnLogFont.Text = $"{selFont.Font.Name}, {selFont.Font.Size}";
+            btnLogFont.Text = $"{_dlgFont.Font.Name}, {_dlgFont.Font.Size}";
         }
 
         private void btnOK_Click(object sender, System.EventArgs e)
         {
             //--Apps tab
-            Vars.Config.Log.FontName = selFont.Font.Name;
-            Vars.Config.Log.FontSize = selFont.Font.Size;
+            Vars.Config.Log.FontName = _dlgFont.Font.Name;
+            Vars.Config.Log.FontSize = _dlgFont.Font.Size;
 
             Vars.Config.Log.TextColor = btnLogTextColor.BackColor;
             Vars.Config.Log.BgColor = btnLogBgColor.BackColor;
@@ -80,7 +85,7 @@ namespace DigaoDeskApp
 
         private void btnLogFont_Click(object sender, System.EventArgs e)
         {
-            if (selFont.ShowDialog() == DialogResult.OK)
+            if (_dlgFont.ShowDialog() == DialogResult.OK)
             {
                 UpdateFontButton();
             }
@@ -99,19 +104,23 @@ namespace DigaoDeskApp
 
         private void DoSelColor(Button btn)
         {
-            selColor.Color = btn.BackColor;
-            if (selColor.ShowDialog() == DialogResult.OK)
+            ColorDialog dlg = new();
+
+            dlg.Color = btn.BackColor;
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                btn.BackColor = selColor.Color;
+                btn.BackColor = dlg.Color;
             }
         }
 
         private void btnSelReposDir_Click(object sender, System.EventArgs e)
         {
-            dlgFolder.SelectedPath = edReposDir.Text;
-            if (dlgFolder.ShowDialog() == DialogResult.OK)
+            FolderBrowserDialog dlg = new();
+
+            dlg.SelectedPath = edReposDir.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                edReposDir.Text = dlgFolder.SelectedPath;
+                edReposDir.Text = dlg.SelectedPath;
             }
         }
 
