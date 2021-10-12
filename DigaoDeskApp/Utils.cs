@@ -116,7 +116,7 @@ namespace DigaoDeskApp
 
         public static List<Process> GetChildProcesses(int parentId)
         {
-            var query = "Select * From Win32_Process Where ParentProcessId = " + parentId;
+            var query = "Select ProcessId From Win32_Process Where ParentProcessId = " + parentId;
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
             ManagementObjectCollection processList = searcher.Get();
 
