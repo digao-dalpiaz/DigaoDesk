@@ -45,6 +45,7 @@ namespace DigaoDeskApp
             this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.edEnv = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -163,6 +164,7 @@ namespace DigaoDeskApp
             // 
             // edEnv
             // 
+            this.edEnv.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.edEnv.Location = new System.Drawing.Point(16, 256);
             this.edEnv.Multiline = true;
             this.edEnv.Name = "edEnv";
@@ -179,6 +181,16 @@ namespace DigaoDeskApp
             this.label5.TabIndex = 14;
             this.label5.Text = "Environment variables";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(16, 400);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(131, 30);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Format: NAME=VALUE\r\nNew line: CTRL+ENTER ";
+            // 
             // FrmAppEditor
             // 
             this.AcceptButton = this.btnOK;
@@ -186,6 +198,7 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(681, 453);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.edEnv);
             this.Controls.Add(this.btnSelDir);
@@ -231,5 +244,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.FolderBrowserDialog dlgFolder;
         private System.Windows.Forms.TextBox edEnv;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
