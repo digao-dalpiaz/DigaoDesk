@@ -41,8 +41,6 @@ namespace DigaoDeskApp
             this.label4 = new System.Windows.Forms.Label();
             this.btnSelCmd = new System.Windows.Forms.Button();
             this.btnSelDir = new System.Windows.Forms.Button();
-            this.dlgFile = new System.Windows.Forms.OpenFileDialog();
-            this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.edEnv = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -158,10 +156,6 @@ namespace DigaoDeskApp
             this.btnSelDir.UseVisualStyleBackColor = true;
             this.btnSelDir.Click += new System.EventHandler(this.btnSelDir_Click);
             // 
-            // dlgFile
-            // 
-            this.dlgFile.FileName = "openFileDialog1";
-            // 
             // edEnv
             // 
             this.edEnv.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -240,8 +234,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSelCmd;
         private System.Windows.Forms.Button btnSelDir;
-        private System.Windows.Forms.OpenFileDialog dlgFile;
-        private System.Windows.Forms.FolderBrowserDialog dlgFolder;
         private System.Windows.Forms.TextBox edEnv;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
