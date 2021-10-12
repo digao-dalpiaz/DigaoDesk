@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -33,6 +34,7 @@ namespace DigaoDeskApp
                 edCmd.Text = _app.Cmd;
                 edArgs.Text = _app.Args;
                 edDir.Text = _app.WorkDir;
+                edEnv.Text = EnvVariablesParser.DictionaryToString(_app.EnvVars);
             }
         }
 
@@ -70,7 +72,19 @@ namespace DigaoDeskApp
                     edDir.Select();
                     return;
                 }
-            }            
+            }
+
+            Dictionary<string, string> dic;
+            try
+            {
+                dic = EnvVariablesParser.StringToDictionary(edEnv.Text); 
+            }
+            catch (Messages.MessageException msgEx)
+            {
+                Messages.Error(msgEx.Message);
+                edEnv.Select();
+                return;
+            }
 
             //
 
@@ -83,6 +97,7 @@ namespace DigaoDeskApp
             _app.Cmd = edCmd.Text;
             _app.Args = edArgs.Text;
             _app.WorkDir = edDir.Text;
+            _app.EnvVars = dic;
 
             DialogResult = DialogResult.OK;
         }

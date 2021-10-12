@@ -43,6 +43,8 @@ namespace DigaoDeskApp
             this.btnSelDir = new System.Windows.Forms.Button();
             this.dlgFile = new System.Windows.Forms.OpenFileDialog();
             this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.edEnv = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -63,7 +65,7 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(240, 248);
+            this.btnOK.Location = new System.Drawing.Point(240, 408);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(96, 32);
             this.btnOK.TabIndex = 11;
@@ -74,7 +76,7 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(344, 248);
+            this.btnCancel.Location = new System.Drawing.Point(344, 408);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 32);
             this.btnCancel.TabIndex = 12;
@@ -159,13 +161,33 @@ namespace DigaoDeskApp
             // 
             this.dlgFile.FileName = "openFileDialog1";
             // 
+            // edEnv
+            // 
+            this.edEnv.Location = new System.Drawing.Point(16, 256);
+            this.edEnv.Multiline = true;
+            this.edEnv.Name = "edEnv";
+            this.edEnv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.edEnv.Size = new System.Drawing.Size(648, 136);
+            this.edEnv.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 240);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 15);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Environment variables";
+            // 
             // FrmAppEditor
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(681, 301);
+            this.ClientSize = new System.Drawing.Size(681, 453);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.edEnv);
             this.Controls.Add(this.btnSelDir);
             this.Controls.Add(this.btnSelCmd);
             this.Controls.Add(this.edDir);
@@ -207,5 +229,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnSelDir;
         private System.Windows.Forms.OpenFileDialog dlgFile;
         private System.Windows.Forms.FolderBrowserDialog dlgFolder;
+        private System.Windows.Forms.TextBox edEnv;
+        private System.Windows.Forms.Label label5;
     }
 }

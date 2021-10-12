@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -16,18 +15,18 @@ namespace DigaoDeskApp
         public string Name { get; set; }
 
         [JsonProperty]
-        [Browsable(false)]
-        public string Cmd { get; set; }
+        public string Cmd;
 
         [JsonProperty]
-        [Browsable(false)]
-        public string Args { get; set; }
+        public string Args;
 
         [JsonProperty]
-        [Browsable(false)]
-        public string WorkDir { get; set; }
+        public string WorkDir;
 
-        public string StrRunning
+        [JsonProperty]
+        public Dictionary<string, string> EnvVars = new(); //auto new instance due to new version
+
+        public string Status
         {
             get
             {
@@ -106,6 +105,11 @@ namespace DigaoDeskApp
             si.StandardOutputEncoding = System.Text.Encoding.UTF8;
             si.StandardErrorEncoding = System.Text.Encoding.UTF8;
 
+            foreach (var ev in EnvVars)
+            {
+                si.Environment.Add(ev.Key, ev.Value);
+            }
+
             _process = new();
             _process.StartInfo = si;
             _process.EnableRaisingEvents = true;
@@ -133,7 +137,7 @@ namespace DigaoDeskApp
                     Vars.FrmMainObj.Invoke(new MethodInvoker(() =>
                         Vars.FrmMainObj.tray.ShowBalloonTip(5000, "Process stopped", $"The application \"{Name}\" has stopped!", ToolTipIcon.Info)));
                 }
-            };         
+            };
             
             try
             {
