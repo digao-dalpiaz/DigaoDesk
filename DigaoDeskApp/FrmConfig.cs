@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -49,6 +50,19 @@ namespace DigaoDeskApp
 
         private void btnOK_Click(object sender, System.EventArgs e)
         {
+            edReposDir.Text = edReposDir.Text.Trim();
+            if (edReposDir.Text != string.Empty)
+            {
+                if (!Directory.Exists(edReposDir.Text))
+                {
+                    Messages.Error("Git repository folder not found");
+                    edReposDir.Select();
+                    return;
+                }
+            }
+
+            //
+
             //--Apps tab
             Vars.Config.Log.FontName = _dlgFont.Font.Name;
             Vars.Config.Log.FontSize = _dlgFont.Font.Size;
