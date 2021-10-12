@@ -31,6 +31,8 @@ namespace DigaoDeskApp
             Config.Load();
             ApplicationsStore.LoadApplications();
             UpdateTrayIcon();
+
+            GitHubUpdater.RunTask();
         }       
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
