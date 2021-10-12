@@ -30,27 +30,27 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // g
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.g.AllowUserToAddRows = false;
+            this.g.AllowUserToDeleteRows = false;
+            this.g.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.g.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.g.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colName});
-            this.dataGridView1.Location = new System.Drawing.Point(8, 48);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(680, 200);
-            this.dataGridView1.TabIndex = 0;
+            this.g.Location = new System.Drawing.Point(16, 56);
+            this.g.Name = "g";
+            this.g.ReadOnly = true;
+            this.g.RowHeadersVisible = false;
+            this.g.RowTemplate.Height = 25;
+            this.g.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.g.Size = new System.Drawing.Size(768, 256);
+            this.g.TabIndex = 0;
             // 
             // colName
             // 
@@ -63,20 +63,20 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.g);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRepos";
             this.Text = "Git Repositories - Digao Desk";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRepos_FormClosed);
             this.Load += new System.EventHandler(this.FrmRepos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView g;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
     }
 }

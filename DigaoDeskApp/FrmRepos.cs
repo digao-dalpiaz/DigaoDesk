@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -8,6 +10,9 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Repos";
 
+        private List<DigaoRepository> _repos = new();
+        private BindingSource _gridBind;
+
         public FrmRepos()
         {
             InitializeComponent();
@@ -16,6 +21,13 @@ namespace DigaoDeskApp
         private void FrmRepos_Load(object sender, EventArgs e)
         {
             Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position
+
+            _gridBind = new();
+            _gridBind.DataSource = _repos;
+
+            g.DataSource = _gridBind;
+
+            BuildRepositories();
         }
 
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
@@ -23,6 +35,31 @@ namespace DigaoDeskApp
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
             Vars.FrmReposObj = null;
+        }
+
+        private void BuildRepositories()
+        {
+            var dir = Vars.Config.ReposDir;
+
+            _repos.Clear();
+            if (string.IsNullOrEmpty(dir)) return;
+
+            if (!Directory.Exists(dir))
+            {
+                Messages.Error("Git repositories folder not found: " + dir);
+                return;
+            }
+
+            var subfolderList = Directory.GetDirectories(dir);
+            foreach (var subfolder in subfolderList)
+            {
+                if (!Directory.Exists(Path.Combine(subfolder, ".git"))) continue;
+
+                DigaoRepository r = new(subfolder);
+                _repos.Add(r);                
+            }
+
+            _gridBind.ResetBindings(false);
         }
         
     }
