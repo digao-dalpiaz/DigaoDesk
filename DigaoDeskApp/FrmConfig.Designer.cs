@@ -46,14 +46,21 @@ namespace DigaoDeskApp
             this.selFont = new System.Windows.Forms.FontDialog();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.tabRepos = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.edReposDir = new System.Windows.Forms.TextBox();
+            this.btnSelReposDir = new System.Windows.Forms.Button();
+            this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.pages.SuspendLayout();
             this.tabApplications.SuspendLayout();
             this.boxLog.SuspendLayout();
+            this.tabRepos.SuspendLayout();
             this.SuspendLayout();
             // 
             // pages
             // 
             this.pages.Controls.Add(this.tabApplications);
+            this.pages.Controls.Add(this.tabRepos);
             this.pages.Location = new System.Drawing.Point(8, 8);
             this.pages.Name = "pages";
             this.pages.SelectedIndex = 0;
@@ -208,6 +215,48 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // tabRepos
+            // 
+            this.tabRepos.Controls.Add(this.btnSelReposDir);
+            this.tabRepos.Controls.Add(this.edReposDir);
+            this.tabRepos.Controls.Add(this.label4);
+            this.tabRepos.Location = new System.Drawing.Point(4, 24);
+            this.tabRepos.Name = "tabRepos";
+            this.tabRepos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRepos.Size = new System.Drawing.Size(608, 380);
+            this.tabRepos.TabIndex = 1;
+            this.tabRepos.Text = "Git Repositories";
+            this.tabRepos.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Repositories folder";
+            // 
+            // edReposDir
+            // 
+            this.edReposDir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.edReposDir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
+            this.edReposDir.Location = new System.Drawing.Point(16, 32);
+            this.edReposDir.Name = "edReposDir";
+            this.edReposDir.Size = new System.Drawing.Size(552, 23);
+            this.edReposDir.TabIndex = 1;
+            // 
+            // btnSelReposDir
+            // 
+            this.btnSelReposDir.Location = new System.Drawing.Point(568, 31);
+            this.btnSelReposDir.Name = "btnSelReposDir";
+            this.btnSelReposDir.Size = new System.Drawing.Size(24, 25);
+            this.btnSelReposDir.TabIndex = 2;
+            this.btnSelReposDir.TabStop = false;
+            this.btnSelReposDir.Text = "...";
+            this.btnSelReposDir.UseVisualStyleBackColor = true;
+            this.btnSelReposDir.Click += new System.EventHandler(this.btnSelReposDir_Click);
+            // 
             // FrmConfig
             // 
             this.AcceptButton = this.btnOK;
@@ -230,6 +279,8 @@ namespace DigaoDeskApp
             this.tabApplications.PerformLayout();
             this.boxLog.ResumeLayout(false);
             this.boxLog.PerformLayout();
+            this.tabRepos.ResumeLayout(false);
+            this.tabRepos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -253,5 +304,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox ckNotifyWhenAppStops;
+        private System.Windows.Forms.TabPage tabRepos;
+        private System.Windows.Forms.TextBox edReposDir;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSelReposDir;
+        private System.Windows.Forms.FolderBrowserDialog dlgFolder;
     }
 }

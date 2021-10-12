@@ -18,6 +18,7 @@ namespace DigaoDeskApp
 
         private void FrmConfig_Load(object sender, System.EventArgs e)
         {
+            //--Apps tab
             selFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
             UpdateFontButton();
 
@@ -29,6 +30,11 @@ namespace DigaoDeskApp
             ckLogAutoScroll.Checked = Vars.Config.Log.AutoScroll;
 
             ckNotifyWhenAppStops.Checked = Vars.Config.NotifyAppStops;
+            //--
+
+            //--Repos tab
+            edReposDir.Text = Vars.Config.ReposDir;
+            //--
         }
 
         private void UpdateFontButton()
@@ -38,6 +44,7 @@ namespace DigaoDeskApp
 
         private void btnOK_Click(object sender, System.EventArgs e)
         {
+            //--Apps tab
             Vars.Config.Log.FontName = selFont.Font.Name;
             Vars.Config.Log.FontSize = selFont.Font.Size;
 
@@ -49,6 +56,11 @@ namespace DigaoDeskApp
             Vars.Config.Log.AutoScroll = ckLogAutoScroll.Checked;
 
             Vars.Config.NotifyAppStops = ckNotifyWhenAppStops.Checked;
+            //--
+
+            //--Repos tab
+            Vars.Config.ReposDir = edReposDir.Text;
+            //--
 
             Vars.Config.Save();
 
@@ -93,6 +105,15 @@ namespace DigaoDeskApp
                 btn.BackColor = selColor.Color;
             }
         }
-                
+
+        private void btnSelReposDir_Click(object sender, System.EventArgs e)
+        {
+            dlgFolder.SelectedPath = edReposDir.Text;
+            if (dlgFolder.ShowDialog() == DialogResult.OK)
+            {
+                edReposDir.Text = dlgFolder.SelectedPath;
+            }
+        }
+
     }
 }

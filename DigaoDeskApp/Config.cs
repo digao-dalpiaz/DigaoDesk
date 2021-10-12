@@ -10,6 +10,7 @@ namespace DigaoDeskApp
 
         public ConfigLog Log;
         public bool NotifyAppStops = true;
+        public string ReposDir;
 
         public class ConfigLog
         {
