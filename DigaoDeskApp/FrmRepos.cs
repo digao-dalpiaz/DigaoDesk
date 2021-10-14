@@ -1,5 +1,4 @@
-﻿using LibGit2Sharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -35,7 +34,7 @@ namespace DigaoDeskApp
         {
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
-            Vars.FrmReposObj = null;
+            Vars.FrmReposObj = null;            
         }
 
         private void BuildRepositories()
@@ -58,15 +57,23 @@ namespace DigaoDeskApp
 
                 DigaoRepository r = new(subfolder);
                 _repos.Add(r);
-
-                foreach (var item in r._repoCtrl.RetrieveStatus())
-                {
-                    edLog.AppendText(item.FilePath + "/" + item.State.ToString() + Environment.NewLine);
-                }
             }
 
             _gridBind.ResetBindings(false);
         }
-        
+
+        private DigaoRepository GetSel()
+        {
+            if (g.CurrentRow == null) return null;
+            return g.CurrentRow.DataBoundItem as DigaoRepository;
+        }
+
+        private void btnPull_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            var res = r.Pull();
+
+            edLog.AppendText(res.ToString() + Environment.NewLine);
+        }
     }
 }

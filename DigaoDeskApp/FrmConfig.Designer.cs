@@ -43,6 +43,10 @@ namespace DigaoDeskApp
             this.btnLogBgColor = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tabRepos = new System.Windows.Forms.TabPage();
+            this.edGitEmail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.edGitName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSelReposDir = new System.Windows.Forms.Button();
             this.edReposDir = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -190,6 +194,10 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            this.tabRepos.Controls.Add(this.edGitEmail);
+            this.tabRepos.Controls.Add(this.label6);
+            this.tabRepos.Controls.Add(this.edGitName);
+            this.tabRepos.Controls.Add(this.label5);
             this.tabRepos.Controls.Add(this.btnSelReposDir);
             this.tabRepos.Controls.Add(this.edReposDir);
             this.tabRepos.Controls.Add(this.label4);
@@ -200,6 +208,38 @@ namespace DigaoDeskApp
             this.tabRepos.TabIndex = 1;
             this.tabRepos.Text = "Git Repositories";
             this.tabRepos.UseVisualStyleBackColor = true;
+            // 
+            // edGitEmail
+            // 
+            this.edGitEmail.Location = new System.Drawing.Point(16, 144);
+            this.edGitEmail.Name = "edGitEmail";
+            this.edGitEmail.Size = new System.Drawing.Size(336, 23);
+            this.edGitEmail.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 15);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Email";
+            // 
+            // edGitName
+            // 
+            this.edGitName.Location = new System.Drawing.Point(16, 96);
+            this.edGitName.Name = "edGitName";
+            this.edGitName.Size = new System.Drawing.Size(336, 23);
+            this.edGitName.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 15);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Name";
             // 
             // btnSelReposDir
             // 
@@ -299,5 +339,9 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TextBox edReposDir;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSelReposDir;
+        private System.Windows.Forms.TextBox edGitEmail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox edGitName;
+        private System.Windows.Forms.Label label5;
     }
 }

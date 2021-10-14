@@ -40,6 +40,9 @@ namespace DigaoDeskApp
 
             //--Repos tab
             edReposDir.Text = Vars.Config.ReposDir;
+
+            edGitName.Text = Vars.Config.Git.Name;
+            edGitEmail.Text = Vars.Config.Git.Email;
             //--
         }
 
@@ -79,6 +82,9 @@ namespace DigaoDeskApp
 
             //--Repos tab
             Vars.Config.ReposDir = edReposDir.Text;
+
+            Vars.Config.Git.Name = edGitName.Text;
+            Vars.Config.Git.Email = edGitEmail.Text;
             //--
 
             Vars.Config.Save();
@@ -103,7 +109,6 @@ namespace DigaoDeskApp
             {
                 UpdateFontButton();
             }
-
         }
 
         private void btnLogTextColor_Click(object sender, System.EventArgs e)

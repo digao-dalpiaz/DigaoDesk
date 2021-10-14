@@ -1,11 +1,11 @@
 ﻿using LibGit2Sharp;
 using System.IO;
-using System.Linq;
 
 namespace DigaoDeskApp
 {
     class DigaoRepository
     {
+        
         private string _name;
         public string Name
         {
@@ -27,31 +27,25 @@ namespace DigaoDeskApp
         {
             get
             {
-                //_repoCtrl.Diff.Compare<Commit>();
                 return _repoCtrl.Diff.Compare<TreeChanges>().Count;
             }
         }
 
         public Repository _repoCtrl;
 
-        //private FileSystemWatcher _mon = new();
-
         public DigaoRepository(string path)
         {
             _name = Path.GetFileName(path);
-            _repoCtrl = new(path);  
-            
-            
+            _repoCtrl = new(path);
         }
 
-        private void EnableMonitoring()
+        public MergeStatus Pull()
         {
-            //_mon.
-        }
+            Signature s = new(Vars.Config.Git.Name, Vars.Config.Git.Email, System.DateTimeOffset.Now);
+            PullOptions po = new();
 
-        private void UpdateStatus()
-        {
-            //Commands.Pull(_repoCtrl, Signature, PullOptions)
+            var res = Commands.Pull(_repoCtrl, s, po);
+            return res.Status;
         }
     }
 }
