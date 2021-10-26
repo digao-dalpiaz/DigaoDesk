@@ -34,13 +34,13 @@ namespace DigaoDeskApp
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edLog = new System.Windows.Forms.RichTextBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnPull = new System.Windows.Forms.ToolStripButton();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.btnFetch = new System.Windows.Forms.ToolStripButton();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            this.toolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // g
@@ -89,25 +89,25 @@ namespace DigaoDeskApp
             this.edLog.TabIndex = 1;
             this.edLog.Text = "";
             // 
-            // toolStrip1
+            // toolBar
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRefresh,
-            this.btnPull,
-            this.btnFetch});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
+            this.btnFetch,
+            this.btnPull});
+            this.toolBar.Location = new System.Drawing.Point(0, 0);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Size = new System.Drawing.Size(800, 25);
+            this.toolBar.TabIndex = 2;
+            this.toolBar.Text = "toolStrip1";
             // 
             // btnRefresh
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(66, 22);
-            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Size = new System.Drawing.Size(83, 22);
+            this.btnRefresh.Text = "Refresh All";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnPull
@@ -119,15 +119,6 @@ namespace DigaoDeskApp
             this.btnPull.Text = "Pull";
             this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
             // 
-            // splitter1
-            // 
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 281);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(800, 8);
-            this.splitter1.TabIndex = 3;
-            this.splitter1.TabStop = false;
-            // 
             // btnFetch
             // 
             this.btnFetch.Image = ((System.Drawing.Image)(resources.GetObject("btnFetch.Image")));
@@ -137,6 +128,15 @@ namespace DigaoDeskApp
             this.btnFetch.Text = "Fetch";
             this.btnFetch.Click += new System.EventHandler(this.btnFetch_Click);
             // 
+            // splitter1
+            // 
+            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter1.Location = new System.Drawing.Point(0, 281);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(800, 8);
+            this.splitter1.TabIndex = 3;
+            this.splitter1.TabStop = false;
+            // 
             // FrmRepos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -145,15 +145,15 @@ namespace DigaoDeskApp
             this.Controls.Add(this.edLog);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.g);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.toolBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRepos";
             this.Text = "Git Repositories - Digao Desk";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRepos_FormClosed);
             this.Load += new System.EventHandler(this.FrmRepos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,7 +163,7 @@ namespace DigaoDeskApp
 
         private System.Windows.Forms.DataGridView g;
         private System.Windows.Forms.RichTextBox edLog;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolBar;
         private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.ToolStripButton btnPull;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;

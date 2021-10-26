@@ -20,14 +20,14 @@ namespace DigaoDeskApp
 
         private void FrmRepos_Load(object sender, EventArgs e)
         {
-            Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position
+            Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position                      
+
+            BuildRepositories();
 
             _gridBind = new();
             _gridBind.DataSource = _repos;
 
             g.DataSource = _gridBind;
-
-            BuildRepositories();
         }
 
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
@@ -41,7 +41,6 @@ namespace DigaoDeskApp
         {
             var dir = Vars.Config.ReposDir;
 
-            _repos.Clear();
             if (string.IsNullOrEmpty(dir)) return;
 
             if (!Directory.Exists(dir))
@@ -57,6 +56,14 @@ namespace DigaoDeskApp
 
                 DigaoRepository r = new(subfolder);
                 _repos.Add(r);
+            }            
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            foreach (var item in _repos)
+            {
+                item.Refresh();
             }
 
             _gridBind.ResetBindings(false);
@@ -68,23 +75,28 @@ namespace DigaoDeskApp
             return g.CurrentRow.DataBoundItem as DigaoRepository;
         }
 
-        private void btnPull_Click(object sender, EventArgs e)
-        {
-            var r = GetSel();
-            var res = r.Pull();
-
-            edLog.AppendText(res.ToString() + Environment.NewLine);
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            BuildRepositories();
-        }
-
         private void btnFetch_Click(object sender, EventArgs e)
         {
             var r = GetSel();
             r.Fetch();
         }
+
+        private void btnPull_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.Pull();
+        }      
+
+        public void ProcBackground(bool activate)
+        {
+            toolBar.Enabled = !activate;
+            g.Enabled = !activate;
+        }
+
+        public void Log(string msg)
+        {
+            edLog.AppendText(msg + Environment.NewLine);
+        }
+
     }
 }
