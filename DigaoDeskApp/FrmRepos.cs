@@ -75,5 +75,16 @@ namespace DigaoDeskApp
 
             edLog.AppendText(res.ToString() + Environment.NewLine);
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            BuildRepositories();
+        }
+
+        private void btnFetch_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.Fetch();
+        }
     }
 }
