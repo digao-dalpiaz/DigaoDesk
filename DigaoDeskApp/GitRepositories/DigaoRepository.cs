@@ -195,7 +195,7 @@ namespace DigaoDeskApp
             return true;
         }
 
-        private Credentials OnCredenctialsProvider(string url, string usernameFromUrl, SupportedCredentialTypes types)
+        private Credentials OnCredentialsProvider(string url, string usernameFromUrl, SupportedCredentialTypes types)
         {
             UsernamePasswordCredentials c = new();
             //c.Username = "";
@@ -210,7 +210,7 @@ namespace DigaoDeskApp
 
             FetchOptions fo = new();
             fo.Prune = true;
-            fo.CredentialsProvider = OnCredenctialsProvider;
+            fo.CredentialsProvider = OnCredentialsProvider;
 
             Commands.Fetch(_repoCtrl, remote.Name, refSpecs, fo, string.Empty);
         }
@@ -232,7 +232,7 @@ namespace DigaoDeskApp
                 PullOptions po = new();
 
                 po.FetchOptions = new();
-                po.FetchOptions.CredentialsProvider = OnCredenctialsProvider;
+                po.FetchOptions.CredentialsProvider = OnCredentialsProvider;
 
                 po.MergeOptions = new();
                 po.MergeOptions.OnCheckoutNotify = OnCheckoutNotify;
