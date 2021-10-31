@@ -87,7 +87,7 @@ namespace DigaoDeskApp
         }
 
         private string _othersBranchesDifs;
-        public string OtherBranchesDifs
+        public string OthersBranchesDifs
         {
             get
             {
