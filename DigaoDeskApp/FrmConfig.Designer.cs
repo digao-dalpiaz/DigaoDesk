@@ -42,6 +42,11 @@ namespace DigaoDeskApp
             this.tabApplications = new System.Windows.Forms.TabPage();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.tabRepos = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.edGitCredPassword = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.edGitCredUsername = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.edGitEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.edGitName = new System.Windows.Forms.TextBox();
@@ -55,6 +60,7 @@ namespace DigaoDeskApp
             this.tabLogs.SuspendLayout();
             this.tabApplications.SuspendLayout();
             this.tabRepos.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pages
@@ -183,6 +189,7 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            this.tabRepos.Controls.Add(this.groupBox1);
             this.tabRepos.Controls.Add(this.edGitEmail);
             this.tabRepos.Controls.Add(this.label6);
             this.tabRepos.Controls.Add(this.edGitName);
@@ -197,6 +204,52 @@ namespace DigaoDeskApp
             this.tabRepos.TabIndex = 1;
             this.tabRepos.Text = "Git Repositories";
             this.tabRepos.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.edGitCredPassword);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.edGitCredUsername);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Location = new System.Drawing.Point(16, 184);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(576, 128);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Credentials";
+            // 
+            // edGitCredPassword
+            // 
+            this.edGitCredPassword.Location = new System.Drawing.Point(16, 88);
+            this.edGitCredPassword.Name = "edGitCredPassword";
+            this.edGitCredPassword.PasswordChar = '●';
+            this.edGitCredPassword.Size = new System.Drawing.Size(336, 23);
+            this.edGitCredPassword.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 15);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Password";
+            // 
+            // edGitCredUsername
+            // 
+            this.edGitCredUsername.Location = new System.Drawing.Point(16, 40);
+            this.edGitCredUsername.Name = "edGitCredUsername";
+            this.edGitCredUsername.Size = new System.Drawing.Size(336, 23);
+            this.edGitCredUsername.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 15);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Username";
             // 
             // edGitEmail
             // 
@@ -303,6 +356,8 @@ namespace DigaoDeskApp
             this.tabApplications.PerformLayout();
             this.tabRepos.ResumeLayout(false);
             this.tabRepos.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,5 +386,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnLogTextColor;
         private System.Windows.Forms.Button btnLogBgColor;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox edGitCredPassword;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox edGitCredUsername;
+        private System.Windows.Forms.Label label8;
     }
 }

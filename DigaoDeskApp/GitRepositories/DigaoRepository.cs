@@ -197,9 +197,11 @@ namespace DigaoDeskApp
 
         private Credentials OnCredentialsProvider(string url, string usernameFromUrl, SupportedCredentialTypes types)
         {
+            if (string.IsNullOrEmpty(Vars.Config.Git.CredUsername)) return null;
+
             UsernamePasswordCredentials c = new();
-            //c.Username = "";
-            //c.Password = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Key.txt"));
+            c.Username = Vars.Config.Git.CredUsername;
+            c.Password = Vars.Config.Git.CredPassword;
             return c;
         }
 

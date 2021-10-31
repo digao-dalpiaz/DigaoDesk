@@ -42,6 +42,9 @@ namespace DigaoDeskApp
 
             edGitName.Text = Vars.Config.Git.Name;
             edGitEmail.Text = Vars.Config.Git.Email;
+
+            edGitCredUsername.Text = Vars.Config.Git.CredUsername;
+            edGitCredPassword.Text = Vars.Config.Git.CredPassword;
             //--
         }
 
@@ -63,6 +66,10 @@ namespace DigaoDeskApp
                 }
             }
 
+            edGitName.Text = edGitName.Text.Trim();
+            edGitEmail.Text = edGitEmail.Text.Trim();
+            edGitCredUsername.Text = edGitCredUsername.Text.Trim();
+
             //
 
             //--Apps tab
@@ -83,6 +90,9 @@ namespace DigaoDeskApp
 
             Vars.Config.Git.Name = edGitName.Text;
             Vars.Config.Git.Email = edGitEmail.Text;
+
+            Vars.Config.Git.CredUsername = edGitCredUsername.Text;
+            Vars.Config.Git.CredPassword = edGitCredPassword.Text;
             //--
 
             Vars.Config.Save();

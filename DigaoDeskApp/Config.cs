@@ -28,6 +28,9 @@ namespace DigaoDeskApp
         {
             public string Name;
             public string Email;
+
+            public string CredUsername;
+            public string CredPassword;
         }
 
         private static string GetConfigFile()
