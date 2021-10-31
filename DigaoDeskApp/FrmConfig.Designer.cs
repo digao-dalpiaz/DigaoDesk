@@ -317,7 +317,7 @@ namespace DigaoDeskApp
             this.btnOK.Location = new System.Drawing.Point(224, 424);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(88, 32);
-            this.btnOK.TabIndex = 11;
+            this.btnOK.TabIndex = 98;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -327,7 +327,7 @@ namespace DigaoDeskApp
             this.btnCancel.Location = new System.Drawing.Point(320, 424);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
-            this.btnCancel.TabIndex = 12;
+            this.btnCancel.TabIndex = 99;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
