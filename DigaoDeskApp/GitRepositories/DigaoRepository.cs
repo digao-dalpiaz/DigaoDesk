@@ -170,7 +170,6 @@ namespace DigaoDeskApp
         {
             Vars.FrmReposObj.DoBackground(() =>
             {
-                Log(string.Empty, Color.Empty);
                 Log(cmdName, Color.Yellow);
                 proc();
                 Log("Done!", Color.Lime);
@@ -195,17 +194,22 @@ namespace DigaoDeskApp
             return true;
         }
 
+        public void FetchDirectly()
+        {
+            var remote = _repoCtrl.Network.Remotes["origin"];
+            var refSpecs = remote.FetchRefSpecs.Select(x => x.Specification);
+
+            FetchOptions fo = new();
+            fo.Prune = true;
+
+            Commands.Fetch(_repoCtrl, remote.Name, refSpecs, fo, string.Empty);
+        }
+
         public void Fetch()
         {
             DoBackground("Fetch", () =>
             {
-                var remote = _repoCtrl.Network.Remotes["origin"];
-                var refSpecs = remote.FetchRefSpecs.Select(x => x.Specification);
-
-                FetchOptions fo = new();
-                fo.Prune = true;
-
-                Commands.Fetch(_repoCtrl, remote.Name, refSpecs, fo, string.Empty);
+                FetchDirectly();
             }, true);
         }        
 

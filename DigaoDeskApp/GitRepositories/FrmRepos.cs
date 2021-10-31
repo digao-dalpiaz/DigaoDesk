@@ -88,6 +88,7 @@ namespace DigaoDeskApp
 
         public void DoBackground(Action proc)
         {
+            Log(string.Empty, Color.Empty);
             this.ProcBackground(true);
 
             Task.Run(() => {
@@ -137,20 +138,41 @@ namespace DigaoDeskApp
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             DoBackground(() => {
-                Log(string.Empty, Color.Empty);
                 Log("Refreshing all repositories...", Color.Yellow);
+
                 foreach (var item in _repos)
                 {
                     item.Refresh();
                 }
+
                 Log("Done!", Color.Lime);
 
                 this.Invoke(new MethodInvoker(() =>
                 {
                     _gridBind.ResetBindings(false);
                 }));
-            });
-            
+            });            
+        }
+
+        private void btnFetchAll_Click(object sender, EventArgs e)
+        {
+            DoBackground(() => {
+                Log("Fetch All Repositories", Color.Yellow);
+
+                foreach (var item in _repos)
+                {
+                    Log($"Fetching {item.Name}...", Color.White);
+                    item.FetchDirectly();
+                    item.Refresh();
+                }
+
+                Log("Done!", Color.Lime);
+
+                this.Invoke(new MethodInvoker(() =>
+                {
+                    _gridBind.ResetBindings(false);
+                }));
+            });            
         }
 
         private DigaoRepository GetSel()
@@ -187,6 +209,6 @@ namespace DigaoDeskApp
         {
             edLog.Clear();
         }
-
+        
     }
 }
