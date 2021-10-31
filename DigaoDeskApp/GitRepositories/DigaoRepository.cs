@@ -150,6 +150,7 @@ namespace DigaoDeskApp
 
             foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName)))
             {
+                if (item.TrackedBranch.Tip == null) continue;
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(item.Tip, item.TrackedBranch.Tip);
 
                 List<string> props = new();
@@ -194,6 +195,14 @@ namespace DigaoDeskApp
             return true;
         }
 
+        private Credentials OnCredenctialsProvider(string url, string usernameFromUrl, SupportedCredentialTypes types)
+        {
+            UsernamePasswordCredentials c = new();
+            //c.Username = "";
+            //c.Password = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Key.txt"));
+            return c;
+        }
+
         public void FetchDirectly()
         {
             var remote = _repoCtrl.Network.Remotes["origin"];
@@ -201,6 +210,7 @@ namespace DigaoDeskApp
 
             FetchOptions fo = new();
             fo.Prune = true;
+            fo.CredentialsProvider = OnCredenctialsProvider;
 
             Commands.Fetch(_repoCtrl, remote.Name, refSpecs, fo, string.Empty);
         }
@@ -218,7 +228,12 @@ namespace DigaoDeskApp
             DoBackground("Pull", () =>
             {
                 Signature s = new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
+
                 PullOptions po = new();
+
+                po.FetchOptions = new();
+                po.FetchOptions.CredentialsProvider = OnCredenctialsProvider;
+
                 po.MergeOptions = new();
                 po.MergeOptions.OnCheckoutNotify = OnCheckoutNotify;
                 po.MergeOptions.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
