@@ -1,9 +1,9 @@
 ﻿using LibGit2Sharp;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -11,6 +11,16 @@ namespace DigaoDeskApp
 {
     class DigaoRepository
     {
+
+        const string ORIGIN_HEAD = "origin/HEAD";
+
+        const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
+            CheckoutNotifyFlags.None |
+            CheckoutNotifyFlags.Dirty |
+            //CheckoutNotifyFlags.Ignored |
+            CheckoutNotifyFlags.Conflict |
+            //CheckoutNotifyFlags.Untracked |
+            CheckoutNotifyFlags.Updated;
 
         private string _path;
         public Repository _repoCtrl;
@@ -40,8 +50,8 @@ namespace DigaoDeskApp
             }
         }
 
-        private int _branchesCount;
-        public int BranchesCount
+        private string _branchesCount;
+        public string BranchesCount
         {
             get
             {
@@ -73,6 +83,15 @@ namespace DigaoDeskApp
             get
             {
                 return _pendingDown > 0 ? _pendingDown.ToString() : null;
+            }
+        }
+
+        private string _othersBranchesDifs;
+        public string OtherBranchesDifs
+        {
+            get
+            {
+                return _othersBranchesDifs;
             }
         }
 
@@ -108,13 +127,24 @@ namespace DigaoDeskApp
                 _lastFetchTS = null;
             }
 
-            var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, _repoCtrl.Head.TrackedBranch.Tip);
-            _pendingUp = divergence.AheadBy.Value;
-            _pendingDown = divergence.BehindBy.Value;
+            if (_repoCtrl.Head.IsTracking)
+            {
+                var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, _repoCtrl.Head.TrackedBranch.Tip);
+                _pendingUp = divergence.AheadBy.Value;
+                _pendingDown = divergence.BehindBy.Value;
+            } else
+            {
+                _pendingUp = 0;
+                _pendingUp = 0;
+            }            
 
             _difs = _repoCtrl.Diff.Compare<TreeChanges>().Count;
 
-            _branchesCount = _repoCtrl.Branches.Count(x => !x.IsRemote);
+            _branchesCount =
+                "Local: " + _repoCtrl.Branches.Count(x => !x.IsRemote) + 
+                " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !x.FriendlyName.Equals(ORIGIN_HEAD));
+
+            _othersBranchesDifs = GetOtherBranchesDifs();
         }
 
         private void DoBackground(string cmdName, Action proc, bool performRefresh)
@@ -170,6 +200,12 @@ namespace DigaoDeskApp
             }, true);
         }
 
+        private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
+        {
+            Log(notify.ToString() + " : " + path, Color.Orange);
+            return true;
+        }
+
         public void Pull()
         {
             DoBackground("Pull", () =>
@@ -177,18 +213,8 @@ namespace DigaoDeskApp
                 Signature s = new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
                 PullOptions po = new();
                 po.MergeOptions = new();
-                po.MergeOptions.OnCheckoutNotify = (string path, CheckoutNotifyFlags notify) =>
-                {
-                    Log(notify.ToString() + " : " + path, Color.Orange);
-                    return true;
-                };
-                po.MergeOptions.CheckoutNotifyFlags =
-                    CheckoutNotifyFlags.None |
-                    CheckoutNotifyFlags.Dirty |
-                    //CheckoutNotifyFlags.Ignored |
-                    CheckoutNotifyFlags.Conflict |
-                    CheckoutNotifyFlags.Untracked |
-                    CheckoutNotifyFlags.Updated;
+                po.MergeOptions.OnCheckoutNotify = OnCheckoutNotify;
+                po.MergeOptions.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
 
                 var res = Commands.Pull(_repoCtrl, s, po);
 
@@ -225,31 +251,26 @@ namespace DigaoDeskApp
             }, true);
         }
 
-        public void CompareLocalBranches()
+        private string GetOtherBranchesDifs()
         {
-            bool someDiv = false;
+            List<string> difs = new();
 
-            foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote))
+            foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName)))
             {
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(item.Tip, item.TrackedBranch.Tip);
 
-                if (divergence.AheadBy > 0 || divergence.BehindBy > 0)
+                List<string> props = new();
+
+                if (divergence.AheadBy > 0) props.Add("Ahead: " + divergence.AheadBy);
+                if (divergence.BehindBy > 0) props.Add("Behind: " + divergence.BehindBy);
+
+                if (props.Any())
                 {
-                    Log(string.Empty, Color.Empty);
-                    Log(item.FriendlyName, Color.LimeGreen);
-
-                    if (divergence.AheadBy > 0) Log("Ahead: " + divergence.AheadBy, Color.White);
-                    if (divergence.BehindBy > 0) Log("Behind: " + divergence.BehindBy, Color.White);
-
-                    someDiv = true;
+                    difs.Add(item.FriendlyName + $" ({string.Join(", ", props)})");
                 }
             }
 
-            if (!someDiv)
-            {
-                Log(string.Empty, Color.Empty);
-                Log("All branches have equivalent commits", Color.Lime);
-            }
+            return string.Join(", ", difs);
         }
 
         public void SwitchBranch()
@@ -257,7 +278,7 @@ namespace DigaoDeskApp
             var lst = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName));
             if (!lst.Any())
             {
-                Messages.Error("There are no other branches to switch");
+                Messages.Error("There are no other local branches to switch");
                 return;
             }
 
@@ -270,11 +291,56 @@ namespace DigaoDeskApp
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                DoBackground("Switch Branch", () =>
+                DoBackground("Switch Local Branch", () =>
                 {
                     var branch = _repoCtrl.Branches[(string)f.l.SelectedItem];
 
-                    Commands.Checkout(_repoCtrl, branch);
+                    CheckoutOptions co = new();
+                    co.OnCheckoutNotify = OnCheckoutNotify;
+                    co.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
+
+                    Commands.Checkout(_repoCtrl, branch, co);
+                }, true);
+            }
+
+        }
+
+        public void CheckoutRemoteBranch()
+        {
+            var lstLocalBranchesTracked = _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking);
+            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !x.FriendlyName.Equals(ORIGIN_HEAD) && !lstLocalBranchesTracked.Any(y => y.TrackedBranch.FriendlyName.Equals(x.FriendlyName)));
+            if (!lstRemainingRemoteBranches.Any())
+            {
+                Messages.Error("There are no other remote branches to checkout");
+                return;
+            }
+
+            FrmBranchCheckout f = new();
+
+            foreach (var item in lstRemainingRemoteBranches)
+            {
+                f.l.Items.Add(item.FriendlyName);
+            }
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                DoBackground("Checkout Remote Branch", () =>
+                {
+                    const string PREFIX = "origin/";
+                    var remoteBranch = _repoCtrl.Branches[(string)f.l.SelectedItem];
+                    if (!remoteBranch.FriendlyName.StartsWith(PREFIX))
+                    {
+                        throw new Exception("Invalid remote branch name");
+                    }
+
+                    var localBranch = _repoCtrl.CreateBranch(remoteBranch.FriendlyName.Substring(PREFIX.Length), remoteBranch.Tip);
+                    _repoCtrl.Branches.Update(localBranch, b => b.TrackedBranch = remoteBranch.CanonicalName);
+
+                    CheckoutOptions co = new();
+                    co.OnCheckoutNotify = OnCheckoutNotify;
+                    co.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
+
+                    Commands.Checkout(_repoCtrl, localBranch, co);
                 }, true);
             }
 

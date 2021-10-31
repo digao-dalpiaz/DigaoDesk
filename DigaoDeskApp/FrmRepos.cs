@@ -144,16 +144,16 @@ namespace DigaoDeskApp
             edLog.Clear();
         }
 
-        private void btnCompareLocalBranches_Click(object sender, EventArgs e)
-        {
-            var r = GetSel();
-            r.CompareLocalBranches();
-        }
-
         private void btnSwitchBranch_Click(object sender, EventArgs e)
         {
             var r = GetSel();
             r.SwitchBranch();
+        }
+
+        private void btnCheckoutRemote_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.CheckoutRemoteBranch();
         }
     }
 }

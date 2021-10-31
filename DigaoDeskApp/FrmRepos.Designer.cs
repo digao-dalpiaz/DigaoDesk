@@ -44,11 +44,11 @@ namespace DigaoDeskApp
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnFetch = new System.Windows.Forms.ToolStripButton();
             this.btnPull = new System.Windows.Forms.ToolStripButton();
-            this.btnCompareLocalBranches = new System.Windows.Forms.ToolStripButton();
+            this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
+            this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -148,10 +148,10 @@ namespace DigaoDeskApp
             this.toolStripSeparator1,
             this.btnFetch,
             this.btnPull,
-            this.btnCompareLocalBranches,
+            this.btnSwitchBranch,
+            this.btnCheckoutRemote,
             this.toolStripSeparator2,
-            this.btnClearLog,
-            this.btnSwitchBranch});
+            this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1052, 31);
@@ -193,15 +193,25 @@ namespace DigaoDeskApp
             this.btnPull.Text = "Pull Current Branch";
             this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
             // 
-            // btnCompareLocalBranches
+            // btnSwitchBranch
             // 
-            this.btnCompareLocalBranches.Image = ((System.Drawing.Image)(resources.GetObject("btnCompareLocalBranches.Image")));
-            this.btnCompareLocalBranches.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCompareLocalBranches.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCompareLocalBranches.Name = "btnCompareLocalBranches";
-            this.btnCompareLocalBranches.Size = new System.Drawing.Size(163, 28);
-            this.btnCompareLocalBranches.Text = "Compare Local Branches";
-            this.btnCompareLocalBranches.Click += new System.EventHandler(this.btnCompareLocalBranches_Click);
+            this.btnSwitchBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchBranch.Image")));
+            this.btnSwitchBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSwitchBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSwitchBranch.Name = "btnSwitchBranch";
+            this.btnSwitchBranch.Size = new System.Drawing.Size(138, 28);
+            this.btnSwitchBranch.Text = "Switch Local Branch";
+            this.btnSwitchBranch.Click += new System.EventHandler(this.btnSwitchBranch_Click);
+            // 
+            // btnCheckoutRemote
+            // 
+            this.btnCheckoutRemote.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckoutRemote.Image")));
+            this.btnCheckoutRemote.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCheckoutRemote.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCheckoutRemote.Name = "btnCheckoutRemote";
+            this.btnCheckoutRemote.Size = new System.Drawing.Size(170, 28);
+            this.btnCheckoutRemote.Text = "Checkout Remote Branch";
+            this.btnCheckoutRemote.Click += new System.EventHandler(this.btnCheckoutRemote_Click);
             // 
             // toolStripSeparator2
             // 
@@ -226,15 +236,6 @@ namespace DigaoDeskApp
             this.splitter1.Size = new System.Drawing.Size(1052, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
-            // 
-            // btnSwitchBranch
-            // 
-            this.btnSwitchBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchBranch.Image")));
-            this.btnSwitchBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSwitchBranch.Name = "btnSwitchBranch";
-            this.btnSwitchBranch.Size = new System.Drawing.Size(102, 28);
-            this.btnSwitchBranch.Text = "Switch Branch";
-            this.btnSwitchBranch.Click += new System.EventHandler(this.btnSwitchBranch_Click);
             // 
             // FrmRepos
             // 
@@ -278,7 +279,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colDown;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
-        private System.Windows.Forms.ToolStripButton btnCompareLocalBranches;
         private System.Windows.Forms.ToolStripButton btnSwitchBranch;
+        private System.Windows.Forms.ToolStripButton btnCheckoutRemote;
     }
 }
