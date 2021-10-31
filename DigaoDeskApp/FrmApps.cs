@@ -270,23 +270,10 @@ namespace DigaoDeskApp
                 }
             }
 
-            Utils.BeginUpdate(edLog);
-            try
-            {
-                var alreadyBottom = edLog.SelectionStart == edLog.SelectionLength;
-
-                edLog.AppendText(contents);
-
-                if (alreadyBottom)
-                {
-                    edLog.SelectionStart = edLog.TextLength;
-                    edLog.ScrollToCaret();
-                }
-            } 
-            finally
-            {
-                Utils.EndUpdate(edLog);
-            }
+            var alreadyBottom = edLog.SelectionStart == edLog.TextLength;
+            edLog.SuspendPainting();
+            edLog.AppendText(contents);
+            edLog.ResumePainting(!alreadyBottom);            
         }
                 
     }

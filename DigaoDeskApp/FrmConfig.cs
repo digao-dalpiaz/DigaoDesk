@@ -87,11 +87,8 @@ namespace DigaoDeskApp
 
             Vars.Config.Save();
 
-            if (Vars.FrmAppsObj != null)
-            {
-                Vars.FrmAppsObj.LoadConfig(); //reload window config
-                Vars.FrmAppsObj.ReloadSelectedLog(); //reload log
-            }
+            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.LoadConfig();
+            if (Vars.FrmReposObj != null) Vars.FrmReposObj.LoadConfig();
 
             this.Close();
         }
