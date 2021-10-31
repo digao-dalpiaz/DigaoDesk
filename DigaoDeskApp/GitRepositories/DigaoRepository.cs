@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -12,9 +11,9 @@ namespace DigaoDeskApp
     class DigaoRepository
     {
 
-        const string ORIGIN_HEAD = "origin/HEAD";
+        private const string ORIGIN_HEAD = "origin/HEAD";
 
-        const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
+        private const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
             CheckoutNotifyFlags.None |
             CheckoutNotifyFlags.Dirty |
             //CheckoutNotifyFlags.Ignored |
@@ -25,14 +24,6 @@ namespace DigaoDeskApp
         private string _path;
         public Repository _repoCtrl;
 
-        private FrmRepos _frm
-        {
-            get
-            {
-                return Vars.FrmReposObj;
-            }
-        }
-
         private string _name;
         public string Name
         {
@@ -42,11 +33,12 @@ namespace DigaoDeskApp
             }
         }
 
+        private string _branch;
         public string Branch
         {
             get
             {
-                return _repoCtrl.Head.FriendlyName;
+                return _branch;
             }
         }
 
@@ -116,12 +108,12 @@ namespace DigaoDeskApp
 
             _name = Path.GetFileName(path);
             _repoCtrl = new(path);
-
-            Refresh();
         }
 
         public void Refresh()
         {
+            _branch = _repoCtrl.Head.FriendlyName;
+
             var fetchFile = Path.Combine(_path, ".git", "FETCH_HEAD");
             if (File.Exists(fetchFile))
             {
@@ -154,41 +146,25 @@ namespace DigaoDeskApp
 
         private void DoBackground(string cmdName, Action proc, bool performRefresh)
         {
-            _frm.ProcBackground(true);
-            Log(string.Empty, Color.Empty);
-            Log(cmdName, Color.Yellow);
+            Vars.FrmReposObj.DoBackground(() =>
+            {
+                Log(string.Empty, Color.Empty);
+                Log(cmdName, Color.Yellow);
+                proc();
+                Log("Done!", Color.Lime);
 
-            Task.Run(() => {
-                try
+                if (performRefresh)
                 {
-                    proc();
-                    Log("Done!", Color.Lime);
-
-                    if (performRefresh)
-                    {
-                        Log("Refreshing...", Color.Purple);
-                        Refresh();
-                        Log("Done!", Color.MediumPurple);
-                    }
+                    Log("Refreshing...", Color.Purple);
+                    Refresh();
+                    Log("Done!", Color.MediumPurple);
                 }
-                catch (Exception ex)
-                {
-                    Log("#ERROR: " + ex.Message, Color.Red);
-                }
-
-                _frm.Invoke(new MethodInvoker(() =>
-                {
-                    _frm.ProcBackground(false);
-                }));
-            });
+            });                   
         }
 
         private void Log(string msg, Color color)
         {
-            _frm.Invoke(new MethodInvoker(() =>
-            {
-                _frm.Log(msg, color);
-            }));
+            Vars.FrmReposObj.Log(msg, color);
         }
 
         public void Fetch()

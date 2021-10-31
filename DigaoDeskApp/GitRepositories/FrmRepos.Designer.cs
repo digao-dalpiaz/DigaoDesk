@@ -267,7 +267,6 @@ namespace DigaoDeskApp
             this.Text = "Git Repositories - Digao Desk";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRepos_FormClosed);
             this.Load += new System.EventHandler(this.FrmRepos_Load);
-            this.Shown += new System.EventHandler(this.FrmRepos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
