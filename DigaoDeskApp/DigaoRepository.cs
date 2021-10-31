@@ -40,30 +40,39 @@ namespace DigaoDeskApp
             }
         }
 
-        private int _difs;
-        public int Difs
+        private int _branchesCount;
+        public int BranchesCount
         {
             get
             {
-                return _difs;
+                return _branchesCount;
+            }
+        }
+
+        private int _difs;
+        public string Difs
+        {
+            get
+            {
+                return _difs > 0 ? _difs.ToString() : null;
             }
         }
 
         private int _pendingUp;
-        public int PendingUp
+        public string PendingUp
         {
             get
             {
-                return _pendingUp;
+                return _pendingUp > 0 ? _pendingUp.ToString() : null;
             }
         }
 
         private int _pendingDown;
-        public int PendingDown
+        public string PendingDown
         {
             get
             {
-                return _pendingDown;
+                return _pendingDown > 0 ? _pendingDown.ToString() : null;
             }
         }
 
@@ -104,6 +113,8 @@ namespace DigaoDeskApp
             _pendingDown = divergence.BehindBy.Value;
 
             _difs = _repoCtrl.Diff.Compare<TreeChanges>().Count;
+
+            _branchesCount = _repoCtrl.Branches.Count(x => !x.IsRemote);
         }
 
         private void DoBackground(string cmdName, Action proc, bool performRefresh)
@@ -171,7 +182,7 @@ namespace DigaoDeskApp
                     Log(notify.ToString() + " : " + path, Color.Orange);
                     return true;
                 };
-                po.MergeOptions.CheckoutNotifyFlags = 
+                po.MergeOptions.CheckoutNotifyFlags =
                     CheckoutNotifyFlags.None |
                     CheckoutNotifyFlags.Dirty |
                     //CheckoutNotifyFlags.Ignored |
@@ -211,8 +222,35 @@ namespace DigaoDeskApp
                 }
                 Log(msgResult, Color.White);
 
-            }, true);            
-        }        
+            }, true);
+        }
+
+        public void CompareLocalBranches()
+        {
+            bool someDiv = false;
+
+            foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote))
+            {
+                var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(item.Tip, item.TrackedBranch.Tip);
+
+                if (divergence.AheadBy > 0 || divergence.BehindBy > 0)
+                {
+                    Log(string.Empty, Color.Empty);
+                    Log(item.FriendlyName, Color.LimeGreen);
+
+                    if (divergence.AheadBy > 0) Log("Ahead: " + divergence.AheadBy, Color.White);
+                    if (divergence.BehindBy > 0) Log("Behind: " + divergence.BehindBy, Color.White);
+
+                    someDiv = true;
+                }
+            }
+
+            if (!someDiv)
+            {
+                Log(string.Empty, Color.Empty);
+                Log("All branches have equivalent commits", Color.Lime);
+            }
+        }
 
     }
 }

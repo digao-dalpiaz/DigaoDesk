@@ -28,13 +28,6 @@ namespace DigaoDeskApp
             Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position                      
 
             LoadConfig();
-
-            BuildRepositories();
-
-            _gridBind = new();
-            _gridBind.DataSource = _repos;
-
-            g.DataSource = _gridBind;
         }
 
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
@@ -55,6 +48,18 @@ namespace DigaoDeskApp
             edLog.BackColor = Vars.Config.Log.BgColor;
 
             edLog.WordWrap = Vars.Config.Log.WordWrap;            
+        }
+
+        private void FrmRepos_Shown(object sender, EventArgs e)
+        {
+            this.Refresh();
+
+            BuildRepositories();
+
+            _gridBind = new();
+            _gridBind.DataSource = _repos;
+
+            g.DataSource = _gridBind;
         }
 
         private void BuildRepositories()
@@ -81,10 +86,13 @@ namespace DigaoDeskApp
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            Log(string.Empty, Color.Empty);
+            Log("Refreshing all repositories...", Color.Yellow);
             foreach (var item in _repos)
             {
                 item.Refresh();
             }
+            Log("Done!", Color.Lime);
 
             _gridBind.ResetBindings(false);
         }
@@ -134,6 +142,12 @@ namespace DigaoDeskApp
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             edLog.Clear();
+        }
+
+        private void btnCompareLocalBranches_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.CompareLocalBranches();
         }
 
     }

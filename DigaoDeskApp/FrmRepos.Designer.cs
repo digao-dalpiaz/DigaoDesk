@@ -33,6 +33,7 @@ namespace DigaoDeskApp
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBranchesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDown = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,8 +41,11 @@ namespace DigaoDeskApp
             this.edLog = new DigaoDeskApp.RichTextBoxEx();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnFetch = new System.Windows.Forms.ToolStripButton();
             this.btnPull = new System.Windows.Forms.ToolStripButton();
+            this.btnCompareLocalBranches = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
@@ -58,6 +62,7 @@ namespace DigaoDeskApp
             this.g.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colName,
             this.colBranch,
+            this.colBranchesCount,
             this.colUp,
             this.colDown,
             this.colDifs,
@@ -87,6 +92,13 @@ namespace DigaoDeskApp
             this.colBranch.Name = "colBranch";
             this.colBranch.ReadOnly = true;
             this.colBranch.Width = 250;
+            // 
+            // colBranchesCount
+            // 
+            this.colBranchesCount.DataPropertyName = "BranchesCount";
+            this.colBranchesCount.HeaderText = "Local Branches";
+            this.colBranchesCount.Name = "colBranchesCount";
+            this.colBranchesCount.ReadOnly = true;
             // 
             // colUp
             // 
@@ -132,8 +144,11 @@ namespace DigaoDeskApp
             // 
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRefresh,
+            this.toolStripSeparator1,
             this.btnFetch,
             this.btnPull,
+            this.btnCompareLocalBranches,
+            this.toolStripSeparator2,
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
@@ -151,6 +166,11 @@ namespace DigaoDeskApp
             this.btnRefresh.Text = "Refresh All";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
             // btnFetch
             // 
             this.btnFetch.Image = ((System.Drawing.Image)(resources.GetObject("btnFetch.Image")));
@@ -167,9 +187,24 @@ namespace DigaoDeskApp
             this.btnPull.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnPull.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPull.Name = "btnPull";
-            this.btnPull.Size = new System.Drawing.Size(55, 28);
-            this.btnPull.Text = "Pull";
+            this.btnPull.Size = new System.Drawing.Size(138, 28);
+            this.btnPull.Text = "Pull Current Branch";
             this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
+            // 
+            // btnCompareLocalBranches
+            // 
+            this.btnCompareLocalBranches.Image = ((System.Drawing.Image)(resources.GetObject("btnCompareLocalBranches.Image")));
+            this.btnCompareLocalBranches.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCompareLocalBranches.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCompareLocalBranches.Name = "btnCompareLocalBranches";
+            this.btnCompareLocalBranches.Size = new System.Drawing.Size(163, 28);
+            this.btnCompareLocalBranches.Text = "Compare Local Branches";
+            this.btnCompareLocalBranches.Click += new System.EventHandler(this.btnCompareLocalBranches_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // btnClearLog
             // 
@@ -204,6 +239,7 @@ namespace DigaoDeskApp
             this.Text = "Git Repositories - Digao Desk";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRepos_FormClosed);
             this.Load += new System.EventHandler(this.FrmRepos_Load);
+            this.Shown += new System.EventHandler(this.FrmRepos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
@@ -221,12 +257,16 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnPull;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.ToolStripButton btnFetch;
+        private System.Windows.Forms.ToolStripButton btnClearLog;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBranchesCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUp;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDown;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
-        private System.Windows.Forms.ToolStripButton btnClearLog;
+        private System.Windows.Forms.ToolStripButton btnCompareLocalBranches;
     }
 }
