@@ -48,6 +48,7 @@ namespace DigaoDeskApp
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -149,7 +150,8 @@ namespace DigaoDeskApp
             this.btnPull,
             this.btnCompareLocalBranches,
             this.toolStripSeparator2,
-            this.btnClearLog});
+            this.btnClearLog,
+            this.btnSwitchBranch});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1052, 31);
@@ -225,6 +227,15 @@ namespace DigaoDeskApp
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
+            // btnSwitchBranch
+            // 
+            this.btnSwitchBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchBranch.Image")));
+            this.btnSwitchBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSwitchBranch.Name = "btnSwitchBranch";
+            this.btnSwitchBranch.Size = new System.Drawing.Size(102, 28);
+            this.btnSwitchBranch.Text = "Switch Branch";
+            this.btnSwitchBranch.Click += new System.EventHandler(this.btnSwitchBranch_Click);
+            // 
             // FrmRepos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -268,5 +279,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
         private System.Windows.Forms.ToolStripButton btnCompareLocalBranches;
+        private System.Windows.Forms.ToolStripButton btnSwitchBranch;
     }
 }

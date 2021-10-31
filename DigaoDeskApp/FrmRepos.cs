@@ -150,5 +150,10 @@ namespace DigaoDeskApp
             r.CompareLocalBranches();
         }
 
+        private void btnSwitchBranch_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.SwitchBranch();
+        }
     }
 }

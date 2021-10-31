@@ -252,5 +252,33 @@ namespace DigaoDeskApp
             }
         }
 
+        public void SwitchBranch()
+        {
+            var lst = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName));
+            if (!lst.Any())
+            {
+                Messages.Error("There are no other branches to switch");
+                return;
+            }
+
+            FrmBranchCheckout f = new();
+
+            foreach (var item in lst)
+            {
+                f.l.Items.Add(item.FriendlyName);
+            }
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                DoBackground("Switch Branch", () =>
+                {
+                    var branch = _repoCtrl.Branches[(string)f.l.SelectedItem];
+
+                    Commands.Checkout(_repoCtrl, branch);
+                }, true);
+            }
+
+        }
+
     }
 }
