@@ -144,6 +144,28 @@ namespace DigaoDeskApp
             _othersBranchesDifs = GetOtherBranchesDifs();
         }
 
+        private string GetOtherBranchesDifs()
+        {
+            List<string> difs = new();
+
+            foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName)))
+            {
+                var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(item.Tip, item.TrackedBranch.Tip);
+
+                List<string> props = new();
+
+                if (divergence.AheadBy > 0) props.Add("Ahead: " + divergence.AheadBy);
+                if (divergence.BehindBy > 0) props.Add("Behind: " + divergence.BehindBy);
+
+                if (props.Any())
+                {
+                    difs.Add(item.FriendlyName + $" ({string.Join(", ", props)})");
+                }
+            }
+
+            return string.Join(", ", difs);
+        }
+
         private void DoBackground(string cmdName, Action proc, bool performRefresh)
         {
             Vars.FrmReposObj.DoBackground(() =>
@@ -167,6 +189,12 @@ namespace DigaoDeskApp
             Vars.FrmReposObj.Log(msg, color);
         }
 
+        private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
+        {
+            Log(notify.ToString() + " : " + path, Color.Orange);
+            return true;
+        }
+
         public void Fetch()
         {
             DoBackground("Fetch", () =>
@@ -179,13 +207,7 @@ namespace DigaoDeskApp
 
                 Commands.Fetch(_repoCtrl, remote.Name, refSpecs, fo, string.Empty);
             }, true);
-        }
-
-        private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
-        {
-            Log(notify.ToString() + " : " + path, Color.Orange);
-            return true;
-        }
+        }        
 
         public void Pull()
         {
@@ -230,28 +252,6 @@ namespace DigaoDeskApp
                 Log(msgResult, Color.White);
 
             }, true);
-        }
-
-        private string GetOtherBranchesDifs()
-        {
-            List<string> difs = new();
-
-            foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName)))
-            {
-                var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(item.Tip, item.TrackedBranch.Tip);
-
-                List<string> props = new();
-
-                if (divergence.AheadBy > 0) props.Add("Ahead: " + divergence.AheadBy);
-                if (divergence.BehindBy > 0) props.Add("Behind: " + divergence.BehindBy);
-
-                if (props.Any())
-                {
-                    difs.Add(item.FriendlyName + $" ({string.Join(", ", props)})");
-                }
-            }
-
-            return string.Join(", ", difs);
         }
 
         public void SwitchBranch()
