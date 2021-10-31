@@ -115,6 +115,11 @@ namespace DigaoDeskApp
 
         public void Log(string msg)
         {
+            if (Vars.Config.Log.ShowTimestamp && !string.IsNullOrEmpty(msg))
+            {
+                msg = DateTime.Now.ToString(Vars.DATETIME_FMT) + " - " + msg;
+            }
+
             edLog.AppendText(msg + Environment.NewLine);
         }
 
