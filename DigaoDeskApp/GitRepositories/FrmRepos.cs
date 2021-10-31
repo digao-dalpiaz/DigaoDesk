@@ -12,7 +12,7 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Repos";
 
-        private List<DigaoRepository> _repos = new();
+        private List<DigaoRepository> _repos;
         private BindingSource _gridBind;
 
         public FrmRepos()
@@ -74,6 +74,8 @@ namespace DigaoDeskApp
                 return;
             }
 
+            _repos = new();
+
             var subfolderList = Directory.GetDirectories(dir);
             foreach (var subfolder in subfolderList)
             {
@@ -82,43 +84,6 @@ namespace DigaoDeskApp
                 DigaoRepository r = new(subfolder);
                 _repos.Add(r);
             }            
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            DoBackground(() => {
-                Log(string.Empty, Color.Empty);
-                Log("Refreshing all repositories...", Color.Yellow);
-                foreach (var item in _repos)
-                {
-                    item.Refresh();
-                }
-                Log("Done!", Color.Lime);
-
-                this.Invoke(new MethodInvoker(() =>
-                {
-                    _gridBind.ResetBindings(false);
-                }));
-            });
-            
-        }
-
-        private DigaoRepository GetSel()
-        {
-            if (g.CurrentRow == null) return null;
-            return g.CurrentRow.DataBoundItem as DigaoRepository;
-        }
-
-        private void btnFetch_Click(object sender, EventArgs e)
-        {
-            var r = GetSel();
-            r.Fetch();
-        }
-
-        private void btnPull_Click(object sender, EventArgs e)
-        {
-            var r = GetSel();
-            r.Pull();
         }
 
         public void DoBackground(Action proc)
@@ -169,11 +134,43 @@ namespace DigaoDeskApp
             }));
         }
 
-        private void btnClearLog_Click(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            edLog.Clear();
+            DoBackground(() => {
+                Log(string.Empty, Color.Empty);
+                Log("Refreshing all repositories...", Color.Yellow);
+                foreach (var item in _repos)
+                {
+                    item.Refresh();
+                }
+                Log("Done!", Color.Lime);
+
+                this.Invoke(new MethodInvoker(() =>
+                {
+                    _gridBind.ResetBindings(false);
+                }));
+            });
+            
         }
 
+        private DigaoRepository GetSel()
+        {
+            if (g.CurrentRow == null) return null;
+            return g.CurrentRow.DataBoundItem as DigaoRepository;
+        }
+
+        private void btnFetch_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.Fetch();
+        }
+
+        private void btnPull_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.Pull();
+        }
+        
         private void btnSwitchBranch_Click(object sender, EventArgs e)
         {
             var r = GetSel();
@@ -185,5 +182,11 @@ namespace DigaoDeskApp
             var r = GetSel();
             r.CheckoutRemoteBranch();
         }
+
+        private void btnClearLog_Click(object sender, EventArgs e)
+        {
+            edLog.Clear();
+        }
+
     }
 }
