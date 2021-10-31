@@ -22,7 +22,6 @@ namespace DigaoDeskApp
             public Color BgColor = Color.FromArgb(30, 30, 30);
             public bool ShowTimestamp = false;
             public bool WordWrap = false;
-            public bool AutoScroll = true;
         }
 
         public class ConfigGit

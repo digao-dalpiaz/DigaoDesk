@@ -55,11 +55,6 @@ namespace DigaoDeskApp
                 edCmd.Select();
                 return;
             }
-            if (!File.Exists(edCmd.Text)) {
-                Messages.Error("File not found");
-                edCmd.Select();
-                return;
-            }
 
             edArgs.Text = edArgs.Text.Trim();
 

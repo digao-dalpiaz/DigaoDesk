@@ -58,7 +58,7 @@ namespace DigaoDeskApp
         }
 
         private int _pendingDown;
-        public int PedingDown
+        public int PendingDown
         {
             get
             {
@@ -108,6 +108,7 @@ namespace DigaoDeskApp
         private void DoBackground(string cmdName, Action proc, bool performRefresh)
         {
             _frm.ProcBackground(true);
+            Log(string.Empty);
             Log(cmdName);
 
             Task.Run(() => {

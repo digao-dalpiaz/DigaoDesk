@@ -33,7 +33,6 @@ namespace DigaoDeskApp
 
             ckLogShowTs.Checked = Vars.Config.Log.ShowTimestamp;
             ckLogWordWrap.Checked = Vars.Config.Log.WordWrap;
-            ckLogAutoScroll.Checked = Vars.Config.Log.AutoScroll;
 
             ckNotifyWhenAppStops.Checked = Vars.Config.NotifyAppStops;
             //--
@@ -75,7 +74,6 @@ namespace DigaoDeskApp
 
             Vars.Config.Log.ShowTimestamp = ckLogShowTs.Checked;
             Vars.Config.Log.WordWrap = ckLogWordWrap.Checked;
-            Vars.Config.Log.AutoScroll = ckLogAutoScroll.Checked;
 
             Vars.Config.NotifyAppStops = ckNotifyWhenAppStops.Checked;
             //--

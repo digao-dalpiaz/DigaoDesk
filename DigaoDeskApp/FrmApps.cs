@@ -273,9 +273,11 @@ namespace DigaoDeskApp
             Utils.BeginUpdate(edLog);
             try
             {
+                var alreadyBottom = edLog.SelectionStart == edLog.SelectionLength;
+
                 edLog.AppendText(contents);
 
-                if (Vars.Config.Log.AutoScroll)
+                if (alreadyBottom)
                 {
                     edLog.SelectionStart = edLog.TextLength;
                     edLog.ScrollToCaret();

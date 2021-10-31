@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -20,7 +21,13 @@ namespace DigaoDeskApp
 
         private void FrmRepos_Load(object sender, EventArgs e)
         {
+            var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
+            g.Height = (int)r.GetValue("GridH", g.Height);
+            Utils.StringToGridColumns((string)r.GetValue("GridCols", string.Empty), g);
+
             Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position                      
+
+            LoadConfig();
 
             BuildRepositories();
 
@@ -32,9 +39,22 @@ namespace DigaoDeskApp
 
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
         {
+            var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
+            r.SetValue("GridH", g.Height);
+            r.SetValue("GridCols", Utils.GridColumnsToString(g));
+
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
             Vars.FrmReposObj = null;            
+        }
+
+        public void LoadConfig()
+        {
+            edLog.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
+            edLog.ForeColor = Vars.Config.Log.TextColor;
+            edLog.BackColor = Vars.Config.Log.BgColor;
+
+            edLog.WordWrap = Vars.Config.Log.WordWrap;            
         }
 
         private void BuildRepositories()
@@ -96,6 +116,11 @@ namespace DigaoDeskApp
         public void Log(string msg)
         {
             edLog.AppendText(msg + Environment.NewLine);
+        }
+
+        private void btnClearLog_Click(object sender, EventArgs e)
+        {
+            edLog.Clear();
         }
 
     }
