@@ -1,5 +1,6 @@
 ﻿using LibGit2Sharp;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -7,7 +8,7 @@ namespace DigaoDeskApp
     public partial class FrmBranchCheckout : Form
     {
 
-        public class BranchView
+        private class BranchView
         {
             private Branch _branch;
             public Branch BranchData
@@ -44,6 +45,14 @@ namespace DigaoDeskApp
             }
 
             DialogResult = DialogResult.OK;
+        }
+
+        public void AddBranches(IEnumerable<Branch> lst)
+        {
+            foreach (var item in lst)
+            {
+                l.Items.Add(new BranchView(item));
+            }
         }
 
         public Branch GetSelected()

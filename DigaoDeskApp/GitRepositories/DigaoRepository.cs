@@ -264,11 +264,7 @@ namespace DigaoDeskApp
             }
 
             FrmBranchCheckout f = new();
-
-            foreach (var item in lst)
-            {
-                f.l.Items.Add(new FrmBranchCheckout.BranchView(item));
-            }
+            f.AddBranches(lst);
 
             if (f.ShowDialog() == DialogResult.OK)
             {
@@ -297,11 +293,7 @@ namespace DigaoDeskApp
             }
 
             FrmBranchCheckout f = new();
-
-            foreach (var item in lstRemainingRemoteBranches)
-            {
-                f.l.Items.Add(new FrmBranchCheckout.BranchView(item));
-            }
+            f.AddBranches(lstRemainingRemoteBranches);
 
             if (f.ShowDialog() == DialogResult.OK)
             {

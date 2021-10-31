@@ -89,6 +89,6 @@ namespace DigaoDeskApp
         #endregion
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        public System.Windows.Forms.ListBox l;
+        private System.Windows.Forms.ListBox l;
     }
 }
