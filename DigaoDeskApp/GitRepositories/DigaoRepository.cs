@@ -267,14 +267,14 @@ namespace DigaoDeskApp
 
             foreach (var item in lst)
             {
-                f.l.Items.Add(item.FriendlyName);
+                f.l.Items.Add(new FrmBranchCheckout.BranchView(item));
             }
 
             if (f.ShowDialog() == DialogResult.OK)
             {
                 DoBackground("Switch Local Branch", () =>
                 {
-                    var branch = _repoCtrl.Branches[(string)f.l.SelectedItem];
+                    var branch = f.GetSelected();
 
                     CheckoutOptions co = new();
                     co.OnCheckoutNotify = OnCheckoutNotify;
@@ -300,7 +300,7 @@ namespace DigaoDeskApp
 
             foreach (var item in lstRemainingRemoteBranches)
             {
-                f.l.Items.Add(item.FriendlyName);
+                f.l.Items.Add(new FrmBranchCheckout.BranchView(item));
             }
 
             if (f.ShowDialog() == DialogResult.OK)
@@ -308,7 +308,7 @@ namespace DigaoDeskApp
                 DoBackground("Checkout Remote Branch", () =>
                 {
                     const string PREFIX = "origin/";
-                    var remoteBranch = _repoCtrl.Branches[(string)f.l.SelectedItem];
+                    var remoteBranch = f.GetSelected();
                     if (!remoteBranch.FriendlyName.StartsWith(PREFIX))
                     {
                         throw new Exception("Invalid remote branch name");

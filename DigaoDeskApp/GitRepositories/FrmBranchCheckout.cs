@@ -1,10 +1,34 @@
-﻿using System;
+﻿using LibGit2Sharp;
+using System;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
     public partial class FrmBranchCheckout : Form
     {
+
+        public class BranchView
+        {
+            private Branch _branch;
+            public Branch BranchData
+            {
+                get
+                {
+                    return _branch;
+                }
+            }
+
+            public BranchView(Branch branch)
+            {
+                this._branch = branch;
+            }
+
+            public override string ToString()
+            {
+                return _branch.FriendlyName;
+            }
+        }
+
         public FrmBranchCheckout()
         {
             InitializeComponent();
@@ -21,5 +45,11 @@ namespace DigaoDeskApp
 
             DialogResult = DialogResult.OK;
         }
+
+        public Branch GetSelected()
+        {
+            return (l.SelectedItem as BranchView).BranchData;
+        }
+
     }
 }
