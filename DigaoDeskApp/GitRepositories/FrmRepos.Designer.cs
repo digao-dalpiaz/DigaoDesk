@@ -42,6 +42,7 @@ namespace DigaoDeskApp
             this.edLog = new DigaoDeskApp.RichTextBoxEx();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnFetchAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnFetch = new System.Windows.Forms.ToolStripButton();
             this.btnPull = new System.Windows.Forms.ToolStripButton();
@@ -50,7 +51,6 @@ namespace DigaoDeskApp
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.btnFetchAll = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -186,6 +186,16 @@ namespace DigaoDeskApp
             this.btnRefresh.Text = "Refresh All";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // btnFetchAll
+            // 
+            this.btnFetchAll.Image = ((System.Drawing.Image)(resources.GetObject("btnFetchAll.Image")));
+            this.btnFetchAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFetchAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFetchAll.Name = "btnFetchAll";
+            this.btnFetchAll.Size = new System.Drawing.Size(81, 28);
+            this.btnFetchAll.Text = "Fetch All";
+            this.btnFetchAll.Click += new System.EventHandler(this.btnFetchAll_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -254,16 +264,6 @@ namespace DigaoDeskApp
             this.splitter1.Size = new System.Drawing.Size(1208, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
-            // 
-            // btnFetchAll
-            // 
-            this.btnFetchAll.Image = ((System.Drawing.Image)(resources.GetObject("btnFetchAll.Image")));
-            this.btnFetchAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnFetchAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFetchAll.Name = "btnFetchAll";
-            this.btnFetchAll.Size = new System.Drawing.Size(70, 28);
-            this.btnFetchAll.Text = "FetchAll";
-            this.btnFetchAll.Click += new System.EventHandler(this.btnFetchAll_Click);
             // 
             // FrmRepos
             // 
