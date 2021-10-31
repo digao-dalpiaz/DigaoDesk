@@ -36,18 +36,20 @@ namespace DigaoDeskApp
             // 
             // l
             // 
+            this.l.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.l.FormattingEnabled = true;
             this.l.IntegralHeight = false;
-            this.l.ItemHeight = 15;
+            this.l.ItemHeight = 18;
             this.l.Location = new System.Drawing.Point(8, 8);
             this.l.Name = "l";
-            this.l.Size = new System.Drawing.Size(504, 288);
+            this.l.Size = new System.Drawing.Size(824, 416);
             this.l.TabIndex = 0;
+            this.l.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.l_DrawItem);
             this.l.DoubleClick += new System.EventHandler(this.btnOK_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(176, 304);
+            this.btnOK.Location = new System.Drawing.Point(336, 432);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(80, 32);
             this.btnOK.TabIndex = 1;
@@ -58,7 +60,7 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(264, 304);
+            this.btnCancel.Location = new System.Drawing.Point(424, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
             this.btnCancel.TabIndex = 2;
@@ -71,7 +73,7 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(520, 345);
+            this.ClientSize = new System.Drawing.Size(840, 472);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.l);
