@@ -208,7 +208,7 @@ namespace DigaoDeskApp
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 128);
+            this.label6.Location = new System.Drawing.Point(14, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 15);
             this.label6.TabIndex = 5;
@@ -224,7 +224,7 @@ namespace DigaoDeskApp
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 80);
+            this.label5.Location = new System.Drawing.Point(14, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 15);
             this.label5.TabIndex = 3;
