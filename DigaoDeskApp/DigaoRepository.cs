@@ -1,5 +1,6 @@
 ﻿using LibGit2Sharp;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -108,25 +109,25 @@ namespace DigaoDeskApp
         private void DoBackground(string cmdName, Action proc, bool performRefresh)
         {
             _frm.ProcBackground(true);
-            Log(string.Empty);
-            Log(cmdName);
+            Log(string.Empty, Color.Empty);
+            Log(cmdName, Color.Yellow);
 
             Task.Run(() => {
                 try
                 {
                     proc();
-                    Log("Done!");
+                    Log("Done!", Color.Lime);
 
                     if (performRefresh)
                     {
-                        Log("Refreshing...");
+                        Log("Refreshing...", Color.Purple);
                         Refresh();
-                        Log("Done!");
+                        Log("Done!", Color.MediumPurple);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log("#ERROR: " + ex.Message);
+                    Log("#ERROR: " + ex.Message, Color.Red);
                 }
 
                 _frm.Invoke(new MethodInvoker(() =>
@@ -136,11 +137,11 @@ namespace DigaoDeskApp
             });
         }
 
-        private void Log(string msg)
+        private void Log(string msg, Color color)
         {
             _frm.Invoke(new MethodInvoker(() =>
             {
-                _frm.Log(msg);
+                _frm.Log(msg, color);
             }));
         }
 
@@ -164,10 +165,23 @@ namespace DigaoDeskApp
             {
                 Signature s = new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
                 PullOptions po = new();
+                po.MergeOptions = new();
+                po.MergeOptions.OnCheckoutNotify = (string path, CheckoutNotifyFlags notify) =>
+                {
+                    Log(notify.ToString() + " : " + path, Color.Orange);
+                    return true;
+                };
+                po.MergeOptions.CheckoutNotifyFlags = 
+                    CheckoutNotifyFlags.None |
+                    CheckoutNotifyFlags.Dirty |
+                    //CheckoutNotifyFlags.Ignored |
+                    CheckoutNotifyFlags.Conflict |
+                    CheckoutNotifyFlags.Untracked |
+                    CheckoutNotifyFlags.Updated;
 
                 var res = Commands.Pull(_repoCtrl, s, po);
 
-                if (res.Commit != null)
+                /*if (res.Commit != null)
                 {
                     StringBuilder sb = new();
                     foreach (var item in res.Commit.Tree)
@@ -175,25 +189,27 @@ namespace DigaoDeskApp
                         sb.AppendLine(item.ToString());
                     }
                     Log(sb.ToString());
-                }
+                }*/
 
+                string msgResult;
                 switch (res.Status)
                 {
                     case MergeStatus.UpToDate:
-                        Log("Nothing to change");
+                        msgResult = "Nothing to change";
                         break;
                     case MergeStatus.Conflicts:
-                        Log("Conflicts");
+                        msgResult = "Conflicts";
                         break;
                     case MergeStatus.FastForward:
-                        Log("Fast forward");
+                        msgResult = "Fast forward";
                         break;
                     case MergeStatus.NonFastForward:
-                        Log("Non fast forward");
+                        msgResult = "Non fast forward";
                         break;
                     default:
                         throw new Exception("Unknowk pull result status");
                 }
+                Log(msgResult, Color.White);
 
             }, true);            
         }        

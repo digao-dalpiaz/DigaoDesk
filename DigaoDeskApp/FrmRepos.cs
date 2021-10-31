@@ -113,14 +113,22 @@ namespace DigaoDeskApp
             g.Enabled = !activate;
         }
 
-        public void Log(string msg)
+        public void Log(string msg, Color color)
         {
+            edLog.SuspendLayout();
+
             if (Vars.Config.Log.ShowTimestamp && !string.IsNullOrEmpty(msg))
             {
-                msg = DateTime.Now.ToString(Vars.DATETIME_FMT) + " - " + msg;
+                edLog.SelectionStart = edLog.TextLength;
+                edLog.SelectionColor = Color.Gray;
+                edLog.SelectedText = DateTime.Now.ToString(Vars.DATETIME_FMT) + " - ";
             }
 
-            edLog.AppendText(msg + Environment.NewLine);
+            edLog.SelectionStart = edLog.TextLength;
+            edLog.SelectionColor = color;
+            edLog.SelectedText = msg + Environment.NewLine;
+
+            edLog.ResumePainting(false);
         }
 
         private void btnClearLog_Click(object sender, EventArgs e)

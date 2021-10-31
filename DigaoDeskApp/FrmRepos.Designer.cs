@@ -37,13 +37,13 @@ namespace DigaoDeskApp
             this.colDown = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastFetch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edLog = new System.Windows.Forms.RichTextBox();
+            this.edLog = new DigaoDeskApp.RichTextBoxEx();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnFetch = new System.Windows.Forms.ToolStripButton();
             this.btnPull = new System.Windows.Forms.ToolStripButton();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +120,7 @@ namespace DigaoDeskApp
             // 
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.edLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edLog.HideSelection = false;
             this.edLog.Location = new System.Drawing.Point(0, 295);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
@@ -170,15 +171,6 @@ namespace DigaoDeskApp
             this.btnPull.Text = "Pull";
             this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
             // 
-            // splitter1
-            // 
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 287);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1052, 8);
-            this.splitter1.TabIndex = 3;
-            this.splitter1.TabStop = false;
-            // 
             // btnClearLog
             // 
             this.btnClearLog.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLog.Image")));
@@ -188,6 +180,15 @@ namespace DigaoDeskApp
             this.btnClearLog.Size = new System.Drawing.Size(85, 28);
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter1.Location = new System.Drawing.Point(0, 287);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(1052, 8);
+            this.splitter1.TabIndex = 3;
+            this.splitter1.TabStop = false;
             // 
             // FrmRepos
             // 
@@ -214,7 +215,7 @@ namespace DigaoDeskApp
         #endregion
 
         private System.Windows.Forms.DataGridView g;
-        private System.Windows.Forms.RichTextBox edLog;
+        private DigaoDeskApp.RichTextBoxEx edLog;
         private System.Windows.Forms.ToolStrip toolBar;
         private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.ToolStripButton btnPull;
