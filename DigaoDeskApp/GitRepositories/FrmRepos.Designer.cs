@@ -72,6 +72,7 @@ namespace DigaoDeskApp
             this.colLastFetch});
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 31);
+            this.g.MultiSelect = false;
             this.g.Name = "g";
             this.g.ReadOnly = true;
             this.g.RowHeadersVisible = false;
@@ -207,9 +208,10 @@ namespace DigaoDeskApp
             // colBranchesCount
             // 
             this.colBranchesCount.DataPropertyName = "BranchesCount";
-            this.colBranchesCount.HeaderText = "Local Branches";
+            this.colBranchesCount.HeaderText = "Branches Count";
             this.colBranchesCount.Name = "colBranchesCount";
             this.colBranchesCount.ReadOnly = true;
+            this.colBranchesCount.Width = 120;
             // 
             // colUp
             // 
@@ -217,6 +219,7 @@ namespace DigaoDeskApp
             this.colUp.HeaderText = "Pending Up";
             this.colUp.Name = "colUp";
             this.colUp.ReadOnly = true;
+            this.colUp.Width = 60;
             // 
             // colDown
             // 
@@ -224,6 +227,7 @@ namespace DigaoDeskApp
             this.colDown.HeaderText = "Pending Down";
             this.colDown.Name = "colDown";
             this.colDown.ReadOnly = true;
+            this.colDown.Width = 60;
             // 
             // colDifs
             // 
@@ -231,6 +235,7 @@ namespace DigaoDeskApp
             this.colDifs.HeaderText = "Difs";
             this.colDifs.Name = "colDifs";
             this.colDifs.ReadOnly = true;
+            this.colDifs.Width = 60;
             // 
             // colOtherBranchesDifs
             // 
@@ -238,6 +243,7 @@ namespace DigaoDeskApp
             this.colOtherBranchesDifs.HeaderText = "Other Branches Difs";
             this.colOtherBranchesDifs.Name = "colOtherBranchesDifs";
             this.colOtherBranchesDifs.ReadOnly = true;
+            this.colOtherBranchesDifs.Width = 150;
             // 
             // colLastFetch
             // 
@@ -245,6 +251,7 @@ namespace DigaoDeskApp
             this.colLastFetch.HeaderText = "Last Fetch";
             this.colLastFetch.Name = "colLastFetch";
             this.colLastFetch.ReadOnly = true;
+            this.colLastFetch.Width = 120;
             // 
             // FrmRepos
             // 

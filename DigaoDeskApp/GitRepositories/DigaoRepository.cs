@@ -101,7 +101,12 @@ namespace DigaoDeskApp
             get
             {
                 if (!_lastFetchTS.HasValue) return null;
-                return _lastFetchTS.Value.ToString("dd/MM/yyyy HH:mm:ss");
+
+                var span = DateTime.Now - _lastFetchTS.Value;
+                if (span.TotalMinutes < 1) return "Now";
+                if (span.TotalHours < 1) return $"{span.Minutes} minute(s) ago";
+                if (span.TotalDays < 1) return $"{span.Hours} hour(s) ago";
+                return $"{span.Days} days ago";
             }
         }
 
