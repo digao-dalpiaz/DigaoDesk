@@ -37,6 +37,11 @@ namespace DigaoDeskApp
             InitializeComponent();
         }
 
+        private void FrmBranchCheckout_Load(object sender, EventArgs e)
+        {
+            l.ItemHeight = TextRenderer.MeasureText("A", l.Font).Height + 3;
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (l.SelectedItem == null)
@@ -82,5 +87,6 @@ namespace DigaoDeskApp
 
             e.DrawFocusRectangle();
         }
+                
     }
 }
