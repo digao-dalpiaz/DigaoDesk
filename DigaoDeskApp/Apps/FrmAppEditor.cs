@@ -55,11 +55,6 @@ namespace DigaoDeskApp
                 edCmd.Select();
                 return;
             }
-            if (!File.Exists(edCmd.Text)) {
-                Messages.Error("File not found");
-                edCmd.Select();
-                return;
-            }
 
             edArgs.Text = edArgs.Text.Trim();
 
@@ -104,19 +99,23 @@ namespace DigaoDeskApp
 
         private void btnSelCmd_Click(object sender, EventArgs e)
         {
-            dlgFile.FileName = edCmd.Text;
-            if (dlgFile.ShowDialog() == DialogResult.OK)
+            OpenFileDialog dlg = new();
+
+            dlg.FileName = edCmd.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                edCmd.Text = dlgFile.FileName;
+                edCmd.Text = dlg.FileName;
             }
         }
 
         private void btnSelDir_Click(object sender, EventArgs e)
         {
-            dlgFolder.SelectedPath = edDir.Text;
-            if (dlgFolder.ShowDialog() == DialogResult.OK)
+            FolderBrowserDialog dlg = new();
+
+            dlg.SelectedPath = edDir.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                edDir.Text = dlgFolder.SelectedPath;
+                edDir.Text = dlg.SelectedPath;
             }
         }
 

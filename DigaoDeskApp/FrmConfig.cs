@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -6,9 +7,14 @@ namespace DigaoDeskApp
     public partial class FrmConfig : Form
     {
 
+        private FontDialog _dlgFont;
+
         public FrmConfig()
         {
             InitializeComponent();
+
+            _dlgFont = new();
+            _dlgFont.ShowEffects = false;
         }
 
         private void FrmConfig_FormClosed(object sender, FormClosedEventArgs e)
@@ -18,7 +24,8 @@ namespace DigaoDeskApp
 
         private void FrmConfig_Load(object sender, System.EventArgs e)
         {
-            selFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
+            //--Apps tab
+            _dlgFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
             UpdateFontButton();
 
             btnLogTextColor.BackColor = Vars.Config.Log.TextColor;
@@ -26,37 +33,72 @@ namespace DigaoDeskApp
 
             ckLogShowTs.Checked = Vars.Config.Log.ShowTimestamp;
             ckLogWordWrap.Checked = Vars.Config.Log.WordWrap;
-            ckLogAutoScroll.Checked = Vars.Config.Log.AutoScroll;
 
             ckNotifyWhenAppStops.Checked = Vars.Config.NotifyAppStops;
+            //--
+
+            //--Repos tab
+            edReposDir.Text = Vars.Config.ReposDir;
+
+            edGitName.Text = Vars.Config.Git.Name;
+            edGitEmail.Text = Vars.Config.Git.Email;
+
+            edGitCredUsername.Text = Vars.Config.Git.CredUsername;
+            edGitCredPassword.Text = Vars.Config.Git.CredPassword;
+            //--
         }
 
         private void UpdateFontButton()
         {
-            btnLogFont.Text = $"{selFont.Font.Name}, {selFont.Font.Size}";
+            btnLogFont.Text = $"{_dlgFont.Font.Name}, {_dlgFont.Font.Size}";
         }
 
         private void btnOK_Click(object sender, System.EventArgs e)
         {
-            Vars.Config.Log.FontName = selFont.Font.Name;
-            Vars.Config.Log.FontSize = selFont.Font.Size;
+            edReposDir.Text = edReposDir.Text.Trim();
+            if (edReposDir.Text != string.Empty)
+            {
+                if (!Directory.Exists(edReposDir.Text))
+                {
+                    Messages.Error("Git repository folder not found");
+                    edReposDir.Select();
+                    return;
+                }
+            }
+
+            edGitName.Text = edGitName.Text.Trim();
+            edGitEmail.Text = edGitEmail.Text.Trim();
+            edGitCredUsername.Text = edGitCredUsername.Text.Trim();
+
+            //
+
+            //--Apps tab
+            Vars.Config.Log.FontName = _dlgFont.Font.Name;
+            Vars.Config.Log.FontSize = _dlgFont.Font.Size;
 
             Vars.Config.Log.TextColor = btnLogTextColor.BackColor;
             Vars.Config.Log.BgColor = btnLogBgColor.BackColor;
 
             Vars.Config.Log.ShowTimestamp = ckLogShowTs.Checked;
             Vars.Config.Log.WordWrap = ckLogWordWrap.Checked;
-            Vars.Config.Log.AutoScroll = ckLogAutoScroll.Checked;
 
             Vars.Config.NotifyAppStops = ckNotifyWhenAppStops.Checked;
+            //--
+
+            //--Repos tab
+            Vars.Config.ReposDir = edReposDir.Text;
+
+            Vars.Config.Git.Name = edGitName.Text;
+            Vars.Config.Git.Email = edGitEmail.Text;
+
+            Vars.Config.Git.CredUsername = edGitCredUsername.Text;
+            Vars.Config.Git.CredPassword = edGitCredPassword.Text;
+            //--
 
             Vars.Config.Save();
 
-            if (Vars.FrmAppsObj != null)
-            {
-                Vars.FrmAppsObj.LoadConfig(); //reload window config
-                Vars.FrmAppsObj.ReloadSelectedLog(); //reload log
-            }
+            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.LoadConfig();
+            if (Vars.FrmReposObj != null) Vars.FrmReposObj.LoadConfig();
 
             this.Close();
         }
@@ -68,11 +110,10 @@ namespace DigaoDeskApp
 
         private void btnLogFont_Click(object sender, System.EventArgs e)
         {
-            if (selFont.ShowDialog() == DialogResult.OK)
+            if (_dlgFont.ShowDialog() == DialogResult.OK)
             {
                 UpdateFontButton();
             }
-
         }
 
         private void btnLogTextColor_Click(object sender, System.EventArgs e)
@@ -87,12 +128,25 @@ namespace DigaoDeskApp
 
         private void DoSelColor(Button btn)
         {
-            selColor.Color = btn.BackColor;
-            if (selColor.ShowDialog() == DialogResult.OK)
+            ColorDialog dlg = new();
+
+            dlg.Color = btn.BackColor;
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                btn.BackColor = selColor.Color;
+                btn.BackColor = dlg.Color;
             }
         }
-                
+
+        private void btnSelReposDir_Click(object sender, System.EventArgs e)
+        {
+            FolderBrowserDialog dlg = new();
+
+            dlg.SelectedPath = edReposDir.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                edReposDir.Text = dlg.SelectedPath;
+            }
+        }
+
     }
 }

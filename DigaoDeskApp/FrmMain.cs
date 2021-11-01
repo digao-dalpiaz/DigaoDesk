@@ -58,6 +58,13 @@ namespace DigaoDeskApp
             Vars.FrmAppsObj.Restore();
         }
 
+        private void miRepos_Click(object sender, EventArgs e)
+        {
+            if (Vars.FrmReposObj == null) Vars.FrmReposObj = new();
+            Vars.FrmReposObj.Show();
+            Vars.FrmReposObj.Restore();
+        }
+
         private void miExit_Click(object sender, EventArgs e)
         {
             this.Close();

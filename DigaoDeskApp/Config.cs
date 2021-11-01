@@ -10,6 +10,9 @@ namespace DigaoDeskApp
 
         public ConfigLog Log;
         public bool NotifyAppStops = true;
+        
+        public string ReposDir;
+        public ConfigGit Git;
 
         public class ConfigLog
         {
@@ -19,7 +22,15 @@ namespace DigaoDeskApp
             public Color BgColor = Color.FromArgb(30, 30, 30);
             public bool ShowTimestamp = false;
             public bool WordWrap = false;
-            public bool AutoScroll = true;
+        }
+
+        public class ConfigGit
+        {
+            public string Name;
+            public string Email;
+
+            public string CredUsername;
+            public string CredPassword;
         }
 
         private static string GetConfigFile()
@@ -37,8 +48,10 @@ namespace DigaoDeskApp
             else
             {
                 Vars.Config = new();
-                Vars.Config.Log = new();
-            }            
+            }
+
+            if (Vars.Config.Log == null) Vars.Config.Log = new();
+            if (Vars.Config.Git == null) Vars.Config.Git = new();
         }
 
         public void Save()

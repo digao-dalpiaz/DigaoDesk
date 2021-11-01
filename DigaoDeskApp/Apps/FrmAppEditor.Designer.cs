@@ -41,8 +41,6 @@ namespace DigaoDeskApp
             this.label4 = new System.Windows.Forms.Label();
             this.btnSelCmd = new System.Windows.Forms.Button();
             this.btnSelDir = new System.Windows.Forms.Button();
-            this.dlgFile = new System.Windows.Forms.OpenFileDialog();
-            this.dlgFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.edEnv = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,6 +49,7 @@ namespace DigaoDeskApp
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(14, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 15);
@@ -96,6 +95,7 @@ namespace DigaoDeskApp
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(14, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 15);
@@ -157,10 +157,6 @@ namespace DigaoDeskApp
             this.btnSelDir.Text = "...";
             this.btnSelDir.UseVisualStyleBackColor = true;
             this.btnSelDir.Click += new System.EventHandler(this.btnSelDir_Click);
-            // 
-            // dlgFile
-            // 
-            this.dlgFile.FileName = "openFileDialog1";
             // 
             // edEnv
             // 
@@ -240,8 +236,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSelCmd;
         private System.Windows.Forms.Button btnSelDir;
-        private System.Windows.Forms.OpenFileDialog dlgFile;
-        private System.Windows.Forms.FolderBrowserDialog dlgFolder;
         private System.Windows.Forms.TextBox edEnv;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

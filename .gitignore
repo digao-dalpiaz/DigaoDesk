@@ -3,3 +3,5 @@ obj/
 bin/
 dist/
 *.user
+
+libgit2sharp-master/

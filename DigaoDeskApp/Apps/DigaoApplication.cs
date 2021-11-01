@@ -88,12 +88,6 @@ namespace DigaoDeskApp
         {
             Logs.Clear();
 
-            if (!File.Exists(Cmd))
-            {
-                AddLog("File not found: " + Cmd, true);
-                return;
-            }
-
             var si = new ProcessStartInfo();
             si.FileName = Cmd;
             si.WorkingDirectory = !string.IsNullOrEmpty(WorkDir) ? WorkDir : Path.GetDirectoryName(Cmd);
