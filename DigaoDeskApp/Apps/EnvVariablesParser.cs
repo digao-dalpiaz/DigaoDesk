@@ -19,13 +19,12 @@ namespace DigaoDeskApp
                 try
                 {
                     if (line == string.Empty) continue;
-                    
-                    var parts = line.Split("=");
 
-                    if (parts.Count() < 2) Messages.ThrowMsg("Missing equals sign");
+                    var i = line.IndexOf("=");
+                    if (i == -1) Messages.ThrowMsg("Missing equals sign");
 
-                    var key = parts[0].Trim();
-                    var value = parts[1].Trim();
+                    var key = line.Substring(0, i).Trim();
+                    var value = line.Substring(i+1).Trim();
 
                     if (key == string.Empty) Messages.ThrowMsg("Missing key name");
                     if (dic.ContainsKey(key)) Messages.ThrowMsg("Repeated key name");
