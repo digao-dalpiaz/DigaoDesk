@@ -12,7 +12,7 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Repos";
 
-        private List<DigaoRepository> _repos;
+        private List<DigaoRepository> _repos = new();
         private BindingSource _gridBind;
 
         public FrmRepos()
@@ -53,6 +53,15 @@ namespace DigaoDeskApp
             Vars.FrmReposObj = null;            
         }
 
+        private void FrmRepos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!toolBar.Enabled)
+            {
+                Messages.Error("There is a process in execution right now");
+                e.Cancel = true;
+            }
+        }
+
         public void LoadConfig()
         {
             edLog.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
@@ -73,8 +82,6 @@ namespace DigaoDeskApp
                 Messages.Error("Git repositories folder not found: " + dir);
                 return;
             }
-
-            _repos = new();
 
             var subfolderList = Directory.GetDirectories(dir);
             foreach (var subfolder in subfolderList)
@@ -209,6 +216,6 @@ namespace DigaoDeskApp
         {
             edLog.Clear();
         }
-        
+                
     }
 }

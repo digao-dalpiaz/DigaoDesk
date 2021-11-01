@@ -277,6 +277,7 @@ namespace DigaoDeskApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRepos";
             this.Text = "Git Repositories - Digao Desk";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRepos_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRepos_FormClosed);
             this.Load += new System.EventHandler(this.FrmRepos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
