@@ -139,6 +139,17 @@ namespace DigaoDeskApp
             app.Stop();
         }
 
+        private void btnStopAll_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Vars.AppList)
+            {
+                if (item.Running)
+                {
+                    item.Stop();
+                }
+            }
+        }
+
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             var app = GetSelApp();
@@ -276,17 +287,6 @@ namespace DigaoDeskApp
             edLog.SuspendPainting();
             edLog.AppendText(contents);
             edLog.ResumePainting(!alreadyBottom);            
-        }
-
-        private void btnStopAll_Click(object sender, EventArgs e)
-        {
-            foreach (var item in Vars.AppList)
-            {
-                if (item.Running)
-                {
-                    item.Stop();
-                }
-            }
         }
 
     }
