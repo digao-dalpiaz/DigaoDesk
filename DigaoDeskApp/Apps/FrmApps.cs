@@ -188,6 +188,8 @@ namespace DigaoDeskApp
             btnStop.Enabled = selected && app.Running;
 
             btnClearLog.Enabled = selected && app.Logs.Any();
+
+            btnStopAll.Enabled = Vars.AppList.Any(x => x.Running);
         }
 
         public void EventUpdated(DigaoApplication app)
@@ -275,6 +277,17 @@ namespace DigaoDeskApp
             edLog.AppendText(contents);
             edLog.ResumePainting(!alreadyBottom);            
         }
-                
+
+        private void btnStopAll_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Vars.AppList)
+            {
+                if (item.Running)
+                {
+                    item.Stop();
+                }
+            }
+        }
+
     }
 }

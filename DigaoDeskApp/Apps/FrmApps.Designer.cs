@@ -30,10 +30,10 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +56,7 @@ namespace DigaoDeskApp
             this.btnStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
+            this.btnStopAll = new System.Windows.Forms.ToolStripButton();
             this.splitter = new System.Windows.Forms.Splitter();
             this.timerMonitor = new System.Windows.Forms.Timer(this.components);
             this.statusBar = new System.Windows.Forms.StatusStrip();
@@ -123,8 +124,8 @@ namespace DigaoDeskApp
             // colRunningTime
             // 
             this.colRunningTime.DataPropertyName = "RunningTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.colRunningTime.HeaderText = "Running Time";
             this.colRunningTime.Name = "colRunningTime";
             this.colRunningTime.ReadOnly = true;
@@ -133,8 +134,8 @@ namespace DigaoDeskApp
             // colMemory
             // 
             this.colMemory.DataPropertyName = "Memory";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colMemory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colMemory.DefaultCellStyle = dataGridViewCellStyle6;
             this.colMemory.HeaderText = "Memory";
             this.colMemory.Name = "colMemory";
             this.colMemory.ReadOnly = true;
@@ -143,8 +144,8 @@ namespace DigaoDeskApp
             // colProcessor
             // 
             this.colProcessor.DataPropertyName = "Processor";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle7;
             this.colProcessor.HeaderText = "Processor";
             this.colProcessor.Name = "colProcessor";
             this.colProcessor.ReadOnly = true;
@@ -153,8 +154,8 @@ namespace DigaoDeskApp
             // colProcCount
             // 
             this.colProcCount.DataPropertyName = "ProcCount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle8;
             this.colProcCount.HeaderText = "Thread Count";
             this.colProcCount.Name = "colProcCount";
             this.colProcCount.ReadOnly = true;
@@ -206,6 +207,7 @@ namespace DigaoDeskApp
             this.toolStripSeparator1,
             this.btnStart,
             this.btnStop,
+            this.btnStopAll,
             this.toolStripSeparator2,
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
@@ -283,6 +285,16 @@ namespace DigaoDeskApp
             this.btnClearLog.Size = new System.Drawing.Size(93, 36);
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
+            // 
+            // btnStopAll
+            // 
+            this.btnStopAll.Image = ((System.Drawing.Image)(resources.GetObject("btnStopAll.Image")));
+            this.btnStopAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnStopAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStopAll.Name = "btnStopAll";
+            this.btnStopAll.Size = new System.Drawing.Size(84, 36);
+            this.btnStopAll.Text = "Stop All";
+            this.btnStopAll.Click += new System.EventHandler(this.btnStopAll_Click);
             // 
             // splitter
             // 
@@ -381,5 +393,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastLogTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogStatistics;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogHealth;
+        private System.Windows.Forms.ToolStripButton btnStopAll;
     }
 }
