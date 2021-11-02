@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Equin.ApplicationFramework;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Apps";
 
-        private BindingSource _gridBind;
+        private BindingListView<DigaoApplication> _gridBind;
         private bool _updatingGrid;
 
         private int _nextLogLineToRead;
@@ -58,8 +59,8 @@ namespace DigaoDeskApp
 
         private void LoadGrid()
         {
-            _gridBind = new();
-            _gridBind.DataSource = Vars.AppList;
+            _gridBind = new(Vars.AppList);            
+            LoadFilter();
 
             _updatingGrid = true;
             g.DataSource = _gridBind;
@@ -74,7 +75,7 @@ namespace DigaoDeskApp
             _updatingGrid = true;
             try
             {
-                _gridBind.ResetBindings(false);
+                _gridBind.Refresh();
             }
             finally
             {
@@ -85,7 +86,7 @@ namespace DigaoDeskApp
         private DigaoApplication GetSelApp()
         {
             if (g.CurrentRow == null) return null;
-            return g.CurrentRow.DataBoundItem as DigaoApplication;
+            return (g.CurrentRow.DataBoundItem as ObjectView<DigaoApplication>).Object;
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -122,6 +123,36 @@ namespace DigaoDeskApp
 
                 RecordSelected();
             }
+        }
+
+        private void LoadFilter()
+        {
+            if (miFilterAll.Checked)
+            {
+                _gridBind.RemoveFilter();
+            }
+            else
+            if (miFilterRunning.Checked)
+            {
+                _gridBind.ApplyFilter(x => x.Running);
+            }
+            else
+            if (miFilterStopped.Checked)
+            {
+                _gridBind.ApplyFilter(x => !x.Running);
+            }
+            else
+                throw new Exception("Invalid object");            
+        }
+
+        private void ApplyFilter(object sender, EventArgs e)
+        { 
+            foreach (ToolStripMenuItem item in btnFilter.DropDownItems)
+            {
+                item.Checked = (sender == item);
+            }
+
+            LoadFilter();
         }
 
         private void btnStart_Click(object sender, EventArgs e)

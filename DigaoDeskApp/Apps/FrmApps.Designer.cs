@@ -51,12 +51,17 @@ namespace DigaoDeskApp
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFilter = new System.Windows.Forms.ToolStripDropDownButton();
+            this.miFilterAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.miFilterRunning = new System.Windows.Forms.ToolStripMenuItem();
+            this.miFilterStopped = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.btnStop = new System.Windows.Forms.ToolStripButton();
+            this.btnStopAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
-            this.btnStopAll = new System.Windows.Forms.ToolStripButton();
             this.splitter = new System.Windows.Forms.Splitter();
             this.timerMonitor = new System.Windows.Forms.Timer(this.components);
             this.statusBar = new System.Windows.Forms.StatusStrip();
@@ -204,6 +209,8 @@ namespace DigaoDeskApp
             this.btnAdd,
             this.btnEdit,
             this.btnDelete,
+            this.toolStripSeparator3,
+            this.btnFilter,
             this.toolStripSeparator1,
             this.btnStart,
             this.btnStop,
@@ -246,6 +253,47 @@ namespace DigaoDeskApp
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miFilterAll,
+            this.miFilterRunning,
+            this.miFilterStopped});
+            this.btnFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnFilter.Image")));
+            this.btnFilter.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(78, 36);
+            this.btnFilter.Text = "Filter";
+            // 
+            // miFilterAll
+            // 
+            this.miFilterAll.Checked = true;
+            this.miFilterAll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.miFilterAll.Name = "miFilterAll";
+            this.miFilterAll.Size = new System.Drawing.Size(180, 22);
+            this.miFilterAll.Text = "All Applications";
+            this.miFilterAll.Click += new System.EventHandler(this.ApplyFilter);
+            // 
+            // miFilterRunning
+            // 
+            this.miFilterRunning.Name = "miFilterRunning";
+            this.miFilterRunning.Size = new System.Drawing.Size(180, 22);
+            this.miFilterRunning.Text = "Only Running";
+            this.miFilterRunning.Click += new System.EventHandler(this.ApplyFilter);
+            // 
+            // miFilterStopped
+            // 
+            this.miFilterStopped.Name = "miFilterStopped";
+            this.miFilterStopped.Size = new System.Drawing.Size(180, 22);
+            this.miFilterStopped.Text = "Only Stopped";
+            this.miFilterStopped.Click += new System.EventHandler(this.ApplyFilter);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -271,6 +319,16 @@ namespace DigaoDeskApp
             this.btnStop.Text = "Stop";
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
+            // btnStopAll
+            // 
+            this.btnStopAll.Image = ((System.Drawing.Image)(resources.GetObject("btnStopAll.Image")));
+            this.btnStopAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnStopAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStopAll.Name = "btnStopAll";
+            this.btnStopAll.Size = new System.Drawing.Size(84, 36);
+            this.btnStopAll.Text = "Stop All";
+            this.btnStopAll.Click += new System.EventHandler(this.btnStopAll_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -285,16 +343,6 @@ namespace DigaoDeskApp
             this.btnClearLog.Size = new System.Drawing.Size(93, 36);
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
-            // 
-            // btnStopAll
-            // 
-            this.btnStopAll.Image = ((System.Drawing.Image)(resources.GetObject("btnStopAll.Image")));
-            this.btnStopAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnStopAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStopAll.Name = "btnStopAll";
-            this.btnStopAll.Size = new System.Drawing.Size(84, 36);
-            this.btnStopAll.Text = "Stop All";
-            this.btnStopAll.Click += new System.EventHandler(this.btnStopAll_Click);
             // 
             // splitter
             // 
@@ -394,5 +442,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogStatistics;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogHealth;
         private System.Windows.Forms.ToolStripButton btnStopAll;
+        private System.Windows.Forms.ToolStripDropDownButton btnFilter;
+        private System.Windows.Forms.ToolStripMenuItem miFilterAll;
+        private System.Windows.Forms.ToolStripMenuItem miFilterRunning;
+        private System.Windows.Forms.ToolStripMenuItem miFilterStopped;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
