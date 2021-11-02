@@ -37,11 +37,11 @@ namespace DigaoDeskApp
             this.miVersion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.miApplications = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRepos = new System.Windows.Forms.ToolStripMenuItem();
             this.miConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.miSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.images = new System.Windows.Forms.ImageList(this.components);
-            this.miRepos = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,58 +63,67 @@ namespace DigaoDeskApp
             this.miSeparator,
             this.miExit});
             this.menu.Name = "Menu";
-            this.menu.Size = new System.Drawing.Size(197, 266);
+            this.menu.Size = new System.Drawing.Size(173, 244);
             // 
             // miDigaoDesk
             // 
             this.miDigaoDesk.Image = ((System.Drawing.Image)(resources.GetObject("miDigaoDesk.Image")));
             this.miDigaoDesk.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miDigaoDesk.Name = "miDigaoDesk";
-            this.miDigaoDesk.Size = new System.Drawing.Size(196, 38);
+            this.miDigaoDesk.Size = new System.Drawing.Size(172, 38);
             this.miDigaoDesk.Text = "Digao Desk";
             this.miDigaoDesk.Click += new System.EventHandler(this.miDigaoDesk_Click);
             // 
             // miVersion
             // 
             this.miVersion.Name = "miVersion";
-            this.miVersion.Size = new System.Drawing.Size(196, 38);
+            this.miVersion.Size = new System.Drawing.Size(172, 38);
             this.miVersion.Text = "Version";
             this.miVersion.Click += new System.EventHandler(this.miVersion_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(169, 6);
             // 
             // miApplications
             // 
             this.miApplications.Image = ((System.Drawing.Image)(resources.GetObject("miApplications.Image")));
             this.miApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miApplications.Name = "miApplications";
-            this.miApplications.Size = new System.Drawing.Size(196, 38);
+            this.miApplications.Size = new System.Drawing.Size(172, 38);
             this.miApplications.Text = "Applications";
             this.miApplications.Click += new System.EventHandler(this.miApplications_Click);
+            // 
+            // miRepos
+            // 
+            this.miRepos.Image = ((System.Drawing.Image)(resources.GetObject("miRepos.Image")));
+            this.miRepos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.miRepos.Name = "miRepos";
+            this.miRepos.Size = new System.Drawing.Size(172, 38);
+            this.miRepos.Text = "Git Repositories";
+            this.miRepos.Click += new System.EventHandler(this.miRepos_Click);
             // 
             // miConfig
             // 
             this.miConfig.Image = ((System.Drawing.Image)(resources.GetObject("miConfig.Image")));
             this.miConfig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miConfig.Name = "miConfig";
-            this.miConfig.Size = new System.Drawing.Size(196, 38);
+            this.miConfig.Size = new System.Drawing.Size(172, 38);
             this.miConfig.Text = "Settings";
             this.miConfig.Click += new System.EventHandler(this.miConfig_Click);
             // 
             // miSeparator
             // 
             this.miSeparator.Name = "miSeparator";
-            this.miSeparator.Size = new System.Drawing.Size(193, 6);
+            this.miSeparator.Size = new System.Drawing.Size(169, 6);
             // 
             // miExit
             // 
             this.miExit.Image = ((System.Drawing.Image)(resources.GetObject("miExit.Image")));
             this.miExit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(196, 38);
+            this.miExit.Size = new System.Drawing.Size(172, 38);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -127,15 +136,6 @@ namespace DigaoDeskApp
             this.images.Images.SetKeyName(1, "on");
             this.images.Images.SetKeyName(2, "error");
             // 
-            // miRepos
-            // 
-            this.miRepos.Image = ((System.Drawing.Image)(resources.GetObject("miRepos.Image")));
-            this.miRepos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.miRepos.Name = "miRepos";
-            this.miRepos.Size = new System.Drawing.Size(196, 38);
-            this.miRepos.Text = "Git Repositories";
-            this.miRepos.Click += new System.EventHandler(this.miRepos_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -143,6 +143,7 @@ namespace DigaoDeskApp
             this.ClientSize = new System.Drawing.Size(620, 286);
             this.Name = "FrmMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.Shown += new System.EventHandler(this.FrmMain_Shown);
             this.menu.ResumeLayout(false);

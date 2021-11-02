@@ -42,6 +42,19 @@ namespace DigaoDeskApp
                 e.Cancel = true;
                 Messages.Error("There are applications running right now");
             }
+
+            if (Application.OpenForms.Cast<Form>().Any(x => x.Modal))
+            {
+                e.Cancel = true;
+                Messages.Error("You can't close the program because there is a modal form running");
+            }
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //force forms close before application terminate, otherwise close event of forms isn't triggered, so customizations are not saved.
+            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.Close();
+            if (Vars.FrmReposObj != null) Vars.FrmReposObj.Close();
         }
 
         private void miConfig_Click(object sender, EventArgs e)
