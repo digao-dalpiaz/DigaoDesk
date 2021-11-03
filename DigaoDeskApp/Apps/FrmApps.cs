@@ -309,7 +309,7 @@ namespace DigaoDeskApp
             {
                 var log = app.Logs[i];
                 var text = log.Text;
-                if (Vars.Config.Log.ShowTimestamp) text = DateTime.Now.ToString(Vars.DATETIME_FMT) + " - " + text;
+                if (Vars.Config.Log.ShowTimestamp) text = log.Timestamp.ToString(Vars.DATETIME_FMT) + " - " + text;
                 sb.AppendLine(text);
 
                 _nextLogLineToRead = i + 1;
