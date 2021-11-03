@@ -61,6 +61,7 @@ namespace DigaoDeskApp
             this.btnStop = new System.Windows.Forms.ToolStripButton();
             this.btnStopAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFindLog = new System.Windows.Forms.ToolStripButton();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter = new System.Windows.Forms.Splitter();
             this.timerMonitor = new System.Windows.Forms.Timer(this.components);
@@ -216,6 +217,7 @@ namespace DigaoDeskApp
             this.btnStop,
             this.btnStopAll,
             this.toolStripSeparator2,
+            this.btnFindLog,
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
@@ -276,21 +278,21 @@ namespace DigaoDeskApp
             this.miFilterAll.Checked = true;
             this.miFilterAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.miFilterAll.Name = "miFilterAll";
-            this.miFilterAll.Size = new System.Drawing.Size(180, 22);
+            this.miFilterAll.Size = new System.Drawing.Size(157, 22);
             this.miFilterAll.Text = "All Applications";
             this.miFilterAll.Click += new System.EventHandler(this.ApplyFilter);
             // 
             // miFilterRunning
             // 
             this.miFilterRunning.Name = "miFilterRunning";
-            this.miFilterRunning.Size = new System.Drawing.Size(180, 22);
+            this.miFilterRunning.Size = new System.Drawing.Size(157, 22);
             this.miFilterRunning.Text = "Only Running";
             this.miFilterRunning.Click += new System.EventHandler(this.ApplyFilter);
             // 
             // miFilterStopped
             // 
             this.miFilterStopped.Name = "miFilterStopped";
-            this.miFilterStopped.Size = new System.Drawing.Size(180, 22);
+            this.miFilterStopped.Size = new System.Drawing.Size(157, 22);
             this.miFilterStopped.Text = "Only Stopped";
             this.miFilterStopped.Click += new System.EventHandler(this.ApplyFilter);
             // 
@@ -333,6 +335,16 @@ namespace DigaoDeskApp
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // btnFindLog
+            // 
+            this.btnFindLog.Image = ((System.Drawing.Image)(resources.GetObject("btnFindLog.Image")));
+            this.btnFindLog.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFindLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFindLog.Name = "btnFindLog";
+            this.btnFindLog.Size = new System.Drawing.Size(102, 36);
+            this.btnFindLog.Text = "Find in Log";
+            this.btnFindLog.Click += new System.EventHandler(this.btnFindLog_Click);
             // 
             // btnClearLog
             // 
@@ -398,11 +410,13 @@ namespace DigaoDeskApp
             this.Controls.Add(this.g);
             this.Controls.Add(this.toolBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FrmApps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Applications - Digao Desk";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmApps_FormClosed);
             this.Load += new System.EventHandler(this.FrmApps_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmApps_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
@@ -447,5 +461,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripMenuItem miFilterRunning;
         private System.Windows.Forms.ToolStripMenuItem miFilterStopped;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton btnFindLog;
     }
 }

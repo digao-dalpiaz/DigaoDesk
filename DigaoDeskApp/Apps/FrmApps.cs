@@ -181,6 +181,16 @@ namespace DigaoDeskApp
             }
         }
 
+        private void btnFindLog_Click(object sender, EventArgs e)
+        {
+            if (Vars.FrmFindObj == null)
+            {
+                Vars.FrmFindObj = new();
+            }
+
+            Vars.FrmFindObj.ShowDialog();
+        }
+
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             var app = GetSelApp();
@@ -229,7 +239,9 @@ namespace DigaoDeskApp
             btnStart.Enabled = selected && !app.Running;
             btnStop.Enabled = selected && app.Running;
 
-            btnClearLog.Enabled = selected && app.Logs.Any();
+            var hasLog = selected && app.Logs.Any();
+            btnFindLog.Enabled = hasLog;
+            btnClearLog.Enabled = hasLog;
 
             btnStopAll.Enabled = Vars.AppList.Any(x => x.Running);
         }
@@ -318,6 +330,37 @@ namespace DigaoDeskApp
             edLog.SuspendPainting();
             edLog.AppendText(contents);
             edLog.ResumePainting(!alreadyBottom);            
+        }
+
+        public bool FindInLog(bool fromCurrentPos)
+        {
+            RichTextBoxFinds opt = RichTextBoxFinds.None;
+
+            if (Vars.FindMemoryObj.CaseSensitive) opt |= RichTextBoxFinds.MatchCase;
+            if (Vars.FindMemoryObj.WholeWord) opt |= RichTextBoxFinds.WholeWord;
+
+            int start = 0;
+            if (fromCurrentPos) start = edLog.SelectionStart + edLog.SelectionLength;
+
+            return edLog.Find(Vars.FindMemoryObj.Text, start, opt) > -1;
+        }
+
+        private void FindNext()
+        {
+            if (Vars.FindMemoryObj == null) return;
+
+            if (!FindInLog(true))
+            {
+                Messages.Error($"Text '{Vars.FindMemoryObj.Text}' not found!");
+            }
+        }
+
+        private void FrmApps_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3 && e.Modifiers == Keys.None)
+            {
+                FindNext();
+            }
         }
 
     }

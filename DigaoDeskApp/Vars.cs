@@ -17,6 +17,9 @@ namespace DigaoDeskApp
         public static FrmApps FrmAppsObj;
         public static FrmRepos FrmReposObj;
 
+        public static FrmFind FrmFindObj;
+        public static FindMemory FindMemoryObj;
+
         public static List<DigaoApplication> AppList;
 
         public static Config Config;
