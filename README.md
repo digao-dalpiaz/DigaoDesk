@@ -38,7 +38,9 @@ The git integration works only with HTTP / HTTPS remote origin in repositories. 
 
 Here you can get an example how to change you repository from SSH to HTTPS url:
 
-> git remote set-url origin https://username@domain.com/cluster/my-repository.git
+```
+git remote set-url origin https://username@domain.com/cluster/my-repository.git
+```
 
 # Settings
 
