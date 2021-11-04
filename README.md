@@ -34,6 +34,8 @@ There is another function availavle in tray menu, allowing you to manage your gi
 
 # Limitations
 
+## Git integration
+
 The git integration works only with HTTP / HTTPS remote origin in repositories. So, if you have repositories configured by SSH remote origin, you must change origin url to compatible one.
 
 Here you can get an example how to change you repository from SSH to HTTPS url:
@@ -41,6 +43,10 @@ Here you can get an example how to change you repository from SSH to HTTPS url:
 ```
 git remote set-url origin https://username@domain.com/cluster/my-repository.git
 ```
+
+## Applications Log Lines
+
+The log of application is limited by 1,000,000 characters due to increase log loading speed.
 
 # Settings
 
