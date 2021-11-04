@@ -3,8 +3,6 @@ Desktop App to Run and Monitor Console Processes
 
 ![Preview](images/preview.png)
 
-![GitRepos](images/gitrepos.png)
-
 # Purpose
 
 When we are working with local services, especially with Microservices, we often need to run and monitor several applications together.
@@ -22,6 +20,25 @@ The idea of ​​this software is to allow applications to run in the backgroun
 Thus, the application is running in the Windows tray, allowing monitoring at any time, and displaying activity alerts.
 
 ![Tray](images/tray.png)
+
+# Git Repositories
+
+![GitRepos](images/gitrepos.png)
+
+There is another function availavle in tray menu, allowing you to manage your git repositories. Just configure a git repositories folder and all git repos will appear in the form grid. You can use basic git commands like:
+
+- Fetch
+- Pull
+- Checkout (remote)
+- Checkout (local)
+
+# Limitations
+
+The git integration works only with HTTP / HTTPS remote origin in repositories. So, if you have repositories configured by SSH remote origin, you must change origin url to compatible one.
+
+Here you can get an example how to change you repository from SSH to HTTPS url:
+
+> git remote set-url origin https://username@domain.com/cluster/my-repository.git
 
 # Settings
 
