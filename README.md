@@ -3,6 +3,8 @@ Desktop App to Run and Monitor Console Processes
 
 ![Preview](images/preview.png)
 
+![GitRepos](images/gitrepos.png)
+
 # Purpose
 
 When we are working with local services, especially with Microservices, we often need to run and monitor several applications together.
