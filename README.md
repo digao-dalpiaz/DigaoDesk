@@ -32,6 +32,12 @@ There is another function availavle in tray menu, allowing you to manage your gi
 - Checkout (remote)
 - Checkout (local)
 
+# Settings
+
+You can set usage preferences as needed.
+
+![Config](images/config.png)
+
 # Limitations
 
 ## Git integration
@@ -48,8 +54,3 @@ git remote set-url origin https://username@domain.com/cluster/my-repository.git
 
 The log of application is limited by 1,000,000 characters due to increase log loading speed.
 
-# Settings
-
-You can set usage preferences as needed.
-
-![Config](images/config.png)
