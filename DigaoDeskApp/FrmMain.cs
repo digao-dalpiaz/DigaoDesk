@@ -57,25 +57,27 @@ namespace DigaoDeskApp
             if (Vars.FrmReposObj != null) Vars.FrmReposObj.Close();
         }
 
+        private void ShowForm<T>(ref T f) where T : Form
+        {
+            if (f == null) f = (T)Activator.CreateInstance(typeof(T));
+            f.Show();
+            f.Restore();
+            f.BringToFront();
+        }
+
         private void miConfig_Click(object sender, EventArgs e)
         {
-            if (Vars.FrmConfigObj == null) Vars.FrmConfigObj = new();
-            Vars.FrmConfigObj.Show();
-            Vars.FrmConfigObj.Restore();
+            ShowForm(ref Vars.FrmConfigObj);
         }
 
         private void miApplications_Click(object sender, EventArgs e)
         {
-            if (Vars.FrmAppsObj == null) Vars.FrmAppsObj = new();
-            Vars.FrmAppsObj.Show();
-            Vars.FrmAppsObj.Restore();
+            ShowForm(ref Vars.FrmAppsObj);
         }
 
         private void miRepos_Click(object sender, EventArgs e)
         {
-            if (Vars.FrmReposObj == null) Vars.FrmReposObj = new();
-            Vars.FrmReposObj.Show();
-            Vars.FrmReposObj.Restore();
+            ShowForm(ref Vars.FrmReposObj);
         }
 
         private void miExit_Click(object sender, EventArgs e)
