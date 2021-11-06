@@ -35,6 +35,7 @@ namespace DigaoDeskApp
             ckLogWordWrap.Checked = Vars.Config.Log.WordWrap;
 
             ckNotifyWhenAppStops.Checked = Vars.Config.NotifyAppStops;
+            CkDontNotifyWhenAppsActive.Checked = Vars.Config.DontNotifyWhenAppsActive;
             //--
 
             //--Repos tab
@@ -83,6 +84,7 @@ namespace DigaoDeskApp
             Vars.Config.Log.WordWrap = ckLogWordWrap.Checked;
 
             Vars.Config.NotifyAppStops = ckNotifyWhenAppStops.Checked;
+            Vars.Config.DontNotifyWhenAppsActive = CkDontNotifyWhenAppsActive.Checked;
             //--
 
             //--Repos tab

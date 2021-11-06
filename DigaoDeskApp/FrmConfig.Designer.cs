@@ -40,6 +40,7 @@ namespace DigaoDeskApp
             this.btnLogBgColor = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tabApplications = new System.Windows.Forms.TabPage();
+            this.CkDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.tabRepos = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -168,6 +169,7 @@ namespace DigaoDeskApp
             // 
             // tabApplications
             // 
+            this.tabApplications.Controls.Add(this.CkDontNotifyWhenAppsActive);
             this.tabApplications.Controls.Add(this.ckNotifyWhenAppStops);
             this.tabApplications.Location = new System.Drawing.Point(4, 24);
             this.tabApplications.Name = "tabApplications";
@@ -176,6 +178,16 @@ namespace DigaoDeskApp
             this.tabApplications.TabIndex = 0;
             this.tabApplications.Text = "Applications";
             this.tabApplications.UseVisualStyleBackColor = true;
+            // 
+            // CkDontNotifyWhenAppsActive
+            // 
+            this.CkDontNotifyWhenAppsActive.AutoSize = true;
+            this.CkDontNotifyWhenAppsActive.Location = new System.Drawing.Point(40, 40);
+            this.CkDontNotifyWhenAppsActive.Name = "CkDontNotifyWhenAppsActive";
+            this.CkDontNotifyWhenAppsActive.Size = new System.Drawing.Size(219, 19);
+            this.CkDontNotifyWhenAppsActive.TabIndex = 11;
+            this.CkDontNotifyWhenAppsActive.Text = "Do not notify when apps form active";
+            this.CkDontNotifyWhenAppsActive.UseVisualStyleBackColor = true;
             // 
             // ckNotifyWhenAppStops
             // 
@@ -391,5 +403,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox edGitCredUsername;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox CkDontNotifyWhenAppsActive;
     }
 }

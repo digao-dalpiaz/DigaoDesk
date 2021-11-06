@@ -10,6 +10,7 @@ namespace DigaoDeskApp
 
         public ConfigLog Log;
         public bool NotifyAppStops = true;
+        public bool DontNotifyWhenAppsActive = false;
         
         public string ReposDir;
         public ConfigGit Git;

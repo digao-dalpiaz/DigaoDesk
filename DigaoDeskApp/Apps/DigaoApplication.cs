@@ -128,8 +128,10 @@ namespace DigaoDeskApp
 
                 if (Vars.Config.NotifyAppStops)
                 {
-                    Vars.FrmMainObj.Invoke(new MethodInvoker(() =>
-                        Vars.FrmMainObj.tray.ShowBalloonTip(5000, "Process stopped", $"The application \"{Name}\" has stopped!", ToolTipIcon.Info)));
+                    Vars.FrmMainObj.Invoke(new MethodInvoker(() => {
+                        if (!(Vars.Config.DontNotifyWhenAppsActive && Vars.FrmAppsObj != null && Form.ActiveForm == Vars.FrmAppsObj))
+                            Vars.FrmMainObj.tray.ShowBalloonTip(5000, "Process stopped", $"The application \"{Name}\" has stopped!", ToolTipIcon.Info);
+                    }));
                 }
             };
             
