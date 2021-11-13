@@ -50,6 +50,11 @@ namespace DigaoDeskApp
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
+            foreach (var repo in _repos)
+            {
+                repo.FreeCtrl();
+            }
+
             Vars.FrmReposObj = null;            
         }
 

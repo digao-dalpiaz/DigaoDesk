@@ -110,6 +110,11 @@ namespace DigaoDeskApp
             _repoCtrl = new(path);
         }
 
+        public void FreeCtrl()
+        {
+            _repoCtrl.Dispose();
+        }
+
         public void Refresh()
         {
             _branch = _repoCtrl.Head.FriendlyName;
