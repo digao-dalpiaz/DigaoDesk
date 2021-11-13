@@ -32,6 +32,7 @@ namespace DigaoDeskApp
             this.l = new System.Windows.Forms.ListBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.edSearch = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // l
@@ -40,9 +41,9 @@ namespace DigaoDeskApp
             this.l.FormattingEnabled = true;
             this.l.IntegralHeight = false;
             this.l.ItemHeight = 18;
-            this.l.Location = new System.Drawing.Point(8, 8);
+            this.l.Location = new System.Drawing.Point(8, 40);
             this.l.Name = "l";
-            this.l.Size = new System.Drawing.Size(824, 416);
+            this.l.Size = new System.Drawing.Size(824, 384);
             this.l.TabIndex = 0;
             this.l.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.l_DrawItem);
             this.l.DoubleClick += new System.EventHandler(this.btnOK_Click);
@@ -67,6 +68,15 @@ namespace DigaoDeskApp
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // edSearch
+            // 
+            this.edSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.edSearch.Location = new System.Drawing.Point(8, 8);
+            this.edSearch.Name = "edSearch";
+            this.edSearch.Size = new System.Drawing.Size(824, 23);
+            this.edSearch.TabIndex = 3;
+            this.edSearch.TextChanged += new System.EventHandler(this.edSearch_TextChanged);
+            // 
             // FrmBranchCheckout
             // 
             this.AcceptButton = this.btnOK;
@@ -74,6 +84,7 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(840, 472);
+            this.Controls.Add(this.edSearch);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.l);
@@ -86,6 +97,7 @@ namespace DigaoDeskApp
             this.Text = "Branch Checkout";
             this.Load += new System.EventHandler(this.FrmBranchCheckout_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -93,5 +105,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ListBox l;
+        private System.Windows.Forms.TextBox edSearch;
     }
 }

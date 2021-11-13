@@ -10,6 +10,8 @@ namespace DigaoDeskApp
     public partial class FrmBranchCheckout : Form
     {
 
+        private List<BranchView> _lst = new();
+
         private class BranchView
         {
             private Branch _branch;
@@ -40,6 +42,18 @@ namespace DigaoDeskApp
         private void FrmBranchCheckout_Load(object sender, EventArgs e)
         {
             l.ItemHeight = TextRenderer.MeasureText("A", l.Font).Height + 3;
+
+            edSearch_TextChanged(null, null);
+        }
+
+        private void edSearch_TextChanged(object sender, EventArgs e)
+        {
+            l.Items.Clear();
+            l.Items.AddRange(_lst.Where(x => edSearch.Text == string.Empty || x.BranchData.FriendlyName.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase)).ToArray());
+            if (l.Items.Count > 0)
+            {
+                l.SelectedIndex = 0;
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -58,7 +72,7 @@ namespace DigaoDeskApp
         {
             foreach (var item in lst.OrderByDescending(x => x.Tip.Author.When))
             {
-                l.Items.Add(new BranchView(item));
+                _lst.Add(new BranchView(item));
             }
         }
 
@@ -87,6 +101,6 @@ namespace DigaoDeskApp
 
             e.DrawFocusRectangle();
         }
-                
+
     }
 }
