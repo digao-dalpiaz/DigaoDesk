@@ -44,7 +44,7 @@ namespace DigaoDeskApp
             this.l.Location = new System.Drawing.Point(8, 40);
             this.l.Name = "l";
             this.l.Size = new System.Drawing.Size(824, 384);
-            this.l.TabIndex = 0;
+            this.l.TabIndex = 1;
             this.l.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.l_DrawItem);
             this.l.DoubleClick += new System.EventHandler(this.btnOK_Click);
             // 
@@ -53,7 +53,7 @@ namespace DigaoDeskApp
             this.btnOK.Location = new System.Drawing.Point(336, 432);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(80, 32);
-            this.btnOK.TabIndex = 1;
+            this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -64,7 +64,7 @@ namespace DigaoDeskApp
             this.btnCancel.Location = new System.Drawing.Point(424, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -74,7 +74,7 @@ namespace DigaoDeskApp
             this.edSearch.Location = new System.Drawing.Point(8, 8);
             this.edSearch.Name = "edSearch";
             this.edSearch.Size = new System.Drawing.Size(824, 23);
-            this.edSearch.TabIndex = 3;
+            this.edSearch.TabIndex = 0;
             this.edSearch.TextChanged += new System.EventHandler(this.edSearch_TextChanged);
             // 
             // FrmBranchCheckout
