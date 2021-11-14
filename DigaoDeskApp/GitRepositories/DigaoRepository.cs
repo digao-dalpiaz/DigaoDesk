@@ -137,7 +137,7 @@ namespace DigaoDeskApp
             } else
             {
                 _pendingUp = 0;
-                _pendingUp = 0;
+                _pendingDown = 0;
             }            
 
             _difs = _repoCtrl.Diff.Compare<TreeChanges>().Count;
@@ -160,8 +160,8 @@ namespace DigaoDeskApp
 
                 List<string> props = new();
 
-                if (divergence.AheadBy > 0) props.Add("Ahead: " + divergence.AheadBy);
-                if (divergence.BehindBy > 0) props.Add("Behind: " + divergence.BehindBy);
+                if (divergence.AheadBy > 0) props.Add("Up: " + divergence.AheadBy);
+                if (divergence.BehindBy > 0) props.Add("Down: " + divergence.BehindBy);
 
                 if (props.Any())
                 {
