@@ -210,16 +210,33 @@ namespace DigaoDeskApp
             return c;
         }
 
+        private Signature GetSignature()
+        {
+            return new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
+        }
+
+        private MergeOptions GetMergeOptions()
+        {
+            MergeOptions mo = new();
+            mo.OnCheckoutNotify = OnCheckoutNotify;
+            mo.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
+            return mo;
+        }
+
+        private FetchOptions GetFetchOptions()
+        {
+            FetchOptions fo = new();
+            fo.Prune = true;
+            fo.CredentialsProvider = OnCredentialsProvider;
+            return fo;
+        }
+
         public void FetchDirectly()
         {
             var remote = _repoCtrl.Network.Remotes["origin"];
             var refSpecs = remote.FetchRefSpecs.Select(x => x.Specification);
 
-            FetchOptions fo = new();
-            fo.Prune = true;
-            fo.CredentialsProvider = OnCredentialsProvider;
-
-            Commands.Fetch(_repoCtrl, remote.Name, refSpecs, fo, string.Empty);
+            Commands.Fetch(_repoCtrl, remote.Name, refSpecs, GetFetchOptions(), string.Empty);
         }
 
         public void Fetch()
@@ -234,20 +251,19 @@ namespace DigaoDeskApp
         {
             DoBackground("Pull", () =>
             {
-                Signature s = new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
-
                 PullOptions po = new();
+                po.FetchOptions = GetFetchOptions();
+                po.MergeOptions = GetMergeOptions();                
 
-                po.FetchOptions = new();
-                po.FetchOptions.CredentialsProvider = OnCredentialsProvider;
+                var res = Commands.Pull(_repoCtrl, GetSignature(), po);
 
-                po.MergeOptions = new();
-                po.MergeOptions.OnCheckoutNotify = OnCheckoutNotify;
-                po.MergeOptions.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
+                LogMergeResult(res);
+            }, true);
+        }
 
-                var res = Commands.Pull(_repoCtrl, s, po);
-
-                /*if (res.Commit != null)
+        private void LogMergeResult(MergeResult res)
+        {
+            /*if (res.Commit != null)
                 {
                     StringBuilder sb = new();
                     foreach (var item in res.Commit.Tree)
@@ -257,27 +273,25 @@ namespace DigaoDeskApp
                     Log(sb.ToString());
                 }*/
 
-                string msgResult;
-                switch (res.Status)
-                {
-                    case MergeStatus.UpToDate:
-                        msgResult = "Nothing to change";
-                        break;
-                    case MergeStatus.Conflicts:
-                        msgResult = "Conflicts";
-                        break;
-                    case MergeStatus.FastForward:
-                        msgResult = "Fast forward";
-                        break;
-                    case MergeStatus.NonFastForward:
-                        msgResult = "Non fast forward";
-                        break;
-                    default:
-                        throw new Exception("Unknowk pull result status");
-                }
-                Log(msgResult, Color.White);
-
-            }, true);
+            string msgResult;
+            switch (res.Status)
+            {
+                case MergeStatus.UpToDate:
+                    msgResult = "Nothing to change";
+                    break;
+                case MergeStatus.Conflicts:
+                    msgResult = "Conflicts";
+                    break;
+                case MergeStatus.FastForward:
+                    msgResult = "Fast forward";
+                    break;
+                case MergeStatus.NonFastForward:
+                    msgResult = "Non fast forward";
+                    break;
+                default:
+                    throw new Exception("Unknown pull result status");
+            }
+            Log(msgResult, Color.White);
         }
 
         public void SwitchBranch()

@@ -221,6 +221,6 @@ namespace DigaoDeskApp
         {
             edLog.Clear();
         }
-                
+
     }
 }
