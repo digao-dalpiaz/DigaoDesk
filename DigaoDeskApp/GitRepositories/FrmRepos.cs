@@ -46,7 +46,7 @@ namespace DigaoDeskApp
             } 
             else
             {
-                toolBar.Enabled = false;
+                toolBar.Visible = false; //can't use "enabled" because is used to control if there is a process running
             }
         }
 
