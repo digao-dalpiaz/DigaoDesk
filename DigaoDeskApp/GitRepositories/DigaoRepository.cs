@@ -215,6 +215,14 @@ namespace DigaoDeskApp
             return new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
         }
 
+        private FetchOptions GetFetchOptions()
+        {
+            FetchOptions fo = new();
+            fo.Prune = true;
+            fo.CredentialsProvider = OnCredentialsProvider;
+            return fo;
+        }
+
         private MergeOptions GetMergeOptions()
         {
             MergeOptions mo = new();
@@ -223,12 +231,12 @@ namespace DigaoDeskApp
             return mo;
         }
 
-        private FetchOptions GetFetchOptions()
+        private CheckoutOptions GetCheckoutOptions()
         {
-            FetchOptions fo = new();
-            fo.Prune = true;
-            fo.CredentialsProvider = OnCredentialsProvider;
-            return fo;
+            CheckoutOptions co = new();
+            co.OnCheckoutNotify = OnCheckoutNotify;
+            co.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
+            return co;
         }
 
         public void FetchDirectly()
@@ -263,16 +271,6 @@ namespace DigaoDeskApp
 
         private void LogMergeResult(MergeResult res)
         {
-            /*if (res.Commit != null)
-                {
-                    StringBuilder sb = new();
-                    foreach (var item in res.Commit.Tree)
-                    {
-                        sb.AppendLine(item.ToString());
-                    }
-                    Log(sb.ToString());
-                }*/
-
             string msgResult;
             switch (res.Status)
             {
@@ -312,11 +310,7 @@ namespace DigaoDeskApp
                 {
                     var branch = f.GetSelected();
 
-                    CheckoutOptions co = new();
-                    co.OnCheckoutNotify = OnCheckoutNotify;
-                    co.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
-
-                    Commands.Checkout(_repoCtrl, branch, co);
+                    Commands.Checkout(_repoCtrl, branch, GetCheckoutOptions());
                 }, true);
             }
 
@@ -349,11 +343,7 @@ namespace DigaoDeskApp
                     var localBranch = _repoCtrl.CreateBranch(remoteBranch.FriendlyName.Substring(PREFIX.Length), remoteBranch.Tip);
                     _repoCtrl.Branches.Update(localBranch, b => b.TrackedBranch = remoteBranch.CanonicalName);
 
-                    CheckoutOptions co = new();
-                    co.OnCheckoutNotify = OnCheckoutNotify;
-                    co.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
-
-                    Commands.Checkout(_repoCtrl, localBranch, co);
+                    Commands.Checkout(_repoCtrl, localBranch, GetCheckoutOptions());
                 }, true);
             }
         }
