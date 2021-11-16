@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,7 +40,14 @@ namespace DigaoDeskApp
 
             g.DataSource = _gridBind;
 
-            btnRefresh.PerformClick();
+            if (_repos.Any())
+            {
+                btnRefresh.PerformClick();
+            } 
+            else
+            {
+                toolBar.Enabled = false;
+            }
         }
 
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
