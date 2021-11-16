@@ -356,7 +356,16 @@ namespace DigaoDeskApp
                     Commands.Checkout(_repoCtrl, localBranch, co);
                 }, true);
             }
+        }
 
+        public void ShowDifs()
+        {
+            Log(string.Empty, Color.Empty);
+            Log("Difs", Color.Yellow);
+            foreach (var dif in _repoCtrl.Diff.Compare<TreeChanges>())
+            {                
+                Log(dif.Status.ToString() + " : " + dif.Path, Color.Cyan);
+            }
         }
 
     }

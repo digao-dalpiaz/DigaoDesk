@@ -48,6 +48,7 @@ namespace DigaoDeskApp
             this.btnPull = new System.Windows.Forms.ToolStripButton();
             this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
             this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
+            this.btnDifs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -168,6 +169,7 @@ namespace DigaoDeskApp
             this.btnPull,
             this.btnSwitchBranch,
             this.btnCheckoutRemote,
+            this.btnDifs,
             this.toolStripSeparator2,
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
@@ -241,6 +243,16 @@ namespace DigaoDeskApp
             this.btnCheckoutRemote.Text = "Checkout Remote Branch";
             this.btnCheckoutRemote.Click += new System.EventHandler(this.btnCheckoutRemote_Click);
             // 
+            // btnDifs
+            // 
+            this.btnDifs.Image = ((System.Drawing.Image)(resources.GetObject("btnDifs.Image")));
+            this.btnDifs.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDifs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDifs.Name = "btnDifs";
+            this.btnDifs.Size = new System.Drawing.Size(55, 28);
+            this.btnDifs.Text = "Difs";
+            this.btnDifs.Click += new System.EventHandler(this.btnDifs_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -311,5 +323,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOtherBranchesDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
+        private System.Windows.Forms.ToolStripButton btnDifs;
     }
 }

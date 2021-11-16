@@ -217,10 +217,16 @@ namespace DigaoDeskApp
             r.CheckoutRemoteBranch();
         }
 
+        private void btnDifs_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.ShowDifs();
+        }
+
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             edLog.Clear();
         }
-
+                
     }
 }
