@@ -352,10 +352,20 @@ namespace DigaoDeskApp
         {
             Log(string.Empty, Color.Empty);
             Log("Difs", Color.Yellow);
-            foreach (var dif in _repoCtrl.Diff.Compare<TreeChanges>())
-            {                
-                Log(dif.Status.ToString() + " : " + dif.Path, Color.Cyan);
+
+            var lstDifs = _repoCtrl.Diff.Compare<TreeChanges>();
+            if (lstDifs.Any())
+            {
+                foreach (var dif in lstDifs)
+                {
+                    Log(dif.Status.ToString() + " : " + dif.Path, Color.Cyan);
+                }
+            } 
+            else
+            {
+                Log("There are no difs", Color.White);
             }
+            
         }
 
     }
