@@ -140,7 +140,7 @@ namespace DigaoDeskApp
                 _pendingDown = 0;
             }            
 
-            _difs = _repoCtrl.Diff.Compare<TreeChanges>().Count;
+            _difs = GetRepositoryStatus().Count();
 
             _branchesCount =
                 "Local: " + _repoCtrl.Branches.Count(x => !x.IsRemote) + 
@@ -170,6 +170,14 @@ namespace DigaoDeskApp
             }
 
             return string.Join(", ", difs);
+        }
+
+        private RepositoryStatus GetRepositoryStatus()
+        {
+            StatusOptions so = new();
+            so.IncludeIgnored = false;
+
+            return _repoCtrl.RetrieveStatus(so);
         }
 
         private void DoBackground(string cmdName, Action proc, bool performRefresh)
@@ -223,6 +231,13 @@ namespace DigaoDeskApp
             return fo;
         }
 
+        private PushOptions GetPushOptions()
+        {
+            PushOptions po = new();
+            po.CredentialsProvider = OnCredentialsProvider;
+            return po;
+        }
+
         private MergeOptions GetMergeOptions()
         {
             MergeOptions mo = new();
@@ -237,11 +252,16 @@ namespace DigaoDeskApp
             co.OnCheckoutNotify = OnCheckoutNotify;
             co.CheckoutNotifyFlags = CHECKOUT_NOTIFY_FLAGS;
             return co;
+        }        
+
+        private Remote GetRemoteOrigin()
+        {
+            return _repoCtrl.Network.Remotes["origin"];
         }
 
         public void FetchDirectly()
         {
-            var remote = _repoCtrl.Network.Remotes["origin"];
+            var remote = GetRemoteOrigin();
             var refSpecs = remote.FetchRefSpecs.Select(x => x.Specification);
 
             Commands.Fetch(_repoCtrl, remote.Name, refSpecs, GetFetchOptions(), string.Empty);
@@ -348,17 +368,52 @@ namespace DigaoDeskApp
             }
         }
 
+        public void DeleteBranch()
+        {
+            var localBranches = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName));
+
+            if (!localBranches.Any())
+            {
+                Messages.Error("There are no other local branches than the current one to delete");
+                return;
+            }
+
+            FrmBranchDelete f = new();
+            f.AddBranches(localBranches);
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {              
+                DoBackground("Delete Branch", () =>
+                {
+                    Log("Branch: " + f.FormParams.Branch.FriendlyName, Color.White);
+
+                    if (f.FormParams.Remote)
+                    {
+                        Log("Deleting remote branch...", Color.Orange);
+                        _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + f.FormParams.Branch.UpstreamBranchCanonicalName, GetPushOptions());
+                        _repoCtrl.Branches.Update(f.FormParams.Branch, b => b.TrackedBranch = null);
+                    }
+                    if (f.FormParams.Local)
+                    {
+                        Log("Deleting local branch...", Color.Orange);
+                        _repoCtrl.Branches.Remove(f.FormParams.Branch);
+                    }
+                }, true);
+            }
+        }
+
         public void ShowDifs()
         {
             Log(string.Empty, Color.Empty);
             Log("Difs", Color.Yellow);
 
-            var lstDifs = _repoCtrl.Diff.Compare<TreeChanges>();
-            if (lstDifs.Any())
+            var status = GetRepositoryStatus();
+
+            if (status.Any())
             {
-                foreach (var dif in lstDifs)
+                foreach (var item in status)
                 {
-                    Log(dif.Status.ToString() + " : " + dif.Path, Color.Cyan);
+                    Log(item.State.ToString() + " : " + item.FilePath, Color.Cyan);
                 }
             } 
             else

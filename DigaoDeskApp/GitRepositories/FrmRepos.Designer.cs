@@ -48,6 +48,7 @@ namespace DigaoDeskApp
             this.btnPull = new System.Windows.Forms.ToolStripButton();
             this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
             this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
             this.btnDifs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
@@ -169,6 +170,7 @@ namespace DigaoDeskApp
             this.btnPull,
             this.btnSwitchBranch,
             this.btnCheckoutRemote,
+            this.btnDeleteBranch,
             this.btnDifs,
             this.toolStripSeparator2,
             this.btnClearLog});
@@ -242,6 +244,16 @@ namespace DigaoDeskApp
             this.btnCheckoutRemote.Size = new System.Drawing.Size(170, 28);
             this.btnCheckoutRemote.Text = "Checkout Remote Branch";
             this.btnCheckoutRemote.Click += new System.EventHandler(this.btnCheckoutRemote_Click);
+            // 
+            // btnDeleteBranch
+            // 
+            this.btnDeleteBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteBranch.Image")));
+            this.btnDeleteBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDeleteBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteBranch.Name = "btnDeleteBranch";
+            this.btnDeleteBranch.Size = new System.Drawing.Size(108, 28);
+            this.btnDeleteBranch.Text = "Delete Branch";
+            this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
             // 
             // btnDifs
             // 
@@ -324,5 +336,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colOtherBranchesDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
         private System.Windows.Forms.ToolStripButton btnDifs;
+        private System.Windows.Forms.ToolStripButton btnDeleteBranch;
     }
 }

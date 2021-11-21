@@ -225,6 +225,12 @@ namespace DigaoDeskApp
             r.CheckoutRemoteBranch();
         }
 
+        private void btnDeleteBranch_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.DeleteBranch();
+        }
+
         private void btnDifs_Click(object sender, EventArgs e)
         {
             var r = GetSel();
@@ -235,6 +241,6 @@ namespace DigaoDeskApp
         {
             edLog.Clear();
         }
-                
+        
     }
 }
