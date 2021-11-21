@@ -40,6 +40,7 @@ namespace DigaoDeskApp
 
             //--Repos tab
             edReposDir.Text = Vars.Config.ReposDir;
+            edShellProgram.Text = Vars.Config.ShellProgram;
 
             edGitName.Text = Vars.Config.Git.Name;
             edGitEmail.Text = Vars.Config.Git.Email;
@@ -67,6 +68,8 @@ namespace DigaoDeskApp
                 }
             }
 
+            edShellProgram.Text = edShellProgram.Text.Trim();
+
             edGitName.Text = edGitName.Text.Trim();
             edGitEmail.Text = edGitEmail.Text.Trim();
             edGitCredUsername.Text = edGitCredUsername.Text.Trim();
@@ -89,6 +92,7 @@ namespace DigaoDeskApp
 
             //--Repos tab
             Vars.Config.ReposDir = edReposDir.Text;
+            Vars.Config.ShellProgram = edShellProgram.Text;
 
             Vars.Config.Git.Name = edGitName.Text;
             Vars.Config.Git.Email = edGitEmail.Text;
@@ -147,6 +151,17 @@ namespace DigaoDeskApp
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 edReposDir.Text = dlg.SelectedPath;
+            }
+        }
+
+        private void btnSelShellProgramDir_Click(object sender, System.EventArgs e)
+        {
+            OpenFileDialog dlg = new();
+
+            dlg.FileName = edShellProgram.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                edShellProgram.Text = dlg.FileName;
             }
         }
 

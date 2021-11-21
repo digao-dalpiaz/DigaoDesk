@@ -237,6 +237,12 @@ namespace DigaoDeskApp
             r.ShowDifs();
         }
 
+        private void btnShell_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.OpenShell();
+        }
+
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             edLog.Clear();

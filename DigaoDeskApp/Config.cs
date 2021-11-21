@@ -13,6 +13,7 @@ namespace DigaoDeskApp
         public bool DontNotifyWhenAppsActive = false;
         
         public string ReposDir;
+        public string ShellProgram = "cmd.exe";
         public ConfigGit Git;
 
         public class ConfigLog

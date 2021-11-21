@@ -1,6 +1,7 @@
 ﻿using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -421,6 +422,28 @@ namespace DigaoDeskApp
                 Log("There are no difs", Color.White);
             }
             
+        }
+
+        public void OpenShell()
+        {
+            var cmd = Vars.Config.ShellProgram;
+            if (string.IsNullOrEmpty(cmd))
+            {
+                Messages.Error("Shell program is not configured. Please go to Settings dialog.");
+                return;
+            }
+
+            ProcessStartInfo info = new();
+            info.FileName = cmd;
+            info.WorkingDirectory = _path;
+            try
+            {
+                Process.Start(info);
+            }
+            catch (Exception ex)
+            {
+                Messages.Error(ex.Message);
+            }
         }
 
     }
