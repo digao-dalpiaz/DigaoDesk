@@ -30,6 +30,7 @@ namespace DigaoDeskApp
 
         private void FrmBranchDelete_Load(object sender, System.EventArgs e)
         {
+            lstBranches_TextChanged(null, null);
             edConfirm_TextChanged(null, null);
         }
 
