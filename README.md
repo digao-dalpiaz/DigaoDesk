@@ -25,12 +25,15 @@ Thus, the application is running in the Windows tray, allowing monitoring at any
 
 ![GitRepos](images/gitrepos.png)
 
-There is another function availavle in tray menu, allowing you to manage your git repositories. Just configure a git repositories folder and all git repos will appear in the form grid. You can use basic git commands like:
+There is another function available in tray menu, allowing you to manage your git repositories. Just configure a git repositories folder and all git repos will appear in the form grid. You can use basic git commands like:
 
 - Fetch
 - Pull
 - Checkout (remote)
 - Checkout (local)
+- Delete Branch
+- Show Diffs
+- Open Shell program
 
 # Settings
 
