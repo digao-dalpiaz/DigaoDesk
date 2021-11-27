@@ -130,6 +130,7 @@ namespace DigaoDeskApp
                 _lastFetchTS = null;
             }
 
+            CheckIfUntrackedBranch();
             if (_repoCtrl.Head.IsTracking)
             {
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, _repoCtrl.Head.TrackedBranch.Tip);
@@ -148,6 +149,15 @@ namespace DigaoDeskApp
                 " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !x.FriendlyName.Equals(ORIGIN_HEAD));
 
             _othersBranchesDifs = GetOtherBranchesDifs();
+        }
+
+        private void CheckIfUntrackedBranch()
+        {
+            if (_repoCtrl.Head.IsTracking && _repoCtrl.Head.TrackedBranch.Tip == null)
+            {
+                _repoCtrl.Branches.Update(_repoCtrl.Head, b => b.TrackedBranch = null);
+                Log($"Branch '{_repoCtrl.Head.FriendlyName}' is no longer tracked", Color.Fuchsia);
+            }
         }
 
         private string GetOtherBranchesDifs()
