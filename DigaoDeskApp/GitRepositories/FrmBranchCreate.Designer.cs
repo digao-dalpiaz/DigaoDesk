@@ -72,7 +72,7 @@ namespace DigaoDeskApp
             // 
             this.edName.Location = new System.Drawing.Point(8, 64);
             this.edName.Name = "edName";
-            this.edName.Size = new System.Drawing.Size(440, 23);
+            this.edName.Size = new System.Drawing.Size(408, 23);
             this.edName.TabIndex = 2;
             // 
             // boxBasedOn
@@ -81,9 +81,9 @@ namespace DigaoDeskApp
             this.boxBasedOn.Controls.Add(this.edTag);
             this.boxBasedOn.Controls.Add(this.ckTag);
             this.boxBasedOn.Controls.Add(this.ckCurrentBranch);
-            this.boxBasedOn.Location = new System.Drawing.Point(8, 104);
+            this.boxBasedOn.Location = new System.Drawing.Point(8, 96);
             this.boxBasedOn.Name = "boxBasedOn";
-            this.boxBasedOn.Size = new System.Drawing.Size(440, 152);
+            this.boxBasedOn.Size = new System.Drawing.Size(712, 152);
             this.boxBasedOn.TabIndex = 3;
             this.boxBasedOn.TabStop = false;
             this.boxBasedOn.Text = "Based on";
@@ -105,7 +105,7 @@ namespace DigaoDeskApp
             this.edTag.FormattingEnabled = true;
             this.edTag.Location = new System.Drawing.Point(32, 112);
             this.edTag.Name = "edTag";
-            this.edTag.Size = new System.Drawing.Size(400, 23);
+            this.edTag.Size = new System.Drawing.Size(672, 23);
             this.edTag.TabIndex = 2;
             // 
             // ckTag
@@ -134,7 +134,7 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(144, 304);
+            this.btnOK.Location = new System.Drawing.Point(280, 304);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(80, 32);
             this.btnOK.TabIndex = 21;
@@ -145,7 +145,7 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(232, 304);
+            this.btnCancel.Location = new System.Drawing.Point(368, 304);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
             this.btnCancel.TabIndex = 22;
@@ -162,7 +162,7 @@ namespace DigaoDeskApp
             this.ckSwitch.AutoSize = true;
             this.ckSwitch.Checked = true;
             this.ckSwitch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckSwitch.Location = new System.Drawing.Point(8, 272);
+            this.ckSwitch.Location = new System.Drawing.Point(8, 264);
             this.ckSwitch.Name = "ckSwitch";
             this.ckSwitch.Size = new System.Drawing.Size(209, 19);
             this.ckSwitch.TabIndex = 6;
@@ -175,7 +175,7 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(458, 345);
+            this.ClientSize = new System.Drawing.Size(729, 343);
             this.Controls.Add(this.ckSwitch);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
