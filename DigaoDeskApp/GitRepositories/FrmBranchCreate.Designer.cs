@@ -83,7 +83,7 @@ namespace DigaoDeskApp
             this.boxBasedOn.Controls.Add(this.ckCurrentBranch);
             this.boxBasedOn.Location = new System.Drawing.Point(8, 104);
             this.boxBasedOn.Name = "boxBasedOn";
-            this.boxBasedOn.Size = new System.Drawing.Size(440, 160);
+            this.boxBasedOn.Size = new System.Drawing.Size(440, 152);
             this.boxBasedOn.TabIndex = 3;
             this.boxBasedOn.TabStop = false;
             this.boxBasedOn.Text = "Based on";
@@ -91,7 +91,7 @@ namespace DigaoDeskApp
             // edCurrentBranch
             // 
             this.edCurrentBranch.BackColor = System.Drawing.SystemColors.Info;
-            this.edCurrentBranch.Location = new System.Drawing.Point(32, 56);
+            this.edCurrentBranch.Location = new System.Drawing.Point(32, 48);
             this.edCurrentBranch.Name = "edCurrentBranch";
             this.edCurrentBranch.ReadOnly = true;
             this.edCurrentBranch.Size = new System.Drawing.Size(400, 23);
@@ -103,7 +103,7 @@ namespace DigaoDeskApp
             this.edTag.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.edTag.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.edTag.FormattingEnabled = true;
-            this.edTag.Location = new System.Drawing.Point(32, 120);
+            this.edTag.Location = new System.Drawing.Point(32, 112);
             this.edTag.Name = "edTag";
             this.edTag.Size = new System.Drawing.Size(400, 23);
             this.edTag.TabIndex = 2;
@@ -111,7 +111,7 @@ namespace DigaoDeskApp
             // ckTag
             // 
             this.ckTag.AutoSize = true;
-            this.ckTag.Location = new System.Drawing.Point(8, 96);
+            this.ckTag.Location = new System.Drawing.Point(8, 88);
             this.ckTag.Name = "ckTag";
             this.ckTag.Size = new System.Drawing.Size(87, 19);
             this.ckTag.TabIndex = 1;
@@ -123,7 +123,7 @@ namespace DigaoDeskApp
             // 
             this.ckCurrentBranch.AutoSize = true;
             this.ckCurrentBranch.Checked = true;
-            this.ckCurrentBranch.Location = new System.Drawing.Point(8, 32);
+            this.ckCurrentBranch.Location = new System.Drawing.Point(8, 24);
             this.ckCurrentBranch.Name = "ckCurrentBranch";
             this.ckCurrentBranch.Size = new System.Drawing.Size(105, 19);
             this.ckCurrentBranch.TabIndex = 0;
