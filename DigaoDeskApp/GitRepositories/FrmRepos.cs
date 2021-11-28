@@ -225,6 +225,12 @@ namespace DigaoDeskApp
             r.CheckoutRemoteBranch();
         }
 
+        private void btnCreateBranch_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.CreateBranch();
+        }
+
         private void btnDeleteBranch_Click(object sender, EventArgs e)
         {
             var r = GetSel();

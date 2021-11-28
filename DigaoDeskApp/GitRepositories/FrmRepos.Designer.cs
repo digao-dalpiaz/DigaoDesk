@@ -50,10 +50,11 @@ namespace DigaoDeskApp
             this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
             this.btnDifs = new System.Windows.Forms.ToolStripButton();
+            this.btnShell = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.btnShell = new System.Windows.Forms.ToolStripButton();
+            this.btnCreateBranch = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -171,6 +172,7 @@ namespace DigaoDeskApp
             this.btnPull,
             this.btnSwitchBranch,
             this.btnCheckoutRemote,
+            this.btnCreateBranch,
             this.btnDeleteBranch,
             this.btnDifs,
             this.btnShell,
@@ -267,6 +269,16 @@ namespace DigaoDeskApp
             this.btnDifs.Text = "Difs";
             this.btnDifs.Click += new System.EventHandler(this.btnDifs_Click);
             // 
+            // btnShell
+            // 
+            this.btnShell.Image = ((System.Drawing.Image)(resources.GetObject("btnShell.Image")));
+            this.btnShell.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnShell.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShell.Name = "btnShell";
+            this.btnShell.Size = new System.Drawing.Size(60, 28);
+            this.btnShell.Text = "Shell";
+            this.btnShell.Click += new System.EventHandler(this.btnShell_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -291,15 +303,15 @@ namespace DigaoDeskApp
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
-            // btnShell
+            // btnCreateBranch
             // 
-            this.btnShell.Image = ((System.Drawing.Image)(resources.GetObject("btnShell.Image")));
-            this.btnShell.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnShell.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShell.Name = "btnShell";
-            this.btnShell.Size = new System.Drawing.Size(60, 28);
-            this.btnShell.Text = "Shell";
-            this.btnShell.Click += new System.EventHandler(this.btnShell_Click);
+            this.btnCreateBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateBranch.Image")));
+            this.btnCreateBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCreateBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCreateBranch.Name = "btnCreateBranch";
+            this.btnCreateBranch.Size = new System.Drawing.Size(99, 28);
+            this.btnCreateBranch.Text = "New Branch";
+            this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
             // 
             // FrmRepos
             // 
@@ -350,5 +362,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnDifs;
         private System.Windows.Forms.ToolStripButton btnDeleteBranch;
         private System.Windows.Forms.ToolStripButton btnShell;
+        private System.Windows.Forms.ToolStripButton btnCreateBranch;
     }
 }

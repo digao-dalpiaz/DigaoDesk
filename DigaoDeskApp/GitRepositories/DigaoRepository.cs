@@ -379,6 +379,37 @@ namespace DigaoDeskApp
             }
         }
 
+        public void CreateBranch()
+        {
+            FrmBranchCreate f = new(_repoCtrl);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                DoBackground("Create New Branch", () =>
+                {
+                    var name = f.ResultParams.Name;
+                    Log("Name: " + name, Color.White);
+
+                    Branch b;
+
+                    if (f.ResultParams.Tag != null)                    
+                    {
+                        Log("Creating branch based on tag " + f.ResultParams.Tag.FriendlyName, Color.MediumAquamarine);
+                        b = _repoCtrl.CreateBranch(name, f.ResultParams.Tag.Target as Commit); //cast already validated in form dialog
+                    } else
+                    {
+                        Log("Creating branch based on branch " + _repoCtrl.Head.FriendlyName, Color.MediumAquamarine);
+                        b = _repoCtrl.CreateBranch(name);
+                    }
+
+                    if (f.ResultParams.Switch)
+                    {
+                        Log("Switching to new branch", Color.Gray);
+                        Commands.Checkout(_repoCtrl, b, GetCheckoutOptions());
+                    }
+                }, true);
+            }
+        }
+
         public void DeleteBranch()
         {
             var localBranches = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName));
