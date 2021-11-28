@@ -69,7 +69,10 @@ namespace DigaoDeskApp
 
         private void BuildPrefixMenu()
         {
-            var list = Vars.Config.GitNewBranchPrefixList.Split(Environment.NewLine);
+            var prefixesTextList = Vars.Config.GitNewBranchPrefixList;
+            if (prefixesTextList == null) return;
+
+            var list = prefixesTextList.Split(Environment.NewLine);
 
             foreach (var item in list)
             {
