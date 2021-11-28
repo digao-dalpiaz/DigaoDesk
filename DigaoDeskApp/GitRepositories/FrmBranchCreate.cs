@@ -1,5 +1,6 @@
 ﻿using LibGit2Sharp;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -37,13 +38,8 @@ namespace DigaoDeskApp
 
             public override string ToString()
             {
-                var info = _tag.FriendlyName;
-                if (IsTagCommit(_tag))
-                {
-                    var commit = _tag.Target as Commit;
-                    info += $" ({commit.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)} - {commit.Author.Name})";
-                }
-                return info;
+                var commit = _tag.Target as Commit;
+                return $"{_tag.FriendlyName} ({commit.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)} - {commit.Id} - {commit.Author.Name})";
             }
         }
 
@@ -119,7 +115,7 @@ namespace DigaoDeskApp
         {
             if (_tagsLoaded) return;
 
-            foreach (var tag in _repoCtrl.Tags)
+            foreach (var tag in _repoCtrl.Tags.Where(x => IsTagCommit(x)).OrderByDescending(x => (x.Target as Commit).Author.When.ToLocalTime()))
             {
                 edTag.Items.Add(new TagView(tag));
             }
@@ -137,20 +133,11 @@ namespace DigaoDeskApp
                 return;
             }
 
-            Tag tag = null;
             if (ckTag.Checked)
             {
                 if (edTag.SelectedItem == null)
                 {
                     Messages.Error("Please, specify a tag");
-                    edTag.Select();
-                    return;
-                }
-
-                tag = (edTag.SelectedItem as TagView).Tag;
-                if (!IsTagCommit(tag))
-                {
-                    Messages.Error("You can't use this tag becaus it does not target to a commit!");
                     edTag.Select();
                     return;
                 }
@@ -160,7 +147,7 @@ namespace DigaoDeskApp
 
             NewBranchParams p = new();
             p.Name = edName.Text;
-            p.Tag = tag;
+            p.Tag = (ckTag.Checked) ? (edTag.SelectedItem as TagView).Tag : null;
             p.Switch = ckSwitch.Checked;
 
             ResultParams = p;
