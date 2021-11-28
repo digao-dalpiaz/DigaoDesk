@@ -57,6 +57,7 @@ namespace DigaoDeskApp
             this.btnPrefix.Text = "Insert Prefix";
             this.btnPrefix.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnPrefix.UseVisualStyleBackColor = true;
+            this.btnPrefix.Click += new System.EventHandler(this.btnPrefix_Click);
             // 
             // label1
             // 

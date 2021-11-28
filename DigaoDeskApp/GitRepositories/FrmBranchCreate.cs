@@ -61,8 +61,47 @@ namespace DigaoDeskApp
 
         private void FrmBranchCreate_Load(object sender, EventArgs e)
         {
+            BuildPrefixMenu();
+
             edCurrentBranch.Text = _repoCtrl.Head.FriendlyName;
             ckBasedOnOption_Click(null, null);
+        }
+
+        private void BuildPrefixMenu()
+        {
+            var list = Vars.Config.GitNewBranchPrefixList.Split(Environment.NewLine);
+
+            foreach (var item in list)
+            {
+                var text = item.Trim();
+                if (text == string.Empty) continue;
+
+                if (!text.EndsWith("/")) text += "/";
+                menuPrefix.Items.Add(text, null, OnPrefixClick);
+            }
+        }
+
+        private void OnPrefixClick(object sender, EventArgs e)
+        {
+            var i = edName.Text.LastIndexOf("/");
+            if (i != -1)
+            {
+                edName.Text = edName.Text.Substring(i + 1);
+            }
+
+            var prefix = (sender as ToolStripItem).Text;
+            edName.Text =  prefix + edName.Text;
+        }
+
+        private void btnPrefix_Click(object sender, EventArgs e)
+        {
+            if (menuPrefix.Items.Count == 0)
+            {
+                Messages.Error("There are no prefixes configured. Go to Settings screen to set prefixes.");
+                return;
+            }
+
+            menuPrefix.Show(btnPrefix, 0, btnPrefix.Height);
         }
 
         private void ckBasedOnOption_Click(object sender, EventArgs e)
@@ -125,6 +164,6 @@ namespace DigaoDeskApp
 
             DialogResult = DialogResult.OK;
         }
-
+        
     }
 }

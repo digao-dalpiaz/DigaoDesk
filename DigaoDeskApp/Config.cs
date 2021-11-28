@@ -14,6 +14,7 @@ namespace DigaoDeskApp
         
         public string ReposDir;
         public string ShellProgram = "cmd.exe";
+        public string GitNewBranchPrefixList;
         public ConfigGit Git;
 
         public class ConfigLog
