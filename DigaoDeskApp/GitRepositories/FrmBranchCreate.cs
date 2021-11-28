@@ -41,7 +41,7 @@ namespace DigaoDeskApp
                 if (IsTagCommit(_tag))
                 {
                     var commit = _tag.Target as Commit;
-                    info += $" ({commit.Committer.Name} - {commit.Committer.When})";
+                    info += $" ({commit.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)} - {commit.Author.Name})";
                 }
                 return info;
             }

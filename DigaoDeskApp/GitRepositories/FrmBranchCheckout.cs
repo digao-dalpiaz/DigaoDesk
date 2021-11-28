@@ -48,7 +48,7 @@ namespace DigaoDeskApp
 
         public void AddBranches(IEnumerable<Branch> lst)
         {
-            foreach (var item in lst.OrderByDescending(x => x.Tip.Author.When))
+            foreach (var item in lst.OrderByDescending(x => x.Tip.Author.When.ToLocalTime()))
             {
                 _lst.Add(new BranchView(item));
             }
@@ -73,7 +73,7 @@ namespace DigaoDeskApp
 
             TextRenderer.DrawText(e.Graphics, item.BranchData.FriendlyName, l.Font, new Point(e.Bounds.X + 2, e.Bounds.Y + 1), Color.Black);
 
-            string info = $"(Author: {item.BranchData.Tip.Author.Name} - Date: {item.BranchData.Tip.Author.When.ToString(Vars.DATETIME_FMT)})";
+            string info = $"(Author: {item.BranchData.Tip.Author.Name} - Date: {item.BranchData.Tip.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)})";
             var w = TextRenderer.MeasureText(info, l.Font).Width;
             TextRenderer.DrawText(e.Graphics,info, l.Font, new Point(l.Width-w-24, e.Bounds.Y + 1), Color.Gray);
 
