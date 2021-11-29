@@ -237,6 +237,24 @@ namespace DigaoDeskApp
             r.DeleteBranch();
         }
 
+        private void btnCherryPick_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.CherryPick();
+        }
+
+        private void btnPush_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.Push();
+        }
+
+        private void btnCancelOperation_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.CancelOperation();
+        }
+
         private void btnDifs_Click(object sender, EventArgs e)
         {
             var r = GetSel();

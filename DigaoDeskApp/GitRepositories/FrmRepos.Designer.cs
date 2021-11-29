@@ -39,6 +39,7 @@ namespace DigaoDeskApp
             this.colDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOtherBranchesDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastFetch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edLog = new DigaoDeskApp.RichTextBoxEx();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
@@ -48,13 +49,16 @@ namespace DigaoDeskApp
             this.btnPull = new System.Windows.Forms.ToolStripButton();
             this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
             this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
+            this.btnCreateBranch = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
+            this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
+            this.btnPush = new System.Windows.Forms.ToolStripButton();
             this.btnDifs = new System.Windows.Forms.ToolStripButton();
             this.btnShell = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.btnCreateBranch = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +78,8 @@ namespace DigaoDeskApp
             this.colDown,
             this.colDifs,
             this.colOtherBranchesDifs,
-            this.colLastFetch});
+            this.colLastFetch,
+            this.colOperation});
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 31);
             this.g.MultiSelect = false;
@@ -150,6 +155,13 @@ namespace DigaoDeskApp
             this.colLastFetch.ReadOnly = true;
             this.colLastFetch.Width = 120;
             // 
+            // colOperation
+            // 
+            this.colOperation.DataPropertyName = "CurrentOperation";
+            this.colOperation.HeaderText = "Operation";
+            this.colOperation.Name = "colOperation";
+            this.colOperation.ReadOnly = true;
+            // 
             // edLog
             // 
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -174,10 +186,13 @@ namespace DigaoDeskApp
             this.btnCheckoutRemote,
             this.btnCreateBranch,
             this.btnDeleteBranch,
+            this.btnCherryPick,
+            this.btnPush,
             this.btnDifs,
             this.btnShell,
             this.toolStripSeparator2,
-            this.btnClearLog});
+            this.btnClearLog,
+            this.btnCancelOperation});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1208, 31);
@@ -225,8 +240,8 @@ namespace DigaoDeskApp
             this.btnPull.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnPull.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPull.Name = "btnPull";
-            this.btnPull.Size = new System.Drawing.Size(138, 28);
-            this.btnPull.Text = "Pull Current Branch";
+            this.btnPull.Size = new System.Drawing.Size(55, 28);
+            this.btnPull.Text = "Pull";
             this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
             // 
             // btnSwitchBranch
@@ -235,8 +250,8 @@ namespace DigaoDeskApp
             this.btnSwitchBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnSwitchBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSwitchBranch.Name = "btnSwitchBranch";
-            this.btnSwitchBranch.Size = new System.Drawing.Size(138, 28);
-            this.btnSwitchBranch.Text = "Switch Local Branch";
+            this.btnSwitchBranch.Size = new System.Drawing.Size(67, 28);
+            this.btnSwitchBranch.Text = "Switch";
             this.btnSwitchBranch.Click += new System.EventHandler(this.btnSwitchBranch_Click);
             // 
             // btnCheckoutRemote
@@ -245,9 +260,19 @@ namespace DigaoDeskApp
             this.btnCheckoutRemote.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCheckoutRemote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCheckoutRemote.Name = "btnCheckoutRemote";
-            this.btnCheckoutRemote.Size = new System.Drawing.Size(170, 28);
-            this.btnCheckoutRemote.Text = "Checkout Remote Branch";
+            this.btnCheckoutRemote.Size = new System.Drawing.Size(86, 28);
+            this.btnCheckoutRemote.Text = "Checkout";
             this.btnCheckoutRemote.Click += new System.EventHandler(this.btnCheckoutRemote_Click);
+            // 
+            // btnCreateBranch
+            // 
+            this.btnCreateBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateBranch.Image")));
+            this.btnCreateBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCreateBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCreateBranch.Name = "btnCreateBranch";
+            this.btnCreateBranch.Size = new System.Drawing.Size(99, 28);
+            this.btnCreateBranch.Text = "New Branch";
+            this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
             // 
             // btnDeleteBranch
             // 
@@ -258,6 +283,26 @@ namespace DigaoDeskApp
             this.btnDeleteBranch.Size = new System.Drawing.Size(108, 28);
             this.btnDeleteBranch.Text = "Delete Branch";
             this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
+            // 
+            // btnCherryPick
+            // 
+            this.btnCherryPick.Image = ((System.Drawing.Image)(resources.GetObject("btnCherryPick.Image")));
+            this.btnCherryPick.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCherryPick.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCherryPick.Name = "btnCherryPick";
+            this.btnCherryPick.Size = new System.Drawing.Size(95, 28);
+            this.btnCherryPick.Text = "Cherry Pick";
+            this.btnCherryPick.Click += new System.EventHandler(this.btnCherryPick_Click);
+            // 
+            // btnPush
+            // 
+            this.btnPush.Image = ((System.Drawing.Image)(resources.GetObject("btnPush.Image")));
+            this.btnPush.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnPush.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPush.Name = "btnPush";
+            this.btnPush.Size = new System.Drawing.Size(61, 28);
+            this.btnPush.Text = "Push";
+            this.btnPush.Click += new System.EventHandler(this.btnPush_Click);
             // 
             // btnDifs
             // 
@@ -303,15 +348,15 @@ namespace DigaoDeskApp
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
-            // btnCreateBranch
+            // btnCancelOperation
             // 
-            this.btnCreateBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateBranch.Image")));
-            this.btnCreateBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCreateBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCreateBranch.Name = "btnCreateBranch";
-            this.btnCreateBranch.Size = new System.Drawing.Size(99, 28);
-            this.btnCreateBranch.Text = "New Branch";
-            this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
+            this.btnCancelOperation.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelOperation.Image")));
+            this.btnCancelOperation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCancelOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelOperation.Name = "btnCancelOperation";
+            this.btnCancelOperation.Size = new System.Drawing.Size(85, 28);
+            this.btnCancelOperation.Text = "Cancel Op.";
+            this.btnCancelOperation.Click += new System.EventHandler(this.btnCancelOperation_Click);
             // 
             // FrmRepos
             // 
@@ -351,6 +396,12 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnSwitchBranch;
         private System.Windows.Forms.ToolStripButton btnCheckoutRemote;
         private System.Windows.Forms.ToolStripButton btnFetchAll;
+        private System.Windows.Forms.ToolStripButton btnDifs;
+        private System.Windows.Forms.ToolStripButton btnDeleteBranch;
+        private System.Windows.Forms.ToolStripButton btnShell;
+        private System.Windows.Forms.ToolStripButton btnCreateBranch;
+        private System.Windows.Forms.ToolStripButton btnCherryPick;
+        private System.Windows.Forms.ToolStripButton btnPush;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranchesCount;
@@ -359,9 +410,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOtherBranchesDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
-        private System.Windows.Forms.ToolStripButton btnDifs;
-        private System.Windows.Forms.ToolStripButton btnDeleteBranch;
-        private System.Windows.Forms.ToolStripButton btnShell;
-        private System.Windows.Forms.ToolStripButton btnCreateBranch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
+        private System.Windows.Forms.ToolStripButton btnCancelOperation;
     }
 }

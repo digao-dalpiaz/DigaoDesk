@@ -103,6 +103,15 @@ namespace DigaoDeskApp
             }
         }
 
+        private string _currentOperation;
+        public string CurrentOperation
+        {
+            get
+            {
+                return _currentOperation;
+            }
+        }
+
         public DigaoRepository(string path)
         {
             _path = path;
@@ -149,6 +158,8 @@ namespace DigaoDeskApp
                 " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !x.FriendlyName.Equals(ORIGIN_HEAD));
 
             _othersBranchesDifs = GetOtherBranchesDifs();
+
+            _currentOperation = _repoCtrl.Info.CurrentOperation.ToString();
         }
 
         private void CheckIfUntrackedBranch()
@@ -444,6 +455,55 @@ namespace DigaoDeskApp
             }
         }
 
+        public void CherryPick()
+        {
+            FrmCherryPick f = new(_repoCtrl);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                DoBackground("Cherry Pick", () =>
+                {
+                    Log("Commit: " + f.ResultCommit.Id, Color.White);
+                                        
+                    _repoCtrl.CherryPick(f.ResultCommit, GetSignature());
+                }, true);
+            }
+        }
+
+        public void Push()
+        {
+            DoBackground("Push", () =>
+            {
+                var localBranch = _repoCtrl.Head;
+                Log("Branch: " + localBranch.FriendlyName, Color.White);
+
+                if (!localBranch.IsTracking)
+                {
+                    Log("The branch is not currently linked to a remote one. Making the link now...", Color.Orange);
+
+                    _repoCtrl.Branches.Update(localBranch,
+                        b => b.Remote = GetRemoteOrigin().Name,
+                        b => b.UpstreamBranch = localBranch.CanonicalName);
+                }
+
+                Log("Pushing...", Color.Cyan);
+                _repoCtrl.Network.Push(localBranch, GetPushOptions());
+            }, true);
+        }
+
+        public void CancelOperation()
+        {
+            if (_repoCtrl.Info.CurrentOperation == LibGit2Sharp.CurrentOperation.None)
+            {
+                Messages.Error("There is no current operation to abort");
+                return;
+            }
+
+            DoBackground("Reset", () =>
+            {
+                _repoCtrl.Reset(ResetMode.Hard);
+            }, true);
+        }
+
         public void ShowDifs()
         {
             Log(string.Empty, Color.Empty);
@@ -462,7 +522,6 @@ namespace DigaoDeskApp
             {
                 Log("There are no difs", Color.White);
             }
-            
         }
 
         public void OpenShell()
