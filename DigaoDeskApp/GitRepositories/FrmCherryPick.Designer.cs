@@ -60,7 +60,7 @@ namespace DigaoDeskApp
             this.edSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.edSearch.Location = new System.Drawing.Point(8, 72);
             this.edSearch.Name = "edSearch";
-            this.edSearch.Size = new System.Drawing.Size(632, 23);
+            this.edSearch.Size = new System.Drawing.Size(616, 23);
             this.edSearch.TabIndex = 1;
             this.edSearch.TextChanged += new System.EventHandler(this.edSearch_TextChanged);
             // 
@@ -87,10 +87,10 @@ namespace DigaoDeskApp
             // edStartDate
             // 
             this.edStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.edStartDate.Location = new System.Drawing.Point(648, 72);
+            this.edStartDate.Location = new System.Drawing.Point(632, 72);
             this.edStartDate.Name = "edStartDate";
             this.edStartDate.ShowCheckBox = true;
-            this.edStartDate.Size = new System.Drawing.Size(104, 23);
+            this.edStartDate.Size = new System.Drawing.Size(112, 23);
             this.edStartDate.TabIndex = 4;
             this.edStartDate.ValueChanged += new System.EventHandler(this.edDates_ValueChanged);
             // 
@@ -98,10 +98,10 @@ namespace DigaoDeskApp
             // 
             this.edEndDate.Checked = false;
             this.edEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.edEndDate.Location = new System.Drawing.Point(760, 72);
+            this.edEndDate.Location = new System.Drawing.Point(752, 72);
             this.edEndDate.Name = "edEndDate";
             this.edEndDate.ShowCheckBox = true;
-            this.edEndDate.Size = new System.Drawing.Size(104, 23);
+            this.edEndDate.Size = new System.Drawing.Size(112, 23);
             this.edEndDate.TabIndex = 5;
             this.edEndDate.ValueChanged += new System.EventHandler(this.edDates_ValueChanged);
             // 
@@ -117,7 +117,7 @@ namespace DigaoDeskApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(646, 56);
+            this.label2.Location = new System.Drawing.Point(630, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 7;
@@ -126,7 +126,7 @@ namespace DigaoDeskApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(758, 56);
+            this.label3.Location = new System.Drawing.Point(750, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 15);
             this.label3.TabIndex = 8;
