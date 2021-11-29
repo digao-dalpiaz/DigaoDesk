@@ -69,6 +69,10 @@ namespace DigaoDeskApp
             if (e.Index == -1) return;
 
             e.DrawBackground();
+            if (e.Index % 2 == 0)
+            {
+                e.Graphics.FillRectangle(Brushes.Beige, e.Bounds);
+            }
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 e.Graphics.FillRectangle(Brushes.Gold, e.Bounds);
