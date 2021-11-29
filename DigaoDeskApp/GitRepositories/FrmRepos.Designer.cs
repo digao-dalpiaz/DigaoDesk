@@ -57,8 +57,8 @@ namespace DigaoDeskApp
             this.btnShell = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -188,11 +188,11 @@ namespace DigaoDeskApp
             this.btnDeleteBranch,
             this.btnCherryPick,
             this.btnPush,
+            this.btnCancelOperation,
             this.btnDifs,
             this.btnShell,
             this.toolStripSeparator2,
-            this.btnClearLog,
-            this.btnCancelOperation});
+            this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1208, 31);
@@ -339,6 +339,16 @@ namespace DigaoDeskApp
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
+            // btnCancelOperation
+            // 
+            this.btnCancelOperation.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelOperation.Image")));
+            this.btnCancelOperation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCancelOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelOperation.Name = "btnCancelOperation";
+            this.btnCancelOperation.Size = new System.Drawing.Size(93, 28);
+            this.btnCancelOperation.Text = "Cancel Op.";
+            this.btnCancelOperation.Click += new System.EventHandler(this.btnCancelOperation_Click);
+            // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -347,16 +357,6 @@ namespace DigaoDeskApp
             this.splitter1.Size = new System.Drawing.Size(1208, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
-            // 
-            // btnCancelOperation
-            // 
-            this.btnCancelOperation.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelOperation.Image")));
-            this.btnCancelOperation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCancelOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancelOperation.Name = "btnCancelOperation";
-            this.btnCancelOperation.Size = new System.Drawing.Size(85, 28);
-            this.btnCancelOperation.Text = "Cancel Op.";
-            this.btnCancelOperation.Click += new System.EventHandler(this.btnCancelOperation_Click);
             // 
             // FrmRepos
             // 
