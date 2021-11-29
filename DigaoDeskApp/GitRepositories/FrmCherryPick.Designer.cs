@@ -40,6 +40,7 @@ namespace DigaoDeskApp
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.edBranch = new System.Windows.Forms.ComboBox();
+            this.lbCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstCommits
@@ -151,6 +152,15 @@ namespace DigaoDeskApp
             this.edBranch.TabIndex = 0;
             this.edBranch.TextChanged += new System.EventHandler(this.edBranch_TextChanged);
             // 
+            // lbCount
+            // 
+            this.lbCount.AutoSize = true;
+            this.lbCount.Location = new System.Drawing.Point(8, 488);
+            this.lbCount.Name = "lbCount";
+            this.lbCount.Size = new System.Drawing.Size(40, 15);
+            this.lbCount.TabIndex = 24;
+            this.lbCount.Text = "Count";
+            // 
             // FrmCherryPick
             // 
             this.AcceptButton = this.btnOK;
@@ -158,6 +168,7 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(872, 528);
+            this.Controls.Add(this.lbCount);
             this.Controls.Add(this.edBranch);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -195,5 +206,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox edBranch;
+        private System.Windows.Forms.Label lbCount;
     }
 }

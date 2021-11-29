@@ -61,6 +61,8 @@ namespace DigaoDeskApp
             finally
             {
                 lstCommits.EndUpdate();
+
+                lbCount.Text = "Count: " + lstCommits.Items.Count;
             }
         }
 
