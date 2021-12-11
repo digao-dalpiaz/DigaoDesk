@@ -361,10 +361,16 @@ namespace DigaoDeskApp
 
         }
 
-        public void CheckoutRemoteBranch()
+        private Branch FindLocalBranchByRemote(Branch remoteBranch)
         {
             var lstLocalBranchesTracked = _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking);
-            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !IsBranchOriginHead(x) && !lstLocalBranchesTracked.Any(y => y.TrackedBranch.FriendlyName.Equals(x.FriendlyName)));
+
+            return lstLocalBranchesTracked.FirstOrDefault(x => x.TrackedBranch.FriendlyName.Equals(remoteBranch.FriendlyName));
+        }
+
+        public void CheckoutRemoteBranch()
+        {
+            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !IsBranchOriginHead(x) && FindLocalBranchByRemote(x) == null);
             if (!lstRemainingRemoteBranches.Any())
             {
                 Messages.Error("There are no other remote branches to checkout");
