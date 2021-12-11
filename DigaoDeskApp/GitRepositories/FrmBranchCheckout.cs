@@ -66,6 +66,10 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            edSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            g.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            boxButtons.Anchor = AnchorStyles.Bottom;
+
             this.Text = title;
         }
 

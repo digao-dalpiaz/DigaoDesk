@@ -37,12 +37,14 @@ namespace DigaoDeskApp
             this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boxButtons = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
+            this.boxButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(336, 432);
+            this.btnOK.Location = new System.Drawing.Point(8, 8);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(80, 32);
             this.btnOK.TabIndex = 2;
@@ -53,7 +55,7 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(424, 432);
+            this.btnCancel.Location = new System.Drawing.Point(96, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
             this.btnCancel.TabIndex = 3;
@@ -124,6 +126,15 @@ namespace DigaoDeskApp
             this.colDateTime.ReadOnly = true;
             this.colDateTime.Width = 120;
             // 
+            // boxButtons
+            // 
+            this.boxButtons.Controls.Add(this.btnCancel);
+            this.boxButtons.Controls.Add(this.btnOK);
+            this.boxButtons.Location = new System.Drawing.Point(328, 424);
+            this.boxButtons.Name = "boxButtons";
+            this.boxButtons.Size = new System.Drawing.Size(184, 48);
+            this.boxButtons.TabIndex = 4;
+            // 
             // FrmBranchCheckout
             // 
             this.AcceptButton = this.btnOK;
@@ -131,19 +142,18 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(840, 472);
+            this.Controls.Add(this.boxButtons);
             this.Controls.Add(this.g);
             this.Controls.Add(this.edSearch);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmBranchCheckout";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select a branch";
             this.Load += new System.EventHandler(this.FrmBranchCheckout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
+            this.boxButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +168,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
+        private System.Windows.Forms.Panel boxButtons;
     }
 }
