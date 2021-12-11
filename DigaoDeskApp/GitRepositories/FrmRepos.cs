@@ -205,8 +205,16 @@ namespace DigaoDeskApp
         {
             if (Vars.Config.GitAutoFetch)
             {
-                var r = GetSel();
-                r.FetchDirectly();
+                FrmWait.Start("Fetching...");
+                try
+                {
+                    var r = GetSel();
+                    r.FetchDirectly();
+                }
+                finally
+                {
+                    FrmWait.Stop();
+                }                
             }
         }
 

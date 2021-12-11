@@ -18,6 +18,7 @@ namespace DigaoDeskApp
             {
                 _instance = new();
             }
+            _instance.lbInfo.Text = text;
             _instance.Show();
             _instance.Refresh();
         }
