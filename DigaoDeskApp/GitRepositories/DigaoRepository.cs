@@ -350,7 +350,7 @@ namespace DigaoDeskApp
             {
                 DoBackground("Switch Local Branch", () =>
                 {
-                    var branch = f.GetSelected();
+                    var branch = f.ResultBranch;
 
                     Commands.Checkout(_repoCtrl, branch, GetCheckoutOptions());
                 }, true);
@@ -376,7 +376,7 @@ namespace DigaoDeskApp
                 DoBackground("Checkout Remote Branch", () =>
                 {
                     const string PREFIX = "origin/";
-                    var remoteBranch = f.GetSelected();
+                    var remoteBranch = f.ResultBranch;
                     if (!remoteBranch.FriendlyName.StartsWith(PREFIX))
                     {
                         throw new Exception("Invalid remote branch name");
@@ -478,7 +478,7 @@ namespace DigaoDeskApp
             {
                 DoBackground("Merge", () =>
                 {
-                    var from = f.GetSelected();
+                    var from = f.ResultBranch;
                     var res = _repoCtrl.Merge(from, GetSignature(), GetMergeOptions());
 
                     LogMergeResult(res);

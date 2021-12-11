@@ -10,7 +10,7 @@ namespace DigaoDeskApp
 
         public const string GITHUB_LINK = "https://github.com/digao-dalpiaz/DigaoDesk";
 
-        public const string DATETIME_FMT = "dd/MM/yyyy HH:mm:ss";
+        public const string DATETIME_FMT = "yyyy-MM-dd HH:mm:ss";
 
         public static FrmMain FrmMainObj;
         public static FrmConfig FrmConfigObj;

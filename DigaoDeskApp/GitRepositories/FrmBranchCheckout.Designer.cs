@@ -29,24 +29,16 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.l = new System.Windows.Forms.ListBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.edSearch = new System.Windows.Forms.TextBox();
+            this.g = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.SuspendLayout();
-            // 
-            // l
-            // 
-            this.l.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.l.FormattingEnabled = true;
-            this.l.IntegralHeight = false;
-            this.l.ItemHeight = 18;
-            this.l.Location = new System.Drawing.Point(8, 40);
-            this.l.Name = "l";
-            this.l.Size = new System.Drawing.Size(824, 384);
-            this.l.TabIndex = 1;
-            this.l.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.l_DrawItem);
-            this.l.DoubleClick += new System.EventHandler(this.btnOK_Click);
             // 
             // btnOK
             // 
@@ -77,6 +69,61 @@ namespace DigaoDeskApp
             this.edSearch.TabIndex = 0;
             this.edSearch.TextChanged += new System.EventHandler(this.edSearch_TextChanged);
             // 
+            // g
+            // 
+            this.g.AllowUserToAddRows = false;
+            this.g.AllowUserToDeleteRows = false;
+            this.g.AllowUserToResizeRows = false;
+            this.g.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.g.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.g.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colName,
+            this.colLocation,
+            this.colAuthor,
+            this.colDateTime});
+            this.g.Location = new System.Drawing.Point(8, 40);
+            this.g.Name = "g";
+            this.g.ReadOnly = true;
+            this.g.RowHeadersVisible = false;
+            this.g.RowTemplate.Height = 25;
+            this.g.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.g.Size = new System.Drawing.Size(824, 384);
+            this.g.StandardTab = true;
+            this.g.TabIndex = 1;
+            this.g.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.g_CellDoubleClick);
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colLocation
+            // 
+            this.colLocation.DataPropertyName = "Location";
+            this.colLocation.HeaderText = "Location";
+            this.colLocation.Name = "colLocation";
+            this.colLocation.ReadOnly = true;
+            this.colLocation.Width = 65;
+            // 
+            // colAuthor
+            // 
+            this.colAuthor.DataPropertyName = "Author";
+            this.colAuthor.HeaderText = "Last Commit Author";
+            this.colAuthor.Name = "colAuthor";
+            this.colAuthor.ReadOnly = true;
+            this.colAuthor.Width = 150;
+            // 
+            // colDateTime
+            // 
+            this.colDateTime.DataPropertyName = "Timestamp";
+            this.colDateTime.HeaderText = "Last Commit Date/Time";
+            this.colDateTime.Name = "colDateTime";
+            this.colDateTime.ReadOnly = true;
+            this.colDateTime.Width = 120;
+            // 
             // FrmBranchCheckout
             // 
             this.AcceptButton = this.btnOK;
@@ -84,10 +131,10 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(840, 472);
+            this.Controls.Add(this.g);
             this.Controls.Add(this.edSearch);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.l);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -96,6 +143,7 @@ namespace DigaoDeskApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Branch Checkout";
             this.Load += new System.EventHandler(this.FrmBranchCheckout_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,7 +152,11 @@ namespace DigaoDeskApp
         #endregion
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ListBox l;
         private System.Windows.Forms.TextBox edSearch;
+        private System.Windows.Forms.DataGridView g;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
     }
 }

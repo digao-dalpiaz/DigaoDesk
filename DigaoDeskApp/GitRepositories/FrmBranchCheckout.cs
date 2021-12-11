@@ -1,7 +1,7 @@
-﻿using LibGit2Sharp;
+﻿using Equin.ApplicationFramework;
+using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -10,74 +10,117 @@ namespace DigaoDeskApp
     public partial class FrmBranchCheckout : Form
     {
 
-        private List<BranchView> _lst = new();        
+        public Branch ResultBranch;
+
+        private class BranchInfo
+        {
+            private Branch _branch;
+
+            public BranchInfo(Branch branch)
+            {
+                _branch = branch;
+            }
+
+            public Branch GetBranch()
+            {
+                return _branch;
+            }
+
+            public string Name
+            {
+                get
+                {
+                    return _branch.FriendlyName;
+                }
+            }
+
+            public string Location
+            {
+                get
+                {
+                    return _branch.IsRemote ? "Remote" : "Local";
+                }
+            }
+
+            public string Author
+            {
+                get
+                {
+                    return _branch.Tip.Author.Name;
+                }
+            }
+
+            public string Timestamp
+            {
+                get
+                {
+                    return _branch.Tip.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT);
+                }
+            }           
+        }
+
+        private List<BranchInfo> _internalBranchList = new();
+        private BindingListView<BranchInfo> _gridBind;
 
         public FrmBranchCheckout()
         {
             InitializeComponent();
         }
 
-        private void FrmBranchCheckout_Load(object sender, EventArgs e)
-        {
-            l.ItemHeight = TextRenderer.MeasureText("A", l.Font).Height + 3;
-
-            edSearch_TextChanged(null, null);
-        }
-
-        private void edSearch_TextChanged(object sender, EventArgs e)
-        {
-            l.Items.Clear();
-            l.Items.AddRange(_lst.Where(x => edSearch.Text == string.Empty || x.BranchData.FriendlyName.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase)).ToArray());
-            if (l.Items.Count > 0)
-            {
-                l.SelectedIndex = 0;
-            }
-        }
-
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            if (l.SelectedItem == null)
-            {
-                Messages.Error("Please, select a branch!");
-                l.Select();
-                return;
-            }
-
-            DialogResult = DialogResult.OK;
-        }
-
         public void AddBranches(IEnumerable<Branch> lst)
         {
             foreach (var item in lst.OrderByDescending(x => x.Tip.Author.When.ToLocalTime()))
             {
-                _lst.Add(new BranchView(item));
+                _internalBranchList.Add(new BranchInfo(item));
             }
         }
 
-        public Branch GetSelected()
+        private void FrmBranchCheckout_Load(object sender, EventArgs e)
         {
-            return (l.SelectedItem as BranchView).BranchData;
+            LoadGrid();
         }
 
-        private void l_DrawItem(object sender, DrawItemEventArgs e)
+        private void LoadGrid()
         {
-            if (e.Index == -1) return;
+            _gridBind = new(_internalBranchList);
+            g.DataSource = _gridBind;
+        }
 
-            e.DrawBackground();
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+        private void DoFilter()
+        {
+            if (edSearch.Text != string.Empty)
             {
-                e.Graphics.FillRectangle(Brushes.Gold, e.Bounds);
+                _gridBind.ApplyFilter(x => x.Name.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase));
+            } 
+            else
+            {
+                _gridBind.RemoveFilter();
+            }
+        }
+
+        private void edSearch_TextChanged(object sender, EventArgs e)
+        {
+            DoFilter();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if (g.CurrentRow == null)
+            {
+                Messages.Error("Please, select a branch!");
+                return;
             }
 
-            var item = l.Items[e.Index] as BranchView;
+            //
 
-            TextRenderer.DrawText(e.Graphics, item.BranchData.FriendlyName, l.Font, new Point(e.Bounds.X + 2, e.Bounds.Y + 1), Color.Black);
+            ResultBranch = (g.CurrentRow.DataBoundItem as ObjectView<BranchInfo>).Object.GetBranch();
 
-            string info = $"(Author: {item.BranchData.Tip.Author.Name} - Date: {item.BranchData.Tip.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)})";
-            var w = TextRenderer.MeasureText(info, l.Font).Width;
-            TextRenderer.DrawText(e.Graphics,info, l.Font, new Point(l.Width-w-24, e.Bounds.Y + 1), Color.Gray);
+            DialogResult = DialogResult.OK;
+        }        
 
-            e.DrawFocusRectangle();
+        private void g_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnOK.PerformClick();
         }
 
     }
