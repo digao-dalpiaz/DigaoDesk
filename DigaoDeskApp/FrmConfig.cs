@@ -42,6 +42,7 @@ namespace DigaoDeskApp
             edReposDir.Text = Vars.Config.ReposDir;
             edShellProgram.Text = Vars.Config.ShellProgram;
             edGitNewBranchPrefixList.Text = Vars.Config.GitNewBranchPrefixList;
+            ckGitAutoFetch.Checked = Vars.Config.GitAutoFetch;
 
             edGitName.Text = Vars.Config.Git.Name;
             edGitEmail.Text = Vars.Config.Git.Email;
@@ -95,6 +96,7 @@ namespace DigaoDeskApp
             Vars.Config.ReposDir = edReposDir.Text;
             Vars.Config.ShellProgram = edShellProgram.Text;
             Vars.Config.GitNewBranchPrefixList = edGitNewBranchPrefixList.Text;
+            Vars.Config.GitAutoFetch = ckGitAutoFetch.Checked;
 
             Vars.Config.Git.Name = edGitName.Text;
             Vars.Config.Git.Email = edGitEmail.Text;

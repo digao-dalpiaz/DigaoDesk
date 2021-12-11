@@ -43,6 +43,7 @@ namespace DigaoDeskApp
             this.CkDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.tabRepos = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.edGitName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,7 +64,7 @@ namespace DigaoDeskApp
             this.label4 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
+            this.ckGitAutoFetch = new System.Windows.Forms.CheckBox();
             this.pages.SuspendLayout();
             this.tabLogs.SuspendLayout();
             this.tabApplications.SuspendLayout();
@@ -80,7 +81,7 @@ namespace DigaoDeskApp
             this.pages.Location = new System.Drawing.Point(8, 8);
             this.pages.Name = "pages";
             this.pages.SelectedIndex = 0;
-            this.pages.Size = new System.Drawing.Size(616, 496);
+            this.pages.Size = new System.Drawing.Size(616, 520);
             this.pages.TabIndex = 0;
             // 
             // tabLogs
@@ -209,6 +210,7 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            this.tabRepos.Controls.Add(this.ckGitAutoFetch);
             this.tabRepos.Controls.Add(this.label11);
             this.tabRepos.Controls.Add(this.groupBox2);
             this.tabRepos.Controls.Add(this.edGitNewBranchPrefixList);
@@ -223,10 +225,20 @@ namespace DigaoDeskApp
             this.tabRepos.Location = new System.Drawing.Point(4, 24);
             this.tabRepos.Name = "tabRepos";
             this.tabRepos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRepos.Size = new System.Drawing.Size(608, 468);
+            this.tabRepos.Size = new System.Drawing.Size(608, 492);
             this.tabRepos.TabIndex = 1;
             this.tabRepos.Text = "Git Repositories";
             this.tabRepos.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Location = new System.Drawing.Point(416, 360);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(136, 15);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "CTRL+ENTER = New line";
             // 
             // groupBox2
             // 
@@ -396,7 +408,7 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(224, 512);
+            this.btnOK.Location = new System.Drawing.Point(224, 536);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(88, 32);
             this.btnOK.TabIndex = 98;
@@ -406,7 +418,7 @@ namespace DigaoDeskApp
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(320, 512);
+            this.btnCancel.Location = new System.Drawing.Point(320, 536);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 99;
@@ -414,15 +426,15 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label11
+            // ckGitAutoFetch
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(416, 360);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(136, 15);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "CTRL+ENTER = New line";
+            this.ckGitAutoFetch.AutoSize = true;
+            this.ckGitAutoFetch.Location = new System.Drawing.Point(16, 456);
+            this.ckGitAutoFetch.Name = "ckGitAutoFetch";
+            this.ckGitAutoFetch.Size = new System.Drawing.Size(200, 19);
+            this.ckGitAutoFetch.TabIndex = 11;
+            this.ckGitAutoFetch.Text = "Auto Fetch in Remote operations";
+            this.ckGitAutoFetch.UseVisualStyleBackColor = true;
             // 
             // FrmConfig
             // 
@@ -430,7 +442,7 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(628, 552);
+            this.ClientSize = new System.Drawing.Size(628, 574);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.pages);
@@ -493,5 +505,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox ckGitAutoFetch;
     }
 }

@@ -201,6 +201,16 @@ namespace DigaoDeskApp
             return g.CurrentRow.DataBoundItem as DigaoRepository;
         }
 
+        private void CheckForAutoFetch()
+        {
+            if (Vars.Config.GitAutoFetch)
+            {
+                var r = GetSel();
+                r.Fetch();
+            }
+        }
+
+
         private void btnFetch_Click(object sender, EventArgs e)
         {
             var r = GetSel();
@@ -221,30 +231,35 @@ namespace DigaoDeskApp
 
         private void btnCheckoutRemote_Click(object sender, EventArgs e)
         {
+            CheckForAutoFetch();
             var r = GetSel();
             r.CheckoutRemoteBranch();
         }
 
         private void btnCreateBranch_Click(object sender, EventArgs e)
         {
+            CheckForAutoFetch();
             var r = GetSel();
             r.CreateBranch();
         }
 
         private void btnDeleteBranch_Click(object sender, EventArgs e)
         {
+            CheckForAutoFetch();
             var r = GetSel();
             r.DeleteBranch();
         }
 
         private void btnCherryPick_Click(object sender, EventArgs e)
         {
+            CheckForAutoFetch();
             var r = GetSel();
             r.CherryPick();
         }
 
         private void btnMerge_Click(object sender, EventArgs e)
         {
+            CheckForAutoFetch();
             var r = GetSel();
             r.Merge();
         }
