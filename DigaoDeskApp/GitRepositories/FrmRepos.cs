@@ -266,6 +266,8 @@ namespace DigaoDeskApp
 
         private void btnPush_Click(object sender, EventArgs e)
         {
+            if (!Messages.Question("Confirm Push?")) return;
+
             var r = GetSel();
             r.Push();
         }
