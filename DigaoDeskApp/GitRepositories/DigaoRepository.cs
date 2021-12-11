@@ -484,9 +484,10 @@ namespace DigaoDeskApp
             f.AddBranches(_repoCtrl.Branches.Where(x => {
                 if (IsBranchOriginHead(x)) return false;
                 if (x.IsCurrentRepositoryHead) return false;
-                if (_repoCtrl.Head.IsTracking)
+                if (x.IsRemote)
                 {
-                    if (_repoCtrl.Head.TrackedBranch.FriendlyName.Equals(x.FriendlyName)) return false;
+                    //do not show remote branch of head because the "Pull" command already exists to merge the current branch from remote
+                    if (_repoCtrl.Head.IsTracking && _repoCtrl.Head.TrackedBranch.FriendlyName.Equals(x.FriendlyName)) return false;
                 }
                 return true;
             }));
