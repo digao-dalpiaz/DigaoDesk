@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
-    public partial class FrmBranchCheckout : Form
+    public partial class FrmBranchSelector : Form
     {
 
         public Branch ResultBranch;
@@ -62,7 +62,7 @@ namespace DigaoDeskApp
         private List<BranchInfo> _internalBranchList = new();
         private BindingListView<BranchInfo> _gridBind;
 
-        public FrmBranchCheckout(string title)
+        public FrmBranchSelector(string title)
         {
             InitializeComponent();
 

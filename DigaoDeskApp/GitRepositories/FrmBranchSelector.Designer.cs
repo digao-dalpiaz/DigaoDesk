@@ -1,7 +1,7 @@
 ﻿
 namespace DigaoDeskApp
 {
-    partial class FrmBranchCheckout
+    partial class FrmBranchSelector
     {
         /// <summary>
         /// Required designer variable.
