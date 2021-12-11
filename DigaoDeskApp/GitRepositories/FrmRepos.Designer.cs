@@ -53,12 +53,13 @@ namespace DigaoDeskApp
             this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
             this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
             this.btnPush = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             this.btnDifs = new System.Windows.Forms.ToolStripButton();
             this.btnShell = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
-            this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.btnMerge = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -187,6 +188,7 @@ namespace DigaoDeskApp
             this.btnCreateBranch,
             this.btnDeleteBranch,
             this.btnCherryPick,
+            this.btnMerge,
             this.btnPush,
             this.btnCancelOperation,
             this.btnDifs,
@@ -304,6 +306,16 @@ namespace DigaoDeskApp
             this.btnPush.Text = "Push";
             this.btnPush.Click += new System.EventHandler(this.btnPush_Click);
             // 
+            // btnCancelOperation
+            // 
+            this.btnCancelOperation.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelOperation.Image")));
+            this.btnCancelOperation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCancelOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelOperation.Name = "btnCancelOperation";
+            this.btnCancelOperation.Size = new System.Drawing.Size(93, 28);
+            this.btnCancelOperation.Text = "Cancel Op.";
+            this.btnCancelOperation.Click += new System.EventHandler(this.btnCancelOperation_Click);
+            // 
             // btnDifs
             // 
             this.btnDifs.Image = ((System.Drawing.Image)(resources.GetObject("btnDifs.Image")));
@@ -339,16 +351,6 @@ namespace DigaoDeskApp
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
-            // btnCancelOperation
-            // 
-            this.btnCancelOperation.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelOperation.Image")));
-            this.btnCancelOperation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCancelOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCancelOperation.Name = "btnCancelOperation";
-            this.btnCancelOperation.Size = new System.Drawing.Size(93, 28);
-            this.btnCancelOperation.Text = "Cancel Op.";
-            this.btnCancelOperation.Click += new System.EventHandler(this.btnCancelOperation_Click);
-            // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -357,6 +359,16 @@ namespace DigaoDeskApp
             this.splitter1.Size = new System.Drawing.Size(1208, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
+            // 
+            // btnMerge
+            // 
+            this.btnMerge.Image = ((System.Drawing.Image)(resources.GetObject("btnMerge.Image")));
+            this.btnMerge.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnMerge.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(61, 28);
+            this.btnMerge.Text = "Merge";
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // FrmRepos
             // 
@@ -412,5 +424,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
         private System.Windows.Forms.ToolStripButton btnCancelOperation;
+        private System.Windows.Forms.ToolStripButton btnMerge;
     }
 }

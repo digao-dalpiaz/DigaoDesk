@@ -469,6 +469,24 @@ namespace DigaoDeskApp
             }
         }
 
+        public void Merge()
+        {
+            FrmBranchCheckout f = new();
+            f.AddBranches(_repoCtrl.Branches);
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                DoBackground("Merge", () =>
+                {
+                    var from = f.GetSelected();
+                    var res = _repoCtrl.Merge(from, GetSignature(), GetMergeOptions());
+
+                    LogMergeResult(res);
+
+                }, true);
+            }
+        }
+
         public void Push()
         {
             DoBackground("Push", () =>

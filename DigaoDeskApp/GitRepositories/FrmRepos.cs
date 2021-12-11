@@ -243,6 +243,12 @@ namespace DigaoDeskApp
             r.CherryPick();
         }
 
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.Merge();
+        }
+
         private void btnPush_Click(object sender, EventArgs e)
         {
             var r = GetSel();
