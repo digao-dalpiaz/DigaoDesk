@@ -245,6 +245,9 @@ namespace DigaoDeskApp
 
         private Signature GetSignature()
         {
+            if (string.IsNullOrEmpty(Vars.Config.Git.Name)) throw new Exception("Git signature name is empty. Please check Settings!");
+            if (string.IsNullOrEmpty(Vars.Config.Git.Email)) throw new Exception("Git signature email is empty. Please check Settings!");
+
             return new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
         }
 
