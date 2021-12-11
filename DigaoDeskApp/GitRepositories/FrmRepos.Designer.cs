@@ -52,6 +52,7 @@ namespace DigaoDeskApp
             this.btnCreateBranch = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
             this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
+            this.btnMerge = new System.Windows.Forms.ToolStripButton();
             this.btnPush = new System.Windows.Forms.ToolStripButton();
             this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             this.btnDifs = new System.Windows.Forms.ToolStripButton();
@@ -59,7 +60,6 @@ namespace DigaoDeskApp
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.btnMerge = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -296,6 +296,16 @@ namespace DigaoDeskApp
             this.btnCherryPick.Text = "Cherry Pick";
             this.btnCherryPick.Click += new System.EventHandler(this.btnCherryPick_Click);
             // 
+            // btnMerge
+            // 
+            this.btnMerge.Image = ((System.Drawing.Image)(resources.GetObject("btnMerge.Image")));
+            this.btnMerge.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnMerge.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(69, 28);
+            this.btnMerge.Text = "Merge";
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            // 
             // btnPush
             // 
             this.btnPush.Image = ((System.Drawing.Image)(resources.GetObject("btnPush.Image")));
@@ -359,16 +369,6 @@ namespace DigaoDeskApp
             this.splitter1.Size = new System.Drawing.Size(1208, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
-            // 
-            // btnMerge
-            // 
-            this.btnMerge.Image = ((System.Drawing.Image)(resources.GetObject("btnMerge.Image")));
-            this.btnMerge.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnMerge.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(61, 28);
-            this.btnMerge.Text = "Merge";
-            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // FrmRepos
             // 
