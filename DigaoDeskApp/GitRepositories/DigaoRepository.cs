@@ -142,8 +142,7 @@ namespace DigaoDeskApp
                 _lastFetchTS = null;
             }
 
-            CheckIfUntrackedBranch();
-            if (_repoCtrl.Head.IsTracking)
+            if (_repoCtrl.Head.IsTracking && _repoCtrl.Head.TrackedBranch.Tip != null)
             {
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, _repoCtrl.Head.TrackedBranch.Tip);
                 _pendingUp = divergence.AheadBy.Value;
@@ -165,12 +164,12 @@ namespace DigaoDeskApp
             _currentOperation = _repoCtrl.Info.CurrentOperation.ToString();
         }
 
-        private void CheckIfUntrackedBranch()
+        private void UntrackBranchIfNeeded(Branch branch)
         {
-            if (_repoCtrl.Head.IsTracking && _repoCtrl.Head.TrackedBranch.Tip == null)
+            if (branch.IsTracking && branch.TrackedBranch.Tip == null)
             {
-                _repoCtrl.Branches.Update(_repoCtrl.Head, b => b.TrackedBranch = null);
-                Log($"Branch '{_repoCtrl.Head.FriendlyName}' is no longer tracked", Color.Fuchsia);
+                _repoCtrl.Branches.Update(branch, b => b.TrackedBranch = null);
+                Log($"Branch '{branch.FriendlyName}' is no longer tracked", Color.Fuchsia);
             }
         }
 
@@ -293,6 +292,11 @@ namespace DigaoDeskApp
             var refSpecs = remote.FetchRefSpecs.Select(x => x.Specification);
 
             Commands.Fetch(_repoCtrl, remote.Name, refSpecs, GetFetchOptions(), string.Empty);
+
+            foreach (var branch in _repoCtrl.Branches.Where(x => !x.IsRemote))
+            {
+                UntrackBranchIfNeeded(branch);
+            }
         }
 
         public void Fetch()
