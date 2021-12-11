@@ -479,6 +479,9 @@ namespace DigaoDeskApp
                 DoBackground("Merge", () =>
                 {
                     var from = f.ResultBranch;
+                    Log("From Branch: " + from.FriendlyName, Color.White);
+                    Log("Into Branch: " + _repoCtrl.Head.FriendlyName, Color.White);
+
                     var res = _repoCtrl.Merge(from, GetSignature(), GetMergeOptions());
 
                     LogMergeResult(res);
