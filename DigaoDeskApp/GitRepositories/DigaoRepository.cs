@@ -175,7 +175,7 @@ namespace DigaoDeskApp
         {
             List<string> difs = new();
 
-            foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName)))
+            foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking && !x.IsCurrentRepositoryHead))
             {
                 if (item.TrackedBranch.Tip == null) continue;
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(item.Tip, item.TrackedBranch.Tip);
@@ -336,7 +336,7 @@ namespace DigaoDeskApp
 
         public void SwitchBranch()
         {
-            var lst = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName));
+            var lst = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.IsCurrentRepositoryHead);
             if (!lst.Any())
             {
                 Messages.Error("There are no other local branches to switch");
@@ -423,7 +423,7 @@ namespace DigaoDeskApp
 
         public void DeleteBranch()
         {
-            var localBranches = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.FriendlyName.Equals(_repoCtrl.Head.FriendlyName));
+            var localBranches = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.IsCurrentRepositoryHead);
 
             if (!localBranches.Any())
             {
@@ -472,7 +472,7 @@ namespace DigaoDeskApp
         public void Merge()
         {
             FrmBranchCheckout f = new("Merge From Branch");
-            f.AddBranches(_repoCtrl.Branches);
+            f.AddBranches(_repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead));
 
             if (f.ShowDialog() == DialogResult.OK)
             {
