@@ -206,7 +206,7 @@ namespace DigaoDeskApp
             if (Vars.Config.GitAutoFetch)
             {
                 var r = GetSel();
-                r.Fetch();
+                r.FetchDirectly();
             }
         }
 
