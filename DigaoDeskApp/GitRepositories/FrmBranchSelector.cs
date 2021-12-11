@@ -2,7 +2,6 @@
 using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -75,7 +74,7 @@ namespace DigaoDeskApp
 
         public void AddBranches(IEnumerable<Branch> lst)
         {
-            foreach (var item in lst.OrderByDescending(x => x.Tip.Author.When.ToLocalTime()))
+            foreach (var item in lst)
             {
                 _internalBranchList.Add(new BranchInfo(item));
             }
@@ -90,6 +89,8 @@ namespace DigaoDeskApp
         {
             _gridBind = new(_internalBranchList);
             g.DataSource = _gridBind;
+
+            _gridBind.ApplySort("Timestamp DESC");
         }
 
         private void DoFilter()
