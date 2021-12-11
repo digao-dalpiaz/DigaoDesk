@@ -38,8 +38,12 @@ namespace DigaoDeskApp
             this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.boxButtons = new System.Windows.Forms.Panel();
+            this.boxLocation = new System.Windows.Forms.Panel();
+            this.ckLocal = new System.Windows.Forms.RadioButton();
+            this.ckRemote = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.boxButtons.SuspendLayout();
+            this.boxLocation.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
@@ -135,18 +139,51 @@ namespace DigaoDeskApp
             this.boxButtons.Size = new System.Drawing.Size(184, 48);
             this.boxButtons.TabIndex = 4;
             // 
-            // FrmBranchCheckout
+            // boxLocation
+            // 
+            this.boxLocation.Controls.Add(this.ckRemote);
+            this.boxLocation.Controls.Add(this.ckLocal);
+            this.boxLocation.Location = new System.Drawing.Point(8, 424);
+            this.boxLocation.Name = "boxLocation";
+            this.boxLocation.Size = new System.Drawing.Size(168, 40);
+            this.boxLocation.TabIndex = 5;
+            // 
+            // ckLocal
+            // 
+            this.ckLocal.AutoSize = true;
+            this.ckLocal.Checked = true;
+            this.ckLocal.Location = new System.Drawing.Point(8, 8);
+            this.ckLocal.Name = "ckLocal";
+            this.ckLocal.Size = new System.Drawing.Size(53, 19);
+            this.ckLocal.TabIndex = 0;
+            this.ckLocal.TabStop = true;
+            this.ckLocal.Text = "Local";
+            this.ckLocal.UseVisualStyleBackColor = true;
+            // 
+            // ckRemote
+            // 
+            this.ckRemote.AutoSize = true;
+            this.ckRemote.Location = new System.Drawing.Point(80, 8);
+            this.ckRemote.Name = "ckRemote";
+            this.ckRemote.Size = new System.Drawing.Size(66, 19);
+            this.ckRemote.TabIndex = 1;
+            this.ckRemote.TabStop = true;
+            this.ckRemote.Text = "Remote";
+            this.ckRemote.UseVisualStyleBackColor = true;
+            // 
+            // FrmBranchSelector
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(840, 472);
+            this.Controls.Add(this.boxLocation);
             this.Controls.Add(this.boxButtons);
             this.Controls.Add(this.g);
             this.Controls.Add(this.edSearch);
             this.MinimizeBox = false;
-            this.Name = "FrmBranchCheckout";
+            this.Name = "FrmBranchSelector";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -154,6 +191,8 @@ namespace DigaoDeskApp
             this.Load += new System.EventHandler(this.FrmBranchCheckout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.boxButtons.ResumeLayout(false);
+            this.boxLocation.ResumeLayout(false);
+            this.boxLocation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +208,8 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
         private System.Windows.Forms.Panel boxButtons;
+        private System.Windows.Forms.Panel boxLocation;
+        private System.Windows.Forms.RadioButton ckRemote;
+        private System.Windows.Forms.RadioButton ckLocal;
     }
 }
