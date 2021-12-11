@@ -10,9 +10,12 @@ using System.Windows.Forms;
 namespace DigaoDeskApp
 {
     class DigaoRepository
-    {
+    {    
 
-        private const string ORIGIN_HEAD = "origin/HEAD";
+        public static bool IsBranchOriginHead(Branch branch)
+        {
+            return branch.FriendlyName.Equals("origin/HEAD");
+        }
 
         private const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
             CheckoutNotifyFlags.None |
@@ -155,7 +158,7 @@ namespace DigaoDeskApp
 
             _branchesCount =
                 "Local: " + _repoCtrl.Branches.Count(x => !x.IsRemote) + 
-                " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !x.FriendlyName.Equals(ORIGIN_HEAD));
+                " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !IsBranchOriginHead(x));
 
             _othersBranchesDifs = GetOtherBranchesDifs();
 
@@ -361,7 +364,7 @@ namespace DigaoDeskApp
         public void CheckoutRemoteBranch()
         {
             var lstLocalBranchesTracked = _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking);
-            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !x.FriendlyName.Equals(ORIGIN_HEAD) && !lstLocalBranchesTracked.Any(y => y.TrackedBranch.FriendlyName.Equals(x.FriendlyName)));
+            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !IsBranchOriginHead(x) && !lstLocalBranchesTracked.Any(y => y.TrackedBranch.FriendlyName.Equals(x.FriendlyName)));
             if (!lstRemainingRemoteBranches.Any())
             {
                 Messages.Error("There are no other remote branches to checkout");
@@ -473,7 +476,7 @@ namespace DigaoDeskApp
         {
             FrmBranchCheckout f = new("Merge From Branch");
             f.AddBranches(_repoCtrl.Branches.Where(x => {
-                if (x.FriendlyName.Equals(ORIGIN_HEAD)) return false;
+                if (IsBranchOriginHead(x)) return false;
                 if (x.IsCurrentRepositoryHead) return false;
                 if (_repoCtrl.Head.IsTracking)
                 {

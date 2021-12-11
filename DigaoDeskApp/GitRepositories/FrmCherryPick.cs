@@ -31,7 +31,7 @@ namespace DigaoDeskApp
 
         private void FillBranches()
         {
-            foreach (var item in _repository.Branches.Where(x => x.IsRemote))
+            foreach (var item in _repository.Branches.Where(x => x.IsRemote && !DigaoRepository.IsBranchOriginHead(x)))
             {
                 edBranch.Items.Add(item.FriendlyName);
             }
