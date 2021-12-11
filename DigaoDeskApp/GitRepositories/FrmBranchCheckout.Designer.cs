@@ -141,7 +141,7 @@ namespace DigaoDeskApp
             this.Name = "FrmBranchCheckout";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Branch Checkout";
+            this.Text = "Select a branch";
             this.Load += new System.EventHandler(this.FrmBranchCheckout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.ResumeLayout(false);

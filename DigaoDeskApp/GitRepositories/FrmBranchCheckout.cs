@@ -62,9 +62,11 @@ namespace DigaoDeskApp
         private List<BranchInfo> _internalBranchList = new();
         private BindingListView<BranchInfo> _gridBind;
 
-        public FrmBranchCheckout()
+        public FrmBranchCheckout(string title)
         {
             InitializeComponent();
+
+            this.Text = title;
         }
 
         public void AddBranches(IEnumerable<Branch> lst)
