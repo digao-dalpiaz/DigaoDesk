@@ -472,7 +472,15 @@ namespace DigaoDeskApp
         public void Merge()
         {
             FrmBranchCheckout f = new("Merge From Branch");
-            f.AddBranches(_repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead));
+            f.AddBranches(_repoCtrl.Branches.Where(x => {
+                if (x.FriendlyName.Equals(ORIGIN_HEAD)) return false;
+                if (x.IsCurrentRepositoryHead) return false;
+                if (_repoCtrl.Head.IsTracking)
+                {
+                    if (_repoCtrl.Head.TrackedBranch.FriendlyName.Equals(x.FriendlyName)) return false;
+                }
+                return true;
+            }));
 
             if (f.ShowDialog() == DialogResult.OK)
             {
