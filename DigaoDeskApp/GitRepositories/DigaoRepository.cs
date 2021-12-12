@@ -10,24 +10,7 @@ using System.Windows.Forms;
 namespace DigaoDeskApp
 {
     class DigaoRepository
-    {    
-
-        public static bool IsBranchOriginHead(Branch branch)
-        {
-            return branch.FriendlyName.Equals("origin/HEAD");
-        }
-
-        public static bool IsBranchMaster(Branch branch)
-        {
-            var name = "/" + branch.FriendlyName;
-
-            return name.EndsWith("/master") || name.EndsWith("/main");
-        }
-
-        public static string GetBranchDisplayName(Branch branch)
-        {
-            return (!branch.IsRemote && !branch.IsTracking ? "[untracked] " : "") + branch.FriendlyName;
-        }
+    {
 
         private const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
             CheckoutNotifyFlags.None |
@@ -142,7 +125,7 @@ namespace DigaoDeskApp
 
         public void Refresh()
         {
-            _branch = GetBranchDisplayName(_repoCtrl.Head);
+            _branch = GitUtils.GetBranchDisplayName(_repoCtrl.Head);
 
             var fetchFile = Path.Combine(_path, ".git", "FETCH_HEAD");
             if (File.Exists(fetchFile))
@@ -169,7 +152,7 @@ namespace DigaoDeskApp
 
             _branchesCount =
                 "Local: " + _repoCtrl.Branches.Count(x => !x.IsRemote) + 
-                " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !IsBranchOriginHead(x));
+                " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !GitUtils.IsBranchOriginHead(x));
 
             _othersBranchesDifs = GetOtherBranchesDifs();
 
@@ -389,7 +372,7 @@ namespace DigaoDeskApp
 
         public void CheckoutRemoteBranch()
         {
-            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !IsBranchOriginHead(x) && FindLocalBranchByRemote(x) == null);
+            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !GitUtils.IsBranchOriginHead(x) && FindLocalBranchByRemote(x) == null);
             if (!lstRemainingRemoteBranches.Any())
             {
                 Messages.Error("There are no other remote branches to checkout");
@@ -501,7 +484,7 @@ namespace DigaoDeskApp
         {
             FrmBranchSelector f = new("Merge From Branch", true);
             f.AddBranches(_repoCtrl.Branches.Where(x => {
-                if (IsBranchOriginHead(x)) return false;
+                if (GitUtils.IsBranchOriginHead(x)) return false;
                 if (x.IsCurrentRepositoryHead) return false;
                 if (x.IsRemote)
                 {

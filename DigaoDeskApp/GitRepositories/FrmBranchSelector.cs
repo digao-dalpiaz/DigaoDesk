@@ -30,7 +30,7 @@ namespace DigaoDeskApp
             {
                 get
                 {
-                    return DigaoRepository.GetBranchDisplayName(_branch);
+                    return GitUtils.GetBranchDisplayName(_branch);
                 }
             }
 
@@ -121,7 +121,7 @@ namespace DigaoDeskApp
             if (g.Columns[e.ColumnIndex].Name.Equals(colName.Name))
             {
                 var branch = GetBranchByRow(g.Rows[e.RowIndex]);
-                if (DigaoRepository.IsBranchMaster(branch))
+                if (GitUtils.IsBranchMaster(branch))
                 {
                     e.CellStyle.ForeColor = Color.Green;
                     e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;

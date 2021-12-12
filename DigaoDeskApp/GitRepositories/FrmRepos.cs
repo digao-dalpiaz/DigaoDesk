@@ -111,7 +111,7 @@ namespace DigaoDeskApp
             if (g.Columns[e.ColumnIndex].Name.Equals(colBranch.Name))
             {
                 var repo = g.Rows[e.RowIndex].DataBoundItem as DigaoRepository;
-                if (DigaoRepository.IsBranchMaster(repo._repoCtrl.Head)) 
+                if (GitUtils.IsBranchMaster(repo._repoCtrl.Head)) 
                 {
                     e.CellStyle.ForeColor = Color.Green;
                     e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
