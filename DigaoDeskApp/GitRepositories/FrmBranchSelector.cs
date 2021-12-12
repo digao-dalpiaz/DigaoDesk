@@ -69,6 +69,7 @@ namespace DigaoDeskApp
 
             edSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             g.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            boxLocation.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             boxButtons.Anchor = AnchorStyles.Bottom;
 
             this.Text = title;
