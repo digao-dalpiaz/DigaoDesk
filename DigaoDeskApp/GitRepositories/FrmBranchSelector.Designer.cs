@@ -39,8 +39,8 @@ namespace DigaoDeskApp
             this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.boxButtons = new System.Windows.Forms.Panel();
             this.boxLocation = new System.Windows.Forms.Panel();
-            this.ckLocal = new System.Windows.Forms.RadioButton();
             this.ckRemote = new System.Windows.Forms.RadioButton();
+            this.ckLocal = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.boxButtons.SuspendLayout();
             this.boxLocation.SuspendLayout();
@@ -148,6 +148,18 @@ namespace DigaoDeskApp
             this.boxLocation.Size = new System.Drawing.Size(168, 40);
             this.boxLocation.TabIndex = 5;
             // 
+            // ckRemote
+            // 
+            this.ckRemote.AutoSize = true;
+            this.ckRemote.Location = new System.Drawing.Point(80, 8);
+            this.ckRemote.Name = "ckRemote";
+            this.ckRemote.Size = new System.Drawing.Size(66, 19);
+            this.ckRemote.TabIndex = 1;
+            this.ckRemote.TabStop = true;
+            this.ckRemote.Text = "Remote";
+            this.ckRemote.UseVisualStyleBackColor = true;
+            this.ckRemote.Click += new System.EventHandler(this.edSearch_TextChanged);
+            // 
             // ckLocal
             // 
             this.ckLocal.AutoSize = true;
@@ -159,17 +171,7 @@ namespace DigaoDeskApp
             this.ckLocal.TabStop = true;
             this.ckLocal.Text = "Local";
             this.ckLocal.UseVisualStyleBackColor = true;
-            // 
-            // ckRemote
-            // 
-            this.ckRemote.AutoSize = true;
-            this.ckRemote.Location = new System.Drawing.Point(80, 8);
-            this.ckRemote.Name = "ckRemote";
-            this.ckRemote.Size = new System.Drawing.Size(66, 19);
-            this.ckRemote.TabIndex = 1;
-            this.ckRemote.TabStop = true;
-            this.ckRemote.Text = "Remote";
-            this.ckRemote.UseVisualStyleBackColor = true;
+            this.ckLocal.Click += new System.EventHandler(this.edSearch_TextChanged);
             // 
             // FrmBranchSelector
             // 

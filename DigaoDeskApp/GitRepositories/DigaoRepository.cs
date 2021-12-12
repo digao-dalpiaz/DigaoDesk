@@ -353,7 +353,7 @@ namespace DigaoDeskApp
                 return;
             }
 
-            FrmBranchSelector f = new("Switch Local Branch");
+            FrmBranchSelector f = new("Switch Local Branch", false);
             f.AddBranches(lst);
 
             if (f.ShowDialog() == DialogResult.OK)
@@ -384,7 +384,7 @@ namespace DigaoDeskApp
                 return;
             }
 
-            FrmBranchSelector f = new("Checkout Remote Branch");
+            FrmBranchSelector f = new("Checkout Remote Branch", false);
             f.AddBranches(lstRemainingRemoteBranches);
 
             if (f.ShowDialog() == DialogResult.OK)
@@ -487,7 +487,7 @@ namespace DigaoDeskApp
 
         public void Merge()
         {
-            FrmBranchSelector f = new("Merge From Branch");
+            FrmBranchSelector f = new("Merge From Branch", true);
             f.AddBranches(_repoCtrl.Branches.Where(x => {
                 if (IsBranchOriginHead(x)) return false;
                 if (x.IsCurrentRepositoryHead) return false;

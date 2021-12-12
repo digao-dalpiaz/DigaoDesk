@@ -60,8 +60,9 @@ namespace DigaoDeskApp
 
         private List<BranchInfo> _internalBranchList = new();
         private BindingListView<BranchInfo> _gridBind;
+        private bool _useLocation;
 
-        public FrmBranchSelector(string title)
+        public FrmBranchSelector(string title, bool useLocation)
         {
             InitializeComponent();
 
@@ -70,6 +71,7 @@ namespace DigaoDeskApp
             boxButtons.Anchor = AnchorStyles.Bottom;
 
             this.Text = title;
+            this._useLocation = useLocation;
         }
 
         public void AddBranches(IEnumerable<Branch> lst)
@@ -82,27 +84,29 @@ namespace DigaoDeskApp
 
         private void FrmBranchCheckout_Load(object sender, EventArgs e)
         {
+            boxLocation.Visible = _useLocation;
+
             LoadGrid();
         }
 
         private void LoadGrid()
         {
             _gridBind = new(_internalBranchList);
-            g.DataSource = _gridBind;
-
             _gridBind.ApplySort("Timestamp DESC");
+            DoFilter();
+            
+            g.DataSource = _gridBind;
         }
 
         private void DoFilter()
         {
-            if (edSearch.Text != string.Empty)
-            {
-                _gridBind.ApplyFilter(x => x.Name.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase));
-            } 
-            else
-            {
-                _gridBind.RemoveFilter();
-            }
+            _gridBind.ApplyFilter(x => {
+                var branch = x.GetBranch();
+                    
+                return 
+                    (edSearch.Text == string.Empty || branch.FriendlyName.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase)) &&
+                    (!_useLocation || branch.IsRemote == ckRemote.Checked);
+            });
         }
 
         private void edSearch_TextChanged(object sender, EventArgs e)
@@ -129,6 +133,5 @@ namespace DigaoDeskApp
         {
             btnOK.PerformClick();
         }
-
     }
 }
