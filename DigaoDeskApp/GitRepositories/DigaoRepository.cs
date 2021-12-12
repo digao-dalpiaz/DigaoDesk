@@ -24,6 +24,11 @@ namespace DigaoDeskApp
             return name.EndsWith("/master") || name.EndsWith("/main");
         }
 
+        public static string GetBranchDisplayName(Branch branch)
+        {
+            return (!branch.IsRemote && !branch.IsTracking ? "[untracked] " : "") + branch.FriendlyName;
+        }
+
         private const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
             CheckoutNotifyFlags.None |
             CheckoutNotifyFlags.Dirty |
@@ -137,7 +142,7 @@ namespace DigaoDeskApp
 
         public void Refresh()
         {
-            _branch = _repoCtrl.Head.FriendlyName;
+            _branch = GetBranchDisplayName(_repoCtrl.Head);
 
             var fetchFile = Path.Combine(_path, ".git", "FETCH_HEAD");
             if (File.Exists(fetchFile))

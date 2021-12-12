@@ -30,7 +30,7 @@ namespace DigaoDeskApp
             {
                 get
                 {
-                    return _branch.FriendlyName;
+                    return DigaoRepository.GetBranchDisplayName(_branch);
                 }
             }
 
