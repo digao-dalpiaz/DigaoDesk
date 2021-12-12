@@ -165,7 +165,7 @@ namespace DigaoDeskApp
             this.colLocation.HeaderText = "Location";
             this.colLocation.Name = "colLocation";
             this.colLocation.ReadOnly = true;
-            this.colLocation.Width = 65;
+            this.colLocation.Width = 80;
             // 
             // colAuthor
             // 
