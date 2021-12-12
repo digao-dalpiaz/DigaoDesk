@@ -17,6 +17,13 @@ namespace DigaoDeskApp
             return branch.FriendlyName.Equals("origin/HEAD");
         }
 
+        public static bool IsBranchMaster(Branch branch)
+        {
+            var name = "/" + branch.FriendlyName;
+
+            return name.EndsWith("/master") || name.EndsWith("/main");
+        }
+
         private const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
             CheckoutNotifyFlags.None |
             CheckoutNotifyFlags.Dirty |

@@ -2,6 +2,7 @@
 using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -114,6 +115,29 @@ namespace DigaoDeskApp
             DoFilter();
         }
 
+        private void g_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (g.Columns[e.ColumnIndex].Name.Equals(colName.Name))
+            {
+                var branch = GetBranchByRow(g.Rows[e.RowIndex]);
+                if (DigaoRepository.IsBranchMaster(branch))
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
+                }
+            }
+        }
+
+        private void g_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnOK.PerformClick();
+        }
+
+        private Branch GetBranchByRow(DataGridViewRow row)
+        {
+            return (row.DataBoundItem as ObjectView<BranchInfo>).Object.GetBranch();
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (g.CurrentRow == null)
@@ -124,14 +148,10 @@ namespace DigaoDeskApp
 
             //
 
-            ResultBranch = (g.CurrentRow.DataBoundItem as ObjectView<BranchInfo>).Object.GetBranch();
+            ResultBranch = GetBranchByRow(g.CurrentRow);
 
             DialogResult = DialogResult.OK;
-        }        
-
-        private void g_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnOK.PerformClick();
         }
+
     }
 }

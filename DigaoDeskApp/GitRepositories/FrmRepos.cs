@@ -106,6 +106,19 @@ namespace DigaoDeskApp
             }            
         }
 
+        private void g_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (g.Columns[e.ColumnIndex].Name.Equals(colBranch.Name))
+            {
+                var repo = g.Rows[e.RowIndex].DataBoundItem as DigaoRepository;
+                if (DigaoRepository.IsBranchMaster(repo._repoCtrl.Head)) 
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
+                }
+            }
+        }
+
         public void DoBackground(Action proc)
         {
             Log(string.Empty, Color.Empty);
@@ -302,6 +315,6 @@ namespace DigaoDeskApp
         {
             edLog.Clear();
         }
-        
+
     }
 }

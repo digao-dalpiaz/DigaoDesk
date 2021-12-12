@@ -29,6 +29,7 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +82,14 @@ namespace DigaoDeskApp
             this.colOtherBranchesDifs,
             this.colLastFetch,
             this.colOperation});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.g.DefaultCellStyle = dataGridViewCellStyle1;
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 31);
             this.g.MultiSelect = false;
@@ -90,7 +99,9 @@ namespace DigaoDeskApp
             this.g.RowTemplate.Height = 25;
             this.g.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.g.Size = new System.Drawing.Size(1208, 256);
+            this.g.StandardTab = true;
             this.g.TabIndex = 0;
+            this.g.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.g_CellFormatting);
             // 
             // colName
             // 
