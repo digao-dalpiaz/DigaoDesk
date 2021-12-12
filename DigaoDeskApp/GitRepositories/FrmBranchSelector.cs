@@ -116,6 +116,11 @@ namespace DigaoDeskApp
             DoFilter();
         }
 
+        private Branch GetBranchByRow(DataGridViewRow row)
+        {
+            return (row.DataBoundItem as ObjectView<BranchInfo>).Object.GetBranch();
+        }
+
         private void g_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (g.Columns[e.ColumnIndex].Name.Equals(colName.Name))
@@ -132,11 +137,6 @@ namespace DigaoDeskApp
         private void g_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnOK.PerformClick();
-        }
-
-        private Branch GetBranchByRow(DataGridViewRow row)
-        {
-            return (row.DataBoundItem as ObjectView<BranchInfo>).Object.GetBranch();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
