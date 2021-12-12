@@ -231,7 +231,6 @@ namespace DigaoDeskApp
             }
         }
 
-
         private void btnFetch_Click(object sender, EventArgs e)
         {
             var r = GetSel();
