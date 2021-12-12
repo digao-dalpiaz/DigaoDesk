@@ -34,14 +34,14 @@ namespace DigaoDeskApp
             this.btnCancel = new System.Windows.Forms.Button();
             this.edSearch = new System.Windows.Forms.TextBox();
             this.g = new System.Windows.Forms.DataGridView();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.boxButtons = new System.Windows.Forms.Panel();
             this.boxLocation = new System.Windows.Forms.Panel();
             this.ckRemote = new System.Windows.Forms.RadioButton();
             this.ckLocal = new System.Windows.Forms.RadioButton();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.boxButtons.SuspendLayout();
             this.boxLocation.SuspendLayout();
@@ -108,38 +108,6 @@ namespace DigaoDeskApp
             this.g.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.g_CellDoubleClick);
             this.g.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.g_CellFormatting);
             // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colLocation
-            // 
-            this.colLocation.DataPropertyName = "Location";
-            this.colLocation.HeaderText = "Location";
-            this.colLocation.Name = "colLocation";
-            this.colLocation.ReadOnly = true;
-            this.colLocation.Width = 65;
-            // 
-            // colAuthor
-            // 
-            this.colAuthor.DataPropertyName = "Author";
-            this.colAuthor.HeaderText = "Last Commit Author";
-            this.colAuthor.Name = "colAuthor";
-            this.colAuthor.ReadOnly = true;
-            this.colAuthor.Width = 150;
-            // 
-            // colDateTime
-            // 
-            this.colDateTime.DataPropertyName = "Timestamp";
-            this.colDateTime.HeaderText = "Last Commit Date/Time";
-            this.colDateTime.Name = "colDateTime";
-            this.colDateTime.ReadOnly = true;
-            this.colDateTime.Width = 120;
-            // 
             // boxButtons
             // 
             this.boxButtons.Controls.Add(this.btnCancel);
@@ -183,6 +151,38 @@ namespace DigaoDeskApp
             this.ckLocal.UseVisualStyleBackColor = true;
             this.ckLocal.Click += new System.EventHandler(this.edSearch_TextChanged);
             // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colLocation
+            // 
+            this.colLocation.DataPropertyName = "Location";
+            this.colLocation.HeaderText = "Location";
+            this.colLocation.Name = "colLocation";
+            this.colLocation.ReadOnly = true;
+            this.colLocation.Width = 65;
+            // 
+            // colAuthor
+            // 
+            this.colAuthor.DataPropertyName = "Author";
+            this.colAuthor.HeaderText = "Last Commit Author";
+            this.colAuthor.Name = "colAuthor";
+            this.colAuthor.ReadOnly = true;
+            this.colAuthor.Width = 150;
+            // 
+            // colDateTime
+            // 
+            this.colDateTime.DataPropertyName = "Timestamp";
+            this.colDateTime.HeaderText = "Last Commit Date/Time";
+            this.colDateTime.Name = "colDateTime";
+            this.colDateTime.ReadOnly = true;
+            this.colDateTime.Width = 150;
+            // 
             // FrmBranchSelector
             // 
             this.AcceptButton = this.btnOK;
@@ -215,13 +215,13 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox edSearch;
         private System.Windows.Forms.DataGridView g;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
         private System.Windows.Forms.Panel boxButtons;
         private System.Windows.Forms.Panel boxLocation;
         private System.Windows.Forms.RadioButton ckRemote;
         private System.Windows.Forms.RadioButton ckLocal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
     }
 }
