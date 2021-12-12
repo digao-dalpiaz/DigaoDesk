@@ -52,7 +52,7 @@ namespace DigaoDeskApp
             this.btnOK.Location = new System.Drawing.Point(8, 8);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(80, 32);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -63,7 +63,7 @@ namespace DigaoDeskApp
             this.btnCancel.Location = new System.Drawing.Point(96, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -147,7 +147,7 @@ namespace DigaoDeskApp
             this.boxButtons.Location = new System.Drawing.Point(328, 424);
             this.boxButtons.Name = "boxButtons";
             this.boxButtons.Size = new System.Drawing.Size(184, 48);
-            this.boxButtons.TabIndex = 4;
+            this.boxButtons.TabIndex = 3;
             // 
             // boxLocation
             // 
@@ -156,7 +156,7 @@ namespace DigaoDeskApp
             this.boxLocation.Location = new System.Drawing.Point(8, 424);
             this.boxLocation.Name = "boxLocation";
             this.boxLocation.Size = new System.Drawing.Size(168, 40);
-            this.boxLocation.TabIndex = 5;
+            this.boxLocation.TabIndex = 2;
             // 
             // ckRemote
             // 
