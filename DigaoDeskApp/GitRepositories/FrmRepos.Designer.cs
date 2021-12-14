@@ -29,7 +29,7 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,14 +55,14 @@ namespace DigaoDeskApp
             this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
             this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
             this.btnMerge = new System.Windows.Forms.ToolStripButton();
+            this.btnSyncWithMaster = new System.Windows.Forms.ToolStripButton();
             this.btnPush = new System.Windows.Forms.ToolStripButton();
             this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             this.btnDifs = new System.Windows.Forms.ToolStripButton();
             this.btnShell = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.btnRepoConfig = new System.Windows.Forms.ToolStripButton();
-            this.btnSyncWithMaster = new System.Windows.Forms.ToolStripButton();
+            this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
@@ -86,16 +86,16 @@ namespace DigaoDeskApp
             this.colLastFetch,
             this.colOperation,
             this.colMasterCompare});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.g.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.g.DefaultCellStyle = dataGridViewCellStyle1;
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
-            this.g.Location = new System.Drawing.Point(0, 31);
+            this.g.Location = new System.Drawing.Point(0, 47);
             this.g.MultiSelect = false;
             this.g.Name = "g";
             this.g.ReadOnly = true;
@@ -191,10 +191,10 @@ namespace DigaoDeskApp
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.edLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edLog.HideSelection = false;
-            this.edLog.Location = new System.Drawing.Point(0, 295);
+            this.edLog.Location = new System.Drawing.Point(0, 311);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
-            this.edLog.Size = new System.Drawing.Size(1419, 353);
+            this.edLog.Size = new System.Drawing.Size(1419, 337);
             this.edLog.TabIndex = 1;
             this.edLog.Text = "";
             // 
@@ -222,194 +222,228 @@ namespace DigaoDeskApp
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(1419, 31);
+            this.toolBar.Size = new System.Drawing.Size(1419, 47);
             this.toolBar.TabIndex = 2;
             this.toolBar.Text = "toolStrip1";
             // 
             // btnRefresh
             // 
+            this.btnRefresh.AutoSize = false;
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(91, 28);
+            this.btnRefresh.Size = new System.Drawing.Size(67, 44);
             this.btnRefresh.Text = "Refresh All";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnFetchAll
             // 
+            this.btnFetchAll.AutoSize = false;
             this.btnFetchAll.Image = ((System.Drawing.Image)(resources.GetObject("btnFetchAll.Image")));
             this.btnFetchAll.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnFetchAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFetchAll.Name = "btnFetchAll";
-            this.btnFetchAll.Size = new System.Drawing.Size(81, 28);
+            this.btnFetchAll.Size = new System.Drawing.Size(67, 44);
             this.btnFetchAll.Text = "Fetch All";
+            this.btnFetchAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnFetchAll.Click += new System.EventHandler(this.btnFetchAll_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 47);
             // 
             // btnFetch
             // 
+            this.btnFetch.AutoSize = false;
             this.btnFetch.Image = ((System.Drawing.Image)(resources.GetObject("btnFetch.Image")));
             this.btnFetch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnFetch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFetch.Name = "btnFetch";
-            this.btnFetch.Size = new System.Drawing.Size(64, 28);
+            this.btnFetch.Size = new System.Drawing.Size(67, 44);
             this.btnFetch.Text = "Fetch";
+            this.btnFetch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnFetch.Click += new System.EventHandler(this.btnFetch_Click);
             // 
             // btnPull
             // 
+            this.btnPull.AutoSize = false;
             this.btnPull.Image = ((System.Drawing.Image)(resources.GetObject("btnPull.Image")));
             this.btnPull.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnPull.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPull.Name = "btnPull";
-            this.btnPull.Size = new System.Drawing.Size(55, 28);
+            this.btnPull.Size = new System.Drawing.Size(67, 44);
             this.btnPull.Text = "Pull";
+            this.btnPull.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
             // 
             // btnSwitchBranch
             // 
+            this.btnSwitchBranch.AutoSize = false;
             this.btnSwitchBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchBranch.Image")));
             this.btnSwitchBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnSwitchBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSwitchBranch.Name = "btnSwitchBranch";
-            this.btnSwitchBranch.Size = new System.Drawing.Size(67, 28);
+            this.btnSwitchBranch.Size = new System.Drawing.Size(67, 44);
             this.btnSwitchBranch.Text = "Switch";
+            this.btnSwitchBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSwitchBranch.Click += new System.EventHandler(this.btnSwitchBranch_Click);
             // 
             // btnCheckoutRemote
             // 
+            this.btnCheckoutRemote.AutoSize = false;
             this.btnCheckoutRemote.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckoutRemote.Image")));
             this.btnCheckoutRemote.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCheckoutRemote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCheckoutRemote.Name = "btnCheckoutRemote";
-            this.btnCheckoutRemote.Size = new System.Drawing.Size(86, 28);
+            this.btnCheckoutRemote.Size = new System.Drawing.Size(67, 44);
             this.btnCheckoutRemote.Text = "Checkout";
+            this.btnCheckoutRemote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCheckoutRemote.Click += new System.EventHandler(this.btnCheckoutRemote_Click);
             // 
             // btnCreateBranch
             // 
+            this.btnCreateBranch.AutoSize = false;
             this.btnCreateBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateBranch.Image")));
             this.btnCreateBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCreateBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCreateBranch.Name = "btnCreateBranch";
-            this.btnCreateBranch.Size = new System.Drawing.Size(99, 28);
+            this.btnCreateBranch.Size = new System.Drawing.Size(67, 44);
             this.btnCreateBranch.Text = "New Branch";
+            this.btnCreateBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
             // 
             // btnDeleteBranch
             // 
+            this.btnDeleteBranch.AutoSize = false;
             this.btnDeleteBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteBranch.Image")));
             this.btnDeleteBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnDeleteBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDeleteBranch.Name = "btnDeleteBranch";
-            this.btnDeleteBranch.Size = new System.Drawing.Size(108, 28);
-            this.btnDeleteBranch.Text = "Delete Branch";
+            this.btnDeleteBranch.Size = new System.Drawing.Size(67, 44);
+            this.btnDeleteBranch.Text = "Del Branch";
+            this.btnDeleteBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
             // 
             // btnCherryPick
             // 
+            this.btnCherryPick.AutoSize = false;
             this.btnCherryPick.Image = ((System.Drawing.Image)(resources.GetObject("btnCherryPick.Image")));
             this.btnCherryPick.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCherryPick.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCherryPick.Name = "btnCherryPick";
-            this.btnCherryPick.Size = new System.Drawing.Size(95, 28);
+            this.btnCherryPick.Size = new System.Drawing.Size(67, 44);
             this.btnCherryPick.Text = "Cherry Pick";
+            this.btnCherryPick.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCherryPick.Click += new System.EventHandler(this.btnCherryPick_Click);
             // 
             // btnMerge
             // 
+            this.btnMerge.AutoSize = false;
             this.btnMerge.Image = ((System.Drawing.Image)(resources.GetObject("btnMerge.Image")));
             this.btnMerge.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMerge.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(69, 28);
+            this.btnMerge.Size = new System.Drawing.Size(67, 44);
             this.btnMerge.Text = "Merge";
+            this.btnMerge.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            // 
+            // btnSyncWithMaster
+            // 
+            this.btnSyncWithMaster.AutoSize = false;
+            this.btnSyncWithMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnSyncWithMaster.Image")));
+            this.btnSyncWithMaster.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSyncWithMaster.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSyncWithMaster.Name = "btnSyncWithMaster";
+            this.btnSyncWithMaster.Size = new System.Drawing.Size(67, 44);
+            this.btnSyncWithMaster.Text = "Sync";
+            this.btnSyncWithMaster.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSyncWithMaster.Click += new System.EventHandler(this.btnSyncWithMaster_Click);
             // 
             // btnPush
             // 
+            this.btnPush.AutoSize = false;
             this.btnPush.Image = ((System.Drawing.Image)(resources.GetObject("btnPush.Image")));
             this.btnPush.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnPush.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPush.Name = "btnPush";
-            this.btnPush.Size = new System.Drawing.Size(61, 28);
+            this.btnPush.Size = new System.Drawing.Size(67, 44);
             this.btnPush.Text = "Push";
+            this.btnPush.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPush.Click += new System.EventHandler(this.btnPush_Click);
             // 
             // btnCancelOperation
             // 
+            this.btnCancelOperation.AutoSize = false;
             this.btnCancelOperation.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelOperation.Image")));
             this.btnCancelOperation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCancelOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancelOperation.Name = "btnCancelOperation";
-            this.btnCancelOperation.Size = new System.Drawing.Size(93, 28);
-            this.btnCancelOperation.Text = "Cancel Op.";
+            this.btnCancelOperation.Size = new System.Drawing.Size(67, 44);
+            this.btnCancelOperation.Text = "Cancel Op";
+            this.btnCancelOperation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelOperation.Click += new System.EventHandler(this.btnCancelOperation_Click);
             // 
             // btnDifs
             // 
+            this.btnDifs.AutoSize = false;
             this.btnDifs.Image = ((System.Drawing.Image)(resources.GetObject("btnDifs.Image")));
             this.btnDifs.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnDifs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDifs.Name = "btnDifs";
-            this.btnDifs.Size = new System.Drawing.Size(55, 28);
+            this.btnDifs.Size = new System.Drawing.Size(67, 44);
             this.btnDifs.Text = "Difs";
+            this.btnDifs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDifs.Click += new System.EventHandler(this.btnDifs_Click);
             // 
             // btnShell
             // 
+            this.btnShell.AutoSize = false;
             this.btnShell.Image = ((System.Drawing.Image)(resources.GetObject("btnShell.Image")));
             this.btnShell.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnShell.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShell.Name = "btnShell";
-            this.btnShell.Size = new System.Drawing.Size(60, 28);
+            this.btnShell.Size = new System.Drawing.Size(67, 44);
             this.btnShell.Text = "Shell";
+            this.btnShell.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnShell.Click += new System.EventHandler(this.btnShell_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
-            // 
-            // btnClearLog
-            // 
-            this.btnClearLog.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLog.Image")));
-            this.btnClearLog.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnClearLog.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(85, 28);
-            this.btnClearLog.Text = "Clear Log";
-            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 47);
             // 
             // btnRepoConfig
             // 
+            this.btnRepoConfig.AutoSize = false;
             this.btnRepoConfig.Image = ((System.Drawing.Image)(resources.GetObject("btnRepoConfig.Image")));
             this.btnRepoConfig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnRepoConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRepoConfig.Name = "btnRepoConfig";
-            this.btnRepoConfig.Size = new System.Drawing.Size(101, 28);
-            this.btnRepoConfig.Text = "Repo Config";
+            this.btnRepoConfig.Size = new System.Drawing.Size(67, 44);
+            this.btnRepoConfig.Text = "Config";
+            this.btnRepoConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRepoConfig.Click += new System.EventHandler(this.btnRepoConfig_Click);
             // 
-            // btnSyncWithMaster
+            // btnClearLog
             // 
-            this.btnSyncWithMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnSyncWithMaster.Image")));
-            this.btnSyncWithMaster.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnSyncWithMaster.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSyncWithMaster.Name = "btnSyncWithMaster";
-            this.btnSyncWithMaster.Size = new System.Drawing.Size(60, 28);
-            this.btnSyncWithMaster.Text = "Sync";
-            this.btnSyncWithMaster.Click += new System.EventHandler(this.btnSyncWithMaster_Click);
+            this.btnClearLog.AutoSize = false;
+            this.btnClearLog.Image = ((System.Drawing.Image)(resources.GetObject("btnClearLog.Image")));
+            this.btnClearLog.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnClearLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClearLog.Name = "btnClearLog";
+            this.btnClearLog.Size = new System.Drawing.Size(67, 44);
+            this.btnClearLog.Text = "Clear Log";
+            this.btnClearLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 287);
+            this.splitter1.Location = new System.Drawing.Point(0, 303);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(1419, 8);
             this.splitter1.TabIndex = 3;

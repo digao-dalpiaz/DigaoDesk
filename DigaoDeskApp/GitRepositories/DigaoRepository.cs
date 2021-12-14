@@ -544,8 +544,6 @@ namespace DigaoDeskApp
         {
             DoBackground("Merge (Sync from Master Branch)", () =>
             {
-                if (string.IsNullOrEmpty(Config.MasterBranch)) throw new Exception("Master branch is not configured");
-
                 var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
                 if (masterBranch == null) throw new Exception("Master branch not found");
 

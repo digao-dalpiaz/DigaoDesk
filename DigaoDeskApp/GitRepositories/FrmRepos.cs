@@ -301,7 +301,17 @@ namespace DigaoDeskApp
         private void btnSyncWithMaster_Click(object sender, EventArgs e)
         {
             var r = GetSel();
-            r.SyncWithMaster();
+
+            if (string.IsNullOrEmpty(r.Config.MasterBranch))
+            {
+                Messages.Error("Master branch is not configured");
+                return;
+            }
+
+            if (Messages.Question($"Confirm merge from branch '{r.Config.MasterBranch}'?"))
+            {
+                r.SyncWithMaster();
+            }            
         }
 
         private void btnPush_Click(object sender, EventArgs e)
