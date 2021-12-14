@@ -29,7 +29,7 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +64,7 @@ namespace DigaoDeskApp
             this.btnRepoConfig = new System.Windows.Forms.ToolStripButton();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -86,14 +87,14 @@ namespace DigaoDeskApp
             this.colLastFetch,
             this.colOperation,
             this.colMasterCompare});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.g.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.g.DefaultCellStyle = dataGridViewCellStyle2;
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 47);
             this.g.MultiSelect = false;
@@ -204,20 +205,21 @@ namespace DigaoDeskApp
             this.btnRefresh,
             this.btnFetchAll,
             this.toolStripSeparator1,
-            this.btnFetch,
-            this.btnPull,
-            this.btnSwitchBranch,
-            this.btnCheckoutRemote,
             this.btnCreateBranch,
             this.btnDeleteBranch,
+            this.btnSwitchBranch,
+            this.btnCheckoutRemote,
+            this.toolStripSeparator3,
+            this.btnFetch,
+            this.btnPull,
             this.btnCherryPick,
             this.btnMerge,
             this.btnSyncWithMaster,
-            this.btnPush,
-            this.btnCancelOperation,
             this.btnDifs,
-            this.btnShell,
+            this.btnCancelOperation,
+            this.btnPush,
             this.toolStripSeparator2,
+            this.btnShell,
             this.btnRepoConfig,
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
@@ -449,6 +451,11 @@ namespace DigaoDeskApp
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 47);
+            // 
             // FrmRepos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -507,5 +514,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMasterCompare;
         private System.Windows.Forms.ToolStripButton btnSyncWithMaster;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
