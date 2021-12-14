@@ -232,17 +232,20 @@ namespace DigaoDeskApp
         {
             if (Vars.Config.GitAutoFetch)
             {
-                FrmWait.Start("Fetching...");
-                try
+                Messages.SurroundMessageException(() =>
                 {
-                    var r = GetSel();
-                    r.FetchDirectly();
-                    _gridBind.ResetBindings(false);
-                }
-                finally
-                {
-                    FrmWait.Stop();
-                }                
+                    FrmWait.Start("Fetching...");
+                    try
+                    {
+                        var r = GetSel();
+                        Messages.SurroundExceptionThenThrowMessageException(() => r.FetchDirectly());
+                        _gridBind.ResetBindings(false);
+                    }
+                    finally
+                    {
+                        FrmWait.Stop();
+                    }
+                });
             }
         }
 
