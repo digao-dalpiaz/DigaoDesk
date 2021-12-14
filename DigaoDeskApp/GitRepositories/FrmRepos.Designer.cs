@@ -29,7 +29,7 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +41,7 @@ namespace DigaoDeskApp
             this.colOtherBranchesDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastFetch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMasterCompare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edLog = new DigaoDeskApp.RichTextBoxEx();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
@@ -60,6 +61,8 @@ namespace DigaoDeskApp
             this.btnShell = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
+            this.btnRepoConfig = new System.Windows.Forms.ToolStripButton();
+            this.btnSyncWithMaster = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
@@ -81,15 +84,16 @@ namespace DigaoDeskApp
             this.colDifs,
             this.colOtherBranchesDifs,
             this.colLastFetch,
-            this.colOperation});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.g.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colOperation,
+            this.colMasterCompare});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.g.DefaultCellStyle = dataGridViewCellStyle3;
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 31);
             this.g.MultiSelect = false;
@@ -98,7 +102,7 @@ namespace DigaoDeskApp
             this.g.RowHeadersVisible = false;
             this.g.RowTemplate.Height = 25;
             this.g.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.g.Size = new System.Drawing.Size(1208, 256);
+            this.g.Size = new System.Drawing.Size(1419, 256);
             this.g.StandardTab = true;
             this.g.TabIndex = 0;
             this.g.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.g_CellFormatting);
@@ -174,6 +178,14 @@ namespace DigaoDeskApp
             this.colOperation.Name = "colOperation";
             this.colOperation.ReadOnly = true;
             // 
+            // colMasterCompare
+            // 
+            this.colMasterCompare.DataPropertyName = "MasterBranchCompare";
+            this.colMasterCompare.HeaderText = "Master Branch Compare";
+            this.colMasterCompare.Name = "colMasterCompare";
+            this.colMasterCompare.ReadOnly = true;
+            this.colMasterCompare.Width = 150;
+            // 
             // edLog
             // 
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -182,7 +194,7 @@ namespace DigaoDeskApp
             this.edLog.Location = new System.Drawing.Point(0, 295);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
-            this.edLog.Size = new System.Drawing.Size(1208, 353);
+            this.edLog.Size = new System.Drawing.Size(1419, 353);
             this.edLog.TabIndex = 1;
             this.edLog.Text = "";
             // 
@@ -200,15 +212,17 @@ namespace DigaoDeskApp
             this.btnDeleteBranch,
             this.btnCherryPick,
             this.btnMerge,
+            this.btnSyncWithMaster,
             this.btnPush,
             this.btnCancelOperation,
             this.btnDifs,
             this.btnShell,
             this.toolStripSeparator2,
+            this.btnRepoConfig,
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(1208, 31);
+            this.toolBar.Size = new System.Drawing.Size(1419, 31);
             this.toolBar.TabIndex = 2;
             this.toolBar.Text = "toolStrip1";
             // 
@@ -372,12 +386,32 @@ namespace DigaoDeskApp
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
+            // btnRepoConfig
+            // 
+            this.btnRepoConfig.Image = ((System.Drawing.Image)(resources.GetObject("btnRepoConfig.Image")));
+            this.btnRepoConfig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRepoConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRepoConfig.Name = "btnRepoConfig";
+            this.btnRepoConfig.Size = new System.Drawing.Size(101, 28);
+            this.btnRepoConfig.Text = "Repo Config";
+            this.btnRepoConfig.Click += new System.EventHandler(this.btnRepoConfig_Click);
+            // 
+            // btnSyncWithMaster
+            // 
+            this.btnSyncWithMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnSyncWithMaster.Image")));
+            this.btnSyncWithMaster.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSyncWithMaster.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSyncWithMaster.Name = "btnSyncWithMaster";
+            this.btnSyncWithMaster.Size = new System.Drawing.Size(60, 28);
+            this.btnSyncWithMaster.Text = "Sync";
+            this.btnSyncWithMaster.Click += new System.EventHandler(this.btnSyncWithMaster_Click);
+            // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter1.Location = new System.Drawing.Point(0, 287);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1208, 8);
+            this.splitter1.Size = new System.Drawing.Size(1419, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -385,7 +419,7 @@ namespace DigaoDeskApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1208, 648);
+            this.ClientSize = new System.Drawing.Size(1419, 648);
             this.Controls.Add(this.edLog);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.g);
@@ -425,6 +459,9 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnCreateBranch;
         private System.Windows.Forms.ToolStripButton btnCherryPick;
         private System.Windows.Forms.ToolStripButton btnPush;
+        private System.Windows.Forms.ToolStripButton btnCancelOperation;
+        private System.Windows.Forms.ToolStripButton btnMerge;
+        private System.Windows.Forms.ToolStripButton btnRepoConfig;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranchesCount;
@@ -434,7 +471,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colOtherBranchesDifs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
-        private System.Windows.Forms.ToolStripButton btnCancelOperation;
-        private System.Windows.Forms.ToolStripButton btnMerge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMasterCompare;
+        private System.Windows.Forms.ToolStripButton btnSyncWithMaster;
     }
 }

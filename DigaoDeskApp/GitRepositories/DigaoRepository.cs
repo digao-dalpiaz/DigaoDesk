@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
-    class DigaoRepository
+    public class DigaoRepository
     {
 
         private const CheckoutNotifyFlags CHECKOUT_NOTIFY_FLAGS = 
@@ -22,6 +22,8 @@ namespace DigaoDeskApp
 
         private string _path;
         public Repository _repoCtrl;
+
+        public RepositoryConfigContents Config;
 
         private string _name;
         public string Name
@@ -110,6 +112,15 @@ namespace DigaoDeskApp
             }
         }
 
+        private string _masterBranchCompare;
+        public string MasterBranchCompare
+        {
+            get
+            {
+                return _masterBranchCompare;
+            }
+        }
+
         public DigaoRepository(string path)
         {
             _path = path;
@@ -157,6 +168,32 @@ namespace DigaoDeskApp
             _othersBranchesDifs = GetOtherBranchesDifs();
 
             _currentOperation = _repoCtrl.Info.CurrentOperation.ToString();
+
+            string masterComp = null;
+            if (!string.IsNullOrEmpty(Config.MasterBranch))
+            {
+                var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
+                if (masterBranch == null)
+                {
+                    masterComp= "???";
+                } else
+                if (GitUtils.IsSameBranch(_repoCtrl.Head, masterBranch) || (_repoCtrl.Head.IsTracking && GitUtils.IsSameBranch(_repoCtrl.Head.TrackedBranch, masterBranch)))
+                {
+                    masterComp = "self";
+                }
+                else
+                {
+                    var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, masterBranch.Tip);
+
+                    List<string> props = new();
+
+                    if (divergence.AheadBy.Value > 0) props.Add($"Ahead: {divergence.AheadBy.Value}");
+                    if (divergence.BehindBy.Value > 0) props.Add($"Behind: {divergence.BehindBy.Value}");
+
+                    masterComp = string.Join(", ", props);
+                }
+            }
+            _masterBranchCompare = masterComp;
         }
 
         private void UntrackBranchIfNeeded(Branch branch)
@@ -498,16 +535,32 @@ namespace DigaoDeskApp
             {
                 DoBackground("Merge", () =>
                 {
-                    var from = f.ResultBranch;
-                    Log("From Branch: " + from.FriendlyName, Color.White);
-                    Log("Into Branch: " + _repoCtrl.Head.FriendlyName, Color.White);
-
-                    var res = _repoCtrl.Merge(from, GetSignature(), GetMergeOptions());
-
-                    LogMergeResult(res);
-
+                    InternalMerge(f.ResultBranch);
                 }, true);
             }
+        }
+
+        public void SyncWithMaster()
+        {
+            DoBackground("Merge (Sync from Master Branch)", () =>
+            {
+                if (string.IsNullOrEmpty(Config.MasterBranch)) throw new Exception("Master branch is not configured");
+
+                var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
+                if (masterBranch == null) throw new Exception("Master branch not found");
+
+                InternalMerge(masterBranch);
+            }, true);
+        }
+
+        private void InternalMerge(Branch from)
+        {
+            Log("From Branch: " + from.FriendlyName, Color.White);
+            Log("Into Branch: " + _repoCtrl.Head.FriendlyName, Color.White);
+
+            var res = _repoCtrl.Merge(from, GetSignature(), GetMergeOptions());
+
+            LogMergeResult(res);
         }
 
         public void Push()

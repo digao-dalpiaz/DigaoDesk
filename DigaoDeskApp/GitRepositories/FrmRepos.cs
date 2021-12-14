@@ -58,6 +58,8 @@ namespace DigaoDeskApp
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
+            RepositoriesStore.Save(_repos);
+
             foreach (var repo in _repos)
             {
                 repo.FreeCtrl();
@@ -96,6 +98,8 @@ namespace DigaoDeskApp
                 return;
             }
 
+            var lstConfigItems = RepositoriesStore.Load();
+
             var subfolderList = Directory.GetDirectories(dir);
             foreach (var subfolder in subfolderList)
             {
@@ -103,6 +107,16 @@ namespace DigaoDeskApp
 
                 DigaoRepository r = new(subfolder);
                 _repos.Add(r);
+
+                var configItem = lstConfigItems.Find(x => x.Name.Equals(r.Name, StringComparison.InvariantCultureIgnoreCase));
+                if (configItem != null)
+                {
+                    r.Config = configItem.Config;
+                } 
+                else
+                {
+                    r.Config = new();
+                }
             }            
         }
 
@@ -284,6 +298,12 @@ namespace DigaoDeskApp
             r.Merge();
         }
 
+        private void btnSyncWithMaster_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+            r.SyncWithMaster();
+        }
+
         private void btnPush_Click(object sender, EventArgs e)
         {
             if (!Messages.Question("Confirm Push?")) return;
@@ -308,6 +328,18 @@ namespace DigaoDeskApp
         {
             var r = GetSel();
             r.OpenShell();
+        }
+
+        private void btnRepoConfig_Click(object sender, EventArgs e)
+        {
+            var r = GetSel();
+
+            FrmRepositoryConfig f = new(r.Config);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                r.Refresh();
+                _gridBind.ResetBindings(false);
+            }
         }
 
         private void btnClearLog_Click(object sender, EventArgs e)

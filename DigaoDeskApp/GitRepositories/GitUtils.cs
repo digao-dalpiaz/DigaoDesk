@@ -22,5 +22,10 @@ namespace DigaoDeskApp
             return (!branch.IsRemote && !branch.IsTracking ? "[untracked] " : "") + branch.FriendlyName;
         }
 
+        public static bool IsSameBranch(Branch branch1, Branch branch2)
+        {
+            return branch1.FriendlyName.Equals(branch2.FriendlyName);
+        }
+
     }
 }
