@@ -237,6 +237,7 @@ namespace DigaoDeskApp
                 {
                     var r = GetSel();
                     r.FetchDirectly();
+                    _gridBind.ResetBindings(false);
                 }
                 finally
                 {
@@ -300,6 +301,7 @@ namespace DigaoDeskApp
 
         private void btnSyncWithMaster_Click(object sender, EventArgs e)
         {
+            CheckForAutoFetch();
             var r = GetSel();
 
             if (string.IsNullOrEmpty(r.Config.MasterBranch))
