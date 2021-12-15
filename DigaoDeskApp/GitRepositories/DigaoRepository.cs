@@ -545,11 +545,14 @@ namespace DigaoDeskApp
         {
             DoBackground("Merge (Sync from Master Branch)", () =>
             {
-                Log("Fetching...", Color.Cyan);
-                FetchDirectly();
-
                 var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
                 if (masterBranch == null) throw new Exception("Master branch not found");
+
+                if (Vars.Config.GitAutoFetch && masterBranch.IsRemote)
+                {
+                    Log("Fetching...", Color.Cyan);
+                    FetchDirectly();
+                }
 
                 Log("Calculating divergence...", Color.Cyan);                
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, masterBranch.Tip);
