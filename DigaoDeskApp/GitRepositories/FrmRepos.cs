@@ -35,10 +35,9 @@ namespace DigaoDeskApp
 
             //
 
-            BuildRepositories();
-
             _gridBind = new();
-            _gridBind.DataSource = _repos;
+
+            BuildRepositories();
 
             g.DataSource = _gridBind;
 
@@ -119,7 +118,16 @@ namespace DigaoDeskApp
                 {
                     r.Config = new();
                 }
-            }            
+            }
+
+            ReorderGrid();
+        }
+
+        private void ReorderGrid()
+        {
+            _repos = _repos.OrderBy(x => x.Config.Order).ToList();
+
+            _gridBind.DataSource = _repos;
         }
 
         private void g_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -355,7 +363,17 @@ namespace DigaoDeskApp
             if (f.ShowDialog() == DialogResult.OK)
             {
                 r.Refresh();
-                _gridBind.ResetBindings(false);
+
+                ReorderGrid();
+
+                foreach (DataGridViewRow row in g.Rows)
+                {
+                    if (row.DataBoundItem == r)
+                    {
+                        g.CurrentCell = row.Cells[0];
+                        break;
+                    }
+                }
             }
         }
 
