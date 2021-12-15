@@ -29,7 +29,7 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,24 +47,24 @@ namespace DigaoDeskApp
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnFetchAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnFetch = new System.Windows.Forms.ToolStripButton();
-            this.btnPull = new System.Windows.Forms.ToolStripButton();
-            this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
-            this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
             this.btnCreateBranch = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
+            this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
+            this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFetch = new System.Windows.Forms.ToolStripButton();
+            this.btnPull = new System.Windows.Forms.ToolStripButton();
             this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
             this.btnMerge = new System.Windows.Forms.ToolStripButton();
             this.btnSyncWithMaster = new System.Windows.Forms.ToolStripButton();
-            this.btnPush = new System.Windows.Forms.ToolStripButton();
-            this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             this.btnDifs = new System.Windows.Forms.ToolStripButton();
-            this.btnShell = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
+            this.btnPush = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnShell = new System.Windows.Forms.ToolStripButton();
             this.btnRepoConfig = new System.Windows.Forms.ToolStripButton();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -87,14 +87,14 @@ namespace DigaoDeskApp
             this.colLastFetch,
             this.colOperation,
             this.colMasterCompare});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.g.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.g.DefaultCellStyle = dataGridViewCellStyle1;
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 47);
             this.g.MultiSelect = false;
@@ -226,7 +226,6 @@ namespace DigaoDeskApp
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1419, 47);
             this.toolBar.TabIndex = 2;
-            this.toolBar.Text = "toolStrip1";
             // 
             // btnRefresh
             // 
@@ -257,29 +256,29 @@ namespace DigaoDeskApp
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 47);
             // 
-            // btnFetch
+            // btnCreateBranch
             // 
-            this.btnFetch.AutoSize = false;
-            this.btnFetch.Image = ((System.Drawing.Image)(resources.GetObject("btnFetch.Image")));
-            this.btnFetch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnFetch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFetch.Name = "btnFetch";
-            this.btnFetch.Size = new System.Drawing.Size(67, 44);
-            this.btnFetch.Text = "Fetch";
-            this.btnFetch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnFetch.Click += new System.EventHandler(this.btnFetch_Click);
+            this.btnCreateBranch.AutoSize = false;
+            this.btnCreateBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateBranch.Image")));
+            this.btnCreateBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCreateBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCreateBranch.Name = "btnCreateBranch";
+            this.btnCreateBranch.Size = new System.Drawing.Size(67, 44);
+            this.btnCreateBranch.Text = "New Branch";
+            this.btnCreateBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
             // 
-            // btnPull
+            // btnDeleteBranch
             // 
-            this.btnPull.AutoSize = false;
-            this.btnPull.Image = ((System.Drawing.Image)(resources.GetObject("btnPull.Image")));
-            this.btnPull.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnPull.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPull.Name = "btnPull";
-            this.btnPull.Size = new System.Drawing.Size(67, 44);
-            this.btnPull.Text = "Pull";
-            this.btnPull.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
+            this.btnDeleteBranch.AutoSize = false;
+            this.btnDeleteBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteBranch.Image")));
+            this.btnDeleteBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDeleteBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteBranch.Name = "btnDeleteBranch";
+            this.btnDeleteBranch.Size = new System.Drawing.Size(67, 44);
+            this.btnDeleteBranch.Text = "Del Branch";
+            this.btnDeleteBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
             // 
             // btnSwitchBranch
             // 
@@ -305,29 +304,34 @@ namespace DigaoDeskApp
             this.btnCheckoutRemote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCheckoutRemote.Click += new System.EventHandler(this.btnCheckoutRemote_Click);
             // 
-            // btnCreateBranch
+            // toolStripSeparator3
             // 
-            this.btnCreateBranch.AutoSize = false;
-            this.btnCreateBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateBranch.Image")));
-            this.btnCreateBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCreateBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCreateBranch.Name = "btnCreateBranch";
-            this.btnCreateBranch.Size = new System.Drawing.Size(67, 44);
-            this.btnCreateBranch.Text = "New Branch";
-            this.btnCreateBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCreateBranch.Click += new System.EventHandler(this.btnCreateBranch_Click);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 47);
             // 
-            // btnDeleteBranch
+            // btnFetch
             // 
-            this.btnDeleteBranch.AutoSize = false;
-            this.btnDeleteBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteBranch.Image")));
-            this.btnDeleteBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDeleteBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteBranch.Name = "btnDeleteBranch";
-            this.btnDeleteBranch.Size = new System.Drawing.Size(67, 44);
-            this.btnDeleteBranch.Text = "Del Branch";
-            this.btnDeleteBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
+            this.btnFetch.AutoSize = false;
+            this.btnFetch.Image = ((System.Drawing.Image)(resources.GetObject("btnFetch.Image")));
+            this.btnFetch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFetch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFetch.Name = "btnFetch";
+            this.btnFetch.Size = new System.Drawing.Size(67, 44);
+            this.btnFetch.Text = "Fetch";
+            this.btnFetch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFetch.Click += new System.EventHandler(this.btnFetch_Click);
+            // 
+            // btnPull
+            // 
+            this.btnPull.AutoSize = false;
+            this.btnPull.Image = ((System.Drawing.Image)(resources.GetObject("btnPull.Image")));
+            this.btnPull.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnPull.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPull.Name = "btnPull";
+            this.btnPull.Size = new System.Drawing.Size(67, 44);
+            this.btnPull.Text = "Pull";
+            this.btnPull.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
             // 
             // btnCherryPick
             // 
@@ -365,17 +369,17 @@ namespace DigaoDeskApp
             this.btnSyncWithMaster.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSyncWithMaster.Click += new System.EventHandler(this.btnSyncWithMaster_Click);
             // 
-            // btnPush
+            // btnDifs
             // 
-            this.btnPush.AutoSize = false;
-            this.btnPush.Image = ((System.Drawing.Image)(resources.GetObject("btnPush.Image")));
-            this.btnPush.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnPush.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPush.Name = "btnPush";
-            this.btnPush.Size = new System.Drawing.Size(67, 44);
-            this.btnPush.Text = "Push";
-            this.btnPush.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPush.Click += new System.EventHandler(this.btnPush_Click);
+            this.btnDifs.AutoSize = false;
+            this.btnDifs.Image = ((System.Drawing.Image)(resources.GetObject("btnDifs.Image")));
+            this.btnDifs.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDifs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDifs.Name = "btnDifs";
+            this.btnDifs.Size = new System.Drawing.Size(67, 44);
+            this.btnDifs.Text = "Difs";
+            this.btnDifs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDifs.Click += new System.EventHandler(this.btnDifs_Click);
             // 
             // btnCancelOperation
             // 
@@ -389,17 +393,22 @@ namespace DigaoDeskApp
             this.btnCancelOperation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelOperation.Click += new System.EventHandler(this.btnCancelOperation_Click);
             // 
-            // btnDifs
+            // btnPush
             // 
-            this.btnDifs.AutoSize = false;
-            this.btnDifs.Image = ((System.Drawing.Image)(resources.GetObject("btnDifs.Image")));
-            this.btnDifs.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDifs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDifs.Name = "btnDifs";
-            this.btnDifs.Size = new System.Drawing.Size(67, 44);
-            this.btnDifs.Text = "Difs";
-            this.btnDifs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDifs.Click += new System.EventHandler(this.btnDifs_Click);
+            this.btnPush.AutoSize = false;
+            this.btnPush.Image = ((System.Drawing.Image)(resources.GetObject("btnPush.Image")));
+            this.btnPush.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnPush.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPush.Name = "btnPush";
+            this.btnPush.Size = new System.Drawing.Size(67, 44);
+            this.btnPush.Text = "Push";
+            this.btnPush.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPush.Click += new System.EventHandler(this.btnPush_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 47);
             // 
             // btnShell
             // 
@@ -412,11 +421,6 @@ namespace DigaoDeskApp
             this.btnShell.Text = "Shell";
             this.btnShell.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnShell.Click += new System.EventHandler(this.btnShell_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 47);
             // 
             // btnRepoConfig
             // 
@@ -450,11 +454,6 @@ namespace DigaoDeskApp
             this.splitter1.Size = new System.Drawing.Size(1419, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 47);
             // 
             // FrmRepos
             // 
