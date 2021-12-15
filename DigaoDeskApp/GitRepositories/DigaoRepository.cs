@@ -547,10 +547,22 @@ namespace DigaoDeskApp
                 Log("Fetching...", Color.Cyan);
                 FetchDirectly();
 
-                Log("Merging...", Color.Cyan);
                 var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
                 if (masterBranch == null) throw new Exception("Master branch not found");
 
+                Log("Calculating divergence...", Color.Cyan);                
+                var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, masterBranch.Tip);
+
+                int behind = divergence.BehindBy.Value;
+                if (behind == 0)
+                {
+                    Log("Current branch is not behind master branch", Color.Orange);
+                    return; //allow update previous fetch
+                }
+
+                Log($"Current branch is behind master by {behind} commit(s)", Color.Violet);
+
+                Log("Merging...", Color.Cyan);
                 InternalMerge(masterBranch);
             }, true);
         }
