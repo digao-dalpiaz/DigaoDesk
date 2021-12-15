@@ -19,6 +19,8 @@ namespace DigaoDeskApp
         public FrmRepos()
         {
             InitializeComponent();
+
+            Utils.AdjustToolStrip(toolBar);
         }
 
         private void FrmRepos_Load(object sender, EventArgs e)

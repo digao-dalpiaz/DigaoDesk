@@ -145,5 +145,28 @@ namespace DigaoDeskApp
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
         private const int WM_SETREDRAW = 0x0b;
 
+        //-----------------------------------------------------------------
+
+        public static void AdjustToolStrip(ToolStrip c)
+        {
+            int? max = null;
+            foreach (ToolStripItem item in c.Items)
+            {
+                item.AutoSize = true;
+                if (max == null || max < item.Width)
+                {
+                    max = item.Width;
+                }
+            }
+
+            foreach (ToolStripItem item in c.Items)
+            {
+                if (item is ToolStripSeparator) continue;
+
+                item.AutoSize = false;
+                item.Width = max.Value;
+            }
+        }
+
     }
 }
