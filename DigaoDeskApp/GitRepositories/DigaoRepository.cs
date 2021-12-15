@@ -286,6 +286,7 @@ namespace DigaoDeskApp
         {
             FetchOptions fo = new();
             fo.Prune = true;
+            fo.TagFetchMode = TagFetchMode.All;
             fo.CredentialsProvider = OnCredentialsProvider;
             return fo;
         }
