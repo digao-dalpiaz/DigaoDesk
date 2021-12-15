@@ -37,16 +37,18 @@ namespace DigaoDeskApp
             throw new MessageException(msg);
         }
 
-        public static void SurroundMessageException(Action proc)
+        public static bool SurroundMessageException(Action proc)
         {
             try
             {
-                proc();
+                proc();                
             } 
             catch (MessageException msgEx)
             {
                 Error(msgEx.Message);
+                return true;
             }
+            return false;
         }
 
         public static void SurroundExceptionThenThrowMessageException(Action proc)

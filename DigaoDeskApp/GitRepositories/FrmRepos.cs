@@ -314,14 +314,14 @@ namespace DigaoDeskApp
 
         private void btnSyncWithMaster_Click(object sender, EventArgs e)
         {
-            CheckForAutoFetch();
             var r = GetSel();
 
-            if (string.IsNullOrEmpty(r.Config.MasterBranch))
+            if (Messages.SurroundMessageException(() =>
             {
-                Messages.Error("Master branch is not configured");
-                return;
-            }
+                if (string.IsNullOrEmpty(r.Config.MasterBranch)) Messages.ThrowMsg("Master branch is not configured");
+                if (r.MasterBranchCompare == "???") Messages.ThrowMsg("Invalid Master branch");
+                if (r.MasterBranchCompare == "self") Messages.ThrowMsg("It's not possible to sync because you are already on master branch");
+            })) return;            
 
             if (Messages.Question($"Confirm merge from branch '{r.Config.MasterBranch}'?"))
             {

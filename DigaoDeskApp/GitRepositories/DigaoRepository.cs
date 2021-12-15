@@ -544,6 +544,10 @@ namespace DigaoDeskApp
         {
             DoBackground("Merge (Sync from Master Branch)", () =>
             {
+                Log("Fetching...", Color.Cyan);
+                FetchDirectly();
+
+                Log("Merging...", Color.Cyan);
                 var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
                 if (masterBranch == null) throw new Exception("Master branch not found");
 
