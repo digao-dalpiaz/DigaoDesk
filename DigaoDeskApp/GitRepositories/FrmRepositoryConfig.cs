@@ -17,15 +17,18 @@ namespace DigaoDeskApp
 
         private void FrmRepositoryConfig_Load(object sender, EventArgs e)
         {
+            edOrder.Text = _config.Order;
             edMasterBranch.Text = _config.MasterBranch;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            edOrder.Text = edOrder.Text.Trim();
             edMasterBranch.Text = edMasterBranch.Text.Trim();
 
             //
 
+            _config.Order = edOrder.Text;
             _config.MasterBranch = edMasterBranch.Text;
 
             DialogResult = DialogResult.OK;

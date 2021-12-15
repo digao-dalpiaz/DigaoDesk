@@ -8,6 +8,7 @@
 
     public class RepositoryConfigContents
     {
+        public string Order;
         public string MasterBranch = "origin/main";
     }
 }

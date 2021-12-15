@@ -33,12 +33,14 @@ namespace DigaoDeskApp
             this.edMasterBranch = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.edOrder = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 16);
+            this.label1.Location = new System.Drawing.Point(14, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 15);
             this.label1.TabIndex = 0;
@@ -46,14 +48,14 @@ namespace DigaoDeskApp
             // 
             // edMasterBranch
             // 
-            this.edMasterBranch.Location = new System.Drawing.Point(16, 32);
+            this.edMasterBranch.Location = new System.Drawing.Point(16, 80);
             this.edMasterBranch.Name = "edMasterBranch";
             this.edMasterBranch.Size = new System.Drawing.Size(520, 23);
             this.edMasterBranch.TabIndex = 1;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(176, 96);
+            this.btnOK.Location = new System.Drawing.Point(176, 120);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(96, 32);
             this.btnOK.TabIndex = 2;
@@ -64,12 +66,28 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(280, 96);
+            this.btnCancel.Location = new System.Drawing.Point(280, 120);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 32);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Order";
+            // 
+            // edOrder
+            // 
+            this.edOrder.Location = new System.Drawing.Point(16, 32);
+            this.edOrder.Name = "edOrder";
+            this.edOrder.Size = new System.Drawing.Size(100, 23);
+            this.edOrder.TabIndex = 0;
             // 
             // FrmRepositoryConfig
             // 
@@ -77,7 +95,9 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(553, 142);
+            this.ClientSize = new System.Drawing.Size(553, 167);
+            this.Controls.Add(this.edOrder);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.edMasterBranch);
@@ -100,5 +120,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TextBox edMasterBranch;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox edOrder;
     }
 }
