@@ -67,7 +67,7 @@ namespace DigaoDeskApp
 
         public void LogLabel(string label, string value)
         {
-            Log(new Part[] { new Part(label + ": ", Color.DeepSkyBlue), new Part(value, Color.SkyBlue) });
+            Log(new Part[] { new Part(label + ": ", Color.Wheat), new Part(value, Color.DodgerBlue) });
         }
 
     }
