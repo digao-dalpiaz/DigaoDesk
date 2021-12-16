@@ -39,7 +39,7 @@ namespace DigaoDeskApp
             public override string ToString()
             {
                 var commit = _tag.Target as Commit;
-                return $"{_tag.FriendlyName} ({commit.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)} - {commit.Id} - {commit.Author.Name})";
+                return $"{_tag.FriendlyName} ({commit.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)} - {commit.Id.Sha} - {commit.Author.Name})";
             }
         }
 
