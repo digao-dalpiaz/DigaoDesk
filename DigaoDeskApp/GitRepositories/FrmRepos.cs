@@ -16,11 +16,15 @@ namespace DigaoDeskApp
         private List<DigaoRepository> _repos = new();
         private BindingSource _gridBind;
 
+        public LogHighlight Log;
+
         public FrmRepos()
         {
             InitializeComponent();
 
             Utils.AdjustToolStrip(toolBar);
+
+            Log = new(edLog);
         }
 
         private void FrmRepos_Load(object sender, EventArgs e)
@@ -145,7 +149,7 @@ namespace DigaoDeskApp
 
         public void DoBackground(Action proc)
         {
-            Log(string.Empty, Color.Empty);
+            Log.Log();
             this.ProcBackground(true);
 
             Task.Run(() => {
@@ -155,7 +159,7 @@ namespace DigaoDeskApp
                 }
                 catch (Exception ex)
                 {
-                    Log("#ERROR: " + ex.Message, Color.Red);
+                    Log.Log("ERROR: " + ex.Message, Color.Red);
                 }
 
                 this.Invoke(new MethodInvoker(() =>
@@ -171,38 +175,17 @@ namespace DigaoDeskApp
             g.Enabled = !activate;
         }
 
-        public void Log(string msg, Color color)
-        {
-            this.Invoke(new MethodInvoker(() =>
-            {
-                edLog.SuspendLayout();
-
-                if (Vars.Config.Log.ShowTimestamp && !string.IsNullOrEmpty(msg))
-                {
-                    edLog.SelectionStart = edLog.TextLength;
-                    edLog.SelectionColor = Color.Gray;
-                    edLog.SelectedText = DateTime.Now.ToString(Vars.DATETIME_FMT) + " - ";
-                }
-
-                edLog.SelectionStart = edLog.TextLength;
-                edLog.SelectionColor = color;
-                edLog.SelectedText = msg + Environment.NewLine;
-
-                edLog.ResumePainting(false);
-            }));
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             DoBackground(() => {
-                Log("Refreshing all repositories...", Color.Yellow);
+                Log.Log("Refreshing all repositories...", Color.Yellow);
 
                 foreach (var item in _repos)
                 {
                     item.Refresh();
                 }
 
-                Log("Done!", Color.Lime);
+                Log.Log("Done!", Color.Lime);
 
                 this.Invoke(new MethodInvoker(() =>
                 {
@@ -214,16 +197,16 @@ namespace DigaoDeskApp
         private void btnFetchAll_Click(object sender, EventArgs e)
         {
             DoBackground(() => {
-                Log("Fetch All Repositories", Color.Yellow);
+                Log.Log("Fetch All Repositories", Color.Yellow);
 
                 foreach (var item in _repos)
                 {
-                    Log($"Fetching {item.Name}...", Color.White);
+                    Log.Log($"Fetching {item.Name}...", Color.White);
                     item.FetchDirectly();
                     item.Refresh();
                 }
 
-                Log("Done!", Color.Lime);
+                Log.Log("Done!", Color.Lime);
 
                 this.Invoke(new MethodInvoker(() =>
                 {

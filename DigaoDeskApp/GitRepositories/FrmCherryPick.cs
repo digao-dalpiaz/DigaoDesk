@@ -82,7 +82,7 @@ namespace DigaoDeskApp
 
             var item = lstCommits.Items[e.Index] as Commit;
 
-            TextRenderer.DrawText(e.Graphics, item.Id.ToString(), lstCommits.Font, new Point(e.Bounds.X + 2, e.Bounds.Y + 1), Color.Green);
+            TextRenderer.DrawText(e.Graphics, item.Id.Sha, lstCommits.Font, new Point(e.Bounds.X + 2, e.Bounds.Y + 1), Color.Green);
             TextRenderer.DrawText(e.Graphics, item.MessageShort, lstCommits.Font, new Point(e.Bounds.X + 2, e.Bounds.Y + 1 + _lineHeight), Color.Black);
 
             string info = $"(Author: {item.Author.Name} - Date: {item.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)})";

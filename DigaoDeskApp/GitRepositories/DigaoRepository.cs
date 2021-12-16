@@ -25,6 +25,14 @@ namespace DigaoDeskApp
 
         public RepositoryConfigContents Config;
 
+        private LogHighlight Log
+        {
+            get
+            {
+                return Vars.FrmReposObj.Log;
+            }
+        }
+
         private string _name;
         public string Name
         {
@@ -201,7 +209,7 @@ namespace DigaoDeskApp
             if (branch.IsTracking && branch.TrackedBranch.Tip == null)
             {
                 _repoCtrl.Branches.Update(branch, b => b.TrackedBranch = null);
-                Log($"Branch '{branch.FriendlyName}' is no longer tracked", Color.Fuchsia);
+                Log.Log($"Branch '{branch.FriendlyName}' is no longer tracked", Color.Fuchsia);
             }
         }
 
@@ -240,27 +248,22 @@ namespace DigaoDeskApp
         {
             Vars.FrmReposObj.DoBackground(() =>
             {
-                Log(cmdName, Color.Yellow);
+                Log.Log(cmdName, Color.Yellow);
                 proc();
-                Log("Done!", Color.Lime);
+                Log.Log("Done!", Color.Lime);
 
                 if (performRefresh)
                 {
-                    Log("Refreshing...", Color.Purple);
+                    Log.Log("Refreshing...", Color.Purple);
                     Refresh();
-                    Log("Done!", Color.MediumPurple);
+                    Log.Log("Done!", Color.MediumPurple);
                 }
             });                   
         }
 
-        private void Log(string msg, Color color)
-        {
-            Vars.FrmReposObj.Log(msg, color);
-        }
-
         private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
         {
-            Log(notify.ToString() + " : " + path, Color.Orange);
+            Log.Log(notify.ToString() + " : " + path, Color.Orange);
             return true;
         }
 
@@ -374,7 +377,7 @@ namespace DigaoDeskApp
                 default:
                     throw new Exception("Unknown pull result status");
             }
-            Log(msgResult, Color.White);
+            Log.Log(msgResult, Color.White);
         }
 
         public void SwitchBranch()
@@ -447,23 +450,23 @@ namespace DigaoDeskApp
                 DoBackground("Create New Branch", () =>
                 {
                     var name = f.ResultParams.Name;
-                    Log("Name: " + name, Color.White);
+                    Log.LogLabel("Name", name);
 
                     Branch b;
 
                     if (f.ResultParams.Tag != null)                    
                     {
-                        Log("Creating branch based on tag " + f.ResultParams.Tag.FriendlyName, Color.MediumAquamarine);
+                        Log.Log("Creating branch based on tag " + f.ResultParams.Tag.FriendlyName, Color.MediumAquamarine);
                         b = _repoCtrl.CreateBranch(name, f.ResultParams.Tag.Target as Commit); //cast already validated in form dialog
                     } else
                     {
-                        Log("Creating branch based on branch " + _repoCtrl.Head.FriendlyName, Color.MediumAquamarine);
+                        Log.Log("Creating branch based on branch " + _repoCtrl.Head.FriendlyName, Color.MediumAquamarine);
                         b = _repoCtrl.CreateBranch(name);
                     }
 
                     if (f.ResultParams.Switch)
                     {
-                        Log("Switching to new branch", Color.Gray);
+                        Log.Log("Switching to new branch", Color.Gray);
                         Commands.Checkout(_repoCtrl, b, GetCheckoutOptions());
                     }
                 }, true);
@@ -487,17 +490,17 @@ namespace DigaoDeskApp
             {              
                 DoBackground("Delete Branch", () =>
                 {
-                    Log("Branch: " + f.FormParams.Branch.FriendlyName, Color.White);
+                    Log.LogLabel("Branch", f.FormParams.Branch.FriendlyName);
 
                     if (f.FormParams.Remote)
                     {
-                        Log("Deleting remote branch...", Color.Orange);
+                        Log.Log("Deleting remote branch...", Color.Orange);
                         _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + f.FormParams.Branch.UpstreamBranchCanonicalName, GetPushOptions());
                         _repoCtrl.Branches.Update(f.FormParams.Branch, b => b.TrackedBranch = null);
                     }
                     if (f.FormParams.Local)
                     {
-                        Log("Deleting local branch...", Color.Orange);
+                        Log.Log("Deleting local branch...", Color.Orange);
                         _repoCtrl.Branches.Remove(f.FormParams.Branch);
                     }
                 }, true);
@@ -511,7 +514,7 @@ namespace DigaoDeskApp
             {
                 DoBackground("Cherry Pick", () =>
                 {
-                    Log("Commit: " + f.ResultCommit.Id, Color.White);
+                    Log.LogLabel("Commit", f.ResultCommit.Id.Sha);
                                         
                     _repoCtrl.CherryPick(f.ResultCommit, GetSignature());
                 }, true);
@@ -550,31 +553,31 @@ namespace DigaoDeskApp
 
                 if (Vars.Config.GitAutoFetch && masterBranch.IsRemote)
                 {
-                    Log("Fetching...", Color.Cyan);
+                    Log.Log("Fetching...", Color.Cyan);
                     FetchDirectly();
                 }
 
-                Log("Calculating divergence...", Color.Cyan);                
+                Log.Log("Calculating divergence...", Color.Cyan);                
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, masterBranch.Tip);
 
                 int behind = divergence.BehindBy.Value;
                 if (behind == 0)
                 {
-                    Log("Current branch is not behind master branch", Color.Orange);
+                    Log.Log("Current branch is not behind master branch", Color.Orange);
                     return; //allow update previous fetch
                 }
 
-                Log($"Current branch is behind master by {behind} commit(s)", Color.Violet);
+                Log.Log($"Current branch is behind master by {behind} commit(s)", Color.Violet);
 
-                Log("Merging...", Color.Cyan);
+                Log.Log("Merging...", Color.Cyan);
                 InternalMerge(masterBranch);
             }, true);
         }
 
         private void InternalMerge(Branch from)
         {
-            Log("From Branch: " + from.FriendlyName, Color.White);
-            Log("Into Branch: " + _repoCtrl.Head.FriendlyName, Color.White);
+            Log.LogLabel("From Branch", from.FriendlyName);
+            Log.LogLabel("Into Branch", _repoCtrl.Head.FriendlyName);
 
             var res = _repoCtrl.Merge(from, GetSignature(), GetMergeOptions());
 
@@ -586,18 +589,18 @@ namespace DigaoDeskApp
             DoBackground("Push", () =>
             {
                 var localBranch = _repoCtrl.Head;
-                Log("Branch: " + localBranch.FriendlyName, Color.White);
+                Log.LogLabel("Branch", localBranch.FriendlyName);
 
                 if (!localBranch.IsTracking)
                 {
-                    Log("The branch is not currently linked to a remote one. Making the link now...", Color.Orange);
+                    Log.Log("The branch is not currently linked to a remote one. Making the link now...", Color.Orange);
 
                     _repoCtrl.Branches.Update(localBranch,
                         b => b.Remote = GetRemoteOrigin().Name,
                         b => b.UpstreamBranch = localBranch.CanonicalName);
                 }
 
-                Log("Pushing...", Color.Cyan);
+                Log.Log("Pushing...", Color.Cyan);
                 _repoCtrl.Network.Push(localBranch, GetPushOptions());
             }, true);
         }
@@ -618,8 +621,8 @@ namespace DigaoDeskApp
 
         public void ShowDifs()
         {
-            Log(string.Empty, Color.Empty);
-            Log("Difs", Color.Yellow);
+            Log.Log();
+            Log.Log("Difs", Color.Yellow);
 
             var status = GetRepositoryStatus();
 
@@ -627,12 +630,12 @@ namespace DigaoDeskApp
             {
                 foreach (var item in status)
                 {
-                    Log(item.State.ToString() + " : " + item.FilePath, Color.Cyan);
+                    Log.Log(item.State.ToString() + " : " + item.FilePath, Color.Cyan);
                 }
             } 
             else
             {
-                Log("There are no difs", Color.White);
+                Log.Log("There are no difs", Color.White);
             }
         }
 
