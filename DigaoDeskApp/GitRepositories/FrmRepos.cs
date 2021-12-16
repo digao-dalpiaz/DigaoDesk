@@ -178,7 +178,7 @@ namespace DigaoDeskApp
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             DoBackground(() => {
-                Log.Log("Refreshing all repositories...", Color.Yellow);
+                Log.Log("Refreshing all repositories...", Color.Yellow, true);
 
                 foreach (var item in _repos)
                 {
@@ -197,7 +197,7 @@ namespace DigaoDeskApp
         private void btnFetchAll_Click(object sender, EventArgs e)
         {
             DoBackground(() => {
-                Log.Log("Fetch All Repositories", Color.Yellow);
+                Log.Log("Fetch All Repositories", Color.Yellow, true);
 
                 foreach (var item in _repos)
                 {

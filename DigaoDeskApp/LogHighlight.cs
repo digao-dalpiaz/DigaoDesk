@@ -11,11 +11,13 @@ namespace DigaoDeskApp
         {
             public string Text;
             public Color Color;
+            public bool Bold;
 
-            public Part(string text, Color color)
+            public Part(string text, Color color, bool bold = false)
             {
                 this.Text = text;
                 this.Color = color;
+                this.Bold = bold;
             }
         }
 
@@ -43,6 +45,7 @@ namespace DigaoDeskApp
                 foreach (var part in parts)
                 {
                     _edControl.SelectionColor = part.Color;
+                    _edControl.SelectionFont = new Font(_edControl.Font, part.Bold ? FontStyle.Bold : FontStyle.Regular);
                     _edControl.SelectedText = part.Text;
                 }
 
@@ -57,14 +60,14 @@ namespace DigaoDeskApp
             Log(new Part[] { });
         }
 
-        public void Log(string text, Color color)
+        public void Log(string text, Color color, bool bold = false)
         {
-            Log(new Part[] { new Part(text, color) });
+            Log(new Part[] { new Part(text, color, bold) });
         }
 
         public void LogLabel(string label, string value)
         {
-            Log(new Part[] { new Part(label + ": ", Color.Gray), new Part(value, Color.White) });
+            Log(new Part[] { new Part(label + ": ", Color.DeepSkyBlue), new Part(value, Color.SkyBlue) });
         }
 
     }

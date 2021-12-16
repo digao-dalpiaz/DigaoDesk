@@ -248,13 +248,13 @@ namespace DigaoDeskApp
         {
             Vars.FrmReposObj.DoBackground(() =>
             {
-                Log.Log(cmdName, Color.Yellow);
+                Log.Log(cmdName, Color.Yellow, true);
                 proc();
                 Log.Log("Done!", Color.Lime);
 
                 if (performRefresh)
                 {
-                    Log.Log("Refreshing...", Color.Purple);
+                    Log.Log("Refreshing...", Color.BlueViolet);
                     Refresh();
                     Log.Log("Done!", Color.MediumPurple);
                 }
@@ -632,7 +632,7 @@ namespace DigaoDeskApp
         public void ShowDifs()
         {
             Log.Log();
-            Log.Log("Difs", Color.Yellow);
+            Log.Log("Difs", Color.Yellow, true);
             Log.LogLabel("Branch", _repoCtrl.Head.FriendlyName);
 
             var status = GetRepositoryStatus();
