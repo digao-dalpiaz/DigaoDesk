@@ -347,6 +347,8 @@ namespace DigaoDeskApp
         {
             DoBackground("Pull", () =>
             {
+                Log.LogLabel("Branch", _repoCtrl.Head.FriendlyName);
+
                 PullOptions po = new();
                 po.FetchOptions = GetFetchOptions();
                 po.MergeOptions = GetMergeOptions();                
@@ -397,6 +399,7 @@ namespace DigaoDeskApp
                 DoBackground("Switch Local Branch", () =>
                 {
                     var branch = f.ResultBranch;
+                    Log.LogLabel("Branch", branch.FriendlyName);
 
                     Commands.Checkout(_repoCtrl, branch, GetCheckoutOptions());
                 }, true);
@@ -428,7 +431,10 @@ namespace DigaoDeskApp
                 DoBackground("Checkout Remote Branch", () =>
                 {
                     const string PREFIX = "origin/";
+
                     var remoteBranch = f.ResultBranch;
+                    Log.LogLabel("Branch", remoteBranch.FriendlyName);
+
                     if (!remoteBranch.FriendlyName.StartsWith(PREFIX))
                     {
                         throw new Exception("Invalid remote branch name");
@@ -450,7 +456,7 @@ namespace DigaoDeskApp
                 DoBackground("Create New Branch", () =>
                 {
                     var name = f.ResultParams.Name;
-                    Log.LogLabel("Name", name);
+                    Log.LogLabel("Branch", name);
 
                     Branch b;
 
@@ -515,6 +521,7 @@ namespace DigaoDeskApp
                 DoBackground("Cherry Pick", () =>
                 {
                     Log.LogLabel("Commit", f.ResultCommit.Id.Sha);
+                    Log.LogLabel("Into Branch", _repoCtrl.Head.FriendlyName);
                                         
                     _repoCtrl.CherryPick(f.ResultCommit, GetSignature());
                 }, true);
@@ -615,6 +622,9 @@ namespace DigaoDeskApp
 
             DoBackground("Reset", () =>
             {
+                Log.LogLabel("Branch", _repoCtrl.Head.FriendlyName);
+                Log.LogLabel("Current Operation", _repoCtrl.Info.CurrentOperation.ToString());
+
                 _repoCtrl.Reset(ResetMode.Hard);
             }, true);
         }
@@ -623,6 +633,7 @@ namespace DigaoDeskApp
         {
             Log.Log();
             Log.Log("Difs", Color.Yellow);
+            Log.LogLabel("Branch", _repoCtrl.Head.FriendlyName);
 
             var status = GetRepositoryStatus();
 
