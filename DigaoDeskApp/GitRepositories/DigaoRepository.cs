@@ -472,7 +472,7 @@ namespace DigaoDeskApp
 
                     if (f.ResultParams.Switch)
                     {
-                        Log.Log("Switching to new branch", Color.Gray);
+                        Log.Log("Switching to new branch", Color.Tan);
                         Commands.Checkout(_repoCtrl, b, GetCheckoutOptions());
                     }
                 }, true);
