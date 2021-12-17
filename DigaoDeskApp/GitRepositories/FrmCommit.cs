@@ -181,7 +181,7 @@ namespace DigaoDeskApp
             }
 
             edMessage.Text = edMessage.Text.Trim();
-            if (edMessage.Text == String.Empty)
+            if (edMessage.Text == string.Empty)
             {
                 Messages.Error("Type a message to this commit");
                 edMessage.Select();

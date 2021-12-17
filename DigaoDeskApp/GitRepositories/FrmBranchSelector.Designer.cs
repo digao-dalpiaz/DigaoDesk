@@ -34,14 +34,14 @@ namespace DigaoDeskApp
             this.btnCancel = new System.Windows.Forms.Button();
             this.edSearch = new System.Windows.Forms.TextBox();
             this.g = new System.Windows.Forms.DataGridView();
-            this.boxButtons = new System.Windows.Forms.Panel();
-            this.boxLocation = new System.Windows.Forms.Panel();
-            this.ckRemote = new System.Windows.Forms.RadioButton();
-            this.ckLocal = new System.Windows.Forms.RadioButton();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boxButtons = new System.Windows.Forms.Panel();
+            this.boxLocation = new System.Windows.Forms.Panel();
+            this.ckRemote = new System.Windows.Forms.RadioButton();
+            this.ckLocal = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.boxButtons.SuspendLayout();
             this.boxLocation.SuspendLayout();
@@ -97,6 +97,7 @@ namespace DigaoDeskApp
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.g.DefaultCellStyle = dataGridViewCellStyle1;
             this.g.Location = new System.Drawing.Point(8, 40);
+            this.g.MultiSelect = false;
             this.g.Name = "g";
             this.g.ReadOnly = true;
             this.g.RowHeadersVisible = false;
@@ -107,6 +108,38 @@ namespace DigaoDeskApp
             this.g.TabIndex = 1;
             this.g.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.g_CellDoubleClick);
             this.g.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.g_CellFormatting);
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colLocation
+            // 
+            this.colLocation.DataPropertyName = "Location";
+            this.colLocation.HeaderText = "Location";
+            this.colLocation.Name = "colLocation";
+            this.colLocation.ReadOnly = true;
+            this.colLocation.Width = 80;
+            // 
+            // colAuthor
+            // 
+            this.colAuthor.DataPropertyName = "Author";
+            this.colAuthor.HeaderText = "Last Commit Author";
+            this.colAuthor.Name = "colAuthor";
+            this.colAuthor.ReadOnly = true;
+            this.colAuthor.Width = 150;
+            // 
+            // colDateTime
+            // 
+            this.colDateTime.DataPropertyName = "Timestamp";
+            this.colDateTime.HeaderText = "Last Commit Date/Time";
+            this.colDateTime.Name = "colDateTime";
+            this.colDateTime.ReadOnly = true;
+            this.colDateTime.Width = 150;
             // 
             // boxButtons
             // 
@@ -150,38 +183,6 @@ namespace DigaoDeskApp
             this.ckLocal.Text = "Local";
             this.ckLocal.UseVisualStyleBackColor = true;
             this.ckLocal.Click += new System.EventHandler(this.edSearch_TextChanged);
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colLocation
-            // 
-            this.colLocation.DataPropertyName = "Location";
-            this.colLocation.HeaderText = "Location";
-            this.colLocation.Name = "colLocation";
-            this.colLocation.ReadOnly = true;
-            this.colLocation.Width = 80;
-            // 
-            // colAuthor
-            // 
-            this.colAuthor.DataPropertyName = "Author";
-            this.colAuthor.HeaderText = "Last Commit Author";
-            this.colAuthor.Name = "colAuthor";
-            this.colAuthor.ReadOnly = true;
-            this.colAuthor.Width = 150;
-            // 
-            // colDateTime
-            // 
-            this.colDateTime.DataPropertyName = "Timestamp";
-            this.colDateTime.HeaderText = "Last Commit Date/Time";
-            this.colDateTime.Name = "colDateTime";
-            this.colDateTime.ReadOnly = true;
-            this.colDateTime.Width = 150;
             // 
             // FrmBranchSelector
             // 
