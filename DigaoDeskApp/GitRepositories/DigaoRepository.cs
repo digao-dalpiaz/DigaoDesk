@@ -594,28 +594,50 @@ namespace DigaoDeskApp
         public void Commit()
         {
             FrmCommit f = new(_repoCtrl);
-            f.ShowDialog();
+            DialogResult dr = f.ShowDialog();
+
+            if (dr == DialogResult.OK || dr == DialogResult.Continue)
+            {
+                DoBackground("Commit", () =>
+                {
+                    string message = f.ReturnMessage;
+                    Log.LogLabel("Branch", _repoCtrl.Head.FriendlyName);
+                    Log.LogLabel("Message", message);
+                    Commit commit = _repoCtrl.Commit(message, GetSignature(), GetSignature());
+                    Log.LogLabel("Commit Id", commit.Sha);
+
+                    if (dr == DialogResult.Continue)
+                    {
+                        InternalPush();
+                    }
+                }, true);
+            }
         }
 
         public void Push()
         {
             DoBackground("Push", () =>
             {
-                var localBranch = _repoCtrl.Head;
-                Log.LogLabel("Branch", localBranch.FriendlyName);
-
-                if (!localBranch.IsTracking)
-                {
-                    Log.Log("The branch is not currently linked to a remote one. Making the link now...", Color.Orange);
-
-                    _repoCtrl.Branches.Update(localBranch,
-                        b => b.Remote = GetRemoteOrigin().Name,
-                        b => b.UpstreamBranch = localBranch.CanonicalName);
-                }
-
-                Log.Log("Pushing...", Color.Cyan);
-                _repoCtrl.Network.Push(localBranch, GetPushOptions());
+                Log.LogLabel("Branch", _repoCtrl.Head.FriendlyName);
+                InternalPush();
             }, true);
+        }
+
+        private void InternalPush()
+        {
+            var localBranch = _repoCtrl.Head;
+
+            if (!localBranch.IsTracking)
+            {
+                Log.Log("The branch is not currently linked to a remote one. Making the link now...", Color.Orange);
+
+                _repoCtrl.Branches.Update(localBranch,
+                    b => b.Remote = GetRemoteOrigin().Name,
+                    b => b.UpstreamBranch = localBranch.CanonicalName);
+            }
+
+            Log.Log("Pushing...", Color.Cyan);
+            _repoCtrl.Network.Push(localBranch, GetPushOptions());
         }
 
         public void CancelOperation()

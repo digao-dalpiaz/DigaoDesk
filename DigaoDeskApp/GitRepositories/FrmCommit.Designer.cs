@@ -34,6 +34,9 @@
             this.btnStage = new System.Windows.Forms.Button();
             this.btnUnstage = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCommitAndPush = new System.Windows.Forms.Button();
+            this.btnCommit = new System.Windows.Forms.Button();
+            this.edMessage = new System.Windows.Forms.TextBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnInvertDif = new System.Windows.Forms.Label();
@@ -61,7 +64,7 @@
             this.lstStaged.Dock = System.Windows.Forms.DockStyle.Top;
             this.lstStaged.FormattingEnabled = true;
             this.lstStaged.IntegralHeight = false;
-            this.lstStaged.Location = new System.Drawing.Point(0, 80);
+            this.lstStaged.Location = new System.Drawing.Point(0, 88);
             this.lstStaged.Name = "lstStaged";
             this.lstStaged.Size = new System.Drawing.Size(800, 200);
             this.lstStaged.TabIndex = 0;
@@ -72,9 +75,9 @@
             this.lstDif.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstDif.FormattingEnabled = true;
             this.lstDif.IntegralHeight = false;
-            this.lstDif.Location = new System.Drawing.Point(0, 312);
+            this.lstDif.Location = new System.Drawing.Point(0, 320);
             this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(800, 151);
+            this.lstDif.Size = new System.Drawing.Size(800, 143);
             this.lstDif.TabIndex = 1;
             // 
             // btnStage
@@ -83,7 +86,7 @@
             this.btnStage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnStage.Location = new System.Drawing.Point(8, 8);
             this.btnStage.Name = "btnStage";
-            this.btnStage.Size = new System.Drawing.Size(120, 40);
+            this.btnStage.Size = new System.Drawing.Size(112, 48);
             this.btnStage.TabIndex = 2;
             this.btnStage.Text = "Stage";
             this.btnStage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -94,9 +97,9 @@
             // 
             this.btnUnstage.Image = ((System.Drawing.Image)(resources.GetObject("btnUnstage.Image")));
             this.btnUnstage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUnstage.Location = new System.Drawing.Point(136, 8);
+            this.btnUnstage.Location = new System.Drawing.Point(128, 8);
             this.btnUnstage.Name = "btnUnstage";
-            this.btnUnstage.Size = new System.Drawing.Size(120, 40);
+            this.btnUnstage.Size = new System.Drawing.Size(112, 48);
             this.btnUnstage.TabIndex = 3;
             this.btnUnstage.Text = "Unstage";
             this.btnUnstage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -105,18 +108,50 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnCommitAndPush);
+            this.panel1.Controls.Add(this.btnCommit);
+            this.panel1.Controls.Add(this.edMessage);
             this.panel1.Controls.Add(this.btnUnstage);
             this.panel1.Controls.Add(this.btnStage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 56);
+            this.panel1.Size = new System.Drawing.Size(800, 64);
             this.panel1.TabIndex = 4;
+            // 
+            // btnCommitAndPush
+            // 
+            this.btnCommitAndPush.Location = new System.Drawing.Point(656, 32);
+            this.btnCommitAndPush.Name = "btnCommitAndPush";
+            this.btnCommitAndPush.Size = new System.Drawing.Size(128, 24);
+            this.btnCommitAndPush.TabIndex = 6;
+            this.btnCommitAndPush.Text = "Commit and Push";
+            this.btnCommitAndPush.UseVisualStyleBackColor = true;
+            this.btnCommitAndPush.Click += new System.EventHandler(this.btnCommit_Click);
+            // 
+            // btnCommit
+            // 
+            this.btnCommit.Location = new System.Drawing.Point(656, 8);
+            this.btnCommit.Name = "btnCommit";
+            this.btnCommit.Size = new System.Drawing.Size(128, 24);
+            this.btnCommit.TabIndex = 5;
+            this.btnCommit.Text = "Commit";
+            this.btnCommit.UseVisualStyleBackColor = true;
+            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+            // 
+            // edMessage
+            // 
+            this.edMessage.Location = new System.Drawing.Point(272, 8);
+            this.edMessage.Multiline = true;
+            this.edMessage.Name = "edMessage";
+            this.edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.edMessage.Size = new System.Drawing.Size(376, 48);
+            this.edMessage.TabIndex = 4;
             // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 280);
+            this.splitter1.Location = new System.Drawing.Point(0, 288);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(800, 8);
             this.splitter1.TabIndex = 5;
@@ -132,7 +167,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 288);
+            this.panel2.Location = new System.Drawing.Point(0, 296);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 24);
             this.panel2.TabIndex = 4;
@@ -211,7 +246,7 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 56);
+            this.panel3.Location = new System.Drawing.Point(0, 64);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(800, 24);
             this.panel3.TabIndex = 6;
@@ -312,6 +347,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCommit_FormClosed);
             this.Load += new System.EventHandler(this.FrmCommit_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -343,5 +379,8 @@
         private System.Windows.Forms.Label btnNoneStaged;
         private System.Windows.Forms.Label btnAllStaged;
         private System.Windows.Forms.ListBox lstOther;
+        private System.Windows.Forms.TextBox edMessage;
+        private System.Windows.Forms.Button btnCommitAndPush;
+        private System.Windows.Forms.Button btnCommit;
     }
 }

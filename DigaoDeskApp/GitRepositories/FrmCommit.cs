@@ -28,6 +28,8 @@ namespace DigaoDeskApp
 
         private Repository _repository;
 
+        public string ReturnMessage;
+
         private class ItemView
         {
             public string Path;
@@ -168,6 +170,31 @@ namespace DigaoDeskApp
                 bool v = (op == null) ? !lst.GetItemChecked(i) : op.Value;
                 lst.SetItemChecked(i, v);
             }
+        }
+
+        private void btnCommit_Click(object sender, EventArgs e)
+        {
+            if (lstStaged.Items.Count == 0)
+            {
+                Messages.Error("There is no file in stage area");
+                return;
+            }
+
+            edMessage.Text = edMessage.Text.Trim();
+            if (edMessage.Text == String.Empty)
+            {
+                Messages.Error("Type a message to this commit");
+                edMessage.Select();
+                return;
+            }
+
+            //
+
+            if (!Messages.Question("Confirm commit?")) return;
+
+            ReturnMessage = edMessage.Text;
+
+            DialogResult = (sender == btnCommitAndPush) ? DialogResult.Continue : DialogResult.OK;
         }
 
     }
