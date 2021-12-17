@@ -326,10 +326,10 @@ namespace DigaoDeskApp
             r.CancelOperation();
         }
 
-        private void btnDifs_Click(object sender, EventArgs e)
+        private void btnCommit_Click(object sender, EventArgs e)
         {
             var r = GetSel();
-            r.ShowDifs();
+            r.Commit();
         }
 
         private void btnShell_Click(object sender, EventArgs e)

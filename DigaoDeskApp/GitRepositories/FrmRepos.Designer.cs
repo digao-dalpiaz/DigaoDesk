@@ -29,7 +29,7 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +57,7 @@ namespace DigaoDeskApp
             this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
             this.btnMerge = new System.Windows.Forms.ToolStripButton();
             this.btnSyncWithMaster = new System.Windows.Forms.ToolStripButton();
-            this.btnDifs = new System.Windows.Forms.ToolStripButton();
+            this.btnCommit = new System.Windows.Forms.ToolStripButton();
             this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             this.btnPush = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -87,14 +87,14 @@ namespace DigaoDeskApp
             this.colLastFetch,
             this.colOperation,
             this.colMasterCompare});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.g.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.g.DefaultCellStyle = dataGridViewCellStyle4;
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 46);
             this.g.MultiSelect = false;
@@ -207,15 +207,15 @@ namespace DigaoDeskApp
             this.toolStripSeparator1,
             this.btnCreateBranch,
             this.btnDeleteBranch,
-            this.btnSwitchBranch,
             this.btnCheckoutRemote,
+            this.btnSwitchBranch,
             this.toolStripSeparator3,
             this.btnFetch,
             this.btnPull,
+            this.btnCommit,
             this.btnCherryPick,
             this.btnMerge,
             this.btnSyncWithMaster,
-            this.btnDifs,
             this.btnCancelOperation,
             this.btnPush,
             this.toolStripSeparator2,
@@ -358,16 +358,16 @@ namespace DigaoDeskApp
             this.btnSyncWithMaster.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSyncWithMaster.Click += new System.EventHandler(this.btnSyncWithMaster_Click);
             // 
-            // btnDifs
+            // btnCommit
             // 
-            this.btnDifs.Image = ((System.Drawing.Image)(resources.GetObject("btnDifs.Image")));
-            this.btnDifs.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDifs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDifs.Name = "btnDifs";
-            this.btnDifs.Size = new System.Drawing.Size(31, 43);
-            this.btnDifs.Text = "Difs";
-            this.btnDifs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDifs.Click += new System.EventHandler(this.btnDifs_Click);
+            this.btnCommit.Image = ((System.Drawing.Image)(resources.GetObject("btnCommit.Image")));
+            this.btnCommit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCommit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCommit.Name = "btnCommit";
+            this.btnCommit.Size = new System.Drawing.Size(55, 43);
+            this.btnCommit.Text = "Commit";
+            this.btnCommit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
             // 
             // btnCancelOperation
             // 
@@ -476,7 +476,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnSwitchBranch;
         private System.Windows.Forms.ToolStripButton btnCheckoutRemote;
         private System.Windows.Forms.ToolStripButton btnFetchAll;
-        private System.Windows.Forms.ToolStripButton btnDifs;
+        private System.Windows.Forms.ToolStripButton btnCommit;
         private System.Windows.Forms.ToolStripButton btnDeleteBranch;
         private System.Windows.Forms.ToolStripButton btnShell;
         private System.Windows.Forms.ToolStripButton btnCreateBranch;

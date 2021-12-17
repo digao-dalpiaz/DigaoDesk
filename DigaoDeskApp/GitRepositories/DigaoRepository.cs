@@ -591,6 +591,12 @@ namespace DigaoDeskApp
             LogMergeResult(res);
         }
 
+        public void Commit()
+        {
+            FrmCommit f = new(_repoCtrl);
+            f.ShowDialog();
+        }
+
         public void Push()
         {
             DoBackground("Push", () =>
@@ -627,27 +633,6 @@ namespace DigaoDeskApp
 
                 _repoCtrl.Reset(ResetMode.Hard);
             }, true);
-        }
-
-        public void ShowDifs()
-        {
-            Log.Log();
-            Log.Log("Difs", Color.Yellow, true);
-            Log.LogLabel("Branch", _repoCtrl.Head.FriendlyName);
-
-            var status = GetRepositoryStatus();
-
-            if (status.Any())
-            {
-                foreach (var item in status)
-                {
-                    Log.Log(item.State.ToString() + " : " + item.FilePath, Color.Cyan);
-                }
-            } 
-            else
-            {
-                Log.Log("There are no difs", Color.White);
-            }
         }
 
         public void OpenShell()
