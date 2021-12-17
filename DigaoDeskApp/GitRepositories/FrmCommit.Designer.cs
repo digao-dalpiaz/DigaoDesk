@@ -67,7 +67,7 @@
             this.lstStaged.Location = new System.Drawing.Point(0, 88);
             this.lstStaged.Name = "lstStaged";
             this.lstStaged.Size = new System.Drawing.Size(800, 200);
-            this.lstStaged.TabIndex = 0;
+            this.lstStaged.TabIndex = 2;
             // 
             // lstDif
             // 
@@ -78,7 +78,7 @@
             this.lstDif.Location = new System.Drawing.Point(0, 320);
             this.lstDif.Name = "lstDif";
             this.lstDif.Size = new System.Drawing.Size(800, 143);
-            this.lstDif.TabIndex = 1;
+            this.lstDif.TabIndex = 5;
             // 
             // btnStage
             // 
@@ -87,7 +87,8 @@
             this.btnStage.Location = new System.Drawing.Point(8, 8);
             this.btnStage.Name = "btnStage";
             this.btnStage.Size = new System.Drawing.Size(112, 48);
-            this.btnStage.TabIndex = 2;
+            this.btnStage.TabIndex = 0;
+            this.btnStage.TabStop = false;
             this.btnStage.Text = "Stage";
             this.btnStage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStage.UseVisualStyleBackColor = true;
@@ -100,7 +101,8 @@
             this.btnUnstage.Location = new System.Drawing.Point(128, 8);
             this.btnUnstage.Name = "btnUnstage";
             this.btnUnstage.Size = new System.Drawing.Size(112, 48);
-            this.btnUnstage.TabIndex = 3;
+            this.btnUnstage.TabIndex = 1;
+            this.btnUnstage.TabStop = false;
             this.btnUnstage.Text = "Unstage";
             this.btnUnstage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUnstage.UseVisualStyleBackColor = true;
@@ -117,14 +119,14 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 64);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 0;
             // 
             // btnCommitAndPush
             // 
             this.btnCommitAndPush.Location = new System.Drawing.Point(656, 32);
             this.btnCommitAndPush.Name = "btnCommitAndPush";
             this.btnCommitAndPush.Size = new System.Drawing.Size(128, 24);
-            this.btnCommitAndPush.TabIndex = 6;
+            this.btnCommitAndPush.TabIndex = 4;
             this.btnCommitAndPush.Text = "Commit and Push";
             this.btnCommitAndPush.UseVisualStyleBackColor = true;
             this.btnCommitAndPush.Click += new System.EventHandler(this.btnCommit_Click);
@@ -134,7 +136,7 @@
             this.btnCommit.Location = new System.Drawing.Point(656, 8);
             this.btnCommit.Name = "btnCommit";
             this.btnCommit.Size = new System.Drawing.Size(128, 24);
-            this.btnCommit.TabIndex = 5;
+            this.btnCommit.TabIndex = 3;
             this.btnCommit.Text = "Commit";
             this.btnCommit.UseVisualStyleBackColor = true;
             this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
@@ -146,7 +148,7 @@
             this.edMessage.Name = "edMessage";
             this.edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.edMessage.Size = new System.Drawing.Size(376, 48);
-            this.edMessage.TabIndex = 4;
+            this.edMessage.TabIndex = 2;
             // 
             // splitter1
             // 
@@ -154,12 +156,12 @@
             this.splitter1.Location = new System.Drawing.Point(0, 288);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(800, 8);
-            this.splitter1.TabIndex = 5;
+            this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Moccasin;
+            this.panel2.BackColor = System.Drawing.Color.Gold;
             this.panel2.Controls.Add(this.btnInvertDif);
             this.panel2.Controls.Add(this.btnNoneDif);
             this.panel2.Controls.Add(this.btnAllDif);
@@ -238,7 +240,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightBlue;
+            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
             this.panel3.Controls.Add(this.btnInvertStaged);
             this.panel3.Controls.Add(this.btnNoneStaged);
             this.panel3.Controls.Add(this.btnAllStaged);
@@ -249,7 +251,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 64);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(800, 24);
-            this.panel3.TabIndex = 6;
+            this.panel3.TabIndex = 1;
             // 
             // btnInvertStaged
             // 
@@ -324,7 +326,7 @@
             this.lstOther.Location = new System.Drawing.Point(0, 463);
             this.lstOther.Name = "lstOther";
             this.lstOther.Size = new System.Drawing.Size(800, 132);
-            this.lstOther.TabIndex = 4;
+            this.lstOther.TabIndex = 6;
             // 
             // FrmCommit
             // 
