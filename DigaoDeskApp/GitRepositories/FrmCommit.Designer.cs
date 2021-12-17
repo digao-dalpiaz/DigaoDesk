@@ -49,6 +49,7 @@
             this.lbCountStaged = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lstOther = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,7 +74,7 @@
             this.lstDif.IntegralHeight = false;
             this.lstDif.Location = new System.Drawing.Point(0, 312);
             this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(800, 220);
+            this.lstDif.Size = new System.Drawing.Size(800, 151);
             this.lstDif.TabIndex = 1;
             // 
             // btnStage
@@ -279,12 +280,24 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Staged Files";
             // 
+            // lstOther
+            // 
+            this.lstOther.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lstOther.FormattingEnabled = true;
+            this.lstOther.IntegralHeight = false;
+            this.lstOther.ItemHeight = 15;
+            this.lstOther.Location = new System.Drawing.Point(0, 463);
+            this.lstOther.Name = "lstOther";
+            this.lstOther.Size = new System.Drawing.Size(800, 132);
+            this.lstOther.TabIndex = 4;
+            // 
             // FrmCommit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 532);
+            this.ClientSize = new System.Drawing.Size(800, 595);
             this.Controls.Add(this.lstDif);
+            this.Controls.Add(this.lstOther);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.lstStaged);
@@ -329,5 +342,6 @@
         private System.Windows.Forms.Label btnInvertStaged;
         private System.Windows.Forms.Label btnNoneStaged;
         private System.Windows.Forms.Label btnAllStaged;
+        private System.Windows.Forms.ListBox lstOther;
     }
 }

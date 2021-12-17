@@ -1,6 +1,7 @@
 ﻿using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -29,17 +30,18 @@ namespace DigaoDeskApp
 
         private class ItemView
         {
-            private StatusEntry _entry;
-            public StatusEntry Entry { get { return _entry; } }
+            public string Path;
+            public List<FileStatus> LstStatus;
 
-            public ItemView(StatusEntry entry)
+            public ItemView(string path, List<FileStatus> lstStatus)
             {
-                this._entry = entry;
+                this.Path = path;
+                this.LstStatus = lstStatus;
             }
 
             public override string ToString()
             {
-                return "[" + GitUtils.GetFileStatusAsString(_entry.State) + "] " + _entry.FilePath;
+                return "[" + string.Join(", ", LstStatus.Select(x => GitUtils.GetFileStatusAsString(x)))  + "] " + Path;
             }
         }
 
@@ -79,20 +81,47 @@ namespace DigaoDeskApp
             var lstInfo = _repository.RetrieveStatus(so);
             foreach (var item in lstInfo)
             {
-                var itemView = new ItemView(item);
-
-                if (ENUM_STAGED.HasFlag(item.State)) {
-                    lstStaged.Items.Add(itemView, true);
-                } 
-                else
-                if (ENUM_UNSTAGED.HasFlag(item.State))
+                List<FileStatus> flags = new();
+                foreach (FileStatus s in Enum.GetValues(typeof(FileStatus)))
                 {
-                    lstDif.Items.Add(itemView, true);
+                    if (s == FileStatus.Unaltered) continue; //unaltered is zero, so always contains this flag
+
+                    if (item.State.HasFlag(s))
+                    {
+                        flags.Add(s);
+                    }
                 }
+
+                List<FileStatus> flagsStaged = new();
+                List<FileStatus> flagsUnstaged = new();
+                List<FileStatus> flagsOther = new();
+
+                foreach (var s in flags)
+                {
+                    if (ENUM_STAGED.HasFlag(s))
+                    {
+                        flagsStaged.Add(s);
+                    }
+                    else
+                    if (ENUM_UNSTAGED.HasFlag(s))
+                    {
+                        flagsUnstaged.Add(s);
+                    }
+                    else
+                    {
+                        flagsOther.Add(s);
+                    }
+                }
+
+                if (flagsStaged.Any()) lstStaged.Items.Add(new ItemView(item.FilePath, flagsStaged), true);
+                if (flagsUnstaged.Any()) lstDif.Items.Add(new ItemView(item.FilePath, flagsUnstaged), true);
+                if (flagsOther.Any()) lstOther.Items.Add(new ItemView(item.FilePath, flagsOther));
             }
 
             lbCountStaged.Text = lstStaged.Items.Count.ToString();
             lbCountDif.Text = lstDif.Items.Count.ToString();
+
+            lstOther.Visible = lstOther.Items.Count > 0;
         }
 
         private void btnStage_Click(object sender, EventArgs e)
@@ -101,7 +130,7 @@ namespace DigaoDeskApp
 
             foreach (ItemView item in lstDif.CheckedItems)
             {
-                Commands.Stage(_repository, item.Entry.FilePath);
+                Commands.Stage(_repository, item.Path);
             }
 
             LoadLists();
@@ -113,7 +142,7 @@ namespace DigaoDeskApp
 
             foreach (ItemView item in lstStaged.CheckedItems)
             {
-                Commands.Unstage(_repository, item.Entry.FilePath);
+                Commands.Unstage(_repository, item.Path);
             }
 
             LoadLists();
