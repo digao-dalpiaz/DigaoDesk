@@ -161,7 +161,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Gold;
+            this.panel2.BackColor = System.Drawing.Color.Orange;
             this.panel2.Controls.Add(this.btnInvertDif);
             this.panel2.Controls.Add(this.btnNoneDif);
             this.panel2.Controls.Add(this.btnAllDif);
@@ -240,7 +240,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.BackColor = System.Drawing.Color.SkyBlue;
             this.panel3.Controls.Add(this.btnInvertStaged);
             this.panel3.Controls.Add(this.btnNoneStaged);
             this.panel3.Controls.Add(this.btnAllStaged);
