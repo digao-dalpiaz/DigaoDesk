@@ -61,6 +61,8 @@ namespace DigaoDeskApp
 
             Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position                      
 
+            AutoFillMessageHashtag();
+
             LoadLists();
         }
 
@@ -70,6 +72,12 @@ namespace DigaoDeskApp
             r.SetValue("ListH", lstStaged.Height);
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
+        }
+
+        private void AutoFillMessageHashtag()
+        {
+            ParseCommitMessage p = new(_repository);
+            edMessage.Text = p.GetMessage();
         }
 
         private void LoadLists()
