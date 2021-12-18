@@ -29,7 +29,6 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstCommits = new System.Windows.Forms.ListBox();
             this.edSearch = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -41,19 +40,13 @@ namespace DigaoDeskApp
             this.label4 = new System.Windows.Forms.Label();
             this.edBranch = new System.Windows.Forms.ComboBox();
             this.lbCount = new System.Windows.Forms.Label();
+            this.g = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lstCommits
-            // 
-            this.lstCommits.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lstCommits.FormattingEnabled = true;
-            this.lstCommits.IntegralHeight = false;
-            this.lstCommits.ItemHeight = 15;
-            this.lstCommits.Location = new System.Drawing.Point(8, 104);
-            this.lstCommits.Name = "lstCommits";
-            this.lstCommits.Size = new System.Drawing.Size(856, 376);
-            this.lstCommits.TabIndex = 10;
-            this.lstCommits.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstCommits_DrawItem);
             // 
             // edSearch
             // 
@@ -161,6 +154,59 @@ namespace DigaoDeskApp
             this.lbCount.TabIndex = 24;
             this.lbCount.Text = "Count";
             // 
+            // g
+            // 
+            this.g.AllowUserToAddRows = false;
+            this.g.AllowUserToDeleteRows = false;
+            this.g.AllowUserToResizeRows = false;
+            this.g.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.g.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.g.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
+            this.colMessage,
+            this.colAuthor,
+            this.colDateTime});
+            this.g.Location = new System.Drawing.Point(8, 104);
+            this.g.Name = "g";
+            this.g.ReadOnly = true;
+            this.g.RowHeadersVisible = false;
+            this.g.RowTemplate.Height = 25;
+            this.g.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.g.Size = new System.Drawing.Size(856, 376);
+            this.g.StandardTab = true;
+            this.g.TabIndex = 25;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            // 
+            // colMessage
+            // 
+            this.colMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colMessage.DataPropertyName = "Message";
+            this.colMessage.HeaderText = "Message";
+            this.colMessage.Name = "colMessage";
+            this.colMessage.ReadOnly = true;
+            // 
+            // colAuthor
+            // 
+            this.colAuthor.DataPropertyName = "Author";
+            this.colAuthor.HeaderText = "Author";
+            this.colAuthor.Name = "colAuthor";
+            this.colAuthor.ReadOnly = true;
+            this.colAuthor.Width = 150;
+            // 
+            // colDateTime
+            // 
+            this.colDateTime.DataPropertyName = "DateTime";
+            this.colDateTime.HeaderText = "Date/Time";
+            this.colDateTime.Name = "colDateTime";
+            this.colDateTime.ReadOnly = true;
+            this.colDateTime.Width = 150;
+            // 
             // FrmCherryPick
             // 
             this.AcceptButton = this.btnOK;
@@ -168,6 +214,7 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(872, 528);
+            this.Controls.Add(this.g);
             this.Controls.Add(this.lbCount);
             this.Controls.Add(this.edBranch);
             this.Controls.Add(this.label4);
@@ -179,7 +226,6 @@ namespace DigaoDeskApp
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.edSearch);
-            this.Controls.Add(this.lstCommits);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -188,14 +234,13 @@ namespace DigaoDeskApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cherry Pick";
             this.Load += new System.EventHandler(this.FrmCherryPick_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lstCommits;
         private System.Windows.Forms.TextBox edSearch;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
@@ -207,5 +252,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox edBranch;
         private System.Windows.Forms.Label lbCount;
+        private System.Windows.Forms.DataGridView g;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMessage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
     }
 }

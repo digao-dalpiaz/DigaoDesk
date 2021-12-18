@@ -1,6 +1,6 @@
 ﻿using LibGit2Sharp;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,9 +9,31 @@ namespace DigaoDeskApp
     public partial class FrmCherryPick : Form
     {
 
+        private class CommitView
+        {
+            private Commit _commit;
+
+            public CommitView(Commit commit)
+            {
+                this._commit = commit;
+            }
+
+            public Commit GetCommit()
+            {
+                return _commit;
+            }
+
+            public string Id { get { return _commit.Id.Sha; } }
+            public string Message { get { return _commit.MessageShort; } }
+            public string Author { get { return _commit.Author.Name; } }
+            public string DateTime { get { return _commit.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT); } }
+        }
+
         private Repository _repository;
-        private int _lineHeight;
-        public Commit ResultCommit;
+        private List<CommitView> _lstCommits;
+        private BindingSource _gridBind;
+
+        public List<Commit> ResultCommits;
 
         public FrmCherryPick(Repository repository)
         {
@@ -22,8 +44,12 @@ namespace DigaoDeskApp
 
         private void FrmCherryPick_Load(object sender, EventArgs e)
         {
-            _lineHeight = TextRenderer.MeasureText("A", lstCommits.Font).Height;
-            lstCommits.ItemHeight = (_lineHeight * 2) + 3;
+            _lstCommits = new();
+
+            _gridBind = new();
+            _gridBind.DataSource = _lstCommits;
+
+            g.DataSource = _gridBind;
 
             FillBranches();
             FillList();
@@ -39,57 +65,29 @@ namespace DigaoDeskApp
 
         private void FillList()
         {
-            lstCommits.BeginUpdate();
+            _lstCommits.Clear();
             try
             {
-                lstCommits.Items.Clear();
-
                 if (edBranch.SelectedItem == null) return;
                 var branch = _repository.Branches[edBranch.SelectedItem.ToString()];
                 if (branch == null) return;
 
-                foreach (var item in branch.Commits.Where(x => {
+                foreach (var item in branch.Commits.Where(x =>
+                {
                     if (edStartDate.Checked) if (!(x.Author.When.ToLocalTime().Date >= edStartDate.Value.Date)) return false;
                     if (edEndDate.Checked) if (!(x.Author.When.ToLocalTime().Date <= edEndDate.Value.Date)) return false;
                     if (edSearch.Text != string.Empty) if (!(x.Id.Sha.StartsWith(edSearch.Text, StringComparison.InvariantCultureIgnoreCase) || x.MessageShort.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase))) return false;
                     return true;
                 }))
                 {
-                    lstCommits.Items.Add(item);
+                    _lstCommits.Add(new CommitView(item));
                 }
             }
             finally
             {
-                lstCommits.EndUpdate();
-
-                lbCount.Text = "Count: " + lstCommits.Items.Count;
+                _gridBind.ResetBindings(false);
+                lbCount.Text = "Count: " + _lstCommits.Count;
             }
-        }
-
-        private void lstCommits_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index == -1) return;
-
-            e.DrawBackground();
-            if (e.Index % 2 == 0)
-            {
-                e.Graphics.FillRectangle(Brushes.Beige, e.Bounds);
-            }
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-            {
-                e.Graphics.FillRectangle(Brushes.Gold, e.Bounds);
-            }
-
-            var item = lstCommits.Items[e.Index] as Commit;
-
-            TextRenderer.DrawText(e.Graphics, item.Id.Sha, lstCommits.Font, new Point(e.Bounds.X + 2, e.Bounds.Y + 1), Color.Green);
-            TextRenderer.DrawText(e.Graphics, item.MessageShort, lstCommits.Font, new Point(e.Bounds.X + 2, e.Bounds.Y + 1 + _lineHeight), Color.Black);
-
-            string info = $"(Author: {item.Author.Name} - Date: {item.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT)})";
-            var w = TextRenderer.MeasureText(info, lstCommits.Font).Width;
-            TextRenderer.DrawText(e.Graphics, info, lstCommits.Font, new Point(lstCommits.Width - w - 24, e.Bounds.Y + 1), Color.Gray);
-
-            e.DrawFocusRectangle();
         }
 
         private void edBranch_TextChanged(object sender, EventArgs e)
@@ -109,15 +107,23 @@ namespace DigaoDeskApp
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (lstCommits.SelectedItem == null)
+            if (g.SelectedRows.Count == 0)
             {
-                Messages.Error("Please, select a commit.");
+                Messages.Error("Please, select at least one commit.");
                 return;
             }
 
             //
 
-            ResultCommit = (lstCommits.SelectedItem as Commit);
+            List<Commit> selecteds = new();
+
+            foreach (DataGridViewRow row in g.SelectedRows)
+            {
+                var item = row.DataBoundItem as CommitView;
+                selecteds.Add(item.GetCommit());
+            }
+
+            ResultCommits = selecteds;
 
             DialogResult = DialogResult.OK;
         }

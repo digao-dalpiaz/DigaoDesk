@@ -519,11 +519,16 @@ namespace DigaoDeskApp
             if (f.ShowDialog() == DialogResult.OK)
             {
                 DoBackground("Cherry Pick", () =>
-                {
-                    Log.LogLabel("Commit", f.ResultCommit.Id.Sha);
+                {                    
                     Log.LogLabel("Into Branch", _repoCtrl.Head.FriendlyName);
-                                        
-                    _repoCtrl.CherryPick(f.ResultCommit, GetSignature());
+
+                    var lst = f.ResultCommits;
+                    lst.Reverse();
+                    foreach (var item in lst)
+                    {
+                        Log.LogLabel("Commit", item.Id.Sha);
+                        _repoCtrl.CherryPick(item, GetSignature());
+                    }
                 }, true);
             }
         }
