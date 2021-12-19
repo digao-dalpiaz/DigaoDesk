@@ -42,6 +42,7 @@ namespace DigaoDeskApp
             this.boxLocation = new System.Windows.Forms.Panel();
             this.ckRemote = new System.Windows.Forms.RadioButton();
             this.ckLocal = new System.Windows.Forms.RadioButton();
+            this.lbCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.boxButtons.SuspendLayout();
             this.boxLocation.SuspendLayout();
@@ -184,6 +185,15 @@ namespace DigaoDeskApp
             this.ckLocal.UseVisualStyleBackColor = true;
             this.ckLocal.Click += new System.EventHandler(this.edSearch_TextChanged);
             // 
+            // lbCount
+            // 
+            this.lbCount.Location = new System.Drawing.Point(728, 432);
+            this.lbCount.Name = "lbCount";
+            this.lbCount.Size = new System.Drawing.Size(104, 23);
+            this.lbCount.TabIndex = 4;
+            this.lbCount.Text = "Count: 000";
+            this.lbCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmBranchSelector
             // 
             this.AcceptButton = this.btnOK;
@@ -191,6 +201,7 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(840, 472);
+            this.Controls.Add(this.lbCount);
             this.Controls.Add(this.boxLocation);
             this.Controls.Add(this.boxButtons);
             this.Controls.Add(this.g);
@@ -224,5 +235,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
+        private System.Windows.Forms.Label lbCount;
     }
 }

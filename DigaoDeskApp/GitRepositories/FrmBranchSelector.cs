@@ -71,6 +71,7 @@ namespace DigaoDeskApp
             g.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             boxLocation.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             boxButtons.Anchor = AnchorStyles.Bottom;
+            lbCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 
             this.Text = title;
             this._useLocation = useLocation;
@@ -109,6 +110,7 @@ namespace DigaoDeskApp
                     (edSearch.Text == string.Empty || branch.FriendlyName.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase)) &&
                     (!_useLocation || branch.IsRemote == ckRemote.Checked);
             });
+            lbCount.Text = "Count: " + _gridBind.Count;
         }
 
         private void edSearch_TextChanged(object sender, EventArgs e)
