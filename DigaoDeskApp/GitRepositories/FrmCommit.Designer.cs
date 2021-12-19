@@ -66,7 +66,7 @@
             this.lstStaged.IntegralHeight = false;
             this.lstStaged.Location = new System.Drawing.Point(0, 88);
             this.lstStaged.Name = "lstStaged";
-            this.lstStaged.Size = new System.Drawing.Size(800, 200);
+            this.lstStaged.Size = new System.Drawing.Size(794, 200);
             this.lstStaged.TabIndex = 2;
             // 
             // lstDif
@@ -77,7 +77,7 @@
             this.lstDif.IntegralHeight = false;
             this.lstDif.Location = new System.Drawing.Point(0, 320);
             this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(800, 143);
+            this.lstDif.Size = new System.Drawing.Size(794, 143);
             this.lstDif.TabIndex = 5;
             // 
             // btnStage
@@ -118,7 +118,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 64);
+            this.panel1.Size = new System.Drawing.Size(794, 64);
             this.panel1.TabIndex = 0;
             // 
             // btnCommitAndPush
@@ -155,7 +155,7 @@
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter1.Location = new System.Drawing.Point(0, 288);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(800, 8);
+            this.splitter1.Size = new System.Drawing.Size(794, 8);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -171,7 +171,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 296);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 24);
+            this.panel2.Size = new System.Drawing.Size(794, 24);
             this.panel2.TabIndex = 4;
             // 
             // btnInvertDif
@@ -250,7 +250,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 64);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(800, 24);
+            this.panel3.Size = new System.Drawing.Size(794, 24);
             this.panel3.TabIndex = 1;
             // 
             // btnInvertStaged
@@ -325,14 +325,14 @@
             this.lstOther.ItemHeight = 15;
             this.lstOther.Location = new System.Drawing.Point(0, 463);
             this.lstOther.Name = "lstOther";
-            this.lstOther.Size = new System.Drawing.Size(800, 132);
+            this.lstOther.Size = new System.Drawing.Size(794, 132);
             this.lstOther.TabIndex = 6;
             // 
             // FrmCommit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 595);
+            this.ClientSize = new System.Drawing.Size(794, 595);
             this.Controls.Add(this.lstDif);
             this.Controls.Add(this.lstOther);
             this.Controls.Add(this.panel2);

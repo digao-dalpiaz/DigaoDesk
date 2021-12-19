@@ -51,6 +51,10 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            edMessage.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnCommit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCommitAndPush.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
             this._repository = repository;
         }
 
