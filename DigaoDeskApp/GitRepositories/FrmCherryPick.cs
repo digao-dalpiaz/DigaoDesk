@@ -39,6 +39,16 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            edBranch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            edSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lbStartDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            edStartDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lbEndDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            edEndDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            g.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            boxButtons.Anchor = AnchorStyles.Bottom;
+
             _repository = repository;
         }
 

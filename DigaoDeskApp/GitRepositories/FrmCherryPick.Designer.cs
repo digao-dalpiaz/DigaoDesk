@@ -35,8 +35,8 @@ namespace DigaoDeskApp
             this.edStartDate = new System.Windows.Forms.DateTimePicker();
             this.edEndDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbStartDate = new System.Windows.Forms.Label();
+            this.lbEndDate = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.edBranch = new System.Windows.Forms.ComboBox();
             this.lbCount = new System.Windows.Forms.Label();
@@ -45,7 +45,9 @@ namespace DigaoDeskApp
             this.colMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boxButtons = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
+            this.boxButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // edSearch
@@ -59,7 +61,7 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(352, 488);
+            this.btnOK.Location = new System.Drawing.Point(8, 8);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(80, 32);
             this.btnOK.TabIndex = 21;
@@ -70,7 +72,7 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(440, 488);
+            this.btnCancel.Location = new System.Drawing.Point(96, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
             this.btnCancel.TabIndex = 22;
@@ -107,23 +109,23 @@ namespace DigaoDeskApp
             this.label1.TabIndex = 6;
             this.label1.Text = "Commit message or id";
             // 
-            // label2
+            // lbStartDate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(630, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 15);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Start date";
+            this.lbStartDate.AutoSize = true;
+            this.lbStartDate.Location = new System.Drawing.Point(630, 56);
+            this.lbStartDate.Name = "lbStartDate";
+            this.lbStartDate.Size = new System.Drawing.Size(57, 15);
+            this.lbStartDate.TabIndex = 7;
+            this.lbStartDate.Text = "Start date";
             // 
-            // label3
+            // lbEndDate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(750, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 15);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "End date";
+            this.lbEndDate.AutoSize = true;
+            this.lbEndDate.Location = new System.Drawing.Point(750, 56);
+            this.lbEndDate.Name = "lbEndDate";
+            this.lbEndDate.Size = new System.Drawing.Size(53, 15);
+            this.lbEndDate.TabIndex = 8;
+            this.lbEndDate.Text = "End date";
             // 
             // label4
             // 
@@ -207,6 +209,15 @@ namespace DigaoDeskApp
             this.colDateTime.ReadOnly = true;
             this.colDateTime.Width = 150;
             // 
+            // boxButtons
+            // 
+            this.boxButtons.Controls.Add(this.btnCancel);
+            this.boxButtons.Controls.Add(this.btnOK);
+            this.boxButtons.Location = new System.Drawing.Point(344, 480);
+            this.boxButtons.Name = "boxButtons";
+            this.boxButtons.Size = new System.Drawing.Size(184, 48);
+            this.boxButtons.TabIndex = 26;
+            // 
             // FrmCherryPick
             // 
             this.AcceptButton = this.btnOK;
@@ -214,27 +225,26 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(872, 528);
+            this.Controls.Add(this.boxButtons);
             this.Controls.Add(this.g);
             this.Controls.Add(this.lbCount);
             this.Controls.Add(this.edBranch);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbEndDate);
+            this.Controls.Add(this.lbStartDate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.edEndDate);
             this.Controls.Add(this.edStartDate);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.edSearch);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCherryPick";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cherry Pick";
             this.Load += new System.EventHandler(this.FrmCherryPick_Load);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
+            this.boxButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,8 +257,8 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DateTimePicker edStartDate;
         private System.Windows.Forms.DateTimePicker edEndDate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbStartDate;
+        private System.Windows.Forms.Label lbEndDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox edBranch;
         private System.Windows.Forms.Label lbCount;
@@ -257,5 +267,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colMessage;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDateTime;
+        private System.Windows.Forms.Panel boxButtons;
     }
 }
