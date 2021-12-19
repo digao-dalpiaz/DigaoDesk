@@ -90,6 +90,9 @@ namespace DigaoDeskApp
 
             var prefix = (sender as ToolStripItem).Text;
             edName.Text =  prefix + edName.Text;
+
+            edName.Select();
+            edName.SelectionStart = edName.TextLength;
         }
 
         private void btnPrefix_Click(object sender, EventArgs e)
