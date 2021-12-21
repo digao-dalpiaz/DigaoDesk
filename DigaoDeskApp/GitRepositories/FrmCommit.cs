@@ -234,17 +234,15 @@ namespace DigaoDeskApp
             string pathOld;
             string pathNew;
 
-            Stream stmSource;
-
-            var index = _repository.Index[item.Path];
+            Stream stmSource;                       
 
             if (lst == lstStaged)
-            {                
+            {
                 stmSource = GetBlobOfLastCommitByItemView(item).GetContentStream();
                 pathOld = GetTempFileNameByItemView(item, "commited");
                 StreamToFile(stmSource, pathOld);
 
-                stmSource = GetBlobOfIndexEntry(index).GetContentStream();
+                stmSource = GetBlobOfIndexByItemView(item).GetContentStream();
                 pathNew = GetTempFileNameByItemView(item, "staged");
                 StreamToFile(stmSource, pathNew);
             }
@@ -255,7 +253,7 @@ namespace DigaoDeskApp
                 
                 if (lstStatus.Any(x => ENUM_STAGED.HasFlag(x))) //file contains any "staged" status
                 {
-                    stmSource = GetBlobOfIndexEntry(index).GetContentStream();
+                    stmSource = GetBlobOfIndexByItemView(item).GetContentStream();
                     pathOld = GetTempFileNameByItemView(item, "staged");
                 } else
                 {
@@ -277,8 +275,9 @@ namespace DigaoDeskApp
             return _repository.Head.Tip.Tree[item.Path].Target as Blob;
         }
 
-        private Blob GetBlobOfIndexEntry(IndexEntry index)
+        private Blob GetBlobOfIndexByItemView(ItemView item)
         {
+            var index = _repository.Index[item.Path];
             return _repository.Lookup<Blob>(index.Id);
         }
 
