@@ -280,6 +280,7 @@ namespace DigaoDeskApp
             this.btnSelDiffProgram.Name = "btnSelDiffProgram";
             this.btnSelDiffProgram.Size = new System.Drawing.Size(24, 25);
             this.btnSelDiffProgram.TabIndex = 9;
+            this.btnSelDiffProgram.TabStop = false;
             this.btnSelDiffProgram.Text = "...";
             this.btnSelDiffProgram.UseVisualStyleBackColor = true;
             this.btnSelDiffProgram.Click += new System.EventHandler(this.btnSelDiffProgram_Click);
@@ -417,6 +418,7 @@ namespace DigaoDeskApp
             this.btnSelShellProgram.Name = "btnSelShellProgram";
             this.btnSelShellProgram.Size = new System.Drawing.Size(24, 25);
             this.btnSelShellProgram.TabIndex = 7;
+            this.btnSelShellProgram.TabStop = false;
             this.btnSelShellProgram.Text = "...";
             this.btnSelShellProgram.UseVisualStyleBackColor = true;
             this.btnSelShellProgram.Click += new System.EventHandler(this.btnSelShellProgram_Click);
