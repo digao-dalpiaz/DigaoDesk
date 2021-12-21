@@ -87,6 +87,23 @@ namespace DigaoDeskApp
             edMessage.Text = p.GetMessage();
         }
 
+        private List<FileStatus> MountListOfFileStatus(FileStatus agregatedFileStatus)
+        {
+            List<FileStatus> lst = new();
+
+            foreach (FileStatus s in Enum.GetValues(typeof(FileStatus)))
+            {
+                if (s == FileStatus.Unaltered) continue; //unaltered is zero, so always contains this flag
+
+                if (agregatedFileStatus.HasFlag(s))
+                {
+                    lst.Add(s);
+                }
+            }
+
+            return lst;
+        }
+
         private void LoadLists()
         {
             lstStaged.Items.Clear();
@@ -98,16 +115,7 @@ namespace DigaoDeskApp
             var lstInfo = _repository.RetrieveStatus(so);
             foreach (var item in lstInfo)
             {
-                List<FileStatus> flags = new();
-                foreach (FileStatus s in Enum.GetValues(typeof(FileStatus)))
-                {
-                    if (s == FileStatus.Unaltered) continue; //unaltered is zero, so always contains this flag
-
-                    if (item.State.HasFlag(s))
-                    {
-                        flags.Add(s);
-                    }
-                }
+                var flags = MountListOfFileStatus(item.State);
 
                 List<FileStatus> flagsStaged = new();
                 List<FileStatus> flagsUnstaged = new();
@@ -242,7 +250,10 @@ namespace DigaoDeskApp
             }
             else if (lst == lstDif)
             {
-                if (index != null)
+                var agregatedFileStatus = _repository.RetrieveStatus(item.Path);
+                List<FileStatus> lstStatus = MountListOfFileStatus(agregatedFileStatus);
+                
+                if (lstStatus.Any(x => ENUM_STAGED.HasFlag(x))) //file contains any "staged" status
                 {
                     stmSource = GetBlobOfIndexEntry(index).GetContentStream();
                     pathOld = GetTempFileNameByItemView(item, "staged");
