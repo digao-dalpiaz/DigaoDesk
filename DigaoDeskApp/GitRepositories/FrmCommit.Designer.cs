@@ -29,56 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCommit));
-            this.lstStaged = new System.Windows.Forms.CheckedListBox();
-            this.lstDif = new System.Windows.Forms.CheckedListBox();
             this.btnStage = new System.Windows.Forms.Button();
             this.btnUnstage = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.boxTop = new System.Windows.Forms.Panel();
             this.btnCommitAndPush = new System.Windows.Forms.Button();
             this.btnCommit = new System.Windows.Forms.Button();
             this.edMessage = new System.Windows.Forms.TextBox();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.lstOther = new System.Windows.Forms.ListBox();
+            this.lstDif = new DigaoDeskApp.CheckedListBoxEx();
+            this.boxTitleUnstaged = new System.Windows.Forms.Panel();
             this.btnInvertDif = new System.Windows.Forms.Label();
             this.btnNoneDif = new System.Windows.Forms.Label();
             this.btnAllDif = new System.Windows.Forms.Label();
             this.lbCountDif = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.splitterLists = new System.Windows.Forms.Splitter();
+            this.lstStaged = new DigaoDeskApp.CheckedListBoxEx();
+            this.boxTitleStaged = new System.Windows.Forms.Panel();
             this.btnInvertStaged = new System.Windows.Forms.Label();
             this.btnNoneStaged = new System.Windows.Forms.Label();
             this.btnAllStaged = new System.Windows.Forms.Label();
             this.lbCountStaged = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lstOther = new System.Windows.Forms.ListBox();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.boxTop.SuspendLayout();
+            this.boxTitleUnstaged.SuspendLayout();
+            this.boxTitleStaged.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lstStaged
-            // 
-            this.lstStaged.CheckOnClick = true;
-            this.lstStaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lstStaged.FormattingEnabled = true;
-            this.lstStaged.IntegralHeight = false;
-            this.lstStaged.Location = new System.Drawing.Point(0, 88);
-            this.lstStaged.Name = "lstStaged";
-            this.lstStaged.Size = new System.Drawing.Size(794, 200);
-            this.lstStaged.TabIndex = 2;
-            // 
-            // lstDif
-            // 
-            this.lstDif.CheckOnClick = true;
-            this.lstDif.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstDif.FormattingEnabled = true;
-            this.lstDif.IntegralHeight = false;
-            this.lstDif.Location = new System.Drawing.Point(0, 320);
-            this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(794, 143);
-            this.lstDif.TabIndex = 5;
             // 
             // btnStage
             // 
@@ -108,22 +86,22 @@
             this.btnUnstage.UseVisualStyleBackColor = true;
             this.btnUnstage.Click += new System.EventHandler(this.btnUnstage_Click);
             // 
-            // panel1
+            // boxTop
             // 
-            this.panel1.Controls.Add(this.btnCommitAndPush);
-            this.panel1.Controls.Add(this.btnCommit);
-            this.panel1.Controls.Add(this.edMessage);
-            this.panel1.Controls.Add(this.btnUnstage);
-            this.panel1.Controls.Add(this.btnStage);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 64);
-            this.panel1.TabIndex = 0;
+            this.boxTop.Controls.Add(this.btnCommitAndPush);
+            this.boxTop.Controls.Add(this.btnCommit);
+            this.boxTop.Controls.Add(this.edMessage);
+            this.boxTop.Controls.Add(this.btnUnstage);
+            this.boxTop.Controls.Add(this.btnStage);
+            this.boxTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.boxTop.Location = new System.Drawing.Point(0, 0);
+            this.boxTop.Name = "boxTop";
+            this.boxTop.Size = new System.Drawing.Size(866, 64);
+            this.boxTop.TabIndex = 0;
             // 
             // btnCommitAndPush
             // 
-            this.btnCommitAndPush.Location = new System.Drawing.Point(656, 32);
+            this.btnCommitAndPush.Location = new System.Drawing.Point(728, 32);
             this.btnCommitAndPush.Name = "btnCommitAndPush";
             this.btnCommitAndPush.Size = new System.Drawing.Size(128, 24);
             this.btnCommitAndPush.TabIndex = 4;
@@ -133,7 +111,7 @@
             // 
             // btnCommit
             // 
-            this.btnCommit.Location = new System.Drawing.Point(656, 8);
+            this.btnCommit.Location = new System.Drawing.Point(728, 8);
             this.btnCommit.Name = "btnCommit";
             this.btnCommit.Size = new System.Drawing.Size(128, 24);
             this.btnCommit.TabIndex = 3;
@@ -143,36 +121,50 @@
             // 
             // edMessage
             // 
-            this.edMessage.Location = new System.Drawing.Point(272, 8);
+            this.edMessage.Location = new System.Drawing.Point(248, 8);
             this.edMessage.Multiline = true;
             this.edMessage.Name = "edMessage";
             this.edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edMessage.Size = new System.Drawing.Size(376, 48);
+            this.edMessage.Size = new System.Drawing.Size(472, 48);
             this.edMessage.TabIndex = 2;
             // 
-            // splitter1
+            // lstOther
             // 
-            this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(0, 288);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(794, 8);
-            this.splitter1.TabIndex = 3;
-            this.splitter1.TabStop = false;
+            this.lstOther.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lstOther.FormattingEnabled = true;
+            this.lstOther.IntegralHeight = false;
+            this.lstOther.ItemHeight = 15;
+            this.lstOther.Location = new System.Drawing.Point(0, 541);
+            this.lstOther.Name = "lstOther";
+            this.lstOther.Size = new System.Drawing.Size(866, 132);
+            this.lstOther.TabIndex = 12;
             // 
-            // panel2
+            // lstDif
             // 
-            this.panel2.BackColor = System.Drawing.Color.Orange;
-            this.panel2.Controls.Add(this.btnInvertDif);
-            this.panel2.Controls.Add(this.btnNoneDif);
-            this.panel2.Controls.Add(this.btnAllDif);
-            this.panel2.Controls.Add(this.lbCountDif);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 296);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(794, 24);
-            this.panel2.TabIndex = 4;
+            this.lstDif.CheckOnClick = true;
+            this.lstDif.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstDif.FormattingEnabled = true;
+            this.lstDif.IntegralHeight = false;
+            this.lstDif.Location = new System.Drawing.Point(0, 318);
+            this.lstDif.Name = "lstDif";
+            this.lstDif.Size = new System.Drawing.Size(866, 355);
+            this.lstDif.TabIndex = 11;
+            this.lstDif.DoubleClick += new System.EventHandler(this.lstItem_Click);
+            // 
+            // boxTitleUnstaged
+            // 
+            this.boxTitleUnstaged.BackColor = System.Drawing.Color.Orange;
+            this.boxTitleUnstaged.Controls.Add(this.btnInvertDif);
+            this.boxTitleUnstaged.Controls.Add(this.btnNoneDif);
+            this.boxTitleUnstaged.Controls.Add(this.btnAllDif);
+            this.boxTitleUnstaged.Controls.Add(this.lbCountDif);
+            this.boxTitleUnstaged.Controls.Add(this.label4);
+            this.boxTitleUnstaged.Controls.Add(this.label1);
+            this.boxTitleUnstaged.Dock = System.Windows.Forms.DockStyle.Top;
+            this.boxTitleUnstaged.Location = new System.Drawing.Point(0, 294);
+            this.boxTitleUnstaged.Name = "boxTitleUnstaged";
+            this.boxTitleUnstaged.Size = new System.Drawing.Size(866, 24);
+            this.boxTitleUnstaged.TabIndex = 10;
             // 
             // btnInvertDif
             // 
@@ -238,20 +230,41 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Unstaged Files";
             // 
-            // panel3
+            // splitterLists
             // 
-            this.panel3.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel3.Controls.Add(this.btnInvertStaged);
-            this.panel3.Controls.Add(this.btnNoneStaged);
-            this.panel3.Controls.Add(this.btnAllStaged);
-            this.panel3.Controls.Add(this.lbCountStaged);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 64);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(794, 24);
-            this.panel3.TabIndex = 1;
+            this.splitterLists.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitterLists.Location = new System.Drawing.Point(0, 288);
+            this.splitterLists.Name = "splitterLists";
+            this.splitterLists.Size = new System.Drawing.Size(866, 6);
+            this.splitterLists.TabIndex = 13;
+            this.splitterLists.TabStop = false;
+            // 
+            // lstStaged
+            // 
+            this.lstStaged.CheckOnClick = true;
+            this.lstStaged.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lstStaged.FormattingEnabled = true;
+            this.lstStaged.IntegralHeight = false;
+            this.lstStaged.Location = new System.Drawing.Point(0, 88);
+            this.lstStaged.Name = "lstStaged";
+            this.lstStaged.Size = new System.Drawing.Size(866, 200);
+            this.lstStaged.TabIndex = 9;
+            this.lstStaged.DoubleClick += new System.EventHandler(this.lstItem_Click);
+            // 
+            // boxTitleStaged
+            // 
+            this.boxTitleStaged.BackColor = System.Drawing.Color.SkyBlue;
+            this.boxTitleStaged.Controls.Add(this.btnInvertStaged);
+            this.boxTitleStaged.Controls.Add(this.btnNoneStaged);
+            this.boxTitleStaged.Controls.Add(this.btnAllStaged);
+            this.boxTitleStaged.Controls.Add(this.lbCountStaged);
+            this.boxTitleStaged.Controls.Add(this.label3);
+            this.boxTitleStaged.Controls.Add(this.label2);
+            this.boxTitleStaged.Dock = System.Windows.Forms.DockStyle.Top;
+            this.boxTitleStaged.Location = new System.Drawing.Point(0, 64);
+            this.boxTitleStaged.Name = "boxTitleStaged";
+            this.boxTitleStaged.Size = new System.Drawing.Size(866, 24);
+            this.boxTitleStaged.TabIndex = 8;
             // 
             // btnInvertStaged
             // 
@@ -317,29 +330,18 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Staged Files";
             // 
-            // lstOther
-            // 
-            this.lstOther.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lstOther.FormattingEnabled = true;
-            this.lstOther.IntegralHeight = false;
-            this.lstOther.ItemHeight = 15;
-            this.lstOther.Location = new System.Drawing.Point(0, 463);
-            this.lstOther.Name = "lstOther";
-            this.lstOther.Size = new System.Drawing.Size(794, 132);
-            this.lstOther.TabIndex = 6;
-            // 
             // FrmCommit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 595);
-            this.Controls.Add(this.lstDif);
+            this.ClientSize = new System.Drawing.Size(866, 673);
             this.Controls.Add(this.lstOther);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.lstDif);
+            this.Controls.Add(this.boxTitleUnstaged);
+            this.Controls.Add(this.splitterLists);
             this.Controls.Add(this.lstStaged);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.boxTitleStaged);
+            this.Controls.Add(this.boxTop);
             this.MinimizeBox = false;
             this.Name = "FrmCommit";
             this.ShowIcon = false;
@@ -348,41 +350,40 @@
             this.Text = "Commit";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCommit_FormClosed);
             this.Load += new System.EventHandler(this.FrmCommit_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.boxTop.ResumeLayout(false);
+            this.boxTop.PerformLayout();
+            this.boxTitleUnstaged.ResumeLayout(false);
+            this.boxTitleUnstaged.PerformLayout();
+            this.boxTitleStaged.ResumeLayout(false);
+            this.boxTitleStaged.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox lstStaged;
-        private System.Windows.Forms.CheckedListBox lstDif;
         private System.Windows.Forms.Button btnStage;
         private System.Windows.Forms.Button btnUnstage;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbCountDif;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbCountStaged;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label btnInvertDif;
-        private System.Windows.Forms.Label btnNoneDif;
-        private System.Windows.Forms.Label btnAllDif;
-        private System.Windows.Forms.Label btnInvertStaged;
-        private System.Windows.Forms.Label btnNoneStaged;
-        private System.Windows.Forms.Label btnAllStaged;
-        private System.Windows.Forms.ListBox lstOther;
+        private System.Windows.Forms.Panel boxTop;
         private System.Windows.Forms.TextBox edMessage;
         private System.Windows.Forms.Button btnCommitAndPush;
         private System.Windows.Forms.Button btnCommit;
+        private System.Windows.Forms.ListBox lstOther;
+        private DigaoDeskApp.CheckedListBoxEx lstDif;
+        private System.Windows.Forms.Panel boxTitleUnstaged;
+        private System.Windows.Forms.Label btnInvertDif;
+        private System.Windows.Forms.Label btnNoneDif;
+        private System.Windows.Forms.Label btnAllDif;
+        private System.Windows.Forms.Label lbCountDif;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Splitter splitterLists;
+        private DigaoDeskApp.CheckedListBoxEx lstStaged;
+        private System.Windows.Forms.Panel boxTitleStaged;
+        private System.Windows.Forms.Label btnInvertStaged;
+        private System.Windows.Forms.Label btnNoneStaged;
+        private System.Windows.Forms.Label btnAllStaged;
+        private System.Windows.Forms.Label lbCountStaged;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -1,6 +1,9 @@
 ﻿using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -127,8 +130,8 @@ namespace DigaoDeskApp
                     }
                 }
 
-                if (flagsStaged.Any()) lstStaged.Items.Add(new ItemView(item.FilePath, flagsStaged), true);
-                if (flagsUnstaged.Any()) lstDif.Items.Add(new ItemView(item.FilePath, flagsUnstaged), true);
+                if (flagsStaged.Any()) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new ItemView(item.FilePath, flagsStaged), true));
+                if (flagsUnstaged.Any()) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new ItemView(item.FilePath, flagsUnstaged), true));
                 if (flagsOther.Any()) lstOther.Items.Add(new ItemView(item.FilePath, flagsOther));
             }
 
@@ -175,12 +178,12 @@ namespace DigaoDeskApp
             throw new Exception("Invalid control");
         }
 
-        private void GroupSelection(CheckedListBox lst, bool? op)
+        private void GroupSelection(CheckedListBoxEx lst, bool? op)
         {
             for (int i = 0; i < lst.Items.Count; i++)
             {
                 bool v = (op == null) ? !lst.GetItemChecked(i) : op.Value;
-                lst.SetItemChecked(i, v);
+                lst.SurroundAllowingCheck(() => lst.SetItemChecked(i, v));                
             }
         }
 
@@ -209,5 +212,76 @@ namespace DigaoDeskApp
             DialogResult = (sender == btnCommitAndPush) ? DialogResult.Continue : DialogResult.OK;
         }
 
+        private void lstItem_Click(object sender, EventArgs e)
+        {
+            var lst = sender as CheckedListBoxEx;
+            var item = lst.SelectedItem as ItemView;
+            if (item == null) return;
+
+            //ensure click in item area
+            Point loc = lst.PointToClient(Cursor.Position);
+            Rectangle rec = lst.GetItemRectangle(lst.SelectedIndex);
+            if (!rec.Contains(loc)) return;
+
+            string pathOld;
+            string pathNew;
+
+            Stream stmSource;
+
+            var index = _repository.Index[item.Path];
+
+            if (lst == lstStaged)
+            {                
+                stmSource = GetBlobOfLastCommitByItemView(item).GetContentStream();
+                pathOld = GetTempFileNameByItemView(item, "commited");
+                StreamToFile(stmSource, pathOld);
+
+                stmSource = GetBlobOfIndexEntry(index).GetContentStream();
+                pathNew = GetTempFileNameByItemView(item, "staged");
+                StreamToFile(stmSource, pathNew);
+            }
+            else if (lst == lstDif)
+            {
+                if (index != null)
+                {
+                    stmSource = GetBlobOfIndexEntry(index).GetContentStream();
+                    pathOld = GetTempFileNameByItemView(item, "staged");
+                } else
+                {
+                    stmSource = GetBlobOfLastCommitByItemView(item).GetContentStream();
+                    pathOld = GetTempFileNameByItemView(item, "commited");
+                }
+                StreamToFile(stmSource, pathOld);
+
+                pathNew = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
+            }
+            else
+                throw new Exception("Invalid control");
+
+            Process.Start(@"c:\Program Files\WinMerge\winmergeu.exe", $"\"{pathOld}\" \"{pathNew}\"");
+        }
+
+        private Blob GetBlobOfLastCommitByItemView(ItemView item)
+        {
+            return _repository.Head.Tip.Tree[item.Path].Target as Blob;
+        }
+
+        private Blob GetBlobOfIndexEntry(IndexEntry index)
+        {
+            return _repository.Lookup<Blob>(index.Id);
+        }
+
+        private string GetTempFileNameByItemView(ItemView item, string prefix)
+        {
+            return Path.GetTempFileName() + "_" + prefix + "_" + Path.GetFileName(item.Path);
+        }
+
+        private void StreamToFile(Stream stmSource, string filePath)
+        {
+            using (var stmDest = File.Create(filePath))
+            {
+                stmSource.CopyTo(stmDest);
+            }
+        }
     }
 }
