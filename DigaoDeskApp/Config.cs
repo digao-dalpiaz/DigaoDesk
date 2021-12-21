@@ -14,6 +14,8 @@ namespace DigaoDeskApp
         
         public string ReposDir;
         public string ShellProgram = "cmd.exe";
+        public string DiffProgram;
+        public string DiffProgramArguments;
         public string GitNewBranchPrefixList;
         public bool GitAutoFetch = true;
         public string GitCommitMessage;

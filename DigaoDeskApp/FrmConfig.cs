@@ -41,6 +41,8 @@ namespace DigaoDeskApp
             //--Repos tab
             edReposDir.Text = Vars.Config.ReposDir;
             edShellProgram.Text = Vars.Config.ShellProgram;
+            edDiffProgram.Text = Vars.Config.DiffProgram;
+            edDiffProgramArguments.Text = Vars.Config.DiffProgramArguments;
             edGitNewBranchPrefixList.Text = Vars.Config.GitNewBranchPrefixList;
             ckGitAutoFetch.Checked = Vars.Config.GitAutoFetch;
             edCommitMessage.Text = Vars.Config.GitCommitMessage;
@@ -73,6 +75,9 @@ namespace DigaoDeskApp
 
             edShellProgram.Text = edShellProgram.Text.Trim();
 
+            edDiffProgram.Text = edDiffProgram.Text.Trim();
+            edDiffProgramArguments.Text = edDiffProgramArguments.Text.Trim();
+
             edGitName.Text = edGitName.Text.Trim();
             edGitEmail.Text = edGitEmail.Text.Trim();
             edGitCredUsername.Text = edGitCredUsername.Text.Trim();
@@ -96,6 +101,8 @@ namespace DigaoDeskApp
             //--Repos tab
             Vars.Config.ReposDir = edReposDir.Text;
             Vars.Config.ShellProgram = edShellProgram.Text;
+            Vars.Config.DiffProgram = edDiffProgram.Text;
+            Vars.Config.DiffProgramArguments = edDiffProgramArguments.Text;
             Vars.Config.GitNewBranchPrefixList = edGitNewBranchPrefixList.Text;
             Vars.Config.GitAutoFetch = ckGitAutoFetch.Checked;
             Vars.Config.GitCommitMessage = edCommitMessage.Text;
@@ -160,7 +167,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void btnSelShellProgramDir_Click(object sender, System.EventArgs e)
+        private void btnSelShellProgram_Click(object sender, System.EventArgs e)
         {
             OpenFileDialog dlg = new();
 
@@ -168,6 +175,17 @@ namespace DigaoDeskApp
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 edShellProgram.Text = dlg.FileName;
+            }
+        }
+
+        private void btnSelDiffProgram_Click(object sender, System.EventArgs e)
+        {
+            OpenFileDialog dlg = new();
+
+            dlg.FileName = edDiffProgram.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                edDiffProgram.Text = dlg.FileName;
             }
         }
 

@@ -43,6 +43,15 @@ namespace DigaoDeskApp
             this.CkDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.tabRepos = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
+            this.edDiffProgramArguments = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnSelDiffProgram = new System.Windows.Forms.Button();
+            this.edDiffProgram = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.edCommitMessage = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.ckGitAutoFetch = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -52,7 +61,7 @@ namespace DigaoDeskApp
             this.edGitEmail = new System.Windows.Forms.TextBox();
             this.edGitNewBranchPrefixList = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnSelShellProgramDir = new System.Windows.Forms.Button();
+            this.btnSelShellProgram = new System.Windows.Forms.Button();
             this.edShellProgram = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -65,9 +74,6 @@ namespace DigaoDeskApp
             this.label4 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.edCommitMessage = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.pages.SuspendLayout();
             this.tabLogs.SuspendLayout();
             this.tabApplications.SuspendLayout();
@@ -213,6 +219,12 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            this.tabRepos.Controls.Add(this.label16);
+            this.tabRepos.Controls.Add(this.edDiffProgramArguments);
+            this.tabRepos.Controls.Add(this.label15);
+            this.tabRepos.Controls.Add(this.btnSelDiffProgram);
+            this.tabRepos.Controls.Add(this.edDiffProgram);
+            this.tabRepos.Controls.Add(this.label14);
             this.tabRepos.Controls.Add(this.label13);
             this.tabRepos.Controls.Add(this.edCommitMessage);
             this.tabRepos.Controls.Add(this.label12);
@@ -221,7 +233,7 @@ namespace DigaoDeskApp
             this.tabRepos.Controls.Add(this.groupBox2);
             this.tabRepos.Controls.Add(this.edGitNewBranchPrefixList);
             this.tabRepos.Controls.Add(this.label10);
-            this.tabRepos.Controls.Add(this.btnSelShellProgramDir);
+            this.tabRepos.Controls.Add(this.btnSelShellProgram);
             this.tabRepos.Controls.Add(this.edShellProgram);
             this.tabRepos.Controls.Add(this.label9);
             this.tabRepos.Controls.Add(this.groupBox1);
@@ -236,13 +248,93 @@ namespace DigaoDeskApp
             this.tabRepos.Text = "Git Repositories";
             this.tabRepos.UseVisualStyleBackColor = true;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(470, 248);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(66, 15);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "Arguments";
+            // 
+            // edDiffProgramArguments
+            // 
+            this.edDiffProgramArguments.Location = new System.Drawing.Point(472, 264);
+            this.edDiffProgramArguments.Name = "edDiffProgramArguments";
+            this.edDiffProgramArguments.Size = new System.Drawing.Size(296, 23);
+            this.edDiffProgramArguments.TabIndex = 10;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Gray;
+            this.label15.Location = new System.Drawing.Point(560, 248);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(178, 15);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "[old] = old file / [new] = new file";
+            // 
+            // btnSelDiffProgram
+            // 
+            this.btnSelDiffProgram.Location = new System.Drawing.Point(440, 263);
+            this.btnSelDiffProgram.Name = "btnSelDiffProgram";
+            this.btnSelDiffProgram.Size = new System.Drawing.Size(24, 25);
+            this.btnSelDiffProgram.TabIndex = 9;
+            this.btnSelDiffProgram.Text = "...";
+            this.btnSelDiffProgram.UseVisualStyleBackColor = true;
+            this.btnSelDiffProgram.Click += new System.EventHandler(this.btnSelDiffProgram_Click);
+            // 
+            // edDiffProgram
+            // 
+            this.edDiffProgram.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.edDiffProgram.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.edDiffProgram.Location = new System.Drawing.Point(16, 264);
+            this.edDiffProgram.Name = "edDiffProgram";
+            this.edDiffProgram.Size = new System.Drawing.Size(424, 23);
+            this.edDiffProgram.TabIndex = 8;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 248);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(75, 15);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Diff program";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Gray;
+            this.label13.Location = new System.Drawing.Point(200, 432);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(165, 15);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Use [branch] for branch name";
+            // 
+            // edCommitMessage
+            // 
+            this.edCommitMessage.Location = new System.Drawing.Point(16, 448);
+            this.edCommitMessage.Name = "edCommitMessage";
+            this.edCommitMessage.Size = new System.Drawing.Size(368, 23);
+            this.edCommitMessage.TabIndex = 13;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(14, 432);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 15);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Commit message";
+            // 
             // ckGitAutoFetch
             // 
             this.ckGitAutoFetch.AutoSize = true;
-            this.ckGitAutoFetch.Location = new System.Drawing.Point(16, 360);
+            this.ckGitAutoFetch.Location = new System.Drawing.Point(16, 400);
             this.ckGitAutoFetch.Name = "ckGitAutoFetch";
             this.ckGitAutoFetch.Size = new System.Drawing.Size(200, 19);
-            this.ckGitAutoFetch.TabIndex = 11;
+            this.ckGitAutoFetch.TabIndex = 12;
             this.ckGitAutoFetch.Text = "Auto Fetch in Remote operations";
             this.ckGitAutoFetch.UseVisualStyleBackColor = true;
             // 
@@ -250,7 +342,7 @@ namespace DigaoDeskApp
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(224, 256);
+            this.label11.Location = new System.Drawing.Point(224, 296);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(136, 15);
             this.label11.TabIndex = 10;
@@ -303,31 +395,31 @@ namespace DigaoDeskApp
             // 
             // edGitNewBranchPrefixList
             // 
-            this.edGitNewBranchPrefixList.Location = new System.Drawing.Point(16, 272);
+            this.edGitNewBranchPrefixList.Location = new System.Drawing.Point(16, 312);
             this.edGitNewBranchPrefixList.Multiline = true;
             this.edGitNewBranchPrefixList.Name = "edGitNewBranchPrefixList";
             this.edGitNewBranchPrefixList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.edGitNewBranchPrefixList.Size = new System.Drawing.Size(368, 72);
-            this.edGitNewBranchPrefixList.TabIndex = 9;
+            this.edGitNewBranchPrefixList.TabIndex = 11;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 256);
+            this.label10.Location = new System.Drawing.Point(14, 296);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(122, 15);
             this.label10.TabIndex = 8;
             this.label10.Text = "New Branch prefix list";
             // 
-            // btnSelShellProgramDir
+            // btnSelShellProgram
             // 
-            this.btnSelShellProgramDir.Location = new System.Drawing.Point(744, 215);
-            this.btnSelShellProgramDir.Name = "btnSelShellProgramDir";
-            this.btnSelShellProgramDir.Size = new System.Drawing.Size(24, 25);
-            this.btnSelShellProgramDir.TabIndex = 7;
-            this.btnSelShellProgramDir.Text = "...";
-            this.btnSelShellProgramDir.UseVisualStyleBackColor = true;
-            this.btnSelShellProgramDir.Click += new System.EventHandler(this.btnSelShellProgramDir_Click);
+            this.btnSelShellProgram.Location = new System.Drawing.Point(744, 215);
+            this.btnSelShellProgram.Name = "btnSelShellProgram";
+            this.btnSelShellProgram.Size = new System.Drawing.Size(24, 25);
+            this.btnSelShellProgram.TabIndex = 7;
+            this.btnSelShellProgram.Text = "...";
+            this.btnSelShellProgram.UseVisualStyleBackColor = true;
+            this.btnSelShellProgram.Click += new System.EventHandler(this.btnSelShellProgram_Click);
             // 
             // edShellProgram
             // 
@@ -442,32 +534,6 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(14, 392);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 15);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Commit message";
-            // 
-            // edCommitMessage
-            // 
-            this.edCommitMessage.Location = new System.Drawing.Point(16, 408);
-            this.edCommitMessage.Name = "edCommitMessage";
-            this.edCommitMessage.Size = new System.Drawing.Size(368, 23);
-            this.edCommitMessage.TabIndex = 13;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(200, 392);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(165, 15);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Use [branch] for branch name";
-            // 
             // FrmConfig
             // 
             this.AcceptButton = this.btnOK;
@@ -532,7 +598,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.CheckBox CkDontNotifyWhenAppsActive;
         private System.Windows.Forms.TextBox edShellProgram;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnSelShellProgramDir;
+        private System.Windows.Forms.Button btnSelShellProgram;
         private System.Windows.Forms.TextBox edGitNewBranchPrefixList;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -541,5 +607,11 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TextBox edCommitMessage;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnSelDiffProgram;
+        private System.Windows.Forms.TextBox edDiffProgram;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox edDiffProgramArguments;
+        private System.Windows.Forms.Label label16;
     }
 }

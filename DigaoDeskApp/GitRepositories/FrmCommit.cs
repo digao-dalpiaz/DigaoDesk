@@ -267,7 +267,7 @@ namespace DigaoDeskApp
             else
                 throw new Exception("Invalid control");
 
-            Process.Start(@"c:\Program Files\WinMerge\winmergeu.exe", $"\"{pathOld}\" \"{pathNew}\"");
+            OpenDiff(pathOld, pathNew);
         }
 
         private Blob GetBlobOfLastCommitByItemView(ItemView item)
@@ -293,5 +293,19 @@ namespace DigaoDeskApp
                 stmSource.CopyTo(stmDest);
             }
         }
+
+        private void OpenDiff(string pathOld, string pathNew) {
+            if (string.IsNullOrEmpty(Vars.Config.DiffProgram))
+            {
+                Messages.Error("Diff program is not configured. Please check settings!");
+                return;
+            }
+
+            string args = Vars.Config.DiffProgramArguments;
+            args = args.Replace("[old]", $"\"{pathOld}\"");
+            args = args.Replace("[new]", $"\"{pathNew}\"");
+            Process.Start(Vars.Config.DiffProgram, args);
+        }
+
     }
 }
