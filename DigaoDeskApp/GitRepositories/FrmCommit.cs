@@ -37,11 +37,13 @@ namespace DigaoDeskApp
         {
             public string Path;
             public List<FileStatus> LstStatus;
+            public bool? PresentInStagedArea;
 
-            public ItemView(string path, List<FileStatus> lstStatus)
+            public ItemView(string path, List<FileStatus> lstStatus, bool? presentInStagedArea)
             {
                 this.Path = path;
                 this.LstStatus = lstStatus;
+                this.PresentInStagedArea = presentInStagedArea;
             }
 
             public override string ToString()
@@ -138,9 +140,9 @@ namespace DigaoDeskApp
                     }
                 }
 
-                if (flagsStaged.Any()) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new ItemView(item.FilePath, flagsStaged), true));
-                if (flagsUnstaged.Any()) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new ItemView(item.FilePath, flagsUnstaged), true));
-                if (flagsOther.Any()) lstOther.Items.Add(new ItemView(item.FilePath, flagsOther));
+                if (flagsStaged.Any()) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new ItemView(item.FilePath, flagsStaged, null), true));
+                if (flagsUnstaged.Any()) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new ItemView(item.FilePath, flagsUnstaged, flagsStaged.Any()), true));
+                if (flagsOther.Any()) lstOther.Items.Add(new ItemView(item.FilePath, flagsOther, null));
             }
 
             lbCountStaged.Text = lstStaged.Items.Count.ToString();
@@ -248,10 +250,7 @@ namespace DigaoDeskApp
             }
             else if (lst == lstDif)
             {
-                var agregatedFileStatus = _repository.RetrieveStatus(item.Path);
-                List<FileStatus> lstStatus = MountListOfFileStatus(agregatedFileStatus);
-                
-                if (lstStatus.Any(x => ENUM_STAGED.HasFlag(x))) //file contains any "staged" status
+                if (item.PresentInStagedArea.Value)
                 {
                     stmSource = GetBlobOfIndexByItemView(item).GetContentStream();
                     pathOld = GetTempFileNameByItemView(item, "staged");
