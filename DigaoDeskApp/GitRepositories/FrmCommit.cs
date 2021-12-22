@@ -238,62 +238,69 @@ namespace DigaoDeskApp
 
             Stream stm;
 
-            if (lst == lstStaged)
+            Messages.SurroundMessageException(() =>
             {
-                if (!item.LstStatus.Contains(FileStatus.NewInIndex))
+                if (lst == lstStaged)
                 {
-                    stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
-                    pathOld = GetTempFileNameByItemView(item, "commited");
-                    StreamToFile(stm, pathOld);
-                }
-
-                if (!item.LstStatus.Contains(FileStatus.DeletedFromIndex))
-                {
-                    stm = GetBlobOfIndexByItemView(item).GetContentStream();
-                    pathNew = GetTempFileNameByItemView(item, "staged");
-                    StreamToFile(stm, pathNew);
-                }
-            }
-            else if (lst == lstDif)
-            {
-                if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
-                {
-                    if (item.PresentInStagedArea.Value)
-                    {
-                        stm = GetBlobOfIndexByItemView(item).GetContentStream();
-                        pathOld = GetTempFileNameByItemView(item, "staged");
-                    }
-                    else
+                    if (!item.LstStatus.Contains(FileStatus.NewInIndex))
                     {
                         stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
                         pathOld = GetTempFileNameByItemView(item, "commited");
+                        StreamToFile(stm, pathOld);
                     }
-                    StreamToFile(stm, pathOld);
-                }
 
-                if (!item.LstStatus.Contains(FileStatus.DeletedFromWorkdir))
+                    if (!item.LstStatus.Contains(FileStatus.DeletedFromIndex))
+                    {
+                        stm = GetBlobOfIndexByItemView(item).GetContentStream();
+                        pathNew = GetTempFileNameByItemView(item, "staged");
+                        StreamToFile(stm, pathNew);
+                    }
+                }
+                else if (lst == lstDif)
                 {
-                    pathNew = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
+                    if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
+                    {
+                        if (item.PresentInStagedArea.Value)
+                        {
+                            stm = GetBlobOfIndexByItemView(item).GetContentStream();
+                            pathOld = GetTempFileNameByItemView(item, "staged");
+                        }
+                        else
+                        {
+                            stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
+                            pathOld = GetTempFileNameByItemView(item, "commited");
+                        }
+                        StreamToFile(stm, pathOld);
+                    }
+
+                    if (!item.LstStatus.Contains(FileStatus.DeletedFromWorkdir))
+                    {
+                        pathNew = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
+                        if (!File.Exists(pathNew)) Messages.ThrowMsg("File not found in working directory");
+                    }
                 }
-            }
-            else
-                throw new Exception("Invalid control");
+                else
+                    throw new Exception("Invalid control");
 
-            if (pathOld == null) pathOld = GetNullFile();
-            if (pathNew == null) pathNew = GetNullFile();
+                if (pathOld == null) pathOld = GetNullFile();
+                if (pathNew == null) pathNew = GetNullFile();
 
-            OpenDiff(pathOld, pathNew);
+                OpenDiff(pathOld, pathNew);
+            });            
         }
 
         private Blob GetBlobOfLastCommitByItemView(ItemView item)
         {
-            return _repository.Head.Tip.Tree[item.Path].Target as Blob;
+            var treeEntry = _repository.Head.Tip.Tree[item.Path];
+            if (treeEntry == null) Messages.ThrowMsg("File not found in last commit");
+            return treeEntry.Target as Blob;
         }
 
         private Blob GetBlobOfIndexByItemView(ItemView item)
         {
-            var index = _repository.Index[item.Path];
-            return _repository.Lookup<Blob>(index.Id);
+            var indexEntry = _repository.Index[item.Path];
+            if (indexEntry == null) Messages.ThrowMsg("File not found in stage area");
+            return _repository.Lookup<Blob>(indexEntry.Id);
         }
 
         private string GetTempFileNameByItemView(ItemView item, string prefix)
@@ -321,14 +328,15 @@ namespace DigaoDeskApp
         private void OpenDiff(string pathOld, string pathNew) {
             if (string.IsNullOrEmpty(Vars.Config.DiffProgram))
             {
-                Messages.Error("Diff program is not configured. Please check settings!");
-                return;
+                Messages.ThrowMsg("Diff program is not configured. Please check settings!");
             }
 
             string args = Vars.Config.DiffProgramArguments;
             args = args.Replace("[old]", $"\"{pathOld}\"");
             args = args.Replace("[new]", $"\"{pathNew}\"");
-            Process.Start(Vars.Config.DiffProgram, args);
+
+            Messages.SurroundExceptionThenThrowMessageException(
+                () => Process.Start(Vars.Config.DiffProgram, args));
         }
 
     }
