@@ -233,13 +233,13 @@ namespace DigaoDeskApp
             Rectangle rec = lst.GetItemRectangle(lst.SelectedIndex);
             if (!rec.Contains(loc)) return;
 
-            string pathOld = null;
-            string pathNew = null;
-
-            Stream stm;
-
             Messages.SurroundMessageException(() =>
             {
+                string pathOld = null;
+                string pathNew = null;
+
+                Stream stm;
+
                 if (lst == lstStaged)
                 {
                     if (!item.LstStatus.Contains(FileStatus.NewInIndex))
