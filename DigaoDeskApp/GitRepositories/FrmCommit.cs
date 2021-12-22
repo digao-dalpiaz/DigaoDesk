@@ -37,7 +37,7 @@ namespace DigaoDeskApp
         {
             public string Path;
             public List<FileStatus> LstStatus;
-            public bool? PresentInStagedArea;
+            public bool? PresentInStagedArea; //this propery is only used for unstaged item
 
             public ItemView(string path, List<FileStatus> lstStatus, bool? presentInStagedArea)
             {
@@ -233,38 +233,54 @@ namespace DigaoDeskApp
             Rectangle rec = lst.GetItemRectangle(lst.SelectedIndex);
             if (!rec.Contains(loc)) return;
 
-            string pathOld;
-            string pathNew;
+            string pathOld = null;
+            string pathNew = null;
 
-            Stream stmSource;                       
+            Stream stm;
 
             if (lst == lstStaged)
             {
-                stmSource = GetBlobOfLastCommitByItemView(item).GetContentStream();
-                pathOld = GetTempFileNameByItemView(item, "commited");
-                StreamToFile(stmSource, pathOld);
+                if (!item.LstStatus.Contains(FileStatus.NewInIndex))
+                {
+                    stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
+                    pathOld = GetTempFileNameByItemView(item, "commited");
+                    StreamToFile(stm, pathOld);
+                }
 
-                stmSource = GetBlobOfIndexByItemView(item).GetContentStream();
-                pathNew = GetTempFileNameByItemView(item, "staged");
-                StreamToFile(stmSource, pathNew);
+                if (!item.LstStatus.Contains(FileStatus.DeletedFromIndex))
+                {
+                    stm = GetBlobOfIndexByItemView(item).GetContentStream();
+                    pathNew = GetTempFileNameByItemView(item, "staged");
+                    StreamToFile(stm, pathNew);
+                }
             }
             else if (lst == lstDif)
             {
-                if (item.PresentInStagedArea.Value)
+                if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
                 {
-                    stmSource = GetBlobOfIndexByItemView(item).GetContentStream();
-                    pathOld = GetTempFileNameByItemView(item, "staged");
-                } else
-                {
-                    stmSource = GetBlobOfLastCommitByItemView(item).GetContentStream();
-                    pathOld = GetTempFileNameByItemView(item, "commited");
+                    if (item.PresentInStagedArea.Value)
+                    {
+                        stm = GetBlobOfIndexByItemView(item).GetContentStream();
+                        pathOld = GetTempFileNameByItemView(item, "staged");
+                    }
+                    else
+                    {
+                        stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
+                        pathOld = GetTempFileNameByItemView(item, "commited");
+                    }
+                    StreamToFile(stm, pathOld);
                 }
-                StreamToFile(stmSource, pathOld);
 
-                pathNew = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
+                if (!item.LstStatus.Contains(FileStatus.DeletedFromWorkdir))
+                {
+                    pathNew = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
+                }
             }
             else
                 throw new Exception("Invalid control");
+
+            if (pathOld == null) pathOld = GetNullFile();
+            if (pathNew == null) pathNew = GetNullFile();
 
             OpenDiff(pathOld, pathNew);
         }
@@ -291,6 +307,15 @@ namespace DigaoDeskApp
             {
                 stmSource.CopyTo(stmDest);
             }
+        }
+
+        private string GetNullFile()
+        {
+            string tmpFile = Path.GetTempFileName();
+            string tmpFileFinal = tmpFile + "_null";
+            File.Copy(tmpFile, tmpFileFinal);
+
+            return tmpFileFinal;
         }
 
         private void OpenDiff(string pathOld, string pathNew) {
