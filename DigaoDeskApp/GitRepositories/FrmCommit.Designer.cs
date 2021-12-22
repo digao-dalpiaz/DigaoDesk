@@ -53,6 +53,7 @@
             this.lbCountStaged = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnUndoDif = new System.Windows.Forms.Label();
             this.boxTop.SuspendLayout();
             this.boxTitleUnstaged.SuspendLayout();
             this.boxTitleStaged.SuspendLayout();
@@ -154,6 +155,7 @@
             // boxTitleUnstaged
             // 
             this.boxTitleUnstaged.BackColor = System.Drawing.Color.Orange;
+            this.boxTitleUnstaged.Controls.Add(this.btnUndoDif);
             this.boxTitleUnstaged.Controls.Add(this.btnInvertDif);
             this.boxTitleUnstaged.Controls.Add(this.btnNoneDif);
             this.boxTitleUnstaged.Controls.Add(this.btnAllDif);
@@ -330,6 +332,18 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Staged Files";
             // 
+            // btnUndoDif
+            // 
+            this.btnUndoDif.AutoSize = true;
+            this.btnUndoDif.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUndoDif.ForeColor = System.Drawing.Color.Red;
+            this.btnUndoDif.Location = new System.Drawing.Point(472, 4);
+            this.btnUndoDif.Name = "btnUndoDif";
+            this.btnUndoDif.Size = new System.Drawing.Size(36, 15);
+            this.btnUndoDif.TabIndex = 9;
+            this.btnUndoDif.Text = "Undo";
+            this.btnUndoDif.Click += new System.EventHandler(this.btnUndoDif_Click);
+            // 
             // FrmCommit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -385,5 +399,6 @@
         private System.Windows.Forms.Label lbCountStaged;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label btnUndoDif;
     }
 }

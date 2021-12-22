@@ -118,7 +118,7 @@ namespace DigaoDeskApp
             foreach (var item in lstInfo)
             {
                 var flags = MountListOfFileStatus(item.State);
-
+                
                 List<FileStatus> flagsStaged = new();
                 List<FileStatus> flagsUnstaged = new();
                 List<FileStatus> flagsOther = new();
@@ -260,16 +260,8 @@ namespace DigaoDeskApp
                 {
                     if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
                     {
-                        if (item.PresentInStagedArea.Value)
-                        {
-                            stm = GetBlobOfIndexByItemView(item).GetContentStream();
-                            pathOld = GetTempFileNameByItemView(item, "staged");
-                        }
-                        else
-                        {
-                            stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
-                            pathOld = GetTempFileNameByItemView(item, "commited");
-                        }
+                        stm = GetBlobOfIndexByItemView(item).GetContentStream(); //if the file is not in staged area, the index contains commited file
+                        pathOld = GetTempFileNameByItemView(item, item.PresentInStagedArea.Value ? "staged" : "commited");
                         StreamToFile(stm, pathOld);
                     }
 
@@ -289,6 +281,57 @@ namespace DigaoDeskApp
             });            
         }
 
+        private void btnUndoDif_Click(object sender, EventArgs e)
+        {
+            if (lstDif.CheckedItems.Count == 0) return;
+            if (!Messages.Question("Confirm undo checked files?")) return;
+
+            Messages.SurroundMessageException(() =>
+            {
+                foreach (ItemView item in lstDif.CheckedItems)
+                {
+                    var path = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
+
+                    if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
+                    {
+                        //file already exists in commit/staged
+                        Stream stm;
+                        if (item.PresentInStagedArea.Value)
+                        {
+                            stm = GetBlobOfIndexByItemView(item).GetContentStream();
+                        }
+                        else
+                        {
+                            stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
+                        }
+
+                        try
+                        {
+                            StreamToFile(stm, path);
+                        }
+                        catch (Exception ex)
+                        {
+                            Messages.ThrowMsg($"Error saving file '{path}': {ex.Message}");
+                        }
+                    }
+                    else
+                    {
+                        //file does not exist in commit/staged (new in working dir)
+                        try
+                        {
+                            File.Delete(path);
+                        }
+                        catch (Exception ex)
+                        {
+                            Messages.ThrowMsg($"Error deleting file '{path}': {ex.Message}");
+                        }
+                    }
+                }
+            });
+
+            LoadLists(); //reload even if error occurred
+        }
+
         private Blob GetBlobOfLastCommitByItemView(ItemView item)
         {
             var treeEntry = _repository.Head.Tip.Tree[item.Path];
@@ -299,7 +342,7 @@ namespace DigaoDeskApp
         private Blob GetBlobOfIndexByItemView(ItemView item)
         {
             var indexEntry = _repository.Index[item.Path];
-            if (indexEntry == null) Messages.ThrowMsg("File not found in stage area");
+            if (indexEntry == null) Messages.ThrowMsg("File not found in index");
             return _repository.Lookup<Blob>(indexEntry.Id);
         }
 
