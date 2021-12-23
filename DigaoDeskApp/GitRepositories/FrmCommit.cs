@@ -28,6 +28,10 @@ namespace DigaoDeskApp
             FileStatus.RenamedInWorkdir |
             FileStatus.TypeChangeInWorkdir;
 
+        private const FileStatus ENUM_UNSUPPORTED =
+            FileStatus.TypeChangeInIndex | 
+            FileStatus.TypeChangeInWorkdir | 
+            FileStatus.RenamedInWorkdir;
 
         private Repository _repository;
 
@@ -36,19 +40,26 @@ namespace DigaoDeskApp
         private class ItemView
         {
             public string Path;
+            public string OldPath;
             public List<FileStatus> LstStatus;
             public bool? PresentInStagedArea; //this propery is only used for unstaged item
 
-            public ItemView(string path, List<FileStatus> lstStatus, bool? presentInStagedArea)
+            public ItemView(string path, RenameDetails renameDetails, List<FileStatus> lstStatus, bool? presentInStagedArea)
             {
                 this.Path = path;
+                if (renameDetails != null) this.OldPath = renameDetails.OldFilePath;
                 this.LstStatus = lstStatus;
                 this.PresentInStagedArea = presentInStagedArea;
             }
 
             public override string ToString()
             {
-                return "[" + string.Join(", ", LstStatus.Select(x => GitUtils.GetFileStatusAsString(x)))  + "] " + Path;
+                return "[" + string.Join(", ", LstStatus.Select(x => GitUtils.GetFileStatusAsString(x)))  + "] " + (OldPath != null ? OldPath + " > " : "") + Path;
+            }
+
+            public string GetPathOrOld()
+            {
+                return OldPath != null ? OldPath : Path;
             }
         }
 
@@ -125,6 +136,8 @@ namespace DigaoDeskApp
 
                 foreach (var s in flags)
                 {
+                    if (ENUM_UNSUPPORTED.HasFlag(s)) throw new Exception("Unsupported file status: " + s.ToString());
+
                     if (ENUM_STAGED.HasFlag(s))
                     {
                         flagsStaged.Add(s);
@@ -140,9 +153,9 @@ namespace DigaoDeskApp
                     }
                 }
 
-                if (flagsStaged.Any()) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new ItemView(item.FilePath, flagsStaged, null), true));
-                if (flagsUnstaged.Any()) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new ItemView(item.FilePath, flagsUnstaged, flagsStaged.Any()), true));
-                if (flagsOther.Any()) lstOther.Items.Add(new ItemView(item.FilePath, flagsOther, null));
+                if (flagsStaged.Any()) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new ItemView(item.FilePath, item.HeadToIndexRenameDetails, flagsStaged, null), true));
+                if (flagsUnstaged.Any()) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new ItemView(item.FilePath, /*item.IndexToWorkDirRenameDetails*/null, flagsUnstaged, flagsStaged.Any()), true));
+                if (flagsOther.Any()) lstOther.Items.Add(new ItemView(item.FilePath, null, flagsOther, null));
             }
 
             lbCountStaged.Text = lstStaged.Items.Count.ToString();
@@ -244,14 +257,14 @@ namespace DigaoDeskApp
                 {
                     if (!item.LstStatus.Contains(FileStatus.NewInIndex))
                     {
-                        stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
+                        stm = GetBlobOfLastCommitByPath(item.GetPathOrOld()).GetContentStream();
                         pathOld = GetTempFileNameByItemView(item, "commited");
                         StreamToFile(stm, pathOld);
                     }
 
                     if (!item.LstStatus.Contains(FileStatus.DeletedFromIndex))
                     {
-                        stm = GetBlobOfIndexByItemView(item).GetContentStream();
+                        stm = GetBlobOfIndexByPath(item.Path).GetContentStream();
                         pathNew = GetTempFileNameByItemView(item, "staged");
                         StreamToFile(stm, pathNew);
                     }
@@ -260,7 +273,7 @@ namespace DigaoDeskApp
                 {
                     if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
                     {
-                        stm = GetBlobOfIndexByItemView(item).GetContentStream(); //if the file is not in staged area, the index contains commited file
+                        stm = GetBlobOfIndexByPath(item.Path).GetContentStream(); //if the file is not in staged area, the index contains commited file
                         pathOld = GetTempFileNameByItemView(item, item.PresentInStagedArea.Value ? "staged" : "commited");
                         StreamToFile(stm, pathOld);
                     }
@@ -295,19 +308,9 @@ namespace DigaoDeskApp
                     if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
                     {
                         //file already exists in commit/staged
-                        Stream stm;
-                        if (item.PresentInStagedArea.Value)
-                        {
-                            stm = GetBlobOfIndexByItemView(item).GetContentStream();
-                        }
-                        else
-                        {
-                            stm = GetBlobOfLastCommitByItemView(item).GetContentStream();
-                        }
-
                         try
                         {
-                            StreamToFile(stm, path);
+                            StreamToFile(GetBlobOfIndexByPath(item.Path).GetContentStream(), path);
                         }
                         catch (Exception ex)
                         {
@@ -332,16 +335,16 @@ namespace DigaoDeskApp
             LoadLists(); //reload even if error occurred
         }
 
-        private Blob GetBlobOfLastCommitByItemView(ItemView item)
+        private Blob GetBlobOfLastCommitByPath(string path)
         {
-            var treeEntry = _repository.Head.Tip.Tree[item.Path];
+            var treeEntry = _repository.Head.Tip.Tree[path];
             if (treeEntry == null) Messages.ThrowMsg("File not found in last commit");
             return treeEntry.Target as Blob;
         }
 
-        private Blob GetBlobOfIndexByItemView(ItemView item)
+        private Blob GetBlobOfIndexByPath(string path)
         {
-            var indexEntry = _repository.Index[item.Path];
+            var indexEntry = _repository.Index[path];
             if (indexEntry == null) Messages.ThrowMsg("File not found in index");
             return _repository.Lookup<Blob>(indexEntry.Id);
         }
