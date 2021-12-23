@@ -258,14 +258,14 @@ namespace DigaoDeskApp
                     if (!item.LstStatus.Contains(FileStatus.NewInIndex))
                     {
                         stm = GetBlobOfLastCommitByPath(item.GetPathOrOld()).GetContentStream();
-                        pathOld = GetTempFileNameByItemView(item, "commited");
+                        pathOld = GetTempFileNameByPath(item.GetPathOrOld(), "commited");
                         StreamToFile(stm, pathOld);
                     }
 
                     if (!item.LstStatus.Contains(FileStatus.DeletedFromIndex))
                     {
                         stm = GetBlobOfIndexByPath(item.Path).GetContentStream();
-                        pathNew = GetTempFileNameByItemView(item, "staged");
+                        pathNew = GetTempFileNameByPath(item.Path, "staged");
                         StreamToFile(stm, pathNew);
                     }
                 }
@@ -274,7 +274,7 @@ namespace DigaoDeskApp
                     if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
                     {
                         stm = GetBlobOfIndexByPath(item.Path).GetContentStream(); //if the file is not in staged area, the index contains commited file
-                        pathOld = GetTempFileNameByItemView(item, item.PresentInStagedArea.Value ? "staged" : "commited");
+                        pathOld = GetTempFileNameByPath(item.Path, item.PresentInStagedArea.Value ? "staged" : "commited");
                         StreamToFile(stm, pathOld);
                     }
 
@@ -349,9 +349,9 @@ namespace DigaoDeskApp
             return _repository.Lookup<Blob>(indexEntry.Id);
         }
 
-        private string GetTempFileNameByItemView(ItemView item, string prefix)
+        private string GetTempFileNameByPath(string path, string prefix)
         {
-            return Path.GetTempFileName() + "_" + prefix + "_" + Path.GetFileName(item.Path);
+            return Path.GetTempFileName() + "_" + prefix + "_" + Path.GetFileName(path);
         }
 
         private void StreamToFile(Stream stmSource, string filePath)
