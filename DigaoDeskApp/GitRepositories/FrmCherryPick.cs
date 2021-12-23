@@ -125,15 +125,13 @@ namespace DigaoDeskApp
 
             //
 
-            List<Commit> selecteds = new();
-
-            foreach (DataGridViewRow row in g.SelectedRows)
+            List<CommitView> selectedsCommitView = new();
+            foreach (DataGridViewRow row in g.SelectedRows) //SelectedRows contain order accorind to the user selection order
             {
-                var item = row.DataBoundItem as CommitView;
-                selecteds.Add(item.GetCommit());
+                selectedsCommitView.Add(row.DataBoundItem as CommitView);
             }
 
-            ResultCommits = selecteds;
+            ResultCommits = _lstCommits.Where(x => selectedsCommitView.Contains(x)).Select(x => x.GetCommit()).ToList();
 
             DialogResult = DialogResult.OK;
         }
