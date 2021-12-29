@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibGit2Sharp;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -136,12 +137,25 @@ namespace DigaoDeskApp
 
         private void g_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (g.Columns[e.ColumnIndex].Name.Equals(colBranch.Name))
+            if (e.RowIndex == -1) return;
+
+            var col = g.Columns[e.ColumnIndex];
+
+            if (Utils.IsSameGridColumn(col, colBranch))
             {
-                var repo = g.Rows[e.RowIndex].DataBoundItem as DigaoRepository;
+                var repo = GetRepositoryOfRow(g.Rows[e.RowIndex]);
                 if (GitUtils.IsBranchMaster(repo._repoCtrl.Head)) 
                 {
                     e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
+                }
+            }
+            else if (Utils.IsSameGridColumn(col, colOperation))
+            {
+                var repo = GetRepositoryOfRow(g.Rows[e.RowIndex]);
+                if (repo._repoCtrl.Info.CurrentOperation != CurrentOperation.None)
+                {
+                    e.CellStyle.ForeColor = Color.Red;
                     e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
                 }
             }
@@ -153,14 +167,12 @@ namespace DigaoDeskApp
 
             var col = g.Columns[e.ColumnIndex];
 
-            bool isColUp = col.Name == colUp.Name;
-            bool isColDown = col.Name == colDown.Name;
-            if (isColUp || isColDown)
+            if (Utils.IsSameGridColumn(col, colUp) || Utils.IsSameGridColumn(col, colDown))
             {
                 if (e.Value != null)
                 {
                     e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
-                    images.Draw(e.Graphics, e.CellBounds.X+2, e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), isColUp ? 0 : 1);
+                    images.Draw(e.Graphics, e.CellBounds.X+2, e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), Utils.IsSameGridColumn(col, colUp) ? 0 : 1);
 
                     e.Handled = true;
                 }
@@ -235,10 +247,15 @@ namespace DigaoDeskApp
             });            
         }
 
+        private DigaoRepository GetRepositoryOfRow(DataGridViewRow row)
+        {
+            return row.DataBoundItem as DigaoRepository;
+        }
+
         private DigaoRepository GetSel()
         {
             if (g.CurrentRow == null) return null;
-            return g.CurrentRow.DataBoundItem as DigaoRepository;
+            return GetRepositoryOfRow(g.CurrentRow);
         }
 
         private void CheckForAutoFetch()

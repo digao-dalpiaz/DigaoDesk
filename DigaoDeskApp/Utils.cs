@@ -168,5 +168,12 @@ namespace DigaoDeskApp
             }
         }
 
+        //-----------------------------------------------------------------
+
+        public static bool IsSameGridColumn(DataGridViewColumn c1, DataGridViewColumn c2)
+        {
+            return c1.Name == c2.Name;
+        }
+
     }
 }
