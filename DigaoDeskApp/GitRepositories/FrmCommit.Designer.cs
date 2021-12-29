@@ -32,12 +32,18 @@
             this.btnStage = new System.Windows.Forms.Button();
             this.btnUnstage = new System.Windows.Forms.Button();
             this.boxTop = new System.Windows.Forms.Panel();
+            this.boxInfo = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbBranch = new System.Windows.Forms.Label();
+            this.lbRepository = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnCommitAndPush = new System.Windows.Forms.Button();
             this.btnCommit = new System.Windows.Forms.Button();
             this.edMessage = new System.Windows.Forms.TextBox();
             this.lstOther = new System.Windows.Forms.ListBox();
             this.lstDif = new DigaoDeskApp.CheckedListBoxEx();
             this.boxTitleUnstaged = new System.Windows.Forms.Panel();
+            this.btnUndoDif = new System.Windows.Forms.Label();
             this.btnInvertDif = new System.Windows.Forms.Label();
             this.btnNoneDif = new System.Windows.Forms.Label();
             this.btnAllDif = new System.Windows.Forms.Label();
@@ -53,8 +59,8 @@
             this.lbCountStaged = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUndoDif = new System.Windows.Forms.Label();
             this.boxTop.SuspendLayout();
+            this.boxInfo.SuspendLayout();
             this.boxTitleUnstaged.SuspendLayout();
             this.boxTitleStaged.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +69,7 @@
             // 
             this.btnStage.Image = ((System.Drawing.Image)(resources.GetObject("btnStage.Image")));
             this.btnStage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnStage.Location = new System.Drawing.Point(8, 8);
+            this.btnStage.Location = new System.Drawing.Point(8, 48);
             this.btnStage.Name = "btnStage";
             this.btnStage.Size = new System.Drawing.Size(112, 48);
             this.btnStage.TabIndex = 0;
@@ -77,7 +83,7 @@
             // 
             this.btnUnstage.Image = ((System.Drawing.Image)(resources.GetObject("btnUnstage.Image")));
             this.btnUnstage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUnstage.Location = new System.Drawing.Point(128, 8);
+            this.btnUnstage.Location = new System.Drawing.Point(128, 48);
             this.btnUnstage.Name = "btnUnstage";
             this.btnUnstage.Size = new System.Drawing.Size(112, 48);
             this.btnUnstage.TabIndex = 1;
@@ -89,6 +95,7 @@
             // 
             // boxTop
             // 
+            this.boxTop.Controls.Add(this.boxInfo);
             this.boxTop.Controls.Add(this.btnCommitAndPush);
             this.boxTop.Controls.Add(this.btnCommit);
             this.boxTop.Controls.Add(this.edMessage);
@@ -97,12 +104,63 @@
             this.boxTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.boxTop.Location = new System.Drawing.Point(0, 0);
             this.boxTop.Name = "boxTop";
-            this.boxTop.Size = new System.Drawing.Size(866, 64);
+            this.boxTop.Size = new System.Drawing.Size(866, 104);
             this.boxTop.TabIndex = 0;
+            // 
+            // boxInfo
+            // 
+            this.boxInfo.BackColor = System.Drawing.SystemColors.Info;
+            this.boxInfo.Controls.Add(this.label5);
+            this.boxInfo.Controls.Add(this.lbBranch);
+            this.boxInfo.Controls.Add(this.lbRepository);
+            this.boxInfo.Controls.Add(this.label6);
+            this.boxInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.boxInfo.Location = new System.Drawing.Point(0, 0);
+            this.boxInfo.Name = "boxInfo";
+            this.boxInfo.Size = new System.Drawing.Size(866, 40);
+            this.boxInfo.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(8, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 15);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Repository:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lbBranch
+            // 
+            this.lbBranch.AutoSize = true;
+            this.lbBranch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbBranch.Location = new System.Drawing.Point(88, 22);
+            this.lbBranch.Name = "lbBranch";
+            this.lbBranch.Size = new System.Drawing.Size(22, 15);
+            this.lbBranch.TabIndex = 8;
+            this.lbBranch.Text = "---";
+            // 
+            // lbRepository
+            // 
+            this.lbRepository.AutoSize = true;
+            this.lbRepository.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbRepository.Location = new System.Drawing.Point(88, 2);
+            this.lbRepository.Name = "lbRepository";
+            this.lbRepository.Size = new System.Drawing.Size(22, 15);
+            this.lbRepository.TabIndex = 6;
+            this.lbRepository.Text = "---";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(8, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 15);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Branch:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnCommitAndPush
             // 
-            this.btnCommitAndPush.Location = new System.Drawing.Point(728, 32);
+            this.btnCommitAndPush.Location = new System.Drawing.Point(728, 72);
             this.btnCommitAndPush.Name = "btnCommitAndPush";
             this.btnCommitAndPush.Size = new System.Drawing.Size(128, 24);
             this.btnCommitAndPush.TabIndex = 4;
@@ -112,7 +170,7 @@
             // 
             // btnCommit
             // 
-            this.btnCommit.Location = new System.Drawing.Point(728, 8);
+            this.btnCommit.Location = new System.Drawing.Point(728, 48);
             this.btnCommit.Name = "btnCommit";
             this.btnCommit.Size = new System.Drawing.Size(128, 24);
             this.btnCommit.TabIndex = 3;
@@ -122,7 +180,7 @@
             // 
             // edMessage
             // 
-            this.edMessage.Location = new System.Drawing.Point(248, 8);
+            this.edMessage.Location = new System.Drawing.Point(248, 48);
             this.edMessage.Multiline = true;
             this.edMessage.Name = "edMessage";
             this.edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -146,9 +204,9 @@
             this.lstDif.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstDif.FormattingEnabled = true;
             this.lstDif.IntegralHeight = false;
-            this.lstDif.Location = new System.Drawing.Point(0, 318);
+            this.lstDif.Location = new System.Drawing.Point(0, 358);
             this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(866, 355);
+            this.lstDif.Size = new System.Drawing.Size(866, 315);
             this.lstDif.TabIndex = 11;
             this.lstDif.DoubleClick += new System.EventHandler(this.lstItem_Click);
             // 
@@ -163,10 +221,22 @@
             this.boxTitleUnstaged.Controls.Add(this.label4);
             this.boxTitleUnstaged.Controls.Add(this.label1);
             this.boxTitleUnstaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxTitleUnstaged.Location = new System.Drawing.Point(0, 294);
+            this.boxTitleUnstaged.Location = new System.Drawing.Point(0, 334);
             this.boxTitleUnstaged.Name = "boxTitleUnstaged";
             this.boxTitleUnstaged.Size = new System.Drawing.Size(866, 24);
             this.boxTitleUnstaged.TabIndex = 10;
+            // 
+            // btnUndoDif
+            // 
+            this.btnUndoDif.AutoSize = true;
+            this.btnUndoDif.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUndoDif.ForeColor = System.Drawing.Color.Red;
+            this.btnUndoDif.Location = new System.Drawing.Point(472, 4);
+            this.btnUndoDif.Name = "btnUndoDif";
+            this.btnUndoDif.Size = new System.Drawing.Size(36, 15);
+            this.btnUndoDif.TabIndex = 9;
+            this.btnUndoDif.Text = "Undo";
+            this.btnUndoDif.Click += new System.EventHandler(this.btnUndoDif_Click);
             // 
             // btnInvertDif
             // 
@@ -235,7 +305,7 @@
             // splitterLists
             // 
             this.splitterLists.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitterLists.Location = new System.Drawing.Point(0, 288);
+            this.splitterLists.Location = new System.Drawing.Point(0, 328);
             this.splitterLists.Name = "splitterLists";
             this.splitterLists.Size = new System.Drawing.Size(866, 6);
             this.splitterLists.TabIndex = 13;
@@ -247,7 +317,7 @@
             this.lstStaged.Dock = System.Windows.Forms.DockStyle.Top;
             this.lstStaged.FormattingEnabled = true;
             this.lstStaged.IntegralHeight = false;
-            this.lstStaged.Location = new System.Drawing.Point(0, 88);
+            this.lstStaged.Location = new System.Drawing.Point(0, 128);
             this.lstStaged.Name = "lstStaged";
             this.lstStaged.Size = new System.Drawing.Size(866, 200);
             this.lstStaged.TabIndex = 9;
@@ -263,7 +333,7 @@
             this.boxTitleStaged.Controls.Add(this.label3);
             this.boxTitleStaged.Controls.Add(this.label2);
             this.boxTitleStaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxTitleStaged.Location = new System.Drawing.Point(0, 64);
+            this.boxTitleStaged.Location = new System.Drawing.Point(0, 104);
             this.boxTitleStaged.Name = "boxTitleStaged";
             this.boxTitleStaged.Size = new System.Drawing.Size(866, 24);
             this.boxTitleStaged.TabIndex = 8;
@@ -332,18 +402,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Staged Files";
             // 
-            // btnUndoDif
-            // 
-            this.btnUndoDif.AutoSize = true;
-            this.btnUndoDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUndoDif.ForeColor = System.Drawing.Color.Red;
-            this.btnUndoDif.Location = new System.Drawing.Point(472, 4);
-            this.btnUndoDif.Name = "btnUndoDif";
-            this.btnUndoDif.Size = new System.Drawing.Size(36, 15);
-            this.btnUndoDif.TabIndex = 9;
-            this.btnUndoDif.Text = "Undo";
-            this.btnUndoDif.Click += new System.EventHandler(this.btnUndoDif_Click);
-            // 
             // FrmCommit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -366,6 +424,8 @@
             this.Load += new System.EventHandler(this.FrmCommit_Load);
             this.boxTop.ResumeLayout(false);
             this.boxTop.PerformLayout();
+            this.boxInfo.ResumeLayout(false);
+            this.boxInfo.PerformLayout();
             this.boxTitleUnstaged.ResumeLayout(false);
             this.boxTitleUnstaged.PerformLayout();
             this.boxTitleStaged.ResumeLayout(false);
@@ -400,5 +460,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label btnUndoDif;
+        private System.Windows.Forms.Label lbBranch;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbRepository;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel boxInfo;
     }
 }

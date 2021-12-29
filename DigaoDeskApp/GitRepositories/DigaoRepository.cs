@@ -598,7 +598,7 @@ namespace DigaoDeskApp
 
         public void Commit()
         {
-            FrmCommit f = new(_repoCtrl);
+            FrmCommit f = new(this);
             DialogResult dr = f.ShowDialog();
 
             if (dr == DialogResult.OK || dr == DialogResult.Continue)

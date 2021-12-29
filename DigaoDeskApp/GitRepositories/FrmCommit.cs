@@ -63,7 +63,7 @@ namespace DigaoDeskApp
             }
         }
 
-        public FrmCommit(Repository repository)
+        public FrmCommit(DigaoRepository repository)
         {
             InitializeComponent();
 
@@ -71,7 +71,10 @@ namespace DigaoDeskApp
             btnCommit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCommitAndPush.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 
-            this._repository = repository;
+            this._repository = repository._repoCtrl;
+
+            lbRepository.Text = repository.Name;
+            lbBranch.Text = repository._repoCtrl.Head.FriendlyName;
         }
 
         private void FrmCommit_Load(object sender, EventArgs e)
