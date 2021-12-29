@@ -147,6 +147,26 @@ namespace DigaoDeskApp
             }
         }
 
+        private void g_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            var col = g.Columns[e.ColumnIndex];
+
+            bool isColUp = col.Name == colUp.Name;
+            bool isColDown = col.Name == colDown.Name;
+            if (isColUp || isColDown)
+            {
+                if (e.Value != null)
+                {
+                    e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
+                    images.Draw(e.Graphics, e.CellBounds.X+2, e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), isColUp ? 0 : 1);
+
+                    e.Handled = true;
+                }
+            }
+        }
+
         public void DoBackground(Action proc)
         {
             Log.Log();

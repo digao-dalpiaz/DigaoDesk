@@ -29,9 +29,37 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.g = new System.Windows.Forms.DataGridView();
+            this.edLog = new DigaoDeskApp.RichTextBoxEx();
+            this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnFetchAll = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCreateBranch = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
+            this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
+            this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFetch = new System.Windows.Forms.ToolStripButton();
+            this.btnPull = new System.Windows.Forms.ToolStripButton();
+            this.btnCommit = new System.Windows.Forms.ToolStripButton();
+            this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
+            this.btnMerge = new System.Windows.Forms.ToolStripButton();
+            this.btnSyncWithMaster = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
+            this.btnPush = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnShell = new System.Windows.Forms.ToolStripButton();
+            this.btnRepoConfig = new System.Windows.Forms.ToolStripButton();
+            this.btnClearLog = new System.Windows.Forms.ToolStripButton();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.images = new System.Windows.Forms.ImageList(this.components);
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBranchesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,29 +70,6 @@ namespace DigaoDeskApp
             this.colLastFetch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMasterCompare = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edLog = new DigaoDeskApp.RichTextBoxEx();
-            this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
-            this.btnFetchAll = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnCreateBranch = new System.Windows.Forms.ToolStripButton();
-            this.btnDeleteBranch = new System.Windows.Forms.ToolStripButton();
-            this.btnSwitchBranch = new System.Windows.Forms.ToolStripButton();
-            this.btnCheckoutRemote = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnFetch = new System.Windows.Forms.ToolStripButton();
-            this.btnPull = new System.Windows.Forms.ToolStripButton();
-            this.btnCherryPick = new System.Windows.Forms.ToolStripButton();
-            this.btnMerge = new System.Windows.Forms.ToolStripButton();
-            this.btnSyncWithMaster = new System.Windows.Forms.ToolStripButton();
-            this.btnCommit = new System.Windows.Forms.ToolStripButton();
-            this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
-            this.btnPush = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnShell = new System.Windows.Forms.ToolStripButton();
-            this.btnRepoConfig = new System.Windows.Forms.ToolStripButton();
-            this.btnClearLog = new System.Windows.Forms.ToolStripButton();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -107,85 +112,7 @@ namespace DigaoDeskApp
             this.g.StandardTab = true;
             this.g.TabIndex = 0;
             this.g.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.g_CellFormatting);
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 250;
-            // 
-            // colBranch
-            // 
-            this.colBranch.DataPropertyName = "Branch";
-            this.colBranch.HeaderText = "Current Branch";
-            this.colBranch.Name = "colBranch";
-            this.colBranch.ReadOnly = true;
-            this.colBranch.Width = 250;
-            // 
-            // colBranchesCount
-            // 
-            this.colBranchesCount.DataPropertyName = "BranchesCount";
-            this.colBranchesCount.HeaderText = "Branches Count";
-            this.colBranchesCount.Name = "colBranchesCount";
-            this.colBranchesCount.ReadOnly = true;
-            this.colBranchesCount.Width = 120;
-            // 
-            // colUp
-            // 
-            this.colUp.DataPropertyName = "PendingUp";
-            this.colUp.HeaderText = "Pending Up";
-            this.colUp.Name = "colUp";
-            this.colUp.ReadOnly = true;
-            this.colUp.Width = 60;
-            // 
-            // colDown
-            // 
-            this.colDown.DataPropertyName = "PendingDown";
-            this.colDown.HeaderText = "Pending Down";
-            this.colDown.Name = "colDown";
-            this.colDown.ReadOnly = true;
-            this.colDown.Width = 60;
-            // 
-            // colDifs
-            // 
-            this.colDifs.DataPropertyName = "Difs";
-            this.colDifs.HeaderText = "Difs";
-            this.colDifs.Name = "colDifs";
-            this.colDifs.ReadOnly = true;
-            this.colDifs.Width = 60;
-            // 
-            // colOtherBranchesDifs
-            // 
-            this.colOtherBranchesDifs.DataPropertyName = "OthersBranchesDifs";
-            this.colOtherBranchesDifs.HeaderText = "Other Branches Pending";
-            this.colOtherBranchesDifs.Name = "colOtherBranchesDifs";
-            this.colOtherBranchesDifs.ReadOnly = true;
-            this.colOtherBranchesDifs.Width = 150;
-            // 
-            // colLastFetch
-            // 
-            this.colLastFetch.DataPropertyName = "LastFetchTS";
-            this.colLastFetch.HeaderText = "Last Fetch";
-            this.colLastFetch.Name = "colLastFetch";
-            this.colLastFetch.ReadOnly = true;
-            this.colLastFetch.Width = 120;
-            // 
-            // colOperation
-            // 
-            this.colOperation.DataPropertyName = "CurrentOperation";
-            this.colOperation.HeaderText = "Operation";
-            this.colOperation.Name = "colOperation";
-            this.colOperation.ReadOnly = true;
-            // 
-            // colMasterCompare
-            // 
-            this.colMasterCompare.DataPropertyName = "MasterBranchCompare";
-            this.colMasterCompare.HeaderText = "Master Branch Compare";
-            this.colMasterCompare.Name = "colMasterCompare";
-            this.colMasterCompare.ReadOnly = true;
-            this.colMasterCompare.Width = 150;
+            this.g.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.g_CellPainting);
             // 
             // edLog
             // 
@@ -276,17 +203,6 @@ namespace DigaoDeskApp
             this.btnDeleteBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteBranch.Click += new System.EventHandler(this.btnDeleteBranch_Click);
             // 
-            // btnSwitchBranch
-            // 
-            this.btnSwitchBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchBranch.Image")));
-            this.btnSwitchBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnSwitchBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSwitchBranch.Name = "btnSwitchBranch";
-            this.btnSwitchBranch.Size = new System.Drawing.Size(46, 43);
-            this.btnSwitchBranch.Text = "Switch";
-            this.btnSwitchBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSwitchBranch.Click += new System.EventHandler(this.btnSwitchBranch_Click);
-            // 
             // btnCheckoutRemote
             // 
             this.btnCheckoutRemote.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckoutRemote.Image")));
@@ -297,6 +213,17 @@ namespace DigaoDeskApp
             this.btnCheckoutRemote.Text = "Checkout";
             this.btnCheckoutRemote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCheckoutRemote.Click += new System.EventHandler(this.btnCheckoutRemote_Click);
+            // 
+            // btnSwitchBranch
+            // 
+            this.btnSwitchBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchBranch.Image")));
+            this.btnSwitchBranch.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSwitchBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSwitchBranch.Name = "btnSwitchBranch";
+            this.btnSwitchBranch.Size = new System.Drawing.Size(46, 43);
+            this.btnSwitchBranch.Text = "Switch";
+            this.btnSwitchBranch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSwitchBranch.Click += new System.EventHandler(this.btnSwitchBranch_Click);
             // 
             // toolStripSeparator3
             // 
@@ -324,6 +251,17 @@ namespace DigaoDeskApp
             this.btnPull.Text = "Pull";
             this.btnPull.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPull.Click += new System.EventHandler(this.btnPull_Click);
+            // 
+            // btnCommit
+            // 
+            this.btnCommit.Image = ((System.Drawing.Image)(resources.GetObject("btnCommit.Image")));
+            this.btnCommit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCommit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCommit.Name = "btnCommit";
+            this.btnCommit.Size = new System.Drawing.Size(55, 43);
+            this.btnCommit.Text = "Commit";
+            this.btnCommit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
             // 
             // btnCherryPick
             // 
@@ -357,17 +295,6 @@ namespace DigaoDeskApp
             this.btnSyncWithMaster.Text = "Sync";
             this.btnSyncWithMaster.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSyncWithMaster.Click += new System.EventHandler(this.btnSyncWithMaster_Click);
-            // 
-            // btnCommit
-            // 
-            this.btnCommit.Image = ((System.Drawing.Image)(resources.GetObject("btnCommit.Image")));
-            this.btnCommit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCommit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(55, 43);
-            this.btnCommit.Text = "Commit";
-            this.btnCommit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
             // 
             // btnCancelOperation
             // 
@@ -438,6 +365,99 @@ namespace DigaoDeskApp
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
+            // images
+            // 
+            this.images.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.images.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("images.ImageStream")));
+            this.images.TransparentColor = System.Drawing.Color.Transparent;
+            this.images.Images.SetKeyName(0, "up.png");
+            this.images.Images.SetKeyName(1, "down.png");
+            // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 250;
+            // 
+            // colBranch
+            // 
+            this.colBranch.DataPropertyName = "Branch";
+            this.colBranch.HeaderText = "Current Branch";
+            this.colBranch.Name = "colBranch";
+            this.colBranch.ReadOnly = true;
+            this.colBranch.Width = 250;
+            // 
+            // colBranchesCount
+            // 
+            this.colBranchesCount.DataPropertyName = "BranchesCount";
+            this.colBranchesCount.HeaderText = "Branches Count";
+            this.colBranchesCount.Name = "colBranchesCount";
+            this.colBranchesCount.ReadOnly = true;
+            this.colBranchesCount.Width = 120;
+            // 
+            // colUp
+            // 
+            this.colUp.DataPropertyName = "PendingUp";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colUp.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colUp.HeaderText = "Pending Up";
+            this.colUp.Name = "colUp";
+            this.colUp.ReadOnly = true;
+            this.colUp.Width = 60;
+            // 
+            // colDown
+            // 
+            this.colDown.DataPropertyName = "PendingDown";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colDown.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colDown.HeaderText = "Pending Down";
+            this.colDown.Name = "colDown";
+            this.colDown.ReadOnly = true;
+            this.colDown.Width = 60;
+            // 
+            // colDifs
+            // 
+            this.colDifs.DataPropertyName = "Difs";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colDifs.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colDifs.HeaderText = "Difs";
+            this.colDifs.Name = "colDifs";
+            this.colDifs.ReadOnly = true;
+            this.colDifs.Width = 60;
+            // 
+            // colOtherBranchesDifs
+            // 
+            this.colOtherBranchesDifs.DataPropertyName = "OthersBranchesDifs";
+            this.colOtherBranchesDifs.HeaderText = "Other Branches Pending";
+            this.colOtherBranchesDifs.Name = "colOtherBranchesDifs";
+            this.colOtherBranchesDifs.ReadOnly = true;
+            this.colOtherBranchesDifs.Width = 150;
+            // 
+            // colLastFetch
+            // 
+            this.colLastFetch.DataPropertyName = "LastFetchTS";
+            this.colLastFetch.HeaderText = "Last Fetch";
+            this.colLastFetch.Name = "colLastFetch";
+            this.colLastFetch.ReadOnly = true;
+            this.colLastFetch.Width = 120;
+            // 
+            // colOperation
+            // 
+            this.colOperation.DataPropertyName = "CurrentOperation";
+            this.colOperation.HeaderText = "Operation";
+            this.colOperation.Name = "colOperation";
+            this.colOperation.ReadOnly = true;
+            // 
+            // colMasterCompare
+            // 
+            this.colMasterCompare.DataPropertyName = "MasterBranchCompare";
+            this.colMasterCompare.HeaderText = "Master Branch Compare";
+            this.colMasterCompare.Name = "colMasterCompare";
+            this.colMasterCompare.ReadOnly = true;
+            this.colMasterCompare.Width = 150;
+            // 
             // FrmRepos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -485,6 +505,9 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnCancelOperation;
         private System.Windows.Forms.ToolStripButton btnMerge;
         private System.Windows.Forms.ToolStripButton btnRepoConfig;
+        private System.Windows.Forms.ToolStripButton btnSyncWithMaster;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ImageList images;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranchesCount;
@@ -495,7 +518,5 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMasterCompare;
-        private System.Windows.Forms.ToolStripButton btnSyncWithMaster;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
