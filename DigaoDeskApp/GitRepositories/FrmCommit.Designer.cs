@@ -32,6 +32,7 @@
             this.btnStage = new System.Windows.Forms.Button();
             this.btnUnstage = new System.Windows.Forms.Button();
             this.boxTop = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.boxInfo = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.lbBranch = new System.Windows.Forms.Label();
@@ -69,10 +70,10 @@
             // 
             this.btnStage.Image = ((System.Drawing.Image)(resources.GetObject("btnStage.Image")));
             this.btnStage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnStage.Location = new System.Drawing.Point(8, 48);
+            this.btnStage.Location = new System.Drawing.Point(112, 48);
             this.btnStage.Name = "btnStage";
-            this.btnStage.Size = new System.Drawing.Size(112, 48);
-            this.btnStage.TabIndex = 0;
+            this.btnStage.Size = new System.Drawing.Size(96, 48);
+            this.btnStage.TabIndex = 2;
             this.btnStage.TabStop = false;
             this.btnStage.Text = "Stage";
             this.btnStage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -83,10 +84,10 @@
             // 
             this.btnUnstage.Image = ((System.Drawing.Image)(resources.GetObject("btnUnstage.Image")));
             this.btnUnstage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUnstage.Location = new System.Drawing.Point(128, 48);
+            this.btnUnstage.Location = new System.Drawing.Point(216, 48);
             this.btnUnstage.Name = "btnUnstage";
-            this.btnUnstage.Size = new System.Drawing.Size(112, 48);
-            this.btnUnstage.TabIndex = 1;
+            this.btnUnstage.Size = new System.Drawing.Size(96, 48);
+            this.btnUnstage.TabIndex = 3;
             this.btnUnstage.TabStop = false;
             this.btnUnstage.Text = "Unstage";
             this.btnUnstage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -95,6 +96,7 @@
             // 
             // boxTop
             // 
+            this.boxTop.Controls.Add(this.btnRefresh);
             this.boxTop.Controls.Add(this.boxInfo);
             this.boxTop.Controls.Add(this.btnCommitAndPush);
             this.boxTop.Controls.Add(this.btnCommit);
@@ -107,6 +109,20 @@
             this.boxTop.Size = new System.Drawing.Size(866, 104);
             this.boxTop.TabIndex = 0;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRefresh.Location = new System.Drawing.Point(8, 48);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(96, 48);
+            this.btnRefresh.TabIndex = 1;
+            this.btnRefresh.TabStop = false;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // boxInfo
             // 
             this.boxInfo.BackColor = System.Drawing.SystemColors.Info;
@@ -118,7 +134,7 @@
             this.boxInfo.Location = new System.Drawing.Point(0, 0);
             this.boxInfo.Name = "boxInfo";
             this.boxInfo.Size = new System.Drawing.Size(866, 40);
-            this.boxInfo.TabIndex = 9;
+            this.boxInfo.TabIndex = 0;
             // 
             // label5
             // 
@@ -163,7 +179,7 @@
             this.btnCommitAndPush.Location = new System.Drawing.Point(728, 72);
             this.btnCommitAndPush.Name = "btnCommitAndPush";
             this.btnCommitAndPush.Size = new System.Drawing.Size(128, 24);
-            this.btnCommitAndPush.TabIndex = 4;
+            this.btnCommitAndPush.TabIndex = 6;
             this.btnCommitAndPush.Text = "Commit and Push";
             this.btnCommitAndPush.UseVisualStyleBackColor = true;
             this.btnCommitAndPush.Click += new System.EventHandler(this.btnCommit_Click);
@@ -173,19 +189,19 @@
             this.btnCommit.Location = new System.Drawing.Point(728, 48);
             this.btnCommit.Name = "btnCommit";
             this.btnCommit.Size = new System.Drawing.Size(128, 24);
-            this.btnCommit.TabIndex = 3;
+            this.btnCommit.TabIndex = 5;
             this.btnCommit.Text = "Commit";
             this.btnCommit.UseVisualStyleBackColor = true;
             this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
             // 
             // edMessage
             // 
-            this.edMessage.Location = new System.Drawing.Point(248, 48);
+            this.edMessage.Location = new System.Drawing.Point(320, 48);
             this.edMessage.Multiline = true;
             this.edMessage.Name = "edMessage";
             this.edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edMessage.Size = new System.Drawing.Size(472, 48);
-            this.edMessage.TabIndex = 2;
+            this.edMessage.Size = new System.Drawing.Size(400, 48);
+            this.edMessage.TabIndex = 4;
             // 
             // lstOther
             // 
@@ -465,5 +481,6 @@
         private System.Windows.Forms.Label lbRepository;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel boxInfo;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

@@ -167,6 +167,11 @@ namespace DigaoDeskApp
             lstOther.Visible = lstOther.Items.Count > 0;
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadLists();
+        }
+
         private void btnStage_Click(object sender, EventArgs e)
         {
             if (lstDif.CheckedItems.Count == 0) return;
