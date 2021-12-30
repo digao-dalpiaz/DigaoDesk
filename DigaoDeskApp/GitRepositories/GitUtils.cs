@@ -33,6 +33,18 @@ namespace DigaoDeskApp
             return local.IsTracking && local.TrackedBranch != null && remote.IsRemote && IsSameBranch(local.TrackedBranch, remote);
         }
 
+        public static string ExtractBranchNameFromOrigin(string remoteBranchName)
+        {
+            const string PREFIX = "origin/";
+
+            if (!remoteBranchName.StartsWith(PREFIX))
+            {
+                throw new Exception("Invalid remote branch name: " + remoteBranchName);
+            }
+
+            return remoteBranchName.Substring(PREFIX.Length);
+        }
+
         public static string GetFileStatusAsString(FileStatus s)
         {
             switch (s)

@@ -185,7 +185,7 @@ namespace DigaoDeskApp
                 {
                     masterComp= "???";
                 } else
-                if (GitUtils.IsSameBranch(_repoCtrl.Head, masterBranch) || (_repoCtrl.Head.IsTracking && GitUtils.IsSameBranch(_repoCtrl.Head.TrackedBranch, masterBranch)))
+                if (GitUtils.IsSameBranch(_repoCtrl.Head, masterBranch) || GitUtils.IsBranchLocalAndRemoteLinked(_repoCtrl.Head, masterBranch))
                 {
                     masterComp = "self";
                 }
@@ -404,19 +404,11 @@ namespace DigaoDeskApp
                     Commands.Checkout(_repoCtrl, branch, GetCheckoutOptions());
                 }, true);
             }
-
-        }
-
-        private Branch FindLocalBranchByRemote(Branch remoteBranch)
-        {
-            var lstLocalBranchesTracked = _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking);
-
-            return lstLocalBranchesTracked.FirstOrDefault(x => x.TrackedBranch.FriendlyName.Equals(remoteBranch.FriendlyName));
         }
 
         public void CheckoutRemoteBranch()
         {
-            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !GitUtils.IsBranchOriginHead(x) && FindLocalBranchByRemote(x) == null);
+            var lstRemainingRemoteBranches = _repoCtrl.Branches.Where(x => x.IsRemote && !GitUtils.IsBranchOriginHead(x) && _repoCtrl.Branches[GitUtils.ExtractBranchNameFromOrigin(x.FriendlyName)] == null);
             if (!lstRemainingRemoteBranches.Any())
             {
                 Messages.Error("There are no other remote branches to checkout");
@@ -430,17 +422,11 @@ namespace DigaoDeskApp
             {
                 DoBackground("Checkout Remote Branch", () =>
                 {
-                    const string PREFIX = "origin/";
-
                     var remoteBranch = f.ResultBranch;
                     Log.LogLabel("Branch", remoteBranch.FriendlyName);
 
-                    if (!remoteBranch.FriendlyName.StartsWith(PREFIX))
-                    {
-                        throw new Exception("Invalid remote branch name");
-                    }
-
-                    var localBranch = _repoCtrl.CreateBranch(remoteBranch.FriendlyName.Substring(PREFIX.Length), remoteBranch.Tip);
+                    var localBranchName = GitUtils.ExtractBranchNameFromOrigin(remoteBranch.FriendlyName);
+                    var localBranch = _repoCtrl.CreateBranch(localBranchName, remoteBranch.Tip);
                     _repoCtrl.Branches.Update(localBranch, b => b.TrackedBranch = remoteBranch.CanonicalName);
 
                     Commands.Checkout(_repoCtrl, localBranch, GetCheckoutOptions());
@@ -535,17 +521,15 @@ namespace DigaoDeskApp
 
         public void Merge()
         {
+            var lstBranches = _repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x) && !GitUtils.IsBranchLocalAndRemoteLinked(_repoCtrl.Head, x));
+            if (!lstBranches.Any())
+            {
+                Messages.Error("There are no other branches to merge from");
+                return;
+            }
+
             FrmBranchSelector f = new("Merge From Branch", true);
-            f.AddBranches(_repoCtrl.Branches.Where(x => {
-                if (GitUtils.IsBranchOriginHead(x)) return false;
-                if (x.IsCurrentRepositoryHead) return false;
-                if (x.IsRemote)
-                {
-                    //do not show remote branch of head because the "Pull" command already exists to merge the current branch from remote
-                    if (_repoCtrl.Head.IsTracking && _repoCtrl.Head.TrackedBranch.FriendlyName.Equals(x.FriendlyName)) return false;
-                }
-                return true;
-            }));
+            f.AddBranches(lstBranches);
 
             if (f.ShowDialog() == DialogResult.OK)
             {
