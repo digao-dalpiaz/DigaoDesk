@@ -228,7 +228,7 @@
             // 
             // boxTitleUnstaged
             // 
-            this.boxTitleUnstaged.BackColor = System.Drawing.Color.Orange;
+            this.boxTitleUnstaged.BackColor = System.Drawing.Color.Crimson;
             this.boxTitleUnstaged.Controls.Add(this.btnUndoDif);
             this.boxTitleUnstaged.Controls.Add(this.btnInvertDif);
             this.boxTitleUnstaged.Controls.Add(this.btnNoneDif);
@@ -246,7 +246,7 @@
             // 
             this.btnUndoDif.AutoSize = true;
             this.btnUndoDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUndoDif.ForeColor = System.Drawing.Color.Red;
+            this.btnUndoDif.ForeColor = System.Drawing.Color.Gold;
             this.btnUndoDif.Location = new System.Drawing.Point(472, 4);
             this.btnUndoDif.Name = "btnUndoDif";
             this.btnUndoDif.Size = new System.Drawing.Size(36, 15);
@@ -258,7 +258,7 @@
             // 
             this.btnInvertDif.AutoSize = true;
             this.btnInvertDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInvertDif.ForeColor = System.Drawing.Color.Blue;
+            this.btnInvertDif.ForeColor = System.Drawing.Color.Aqua;
             this.btnInvertDif.Location = new System.Drawing.Point(384, 4);
             this.btnInvertDif.Name = "btnInvertDif";
             this.btnInvertDif.Size = new System.Drawing.Size(37, 15);
@@ -270,7 +270,7 @@
             // 
             this.btnNoneDif.AutoSize = true;
             this.btnNoneDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNoneDif.ForeColor = System.Drawing.Color.Blue;
+            this.btnNoneDif.ForeColor = System.Drawing.Color.Aqua;
             this.btnNoneDif.Location = new System.Drawing.Point(328, 4);
             this.btnNoneDif.Name = "btnNoneDif";
             this.btnNoneDif.Size = new System.Drawing.Size(36, 15);
@@ -282,7 +282,7 @@
             // 
             this.btnAllDif.AutoSize = true;
             this.btnAllDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAllDif.ForeColor = System.Drawing.Color.Blue;
+            this.btnAllDif.ForeColor = System.Drawing.Color.Aqua;
             this.btnAllDif.Location = new System.Drawing.Point(280, 4);
             this.btnAllDif.Name = "btnAllDif";
             this.btnAllDif.Size = new System.Drawing.Size(21, 15);
@@ -293,6 +293,7 @@
             // lbCountDif
             // 
             this.lbCountDif.AutoSize = true;
+            this.lbCountDif.ForeColor = System.Drawing.Color.White;
             this.lbCountDif.Location = new System.Drawing.Point(192, 4);
             this.lbCountDif.Name = "lbCountDif";
             this.lbCountDif.Size = new System.Drawing.Size(25, 15);
@@ -302,6 +303,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(144, 4);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 15);
@@ -312,6 +314,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(8, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 15);
@@ -341,7 +344,7 @@
             // 
             // boxTitleStaged
             // 
-            this.boxTitleStaged.BackColor = System.Drawing.Color.SkyBlue;
+            this.boxTitleStaged.BackColor = System.Drawing.Color.MediumBlue;
             this.boxTitleStaged.Controls.Add(this.btnInvertStaged);
             this.boxTitleStaged.Controls.Add(this.btnNoneStaged);
             this.boxTitleStaged.Controls.Add(this.btnAllStaged);
@@ -358,7 +361,7 @@
             // 
             this.btnInvertStaged.AutoSize = true;
             this.btnInvertStaged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInvertStaged.ForeColor = System.Drawing.Color.Blue;
+            this.btnInvertStaged.ForeColor = System.Drawing.Color.Aqua;
             this.btnInvertStaged.Location = new System.Drawing.Point(384, 4);
             this.btnInvertStaged.Name = "btnInvertStaged";
             this.btnInvertStaged.Size = new System.Drawing.Size(37, 15);
@@ -370,7 +373,7 @@
             // 
             this.btnNoneStaged.AutoSize = true;
             this.btnNoneStaged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNoneStaged.ForeColor = System.Drawing.Color.Blue;
+            this.btnNoneStaged.ForeColor = System.Drawing.Color.Aqua;
             this.btnNoneStaged.Location = new System.Drawing.Point(328, 4);
             this.btnNoneStaged.Name = "btnNoneStaged";
             this.btnNoneStaged.Size = new System.Drawing.Size(36, 15);
@@ -382,7 +385,7 @@
             // 
             this.btnAllStaged.AutoSize = true;
             this.btnAllStaged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAllStaged.ForeColor = System.Drawing.Color.Blue;
+            this.btnAllStaged.ForeColor = System.Drawing.Color.Aqua;
             this.btnAllStaged.Location = new System.Drawing.Point(280, 4);
             this.btnAllStaged.Name = "btnAllStaged";
             this.btnAllStaged.Size = new System.Drawing.Size(21, 15);
@@ -393,6 +396,7 @@
             // lbCountStaged
             // 
             this.lbCountStaged.AutoSize = true;
+            this.lbCountStaged.ForeColor = System.Drawing.Color.White;
             this.lbCountStaged.Location = new System.Drawing.Point(192, 4);
             this.lbCountStaged.Name = "lbCountStaged";
             this.lbCountStaged.Size = new System.Drawing.Size(25, 15);
@@ -402,6 +406,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(144, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 15);
@@ -412,6 +417,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(8, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 15);
