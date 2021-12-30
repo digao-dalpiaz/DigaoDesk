@@ -30,6 +30,7 @@ namespace DigaoDeskApp
         }
 
         private Repository _repository;
+        private Branch _branch;
         private List<CommitView> _lstCommits;
         private BindingSource _gridBind;
 
@@ -40,6 +41,7 @@ namespace DigaoDeskApp
             InitializeComponent();
 
             edBranch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnSelBranch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             edSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lbStartDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             edStartDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -60,17 +62,6 @@ namespace DigaoDeskApp
             _gridBind.DataSource = _lstCommits;
 
             g.DataSource = _gridBind;
-
-            FillBranches();
-            FillList();
-        }
-
-        private void FillBranches()
-        {
-            foreach (var item in _repository.Branches.Where(x => x.IsRemote && !GitUtils.IsBranchOriginHead(x)))
-            {
-                edBranch.Items.Add(item.FriendlyName);
-            }
         }
 
         private void FillList()
@@ -78,11 +69,9 @@ namespace DigaoDeskApp
             _lstCommits.Clear();
             try
             {
-                if (edBranch.SelectedItem == null) return;
-                var branch = _repository.Branches[edBranch.SelectedItem.ToString()];
-                if (branch == null) return;
+                if (_branch == null) return;
 
-                foreach (var item in branch.Commits.Where(x =>
+                foreach (var item in _branch.Commits.Where(x =>
                 {
                     if (edStartDate.Checked) if (!(x.Author.When.ToLocalTime().Date >= edStartDate.Value.Date)) return false;
                     if (edEndDate.Checked) if (!(x.Author.When.ToLocalTime().Date <= edEndDate.Value.Date)) return false;
@@ -100,9 +89,24 @@ namespace DigaoDeskApp
             }
         }
 
-        private void edBranch_TextChanged(object sender, EventArgs e)
+        private void btnSelBranch_Click(object sender, EventArgs e)
         {
-            FillList();
+            var lstBranches = _repository.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x) && !GitUtils.IsBranchLocalAndRemoteLinked(_repository.Head, x));
+            if (!lstBranches.Any())
+            {
+                Messages.Error("There are no branches other than the current one");
+                return;
+            }
+
+            FrmBranchSelector f = new("Select a branch for Cherry Pick", true);            
+            f.AddBranches(lstBranches);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                _branch = f.ResultBranch;
+                edBranch.Text = _branch.FriendlyName;
+
+                FillList();
+            }
         }
 
         private void edSearch_TextChanged(object sender, EventArgs e)
@@ -135,6 +139,6 @@ namespace DigaoDeskApp
 
             DialogResult = DialogResult.OK;
         }
-        
+
     }
 }

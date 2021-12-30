@@ -28,6 +28,11 @@ namespace DigaoDeskApp
             return branch1.FriendlyName.Equals(branch2.FriendlyName);
         }
 
+        public static bool IsBranchLocalAndRemoteLinked(Branch local, Branch remote)
+        {
+            return local.IsTracking && local.TrackedBranch != null && remote.IsRemote && IsSameBranch(local.TrackedBranch, remote);
+        }
+
         public static string GetFileStatusAsString(FileStatus s)
         {
             switch (s)
