@@ -27,12 +27,18 @@ Thus, the application is running in the Windows tray, allowing monitoring at any
 
 There is another function available in tray menu, allowing you to manage your git repositories. Just configure a git repositories folder and all git repos will appear in the form grid. You can use basic git commands like:
 
+- New Branch (create a new branch from current branch or from a specific tag)
+- Delete Branch (delete a branch locally and/or remotely)
+- Checkout (checkout a remote branch)
+- Switch (checkout a local branch)
 - Fetch
 - Pull
-- Checkout (remote)
-- Checkout (local)
-- Delete Branch
-- Show Diffs
+- Commit (manage staging area, show diffs in external tool, undo changes)
+- Cherry Pick
+- Merge
+- Sync (merge from master branch)
+- Cancel Operation (cancel current git operation)
+- Push
 - Open Shell program
 
 # Settings
