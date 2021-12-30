@@ -31,11 +31,21 @@ namespace DigaoDeskApp
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             this.g = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBranchesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDown = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOtherBranchesDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLastFetch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMasterCompare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edLog = new DigaoDeskApp.RichTextBoxEx();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
@@ -60,16 +70,6 @@ namespace DigaoDeskApp
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.images = new System.Windows.Forms.ImageList(this.components);
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBranchesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDown = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOtherBranchesDifs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLastFetch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMasterCompare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +114,91 @@ namespace DigaoDeskApp
             this.g.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.g_CellFormatting);
             this.g.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.g_CellPainting);
             // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 250;
+            // 
+            // colBranch
+            // 
+            this.colBranch.DataPropertyName = "Branch";
+            this.colBranch.HeaderText = "Current Branch";
+            this.colBranch.Name = "colBranch";
+            this.colBranch.ReadOnly = true;
+            this.colBranch.Width = 250;
+            // 
+            // colBranchesCount
+            // 
+            this.colBranchesCount.DataPropertyName = "BranchesCount";
+            this.colBranchesCount.HeaderText = "Branches Count";
+            this.colBranchesCount.Name = "colBranchesCount";
+            this.colBranchesCount.ReadOnly = true;
+            this.colBranchesCount.Width = 120;
+            // 
+            // colUp
+            // 
+            this.colUp.DataPropertyName = "PendingUp";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colUp.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colUp.HeaderText = "Pending Up";
+            this.colUp.Name = "colUp";
+            this.colUp.ReadOnly = true;
+            this.colUp.Width = 60;
+            // 
+            // colDown
+            // 
+            this.colDown.DataPropertyName = "PendingDown";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colDown.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colDown.HeaderText = "Pending Down";
+            this.colDown.Name = "colDown";
+            this.colDown.ReadOnly = true;
+            this.colDown.Width = 60;
+            // 
+            // colDifs
+            // 
+            this.colDifs.DataPropertyName = "Difs";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colDifs.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colDifs.HeaderText = "Difs";
+            this.colDifs.Name = "colDifs";
+            this.colDifs.ReadOnly = true;
+            this.colDifs.Width = 60;
+            // 
+            // colOtherBranchesDifs
+            // 
+            this.colOtherBranchesDifs.DataPropertyName = "OthersBranchesDifs";
+            this.colOtherBranchesDifs.HeaderText = "Other Branches Pending";
+            this.colOtherBranchesDifs.Name = "colOtherBranchesDifs";
+            this.colOtherBranchesDifs.ReadOnly = true;
+            this.colOtherBranchesDifs.Width = 150;
+            // 
+            // colLastFetch
+            // 
+            this.colLastFetch.DataPropertyName = "LastFetchTS";
+            this.colLastFetch.HeaderText = "Last Fetch";
+            this.colLastFetch.Name = "colLastFetch";
+            this.colLastFetch.ReadOnly = true;
+            this.colLastFetch.Width = 120;
+            // 
+            // colOperation
+            // 
+            this.colOperation.DataPropertyName = "CurrentOperation";
+            this.colOperation.HeaderText = "Operation";
+            this.colOperation.Name = "colOperation";
+            this.colOperation.ReadOnly = true;
+            // 
+            // colMasterCompare
+            // 
+            this.colMasterCompare.DataPropertyName = "MasterBranchCompare";
+            this.colMasterCompare.HeaderText = "Master Branch Compare";
+            this.colMasterCompare.Name = "colMasterCompare";
+            this.colMasterCompare.ReadOnly = true;
+            this.colMasterCompare.Width = 150;
+            // 
             // edLog
             // 
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -151,6 +236,7 @@ namespace DigaoDeskApp
             this.btnClearLog});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
+            this.toolBar.ShowItemToolTips = false;
             this.toolBar.Size = new System.Drawing.Size(1419, 46);
             this.toolBar.TabIndex = 2;
             // 
@@ -372,91 +458,6 @@ namespace DigaoDeskApp
             this.images.TransparentColor = System.Drawing.Color.Transparent;
             this.images.Images.SetKeyName(0, "up.png");
             this.images.Images.SetKeyName(1, "down.png");
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 250;
-            // 
-            // colBranch
-            // 
-            this.colBranch.DataPropertyName = "Branch";
-            this.colBranch.HeaderText = "Current Branch";
-            this.colBranch.Name = "colBranch";
-            this.colBranch.ReadOnly = true;
-            this.colBranch.Width = 250;
-            // 
-            // colBranchesCount
-            // 
-            this.colBranchesCount.DataPropertyName = "BranchesCount";
-            this.colBranchesCount.HeaderText = "Branches Count";
-            this.colBranchesCount.Name = "colBranchesCount";
-            this.colBranchesCount.ReadOnly = true;
-            this.colBranchesCount.Width = 120;
-            // 
-            // colUp
-            // 
-            this.colUp.DataPropertyName = "PendingUp";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colUp.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colUp.HeaderText = "Pending Up";
-            this.colUp.Name = "colUp";
-            this.colUp.ReadOnly = true;
-            this.colUp.Width = 60;
-            // 
-            // colDown
-            // 
-            this.colDown.DataPropertyName = "PendingDown";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colDown.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colDown.HeaderText = "Pending Down";
-            this.colDown.Name = "colDown";
-            this.colDown.ReadOnly = true;
-            this.colDown.Width = 60;
-            // 
-            // colDifs
-            // 
-            this.colDifs.DataPropertyName = "Difs";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colDifs.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colDifs.HeaderText = "Difs";
-            this.colDifs.Name = "colDifs";
-            this.colDifs.ReadOnly = true;
-            this.colDifs.Width = 60;
-            // 
-            // colOtherBranchesDifs
-            // 
-            this.colOtherBranchesDifs.DataPropertyName = "OthersBranchesDifs";
-            this.colOtherBranchesDifs.HeaderText = "Other Branches Pending";
-            this.colOtherBranchesDifs.Name = "colOtherBranchesDifs";
-            this.colOtherBranchesDifs.ReadOnly = true;
-            this.colOtherBranchesDifs.Width = 150;
-            // 
-            // colLastFetch
-            // 
-            this.colLastFetch.DataPropertyName = "LastFetchTS";
-            this.colLastFetch.HeaderText = "Last Fetch";
-            this.colLastFetch.Name = "colLastFetch";
-            this.colLastFetch.ReadOnly = true;
-            this.colLastFetch.Width = 120;
-            // 
-            // colOperation
-            // 
-            this.colOperation.DataPropertyName = "CurrentOperation";
-            this.colOperation.HeaderText = "Operation";
-            this.colOperation.Name = "colOperation";
-            this.colOperation.ReadOnly = true;
-            // 
-            // colMasterCompare
-            // 
-            this.colMasterCompare.DataPropertyName = "MasterBranchCompare";
-            this.colMasterCompare.HeaderText = "Master Branch Compare";
-            this.colMasterCompare.Name = "colMasterCompare";
-            this.colMasterCompare.ReadOnly = true;
-            this.colMasterCompare.Width = 150;
             // 
             // FrmRepos
             // 
