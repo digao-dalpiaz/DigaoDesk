@@ -224,7 +224,7 @@
             this.lstDif.IntegralHeight = false;
             this.lstDif.Location = new System.Drawing.Point(0, 358);
             this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(866, 315);
+            this.lstDif.Size = new System.Drawing.Size(866, 183);
             this.lstDif.TabIndex = 11;
             this.lstDif.DoubleClick += new System.EventHandler(this.lstItem_Click);
             // 
@@ -441,13 +441,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 673);
-            this.Controls.Add(this.lstOther);
             this.Controls.Add(this.lstDif);
             this.Controls.Add(this.boxTitleUnstaged);
             this.Controls.Add(this.splitterLists);
             this.Controls.Add(this.lstStaged);
             this.Controls.Add(this.boxTitleStaged);
             this.Controls.Add(this.boxTop);
+            this.Controls.Add(this.lstOther);
             this.MinimizeBox = false;
             this.Name = "FrmCommit";
             this.ShowIcon = false;
