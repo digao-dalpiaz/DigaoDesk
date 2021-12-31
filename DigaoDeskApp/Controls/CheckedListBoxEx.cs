@@ -9,14 +9,14 @@ namespace DigaoDeskApp
     public class CheckedListBoxEx : CheckedListBox
     {
 
-        private Size _checkSize;
+        private Rectangle _check;
         private const int BOX_SPAN = 3;
 
         public int BoxAreaWidth
         {
             get
             {
-                return BOX_SPAN + _checkSize.Width;
+                return _check.Right;
             }
         }
 
@@ -35,7 +35,8 @@ namespace DigaoDeskApp
             heightField.SetValue(this, value - Font.Height);
 
             //must be set after ItemHeight
-            _checkSize = CheckBoxRenderer.GetGlyphSize(Graphics.FromHwnd(Handle), CheckBoxState.CheckedNormal);
+            var size = CheckBoxRenderer.GetGlyphSize(Graphics.FromHwnd(Handle), CheckBoxState.CheckedNormal);
+            _check = new Rectangle(BOX_SPAN, (value - size.Height) / 2, size.Width, size.Height);
         }
 
         public void SurroundAllowingCheck(Action proc)
@@ -72,8 +73,8 @@ namespace DigaoDeskApp
             for (int i = 0; i < Items.Count; i++)
             {
                 Rectangle rec = GetItemRectangle(i);
-                rec.Offset(BOX_SPAN, (rec.Height - _checkSize.Height) / 2);
-                rec.Size = _checkSize;
+                rec.Offset(_check.Location);
+                rec.Size = _check.Size;
 
                 if (rec.Contains(loc))
                 {
@@ -113,7 +114,7 @@ namespace DigaoDeskApp
                 e.Graphics.FillRectangle(new SolidBrush(BackColor), e.Bounds);
             }
             var status = GetItemChecked(e.Index) ? CheckBoxState.CheckedNormal : CheckBoxState.UncheckedNormal;
-            var p = new Point(e.Bounds.X + BOX_SPAN, e.Bounds.Y + ((e.Bounds.Height - _checkSize.Height) / 2));
+            var p = new Point(e.Bounds.X + _check.X, e.Bounds.Y + _check.Y);
             CheckBoxRenderer.DrawCheckBox(e.Graphics, p, status);
             if (CustomDrawItem != null)
             {
