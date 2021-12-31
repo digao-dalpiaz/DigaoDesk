@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCommit));
             this.btnStage = new System.Windows.Forms.Button();
             this.btnUnstage = new System.Windows.Forms.Button();
@@ -60,6 +61,7 @@
             this.lbCountStaged = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.images = new System.Windows.Forms.ImageList(this.components);
             this.boxTop.SuspendLayout();
             this.boxInfo.SuspendLayout();
             this.boxTitleUnstaged.SuspendLayout();
@@ -424,6 +426,16 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Staged Files";
             // 
+            // images
+            // 
+            this.images.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.images.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("images.ImageStream")));
+            this.images.TransparentColor = System.Drawing.Color.Transparent;
+            this.images.Images.SetKeyName(0, "new");
+            this.images.Images.SetKeyName(1, "edit");
+            this.images.Images.SetKeyName(2, "delete");
+            this.images.Images.SetKeyName(3, "rename");
+            // 
             // FrmCommit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -488,5 +500,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel boxInfo;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ImageList images;
     }
 }

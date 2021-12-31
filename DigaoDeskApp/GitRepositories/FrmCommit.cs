@@ -35,6 +35,8 @@ namespace DigaoDeskApp
 
         private Repository _repository;
 
+        private int _itemTextHeight;
+
         public string ReturnMessage;
 
         private class ItemView
@@ -52,15 +54,22 @@ namespace DigaoDeskApp
                 this.PresentInStagedArea = presentInStagedArea;
             }
 
+            public string DisplayText { get { return (OldPath != null ? OldPath + " > " : "") + Path; } }
+
             public override string ToString()
             {
-                return "[" + string.Join(", ", LstStatus.Select(x => GitUtils.GetFileStatusAsString(x)))  + "] " + (OldPath != null ? OldPath + " > " : "") + Path;
+                return "[" + string.Join(", ", LstStatus.Select(x => GitUtils.GetFileStatusAsString(x)))  + "] " + DisplayText;
             }
 
             public string GetPathOrOld()
             {
                 return OldPath != null ? OldPath : Path;
             }
+
+            public bool ContainsFlagNew { get { return LstStatus.Any(x => x == FileStatus.NewInIndex || x == FileStatus.NewInWorkdir); } }
+            public bool ContainsFlagModified { get { return LstStatus.Any(x => x == FileStatus.ModifiedInIndex || x == FileStatus.ModifiedInWorkdir); } }
+            public bool ContainsFlagDeleted { get { return LstStatus.Any(x => x == FileStatus.DeletedFromIndex || x == FileStatus.DeletedFromWorkdir); } }
+            public bool ContainsFlagRenamed { get { return LstStatus.Any(x => x == FileStatus.RenamedInIndex || x == FileStatus.RenamedInWorkdir); } }
         }
 
         public FrmCommit(DigaoRepository repository)
@@ -75,6 +84,8 @@ namespace DigaoDeskApp
 
             lbRepository.Text = repository.Name;
             lbBranch.Text = repository._repoCtrl.Head.FriendlyName;
+
+            InitListsDrawItem();
         }
 
         private void FrmCommit_Load(object sender, EventArgs e)
@@ -101,6 +112,38 @@ namespace DigaoDeskApp
         {
             ParseCommitMessage p = new(_repository);
             edMessage.Text = p.GetMessage();
+        }
+
+        private void InitListsDrawItem()
+        {
+            _itemTextHeight = Font.Height;
+            int h = Math.Max(_itemTextHeight, images.ImageSize.Height) + 5;
+            lstStaged.SetItemHeight(h);
+            lstDif.SetItemHeight(h);
+
+            lstStaged.CustomDrawItem += OnDrawItem;
+            lstDif.CustomDrawItem += OnDrawItem;
+        }
+
+        private void OnDrawItem(object sender, DrawItemEventArgs e)
+        {
+            var control = sender as CheckedListBoxEx;
+            var item = control.Items[e.Index] as ItemView;
+
+            List<int> lstImages = new();
+            if (item.ContainsFlagNew) lstImages.Add(0);
+            if (item.ContainsFlagModified) lstImages.Add(1);
+            if (item.ContainsFlagDeleted) lstImages.Add(2);
+            if (item.ContainsFlagRenamed) lstImages.Add(3);
+
+            int lastX = e.Bounds.X + control.BoxAreaWidth + 4;
+            foreach (var idx in lstImages)
+            {
+                images.Draw(e.Graphics, lastX, e.Bounds.Y + ((e.Bounds.Height - images.ImageSize.Height)/2), idx);
+                lastX += images.ImageSize.Width + 4;
+            }
+
+            e.Graphics.DrawString(item.DisplayText, control.Font, Brushes.Black, lastX, e.Bounds.Y + ((e.Bounds.Height - _itemTextHeight)/2));
         }
 
         private List<FileStatus> MountListOfFileStatus(FileStatus agregatedFileStatus)
