@@ -25,7 +25,7 @@ namespace DigaoDeskApp
 
             Utils.AdjustToolStrip(toolBar);
 
-            Log = new(edLog);
+            Log = new(edLog, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gitrepos.log"));
         }
 
         private void FrmRepos_Load(object sender, EventArgs e)

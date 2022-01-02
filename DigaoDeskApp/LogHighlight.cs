@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -22,12 +24,29 @@ namespace DigaoDeskApp
         }
 
         private RichTextBoxEx _edControl;
+        private string _logFile;
 
-        public LogHighlight(RichTextBoxEx ed)
+        public LogHighlight(RichTextBoxEx ed, string logFile)
         {
             this._edControl = ed;
+            this._logFile = logFile;
         }
-        
+
+        private string GetTimestampPrefix()
+        {
+            return DateTime.Now.ToString(Vars.DATETIME_FMT) + " - ";
+        }
+
+        private void SaveLog(Part[] parts)
+        {
+            string info = null;
+            if (parts.Any())
+            {
+                info = GetTimestampPrefix() + string.Join(null, parts.Select(x => x.Text));
+            }
+            File.AppendAllText(_logFile, info + Environment.NewLine);
+        }
+
         public void Log(Part[] parts)
         {
             _edControl.Invoke(new MethodInvoker(() =>
@@ -36,22 +55,27 @@ namespace DigaoDeskApp
 
                 _edControl.SelectionStart = _edControl.TextLength;
 
-                if (Vars.Config.Log.ShowTimestamp && parts.Length > 0)
+                if (parts.Any())
                 {
-                    _edControl.SelectionColor = Color.Gray;
-                    _edControl.SelectedText = DateTime.Now.ToString(Vars.DATETIME_FMT) + " - ";
-                }
+                    if (Vars.Config.Log.ShowTimestamp)
+                    {
+                        _edControl.SelectionColor = Color.Gray;
+                        _edControl.SelectedText = GetTimestampPrefix();
+                    }
 
-                foreach (var part in parts)
-                {
-                    _edControl.SelectionColor = part.Color;
-                    _edControl.SelectionFont = new Font(_edControl.Font, part.Bold ? FontStyle.Bold : FontStyle.Regular);
-                    _edControl.SelectedText = part.Text;
+                    foreach (var part in parts)
+                    {
+                        _edControl.SelectionColor = part.Color;
+                        _edControl.SelectionFont = new Font(_edControl.Font, part.Bold ? FontStyle.Bold : FontStyle.Regular);
+                        _edControl.SelectedText = part.Text;
+                    }
                 }
 
                 _edControl.SelectedText = Environment.NewLine;
 
                 _edControl.ResumePainting(false);
+
+                if (_logFile != null) SaveLog(parts);
             }));
         }
 
