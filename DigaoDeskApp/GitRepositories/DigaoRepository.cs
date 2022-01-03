@@ -263,7 +263,21 @@ namespace DigaoDeskApp
 
         private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
         {
-            Log.Log(notify.ToString() + " : " + path, Color.Orange);
+            Color colorFlag = Color.MediumTurquoise;
+            if (notify.HasFlag(CheckoutNotifyFlags.Updated))
+            {
+                colorFlag = Color.YellowGreen;
+            }
+            else if (notify.HasFlag(CheckoutNotifyFlags.Conflict))
+            {
+                colorFlag = Color.HotPink;
+            } 
+            else if (notify.HasFlag(CheckoutNotifyFlags.Dirty))
+            {
+                colorFlag = Color.Violet;
+            }
+            
+            Log.Log(new LogHighlight.Part[] { new LogHighlight.Part($"[{notify.ToString()}] ", colorFlag), new LogHighlight.Part(path, Color.White) });
             return true;
         }
 
