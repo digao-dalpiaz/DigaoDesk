@@ -267,15 +267,15 @@ namespace DigaoDeskApp
             Color colorFlag = Color.MediumTurquoise;
             if (notify.HasFlag(CheckoutNotifyFlags.Updated))
             {
-                colorFlag = Color.YellowGreen;
+                colorFlag = Color.Gold;
             }
             else if (notify.HasFlag(CheckoutNotifyFlags.Conflict))
             {
-                colorFlag = Color.HotPink;
+                colorFlag = Color.DeepPink;
             } 
             else if (notify.HasFlag(CheckoutNotifyFlags.Dirty))
             {
-                colorFlag = Color.Violet;
+                colorFlag = Color.Sienna;
             }
             
             Log.Log(new LogHighlight.Part[] { new LogHighlight.Part($"[{notify.ToString()}] ", colorFlag), new LogHighlight.Part(path, Color.White) });
