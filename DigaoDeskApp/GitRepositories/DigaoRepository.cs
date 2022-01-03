@@ -249,6 +249,7 @@ namespace DigaoDeskApp
             Vars.FrmReposObj.DoBackground(() =>
             {
                 Log.Log(cmdName, Color.Yellow, true);
+                Log.LogLabel("Repository", this.Name);
                 proc();
                 Log.Log("Done!", Color.Lime);
 
