@@ -302,31 +302,31 @@ namespace DigaoDeskApp
                 string pathOld = null;
                 string pathNew = null;
 
-                Stream stm;
+                Blob blob;
 
                 if (lst == lstStaged)
                 {
                     if (!item.LstStatus.Contains(FileStatus.NewInIndex))
                     {
-                        stm = GetBlobOfLastCommitByPath(item.GetPathOrOld()).GetContentStream();
+                        blob = GetBlobOfLastCommitByPath(item.GetPathOrOld());
                         pathOld = GetTempFileNameByPath(item.GetPathOrOld(), "commited");
-                        StreamToFile(stm, pathOld);
+                        SaveBlobToFile(blob, pathOld);
                     }
 
                     if (!item.LstStatus.Contains(FileStatus.DeletedFromIndex))
                     {
-                        stm = GetBlobOfIndexByPath(item.Path).GetContentStream();
+                        blob = GetBlobOfIndexByPath(item.Path);
                         pathNew = GetTempFileNameByPath(item.Path, "staged");
-                        StreamToFile(stm, pathNew);
+                        SaveBlobToFile(blob, pathNew);
                     }
                 }
                 else if (lst == lstDif)
                 {
                     if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
                     {
-                        stm = GetBlobOfIndexByPath(item.Path).GetContentStream(); //if the file is not in staged area, the index contains commited file
+                        blob = GetBlobOfIndexByPath(item.Path); //if the file is not in staged area, the index contains commited file
                         pathOld = GetTempFileNameByPath(item.Path, item.PresentInStagedArea.Value ? "staged" : "commited");
-                        StreamToFile(stm, pathOld);
+                        SaveBlobToFile(blob, pathOld);
                     }
 
                     if (!item.LstStatus.Contains(FileStatus.DeletedFromWorkdir))
@@ -361,7 +361,7 @@ namespace DigaoDeskApp
                         //file already exists in commit/staged
                         try
                         {
-                            StreamToFile(GetBlobOfIndexByPath(item.Path).GetContentStream(), path);
+                            SaveBlobToFile(GetBlobOfIndexByPath(item.Path), path);
                         }
                         catch (Exception ex)
                         {
@@ -405,8 +405,16 @@ namespace DigaoDeskApp
             return Path.GetTempFileName() + "_" + prefix + "_" + Path.GetFileName(path);
         }
 
-        private void StreamToFile(Stream stmSource, string filePath)
+        private void SaveBlobToFile(Blob blob, string filePath)
         {
+            Stream stmSource = blob.GetContentStream();
+
+            if (!blob.IsBinary)
+            {
+                Stream converted = GitUtils.ConvertStreamToWin(stmSource);
+                if (converted != null) stmSource = converted; //when already Win format, returns null
+            }
+
             using (var stmDest = File.Create(filePath))
             {
                 stmSource.CopyTo(stmDest);
