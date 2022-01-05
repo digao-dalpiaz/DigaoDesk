@@ -1,10 +1,7 @@
 ﻿using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -14,63 +11,12 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Commit";
 
-        private const FileStatus ENUM_STAGED =
-            FileStatus.NewInIndex |
-            FileStatus.ModifiedInIndex |
-            FileStatus.DeletedFromIndex |
-            FileStatus.RenamedInIndex |
-            FileStatus.TypeChangeInIndex;
-
-        private const FileStatus ENUM_UNSTAGED =
-            FileStatus.NewInWorkdir |
-            FileStatus.ModifiedInWorkdir |
-            FileStatus.DeletedFromWorkdir |
-            FileStatus.RenamedInWorkdir |
-            FileStatus.TypeChangeInWorkdir;
-
-        private const FileStatus ENUM_UNSUPPORTED =
-            FileStatus.TypeChangeInIndex | 
-            FileStatus.TypeChangeInWorkdir | 
-            FileStatus.RenamedInWorkdir;
-
         private Repository _repository;
+        private CommitService _service;
 
         private int _itemTextHeight;
 
         public string ReturnMessage;
-
-        private class ItemView
-        {
-            public string Path;
-            public string OldPath;
-            public List<FileStatus> LstStatus;
-            public bool? PresentInStagedArea; //this propery is only used for unstaged item
-
-            public ItemView(string path, RenameDetails renameDetails, List<FileStatus> lstStatus, bool? presentInStagedArea)
-            {
-                this.Path = path;
-                if (renameDetails != null) this.OldPath = renameDetails.OldFilePath;
-                this.LstStatus = lstStatus;
-                this.PresentInStagedArea = presentInStagedArea;
-            }
-
-            public string DisplayText { get { return (OldPath != null ? OldPath + " > " : "") + Path; } }
-
-            public override string ToString()
-            {
-                return "[" + string.Join(", ", LstStatus.Select(x => GitUtils.GetFileStatusAsString(x)))  + "] " + DisplayText;
-            }
-
-            public string GetPathOrOld()
-            {
-                return OldPath != null ? OldPath : Path;
-            }
-
-            public bool ContainsFlagNew { get { return LstStatus.Any(x => x == FileStatus.NewInIndex || x == FileStatus.NewInWorkdir); } }
-            public bool ContainsFlagModified { get { return LstStatus.Any(x => x == FileStatus.ModifiedInIndex || x == FileStatus.ModifiedInWorkdir); } }
-            public bool ContainsFlagDeleted { get { return LstStatus.Any(x => x == FileStatus.DeletedFromIndex || x == FileStatus.DeletedFromWorkdir); } }
-            public bool ContainsFlagRenamed { get { return LstStatus.Any(x => x == FileStatus.RenamedInIndex || x == FileStatus.RenamedInWorkdir); } }
-        }
 
         public FrmCommit(DigaoRepository repository)
         {
@@ -84,6 +30,8 @@ namespace DigaoDeskApp
 
             lbRepository.Text = repository.Name;
             lbBranch.Text = repository._repoCtrl.Head.FriendlyName;
+
+            this._service = new(repository._repoCtrl);
 
             InitListsDrawItem();
         }
@@ -128,7 +76,7 @@ namespace DigaoDeskApp
         private void OnDrawItem(object sender, DrawItemEventArgs e)
         {
             var control = sender as CheckedListBoxEx;
-            var item = control.Items[e.Index] as ItemView;
+            var item = control.Items[e.Index] as CommitItemView;
 
             List<int> lstImages = new();
             if (item.ContainsFlagNew) lstImages.Add(0);
@@ -146,63 +94,9 @@ namespace DigaoDeskApp
             e.Graphics.DrawString(item.DisplayText, control.Font, Brushes.Black, lastX, e.Bounds.Y + ((e.Bounds.Height - _itemTextHeight)/2));
         }
 
-        private List<FileStatus> MountListOfFileStatus(FileStatus agregatedFileStatus)
-        {
-            List<FileStatus> lst = new();
-
-            foreach (FileStatus s in Enum.GetValues(typeof(FileStatus)))
-            {
-                if (s == FileStatus.Unaltered) continue; //unaltered is zero, so always contains this flag
-
-                if (agregatedFileStatus.HasFlag(s))
-                {
-                    lst.Add(s);
-                }
-            }
-
-            return lst;
-        }
-
         private void LoadLists()
         {
-            lstStaged.Items.Clear();
-            lstDif.Items.Clear();
-
-            StatusOptions so = new();
-            so.IncludeIgnored = false;
-
-            var lstInfo = _repository.RetrieveStatus(so);
-            foreach (var item in lstInfo)
-            {
-                var flags = MountListOfFileStatus(item.State);
-                
-                List<FileStatus> flagsStaged = new();
-                List<FileStatus> flagsUnstaged = new();
-                List<FileStatus> flagsOther = new();
-
-                foreach (var s in flags)
-                {
-                    if (ENUM_UNSUPPORTED.HasFlag(s)) throw new Exception("Unsupported file status: " + s.ToString());
-
-                    if (ENUM_STAGED.HasFlag(s))
-                    {
-                        flagsStaged.Add(s);
-                    }
-                    else
-                    if (ENUM_UNSTAGED.HasFlag(s))
-                    {
-                        flagsUnstaged.Add(s);
-                    }
-                    else
-                    {
-                        flagsOther.Add(s);
-                    }
-                }
-
-                if (flagsStaged.Any()) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new ItemView(item.FilePath, item.HeadToIndexRenameDetails, flagsStaged, null), true));
-                if (flagsUnstaged.Any()) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new ItemView(item.FilePath, /*item.IndexToWorkDirRenameDetails*/null, flagsUnstaged, flagsStaged.Any()), true));
-                if (flagsOther.Any()) lstOther.Items.Add(new ItemView(item.FilePath, null, flagsOther, null));
-            }
+            _service.LoadLists(lstStaged, lstDif, lstOther);
 
             lbCountStaged.Text = lstStaged.Items.Count.ToString();
             lbCountDif.Text = lstDif.Items.Count.ToString();
@@ -219,7 +113,7 @@ namespace DigaoDeskApp
         {
             if (lstDif.CheckedItems.Count == 0) return;
 
-            foreach (ItemView item in lstDif.CheckedItems)
+            foreach (CommitItemView item in lstDif.CheckedItems)
             {
                 Commands.Stage(_repository, item.Path);
             }
@@ -231,7 +125,7 @@ namespace DigaoDeskApp
         {
             if (lstStaged.CheckedItems.Count == 0) return;
 
-            foreach (ItemView item in lstStaged.CheckedItems)
+            foreach (CommitItemView item in lstStaged.CheckedItems)
             {
                 Commands.Unstage(_repository, item.Path);
             }
@@ -288,8 +182,10 @@ namespace DigaoDeskApp
 
         private void lstItem_Click(object sender, EventArgs e)
         {
+            if (!(sender == lstStaged || sender == lstDif)) throw new Exception("Invalid control");
+
             var lst = sender as CheckedListBoxEx;
-            var item = lst.SelectedItem as ItemView;
+            var item = lst.SelectedItem as CommitItemView;
             if (item == null) return;
 
             //ensure click in item area
@@ -299,50 +195,8 @@ namespace DigaoDeskApp
 
             Messages.SurroundMessageException(() =>
             {
-                string pathOld = null;
-                string pathNew = null;
-
-                Blob blob;
-
-                if (lst == lstStaged)
-                {
-                    if (!item.LstStatus.Contains(FileStatus.NewInIndex))
-                    {
-                        blob = GetBlobOfLastCommitByPath(item.GetPathOrOld());
-                        pathOld = GetTempFileNameByPath(item.GetPathOrOld(), "commited");
-                        SaveBlobToFile(blob, pathOld);
-                    }
-
-                    if (!item.LstStatus.Contains(FileStatus.DeletedFromIndex))
-                    {
-                        blob = GetBlobOfIndexByPath(item.Path);
-                        pathNew = GetTempFileNameByPath(item.Path, "staged");
-                        SaveBlobToFile(blob, pathNew);
-                    }
-                }
-                else if (lst == lstDif)
-                {
-                    if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
-                    {
-                        blob = GetBlobOfIndexByPath(item.Path); //if the file is not in staged area, the index contains commited file
-                        pathOld = GetTempFileNameByPath(item.Path, item.PresentInStagedArea.Value ? "staged" : "commited");
-                        SaveBlobToFile(blob, pathOld);
-                    }
-
-                    if (!item.LstStatus.Contains(FileStatus.DeletedFromWorkdir))
-                    {
-                        pathNew = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
-                        if (!File.Exists(pathNew)) Messages.ThrowMsg("File not found in working directory");
-                    }
-                }
-                else
-                    throw new Exception("Invalid control");
-
-                if (pathOld == null) pathOld = GetNullFile();
-                if (pathNew == null) pathNew = GetNullFile();
-
-                OpenDiff(pathOld, pathNew);
-            });            
+                _service.CompareItem(item, lst == lstStaged);
+            });
         }
 
         private void btnUndoDif_Click(object sender, EventArgs e)
@@ -352,96 +206,13 @@ namespace DigaoDeskApp
 
             Messages.SurroundMessageException(() =>
             {
-                foreach (ItemView item in lstDif.CheckedItems)
+                foreach (CommitItemView item in lstDif.CheckedItems)
                 {
-                    var path = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
-
-                    if (!item.LstStatus.Contains(FileStatus.NewInWorkdir))
-                    {
-                        //file already exists in commit/staged
-                        try
-                        {
-                            SaveBlobToFile(GetBlobOfIndexByPath(item.Path), path);
-                        }
-                        catch (Exception ex)
-                        {
-                            Messages.ThrowMsg($"Error saving file '{path}': {ex.Message}");
-                        }
-                    }
-                    else
-                    {
-                        //file does not exist in commit/staged (new in working dir)
-                        try
-                        {
-                            File.Delete(path);
-                        }
-                        catch (Exception ex)
-                        {
-                            Messages.ThrowMsg($"Error deleting file '{path}': {ex.Message}");
-                        }
-                    }
+                    _service.UndoFileByItem(item);
                 }
             });
 
             LoadLists(); //reload even if error occurred
-        }
-
-        private Blob GetBlobOfLastCommitByPath(string path)
-        {
-            var treeEntry = _repository.Head.Tip.Tree[path];
-            if (treeEntry == null) Messages.ThrowMsg("File not found in last commit");
-            return treeEntry.Target as Blob;
-        }
-
-        private Blob GetBlobOfIndexByPath(string path)
-        {
-            var indexEntry = _repository.Index[path];
-            if (indexEntry == null) Messages.ThrowMsg("File not found in index");
-            return _repository.Lookup<Blob>(indexEntry.Id);
-        }
-
-        private string GetTempFileNameByPath(string path, string prefix)
-        {
-            return Path.GetTempFileName() + "_" + prefix + "_" + Path.GetFileName(path);
-        }
-
-        private void SaveBlobToFile(Blob blob, string filePath)
-        {
-            Stream stmSource = blob.GetContentStream();
-
-            if (!blob.IsBinary)
-            {
-                Stream converted = GitUtils.ConvertStreamToWin(stmSource);
-                if (converted != null) stmSource = converted; //when already Win format, returns null
-            }
-
-            using (var stmDest = File.Create(filePath))
-            {
-                stmSource.CopyTo(stmDest);
-            }
-        }
-
-        private string GetNullFile()
-        {
-            string tmpFile = Path.GetTempFileName();
-            string tmpFileFinal = tmpFile + "_null";
-            File.Copy(tmpFile, tmpFileFinal);
-
-            return tmpFileFinal;
-        }
-
-        private void OpenDiff(string pathOld, string pathNew) {
-            if (string.IsNullOrEmpty(Vars.Config.DiffProgram))
-            {
-                Messages.ThrowMsg("Diff program is not configured. Please check settings!");
-            }
-
-            string args = Vars.Config.DiffProgramArguments;
-            args = args.Replace("[old]", $"\"{pathOld}\"");
-            args = args.Replace("[new]", $"\"{pathNew}\"");
-
-            Messages.SurroundExceptionThenThrowMessageException(
-                () => Process.Start(Vars.Config.DiffProgram, args));
         }
 
     }
