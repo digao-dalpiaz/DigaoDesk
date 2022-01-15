@@ -376,25 +376,30 @@ namespace DigaoDeskApp
 
         private void LogMergeResult(MergeResult res)
         {
-            string msgResult;
+            string msg;
+            Color color;
             switch (res.Status)
             {
                 case MergeStatus.UpToDate:
-                    msgResult = "Nothing to change";
+                    msg = "Nothing to change";
+                    color = Color.Green;
                     break;
                 case MergeStatus.Conflicts:
-                    msgResult = "Conflicts";
+                    msg = "Conflicts - Merge pending";
+                    color = Color.Crimson;
                     break;
                 case MergeStatus.FastForward:
-                    msgResult = "Fast forward";
+                    msg = "Merge complete (Fast forward)";
+                    color = Color.Cyan;
                     break;
                 case MergeStatus.NonFastForward:
-                    msgResult = "Non fast forward";
+                    msg = "Merge complete (Non fast forward)";
+                    color = Color.Cyan;
                     break;
                 default:
-                    throw new Exception("Unknown pull result status");
+                    throw new Exception("Unknown merge result status");
             }
-            Log.Log(msgResult, Color.White);
+            Log.Log(msg, color);
         }
 
         public void SwitchBranch()
