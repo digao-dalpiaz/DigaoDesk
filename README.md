@@ -47,6 +47,10 @@ You can set usage preferences as needed.
 
 ![Config](images/config.png)
 
+# Requirements
+
+This app needs .NET 6 Desktop Runtime x64.
+
 # Limitations
 
 ## Git integration
