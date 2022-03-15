@@ -600,7 +600,7 @@ namespace DigaoDeskApp
             LogMergeResult(res);
         }
 
-        public void Commit()
+        public bool Commit()
         {
             FrmCommit f = new(this);
             DialogResult dr = f.ShowDialog();
@@ -620,7 +620,11 @@ namespace DigaoDeskApp
                         InternalPush();
                     }
                 }, true);
+
+                return true;
             }
+
+            return false;
         }
 
         public void Push()

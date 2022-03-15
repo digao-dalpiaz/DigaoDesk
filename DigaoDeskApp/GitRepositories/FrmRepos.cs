@@ -218,11 +218,6 @@ namespace DigaoDeskApp
                 }
 
                 Log.Log("Done!", Color.Lime);
-
-                this.Invoke(new MethodInvoker(() =>
-                {
-                    _gridBind.ResetBindings(false);
-                }));
             });            
         }
 
@@ -239,11 +234,6 @@ namespace DigaoDeskApp
                 }
 
                 Log.Log("Done!", Color.Lime);
-
-                this.Invoke(new MethodInvoker(() =>
-                {
-                    _gridBind.ResetBindings(false);
-                }));
             });            
         }
 
@@ -366,7 +356,11 @@ namespace DigaoDeskApp
         private void btnCommit_Click(object sender, EventArgs e)
         {
             var r = GetSel();
-            r.Commit();
+            if (!r.Commit())
+            {
+                r.Refresh();
+                _gridBind.ResetBindings(false);
+            }
         }
 
         private void btnShell_Click(object sender, EventArgs e)
