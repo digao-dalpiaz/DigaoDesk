@@ -19,6 +19,7 @@ namespace DigaoDeskApp
         {
             edOrder.Text = _config.Order;
             edMasterBranch.Text = _config.MasterBranch;
+            ckFetch.Checked = _config.Fetch;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -30,6 +31,7 @@ namespace DigaoDeskApp
 
             _config.Order = edOrder.Text;
             _config.MasterBranch = edMasterBranch.Text;
+            _config.Fetch = ckFetch.Checked;
 
             DialogResult = DialogResult.OK;
         }

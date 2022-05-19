@@ -228,6 +228,8 @@ namespace DigaoDeskApp
 
                 foreach (var item in _repos)
                 {
+                    if (!item.Config.Fetch) continue;
+
                     Log.Log($"Fetching {item.Name}...", Color.White);
                     item.FetchDirectly();
                     item.Refresh();
