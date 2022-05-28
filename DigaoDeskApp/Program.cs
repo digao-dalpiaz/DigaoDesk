@@ -21,7 +21,7 @@ namespace DigaoDeskApp
 
             if (!mutex.WaitOne(TimeSpan.Zero, true))
             {
-                Messages.Error("Digao Desk is already running!");
+                Messages.Error(Vars.Lang.AlreadyRunningMessage);
                 return;
             }
 

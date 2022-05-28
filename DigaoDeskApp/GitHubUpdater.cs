@@ -40,12 +40,8 @@ namespace DigaoDeskApp
             if (info.tag_name != Vars.APP_VERSION)
             {
                 Vars.FrmMainObj.Invoke(new MethodInvoker(() => { 
-                    if (Messages.Question("There is a new version of Digao Desk available!" + Environment.NewLine + 
-                        Environment.NewLine +
-                        "New version: " + info.tag_name + Environment.NewLine +
-                        "Published at: " + info.published_at.ToString("dd/MM/yyyy HH:mm") + Environment.NewLine +
-                        Environment.NewLine +
-                        "Do you want to check this version in GitHub now?"))
+                    if (Messages.Question(string.Format(Vars.Lang.GitHubUpdNewVersion, 
+                        info.tag_name, info.published_at.ToString("dd/MM/yyyy HH:mm"))))
                     {
                         Process.Start("explorer", info.html_url);
                     }

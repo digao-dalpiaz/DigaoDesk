@@ -18,7 +18,11 @@ namespace DigaoDeskApp
             this.ShowInTaskbar = false;
             this.Opacity = 0;
 
-            miVersion.Text = "Version " + Vars.APP_VERSION;
+            miVersion.Text = string.Format(Vars.Lang.MenuVersion, Vars.APP_VERSION);
+            miApplications.Text = Vars.Lang.MenuApplications;
+            miRepos.Text = Vars.Lang.MenuGitRepositories;
+            miConfig.Text = Vars.Lang.MenuSettings;
+            miExit.Text = Vars.Lang.MenuExit;
         }
 
         private void FrmMain_Shown(object sender, EventArgs e)
@@ -40,13 +44,13 @@ namespace DigaoDeskApp
             if (Vars.AppList.Any(x => x.Running))
             {
                 e.Cancel = true;
-                Messages.Error("There are applications running right now");
+                Messages.Error(Vars.Lang.DenyExitByRunningApp);
             }
 
             if (Application.OpenForms.Cast<Form>().Any(x => x.Modal))
             {
                 e.Cancel = true;
-                Messages.Error("You can't close the program because there is a modal form running");
+                Messages.Error(Vars.Lang.DenyExitByModal);
             }
         }
 

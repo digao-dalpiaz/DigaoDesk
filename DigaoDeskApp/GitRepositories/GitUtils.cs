@@ -21,7 +21,7 @@ namespace DigaoDeskApp
 
         public static string GetBranchDisplayName(Branch branch)
         {
-            return (!branch.IsRemote && !branch.IsTracking ? "[untracked] " : "") + branch.FriendlyName;
+            return (!branch.IsRemote && !branch.IsTracking ? string.Format("[{0}] ", Vars.Lang.UntrackedTag) : "") + branch.FriendlyName;
         }
 
         public static bool IsSameBranch(Branch branch1, Branch branch2)

@@ -24,5 +24,7 @@ namespace DigaoDeskApp
 
         public static Config Config;
 
+        public static Language Lang;
+
     }
 }

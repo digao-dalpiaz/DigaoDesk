@@ -23,6 +23,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             Utils.AdjustToolStrip(toolBar);
 
             Log = new(edLog, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gitrepos.log"));
@@ -78,9 +80,42 @@ namespace DigaoDeskApp
         {
             if (!toolBar.Enabled)
             {
-                Messages.Error("There is a process in execution right now");
+                Messages.Error(Vars.Lang.Repos_DenyExitByProcess);
                 e.Cancel = true;
             }
+        }
+
+        public void LoadLang()
+        {
+            this.Text = Vars.Lang.Repos_Title;
+            btnRefresh.Text = Vars.Lang.Repos_BtnRefreshAll;
+            btnFetchAll.Text = Vars.Lang.Repos_BtnFetchAll;
+            btnCreateBranch.Text = Vars.Lang.Repos_BtnNewBranch;
+            btnDeleteBranch.Text = Vars.Lang.Repos_BtnDelBranch;
+            btnCheckoutRemote.Text = Vars.Lang.Repos_BtnCheckout;
+            btnSwitchBranch.Text = Vars.Lang.Repos_BtnSwitch;
+            btnFetch.Text = Vars.Lang.Repos_BtnFetch;
+            btnPull.Text = Vars.Lang.Repos_BtnPull;
+            btnCommit.Text = Vars.Lang.Repos_BtnCommit;
+            btnCherryPick.Text = Vars.Lang.Repos_BtnCherryPick;
+            btnMerge.Text = Vars.Lang.Repos_BtnMerge;
+            btnSyncWithMaster.Text = Vars.Lang.Repos_BtnSync;
+            btnCancelOperation.Text = Vars.Lang.Repos_BtnCancelOp;
+            btnPush.Text = Vars.Lang.Repos_BtnPush;
+            btnShell.Text = Vars.Lang.Repos_BtnShell;
+            btnRepoConfig.Text = Vars.Lang.Repos_BtnConfig;
+            btnClearLog.Text = Vars.Lang.Repos_BtnClearLog;
+
+            colName.HeaderText = Vars.Lang.Repos_ColName;
+            colBranch.HeaderText = Vars.Lang.Repos_ColBranch;
+            colBranchesCount.HeaderText = Vars.Lang.Repos_ColBranchesCount;
+            colUp.HeaderText = Vars.Lang.Repos_ColPendingUp;
+            colDown.HeaderText = Vars.Lang.Repos_ColPendingDown;
+            colDifs.HeaderText = Vars.Lang.Repos_ColDifs;
+            colOtherBranchesDifs.HeaderText = Vars.Lang.Repos_ColOtherBranchesPending;
+            colLastFetch.HeaderText = Vars.Lang.Repos_ColLastFetch;
+            colOperation.HeaderText = Vars.Lang.Repos_ColOperation;
+            colMasterCompare.HeaderText = Vars.Lang.Repos_ColMasterBranchCompare;
         }
 
         public void LoadConfig()

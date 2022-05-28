@@ -12,6 +12,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             _config = config;
         }
 
@@ -20,6 +22,16 @@ namespace DigaoDeskApp
             edOrder.Text = _config.Order;
             edMasterBranch.Text = _config.MasterBranch;
             ckFetch.Checked = _config.Fetch;
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.RepoConfig_Title;
+            lbOrder.Text = Vars.Lang.RepoConfig_Order;
+            lbMasterBranch.Text = Vars.Lang.RepoConfig_MasterBranch;
+            ckFetch.Text = Vars.Lang.RepoConfig_Fetch;
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
