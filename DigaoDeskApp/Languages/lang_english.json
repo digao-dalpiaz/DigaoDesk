@@ -74,6 +74,10 @@
   "Commit_SelectAll": "All",
   "Commit_SelectNone": "None",
   "Commit_SelectInvert": "Invert",
-  "Commit_Undo": "Undo"
+  "Commit_Undo": "Undo",
+  "Commit_EmptyStageArea": "There is no file in stage area",
+  "Commit_EmptyMessage": "Type a message to this commit",
+  "Commit_ConfirmCommit": "Confirm commit?",
+  "Commit_ConfirmUndo": "Confirm undo checked files?"
 
 }

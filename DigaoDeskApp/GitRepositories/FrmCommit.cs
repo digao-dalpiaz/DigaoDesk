@@ -184,21 +184,21 @@ namespace DigaoDeskApp
         {
             if (lstStaged.Items.Count == 0)
             {
-                Messages.Error("There is no file in stage area");
+                Messages.Error(Vars.Lang.Commit_EmptyStageArea);
                 return;
             }
 
             edMessage.Text = edMessage.Text.Trim();
             if (edMessage.Text == string.Empty)
             {
-                Messages.Error("Type a message to this commit");
+                Messages.Error(Vars.Lang.Commit_EmptyMessage);
                 edMessage.Select();
                 return;
             }
 
             //
 
-            if (!Messages.Question("Confirm commit?")) return;
+            if (!Messages.Question(Vars.Lang.Commit_ConfirmCommit)) return;
 
             ReturnMessage = edMessage.Text;
 
@@ -227,7 +227,7 @@ namespace DigaoDeskApp
         private void btnUndoDif_Click(object sender, EventArgs e)
         {
             if (lstDif.CheckedItems.Count == 0) return;
-            if (!Messages.Question("Confirm undo checked files?")) return;
+            if (!Messages.Question(Vars.Lang.Commit_ConfirmUndo)) return;
 
             Messages.SurroundMessageException(() =>
             {

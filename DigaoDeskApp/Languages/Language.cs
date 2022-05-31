@@ -79,5 +79,9 @@
         public string Commit_SelectNone;
         public string Commit_SelectInvert;
         public string Commit_Undo;
+        public string Commit_EmptyStageArea;
+        public string Commit_EmptyMessage;
+        public string Commit_ConfirmCommit;
+        public string Commit_ConfirmUndo;
     }
 }
