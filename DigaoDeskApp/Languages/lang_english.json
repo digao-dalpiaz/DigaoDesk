@@ -58,8 +58,22 @@
   "Repos_InvalidMasterBranch": "Invalid Master branch",
   "Repos_CantSyncAlreadyInMaster": "It's not possible to sync because you are already on master branch",
   "Repos_ConfirmMergeFromBranch": "Confirm merge from branch '{0}'?",
-  "Repos_ConfirmPush": "Confirm Push?"
+  "Repos_ConfirmPush": "Confirm Push?",
 
-
+  "Commit_Title": "Commit",
+  "Commit_Repository": "Repository:",
+  "Commit_Branch": "Branch:",
+  "Commit_Refresh": "Refresh",
+  "Commit_Stage": "Stage",
+  "Commit_Unstage": "Unstage",
+  "Commit_Commit": "Commit",
+  "Commit_CommitAndPush": "Commit and Push",
+  "Commit_StagedFiles": "Staged Files",
+  "Commit_UnstagedFiles": "Unstaged Files",
+  "Commit_Count": "Count:",
+  "Commit_SelectAll": "All",
+  "Commit_SelectNone": "None",
+  "Commit_SelectInvert": "Invert",
+  "Commit_Undo": "Undo"
 
 }

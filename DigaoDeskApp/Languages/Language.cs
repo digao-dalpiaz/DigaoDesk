@@ -63,5 +63,21 @@
         public string Repos_CantSyncAlreadyInMaster;
         public string Repos_ConfirmMergeFromBranch;
         public string Repos_ConfirmPush;
+
+        public string Commit_Title;
+        public string Commit_Repository;
+        public string Commit_Branch;
+        public string Commit_Refresh;
+        public string Commit_Stage;
+        public string Commit_Unstage;
+        public string Commit_Commit;
+        public string Commit_CommitAndPush;
+        public string Commit_StagedFiles;
+        public string Commit_UnstagedFiles;
+        public string Commit_Count;
+        public string Commit_SelectAll;
+        public string Commit_SelectNone;
+        public string Commit_SelectInvert;
+        public string Commit_Undo;
     }
 }

@@ -22,6 +22,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             edMessage.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnCommit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCommitAndPush.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -54,6 +56,29 @@ namespace DigaoDeskApp
             r.SetValue("ListH", lstStaged.Height);
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.Commit_Title;
+            lblbRepository.Text = Vars.Lang.Commit_Repository;
+            lblbBranch.Text = Vars.Lang.Commit_Branch;
+            btnRefresh.Text = Vars.Lang.Commit_Refresh;
+            btnStage.Text = Vars.Lang.Commit_Stage;
+            btnUnstage.Text = Vars.Lang.Commit_Unstage;
+            btnCommit.Text = Vars.Lang.Commit_Commit;
+            btnCommitAndPush.Text = Vars.Lang.Commit_CommitAndPush;
+            lbStaged.Text = Vars.Lang.Commit_StagedFiles;
+            lbUnstaged.Text = Vars.Lang.Commit_UnstagedFiles;
+            lblbCountStaged.Text = Vars.Lang.Commit_Count;
+            lblbCountUnstaged.Text = Vars.Lang.Commit_Count;
+            btnAllStaged.Text = Vars.Lang.Commit_SelectAll;
+            btnNoneStaged.Text = Vars.Lang.Commit_SelectNone;
+            btnInvertStaged.Text = Vars.Lang.Commit_SelectInvert;
+            btnAllDif.Text = Vars.Lang.Commit_SelectAll;
+            btnNoneDif.Text = Vars.Lang.Commit_SelectNone;
+            btnInvertDif.Text = Vars.Lang.Commit_SelectInvert;
+            btnUndoDif.Text = Vars.Lang.Commit_Undo;
         }
 
         private void AutoFillMessageHashtag()
