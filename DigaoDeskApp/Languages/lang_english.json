@@ -48,6 +48,18 @@
   "Repos_ColMasterBranchCompare": "Master Branch Compare",
 
   "Repos_DenyExitByProcess": "There is a process in execution right now",
+  "Repos_GitFolderNotFound": "Git repositories folder not found: {0}",
+  "Repos_RefreshingAll": "Refreshing all repositories...",
+  "Repos_ProcessDone": "Done!",
+  "Repos_FetchingAll": "Fetch All Repositories",
+  "Repos_FetchingRepo": "Fetching {0}...",
+  "Repos_Fetching": "Fetching...",
+  "Repos_MasterBranchNotConfigured": "Master branch is not configured",
+  "Repos_InvalidMasterBranch": "Invalid Master branch",
+  "Repos_CantSyncAlreadyInMaster": "It's not possible to sync because you are already on master branch",
+  "Repos_ConfirmMergeFromBranch": "Confirm merge from branch '{0}'?",
+  "Repos_ConfirmPush": "Confirm Push?"
+
 
 
 }

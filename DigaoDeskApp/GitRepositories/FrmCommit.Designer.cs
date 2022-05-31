@@ -35,10 +35,10 @@
             this.boxTop = new System.Windows.Forms.Panel();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.boxInfo = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblbRepository = new System.Windows.Forms.Label();
             this.lbBranch = new System.Windows.Forms.Label();
             this.lbRepository = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblbBranch = new System.Windows.Forms.Label();
             this.btnCommitAndPush = new System.Windows.Forms.Button();
             this.btnCommit = new System.Windows.Forms.Button();
             this.edMessage = new System.Windows.Forms.TextBox();
@@ -50,8 +50,8 @@
             this.btnNoneDif = new System.Windows.Forms.Label();
             this.btnAllDif = new System.Windows.Forms.Label();
             this.lbCountDif = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblbCountUnstaged = new System.Windows.Forms.Label();
+            this.lbUnstaged = new System.Windows.Forms.Label();
             this.splitterLists = new System.Windows.Forms.Splitter();
             this.lstStaged = new DigaoDeskApp.CheckedListBoxEx();
             this.boxTitleStaged = new System.Windows.Forms.Panel();
@@ -59,8 +59,8 @@
             this.btnNoneStaged = new System.Windows.Forms.Label();
             this.btnAllStaged = new System.Windows.Forms.Label();
             this.lbCountStaged = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblbCountStaged = new System.Windows.Forms.Label();
+            this.lbStaged = new System.Windows.Forms.Label();
             this.images = new System.Windows.Forms.ImageList(this.components);
             this.boxTop.SuspendLayout();
             this.boxInfo.SuspendLayout();
@@ -72,9 +72,10 @@
             // 
             this.btnStage.Image = ((System.Drawing.Image)(resources.GetObject("btnStage.Image")));
             this.btnStage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnStage.Location = new System.Drawing.Point(112, 48);
+            this.btnStage.Location = new System.Drawing.Point(128, 64);
+            this.btnStage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStage.Name = "btnStage";
-            this.btnStage.Size = new System.Drawing.Size(96, 48);
+            this.btnStage.Size = new System.Drawing.Size(110, 64);
             this.btnStage.TabIndex = 2;
             this.btnStage.TabStop = false;
             this.btnStage.Text = "Stage";
@@ -86,9 +87,10 @@
             // 
             this.btnUnstage.Image = ((System.Drawing.Image)(resources.GetObject("btnUnstage.Image")));
             this.btnUnstage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUnstage.Location = new System.Drawing.Point(216, 48);
+            this.btnUnstage.Location = new System.Drawing.Point(247, 64);
+            this.btnUnstage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUnstage.Name = "btnUnstage";
-            this.btnUnstage.Size = new System.Drawing.Size(96, 48);
+            this.btnUnstage.Size = new System.Drawing.Size(110, 64);
             this.btnUnstage.TabIndex = 3;
             this.btnUnstage.TabStop = false;
             this.btnUnstage.Text = "Unstage";
@@ -107,17 +109,19 @@
             this.boxTop.Controls.Add(this.btnStage);
             this.boxTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.boxTop.Location = new System.Drawing.Point(0, 0);
+            this.boxTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxTop.Name = "boxTop";
-            this.boxTop.Size = new System.Drawing.Size(866, 104);
+            this.boxTop.Size = new System.Drawing.Size(990, 139);
             this.boxTop.TabIndex = 0;
             // 
             // btnRefresh
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRefresh.Location = new System.Drawing.Point(8, 48);
+            this.btnRefresh.Location = new System.Drawing.Point(9, 64);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 48);
+            this.btnRefresh.Size = new System.Drawing.Size(110, 64);
             this.btnRefresh.TabIndex = 1;
             this.btnRefresh.TabStop = false;
             this.btnRefresh.Text = "Refresh";
@@ -128,32 +132,33 @@
             // boxInfo
             // 
             this.boxInfo.BackColor = System.Drawing.SystemColors.Info;
-            this.boxInfo.Controls.Add(this.label5);
+            this.boxInfo.Controls.Add(this.lblbRepository);
             this.boxInfo.Controls.Add(this.lbBranch);
             this.boxInfo.Controls.Add(this.lbRepository);
-            this.boxInfo.Controls.Add(this.label6);
+            this.boxInfo.Controls.Add(this.lblbBranch);
             this.boxInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.boxInfo.Location = new System.Drawing.Point(0, 0);
+            this.boxInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxInfo.Name = "boxInfo";
-            this.boxInfo.Size = new System.Drawing.Size(866, 40);
+            this.boxInfo.Size = new System.Drawing.Size(990, 53);
             this.boxInfo.TabIndex = 0;
             // 
-            // label5
+            // lblbRepository
             // 
-            this.label5.Location = new System.Drawing.Point(8, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 15);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Repository:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblbRepository.Location = new System.Drawing.Point(9, 3);
+            this.lblbRepository.Name = "lblbRepository";
+            this.lblbRepository.Size = new System.Drawing.Size(91, 20);
+            this.lblbRepository.TabIndex = 5;
+            this.lblbRepository.Text = "Repository:";
+            this.lblbRepository.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lbBranch
             // 
             this.lbBranch.AutoSize = true;
             this.lbBranch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbBranch.Location = new System.Drawing.Point(88, 22);
+            this.lbBranch.Location = new System.Drawing.Point(101, 29);
             this.lbBranch.Name = "lbBranch";
-            this.lbBranch.Size = new System.Drawing.Size(22, 15);
+            this.lbBranch.Size = new System.Drawing.Size(27, 20);
             this.lbBranch.TabIndex = 8;
             this.lbBranch.Text = "---";
             // 
@@ -161,26 +166,27 @@
             // 
             this.lbRepository.AutoSize = true;
             this.lbRepository.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbRepository.Location = new System.Drawing.Point(88, 2);
+            this.lbRepository.Location = new System.Drawing.Point(101, 3);
             this.lbRepository.Name = "lbRepository";
-            this.lbRepository.Size = new System.Drawing.Size(22, 15);
+            this.lbRepository.Size = new System.Drawing.Size(27, 20);
             this.lbRepository.TabIndex = 6;
             this.lbRepository.Text = "---";
             // 
-            // label6
+            // lblbBranch
             // 
-            this.label6.Location = new System.Drawing.Point(8, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 15);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Branch:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblbBranch.Location = new System.Drawing.Point(9, 29);
+            this.lblbBranch.Name = "lblbBranch";
+            this.lblbBranch.Size = new System.Drawing.Size(91, 20);
+            this.lblbBranch.TabIndex = 7;
+            this.lblbBranch.Text = "Branch:";
+            this.lblbBranch.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnCommitAndPush
             // 
-            this.btnCommitAndPush.Location = new System.Drawing.Point(728, 72);
+            this.btnCommitAndPush.Location = new System.Drawing.Point(832, 96);
+            this.btnCommitAndPush.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCommitAndPush.Name = "btnCommitAndPush";
-            this.btnCommitAndPush.Size = new System.Drawing.Size(128, 24);
+            this.btnCommitAndPush.Size = new System.Drawing.Size(146, 32);
             this.btnCommitAndPush.TabIndex = 6;
             this.btnCommitAndPush.Text = "Commit and Push";
             this.btnCommitAndPush.UseVisualStyleBackColor = true;
@@ -188,9 +194,10 @@
             // 
             // btnCommit
             // 
-            this.btnCommit.Location = new System.Drawing.Point(728, 48);
+            this.btnCommit.Location = new System.Drawing.Point(832, 64);
+            this.btnCommit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(128, 24);
+            this.btnCommit.Size = new System.Drawing.Size(146, 32);
             this.btnCommit.TabIndex = 5;
             this.btnCommit.Text = "Commit";
             this.btnCommit.UseVisualStyleBackColor = true;
@@ -198,11 +205,12 @@
             // 
             // edMessage
             // 
-            this.edMessage.Location = new System.Drawing.Point(320, 48);
+            this.edMessage.Location = new System.Drawing.Point(366, 64);
+            this.edMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edMessage.Multiline = true;
             this.edMessage.Name = "edMessage";
             this.edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edMessage.Size = new System.Drawing.Size(400, 48);
+            this.edMessage.Size = new System.Drawing.Size(457, 63);
             this.edMessage.TabIndex = 4;
             // 
             // lstOther
@@ -210,10 +218,11 @@
             this.lstOther.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lstOther.FormattingEnabled = true;
             this.lstOther.IntegralHeight = false;
-            this.lstOther.ItemHeight = 15;
-            this.lstOther.Location = new System.Drawing.Point(0, 541);
+            this.lstOther.ItemHeight = 20;
+            this.lstOther.Location = new System.Drawing.Point(0, 722);
+            this.lstOther.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstOther.Name = "lstOther";
-            this.lstOther.Size = new System.Drawing.Size(866, 132);
+            this.lstOther.Size = new System.Drawing.Size(990, 175);
             this.lstOther.TabIndex = 12;
             // 
             // lstDif
@@ -222,9 +231,10 @@
             this.lstDif.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstDif.FormattingEnabled = true;
             this.lstDif.IntegralHeight = false;
-            this.lstDif.Location = new System.Drawing.Point(0, 358);
+            this.lstDif.Location = new System.Drawing.Point(0, 476);
+            this.lstDif.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(866, 183);
+            this.lstDif.Size = new System.Drawing.Size(990, 246);
             this.lstDif.TabIndex = 11;
             this.lstDif.DoubleClick += new System.EventHandler(this.lstItem_Click);
             // 
@@ -236,12 +246,13 @@
             this.boxTitleUnstaged.Controls.Add(this.btnNoneDif);
             this.boxTitleUnstaged.Controls.Add(this.btnAllDif);
             this.boxTitleUnstaged.Controls.Add(this.lbCountDif);
-            this.boxTitleUnstaged.Controls.Add(this.label4);
-            this.boxTitleUnstaged.Controls.Add(this.label1);
+            this.boxTitleUnstaged.Controls.Add(this.lblbCountUnstaged);
+            this.boxTitleUnstaged.Controls.Add(this.lbUnstaged);
             this.boxTitleUnstaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxTitleUnstaged.Location = new System.Drawing.Point(0, 334);
+            this.boxTitleUnstaged.Location = new System.Drawing.Point(0, 444);
+            this.boxTitleUnstaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxTitleUnstaged.Name = "boxTitleUnstaged";
-            this.boxTitleUnstaged.Size = new System.Drawing.Size(866, 24);
+            this.boxTitleUnstaged.Size = new System.Drawing.Size(990, 32);
             this.boxTitleUnstaged.TabIndex = 10;
             // 
             // btnUndoDif
@@ -249,9 +260,9 @@
             this.btnUndoDif.AutoSize = true;
             this.btnUndoDif.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUndoDif.ForeColor = System.Drawing.Color.Gold;
-            this.btnUndoDif.Location = new System.Drawing.Point(472, 4);
+            this.btnUndoDif.Location = new System.Drawing.Point(539, 5);
             this.btnUndoDif.Name = "btnUndoDif";
-            this.btnUndoDif.Size = new System.Drawing.Size(36, 15);
+            this.btnUndoDif.Size = new System.Drawing.Size(45, 20);
             this.btnUndoDif.TabIndex = 9;
             this.btnUndoDif.Text = "Undo";
             this.btnUndoDif.Click += new System.EventHandler(this.btnUndoDif_Click);
@@ -261,9 +272,9 @@
             this.btnInvertDif.AutoSize = true;
             this.btnInvertDif.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInvertDif.ForeColor = System.Drawing.Color.Aqua;
-            this.btnInvertDif.Location = new System.Drawing.Point(384, 4);
+            this.btnInvertDif.Location = new System.Drawing.Point(439, 5);
             this.btnInvertDif.Name = "btnInvertDif";
-            this.btnInvertDif.Size = new System.Drawing.Size(37, 15);
+            this.btnInvertDif.Size = new System.Drawing.Size(46, 20);
             this.btnInvertDif.TabIndex = 8;
             this.btnInvertDif.Text = "Invert";
             this.btnInvertDif.Click += new System.EventHandler(this.btnGroupSelection_Click);
@@ -273,9 +284,9 @@
             this.btnNoneDif.AutoSize = true;
             this.btnNoneDif.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNoneDif.ForeColor = System.Drawing.Color.Aqua;
-            this.btnNoneDif.Location = new System.Drawing.Point(328, 4);
+            this.btnNoneDif.Location = new System.Drawing.Point(375, 5);
             this.btnNoneDif.Name = "btnNoneDif";
-            this.btnNoneDif.Size = new System.Drawing.Size(36, 15);
+            this.btnNoneDif.Size = new System.Drawing.Size(45, 20);
             this.btnNoneDif.TabIndex = 7;
             this.btnNoneDif.Text = "None";
             this.btnNoneDif.Click += new System.EventHandler(this.btnGroupSelection_Click);
@@ -285,9 +296,9 @@
             this.btnAllDif.AutoSize = true;
             this.btnAllDif.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAllDif.ForeColor = System.Drawing.Color.Aqua;
-            this.btnAllDif.Location = new System.Drawing.Point(280, 4);
+            this.btnAllDif.Location = new System.Drawing.Point(320, 5);
             this.btnAllDif.Name = "btnAllDif";
-            this.btnAllDif.Size = new System.Drawing.Size(21, 15);
+            this.btnAllDif.Size = new System.Drawing.Size(27, 20);
             this.btnAllDif.TabIndex = 6;
             this.btnAllDif.Text = "All";
             this.btnAllDif.Click += new System.EventHandler(this.btnGroupSelection_Click);
@@ -296,39 +307,40 @@
             // 
             this.lbCountDif.AutoSize = true;
             this.lbCountDif.ForeColor = System.Drawing.Color.White;
-            this.lbCountDif.Location = new System.Drawing.Point(192, 4);
+            this.lbCountDif.Location = new System.Drawing.Point(219, 5);
             this.lbCountDif.Name = "lbCountDif";
-            this.lbCountDif.Size = new System.Drawing.Size(25, 15);
+            this.lbCountDif.Size = new System.Drawing.Size(33, 20);
             this.lbCountDif.TabIndex = 2;
             this.lbCountDif.Text = "000";
             // 
-            // label4
+            // lblbCountUnstaged
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(144, 4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 15);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Count:";
+            this.lblbCountUnstaged.AutoSize = true;
+            this.lblbCountUnstaged.ForeColor = System.Drawing.Color.White;
+            this.lblbCountUnstaged.Location = new System.Drawing.Point(165, 5);
+            this.lblbCountUnstaged.Name = "lblbCountUnstaged";
+            this.lblbCountUnstaged.Size = new System.Drawing.Size(51, 20);
+            this.lblbCountUnstaged.TabIndex = 1;
+            this.lblbCountUnstaged.Text = "Count:";
             // 
-            // label1
+            // lbUnstaged
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Unstaged Files";
+            this.lbUnstaged.AutoSize = true;
+            this.lbUnstaged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbUnstaged.ForeColor = System.Drawing.Color.White;
+            this.lbUnstaged.Location = new System.Drawing.Point(9, 5);
+            this.lbUnstaged.Name = "lbUnstaged";
+            this.lbUnstaged.Size = new System.Drawing.Size(111, 20);
+            this.lbUnstaged.TabIndex = 0;
+            this.lbUnstaged.Text = "Unstaged Files";
             // 
             // splitterLists
             // 
             this.splitterLists.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitterLists.Location = new System.Drawing.Point(0, 328);
+            this.splitterLists.Location = new System.Drawing.Point(0, 436);
+            this.splitterLists.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitterLists.Name = "splitterLists";
-            this.splitterLists.Size = new System.Drawing.Size(866, 6);
+            this.splitterLists.Size = new System.Drawing.Size(990, 8);
             this.splitterLists.TabIndex = 13;
             this.splitterLists.TabStop = false;
             // 
@@ -338,9 +350,10 @@
             this.lstStaged.Dock = System.Windows.Forms.DockStyle.Top;
             this.lstStaged.FormattingEnabled = true;
             this.lstStaged.IntegralHeight = false;
-            this.lstStaged.Location = new System.Drawing.Point(0, 128);
+            this.lstStaged.Location = new System.Drawing.Point(0, 171);
+            this.lstStaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstStaged.Name = "lstStaged";
-            this.lstStaged.Size = new System.Drawing.Size(866, 200);
+            this.lstStaged.Size = new System.Drawing.Size(990, 265);
             this.lstStaged.TabIndex = 9;
             this.lstStaged.DoubleClick += new System.EventHandler(this.lstItem_Click);
             // 
@@ -351,12 +364,13 @@
             this.boxTitleStaged.Controls.Add(this.btnNoneStaged);
             this.boxTitleStaged.Controls.Add(this.btnAllStaged);
             this.boxTitleStaged.Controls.Add(this.lbCountStaged);
-            this.boxTitleStaged.Controls.Add(this.label3);
-            this.boxTitleStaged.Controls.Add(this.label2);
+            this.boxTitleStaged.Controls.Add(this.lblbCountStaged);
+            this.boxTitleStaged.Controls.Add(this.lbStaged);
             this.boxTitleStaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxTitleStaged.Location = new System.Drawing.Point(0, 104);
+            this.boxTitleStaged.Location = new System.Drawing.Point(0, 139);
+            this.boxTitleStaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxTitleStaged.Name = "boxTitleStaged";
-            this.boxTitleStaged.Size = new System.Drawing.Size(866, 24);
+            this.boxTitleStaged.Size = new System.Drawing.Size(990, 32);
             this.boxTitleStaged.TabIndex = 8;
             // 
             // btnInvertStaged
@@ -364,9 +378,9 @@
             this.btnInvertStaged.AutoSize = true;
             this.btnInvertStaged.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInvertStaged.ForeColor = System.Drawing.Color.Aqua;
-            this.btnInvertStaged.Location = new System.Drawing.Point(384, 4);
+            this.btnInvertStaged.Location = new System.Drawing.Point(439, 5);
             this.btnInvertStaged.Name = "btnInvertStaged";
-            this.btnInvertStaged.Size = new System.Drawing.Size(37, 15);
+            this.btnInvertStaged.Size = new System.Drawing.Size(46, 20);
             this.btnInvertStaged.TabIndex = 5;
             this.btnInvertStaged.Text = "Invert";
             this.btnInvertStaged.Click += new System.EventHandler(this.btnGroupSelection_Click);
@@ -376,9 +390,9 @@
             this.btnNoneStaged.AutoSize = true;
             this.btnNoneStaged.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNoneStaged.ForeColor = System.Drawing.Color.Aqua;
-            this.btnNoneStaged.Location = new System.Drawing.Point(328, 4);
+            this.btnNoneStaged.Location = new System.Drawing.Point(375, 5);
             this.btnNoneStaged.Name = "btnNoneStaged";
-            this.btnNoneStaged.Size = new System.Drawing.Size(36, 15);
+            this.btnNoneStaged.Size = new System.Drawing.Size(45, 20);
             this.btnNoneStaged.TabIndex = 4;
             this.btnNoneStaged.Text = "None";
             this.btnNoneStaged.Click += new System.EventHandler(this.btnGroupSelection_Click);
@@ -388,9 +402,9 @@
             this.btnAllStaged.AutoSize = true;
             this.btnAllStaged.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAllStaged.ForeColor = System.Drawing.Color.Aqua;
-            this.btnAllStaged.Location = new System.Drawing.Point(280, 4);
+            this.btnAllStaged.Location = new System.Drawing.Point(320, 5);
             this.btnAllStaged.Name = "btnAllStaged";
-            this.btnAllStaged.Size = new System.Drawing.Size(21, 15);
+            this.btnAllStaged.Size = new System.Drawing.Size(27, 20);
             this.btnAllStaged.TabIndex = 3;
             this.btnAllStaged.Text = "All";
             this.btnAllStaged.Click += new System.EventHandler(this.btnGroupSelection_Click);
@@ -399,32 +413,32 @@
             // 
             this.lbCountStaged.AutoSize = true;
             this.lbCountStaged.ForeColor = System.Drawing.Color.White;
-            this.lbCountStaged.Location = new System.Drawing.Point(192, 4);
+            this.lbCountStaged.Location = new System.Drawing.Point(219, 5);
             this.lbCountStaged.Name = "lbCountStaged";
-            this.lbCountStaged.Size = new System.Drawing.Size(25, 15);
+            this.lbCountStaged.Size = new System.Drawing.Size(33, 20);
             this.lbCountStaged.TabIndex = 2;
             this.lbCountStaged.Text = "000";
             // 
-            // label3
+            // lblbCountStaged
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(144, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 15);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Count:";
+            this.lblbCountStaged.AutoSize = true;
+            this.lblbCountStaged.ForeColor = System.Drawing.Color.White;
+            this.lblbCountStaged.Location = new System.Drawing.Point(165, 5);
+            this.lblbCountStaged.Name = "lblbCountStaged";
+            this.lblbCountStaged.Size = new System.Drawing.Size(51, 20);
+            this.lblbCountStaged.TabIndex = 1;
+            this.lblbCountStaged.Text = "Count:";
             // 
-            // label2
+            // lbStaged
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(8, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Staged Files";
+            this.lbStaged.AutoSize = true;
+            this.lbStaged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbStaged.ForeColor = System.Drawing.Color.White;
+            this.lbStaged.Location = new System.Drawing.Point(9, 5);
+            this.lbStaged.Name = "lbStaged";
+            this.lbStaged.Size = new System.Drawing.Size(92, 20);
+            this.lbStaged.TabIndex = 0;
+            this.lbStaged.Text = "Staged Files";
             // 
             // images
             // 
@@ -438,9 +452,9 @@
             // 
             // FrmCommit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 673);
+            this.ClientSize = new System.Drawing.Size(990, 897);
             this.Controls.Add(this.lstDif);
             this.Controls.Add(this.boxTitleUnstaged);
             this.Controls.Add(this.splitterLists);
@@ -448,6 +462,7 @@
             this.Controls.Add(this.boxTitleStaged);
             this.Controls.Add(this.boxTop);
             this.Controls.Add(this.lstOther);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimizeBox = false;
             this.Name = "FrmCommit";
             this.ShowIcon = false;
@@ -482,8 +497,8 @@
         private System.Windows.Forms.Label btnNoneDif;
         private System.Windows.Forms.Label btnAllDif;
         private System.Windows.Forms.Label lbCountDif;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblbCountUnstaged;
+        private System.Windows.Forms.Label lbUnstaged;
         private System.Windows.Forms.Splitter splitterLists;
         private DigaoDeskApp.CheckedListBoxEx lstStaged;
         private System.Windows.Forms.Panel boxTitleStaged;
@@ -491,13 +506,13 @@
         private System.Windows.Forms.Label btnNoneStaged;
         private System.Windows.Forms.Label btnAllStaged;
         private System.Windows.Forms.Label lbCountStaged;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblbCountStaged;
+        private System.Windows.Forms.Label lbStaged;
         private System.Windows.Forms.Label btnUndoDif;
         private System.Windows.Forms.Label lbBranch;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblbBranch;
         private System.Windows.Forms.Label lbRepository;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblbRepository;
         private System.Windows.Forms.Panel boxInfo;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ImageList images;

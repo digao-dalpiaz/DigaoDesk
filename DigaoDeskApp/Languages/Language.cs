@@ -52,5 +52,16 @@
         public string Repos_ColMasterBranchCompare;
 
         public string Repos_DenyExitByProcess;
+        public string Repos_GitFolderNotFound;
+        public string Repos_RefreshingAll;
+        public string Repos_ProcessDone;
+        public string Repos_FetchingAll;
+        public string Repos_FetchingRepo;
+        public string Repos_Fetching;
+        public string Repos_MasterBranchNotConfigured;
+        public string Repos_InvalidMasterBranch;
+        public string Repos_CantSyncAlreadyInMaster;
+        public string Repos_ConfirmMergeFromBranch;
+        public string Repos_ConfirmPush;
     }
 }
