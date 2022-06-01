@@ -109,5 +109,14 @@
         public string BranchSelector_Remote;
         public string BranchSelector_BranchRequired;
 
+        public string BranchDelete_Title;
+        public string BranchDelete_Branch;
+        public string BranchDelete_OptLocal;
+        public string BranchDelete_OptRemote;
+        public string BranchDelete_ConfirmationLabel;
+        public string BranchDelete_ConfirmationText;
+        public string BranchDelete_BranchRequired;
+        public string BranchDelete_OptionRequired;
+
     }
 }

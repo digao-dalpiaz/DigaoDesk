@@ -103,7 +103,17 @@
   "BranchSelector_ColDateTime": "Last Commit Date/Time",
   "BranchSelector_Local": "Local",
   "BranchSelector_Remote": "Remote",
-  "BranchSelector_BranchRequired": "Please, select a branch!"
+  "BranchSelector_BranchRequired": "Please, select a branch!",
+
+  "BranchDelete_Title": "Delete Branch",
+  "BranchDelete_Branch": "Branch",
+  "BranchDelete_OptLocal": "Delete Local",
+  "BranchDelete_OptRemote": "Delete Remote",
+  "BranchDelete_ConfirmationLabel": "Type \"CONFIRM\" to enable OK button",
+  "BranchDelete_ConfirmationText": "CONFIRM",
+  "BranchDelete_BranchRequired": "Please, select a valid branch",
+  "BranchDelete_OptionRequired": "Please, select at least one option (Local / Remote)"
+
 
 
 
