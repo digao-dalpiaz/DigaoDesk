@@ -103,7 +103,7 @@ namespace DigaoDeskApp
             finally
             {
                 _gridBind.ResetBindings(false);
-                lbCount.Text = string.Format(Vars.Lang.CherryPick_Count, _lstCommits.Count);
+                lbCount.Text = string.Format(Vars.Lang.CountLabel, _lstCommits.Count);
             }
         }
 

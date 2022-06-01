@@ -9,8 +9,11 @@
   "DenyExitByRunningApp": "There are applications running right now",
   "DenyExitByModal": "You can't close the program because there is a modal form running",
   "UntrackedTag": "untracked",
+
   "BtnOK": "OK",
   "BtnCancel": "Cancel",
+
+  "CountLabel": "Count: {0}",
 
   "RepoConfig_Title": "Repository Settings",
   "RepoConfig_Order": "Order",
@@ -90,10 +93,19 @@
   "CherryPick_ColMessage": "Message",
   "CherryPick_ColAuthor": "Author",
   "CherryPick_ColDateTime": "Date/Time",
-  "CherryPick_Count": "Count: {0}",
   "CherryPick_NoOthersBranches": "There are no branches other than the current one",
   "CherryPick_SelectBranchTitle": "Select a branch for Cherry Pick",
-  "CherryPick_OneCommitRequired": "Please, select at least one commit."
+  "CherryPick_OneCommitRequired": "Please, select at least one commit.",
+
+  "BranchSelector_ColName": "Name",
+  "BranchSelector_ColLocation": "Location",
+  "BranchSelector_ColAuthor": "Last Commit Author",
+  "BranchSelector_ColDateTime": "Last Commit Date/Time",
+  "BranchSelector_Local": "Local",
+  "BranchSelector_Remote": "Remote",
+  "BranchSelector_BranchRequired": "Please, select a branch!"
+
+
 
 
 }

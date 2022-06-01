@@ -13,8 +13,11 @@
         public string DenyExitByRunningApp;
         public string DenyExitByModal;
         public string UntrackedTag;
+
         public string BtnOK;
         public string BtnCancel;
+
+        public string CountLabel;
 
         public string RepoConfig_Title;
         public string RepoConfig_Order;
@@ -94,10 +97,17 @@
         public string CherryPick_ColMessage;
         public string CherryPick_ColAuthor;
         public string CherryPick_ColDateTime;
-        public string CherryPick_Count;
         public string CherryPick_NoOthersBranches;
         public string CherryPick_SelectBranchTitle;
         public string CherryPick_OneCommitRequired;
+
+        public string BranchSelector_ColName;
+        public string BranchSelector_ColLocation;
+        public string BranchSelector_ColAuthor;
+        public string BranchSelector_ColDateTime;
+        public string BranchSelector_Local;
+        public string BranchSelector_Remote;
+        public string BranchSelector_BranchRequired;
 
     }
 }
