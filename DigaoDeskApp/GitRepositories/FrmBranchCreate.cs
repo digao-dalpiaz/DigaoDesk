@@ -52,6 +52,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             _repoCtrl = repository;
         }
 
@@ -61,6 +63,19 @@ namespace DigaoDeskApp
 
             edCurrentBranch.Text = _repoCtrl.Head.FriendlyName;
             ckBasedOnOption_Click(null, null);
+        }
+
+        public void LoadLang()
+        {
+            this.Text = Vars.Lang.BranchCreate_Title;
+            btnPrefix.Text = Vars.Lang.BranchCreate_InsertPrefix;
+            lbBranchName.Text = Vars.Lang.BranchCreate_BranchName;
+            boxBasedOn.Text = Vars.Lang.BranchCreate_BasedOn;
+            ckCurrentBranch.Text = Vars.Lang.BranchCreate_OptCurrentBranch;
+            ckTag.Text = Vars.Lang.BranchCreate_OptSpecificTag;
+            ckSwitch.Text = Vars.Lang.BranchCreate_AutoSwitch;
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         private void BuildPrefixMenu()
@@ -99,7 +114,7 @@ namespace DigaoDeskApp
         {
             if (menuPrefix.Items.Count == 0)
             {
-                Messages.Error("There are no prefixes configured. Go to Settings screen to set prefixes.");
+                Messages.Error(Vars.Lang.BranchCreate_NoPrefixConfigured);
                 return;
             }
 
@@ -131,7 +146,7 @@ namespace DigaoDeskApp
             edName.Text = edName.Text.Trim();
             if (edName.Text == string.Empty)
             {
-                Messages.Error("Please, specify the branch name");
+                Messages.Error(Vars.Lang.BranchCreate_BranchNameRequired);
                 edName.Select();
                 return;
             }
@@ -140,7 +155,7 @@ namespace DigaoDeskApp
             {
                 if (edTag.SelectedItem == null)
                 {
-                    Messages.Error("Please, specify a tag");
+                    Messages.Error(Vars.Lang.BranchCreate_TagRequired);
                     edTag.Select();
                     return;
                 }

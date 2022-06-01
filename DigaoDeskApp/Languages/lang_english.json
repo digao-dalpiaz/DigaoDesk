@@ -112,9 +112,18 @@
   "BranchDelete_ConfirmationLabel": "Type \"CONFIRM\" to enable OK button",
   "BranchDelete_ConfirmationText": "CONFIRM",
   "BranchDelete_BranchRequired": "Please, select a valid branch",
-  "BranchDelete_OptionRequired": "Please, select at least one option (Local / Remote)"
+  "BranchDelete_OptionRequired": "Please, select at least one option (Local / Remote)",
 
-
+  "BranchCreate_Title": "Create Branch",
+  "BranchCreate_InsertPrefix": "Insert Prefix",
+  "BranchCreate_BranchName": "Branch name",
+  "BranchCreate_BasedOn": "Based on",
+  "BranchCreate_OptCurrentBranch": "Current Branch",
+  "BranchCreate_OptSpecificTag": "Specific Tag",
+  "BranchCreate_AutoSwitch": "Switch to new branch immediately",
+  "BranchCreate_NoPrefixConfigured": "There are no prefixes configured. Go to Settings screen to set prefixes.",
+  "BranchCreate_BranchNameRequired": "Please, specify the branch name",
+  "BranchCreate_TagRequired": "Please, specify a tag"
 
 
 

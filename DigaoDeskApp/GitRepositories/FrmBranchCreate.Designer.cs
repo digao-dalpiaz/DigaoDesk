@@ -32,7 +32,7 @@ namespace DigaoDeskApp
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBranchCreate));
             this.btnPrefix = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbBranchName = new System.Windows.Forms.Label();
             this.edName = new System.Windows.Forms.TextBox();
             this.boxBasedOn = new System.Windows.Forms.GroupBox();
             this.edCurrentBranch = new System.Windows.Forms.TextBox();
@@ -49,9 +49,10 @@ namespace DigaoDeskApp
             // btnPrefix
             // 
             this.btnPrefix.Image = ((System.Drawing.Image)(resources.GetObject("btnPrefix.Image")));
-            this.btnPrefix.Location = new System.Drawing.Point(8, 8);
+            this.btnPrefix.Location = new System.Drawing.Point(9, 11);
+            this.btnPrefix.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPrefix.Name = "btnPrefix";
-            this.btnPrefix.Size = new System.Drawing.Size(112, 31);
+            this.btnPrefix.Size = new System.Drawing.Size(128, 41);
             this.btnPrefix.TabIndex = 0;
             this.btnPrefix.TabStop = false;
             this.btnPrefix.Text = "Insert Prefix";
@@ -59,20 +60,21 @@ namespace DigaoDeskApp
             this.btnPrefix.UseVisualStyleBackColor = true;
             this.btnPrefix.Click += new System.EventHandler(this.btnPrefix_Click);
             // 
-            // label1
+            // lbBranchName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Branch name";
+            this.lbBranchName.AutoSize = true;
+            this.lbBranchName.Location = new System.Drawing.Point(7, 64);
+            this.lbBranchName.Name = "lbBranchName";
+            this.lbBranchName.Size = new System.Drawing.Size(95, 20);
+            this.lbBranchName.TabIndex = 1;
+            this.lbBranchName.Text = "Branch name";
             // 
             // edName
             // 
-            this.edName.Location = new System.Drawing.Point(8, 64);
+            this.edName.Location = new System.Drawing.Point(9, 85);
+            this.edName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edName.Name = "edName";
-            this.edName.Size = new System.Drawing.Size(408, 23);
+            this.edName.Size = new System.Drawing.Size(466, 27);
             this.edName.TabIndex = 2;
             // 
             // boxBasedOn
@@ -81,9 +83,11 @@ namespace DigaoDeskApp
             this.boxBasedOn.Controls.Add(this.edTag);
             this.boxBasedOn.Controls.Add(this.ckTag);
             this.boxBasedOn.Controls.Add(this.ckCurrentBranch);
-            this.boxBasedOn.Location = new System.Drawing.Point(8, 96);
+            this.boxBasedOn.Location = new System.Drawing.Point(9, 128);
+            this.boxBasedOn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxBasedOn.Name = "boxBasedOn";
-            this.boxBasedOn.Size = new System.Drawing.Size(712, 152);
+            this.boxBasedOn.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.boxBasedOn.Size = new System.Drawing.Size(814, 203);
             this.boxBasedOn.TabIndex = 3;
             this.boxBasedOn.TabStop = false;
             this.boxBasedOn.Text = "Based on";
@@ -91,10 +95,11 @@ namespace DigaoDeskApp
             // edCurrentBranch
             // 
             this.edCurrentBranch.BackColor = System.Drawing.SystemColors.Info;
-            this.edCurrentBranch.Location = new System.Drawing.Point(32, 48);
+            this.edCurrentBranch.Location = new System.Drawing.Point(37, 64);
+            this.edCurrentBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edCurrentBranch.Name = "edCurrentBranch";
             this.edCurrentBranch.ReadOnly = true;
-            this.edCurrentBranch.Size = new System.Drawing.Size(400, 23);
+            this.edCurrentBranch.Size = new System.Drawing.Size(457, 27);
             this.edCurrentBranch.TabIndex = 3;
             this.edCurrentBranch.TabStop = false;
             // 
@@ -103,17 +108,19 @@ namespace DigaoDeskApp
             this.edTag.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.edTag.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.edTag.FormattingEnabled = true;
-            this.edTag.Location = new System.Drawing.Point(32, 112);
+            this.edTag.Location = new System.Drawing.Point(37, 149);
+            this.edTag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edTag.Name = "edTag";
-            this.edTag.Size = new System.Drawing.Size(672, 23);
+            this.edTag.Size = new System.Drawing.Size(767, 28);
             this.edTag.TabIndex = 2;
             // 
             // ckTag
             // 
             this.ckTag.AutoSize = true;
-            this.ckTag.Location = new System.Drawing.Point(8, 88);
+            this.ckTag.Location = new System.Drawing.Point(9, 117);
+            this.ckTag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckTag.Name = "ckTag";
-            this.ckTag.Size = new System.Drawing.Size(87, 19);
+            this.ckTag.Size = new System.Drawing.Size(109, 24);
             this.ckTag.TabIndex = 1;
             this.ckTag.Text = "Specific Tag";
             this.ckTag.UseVisualStyleBackColor = true;
@@ -123,9 +130,10 @@ namespace DigaoDeskApp
             // 
             this.ckCurrentBranch.AutoSize = true;
             this.ckCurrentBranch.Checked = true;
-            this.ckCurrentBranch.Location = new System.Drawing.Point(8, 24);
+            this.ckCurrentBranch.Location = new System.Drawing.Point(9, 32);
+            this.ckCurrentBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckCurrentBranch.Name = "ckCurrentBranch";
-            this.ckCurrentBranch.Size = new System.Drawing.Size(105, 19);
+            this.ckCurrentBranch.Size = new System.Drawing.Size(127, 24);
             this.ckCurrentBranch.TabIndex = 0;
             this.ckCurrentBranch.TabStop = true;
             this.ckCurrentBranch.Text = "Current Branch";
@@ -134,9 +142,10 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(280, 304);
+            this.btnOK.Location = new System.Drawing.Point(320, 405);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(80, 32);
+            this.btnOK.Size = new System.Drawing.Size(91, 43);
             this.btnOK.TabIndex = 21;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -145,15 +154,17 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(368, 304);
+            this.btnCancel.Location = new System.Drawing.Point(421, 405);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(80, 32);
+            this.btnCancel.Size = new System.Drawing.Size(91, 43);
             this.btnCancel.TabIndex = 22;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // menuPrefix
             // 
+            this.menuPrefix.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuPrefix.Name = "menuPrefix";
             this.menuPrefix.Size = new System.Drawing.Size(61, 4);
             // 
@@ -162,9 +173,10 @@ namespace DigaoDeskApp
             this.ckSwitch.AutoSize = true;
             this.ckSwitch.Checked = true;
             this.ckSwitch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckSwitch.Location = new System.Drawing.Point(8, 264);
+            this.ckSwitch.Location = new System.Drawing.Point(9, 352);
+            this.ckSwitch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckSwitch.Name = "ckSwitch";
-            this.ckSwitch.Size = new System.Drawing.Size(209, 19);
+            this.ckSwitch.Size = new System.Drawing.Size(259, 24);
             this.ckSwitch.TabIndex = 6;
             this.ckSwitch.Text = "Switch to new branch immediately";
             this.ckSwitch.UseVisualStyleBackColor = true;
@@ -172,18 +184,19 @@ namespace DigaoDeskApp
             // FrmBranchCreate
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(729, 343);
+            this.ClientSize = new System.Drawing.Size(833, 457);
             this.Controls.Add(this.ckSwitch);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.boxBasedOn);
             this.Controls.Add(this.edName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbBranchName);
             this.Controls.Add(this.btnPrefix);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmBranchCreate";
@@ -201,7 +214,7 @@ namespace DigaoDeskApp
         #endregion
 
         private System.Windows.Forms.Button btnPrefix;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbBranchName;
         private System.Windows.Forms.TextBox edName;
         private System.Windows.Forms.GroupBox boxBasedOn;
         private System.Windows.Forms.RadioButton ckCurrentBranch;

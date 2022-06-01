@@ -118,5 +118,16 @@
         public string BranchDelete_BranchRequired;
         public string BranchDelete_OptionRequired;
 
+        public string BranchCreate_Title;
+        public string BranchCreate_InsertPrefix;
+        public string BranchCreate_BranchName;
+        public string BranchCreate_BasedOn;
+        public string BranchCreate_OptCurrentBranch;
+        public string BranchCreate_OptSpecificTag;
+        public string BranchCreate_AutoSwitch;
+        public string BranchCreate_NoPrefixConfigured;
+        public string BranchCreate_BranchNameRequired;
+        public string BranchCreate_TagRequired;
+
     }
 }
