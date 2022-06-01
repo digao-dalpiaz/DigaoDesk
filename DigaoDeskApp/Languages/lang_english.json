@@ -78,6 +78,22 @@
   "Commit_EmptyStageArea": "There is no file in stage area",
   "Commit_EmptyMessage": "Type a message to this commit",
   "Commit_ConfirmCommit": "Confirm commit?",
-  "Commit_ConfirmUndo": "Confirm undo checked files?"
+  "Commit_ConfirmUndo": "Confirm undo checked files?",
+
+  "CherryPick_Title": "Cherry Pick",
+  "CherryPick_Branch": "Branch",
+  "CherryPick_Search": "Commit messager or id",
+  "CherryPick_StartDate": "Start date",
+  "CherryPick_EndDate": "End date",
+  "CherryPick_SelectBranch": "Select Branch",
+  "CherryPick_ColID": "ID",
+  "CherryPick_ColMessage": "Message",
+  "CherryPick_ColAuthor": "Author",
+  "CherryPick_ColDateTime": "Date/Time",
+  "CherryPick_Count": "Count: {0}",
+  "CherryPick_NoOthersBranches": "There are no branches other than the current one",
+  "CherryPick_SelectBranchTitle": "Select a branch for Cherry Pick",
+  "CherryPick_OneCommitRequired": "Please, select at least one commit."
+
 
 }

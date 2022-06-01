@@ -83,5 +83,21 @@
         public string Commit_EmptyMessage;
         public string Commit_ConfirmCommit;
         public string Commit_ConfirmUndo;
+
+        public string CherryPick_Title;
+        public string CherryPick_Branch;
+        public string CherryPick_Search;
+        public string CherryPick_StartDate;
+        public string CherryPick_EndDate;
+        public string CherryPick_SelectBranch;
+        public string CherryPick_ColID;
+        public string CherryPick_ColMessage;
+        public string CherryPick_ColAuthor;
+        public string CherryPick_ColDateTime;
+        public string CherryPick_Count;
+        public string CherryPick_NoOthersBranches;
+        public string CherryPick_SelectBranchTitle;
+        public string CherryPick_OneCommitRequired;
+
     }
 }

@@ -40,6 +40,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             edBranch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnSelBranch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             edSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -64,6 +66,22 @@ namespace DigaoDeskApp
             g.DataSource = _gridBind;
         }
 
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.CherryPick_Title;
+            lbBranch.Text = Vars.Lang.CherryPick_Branch;
+            lbSearch.Text = Vars.Lang.CherryPick_Search;
+            lbStartDate.Text = Vars.Lang.CherryPick_StartDate;
+            lbEndDate.Text = Vars.Lang.CherryPick_EndDate;
+            btnSelBranch.Text = Vars.Lang.CherryPick_SelectBranch;
+            colId.HeaderText = Vars.Lang.CherryPick_ColID;
+            colMessage.HeaderText = Vars.Lang.CherryPick_ColMessage;
+            colAuthor.HeaderText = Vars.Lang.CherryPick_ColAuthor;
+            colDateTime.HeaderText = Vars.Lang.CherryPick_ColDateTime;
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
+        }
+
         private void FillList()
         {
             _lstCommits.Clear();
@@ -85,7 +103,7 @@ namespace DigaoDeskApp
             finally
             {
                 _gridBind.ResetBindings(false);
-                lbCount.Text = "Count: " + _lstCommits.Count;
+                lbCount.Text = string.Format(Vars.Lang.CherryPick_Count, _lstCommits.Count);
             }
         }
 
@@ -94,11 +112,11 @@ namespace DigaoDeskApp
             var lstBranches = _repository.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x) && !GitUtils.IsBranchLocalAndRemoteLinked(_repository.Head, x));
             if (!lstBranches.Any())
             {
-                Messages.Error("There are no branches other than the current one");
+                Messages.Error(Vars.Lang.CherryPick_NoOthersBranches);
                 return;
             }
 
-            FrmBranchSelector f = new("Select a branch for Cherry Pick", true);            
+            FrmBranchSelector f = new(Vars.Lang.CherryPick_SelectBranchTitle, true);            
             f.AddBranches(lstBranches);
             if (f.ShowDialog() == DialogResult.OK)
             {
@@ -123,7 +141,7 @@ namespace DigaoDeskApp
         {
             if (g.SelectedRows.Count == 0)
             {
-                Messages.Error("Please, select at least one commit.");
+                Messages.Error(Vars.Lang.CherryPick_OneCommitRequired);
                 return;
             }
 
