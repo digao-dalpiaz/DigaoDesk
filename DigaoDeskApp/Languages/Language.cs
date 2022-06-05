@@ -43,6 +43,12 @@
         public string Repos_BtnConfig;
         public string Repos_BtnClearLog;
 
+        public string Repos_BranchCountFormat;
+        public string Repos_AheadFormat;
+        public string Repos_BehindFormat;
+
+        public string Repos_BranchNoLongerTracked;
+
         public string Repos_ColName;
         public string Repos_ColBranch;
         public string Repos_ColBranchesCount;
@@ -128,6 +134,11 @@
         public string BranchCreate_NoPrefixConfigured;
         public string BranchCreate_BranchNameRequired;
         public string BranchCreate_TagRequired;
+
+        public string Time_Now;
+        public string Time_MinutesAgo;
+        public string Time_HoursAgo;
+        public string Time_DaysAgo;
 
     }
 }

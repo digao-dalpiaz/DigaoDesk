@@ -104,10 +104,10 @@ namespace DigaoDeskApp
                 if (!_lastFetchTS.HasValue) return null;
 
                 var span = DateTime.Now - _lastFetchTS.Value;
-                if (span.TotalMinutes < 1) return "Now";
-                if (span.TotalHours < 1) return $"{span.Minutes} minute(s) ago";
-                if (span.TotalDays < 1) return $"{span.Hours} hour(s) ago";
-                return $"{span.Days} days ago";
+                if (span.TotalMinutes < 1) return Vars.Lang.Time_Now;
+                if (span.TotalHours < 1) return string.Format(Vars.Lang.Time_MinutesAgo, span.Minutes);
+                if (span.TotalDays < 1) return string.Format(Vars.Lang.Time_HoursAgo, span.Hours);
+                return string.Format(Vars.Lang.Time_DaysAgo, span.Days);
             }
         }
 
@@ -169,9 +169,9 @@ namespace DigaoDeskApp
 
             _difs = GetRepositoryStatus().Count();
 
-            _branchesCount =
-                "Local: " + _repoCtrl.Branches.Count(x => !x.IsRemote) + 
-                " / Remote: " + _repoCtrl.Branches.Count(x => x.IsRemote && !GitUtils.IsBranchOriginHead(x));
+            _branchesCount = string.Format(Vars.Lang.Repos_BranchCountFormat,
+                _repoCtrl.Branches.Count(x => !x.IsRemote), 
+                _repoCtrl.Branches.Count(x => x.IsRemote && !GitUtils.IsBranchOriginHead(x)));
 
             _othersBranchesDifs = GetOtherBranchesDifs();
 
@@ -195,8 +195,8 @@ namespace DigaoDeskApp
 
                     List<string> props = new();
 
-                    if (divergence.AheadBy.Value > 0) props.Add($"Ahead: {divergence.AheadBy.Value}");
-                    if (divergence.BehindBy.Value > 0) props.Add($"Behind: {divergence.BehindBy.Value}");
+                    if (divergence.AheadBy.Value > 0) props.Add(string.Format(Vars.Lang.Repos_AheadFormat, divergence.AheadBy.Value));
+                    if (divergence.BehindBy.Value > 0) props.Add(string.Format(Vars.Lang.Repos_BehindFormat, divergence.BehindBy.Value));
 
                     masterComp = string.Join(", ", props);
                 }
@@ -209,7 +209,7 @@ namespace DigaoDeskApp
             if (branch.IsTracking && branch.TrackedBranch.Tip == null)
             {
                 _repoCtrl.Branches.Update(branch, b => b.TrackedBranch = null);
-                Log.Log($"Branch '{branch.FriendlyName}' is no longer tracked", Color.Fuchsia);
+                Log.Log(string.Format(Vars.Lang.Repos_BranchNoLongerTracked, branch.FriendlyName), Color.Fuchsia);
             }
         }
 
