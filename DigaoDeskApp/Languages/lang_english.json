@@ -134,6 +134,70 @@
   "Time_Now": "Now",
   "Time_MinutesAgo": "{0} minute(s) ago",
   "Time_HoursAgo": "{0} hour(s) ago",
-  "Time_DaysAgo": "{0} day(s) ago"
+  "Time_DaysAgo": "{0} day(s) ago",
+
+  "BranchDivergenceUp": "Up: {0}",
+  "BranchDivergenceDown": "Down: {0}",
+
+  "LogLabelRepository": "Repository",
+  "LogLabelBranch": "Branch",
+  "LogLabelCommit": "Commit",
+  "LogLabelCommitId": "Commit Id",
+  "LogLabelMessage": "Message",
+  "LogLabelFromBranch": "From Branch",
+  "LogLabelIntoBranch": "Into Branch",
+  "LogLabelCurrentOperation": "Current Operation",
+  "LogDone": "Done!",
+  "LogRefreshing": "Refreshing...",
+  "LogFetching": "Fetching...",
+  "LogMerging": "Merging...",
+  "LogPushing": "Pushing...",
+  "LogFetch": "Fetch",
+  "LogPull": "Pull",
+  "LogSwitch": "Switch Local Branch",
+  "LogCheckout": "Checkout Remote Branch",
+  "LogCreateBranch": "Create New Branch",
+  "LogDeleteBranch": "Delete Branch",
+  "LogCherryPick": "Cherry Pick",
+  "LogMerge": "Merge",
+  "LogSync": "Merge (Sync from Master Branch)",
+  "LogCommit": "Commit",
+  "LogPush": "Push",
+  "LogReset": "Reset",
+  "LogPushLinking": "The branch is not currently linked to a remote one. Making the link now...",
+  "LogNoCurrentOperationToAbort": "There is no current operation to abort",
+
+  "LogMergeResult_UpToDate": "Nothing to change",
+  "LogMergeResult_Conflicts": "Conflicts - Merge pending",
+  "LogMergeResult_FastForward": "Merge complete (Fast forward)",
+  "LogMergeResult_NonFastForward": "Merge complete (Non fast forward)",
+
+  "GitSignatureNameEmpty": "Git signature name is empty. Please check Settings!",
+  "GitSignatureEmailEmpty": "Git signature email is empty. Please check Settings!",
+
+  "SwitchBranch_Title": "Switch Local Branch",
+  "SwitchBranch_NoOthersLocalBranches": "There are no other local branches to switch",
+
+  "CheckoutBranch_Title": "Checkout Remote Branch",
+  "CheckoutBranch_NoOthersRemoteBranches": "There are no other remote branches to checkout",
+
+  "CreateBranch_CreatingBasedOnTag": "Creating branch based on tag {0}",
+  "CreateBranch_CreatingBasedOnBranch": "Creating branch based on branch {0}",
+  "CreateBranch_Switching": "Switching to new branch",
+
+  "DeleteBranch_NoOthersLocalBranches": "There are no other local branches than the current one to delete",
+  "DeleteBranch_DeletingRemote": "Deleting remote branch...",
+  "DeleteBranch_DeletingLocal": "Deleting local branch...",
+
+  "MergeBranch_Title": "Merge From Branch",
+  "MergeBranch_NoOtherBranches": "There are no other branches to merge from",
+
+  "SyncBranch_MasterBranchNotFound": "Master branch not found",
+  "SyncBranch_CalculatingDivergence": "Calculating divergence...",
+  "SyncBrancj_NotBehindMasterBranch": "Current branch is not behind master branch",
+  "SyncBranch_BehindMasterByCommits": "Current branch is behind master by {0} commit(s)",
+
+  "ShellProgramNotConfigured": "Shell program is not configured. Please go to Settings dialog."
+
 
 }

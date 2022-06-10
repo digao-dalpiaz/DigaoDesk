@@ -140,5 +140,68 @@
         public string Time_HoursAgo;
         public string Time_DaysAgo;
 
+        public string BranchDivergenceUp;
+        public string BranchDivergenceDown;
+
+        public string LogLabelRepository;
+        public string LogLabelBranch;
+        public string LogLabelCommit;
+        public string LogLabelCommitId;
+        public string LogLabelMessage;
+        public string LogLabelFromBranch;
+        public string LogLabelIntoBranch;
+        public string LogLabelCurrentOperation;
+        public string LogDone;
+        public string LogRefreshing;
+        public string LogFetching;
+        public string LogMerging;
+        public string LogPushing;
+        public string LogFetch;
+        public string LogPull;
+        public string LogSwitch;
+        public string LogCheckout;
+        public string LogCreateBranch;
+        public string LogDeleteBranch;
+        public string LogCherryPick;
+        public string LogMerge;
+        public string LogSync;
+        public string LogCommit;
+        public string LogPush;
+        public string LogReset;
+        public string LogPushLinking;
+        public string LogNoCurrentOperationToAbort;
+
+        public string LogMergeResult_UpToDate;
+        public string LogMergeResult_Conflicts;
+        public string LogMergeResult_FastForward;
+        public string LogMergeResult_NonFastForward;
+
+        public string GitSignatureNameEmpty;
+        public string GitSignatureEmailEmpty;
+
+        public string SwitchBranch_Title;
+        public string SwitchBranch_NoOthersLocalBranches;
+
+        public string CheckoutBranch_Title;
+        public string CheckoutBranch_NoOthersRemoteBranches;
+
+        public string CreateBranch_CreatingBasedOnTag;
+        public string CreateBranch_CreatingBasedOnBranch;
+        public string CreateBranch_Switching;
+
+        public string DeleteBranch_NoOthersLocalBranches;
+        public string DeleteBranch_DeletingRemote;
+        public string DeleteBranch_DeletingLocal;
+
+        public string MergeBranch_Title;
+        public string MergeBranch_NoOtherBranches;
+
+        public string SyncBranch_MasterBranchNotFound;
+        public string SyncBranch_CalculatingDivergence;
+        public string SyncBrancj_NotBehindMasterBranch;
+        public string SyncBranch_BehindMasterByCommits;
+
+        public string ShellProgramNotConfigured;
+
     }
 }
