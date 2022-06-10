@@ -197,7 +197,10 @@
   "SyncBrancj_NotBehindMasterBranch": "Current branch is not behind master branch",
   "SyncBranch_BehindMasterByCommits": "Current branch is behind master by {0} commit(s)",
 
-  "ShellProgramNotConfigured": "Shell program is not configured. Please go to Settings dialog."
+  "ShellProgramNotConfigured": "Shell program is not configured. Please go to Settings dialog.",
+
+  "CompareFile_NotFoundInWorkingDir": "File not found in working directory",
+  "CompareFile_DiffProgramNotConfigured": "Diff program is not configured. Please check settings!"
 
 
 }

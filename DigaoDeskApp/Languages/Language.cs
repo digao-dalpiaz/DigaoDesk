@@ -203,5 +203,8 @@
 
         public string ShellProgramNotConfigured;
 
+        public string CompareFile_NotFoundInWorkingDir;
+        public string CompareFile_DiffProgramNotConfigured;
+
     }
 }

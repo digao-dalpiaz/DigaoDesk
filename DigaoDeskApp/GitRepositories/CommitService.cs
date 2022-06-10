@@ -132,7 +132,7 @@ namespace DigaoDeskApp
                 if (!item.LstStatus.Contains(FileStatus.DeletedFromWorkdir))
                 {
                     pathNew = Path.Combine(_repository.Info.WorkingDirectory, item.Path);
-                    if (!File.Exists(pathNew)) Messages.ThrowMsg("File not found in working directory");
+                    if (!File.Exists(pathNew)) Messages.ThrowMsg(Vars.Lang.CompareFile_NotFoundInWorkingDir);
                 }
             }
 
@@ -220,7 +220,7 @@ namespace DigaoDeskApp
         {
             if (string.IsNullOrEmpty(Vars.Config.DiffProgram))
             {
-                Messages.ThrowMsg("Diff program is not configured. Please check settings!");
+                Messages.ThrowMsg(Vars.Lang.CompareFile_DiffProgramNotConfigured);
             }
 
             string args = Vars.Config.DiffProgramArguments;
