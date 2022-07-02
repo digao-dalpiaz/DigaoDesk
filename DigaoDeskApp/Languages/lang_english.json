@@ -232,4 +232,31 @@
   "AppEditor_CmdLineRequired": "Specify an application file path",
   "AppEditor_DirectoryNotFound": "Directory not found",
 
+  "Apps_Title": "Applications - Digao Desk",
+  "Apps_Add": "Add",
+  "Apps_Edit": "Edit",
+  "Apps_Delete": "Delete",
+  "Apps_Filter": "Filter",
+  "Apps_Start": "Start",
+  "Apps_Stop": "Stop",
+  "Apps_StopAll": "StopAll",
+  "Apps_FindLog": "Find in Log",
+  "Apps_ClearLog": "Clear Log",
+
+  "Apps_Col_Name": "Name",
+  "Apps_Col_Status": "Status",
+  "Apps_Col_StartTime": "Start Time",
+  "Apps_Col_RunningTime": "Running Time",
+  "Apps_Col_Memory": "Memory",
+  "Apps_Col_Processor": "Processor",
+  "Apps_Col_ThreadCount": "Thread Count",
+  "Apps_Col_LastLogTime": "Last Log Time",
+  "Apps_Col_LogStatistics": "Log Statistics",
+  "Apss_Col_LogHealth": "Log Health",
+  "Apps_StatusBar_Info": "Have a coffee! I am taking care of your applications.",
+  "Apps_StatusBar_Scanning": "Scanning...",
+
+  "Apps_ConfirmDelete": "Do you confirm deleting selected application?",
+  "Apps_FindNextNotFound": "Text '{0}' not found!"
+
 }

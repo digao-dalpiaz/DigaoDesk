@@ -235,7 +235,32 @@
         public string AppEditor_CmdLineRequired;
         public string AppEditor_DirectoryNotFound;
 
+        public string Apps_Title;
+        public string Apps_Add;
+        public string Apps_Edit;
+        public string Apps_Delete;
+        public string Apps_Filter;
+        public string Apps_Start;
+        public string Apps_Stop;
+        public string Apps_StopAll;
+        public string Apps_FindLog;
+        public string Apps_ClearLog;
+        
+        public string Apps_Col_Name;
+        public string Apps_Col_Status;
+        public string Apps_Col_StartTime;
+        public string Apps_Col_RunningTime;
+        public string Apps_Col_Memory;
+        public string Apps_Col_Processor;
+        public string Apps_Col_ThreadCount;
+        public string Apps_Col_LastLogTime;
+        public string Apps_Col_LogStatistics;
+        public string Apss_Col_LogHealth;
+        public string Apps_StatusBar_Info;
+        public string Apps_StatusBar_Scanning;
 
+        public string Apps_ConfirmDelete;
+        public string Apps_FindNextNotFound;
 
     }
 }
