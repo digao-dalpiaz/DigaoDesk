@@ -30,7 +30,7 @@ namespace DigaoDeskApp
         {
             get
             {
-                return Running ? "Running..." : "Stopped";
+                return Running ? Vars.Lang.AppStatus_Running : Vars.Lang.AppStatus_Stoped;
             }                
         }
 
@@ -61,7 +61,7 @@ namespace DigaoDeskApp
         {
             get
             {
-                return $"Lines: {Logs.Count}";
+                return string.Format(Vars.Lang.AppStatistics, Logs.Count);
             }
         }
 
@@ -113,7 +113,7 @@ namespace DigaoDeskApp
             _process.Exited += (s, e) =>
             {
                 _process.WaitForExit();
-                AddLog("TERMINATED!", true);
+                AddLog(Vars.Lang.AppLog_Terminated, true);
 
                 Running = false;
                 _startTime = null;
@@ -130,7 +130,7 @@ namespace DigaoDeskApp
                 {
                     Vars.FrmMainObj.Invoke(new MethodInvoker(() => {
                         if (!(Vars.Config.DontNotifyWhenAppsActive && Vars.FrmAppsObj != null && Form.ActiveForm == Vars.FrmAppsObj))
-                            Vars.FrmMainObj.tray.ShowBalloonTip(5000, "Process stopped", $"The application \"{Name}\" has stopped!", ToolTipIcon.Info);
+                            Vars.FrmMainObj.tray.ShowBalloonTip(5000, Vars.Lang.AppTerminatedBalloonTitle, string.Format(Vars.Lang.AppTerminatedBalloonMsg, Name), ToolTipIcon.Info);
                     }));
                 }
             };
@@ -158,7 +158,7 @@ namespace DigaoDeskApp
 
         public void Stop()
         {
-            AddLog("Stopping process...", true);
+            AddLog(Vars.Lang.AppLog_Stopping, true);
             KillChildProcs(_process, 0);
         }
 
@@ -170,7 +170,7 @@ namespace DigaoDeskApp
                 KillChildProcs(child, level+1);
             }
 
-            AddLog($"Terminating process level {level} \"{parent.ProcessName}\" ({parent.Id})...", true);
+            AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), true);
             parent.Kill();
         }       
 

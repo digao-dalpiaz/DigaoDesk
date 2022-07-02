@@ -200,7 +200,23 @@
   "ShellProgramNotConfigured": "Shell program is not configured. Please go to Settings dialog.",
 
   "CompareFile_NotFoundInWorkingDir": "File not found in working directory",
-  "CompareFile_DiffProgramNotConfigured": "Diff program is not configured. Please check settings!"
+  "CompareFile_DiffProgramNotConfigured": "Diff program is not configured. Please check settings!",
+
+  "AppStatus_Running": "Running...",
+  "AppStatus_Stoped": "Stoped",
+
+  "AppStatistics": "Lines: {0}",
+  "AppLog_Terminated": "TERMINATED!",
+  "AppLog_Stopping": "Stopping process...",
+  "AppLog_TerminatingProcessLevel": "Terminating process level {0} \"{1}\" ({2})...",
+
+  "AppTerminatedBalloonTitle": "Process stopped",
+  "AppTerminatedBalloonMsg": "The application \"{0}\" has stopped!",
+
+  "EnvVarParser_MissingEqual": "Missing equals sign",
+  "EnvVarParser_MissingKey": "Missing key name",
+  "EnvVarParser_DuplicatedKey": "Repeated key name",
+  "EnvVarParser_ErrorLine": "Line: {0}"
 
 
 }

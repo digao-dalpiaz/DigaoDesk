@@ -206,5 +206,22 @@
         public string CompareFile_NotFoundInWorkingDir;
         public string CompareFile_DiffProgramNotConfigured;
 
+        public string AppStatus_Running;
+        public string AppStatus_Stoped;
+
+        public string AppStatistics;
+        public string AppLog_Terminated;
+        public string AppLog_Stopping;
+        public string AppLog_TerminatingProcessLevel;
+
+        public string AppTerminatedBalloonTitle;
+        public string AppTerminatedBalloonMsg;
+
+        public string EnvVarParser_MissingEqual;
+        public string EnvVarParser_MissingKey;
+        public string EnvVarParser_DuplicatedKey;
+        public string EnvVarParser_ErrorLine;
+
+
     }
 }
