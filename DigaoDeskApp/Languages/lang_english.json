@@ -257,6 +257,15 @@
   "Apps_StatusBar_Scanning": "Scanning...",
 
   "Apps_ConfirmDelete": "Do you confirm deleting selected application?",
-  "Apps_FindNextNotFound": "Text '{0}' not found!"
+  "Apps_FindNextNotFound": "Text '{0}' not found!",
+
+  "FindLog_Title": "Find in Log",
+  "FindLog_Text": "Text",
+  "FindLog_CaseSensitive": "Case sensitive",
+  "FindLog_WholeWord": "Whole word",
+  "FindLog_FromPosition": "From current position",
+  "FindLog_Tip": "Use F3 key to find next occurrences",
+  "FindLog_NotFound": "Text not found!"
+
 
 }

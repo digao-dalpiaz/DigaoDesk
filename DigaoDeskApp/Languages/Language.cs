@@ -262,5 +262,13 @@
         public string Apps_ConfirmDelete;
         public string Apps_FindNextNotFound;
 
+        public string FindLog_Title;
+        public string FindLog_Text;
+        public string FindLog_CaseSensitive;
+        public string FindLog_WholeWord;
+        public string FindLog_FromPosition;
+        public string FindLog_Tip;
+        public string FindLog_NotFound;
+
     }
 }

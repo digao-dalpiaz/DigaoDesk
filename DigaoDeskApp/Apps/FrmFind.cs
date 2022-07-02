@@ -7,6 +7,21 @@ namespace DigaoDeskApp
         public FrmFind()
         {
             InitializeComponent();
+
+            LoadLang();
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.FindLog_Title;
+            lbText.Text = Vars.Lang.FindLog_Text;
+            ckCaseSensitive.Text = Vars.Lang.FindLog_CaseSensitive;
+            ckWholeWord.Text = Vars.Lang.FindLog_WholeWord;
+            ckFromCurrentPos.Text = Vars.Lang.FindLog_FromPosition;
+            lbInfo.Text = Vars.Lang.FindLog_Tip;
+
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         private void FrmFind_Load(object sender, System.EventArgs e)
@@ -37,7 +52,7 @@ namespace DigaoDeskApp
             } 
             else
             {
-                Messages.Error("Text not found!");
+                Messages.Error(Vars.Lang.FindLog_NotFound);
                 edText.Select();
             }
         }
