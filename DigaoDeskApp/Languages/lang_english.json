@@ -216,7 +216,20 @@
   "EnvVarParser_MissingEqual": "Missing equals sign",
   "EnvVarParser_MissingKey": "Missing key name",
   "EnvVarParser_DuplicatedKey": "Repeated key name",
-  "EnvVarParser_ErrorLine": "Line: {0}"
+  "EnvVarParser_ErrorLine": "Line: {0}",
 
+  "AppEditor_Title_New": "New Application",
+  "AppEditor_Title_Edit": "Edit Application",
+
+  "AppEditor_AppName": "Application name",
+  "AppEditor_CmdLine": "Command line",
+  "AppEditor_Arguments": "Arguments",
+  "AppEditor_Directory": "Working directory",
+  "AppEditor_EnvVars": "Environment variables",
+  "AppEditor_EnvVarsInfo": "Format: NAME=VALUE\nNew line: CTRL+ENTER",
+
+  "AppEditor_AppNameRequired": "Specify an application name",
+  "AppEditor_CmdLineRequired": "Specify an application file path",
+  "AppEditor_DirectoryNotFound": "Directory not found",
 
 }

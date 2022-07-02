@@ -222,6 +222,20 @@
         public string EnvVarParser_DuplicatedKey;
         public string EnvVarParser_ErrorLine;
 
+        public string AppEditor_Title_New;
+        public string AppEditor_Title_Edit;
+        public string AppEditor_AppName;
+        public string AppEditor_CmdLine;
+        public string AppEditor_Arguments;
+        public string AppEditor_Directory;
+        public string AppEditor_EnvVars;
+        public string AppEditor_EnvVarsInfo;
+
+        public string AppEditor_AppNameRequired;
+        public string AppEditor_CmdLineRequired;
+        public string AppEditor_DirectoryNotFound;
+
+
 
     }
 }

@@ -14,6 +14,21 @@ namespace DigaoDeskApp
         public FrmAppEditor()
         {
             InitializeComponent();
+
+            LoadLang();
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.AppEditor_Title_New;
+            lbName.Text = Vars.Lang.AppEditor_AppName;
+            lbCmd.Text = Vars.Lang.AppEditor_CmdLine;
+            lbArgs.Text = Vars.Lang.AppEditor_Arguments;
+            lbDir.Text = Vars.Lang.AppEditor_Directory;
+            lbEnv.Text = Vars.Lang.AppEditor_EnvVars;
+            lbEnvInfo.Text = Vars.Lang.AppEditor_EnvVarsInfo;
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         public static bool Run(bool edit, DigaoApplication app)
@@ -28,7 +43,7 @@ namespace DigaoDeskApp
         {
             if (_edit)
             {
-                this.Text = "Edit Application";
+                this.Text = this.Text = Vars.Lang.AppEditor_Title_Edit;
 
                 edName.Text = _app.Name;
                 edCmd.Text = _app.Cmd;
@@ -43,7 +58,7 @@ namespace DigaoDeskApp
             edName.Text = edName.Text.Trim();
             if (edName.Text == string.Empty)
             {
-                Messages.Error("Specify an application name");
+                Messages.Error(Vars.Lang.AppEditor_AppNameRequired);
                 edName.Select();
                 return;
             }
@@ -51,7 +66,7 @@ namespace DigaoDeskApp
             edCmd.Text = edCmd.Text.Trim();
             if (edCmd.Text == string.Empty)
             {
-                Messages.Error("Specify an application file path");
+                Messages.Error(Vars.Lang.AppEditor_CmdLineRequired);
                 edCmd.Select();
                 return;
             }
@@ -63,7 +78,7 @@ namespace DigaoDeskApp
             {
                 if (!Directory.Exists(edDir.Text))
                 {
-                    Messages.Error("Directory not found");
+                    Messages.Error(Vars.Lang.AppEditor_DirectoryNotFound);
                     edDir.Select();
                     return;
                 }
