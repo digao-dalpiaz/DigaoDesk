@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Management;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -173,6 +175,23 @@ namespace DigaoDeskApp
         public static bool IsSameGridColumn(DataGridViewColumn c1, DataGridViewColumn c2)
         {
             return c1.Name == c2.Name;
+        }
+
+        //-----------------------------------------------------------------
+
+        public static string GetResource(string resourceName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var fullResName = "DigaoDeskApp." + resourceName;
+
+            using (Stream stream = assembly.GetManifestResourceStream(fullResName))
+            {
+                if (stream == null) throw new Exception(string.Format("Resouce '{0}' not found", fullResName));
+
+                using (StreamReader reader = new StreamReader(stream))
+                    return reader.ReadToEnd();
+            }
         }
 
     }

@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Languages\lang_english.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Languages\lang_english.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Geomatics.IO.BindingListView" Version="1.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Management" Version="5.0.0" />

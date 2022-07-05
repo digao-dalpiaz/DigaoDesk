@@ -14,6 +14,7 @@ namespace DigaoDeskApp
             InitializeComponent();
 
             LoadLang();
+            LoadLanguageList();
 
             _dlgFont = new();
             _dlgFont.ShowEffects = false;
@@ -63,6 +64,8 @@ namespace DigaoDeskApp
 
         private void FrmConfig_Load(object sender, System.EventArgs e)
         {
+            edLanguage.Text = Vars.Config.Language;
+
             //--Apps tab
             _dlgFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
             UpdateFontButton();
@@ -94,6 +97,14 @@ namespace DigaoDeskApp
             //--
         }
 
+        private void LoadLanguageList()
+        {
+            foreach (var lang in LangEngine.Definitions)
+            {
+                edLanguage.Items.Add(lang);
+            }
+        }
+
         private void UpdateFontButton()
         {
             btnLogFont.Text = $"{_dlgFont.Font.Name}, {_dlgFont.Font.Size}";
@@ -122,6 +133,8 @@ namespace DigaoDeskApp
             edGitCredUsername.Text = edGitCredUsername.Text.Trim();
 
             //
+
+            Vars.Config.Language = edLanguage.Text;
 
             //--Apps tab
             Vars.Config.Log.FontName = _dlgFont.Font.Name;

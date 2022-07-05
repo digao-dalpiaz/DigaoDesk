@@ -19,6 +19,9 @@ namespace DigaoDeskApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Config.Load();
+            LangEngine.Init();
+
             if (!mutex.WaitOne(TimeSpan.Zero, true))
             {
                 Messages.Error(Vars.Lang.AlreadyRunningMessage);
