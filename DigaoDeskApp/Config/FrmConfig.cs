@@ -21,7 +21,39 @@ namespace DigaoDeskApp
 
         private void LoadLang()
         {
+            this.Text = Vars.Lang.Config_Title;
+            tabLogs.Text = Vars.Lang.Config_Tab_Logs;
+            tabApplications.Text = Vars.Lang.Config_Tab_Applications;
+            tabRepos.Text = Vars.Lang.Config_Tab_Repositories;
 
+            lbFont.Text = Vars.Lang.Config_Logs_Font;
+            lbTextColor.Text = Vars.Lang.Config_Logs_TextColor;
+            lbBackgroundColor.Text = Vars.Lang.Config_Logs_BackgroundColor;
+            ckLogShowTs.Text = Vars.Lang.Config_Logs_ShowDateTime;
+            ckLogWordWrap.Text = Vars.Lang.Config_Logs_WordWrap;
+
+            ckNotifyWhenAppStops.Text = Vars.Lang.Config_Apps_NotifyWhenStop;
+            CkDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
+
+            lbRepositoryFolder.Text = Vars.Lang.Config_Repos_Folder;
+            boxGitAuthor.Text = Vars.Lang.Config_Repos_BoxAuthor;
+            lbAuthorName.Text = Vars.Lang.Config_Repos_Author_Name;
+            lbAuthorEmail.Text = Vars.Lang.Config_Repos_Author_Email;
+            boxGitCredentials.Text = Vars.Lang.Config_Repos_BoxCredentials;
+            lbCredUsername.Text = Vars.Lang.Config_Repos_Credentials_Username;
+            lbCredPassword.Text = Vars.Lang.Config_Repos_Credentials_Password;
+            lbShellProgram.Text = Vars.Lang.Config_Repos_ShellProgram;
+            lbDiffProgram.Text = Vars.Lang.Config_Repos_DiffProgram;
+            lbDifProgramArgs.Text = Vars.Lang.Config_Repos_DiffProgramArgs;
+            lbDifProgramArgsInfo.Text = Vars.Lang.Config_Repos_DiffProgramArgsInfo;
+            lbNewBranchPrefix.Text = Vars.Lang.Config_Repos_NewBranchPrefixList;
+            lbNewBranchPrefixInfo.Text = Vars.Lang.Config_Repos_NewBranchPrefixListInfo;
+            ckGitAutoFetch.Text = Vars.Lang.Config_Repos_AutoFetch;
+            lbCommitMsg.Text = Vars.Lang.Config_Repos_CommitMsg;
+            lbCommitMsgInfo.Text = Vars.Lang.Config_Repos_CommitMsgInfo;
+
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         private void FrmConfig_FormClosed(object sender, FormClosedEventArgs e)

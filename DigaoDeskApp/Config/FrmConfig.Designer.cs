@@ -56,8 +56,8 @@ namespace DigaoDeskApp
             this.lbNewBranchPrefixInfo = new System.Windows.Forms.Label();
             this.boxGitAuthor = new System.Windows.Forms.GroupBox();
             this.edGitName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbAuthorName = new System.Windows.Forms.Label();
+            this.lbAuthorEmail = new System.Windows.Forms.Label();
             this.edGitEmail = new System.Windows.Forms.TextBox();
             this.edGitNewBranchPrefixList = new System.Windows.Forms.TextBox();
             this.lbNewBranchPrefix = new System.Windows.Forms.Label();
@@ -66,9 +66,9 @@ namespace DigaoDeskApp
             this.lbShellProgram = new System.Windows.Forms.Label();
             this.boxGitCredentials = new System.Windows.Forms.GroupBox();
             this.edGitCredPassword = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbCredPassword = new System.Windows.Forms.Label();
             this.edGitCredUsername = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbCredUsername = new System.Windows.Forms.Label();
             this.btnSelReposDir = new System.Windows.Forms.Button();
             this.edReposDir = new System.Windows.Forms.TextBox();
             this.lbRepositoryFolder = new System.Windows.Forms.Label();
@@ -368,8 +368,8 @@ namespace DigaoDeskApp
             // boxGitAuthor
             // 
             this.boxGitAuthor.Controls.Add(this.edGitName);
-            this.boxGitAuthor.Controls.Add(this.label5);
-            this.boxGitAuthor.Controls.Add(this.label6);
+            this.boxGitAuthor.Controls.Add(this.lbAuthorName);
+            this.boxGitAuthor.Controls.Add(this.lbAuthorEmail);
             this.boxGitAuthor.Controls.Add(this.edGitEmail);
             this.boxGitAuthor.Location = new System.Drawing.Point(18, 75);
             this.boxGitAuthor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -388,23 +388,23 @@ namespace DigaoDeskApp
             this.edGitName.Size = new System.Drawing.Size(383, 27);
             this.edGitName.TabIndex = 4;
             // 
-            // label5
+            // lbAuthorName
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 32);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 20);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Name";
+            this.lbAuthorName.AutoSize = true;
+            this.lbAuthorName.Location = new System.Drawing.Point(16, 32);
+            this.lbAuthorName.Name = "lbAuthorName";
+            this.lbAuthorName.Size = new System.Drawing.Size(49, 20);
+            this.lbAuthorName.TabIndex = 3;
+            this.lbAuthorName.Text = "Name";
             // 
-            // label6
+            // lbAuthorEmail
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 96);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 20);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Email";
+            this.lbAuthorEmail.AutoSize = true;
+            this.lbAuthorEmail.Location = new System.Drawing.Point(16, 96);
+            this.lbAuthorEmail.Name = "lbAuthorEmail";
+            this.lbAuthorEmail.Size = new System.Drawing.Size(46, 20);
+            this.lbAuthorEmail.TabIndex = 5;
+            this.lbAuthorEmail.Text = "Email";
             // 
             // edGitEmail
             // 
@@ -467,9 +467,9 @@ namespace DigaoDeskApp
             // boxGitCredentials
             // 
             this.boxGitCredentials.Controls.Add(this.edGitCredPassword);
-            this.boxGitCredentials.Controls.Add(this.label7);
+            this.boxGitCredentials.Controls.Add(this.lbCredPassword);
             this.boxGitCredentials.Controls.Add(this.edGitCredUsername);
-            this.boxGitCredentials.Controls.Add(this.label8);
+            this.boxGitCredentials.Controls.Add(this.lbCredUsername);
             this.boxGitCredentials.Location = new System.Drawing.Point(457, 75);
             this.boxGitCredentials.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxGitCredentials.Name = "boxGitCredentials";
@@ -488,14 +488,14 @@ namespace DigaoDeskApp
             this.edGitCredPassword.Size = new System.Drawing.Size(383, 27);
             this.edGitCredPassword.TabIndex = 10;
             // 
-            // label7
+            // lbCredPassword
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 96);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 20);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Password";
+            this.lbCredPassword.AutoSize = true;
+            this.lbCredPassword.Location = new System.Drawing.Point(16, 96);
+            this.lbCredPassword.Name = "lbCredPassword";
+            this.lbCredPassword.Size = new System.Drawing.Size(70, 20);
+            this.lbCredPassword.TabIndex = 9;
+            this.lbCredPassword.Text = "Password";
             // 
             // edGitCredUsername
             // 
@@ -505,14 +505,14 @@ namespace DigaoDeskApp
             this.edGitCredUsername.Size = new System.Drawing.Size(383, 27);
             this.edGitCredUsername.TabIndex = 8;
             // 
-            // label8
+            // lbCredUsername
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 32);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 20);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Username";
+            this.lbCredUsername.AutoSize = true;
+            this.lbCredUsername.Location = new System.Drawing.Point(16, 32);
+            this.lbCredUsername.Name = "lbCredUsername";
+            this.lbCredUsername.Size = new System.Drawing.Size(75, 20);
+            this.lbCredUsername.TabIndex = 7;
+            this.lbCredUsername.Text = "Username";
             // 
             // btnSelReposDir
             // 
@@ -612,9 +612,9 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbRepositoryFolder;
         private System.Windows.Forms.Button btnSelReposDir;
         private System.Windows.Forms.TextBox edGitEmail;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbAuthorEmail;
         private System.Windows.Forms.TextBox edGitName;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbAuthorName;
         private System.Windows.Forms.TabPage tabLogs;
         private System.Windows.Forms.Button btnLogFont;
         private System.Windows.Forms.Label lbTextColor;
@@ -626,9 +626,9 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbFont;
         private System.Windows.Forms.GroupBox boxGitCredentials;
         private System.Windows.Forms.TextBox edGitCredPassword;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbCredPassword;
         private System.Windows.Forms.TextBox edGitCredUsername;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbCredUsername;
         private System.Windows.Forms.CheckBox CkDontNotifyWhenAppsActive;
         private System.Windows.Forms.TextBox edShellProgram;
         private System.Windows.Forms.Label lbShellProgram;
