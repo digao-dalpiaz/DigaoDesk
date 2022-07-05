@@ -68,6 +68,11 @@ namespace DigaoDeskApp
 
         private void FrmConfig_Load(object sender, System.EventArgs e)
         {
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
             edLanguage.SelectedItem = LangEngine.getDefinitionByValue(Vars.Config.Language);
 
             //--Apps tab
@@ -138,6 +143,16 @@ namespace DigaoDeskApp
 
             //
 
+            SaveSettings();
+
+            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.LoadConfig();
+            if (Vars.FrmReposObj != null) Vars.FrmReposObj.LoadConfig();
+
+            this.Close();
+        }
+
+        private void SaveSettings()
+        {
             Vars.Config.Language = ((LangEngine.Definition)edLanguage.SelectedItem).Value;
 
             //--Apps tab
@@ -171,11 +186,6 @@ namespace DigaoDeskApp
             //--
 
             Vars.Config.Save();
-
-            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.LoadConfig();
-            if (Vars.FrmReposObj != null) Vars.FrmReposObj.LoadConfig();
-
-            this.Close();
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)
