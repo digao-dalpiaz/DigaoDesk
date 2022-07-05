@@ -13,8 +13,15 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             _dlgFont = new();
             _dlgFont.ShowEffects = false;
+        }
+
+        private void LoadLang()
+        {
+
         }
 
         private void FrmConfig_FormClosed(object sender, FormClosedEventArgs e)

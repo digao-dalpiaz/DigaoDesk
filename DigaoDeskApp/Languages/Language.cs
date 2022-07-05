@@ -19,6 +19,34 @@
 
         public string CountLabel;
 
+        public string Config_Title;
+        public string Config_Tab_Logs;
+        public string Config_Tab_Applications;
+        public string Config_Tab_Repositories;
+        public string Config_Logs_Font;
+        public string Config_Logs_TextColor;
+        public string Config_Logs_BackgroundColor;
+        public string Config_Logs_ShowDateTime;
+        public string Config_Logs_WordWrap;
+        public string Config_Apps_NotifyWhenStop;
+        public string Config_Apps_DontNotifyStopWhenActive;
+        public string Config_Repos_Folder;
+        public string Config_Repos_BoxAuthor;
+        public string Config_Repos_Author_Name;
+        public string Config_Repos_Author_Email;
+        public string Config_Repos_BoxCredentials;
+        public string Config_Repos_Credentials_Username;
+        public string Config_Repos_Credentials_Password;
+        public string Config_Repos_ShellProgram;
+        public string Config_Repos_DiffProgram;
+        public string Config_Repos_DiffProgramArgs;
+        public string Config_Repos_DiffProgramArgsInfo;
+        public string Config_Repos_NewBranchPrefixList;
+        public string Config_Repos_NewBranchPrefixListInfo;
+        public string Config_Repos_AutoFetch;
+        public string Config_Repos_CommitMsg;
+        public string Config_Repos_CommitMsgInfo;
+
         public string RepoConfig_Title;
         public string RepoConfig_Order;
         public string RepoConfig_MasterBranch;
