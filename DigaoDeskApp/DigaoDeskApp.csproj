@@ -9,10 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Languages\lang_chinese.json" />
     <None Remove="Languages\lang_english.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Languages\lang_chinese.json" />
     <EmbeddedResource Include="Languages\lang_english.json" />
   </ItemGroup>
 
