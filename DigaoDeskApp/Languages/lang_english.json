@@ -16,9 +16,11 @@
   "CountLabel": "Count: {0}",
 
   "Config_Title": "Settings - Digao Desk",
+  "Config_Tab_General": "General",
   "Config_Tab_Logs": "Logs",
   "Config_Tab_Applications": "Applications",
   "Config_Tab_Repositories": "Git Repositories",
+  "Config_General_Language": "Language",
   "Config_Logs_Font": "Font",
   "Config_Logs_TextColor": "Text color",
   "Config_Logs_BackgroundColor": "Background color",
@@ -42,6 +44,7 @@
   "Config_Repos_AutoFetch": "Auto Fetch in remote operations",
   "Config_Repos_CommitMsg": "Commit message",
   "Config_Repos_CommitMsgInfo": "Use [branch] for branch name",
+  "Config_GitRepositoryNotFound": "Git repository folder not found",
 
   "RepoConfig_Title": "Repository Settings",
   "RepoConfig_Order": "Order",

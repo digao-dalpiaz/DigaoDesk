@@ -20,9 +20,11 @@
         public string CountLabel;
 
         public string Config_Title;
+        public string Config_Tab_General;
         public string Config_Tab_Logs;
         public string Config_Tab_Applications;
         public string Config_Tab_Repositories;
+        public string Config_General_Language;
         public string Config_Logs_Font;
         public string Config_Logs_TextColor;
         public string Config_Logs_BackgroundColor;
@@ -46,6 +48,7 @@
         public string Config_Repos_AutoFetch;
         public string Config_Repos_CommitMsg;
         public string Config_Repos_CommitMsgInfo;
+        public string Config_GitRepositoryNotFound;
 
         public string RepoConfig_Title;
         public string RepoConfig_Order;

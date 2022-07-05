@@ -23,9 +23,13 @@ namespace DigaoDeskApp
         private void LoadLang()
         {
             this.Text = Vars.Lang.Config_Title;
+
+            tabGeneral.Text = Vars.Lang.Config_Tab_General;
             tabLogs.Text = Vars.Lang.Config_Tab_Logs;
             tabApplications.Text = Vars.Lang.Config_Tab_Applications;
             tabRepos.Text = Vars.Lang.Config_Tab_Repositories;
+
+            lbLanguage.Text = Vars.Lang.Config_General_Language;
 
             lbFont.Text = Vars.Lang.Config_Logs_Font;
             lbTextColor.Text = Vars.Lang.Config_Logs_TextColor;
@@ -117,7 +121,7 @@ namespace DigaoDeskApp
             {
                 if (!Directory.Exists(edReposDir.Text))
                 {
-                    Messages.Error("Git repository folder not found");
+                    Messages.Error(Vars.Lang.Config_GitRepositoryNotFound);
                     edReposDir.Select();
                     return;
                 }
