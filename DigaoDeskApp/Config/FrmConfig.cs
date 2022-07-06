@@ -74,7 +74,7 @@ namespace DigaoDeskApp
 
         private void LoadSettings()
         {
-            edLanguage.SelectedItem = LangEngine.getDefinitionByValue(Vars.Config.Language);
+            edLanguage.SelectedItem = LangEngine.GetDefinitionByValue(Vars.Config.Language);
 
             //--Apps tab
             _dlgFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
