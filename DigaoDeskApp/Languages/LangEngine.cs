@@ -26,7 +26,7 @@ internal class LangEngine
     public static void Init()
     {
         string langValue = Vars.Config.Language;
-        if (getDefinitionByValue(langValue) == null)
+        if (GetDefinitionByValue(langValue) == null)
         {
             //wrong language in config file, then load default language
             langValue = DEFAULT_LANG;
@@ -38,7 +38,7 @@ internal class LangEngine
         Vars.Lang = JsonConvert.DeserializeObject<Language>(langData);
     }
 
-    public static Definition getDefinitionByValue(string value)
+    public static Definition GetDefinitionByValue(string value)
     {
         return Definitions.Find(x => x.Value == value);
     }
