@@ -2,6 +2,7 @@
 {
     internal class Language
     {
+#pragma warning disable 0649
 
         public string AlreadyRunningMessage;
         public string GitHubUpdNewVersion;
@@ -303,5 +304,6 @@
         public string FindLog_Tip;
         public string FindLog_NotFound;
 
+#pragma warning restore 0649
     }
 }
