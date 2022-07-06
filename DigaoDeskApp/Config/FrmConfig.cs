@@ -30,6 +30,7 @@ namespace DigaoDeskApp
             tabRepos.Text = Vars.Lang.Config_Tab_Repositories;
 
             lbLanguage.Text = Vars.Lang.Config_General_Language;
+            lbLanguageInfo.Text = Vars.Lang.Config_General_LanguageInfo;
 
             lbFont.Text = Vars.Lang.Config_Logs_Font;
             lbTextColor.Text = Vars.Lang.Config_Logs_TextColor;
@@ -121,6 +122,13 @@ namespace DigaoDeskApp
 
         private void btnOK_Click(object sender, System.EventArgs e)
         {
+            if (edLanguage.SelectedItem == null)
+            {
+                Messages.Error(Vars.Lang.Config_InvalidLanguage);
+                edLanguage.Select();
+                return;
+            }
+
             edReposDir.Text = edReposDir.Text.Trim();
             if (edReposDir.Text != string.Empty)
             {

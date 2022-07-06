@@ -25,6 +25,7 @@
         public string Config_Tab_Applications;
         public string Config_Tab_Repositories;
         public string Config_General_Language;
+        public string Config_General_LanguageInfo;
         public string Config_Logs_Font;
         public string Config_Logs_TextColor;
         public string Config_Logs_BackgroundColor;
@@ -48,6 +49,7 @@
         public string Config_Repos_AutoFetch;
         public string Config_Repos_CommitMsg;
         public string Config_Repos_CommitMsgInfo;
+        public string Config_InvalidLanguage;
         public string Config_GitRepositoryNotFound;
 
         public string RepoConfig_Title;

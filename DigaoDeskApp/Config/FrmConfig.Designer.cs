@@ -30,6 +30,9 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             this.pages = new System.Windows.Forms.TabControl();
+            this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.lbLanguage = new System.Windows.Forms.Label();
+            this.edLanguage = new System.Windows.Forms.ComboBox();
             this.tabLogs = new System.Windows.Forms.TabPage();
             this.btnLogFont = new System.Windows.Forms.Button();
             this.lbTextColor = new System.Windows.Forms.Label();
@@ -74,16 +77,14 @@ namespace DigaoDeskApp
             this.lbRepositoryFolder = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.tabGeneral = new System.Windows.Forms.TabPage();
-            this.edLanguage = new System.Windows.Forms.ComboBox();
-            this.lbLanguage = new System.Windows.Forms.Label();
+            this.lbLanguageInfo = new System.Windows.Forms.Label();
             this.pages.SuspendLayout();
+            this.tabGeneral.SuspendLayout();
             this.tabLogs.SuspendLayout();
             this.tabApplications.SuspendLayout();
             this.tabRepos.SuspendLayout();
             this.boxGitAuthor.SuspendLayout();
             this.boxGitCredentials.SuspendLayout();
-            this.tabGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // pages
@@ -98,6 +99,37 @@ namespace DigaoDeskApp
             this.pages.SelectedIndex = 0;
             this.pages.Size = new System.Drawing.Size(905, 693);
             this.pages.TabIndex = 0;
+            // 
+            // tabGeneral
+            // 
+            this.tabGeneral.Controls.Add(this.lbLanguageInfo);
+            this.tabGeneral.Controls.Add(this.lbLanguage);
+            this.tabGeneral.Controls.Add(this.edLanguage);
+            this.tabGeneral.Location = new System.Drawing.Point(4, 29);
+            this.tabGeneral.Name = "tabGeneral";
+            this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGeneral.Size = new System.Drawing.Size(897, 660);
+            this.tabGeneral.TabIndex = 3;
+            this.tabGeneral.Text = "General";
+            this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // lbLanguage
+            // 
+            this.lbLanguage.AutoSize = true;
+            this.lbLanguage.Location = new System.Drawing.Point(22, 16);
+            this.lbLanguage.Name = "lbLanguage";
+            this.lbLanguage.Size = new System.Drawing.Size(74, 20);
+            this.lbLanguage.TabIndex = 1;
+            this.lbLanguage.Text = "Language";
+            // 
+            // edLanguage
+            // 
+            this.edLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.edLanguage.FormattingEnabled = true;
+            this.edLanguage.Location = new System.Drawing.Point(24, 40);
+            this.edLanguage.Name = "edLanguage";
+            this.edLanguage.Size = new System.Drawing.Size(304, 28);
+            this.edLanguage.TabIndex = 0;
             // 
             // tabLogs
             // 
@@ -572,35 +604,14 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // tabGeneral
+            // lbLanguageInfo
             // 
-            this.tabGeneral.Controls.Add(this.lbLanguage);
-            this.tabGeneral.Controls.Add(this.edLanguage);
-            this.tabGeneral.Location = new System.Drawing.Point(4, 29);
-            this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral.Size = new System.Drawing.Size(897, 660);
-            this.tabGeneral.TabIndex = 3;
-            this.tabGeneral.Text = "General";
-            this.tabGeneral.UseVisualStyleBackColor = true;
-            // 
-            // edLanguage
-            // 
-            this.edLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.edLanguage.FormattingEnabled = true;
-            this.edLanguage.Location = new System.Drawing.Point(24, 40);
-            this.edLanguage.Name = "edLanguage";
-            this.edLanguage.Size = new System.Drawing.Size(304, 28);
-            this.edLanguage.TabIndex = 0;
-            // 
-            // lbLanguage
-            // 
-            this.lbLanguage.AutoSize = true;
-            this.lbLanguage.Location = new System.Drawing.Point(22, 16);
-            this.lbLanguage.Name = "lbLanguage";
-            this.lbLanguage.Size = new System.Drawing.Size(74, 20);
-            this.lbLanguage.TabIndex = 1;
-            this.lbLanguage.Text = "Language";
+            this.lbLanguageInfo.AutoSize = true;
+            this.lbLanguageInfo.Location = new System.Drawing.Point(352, 44);
+            this.lbLanguageInfo.Name = "lbLanguageInfo";
+            this.lbLanguageInfo.Size = new System.Drawing.Size(119, 20);
+            this.lbLanguageInfo.TabIndex = 2;
+            this.lbLanguageInfo.Text = "* Restart needed";
             // 
             // FrmConfig
             // 
@@ -621,6 +632,8 @@ namespace DigaoDeskApp
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmConfig_FormClosed);
             this.Load += new System.EventHandler(this.FrmConfig_Load);
             this.pages.ResumeLayout(false);
+            this.tabGeneral.ResumeLayout(false);
+            this.tabGeneral.PerformLayout();
             this.tabLogs.ResumeLayout(false);
             this.tabLogs.PerformLayout();
             this.tabApplications.ResumeLayout(false);
@@ -631,8 +644,6 @@ namespace DigaoDeskApp
             this.boxGitAuthor.PerformLayout();
             this.boxGitCredentials.ResumeLayout(false);
             this.boxGitCredentials.PerformLayout();
-            this.tabGeneral.ResumeLayout(false);
-            this.tabGeneral.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -687,5 +698,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TabPage tabGeneral;
         private System.Windows.Forms.Label lbLanguage;
         private System.Windows.Forms.ComboBox edLanguage;
+        private System.Windows.Forms.Label lbLanguageInfo;
     }
 }
