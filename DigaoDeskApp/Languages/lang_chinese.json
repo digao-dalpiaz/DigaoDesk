@@ -8,7 +8,7 @@
   "MenuExit": "退出",
   "DenyExitByRunningApp": "有应用程序正在运行",
   "DenyExitByModal": "您无法关闭程序，因为有一个模态表单正在运行",
-  "UntrackedTag": "untracked",
+  "UntrackedTag": "未跟踪",
 
   "BtnOK": "确定",
   "BtnCancel": "取消",
@@ -16,9 +16,12 @@
   "CountLabel": "计数：{0}",
 
   "Config_Title": "设置 - Digao Desk",
+  "Config_Tab_General": "常规",
   "Config_Tab_Logs": "日志",
   "Config_Tab_Applications": "应用程序",
   "Config_Tab_Repositories": "Git 存储库",
+  "Config_General_Language": "语言",
+  "Config_General_LanguageInfo": "* 需要重新启动",
   "Config_Logs_Font": "字体",
   "Config_Logs_TextColor": "文本颜色",
   "Config_Logs_BackgroundColor": "背景颜色",
@@ -42,6 +45,8 @@
   "Config_Repos_AutoFetch": "远程操作中的自动获取",
   "Config_Repos_CommitMsg": "提交信息",
   "Config_Repos_CommitMsgInfo": "使用 [branch] 作为分支名称",
+  "Config_InvalidLanguage": "无效的语言",
+  "Config_GitRepositoryNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",
   "RepoConfig_Order": "顺序",
