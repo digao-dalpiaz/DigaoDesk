@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DigaoDeskApp;
@@ -36,6 +37,19 @@ internal class LangEngine
 
         var langData = Utils.GetResource(resName);
         Vars.Lang = JsonConvert.DeserializeObject<Language>(langData);
+
+        CheckNullValues();
+    }
+
+    private static void CheckNullValues()
+    {
+        foreach (var p in typeof(Language).GetFields())
+        {
+            if (p.GetValue(Vars.Lang) == null)
+            {
+                throw new Exception(string.Format("Language string '{0}' is null", p.Name));
+            }
+        }
     }
 
     public static Definition GetDefinitionByValue(string value)
