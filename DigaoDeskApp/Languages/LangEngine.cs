@@ -43,11 +43,17 @@ internal class LangEngine
 
     private static void CheckNullValues()
     {
-        foreach (var p in typeof(Language).GetFields())
+        var fields = typeof(Language).GetFields();
+        if (fields.Length == 0)
         {
-            if (p.GetValue(Vars.Lang) == null)
+            throw new Exception("Could not retrieve language fields");
+        }
+
+        foreach (var f in fields)
+        {
+            if (f.GetValue(Vars.Lang) == null)
             {
-                throw new Exception(string.Format("Language string '{0}' is null", p.Name));
+                throw new Exception(string.Format("Language string '{0}' is null", f.Name));
             }
         }
     }
