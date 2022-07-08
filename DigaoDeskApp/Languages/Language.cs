@@ -274,6 +274,9 @@
         public string Apps_Edit;
         public string Apps_Delete;
         public string Apps_Filter;
+        public string Apps_Filter_All;
+        public string Apps_Filter_Running;
+        public string Apps_Filter_Stopped;
         public string Apps_Start;
         public string Apps_Stop;
         public string Apps_StopAll;
