@@ -10,7 +10,8 @@ internal class LangEngine
 
     public static List<Definition> Definitions = new() {
         new Definition { Name = "English", Value = "english" },
-        new Definition { Name = "Chinese", Value = "chinese" }
+        new Definition { Name = "Chinese", Value = "chinese" },
+        new Definition { Name = "Portuguese Brazil", Value = "ptbr" }
     };
 
     public class Definition
