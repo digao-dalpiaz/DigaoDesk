@@ -270,9 +270,9 @@
   "Apps_Edit": "编辑",
   "Apps_Delete": "删除",
   "Apps_Filter": "过滤器",
-  "Apps_Filter_All": "All Applications",
-  "Apps_Filter_Running": "Only Running",
-  "Apps_Filter_Stopped": "Only Stopped",
+  "Apps_Filter_All": "所有应用程序",
+  "Apps_Filter_Running": "仅正在运行",
+  "Apps_Filter_Stopped": "仅已停止",
   "Apps_Start": "启动",
   "Apps_Stop": "停止",
   "Apps_StopAll": "全部停止",
@@ -302,6 +302,5 @@
   "FindLog_FromPosition": "从当前位置",
   "FindLog_Tip": "使用 F3 键查找下一个匹配项",
   "FindLog_NotFound": "找不到文本！"
-
 
 }
