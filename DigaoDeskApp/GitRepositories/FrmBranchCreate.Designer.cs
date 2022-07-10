@@ -52,7 +52,7 @@ namespace DigaoDeskApp
             this.btnPrefix.Location = new System.Drawing.Point(9, 11);
             this.btnPrefix.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPrefix.Name = "btnPrefix";
-            this.btnPrefix.Size = new System.Drawing.Size(128, 41);
+            this.btnPrefix.Size = new System.Drawing.Size(143, 41);
             this.btnPrefix.TabIndex = 0;
             this.btnPrefix.TabStop = false;
             this.btnPrefix.Text = "Insert Prefix";
