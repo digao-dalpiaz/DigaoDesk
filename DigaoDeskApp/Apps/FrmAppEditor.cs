@@ -15,6 +15,9 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            btnSelCmd.Height = edCmd.Height;
+            btnSelDir.Height = edDir.Height;
+
             LoadLang();
         }
 

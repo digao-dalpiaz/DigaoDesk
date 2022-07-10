@@ -144,7 +144,7 @@ namespace DigaoDeskApp
             // 
             // btnSelCmd
             // 
-            this.btnSelCmd.Location = new System.Drawing.Point(731, 116);
+            this.btnSelCmd.Location = new System.Drawing.Point(731, 117);
             this.btnSelCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelCmd.Name = "btnSelCmd";
             this.btnSelCmd.Size = new System.Drawing.Size(27, 33);
@@ -156,7 +156,7 @@ namespace DigaoDeskApp
             // 
             // btnSelDir
             // 
-            this.btnSelDir.Location = new System.Drawing.Point(731, 265);
+            this.btnSelDir.Location = new System.Drawing.Point(731, 267);
             this.btnSelDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelDir.Name = "btnSelDir";
             this.btnSelDir.Size = new System.Drawing.Size(27, 33);
