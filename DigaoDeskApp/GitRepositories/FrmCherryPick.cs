@@ -42,6 +42,8 @@ namespace DigaoDeskApp
 
             LoadLang();
 
+            btnSelBranch.Height = edBranch.Height;
+
             edBranch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnSelBranch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             edSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;

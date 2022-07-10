@@ -233,7 +233,7 @@ namespace DigaoDeskApp
             // 
             // btnSelBranch
             // 
-            this.btnSelBranch.Location = new System.Drawing.Point(832, 31);
+            this.btnSelBranch.Location = new System.Drawing.Point(832, 32);
             this.btnSelBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelBranch.Name = "btnSelBranch";
             this.btnSelBranch.Size = new System.Drawing.Size(156, 33);
