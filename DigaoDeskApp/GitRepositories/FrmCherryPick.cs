@@ -64,6 +64,8 @@ namespace DigaoDeskApp
             _gridBind.DataSource = _lstCommits;
 
             g.DataSource = _gridBind;
+
+            lbCount.Text = String.Empty;
         }
 
         private void LoadLang()

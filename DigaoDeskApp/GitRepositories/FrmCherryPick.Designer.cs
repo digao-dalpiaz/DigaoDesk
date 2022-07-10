@@ -228,15 +228,15 @@ namespace DigaoDeskApp
             this.edBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edBranch.Name = "edBranch";
             this.edBranch.ReadOnly = true;
-            this.edBranch.Size = new System.Drawing.Size(868, 27);
+            this.edBranch.Size = new System.Drawing.Size(823, 27);
             this.edBranch.TabIndex = 0;
             // 
             // btnSelBranch
             // 
-            this.btnSelBranch.Location = new System.Drawing.Point(878, 31);
+            this.btnSelBranch.Location = new System.Drawing.Point(832, 31);
             this.btnSelBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelBranch.Name = "btnSelBranch";
-            this.btnSelBranch.Size = new System.Drawing.Size(110, 33);
+            this.btnSelBranch.Size = new System.Drawing.Size(156, 33);
             this.btnSelBranch.TabIndex = 1;
             this.btnSelBranch.Text = "Select Branch";
             this.btnSelBranch.UseVisualStyleBackColor = true;
