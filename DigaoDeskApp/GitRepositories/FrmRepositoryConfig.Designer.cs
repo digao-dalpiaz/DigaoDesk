@@ -41,7 +41,7 @@ namespace DigaoDeskApp
             // lbMasterBranch
             // 
             this.lbMasterBranch.AutoSize = true;
-            this.lbMasterBranch.Location = new System.Drawing.Point(16, 85);
+            this.lbMasterBranch.Location = new System.Drawing.Point(14, 80);
             this.lbMasterBranch.Name = "lbMasterBranch";
             this.lbMasterBranch.Size = new System.Drawing.Size(103, 20);
             this.lbMasterBranch.TabIndex = 0;
@@ -49,15 +49,15 @@ namespace DigaoDeskApp
             // 
             // edMasterBranch
             // 
-            this.edMasterBranch.Location = new System.Drawing.Point(18, 107);
+            this.edMasterBranch.Location = new System.Drawing.Point(16, 104);
             this.edMasterBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edMasterBranch.Name = "edMasterBranch";
-            this.edMasterBranch.Size = new System.Drawing.Size(594, 27);
+            this.edMasterBranch.Size = new System.Drawing.Size(520, 27);
             this.edMasterBranch.TabIndex = 1;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(201, 160);
+            this.btnOK.Location = new System.Drawing.Point(161, 200);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(110, 43);
@@ -69,7 +69,7 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(320, 160);
+            this.btnCancel.Location = new System.Drawing.Point(280, 200);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 43);
@@ -80,7 +80,7 @@ namespace DigaoDeskApp
             // lbOrder
             // 
             this.lbOrder.AutoSize = true;
-            this.lbOrder.Location = new System.Drawing.Point(16, 21);
+            this.lbOrder.Location = new System.Drawing.Point(14, 16);
             this.lbOrder.Name = "lbOrder";
             this.lbOrder.Size = new System.Drawing.Size(47, 20);
             this.lbOrder.TabIndex = 4;
@@ -88,7 +88,7 @@ namespace DigaoDeskApp
             // 
             // edOrder
             // 
-            this.edOrder.Location = new System.Drawing.Point(18, 43);
+            this.edOrder.Location = new System.Drawing.Point(16, 40);
             this.edOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edOrder.Name = "edOrder";
             this.edOrder.Size = new System.Drawing.Size(114, 27);
@@ -97,7 +97,7 @@ namespace DigaoDeskApp
             // ckFetch
             // 
             this.ckFetch.AutoSize = true;
-            this.ckFetch.Location = new System.Drawing.Point(456, 48);
+            this.ckFetch.Location = new System.Drawing.Point(16, 152);
             this.ckFetch.Name = "ckFetch";
             this.ckFetch.Size = new System.Drawing.Size(156, 24);
             this.ckFetch.TabIndex = 5;
@@ -111,7 +111,7 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(632, 223);
+            this.ClientSize = new System.Drawing.Size(553, 256);
             this.Controls.Add(this.ckFetch);
             this.Controls.Add(this.edOrder);
             this.Controls.Add(this.lbOrder);
