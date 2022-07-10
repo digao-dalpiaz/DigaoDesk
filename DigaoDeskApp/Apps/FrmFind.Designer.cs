@@ -53,7 +53,7 @@ namespace DigaoDeskApp
             this.edText.Location = new System.Drawing.Point(9, 32);
             this.edText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edText.Name = "edText";
-            this.edText.Size = new System.Drawing.Size(557, 27);
+            this.edText.Size = new System.Drawing.Size(567, 27);
             this.edText.TabIndex = 1;
             this.edText.TextChanged += new System.EventHandler(this.edText_TextChanged);
             // 
@@ -81,7 +81,7 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(183, 203);
+            this.btnOK.Location = new System.Drawing.Point(186, 232);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(101, 43);
@@ -92,7 +92,7 @@ namespace DigaoDeskApp
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(293, 203);
+            this.btnCancel.Location = new System.Drawing.Point(296, 232);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(101, 43);
@@ -115,7 +115,7 @@ namespace DigaoDeskApp
             // 
             this.lbInfo.AutoSize = true;
             this.lbInfo.ForeColor = System.Drawing.Color.Gray;
-            this.lbInfo.Location = new System.Drawing.Point(329, 160);
+            this.lbInfo.Location = new System.Drawing.Point(8, 192);
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(240, 20);
             this.lbInfo.TabIndex = 13;
@@ -127,7 +127,7 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(577, 260);
+            this.ClientSize = new System.Drawing.Size(585, 288);
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.ckWholeWord);
             this.Controls.Add(this.btnCancel);
