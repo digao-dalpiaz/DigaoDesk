@@ -307,7 +307,7 @@
             // 
             this.lbCountDif.AutoSize = true;
             this.lbCountDif.ForeColor = System.Drawing.Color.White;
-            this.lbCountDif.Location = new System.Drawing.Point(219, 5);
+            this.lbCountDif.Location = new System.Drawing.Point(238, 5);
             this.lbCountDif.Name = "lbCountDif";
             this.lbCountDif.Size = new System.Drawing.Size(33, 20);
             this.lbCountDif.TabIndex = 2;
@@ -317,7 +317,7 @@
             // 
             this.lblbCountUnstaged.AutoSize = true;
             this.lblbCountUnstaged.ForeColor = System.Drawing.Color.White;
-            this.lblbCountUnstaged.Location = new System.Drawing.Point(165, 5);
+            this.lblbCountUnstaged.Location = new System.Drawing.Point(184, 5);
             this.lblbCountUnstaged.Name = "lblbCountUnstaged";
             this.lblbCountUnstaged.Size = new System.Drawing.Size(51, 20);
             this.lblbCountUnstaged.TabIndex = 1;
@@ -413,7 +413,7 @@
             // 
             this.lbCountStaged.AutoSize = true;
             this.lbCountStaged.ForeColor = System.Drawing.Color.White;
-            this.lbCountStaged.Location = new System.Drawing.Point(219, 5);
+            this.lbCountStaged.Location = new System.Drawing.Point(238, 5);
             this.lbCountStaged.Name = "lbCountStaged";
             this.lbCountStaged.Size = new System.Drawing.Size(33, 20);
             this.lbCountStaged.TabIndex = 2;
@@ -423,7 +423,7 @@
             // 
             this.lblbCountStaged.AutoSize = true;
             this.lblbCountStaged.ForeColor = System.Drawing.Color.White;
-            this.lblbCountStaged.Location = new System.Drawing.Point(165, 5);
+            this.lblbCountStaged.Location = new System.Drawing.Point(184, 5);
             this.lblbCountStaged.Name = "lblbCountStaged";
             this.lblbCountStaged.Size = new System.Drawing.Size(51, 20);
             this.lblbCountStaged.TabIndex = 1;
