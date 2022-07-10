@@ -41,6 +41,16 @@ There is another function available in tray menu, allowing you to manage your gi
 - Push
 - Open Shell program
 
+# Languages
+
+The app supports following languages:
+
+- English
+- Chinese (Thanks to @wcxu21)
+- Portuguese Brazil
+
+Feel free to help me translating the app to your language. :)
+
 # Settings
 
 You can set usage preferences as needed.
