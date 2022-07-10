@@ -18,6 +18,19 @@ namespace DigaoDeskApp
         public FrmBranchDelete()
         {
             InitializeComponent();
+
+            LoadLang();
+        }
+
+        public void LoadLang()
+        {
+            this.Text = Vars.Lang.BranchDelete_Title;
+            lbBranch.Text = Vars.Lang.BranchDelete_Branch;
+            lbConfirmation.Text = Vars.Lang.BranchDelete_ConfirmationLabel;
+            ckLocal.Text = Vars.Lang.BranchDelete_OptLocal;
+            ckRemote.Text = Vars.Lang.BranchDelete_OptRemote;
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         public void AddBranches(IEnumerable<Branch> lst)
@@ -54,21 +67,21 @@ namespace DigaoDeskApp
 
         private void edConfirm_TextChanged(object sender, System.EventArgs e)
         {
-            btnOK.Enabled = (edConfirm.Text == "CONFIRM");
+            btnOK.Enabled = (edConfirm.Text == Vars.Lang.BranchDelete_ConfirmationText);
         }
 
         private void btnOK_Click(object sender, System.EventArgs e)
         {
             if (lstBranches.SelectedItem == null)
             {
-                Messages.Error("Please, select a valid branch");
+                Messages.Error(Vars.Lang.BranchDelete_BranchRequired);
                 lstBranches.Select();
                 return;
             }
 
             if (!GetOptLocal() && !GetOptRemote())
             {                
-                Messages.Error("Please, select at least one option (Local / Remote)");
+                Messages.Error(Vars.Lang.BranchDelete_OptionRequired);
                 return;
             }
 

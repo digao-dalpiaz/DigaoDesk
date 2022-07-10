@@ -38,7 +38,7 @@ namespace DigaoDeskApp
             {
                 get
                 {
-                    return _branch.IsRemote ? "Remote" : "Local";
+                    return _branch.IsRemote ? Vars.Lang.BranchSelector_Remote : Vars.Lang.BranchSelector_Local;
                 }
             }
 
@@ -67,6 +67,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             edSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             g.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             boxLocation.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -75,6 +77,18 @@ namespace DigaoDeskApp
 
             this.Text = title;
             this._useLocation = useLocation;
+        }
+
+        private void LoadLang()
+        {
+            colName.HeaderText = Vars.Lang.BranchSelector_ColName;
+            colLocation.HeaderText = Vars.Lang.BranchSelector_ColLocation;
+            colAuthor.HeaderText = Vars.Lang.BranchSelector_ColAuthor;
+            colDateTime.HeaderText = Vars.Lang.BranchSelector_ColDateTime;
+            ckLocal.Text = Vars.Lang.BranchSelector_Local;
+            ckRemote.Text = Vars.Lang.BranchSelector_Remote;
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         public void AddBranches(IEnumerable<Branch> lst)
@@ -110,7 +124,7 @@ namespace DigaoDeskApp
                     (edSearch.Text == string.Empty || branch.FriendlyName.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase)) &&
                     (!_useLocation || branch.IsRemote == ckRemote.Checked);
             });
-            lbCount.Text = "Count: " + _gridBind.Count;
+            lbCount.Text = string.Format(Vars.Lang.CountLabel, _gridBind.Count);
         }
 
         private void edSearch_TextChanged(object sender, EventArgs e)
@@ -145,7 +159,7 @@ namespace DigaoDeskApp
         {
             if (g.CurrentRow == null)
             {
-                Messages.Error("Please, select a branch!");
+                Messages.Error(Vars.Lang.BranchSelector_BranchRequired);
                 return;
             }
 

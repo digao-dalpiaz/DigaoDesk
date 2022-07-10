@@ -29,45 +29,47 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.edName = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.edCmd = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbCmd = new System.Windows.Forms.Label();
             this.edArgs = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbArgs = new System.Windows.Forms.Label();
             this.edDir = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbDir = new System.Windows.Forms.Label();
             this.btnSelCmd = new System.Windows.Forms.Button();
             this.btnSelDir = new System.Windows.Forms.Button();
             this.edEnv = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbEnv = new System.Windows.Forms.Label();
+            this.lbEnvInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lbName
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(14, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Application Name";
+            this.lbName.AutoSize = true;
+            this.lbName.ForeColor = System.Drawing.Color.Red;
+            this.lbName.Location = new System.Drawing.Point(16, 21);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(130, 20);
+            this.lbName.TabIndex = 0;
+            this.lbName.Text = "Application Name";
             // 
             // edName
             // 
-            this.edName.Location = new System.Drawing.Point(16, 32);
+            this.edName.Location = new System.Drawing.Point(18, 43);
+            this.edName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edName.Name = "edName";
-            this.edName.Size = new System.Drawing.Size(648, 23);
+            this.edName.Size = new System.Drawing.Size(740, 27);
             this.edName.TabIndex = 0;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(240, 408);
+            this.btnOK.Location = new System.Drawing.Point(274, 544);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(96, 32);
+            this.btnOK.Size = new System.Drawing.Size(110, 43);
             this.btnOK.TabIndex = 11;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -76,9 +78,10 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(344, 408);
+            this.btnCancel.Location = new System.Drawing.Point(393, 544);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(96, 32);
+            this.btnCancel.Size = new System.Drawing.Size(110, 43);
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -87,60 +90,64 @@ namespace DigaoDeskApp
             // 
             this.edCmd.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.edCmd.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.edCmd.Location = new System.Drawing.Point(16, 88);
+            this.edCmd.Location = new System.Drawing.Point(18, 117);
+            this.edCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edCmd.Name = "edCmd";
-            this.edCmd.Size = new System.Drawing.Size(624, 23);
+            this.edCmd.Size = new System.Drawing.Size(713, 27);
             this.edCmd.TabIndex = 1;
             // 
-            // label2
+            // lbCmd
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(14, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Command line";
+            this.lbCmd.AutoSize = true;
+            this.lbCmd.ForeColor = System.Drawing.Color.Red;
+            this.lbCmd.Location = new System.Drawing.Point(16, 96);
+            this.lbCmd.Name = "lbCmd";
+            this.lbCmd.Size = new System.Drawing.Size(106, 20);
+            this.lbCmd.TabIndex = 4;
+            this.lbCmd.Text = "Command line";
             // 
             // edArgs
             // 
-            this.edArgs.Location = new System.Drawing.Point(16, 144);
+            this.edArgs.Location = new System.Drawing.Point(18, 192);
+            this.edArgs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edArgs.Name = "edArgs";
-            this.edArgs.Size = new System.Drawing.Size(648, 23);
+            this.edArgs.Size = new System.Drawing.Size(740, 27);
             this.edArgs.TabIndex = 3;
             // 
-            // label3
+            // lbArgs
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 128);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 15);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Arguments";
+            this.lbArgs.AutoSize = true;
+            this.lbArgs.Location = new System.Drawing.Point(16, 171);
+            this.lbArgs.Name = "lbArgs";
+            this.lbArgs.Size = new System.Drawing.Size(81, 20);
+            this.lbArgs.TabIndex = 6;
+            this.lbArgs.Text = "Arguments";
             // 
             // edDir
             // 
             this.edDir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.edDir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            this.edDir.Location = new System.Drawing.Point(16, 200);
+            this.edDir.Location = new System.Drawing.Point(18, 267);
+            this.edDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edDir.Name = "edDir";
-            this.edDir.Size = new System.Drawing.Size(624, 23);
+            this.edDir.Size = new System.Drawing.Size(713, 27);
             this.edDir.TabIndex = 4;
             // 
-            // label4
+            // lbDir
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 184);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Working directory";
+            this.lbDir.AutoSize = true;
+            this.lbDir.Location = new System.Drawing.Point(16, 245);
+            this.lbDir.Name = "lbDir";
+            this.lbDir.Size = new System.Drawing.Size(127, 20);
+            this.lbDir.TabIndex = 8;
+            this.lbDir.Text = "Working directory";
             // 
             // btnSelCmd
             // 
-            this.btnSelCmd.Location = new System.Drawing.Point(640, 87);
+            this.btnSelCmd.Location = new System.Drawing.Point(731, 116);
+            this.btnSelCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelCmd.Name = "btnSelCmd";
-            this.btnSelCmd.Size = new System.Drawing.Size(24, 25);
+            this.btnSelCmd.Size = new System.Drawing.Size(27, 33);
             this.btnSelCmd.TabIndex = 2;
             this.btnSelCmd.TabStop = false;
             this.btnSelCmd.Text = "...";
@@ -149,9 +156,10 @@ namespace DigaoDeskApp
             // 
             // btnSelDir
             // 
-            this.btnSelDir.Location = new System.Drawing.Point(640, 199);
+            this.btnSelDir.Location = new System.Drawing.Point(731, 265);
+            this.btnSelDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelDir.Name = "btnSelDir";
-            this.btnSelDir.Size = new System.Drawing.Size(24, 25);
+            this.btnSelDir.Size = new System.Drawing.Size(27, 33);
             this.btnSelDir.TabIndex = 5;
             this.btnSelDir.TabStop = false;
             this.btnSelDir.Text = "...";
@@ -161,55 +169,57 @@ namespace DigaoDeskApp
             // edEnv
             // 
             this.edEnv.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.edEnv.Location = new System.Drawing.Point(16, 256);
+            this.edEnv.Location = new System.Drawing.Point(18, 341);
+            this.edEnv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edEnv.Multiline = true;
             this.edEnv.Name = "edEnv";
             this.edEnv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edEnv.Size = new System.Drawing.Size(648, 136);
+            this.edEnv.Size = new System.Drawing.Size(740, 180);
             this.edEnv.TabIndex = 6;
             // 
-            // label5
+            // lbEnv
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 240);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 15);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Environment variables";
+            this.lbEnv.AutoSize = true;
+            this.lbEnv.Location = new System.Drawing.Point(16, 320);
+            this.lbEnv.Name = "lbEnv";
+            this.lbEnv.Size = new System.Drawing.Size(155, 20);
+            this.lbEnv.TabIndex = 14;
+            this.lbEnv.Text = "Environment variables";
             // 
-            // label6
+            // lbEnvInfo
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(16, 400);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 30);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Format: NAME=VALUE\r\nNew line: CTRL+ENTER ";
+            this.lbEnvInfo.AutoSize = true;
+            this.lbEnvInfo.ForeColor = System.Drawing.Color.Gray;
+            this.lbEnvInfo.Location = new System.Drawing.Point(18, 533);
+            this.lbEnvInfo.Name = "lbEnvInfo";
+            this.lbEnvInfo.Size = new System.Drawing.Size(165, 40);
+            this.lbEnvInfo.TabIndex = 15;
+            this.lbEnvInfo.Text = "Format: NAME=VALUE\r\nNew line: CTRL+ENTER ";
             // 
             // FrmAppEditor
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(681, 453);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(778, 604);
+            this.Controls.Add(this.lbEnvInfo);
+            this.Controls.Add(this.lbEnv);
             this.Controls.Add(this.edEnv);
             this.Controls.Add(this.btnSelDir);
             this.Controls.Add(this.btnSelCmd);
             this.Controls.Add(this.edDir);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbDir);
             this.Controls.Add(this.edArgs);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lbArgs);
             this.Controls.Add(this.edCmd);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbCmd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.edName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmAppEditor";
@@ -224,20 +234,20 @@ namespace DigaoDeskApp
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.TextBox edName;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox edCmd;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbCmd;
         private System.Windows.Forms.TextBox edArgs;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbArgs;
         private System.Windows.Forms.TextBox edDir;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbDir;
         private System.Windows.Forms.Button btnSelCmd;
         private System.Windows.Forms.Button btnSelDir;
         private System.Windows.Forms.TextBox edEnv;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbEnv;
+        private System.Windows.Forms.Label lbEnvInfo;
     }
 }

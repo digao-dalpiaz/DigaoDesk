@@ -19,9 +19,12 @@ namespace DigaoDeskApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Config.Load();
+            LangEngine.Init();
+
             if (!mutex.WaitOne(TimeSpan.Zero, true))
             {
-                Messages.Error("Digao Desk is already running!");
+                Messages.Error(Vars.Lang.AlreadyRunningMessage);
                 return;
             }
 

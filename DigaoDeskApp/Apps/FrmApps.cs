@@ -21,6 +21,39 @@ namespace DigaoDeskApp
         public FrmApps()
         {
             InitializeComponent();
+
+            LoadLang();
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.Apps_Title;
+            btnAdd.Text = Vars.Lang.Apps_Add;
+            btnEdit.Text = Vars.Lang.Apps_Edit;
+            btnDelete.Text = Vars.Lang.Apps_Delete;
+            btnFilter.Text = Vars.Lang.Apps_Filter;
+            miFilterAll.Text = Vars.Lang.Apps_Filter_All;
+            miFilterRunning.Text = Vars.Lang.Apps_Filter_Running;
+            miFilterStopped.Text = Vars.Lang.Apps_Filter_Stopped;
+            btnStart.Text = Vars.Lang.Apps_Start;
+            btnStop.Text = Vars.Lang.Apps_Stop;
+            btnStopAll.Text = Vars.Lang.Apps_StopAll;
+            btnFindLog.Text = Vars.Lang.Apps_FindLog;
+            btnClearLog.Text = Vars.Lang.Apps_ClearLog;
+
+            colName.HeaderText = Vars.Lang.Apps_Col_Name;
+            colStatus.HeaderText = Vars.Lang.Apps_Col_Status;
+            colStartTime.HeaderText = Vars.Lang.Apps_Col_StartTime;
+            colRunningTime.HeaderText = Vars.Lang.Apps_Col_RunningTime;
+            colMemory.HeaderText = Vars.Lang.Apps_Col_Memory;
+            colProcessor.HeaderText = Vars.Lang.Apps_Col_Processor;
+            colProcCount.HeaderText = Vars.Lang.Apps_Col_ThreadCount;
+            colLastLogTime.HeaderText = Vars.Lang.Apps_Col_LastLogTime;
+            colLogStatistics.HeaderText = Vars.Lang.Apps_Col_LogStatistics;
+            colLogHealth.HeaderText = Vars.Lang.Apss_Col_LogHealth;
+
+            stFunInfo.Text = Vars.Lang.Apps_StatusBar_Info;
+            stMonitoring.Text = Vars.Lang.Apps_StatusBar_Scanning;
         }
 
         private void FrmApps_Load(object sender, EventArgs e)
@@ -114,7 +147,7 @@ namespace DigaoDeskApp
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var app = GetSelApp();
-            if (Messages.Question("Do you confirm deleting selected application?"))
+            if (Messages.Question(Vars.Lang.Apps_ConfirmDelete))
             {
                 Vars.AppList.Remove(app);
 
@@ -351,7 +384,7 @@ namespace DigaoDeskApp
 
             if (!FindInLog(true))
             {
-                Messages.Error($"Text '{Vars.FindMemoryObj.Text}' not found!");
+                Messages.Error(string.Format(Vars.Lang.Apps_FindNextNotFound, Vars.FindMemoryObj.Text));
             }
         }
 

@@ -23,6 +23,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             Utils.AdjustToolStrip(toolBar);
 
             Log = new(edLog, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gitrepos.log"));
@@ -78,9 +80,42 @@ namespace DigaoDeskApp
         {
             if (!toolBar.Enabled)
             {
-                Messages.Error("There is a process in execution right now");
+                Messages.Error(Vars.Lang.Repos_DenyExitByProcess);
                 e.Cancel = true;
             }
+        }
+
+        public void LoadLang()
+        {
+            this.Text = Vars.Lang.Repos_Title;
+            btnRefresh.Text = Vars.Lang.Repos_BtnRefreshAll;
+            btnFetchAll.Text = Vars.Lang.Repos_BtnFetchAll;
+            btnCreateBranch.Text = Vars.Lang.Repos_BtnNewBranch;
+            btnDeleteBranch.Text = Vars.Lang.Repos_BtnDelBranch;
+            btnCheckoutRemote.Text = Vars.Lang.Repos_BtnCheckout;
+            btnSwitchBranch.Text = Vars.Lang.Repos_BtnSwitch;
+            btnFetch.Text = Vars.Lang.Repos_BtnFetch;
+            btnPull.Text = Vars.Lang.Repos_BtnPull;
+            btnCommit.Text = Vars.Lang.Repos_BtnCommit;
+            btnCherryPick.Text = Vars.Lang.Repos_BtnCherryPick;
+            btnMerge.Text = Vars.Lang.Repos_BtnMerge;
+            btnSyncWithMaster.Text = Vars.Lang.Repos_BtnSync;
+            btnCancelOperation.Text = Vars.Lang.Repos_BtnCancelOp;
+            btnPush.Text = Vars.Lang.Repos_BtnPush;
+            btnShell.Text = Vars.Lang.Repos_BtnShell;
+            btnRepoConfig.Text = Vars.Lang.Repos_BtnConfig;
+            btnClearLog.Text = Vars.Lang.Repos_BtnClearLog;
+
+            colName.HeaderText = Vars.Lang.Repos_ColName;
+            colBranch.HeaderText = Vars.Lang.Repos_ColBranch;
+            colBranchesCount.HeaderText = Vars.Lang.Repos_ColBranchesCount;
+            colUp.HeaderText = Vars.Lang.Repos_ColPendingUp;
+            colDown.HeaderText = Vars.Lang.Repos_ColPendingDown;
+            colDifs.HeaderText = Vars.Lang.Repos_ColDifs;
+            colOtherBranchesDifs.HeaderText = Vars.Lang.Repos_ColOtherBranchesPending;
+            colLastFetch.HeaderText = Vars.Lang.Repos_ColLastFetch;
+            colOperation.HeaderText = Vars.Lang.Repos_ColOperation;
+            colMasterCompare.HeaderText = Vars.Lang.Repos_ColMasterBranchCompare;
         }
 
         public void LoadConfig()
@@ -100,7 +135,7 @@ namespace DigaoDeskApp
 
             if (!Directory.Exists(dir))
             {
-                Messages.Error("Git repositories folder not found: " + dir);
+                Messages.Error(string.Format(Vars.Lang.Repos_GitFolderNotFound, dir));
                 return;
             }
 
@@ -210,32 +245,32 @@ namespace DigaoDeskApp
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             DoBackground(() => {
-                Log.Log("Refreshing all repositories...", Color.Yellow, true);
+                Log.Log(Vars.Lang.Repos_RefreshingAll, Color.Yellow, true);
 
                 foreach (var item in _repos)
                 {
                     item.Refresh();
                 }
 
-                Log.Log("Done!", Color.Lime);
+                Log.Log(Vars.Lang.Repos_ProcessDone, Color.Lime);
             });            
         }
 
         private void btnFetchAll_Click(object sender, EventArgs e)
         {
             DoBackground(() => {
-                Log.Log("Fetch All Repositories", Color.Yellow, true);
+                Log.Log(Vars.Lang.Repos_FetchingAll, Color.Yellow, true);
 
                 foreach (var item in _repos)
                 {
                     if (!item.Config.Fetch) continue;
 
-                    Log.Log($"Fetching {item.Name}...", Color.White);
+                    Log.Log(string.Format(Vars.Lang.Repos_FetchingRepo, item.Name), Color.White);
                     item.FetchDirectly();
                     item.Refresh();
                 }
 
-                Log.Log("Done!", Color.Lime);
+                Log.Log(Vars.Lang.Repos_ProcessDone, Color.Lime);
             });            
         }
 
@@ -256,7 +291,7 @@ namespace DigaoDeskApp
             {
                 Messages.SurroundMessageException(() =>
                 {
-                    FrmWait.Start("Fetching...");
+                    FrmWait.Start(Vars.Lang.Repos_Fetching);
                     try
                     {
                         var r = GetSel();
@@ -330,12 +365,12 @@ namespace DigaoDeskApp
 
             if (Messages.SurroundMessageException(() =>
             {
-                if (string.IsNullOrEmpty(r.Config.MasterBranch)) Messages.ThrowMsg("Master branch is not configured");
-                if (r.MasterBranchCompare == "???") Messages.ThrowMsg("Invalid Master branch");
-                if (r.MasterBranchCompare == "self") Messages.ThrowMsg("It's not possible to sync because you are already on master branch");
+                if (string.IsNullOrEmpty(r.Config.MasterBranch)) Messages.ThrowMsg(Vars.Lang.Repos_MasterBranchNotConfigured);
+                if (r.MasterBranchCompare == "???") Messages.ThrowMsg(Vars.Lang.Repos_InvalidMasterBranch);
+                if (r.MasterBranchCompare == "self") Messages.ThrowMsg(Vars.Lang.Repos_CantSyncAlreadyInMaster);
             })) return;            
 
-            if (Messages.Question($"Confirm merge from branch '{r.Config.MasterBranch}'?"))
+            if (Messages.Question(string.Format(Vars.Lang.Repos_ConfirmMergeFromBranch, r.Config.MasterBranch)))
             {
                 r.SyncWithMaster();
             }            
@@ -343,7 +378,7 @@ namespace DigaoDeskApp
 
         private void btnPush_Click(object sender, EventArgs e)
         {
-            if (!Messages.Question("Confirm Push?")) return;
+            if (!Messages.Question(Vars.Lang.Repos_ConfirmPush)) return;
 
             var r = GetSel();
             r.Push();

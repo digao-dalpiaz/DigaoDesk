@@ -8,6 +8,8 @@ namespace DigaoDeskApp
     class Config
     {
 
+        public string Language = LangEngine.DEFAULT_LANG;
+
         public ConfigLog Log;
         public bool NotifyAppStops = true;
         public bool DontNotifyWhenAppsActive = false;

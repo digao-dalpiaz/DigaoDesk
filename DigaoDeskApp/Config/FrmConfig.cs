@@ -13,8 +13,53 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+            LoadLanguageList();
+
             _dlgFont = new();
             _dlgFont.ShowEffects = false;
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.Config_Title;
+
+            tabGeneral.Text = Vars.Lang.Config_Tab_General;
+            tabLogs.Text = Vars.Lang.Config_Tab_Logs;
+            tabApplications.Text = Vars.Lang.Config_Tab_Applications;
+            tabRepos.Text = Vars.Lang.Config_Tab_Repositories;
+
+            lbLanguage.Text = Vars.Lang.Config_General_Language;
+            lbLanguageInfo.Text = Vars.Lang.Config_General_LanguageInfo;
+
+            lbFont.Text = Vars.Lang.Config_Logs_Font;
+            lbTextColor.Text = Vars.Lang.Config_Logs_TextColor;
+            lbBackgroundColor.Text = Vars.Lang.Config_Logs_BackgroundColor;
+            ckLogShowTs.Text = Vars.Lang.Config_Logs_ShowDateTime;
+            ckLogWordWrap.Text = Vars.Lang.Config_Logs_WordWrap;
+
+            ckNotifyWhenAppStops.Text = Vars.Lang.Config_Apps_NotifyWhenStop;
+            CkDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
+
+            lbRepositoryFolder.Text = Vars.Lang.Config_Repos_Folder;
+            boxGitAuthor.Text = Vars.Lang.Config_Repos_BoxAuthor;
+            lbAuthorName.Text = Vars.Lang.Config_Repos_Author_Name;
+            lbAuthorEmail.Text = Vars.Lang.Config_Repos_Author_Email;
+            boxGitCredentials.Text = Vars.Lang.Config_Repos_BoxCredentials;
+            lbCredUsername.Text = Vars.Lang.Config_Repos_Credentials_Username;
+            lbCredPassword.Text = Vars.Lang.Config_Repos_Credentials_Password;
+            lbShellProgram.Text = Vars.Lang.Config_Repos_ShellProgram;
+            lbDiffProgram.Text = Vars.Lang.Config_Repos_DiffProgram;
+            lbDifProgramArgs.Text = Vars.Lang.Config_Repos_DiffProgramArgs;
+            lbDifProgramArgsInfo.Text = Vars.Lang.Config_Repos_DiffProgramArgsInfo;
+            lbNewBranchPrefix.Text = Vars.Lang.Config_Repos_NewBranchPrefixList;
+            lbNewBranchPrefixInfo.Text = Vars.Lang.Config_Repos_NewBranchPrefixListInfo;
+            ckGitAutoFetch.Text = Vars.Lang.Config_Repos_AutoFetch;
+            lbCommitMsg.Text = Vars.Lang.Config_Repos_CommitMsg;
+            lbCommitMsgInfo.Text = Vars.Lang.Config_Repos_CommitMsgInfo;
+
+            btnOK.Text = Vars.Lang.BtnOK;
+            btnCancel.Text = Vars.Lang.BtnCancel;
         }
 
         private void FrmConfig_FormClosed(object sender, FormClosedEventArgs e)
@@ -24,6 +69,13 @@ namespace DigaoDeskApp
 
         private void FrmConfig_Load(object sender, System.EventArgs e)
         {
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
+            edLanguage.SelectedItem = LangEngine.GetDefinitionByValue(Vars.Config.Language);
+
             //--Apps tab
             _dlgFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
             UpdateFontButton();
@@ -55,6 +107,14 @@ namespace DigaoDeskApp
             //--
         }
 
+        private void LoadLanguageList()
+        {
+            foreach (var lang in LangEngine.Definitions)
+            {
+                edLanguage.Items.Add(lang);
+            }
+        }
+
         private void UpdateFontButton()
         {
             btnLogFont.Text = $"{_dlgFont.Font.Name}, {_dlgFont.Font.Size}";
@@ -62,12 +122,19 @@ namespace DigaoDeskApp
 
         private void btnOK_Click(object sender, System.EventArgs e)
         {
+            if (edLanguage.SelectedItem == null)
+            {
+                Messages.Error(Vars.Lang.Config_InvalidLanguage);
+                edLanguage.Select();
+                return;
+            }
+
             edReposDir.Text = edReposDir.Text.Trim();
             if (edReposDir.Text != string.Empty)
             {
                 if (!Directory.Exists(edReposDir.Text))
                 {
-                    Messages.Error("Git repository folder not found");
+                    Messages.Error(Vars.Lang.Config_GitRepositoryNotFound);
                     edReposDir.Select();
                     return;
                 }
@@ -83,6 +150,18 @@ namespace DigaoDeskApp
             edGitCredUsername.Text = edGitCredUsername.Text.Trim();
 
             //
+
+            SaveSettings();
+
+            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.LoadConfig();
+            if (Vars.FrmReposObj != null) Vars.FrmReposObj.LoadConfig();
+
+            this.Close();
+        }
+
+        private void SaveSettings()
+        {
+            Vars.Config.Language = ((LangEngine.Definition)edLanguage.SelectedItem).Value;
 
             //--Apps tab
             Vars.Config.Log.FontName = _dlgFont.Font.Name;
@@ -115,11 +194,6 @@ namespace DigaoDeskApp
             //--
 
             Vars.Config.Save();
-
-            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.LoadConfig();
-            if (Vars.FrmReposObj != null) Vars.FrmReposObj.LoadConfig();
-
-            this.Close();
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)

@@ -22,6 +22,8 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             edMessage.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnCommit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCommitAndPush.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -54,6 +56,29 @@ namespace DigaoDeskApp
             r.SetValue("ListH", lstStaged.Height);
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.Commit_Title;
+            lblbRepository.Text = Vars.Lang.Commit_Repository;
+            lblbBranch.Text = Vars.Lang.Commit_Branch;
+            btnRefresh.Text = Vars.Lang.Commit_Refresh;
+            btnStage.Text = Vars.Lang.Commit_Stage;
+            btnUnstage.Text = Vars.Lang.Commit_Unstage;
+            btnCommit.Text = Vars.Lang.Commit_Commit;
+            btnCommitAndPush.Text = Vars.Lang.Commit_CommitAndPush;
+            lbStaged.Text = Vars.Lang.Commit_StagedFiles;
+            lbUnstaged.Text = Vars.Lang.Commit_UnstagedFiles;
+            lblbCountStaged.Text = Vars.Lang.Commit_Count;
+            lblbCountUnstaged.Text = Vars.Lang.Commit_Count;
+            btnAllStaged.Text = Vars.Lang.Commit_SelectAll;
+            btnNoneStaged.Text = Vars.Lang.Commit_SelectNone;
+            btnInvertStaged.Text = Vars.Lang.Commit_SelectInvert;
+            btnAllDif.Text = Vars.Lang.Commit_SelectAll;
+            btnNoneDif.Text = Vars.Lang.Commit_SelectNone;
+            btnInvertDif.Text = Vars.Lang.Commit_SelectInvert;
+            btnUndoDif.Text = Vars.Lang.Commit_Undo;
         }
 
         private void AutoFillMessageHashtag()
@@ -159,21 +184,21 @@ namespace DigaoDeskApp
         {
             if (lstStaged.Items.Count == 0)
             {
-                Messages.Error("There is no file in stage area");
+                Messages.Error(Vars.Lang.Commit_EmptyStageArea);
                 return;
             }
 
             edMessage.Text = edMessage.Text.Trim();
             if (edMessage.Text == string.Empty)
             {
-                Messages.Error("Type a message to this commit");
+                Messages.Error(Vars.Lang.Commit_EmptyMessage);
                 edMessage.Select();
                 return;
             }
 
             //
 
-            if (!Messages.Question("Confirm commit?")) return;
+            if (!Messages.Question(Vars.Lang.Commit_ConfirmCommit)) return;
 
             ReturnMessage = edMessage.Text;
 
@@ -202,7 +227,7 @@ namespace DigaoDeskApp
         private void btnUndoDif_Click(object sender, EventArgs e)
         {
             if (lstDif.CheckedItems.Count == 0) return;
-            if (!Messages.Question("Confirm undo checked files?")) return;
+            if (!Messages.Question(Vars.Lang.Commit_ConfirmUndo)) return;
 
             Messages.SurroundMessageException(() =>
             {

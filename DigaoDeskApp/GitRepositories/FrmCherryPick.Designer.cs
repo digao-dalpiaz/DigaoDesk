@@ -34,10 +34,10 @@ namespace DigaoDeskApp
             this.btnCancel = new System.Windows.Forms.Button();
             this.edStartDate = new System.Windows.Forms.DateTimePicker();
             this.edEndDate = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbSearch = new System.Windows.Forms.Label();
             this.lbStartDate = new System.Windows.Forms.Label();
             this.lbEndDate = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbBranch = new System.Windows.Forms.Label();
             this.lbCount = new System.Windows.Forms.Label();
             this.g = new System.Windows.Forms.DataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,17 +54,19 @@ namespace DigaoDeskApp
             // edSearch
             // 
             this.edSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.edSearch.Location = new System.Drawing.Point(8, 72);
+            this.edSearch.Location = new System.Drawing.Point(9, 96);
+            this.edSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edSearch.Name = "edSearch";
-            this.edSearch.Size = new System.Drawing.Size(616, 23);
+            this.edSearch.Size = new System.Drawing.Size(703, 27);
             this.edSearch.TabIndex = 2;
             this.edSearch.TextChanged += new System.EventHandler(this.edSearch_TextChanged);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(8, 8);
+            this.btnOK.Location = new System.Drawing.Point(9, 11);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(80, 32);
+            this.btnOK.Size = new System.Drawing.Size(91, 43);
             this.btnOK.TabIndex = 21;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -73,9 +75,10 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(96, 8);
+            this.btnCancel.Location = new System.Drawing.Point(110, 11);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(80, 32);
+            this.btnCancel.Size = new System.Drawing.Size(91, 43);
             this.btnCancel.TabIndex = 22;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -83,10 +86,11 @@ namespace DigaoDeskApp
             // edStartDate
             // 
             this.edStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.edStartDate.Location = new System.Drawing.Point(632, 72);
+            this.edStartDate.Location = new System.Drawing.Point(722, 96);
+            this.edStartDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edStartDate.Name = "edStartDate";
             this.edStartDate.ShowCheckBox = true;
-            this.edStartDate.Size = new System.Drawing.Size(112, 23);
+            this.edStartDate.Size = new System.Drawing.Size(127, 27);
             this.edStartDate.TabIndex = 3;
             this.edStartDate.ValueChanged += new System.EventHandler(this.edDates_ValueChanged);
             // 
@@ -94,55 +98,56 @@ namespace DigaoDeskApp
             // 
             this.edEndDate.Checked = false;
             this.edEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.edEndDate.Location = new System.Drawing.Point(752, 72);
+            this.edEndDate.Location = new System.Drawing.Point(859, 96);
+            this.edEndDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edEndDate.Name = "edEndDate";
             this.edEndDate.ShowCheckBox = true;
-            this.edEndDate.Size = new System.Drawing.Size(112, 23);
+            this.edEndDate.Size = new System.Drawing.Size(127, 27);
             this.edEndDate.TabIndex = 4;
             this.edEndDate.ValueChanged += new System.EventHandler(this.edDates_ValueChanged);
             // 
-            // label1
+            // lbSearch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Commit message or id";
+            this.lbSearch.AutoSize = true;
+            this.lbSearch.Location = new System.Drawing.Point(7, 75);
+            this.lbSearch.Name = "lbSearch";
+            this.lbSearch.Size = new System.Drawing.Size(159, 20);
+            this.lbSearch.TabIndex = 6;
+            this.lbSearch.Text = "Commit message or id";
             // 
             // lbStartDate
             // 
             this.lbStartDate.AutoSize = true;
-            this.lbStartDate.Location = new System.Drawing.Point(630, 56);
+            this.lbStartDate.Location = new System.Drawing.Point(720, 75);
             this.lbStartDate.Name = "lbStartDate";
-            this.lbStartDate.Size = new System.Drawing.Size(57, 15);
+            this.lbStartDate.Size = new System.Drawing.Size(74, 20);
             this.lbStartDate.TabIndex = 7;
             this.lbStartDate.Text = "Start date";
             // 
             // lbEndDate
             // 
             this.lbEndDate.AutoSize = true;
-            this.lbEndDate.Location = new System.Drawing.Point(750, 56);
+            this.lbEndDate.Location = new System.Drawing.Point(857, 75);
             this.lbEndDate.Name = "lbEndDate";
-            this.lbEndDate.Size = new System.Drawing.Size(53, 15);
+            this.lbEndDate.Size = new System.Drawing.Size(68, 20);
             this.lbEndDate.TabIndex = 8;
             this.lbEndDate.Text = "End date";
             // 
-            // label4
+            // lbBranch
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 15);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Branch";
+            this.lbBranch.AutoSize = true;
+            this.lbBranch.Location = new System.Drawing.Point(7, 11);
+            this.lbBranch.Name = "lbBranch";
+            this.lbBranch.Size = new System.Drawing.Size(54, 20);
+            this.lbBranch.TabIndex = 23;
+            this.lbBranch.Text = "Branch";
             // 
             // lbCount
             // 
             this.lbCount.AutoSize = true;
-            this.lbCount.Location = new System.Drawing.Point(8, 488);
+            this.lbCount.Location = new System.Drawing.Point(9, 651);
             this.lbCount.Name = "lbCount";
-            this.lbCount.Size = new System.Drawing.Size(40, 15);
+            this.lbCount.Size = new System.Drawing.Size(48, 20);
             this.lbCount.TabIndex = 24;
             this.lbCount.Text = "Count";
             // 
@@ -158,13 +163,15 @@ namespace DigaoDeskApp
             this.colMessage,
             this.colAuthor,
             this.colDateTime});
-            this.g.Location = new System.Drawing.Point(8, 104);
+            this.g.Location = new System.Drawing.Point(9, 139);
+            this.g.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.g.Name = "g";
             this.g.ReadOnly = true;
             this.g.RowHeadersVisible = false;
+            this.g.RowHeadersWidth = 51;
             this.g.RowTemplate.Height = 25;
             this.g.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.g.Size = new System.Drawing.Size(856, 376);
+            this.g.Size = new System.Drawing.Size(978, 501);
             this.g.StandardTab = true;
             this.g.TabIndex = 5;
             // 
@@ -172,14 +179,17 @@ namespace DigaoDeskApp
             // 
             this.colId.DataPropertyName = "Id";
             this.colId.HeaderText = "Id";
+            this.colId.MinimumWidth = 6;
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
+            this.colId.Width = 125;
             // 
             // colMessage
             // 
             this.colMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colMessage.DataPropertyName = "Message";
             this.colMessage.HeaderText = "Message";
+            this.colMessage.MinimumWidth = 6;
             this.colMessage.Name = "colMessage";
             this.colMessage.ReadOnly = true;
             // 
@@ -187,6 +197,7 @@ namespace DigaoDeskApp
             // 
             this.colAuthor.DataPropertyName = "Author";
             this.colAuthor.HeaderText = "Author";
+            this.colAuthor.MinimumWidth = 6;
             this.colAuthor.Name = "colAuthor";
             this.colAuthor.ReadOnly = true;
             this.colAuthor.Width = 150;
@@ -195,6 +206,7 @@ namespace DigaoDeskApp
             // 
             this.colDateTime.DataPropertyName = "DateTime";
             this.colDateTime.HeaderText = "Date/Time";
+            this.colDateTime.MinimumWidth = 6;
             this.colDateTime.Name = "colDateTime";
             this.colDateTime.ReadOnly = true;
             this.colDateTime.Width = 150;
@@ -203,25 +215,28 @@ namespace DigaoDeskApp
             // 
             this.boxButtons.Controls.Add(this.btnCancel);
             this.boxButtons.Controls.Add(this.btnOK);
-            this.boxButtons.Location = new System.Drawing.Point(344, 480);
+            this.boxButtons.Location = new System.Drawing.Point(393, 640);
+            this.boxButtons.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boxButtons.Name = "boxButtons";
-            this.boxButtons.Size = new System.Drawing.Size(184, 48);
+            this.boxButtons.Size = new System.Drawing.Size(210, 64);
             this.boxButtons.TabIndex = 11;
             // 
             // edBranch
             // 
             this.edBranch.BackColor = System.Drawing.SystemColors.Info;
-            this.edBranch.Location = new System.Drawing.Point(8, 24);
+            this.edBranch.Location = new System.Drawing.Point(9, 32);
+            this.edBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edBranch.Name = "edBranch";
             this.edBranch.ReadOnly = true;
-            this.edBranch.Size = new System.Drawing.Size(760, 23);
+            this.edBranch.Size = new System.Drawing.Size(868, 27);
             this.edBranch.TabIndex = 0;
             // 
             // btnSelBranch
             // 
-            this.btnSelBranch.Location = new System.Drawing.Point(768, 23);
+            this.btnSelBranch.Location = new System.Drawing.Point(878, 31);
+            this.btnSelBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelBranch.Name = "btnSelBranch";
-            this.btnSelBranch.Size = new System.Drawing.Size(96, 25);
+            this.btnSelBranch.Size = new System.Drawing.Size(110, 33);
             this.btnSelBranch.TabIndex = 1;
             this.btnSelBranch.Text = "Select Branch";
             this.btnSelBranch.UseVisualStyleBackColor = true;
@@ -230,22 +245,23 @@ namespace DigaoDeskApp
             // FrmCherryPick
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(872, 528);
+            this.ClientSize = new System.Drawing.Size(997, 704);
             this.Controls.Add(this.btnSelBranch);
             this.Controls.Add(this.edBranch);
             this.Controls.Add(this.boxButtons);
             this.Controls.Add(this.g);
             this.Controls.Add(this.lbCount);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbBranch);
             this.Controls.Add(this.lbEndDate);
             this.Controls.Add(this.lbStartDate);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbSearch);
             this.Controls.Add(this.edEndDate);
             this.Controls.Add(this.edStartDate);
             this.Controls.Add(this.edSearch);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimizeBox = false;
             this.Name = "FrmCherryPick";
             this.ShowIcon = false;
@@ -266,10 +282,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DateTimePicker edStartDate;
         private System.Windows.Forms.DateTimePicker edEndDate;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbSearch;
         private System.Windows.Forms.Label lbStartDate;
         private System.Windows.Forms.Label lbEndDate;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbBranch;
         private System.Windows.Forms.Label lbCount;
         private System.Windows.Forms.DataGridView g;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;

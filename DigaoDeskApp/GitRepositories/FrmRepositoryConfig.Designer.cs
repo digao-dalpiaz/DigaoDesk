@@ -29,23 +29,23 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbMasterBranch = new System.Windows.Forms.Label();
             this.edMasterBranch = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbOrder = new System.Windows.Forms.Label();
             this.edOrder = new System.Windows.Forms.TextBox();
             this.ckFetch = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lbMasterBranch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Master branch";
+            this.lbMasterBranch.AutoSize = true;
+            this.lbMasterBranch.Location = new System.Drawing.Point(16, 85);
+            this.lbMasterBranch.Name = "lbMasterBranch";
+            this.lbMasterBranch.Size = new System.Drawing.Size(103, 20);
+            this.lbMasterBranch.TabIndex = 0;
+            this.lbMasterBranch.Text = "Master branch";
             // 
             // edMasterBranch
             // 
@@ -77,14 +77,14 @@ namespace DigaoDeskApp
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lbOrder
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Order";
+            this.lbOrder.AutoSize = true;
+            this.lbOrder.Location = new System.Drawing.Point(16, 21);
+            this.lbOrder.Name = "lbOrder";
+            this.lbOrder.Size = new System.Drawing.Size(47, 20);
+            this.lbOrder.TabIndex = 4;
+            this.lbOrder.Text = "Order";
             // 
             // edOrder
             // 
@@ -114,11 +114,11 @@ namespace DigaoDeskApp
             this.ClientSize = new System.Drawing.Size(632, 223);
             this.Controls.Add(this.ckFetch);
             this.Controls.Add(this.edOrder);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbOrder);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.edMasterBranch);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbMasterBranch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
@@ -134,11 +134,11 @@ namespace DigaoDeskApp
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbMasterBranch;
         private System.Windows.Forms.TextBox edMasterBranch;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbOrder;
         private System.Windows.Forms.TextBox edOrder;
         private System.Windows.Forms.CheckBox ckFetch;
     }

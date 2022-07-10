@@ -29,39 +29,41 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbText = new System.Windows.Forms.Label();
             this.edText = new System.Windows.Forms.TextBox();
             this.ckCaseSensitive = new System.Windows.Forms.CheckBox();
             this.ckFromCurrentPos = new System.Windows.Forms.CheckBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.ckWholeWord = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lbText
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Text";
+            this.lbText.AutoSize = true;
+            this.lbText.Location = new System.Drawing.Point(7, 11);
+            this.lbText.Name = "lbText";
+            this.lbText.Size = new System.Drawing.Size(36, 20);
+            this.lbText.TabIndex = 0;
+            this.lbText.Text = "Text";
             // 
             // edText
             // 
-            this.edText.Location = new System.Drawing.Point(8, 24);
+            this.edText.Location = new System.Drawing.Point(9, 32);
+            this.edText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edText.Name = "edText";
-            this.edText.Size = new System.Drawing.Size(488, 23);
+            this.edText.Size = new System.Drawing.Size(557, 27);
             this.edText.TabIndex = 1;
             this.edText.TextChanged += new System.EventHandler(this.edText_TextChanged);
             // 
             // ckCaseSensitive
             // 
             this.ckCaseSensitive.AutoSize = true;
-            this.ckCaseSensitive.Location = new System.Drawing.Point(8, 64);
+            this.ckCaseSensitive.Location = new System.Drawing.Point(9, 85);
+            this.ckCaseSensitive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckCaseSensitive.Name = "ckCaseSensitive";
-            this.ckCaseSensitive.Size = new System.Drawing.Size(99, 19);
+            this.ckCaseSensitive.Size = new System.Drawing.Size(122, 24);
             this.ckCaseSensitive.TabIndex = 2;
             this.ckCaseSensitive.Text = "Case sensitive";
             this.ckCaseSensitive.UseVisualStyleBackColor = true;
@@ -69,18 +71,20 @@ namespace DigaoDeskApp
             // ckFromCurrentPos
             // 
             this.ckFromCurrentPos.AutoSize = true;
-            this.ckFromCurrentPos.Location = new System.Drawing.Point(8, 112);
+            this.ckFromCurrentPos.Location = new System.Drawing.Point(9, 149);
+            this.ckFromCurrentPos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckFromCurrentPos.Name = "ckFromCurrentPos";
-            this.ckFromCurrentPos.Size = new System.Drawing.Size(141, 19);
+            this.ckFromCurrentPos.Size = new System.Drawing.Size(173, 24);
             this.ckFromCurrentPos.TabIndex = 4;
             this.ckFromCurrentPos.Text = "From current position";
             this.ckFromCurrentPos.UseVisualStyleBackColor = true;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(160, 152);
+            this.btnOK.Location = new System.Drawing.Point(183, 203);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(88, 32);
+            this.btnOK.Size = new System.Drawing.Size(101, 43);
             this.btnOK.TabIndex = 11;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -88,9 +92,10 @@ namespace DigaoDeskApp
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(256, 152);
+            this.btnCancel.Location = new System.Drawing.Point(293, 203);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 32);
+            this.btnCancel.Size = new System.Drawing.Size(101, 43);
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -98,39 +103,41 @@ namespace DigaoDeskApp
             // ckWholeWord
             // 
             this.ckWholeWord.AutoSize = true;
-            this.ckWholeWord.Location = new System.Drawing.Point(8, 88);
+            this.ckWholeWord.Location = new System.Drawing.Point(9, 117);
+            this.ckWholeWord.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckWholeWord.Name = "ckWholeWord";
-            this.ckWholeWord.Size = new System.Drawing.Size(90, 19);
+            this.ckWholeWord.Size = new System.Drawing.Size(112, 24);
             this.ckWholeWord.TabIndex = 3;
             this.ckWholeWord.Text = "Whole word";
             this.ckWholeWord.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lbInfo
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(288, 120);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 15);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Use F3 key to find next occurrences";
+            this.lbInfo.AutoSize = true;
+            this.lbInfo.ForeColor = System.Drawing.Color.Gray;
+            this.lbInfo.Location = new System.Drawing.Point(329, 160);
+            this.lbInfo.Name = "lbInfo";
+            this.lbInfo.Size = new System.Drawing.Size(240, 20);
+            this.lbInfo.TabIndex = 13;
+            this.lbInfo.Text = "Use F3 key to find next occurrences";
             // 
             // FrmFind
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(505, 195);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(577, 260);
+            this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.ckWholeWord);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.ckFromCurrentPos);
             this.Controls.Add(this.ckCaseSensitive);
             this.Controls.Add(this.edText);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmFind";
@@ -146,13 +153,13 @@ namespace DigaoDeskApp
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbText;
         private System.Windows.Forms.TextBox edText;
         private System.Windows.Forms.CheckBox ckCaseSensitive;
         private System.Windows.Forms.CheckBox ckFromCurrentPos;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox ckWholeWord;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbInfo;
     }
 }
