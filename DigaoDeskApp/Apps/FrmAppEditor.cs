@@ -15,10 +15,10 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             btnSelCmd.Height = edCmd.Height;
             btnSelDir.Height = edDir.Height;
-
-            LoadLang();
         }
 
         private void LoadLang()

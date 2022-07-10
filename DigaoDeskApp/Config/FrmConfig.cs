@@ -13,12 +13,12 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+            LoadLanguageList();
+
             btnSelReposDir.Height = edReposDir.Height;
             btnSelShellProgram.Height = edShellProgram.Height;
             btnSelDiffProgram.Height = edDiffProgram.Height;
-
-            LoadLang();
-            LoadLanguageList();
 
             _dlgFont = new();
             _dlgFont.ShowEffects = false;
