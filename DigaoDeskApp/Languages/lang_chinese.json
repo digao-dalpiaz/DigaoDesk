@@ -145,12 +145,14 @@
   "BranchSelector_BranchRequired": "请选择一个分支！",
 
   "BranchDelete_Title": "删除分支",
-  "BranchDelete_Branch": "分支",
-  "BranchDelete_OptLocal": "删除本地",
-  "BranchDelete_OptRemote": "删除远程",
+  "BranchDelete_FilterBranches": "Filter Branches",
+  "BranchDelete_DeleteLocal": "删除本地",
+  "BranchDelete_DeleteRemote": "删除远程",
+  "BranchDelete_BtnAdd": "Mark for Deletion",
+  "BranchDelete_BtnDelete": "Remove from Deletion",
   "BranchDelete_ConfirmationLabel": "键入 \"CONFIRM\" 以启用确定按钮",
   "BranchDelete_ConfirmationText": "CONFIRM",
-  "BranchDelete_BranchRequired": "请选择一个有效的分支",
+  "BranchDelete_BranchRequired": "Please, add at least one branch for deletion.",
   "BranchDelete_OptionRequired": "请至少选择一个选项（本地/远程）",
 
   "BranchCreate_Title": "创建分支",

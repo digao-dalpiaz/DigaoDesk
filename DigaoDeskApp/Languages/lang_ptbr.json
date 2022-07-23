@@ -145,12 +145,14 @@
   "BranchSelector_BranchRequired": "Selecione um branch",
 
   "BranchDelete_Title": "Deletar Branch",
-  "BranchDelete_Branch": "Branch",
-  "BranchDelete_OptLocal": "Deletar Local",
-  "BranchDelete_OptRemote": "Deletar Remoto",
+  "BranchDelete_FilterBranches": "Filtrar Branches",
+  "BranchDelete_DeleteLocal": "Deletar Local",
+  "BranchDelete_DeleteRemote": "Deletar Remoto",
+  "BranchDelete_BtnAdd": "Marcar para Deletar",
+  "BranchDelete_BtnDelete": "Retirar da Lista",
   "BranchDelete_ConfirmationLabel": "Digite \"CONFIRMO\" para habilitar o botão de OK",
   "BranchDelete_ConfirmationText": "CONFIRMO",
-  "BranchDelete_BranchRequired": "Selecione um branch válido",
+  "BranchDelete_BranchRequired": "Adicione pelo menos um branch na lista de exclusão",
   "BranchDelete_OptionRequired": "Maque pelo menos uma opção (Local / Remoto)",
 
   "BranchCreate_Title": "Criar Branch",

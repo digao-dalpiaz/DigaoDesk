@@ -26,8 +26,8 @@ namespace DigaoDeskApp
             public override string ToString()
             {
                 List<string> lst = new();
-                if (DelLocal) lst.Add("Delete Local");
-                if (DelRemote) lst.Add("Delete Remote");
+                if (DelLocal) lst.Add(Vars.Lang.BranchDelete_DeleteLocal);
+                if (DelRemote) lst.Add(Vars.Lang.BranchDelete_DeleteRemote);
 
                 return string.Format("[{0}] {1}", string.Join(", ", lst), GitUtils.GetBranchDisplayName(Branch));
             }
@@ -46,12 +46,22 @@ namespace DigaoDeskApp
         public void LoadLang()
         {
             this.Text = Vars.Lang.BranchDelete_Title;
-            //lbBranch.Text = Vars.Lang.BranchDelete_Branch;
+            lbFilterBranches.Text = Vars.Lang.BranchDelete_FilterBranches;
+            ckDeleteLocal.Text = Vars.Lang.BranchDelete_DeleteLocal;
+            ckDeleteRemote.Text = Vars.Lang.BranchDelete_DeleteRemote;
+            btnAdd.Text = Vars.Lang.BranchDelete_BtnAdd;
+            btnDel.Text = Vars.Lang.BranchDelete_BtnDelete;
             lbConfirmation.Text = Vars.Lang.BranchDelete_ConfirmationLabel;
-            //ckLocal.Text = Vars.Lang.BranchDelete_OptLocal;
-            //ckRemote.Text = Vars.Lang.BranchDelete_OptRemote;
             btnOK.Text = Vars.Lang.BtnOK;
             btnCancel.Text = Vars.Lang.BtnCancel;
+
+            //Using Branch Selector strings:
+            colName.HeaderText = Vars.Lang.BranchSelector_ColName;
+            colLocation.HeaderText = Vars.Lang.BranchSelector_ColLocation;
+            colAuthor.HeaderText = Vars.Lang.BranchSelector_ColAuthor;
+            colDateTime.HeaderText = Vars.Lang.BranchSelector_ColDateTime;
+            ckFilterLocal.Text = Vars.Lang.BranchSelector_Local;
+            ckFilterRemote.Text = Vars.Lang.BranchSelector_Remote;
         }
 
         public void AddBranches(IEnumerable<Branch> lst)
@@ -150,7 +160,7 @@ namespace DigaoDeskApp
         {
             if (lst.Items.Count == 0)
             {
-                Messages.Error("Please, add at least one branch for deletion");
+                Messages.Error(Vars.Lang.BranchDelete_BranchRequired);
                 return;
             }
 
@@ -163,7 +173,7 @@ namespace DigaoDeskApp
         {
             if (!GetDeleteLocal() && !GetDeleteRemote())
             {
-                Messages.Error("Please, select an operation!");
+                Messages.Error(Vars.Lang.BranchDelete_OptionRequired);
                 return;
             }
 
