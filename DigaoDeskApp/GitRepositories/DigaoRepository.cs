@@ -487,7 +487,7 @@ namespace DigaoDeskApp
 
         public void DeleteBranch()
         {
-            var localBranches = _repoCtrl.Branches.Where(x => !x.IsRemote && !x.IsCurrentRepositoryHead);
+            var localBranches = _repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x));
 
             if (!localBranches.Any())
             {
@@ -502,18 +502,29 @@ namespace DigaoDeskApp
             {              
                 DoBackground(Vars.Lang.LogDeleteBranch, () =>
                 {
-                    Log.LogLabel(Vars.Lang.LogLabelBranch, f.FormParams.Branch.FriendlyName);
+                    var lst = f.GetListBranchesForDeletion();
 
-                    if (f.FormParams.Remote)
+                    foreach (var bfd in lst)
                     {
-                        Log.Log(Vars.Lang.DeleteBranch_DeletingRemote, Color.Orange);
-                        _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + f.FormParams.Branch.UpstreamBranchCanonicalName, GetPushOptions());
-                        _repoCtrl.Branches.Update(f.FormParams.Branch, b => b.TrackedBranch = null);
-                    }
-                    if (f.FormParams.Local)
-                    {
-                        Log.Log(Vars.Lang.DeleteBranch_DeletingLocal, Color.Orange);
-                        _repoCtrl.Branches.Remove(f.FormParams.Branch);
+                        Log.LogLabel(Vars.Lang.LogLabelBranch, bfd.Branch.FriendlyName);
+
+                        if (bfd.DelRemote)
+                        {
+                            Log.Log(Vars.Lang.DeleteBranch_DeletingRemote, Color.Orange);
+                            if (bfd.Branch.IsRemote)
+                            {
+                                _repoCtrl.Branches.Remove(bfd.Branch);
+                            } else
+                            {
+                                _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + bfd.Branch.UpstreamBranchCanonicalName, GetPushOptions());
+                                _repoCtrl.Branches.Update(bfd.Branch, b => b.TrackedBranch = null);
+                            }
+                        }
+                        if (bfd.DelLocal)
+                        {
+                            Log.Log(Vars.Lang.DeleteBranch_DeletingLocal, Color.Orange);
+                            _repoCtrl.Branches.Remove(bfd.Branch);
+                        }
                     }
                 }, true);
             }

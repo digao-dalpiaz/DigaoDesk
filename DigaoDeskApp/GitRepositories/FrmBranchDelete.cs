@@ -1,5 +1,8 @@
-﻿using LibGit2Sharp;
+﻿using Equin.ApplicationFramework;
+using LibGit2Sharp;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -7,13 +10,31 @@ namespace DigaoDeskApp
     public partial class FrmBranchDelete : Form
     {
 
-        public DeleteBranchParams FormParams;
-        public class DeleteBranchParams
+        public class BranchForDeletion
         {
-            public Branch Branch;
-            public bool Local;
-            public bool Remote;
+            public Branch Branch { get; }
+            public bool DelLocal { get; }
+            public bool DelRemote { get; }
+
+            public BranchForDeletion(Branch branch, bool local, bool remote)
+            {
+                this.Branch = branch;
+                this.DelLocal = local;
+                this.DelRemote = remote;
+            }
+
+            public override string ToString()
+            {
+                List<string> lst = new();
+                if (DelLocal) lst.Add("Delete Local");
+                if (DelRemote) lst.Add("Delete Remote");
+
+                return string.Format("[{0}] {1}", string.Join(", ", lst), GitUtils.GetBranchDisplayName(Branch));
+            }
         }
+
+        private List<BranchSelectorItem> _internalBranchList = new();
+        private BindingListView<BranchSelectorItem> _gridBind;
 
         public FrmBranchDelete()
         {
@@ -25,10 +46,10 @@ namespace DigaoDeskApp
         public void LoadLang()
         {
             this.Text = Vars.Lang.BranchDelete_Title;
-            lbBranch.Text = Vars.Lang.BranchDelete_Branch;
+            //lbBranch.Text = Vars.Lang.BranchDelete_Branch;
             lbConfirmation.Text = Vars.Lang.BranchDelete_ConfirmationLabel;
-            ckLocal.Text = Vars.Lang.BranchDelete_OptLocal;
-            ckRemote.Text = Vars.Lang.BranchDelete_OptRemote;
+            //ckLocal.Text = Vars.Lang.BranchDelete_OptLocal;
+            //ckRemote.Text = Vars.Lang.BranchDelete_OptRemote;
             btnOK.Text = Vars.Lang.BtnOK;
             btnCancel.Text = Vars.Lang.BtnCancel;
         }
@@ -37,65 +58,124 @@ namespace DigaoDeskApp
         {
             foreach (var item in lst)
             {
-                lstBranches.Items.Add(new BranchView(item));
+                _internalBranchList.Add(new BranchSelectorItem(item));
             }
         }
 
-        private void FrmBranchDelete_Load(object sender, System.EventArgs e)
+        private void LoadGrid()
         {
-            lstBranches_TextChanged(null, null);
+            _gridBind = new(_internalBranchList);
+            //_gridBind.ApplySort("Timestamp DESC");
+            FilterBranches();
+
+            g.DataSource = _gridBind;
+        }
+
+        private void FrmBranchDelete_Load(object sender, EventArgs e)
+        {
+            LoadGrid();
+            g_SelectionChanged(null, null);
+            lst_SelectedIndexChanged(null, null);
             edConfirm_TextChanged(null, null);
         }
 
-        private void lstBranches_TextChanged(object sender, System.EventArgs e)
+        public IEnumerable<BranchForDeletion> GetListBranchesForDeletion()
         {
-            var sel = lstBranches.SelectedItem as BranchView;
-
-            ckLocal.Visible = (sel != null);
-            ckRemote.Visible = (sel != null && sel.BranchData.IsTracking);
+            return lst.Items.Cast<BranchForDeletion>();
         }
 
-        private bool GetOptLocal()
+        private void FilterBranches()
         {
-            return ckLocal.Visible && ckLocal.Checked;
+            var lstForDeletion = GetListBranchesForDeletion();
+
+            _gridBind.ApplyFilter(x => {
+                var branch = x.GetBranch();
+
+                if (lstForDeletion.Any(bfd => bfd.Branch == branch 
+                    || bfd.Branch.TrackedBranch == branch 
+                    || branch.TrackedBranch == bfd.Branch)) return false; //already mark for deletion
+
+                return
+                    (edSearch.Text == string.Empty || branch.FriendlyName.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase)) &&
+                    (branch.IsRemote == ckFilterRemote.Checked);
+            });
         }
 
-        private bool GetOptRemote()
+        private Branch GetBranchByRow(DataGridViewRow row)
         {
-            return ckRemote.Visible && ckRemote.Checked;
+            return (row.DataBoundItem as ObjectView<BranchSelectorItem>).Object.GetBranch();
         }
 
-        private void edConfirm_TextChanged(object sender, System.EventArgs e)
+        private void edSearch_TextChanged(object sender, EventArgs e)
+        {
+            FilterBranches();
+        }
+
+        private void g_SelectionChanged(object sender, EventArgs e)
+        {
+            Branch branch = null;
+            if (g.CurrentRow != null)
+            {
+                branch = GetBranchByRow(g.CurrentRow);
+            }
+
+            bool sel = branch != null;
+
+            btnAdd.Enabled = sel;
+            ckDeleteLocal.Visible = sel && !branch.IsRemote;
+            ckDeleteRemote.Visible = sel && (branch.IsRemote || branch.IsTracking);
+        }
+
+        private void lst_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDel.Enabled = lst.SelectedItem != null;
+        }
+
+        private void edConfirm_TextChanged(object sender, EventArgs e)
         {
             btnOK.Enabled = (edConfirm.Text == Vars.Lang.BranchDelete_ConfirmationText);
         }
 
-        private void btnOK_Click(object sender, System.EventArgs e)
+        private bool GetDeleteLocal()
         {
-            if (lstBranches.SelectedItem == null)
-            {
-                Messages.Error(Vars.Lang.BranchDelete_BranchRequired);
-                lstBranches.Select();
-                return;
-            }
+            return ckDeleteLocal.Visible && ckDeleteLocal.Checked;
+        }
 
-            if (!GetOptLocal() && !GetOptRemote())
-            {                
-                Messages.Error(Vars.Lang.BranchDelete_OptionRequired);
+        private bool GetDeleteRemote()
+        {
+            return ckDeleteRemote.Visible && ckDeleteRemote.Checked;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if (lst.Items.Count == 0)
+            {
+                Messages.Error("Please, add at least one branch for deletion");
                 return;
             }
 
             //
 
-            FormParams = new DeleteBranchParams
-            {
-                Branch = (lstBranches.SelectedItem as BranchView).BranchData,
-                Local = GetOptLocal(),
-                Remote = GetOptRemote()
-            };
-
             DialogResult = DialogResult.OK;
         }
-                
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (!GetDeleteLocal() && !GetDeleteRemote())
+            {
+                Messages.Error("Please, select an operation!");
+                return;
+            }
+
+            lst.Items.Add(new BranchForDeletion(GetBranchByRow(g.CurrentRow), GetDeleteLocal(), GetDeleteRemote()));
+            FilterBranches();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            lst.Items.RemoveAt(lst.SelectedIndex);
+            FilterBranches();
+        }
+
     }
 }
