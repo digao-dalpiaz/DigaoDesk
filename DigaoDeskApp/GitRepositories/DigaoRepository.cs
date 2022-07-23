@@ -491,11 +491,11 @@ namespace DigaoDeskApp
 
             if (!localBranches.Any())
             {
-                Messages.Error(Vars.Lang.DeleteBranch_NoOthersLocalBranches);
+                Messages.Error(Vars.Lang.DeleteBranch_NoOthersBranches);
                 return;
             }
 
-            FrmBranchDelete f = new();
+            FrmBranchDelete f = new(_repoCtrl);
             f.AddBranches(localBranches);
 
             if (f.ShowDialog() == DialogResult.OK)

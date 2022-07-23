@@ -33,12 +33,16 @@ namespace DigaoDeskApp
             }
         }
 
+        private Repository _repository;
+
         private List<BranchSelectorItem> _internalBranchList = new();
         private BindingListView<BranchSelectorItem> _gridBind;
 
-        public FrmBranchDelete()
+        public FrmBranchDelete(Repository repository)
         {
             InitializeComponent();
+
+            this._repository = repository;
 
             LoadLang();
         }
@@ -75,7 +79,6 @@ namespace DigaoDeskApp
         private void LoadGrid()
         {
             _gridBind = new(_internalBranchList);
-            //_gridBind.ApplySort("Timestamp DESC");
             FilterBranches();
 
             g.DataSource = _gridBind;
@@ -101,9 +104,7 @@ namespace DigaoDeskApp
             _gridBind.ApplyFilter(x => {
                 var branch = x.GetBranch();
 
-                if (lstForDeletion.Any(bfd => bfd.Branch == branch 
-                    || bfd.Branch.TrackedBranch == branch 
-                    || branch.TrackedBranch == bfd.Branch)) return false; //already mark for deletion
+                if (lstForDeletion.Any(bfd => bfd.Branch == branch || bfd.Branch.TrackedBranch == branch)) return false; //already mark for deletion
 
                 return
                     (edSearch.Text == string.Empty || branch.FriendlyName.Contains(edSearch.Text, StringComparison.InvariantCultureIgnoreCase)) &&
@@ -171,13 +172,21 @@ namespace DigaoDeskApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            var branch = GetBranchByRow(g.CurrentRow);
+
+            if (branch.IsRemote && _repository.Branches.Any(x => !x.IsRemote && GitUtils.IsSameBranch(x.TrackedBranch, branch)))
+            {
+                Messages.Error(Vars.Lang.BranchDelete_SameBranchFoundLocal);
+                return;
+            }
+
             if (!GetDeleteLocal() && !GetDeleteRemote())
             {
                 Messages.Error(Vars.Lang.BranchDelete_OptionRequired);
                 return;
             }
 
-            lst.Items.Add(new BranchForDeletion(GetBranchByRow(g.CurrentRow), GetDeleteLocal(), GetDeleteRemote()));
+            lst.Items.Add(new BranchForDeletion(branch, GetDeleteLocal(), GetDeleteRemote()));
             FilterBranches();
         }
 

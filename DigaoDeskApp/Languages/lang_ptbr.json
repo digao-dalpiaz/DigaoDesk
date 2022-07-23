@@ -154,6 +154,7 @@
   "BranchDelete_ConfirmationText": "CONFIRMO",
   "BranchDelete_BranchRequired": "Adicione pelo menos um branch na lista de exclusão",
   "BranchDelete_OptionRequired": "Maque pelo menos uma opção (Local / Remoto)",
+  "BranchDelete_SameBranchFoundLocal": "O mesmo branch está presente localmente, e por isso você precisa remover usando o branch local.",
 
   "BranchCreate_Title": "Criar Branch",
   "BranchCreate_InsertPrefix": "Inserir Prefixo",
@@ -220,7 +221,7 @@
   "CreateBranch_CreatingBasedOnBranch": "Criando branch baseado no branch {0}",
   "CreateBranch_Switching": "Trocando para o novo branch",
 
-  "DeleteBranch_NoOthersLocalBranches": "Não há outros branches locais além do atual para deletar",
+  "DeleteBranch_NoOthersBranches": "Não há outros branches além do atual para deletar",
   "DeleteBranch_DeletingRemote": "Deletando branch remoto...",
   "DeleteBranch_DeletingLocal": "Deletando branch local...",
 

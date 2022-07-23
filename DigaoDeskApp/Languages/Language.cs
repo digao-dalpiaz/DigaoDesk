@@ -159,6 +159,7 @@
         public string BranchDelete_ConfirmationText;
         public string BranchDelete_BranchRequired;
         public string BranchDelete_OptionRequired;
+        public string BranchDelete_SameBranchFoundLocal;
 
         public string BranchCreate_Title;
         public string BranchCreate_InsertPrefix;
@@ -225,7 +226,7 @@
         public string CreateBranch_CreatingBasedOnBranch;
         public string CreateBranch_Switching;
 
-        public string DeleteBranch_NoOthersLocalBranches;
+        public string DeleteBranch_NoOthersBranches;
         public string DeleteBranch_DeletingRemote;
         public string DeleteBranch_DeletingLocal;
 
