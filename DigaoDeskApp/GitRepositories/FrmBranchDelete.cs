@@ -174,7 +174,7 @@ namespace DigaoDeskApp
         {
             var branch = GetBranchByRow(g.CurrentRow);
 
-            if (branch.IsRemote && _repository.Branches.Any(x => !x.IsRemote && GitUtils.IsSameBranch(x.TrackedBranch, branch)))
+            if (branch.IsRemote && _repository.Branches.Any(x => !x.IsRemote && x.TrackedBranch == branch))
             {
                 Messages.Error(Vars.Lang.BranchDelete_SameBranchFoundLocal);
                 return;
