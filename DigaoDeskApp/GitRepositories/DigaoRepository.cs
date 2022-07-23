@@ -487,7 +487,7 @@ namespace DigaoDeskApp
 
         public void DeleteBranch()
         {
-            var localBranches = _repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x));
+            var localBranches = _repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x) && !GitUtils.IsBranchLocalAndRemoteLinked(_repoCtrl.Head, x));
 
             if (!localBranches.Any())
             {
@@ -511,12 +511,9 @@ namespace DigaoDeskApp
                         if (bfd.DelRemote)
                         {
                             Log.Log(Vars.Lang.DeleteBranch_DeletingRemote, Color.Orange);
-                            if (bfd.Branch.IsRemote)
+                            _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + bfd.Branch.UpstreamBranchCanonicalName, GetPushOptions());
+                            if (!bfd.Branch.IsRemote)
                             {
-                                _repoCtrl.Branches.Remove(bfd.Branch);
-                            } else
-                            {
-                                _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + bfd.Branch.UpstreamBranchCanonicalName, GetPushOptions());
                                 _repoCtrl.Branches.Update(bfd.Branch, b => b.TrackedBranch = null);
                             }
                         }
