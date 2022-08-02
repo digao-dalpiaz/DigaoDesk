@@ -487,16 +487,16 @@ namespace DigaoDeskApp
 
         public void DeleteBranch()
         {
-            var localBranches = _repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x) && !GitUtils.IsBranchLocalAndRemoteLinked(_repoCtrl.Head, x));
+            var lstBranches = _repoCtrl.Branches.Where(x => !x.IsCurrentRepositoryHead && !GitUtils.IsBranchOriginHead(x) && !GitUtils.IsBranchLocalAndRemoteLinked(_repoCtrl.Head, x));
 
-            if (!localBranches.Any())
+            if (!lstBranches.Any())
             {
                 Messages.Error(Vars.Lang.DeleteBranch_NoOthersBranches);
                 return;
             }
 
             FrmBranchDelete f = new(_repoCtrl);
-            f.AddBranches(localBranches);
+            f.AddBranches(lstBranches);
 
             if (f.ShowDialog() == DialogResult.OK)
             {              
