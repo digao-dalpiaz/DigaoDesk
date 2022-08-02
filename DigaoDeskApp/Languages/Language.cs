@@ -150,13 +150,16 @@
         public string BranchSelector_BranchRequired;
 
         public string BranchDelete_Title;
-        public string BranchDelete_Branch;
-        public string BranchDelete_OptLocal;
-        public string BranchDelete_OptRemote;
+        public string BranchDelete_FilterBranches;
+        public string BranchDelete_DeleteLocal;
+        public string BranchDelete_DeleteRemote;
+        public string BranchDelete_BtnAdd;
+        public string BranchDelete_BtnDelete;
         public string BranchDelete_ConfirmationLabel;
         public string BranchDelete_ConfirmationText;
         public string BranchDelete_BranchRequired;
         public string BranchDelete_OptionRequired;
+        public string BranchDelete_SameBranchFoundLocal;
 
         public string BranchCreate_Title;
         public string BranchCreate_InsertPrefix;
@@ -223,7 +226,7 @@
         public string CreateBranch_CreatingBasedOnBranch;
         public string CreateBranch_Switching;
 
-        public string DeleteBranch_NoOthersLocalBranches;
+        public string DeleteBranch_NoOthersBranches;
         public string DeleteBranch_DeletingRemote;
         public string DeleteBranch_DeletingLocal;
 

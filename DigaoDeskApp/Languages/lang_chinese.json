@@ -145,13 +145,16 @@
   "BranchSelector_BranchRequired": "请选择一个分支！",
 
   "BranchDelete_Title": "删除分支",
-  "BranchDelete_Branch": "分支",
-  "BranchDelete_OptLocal": "删除本地",
-  "BranchDelete_OptRemote": "删除远程",
+  "BranchDelete_FilterBranches": "Filter Branches",
+  "BranchDelete_DeleteLocal": "删除本地",
+  "BranchDelete_DeleteRemote": "删除远程",
+  "BranchDelete_BtnAdd": "Mark for Deletion",
+  "BranchDelete_BtnDelete": "Remove from Deletion",
   "BranchDelete_ConfirmationLabel": "键入 \"CONFIRM\" 以启用确定按钮",
   "BranchDelete_ConfirmationText": "CONFIRM",
-  "BranchDelete_BranchRequired": "请选择一个有效的分支",
+  "BranchDelete_BranchRequired": "Please, add at least one branch for deletion.",
   "BranchDelete_OptionRequired": "请至少选择一个选项（本地/远程）",
+  "BranchDelete_SameBranchFoundLocal": "The same branch is present locally, so you gonna need to remove using local branch.",
 
   "BranchCreate_Title": "创建分支",
   "BranchCreate_InsertPrefix": "插入前缀",
@@ -218,7 +221,7 @@
   "CreateBranch_CreatingBasedOnBranch": "基于分支 {0} 创建分支",
   "CreateBranch_Switching": "切换到新分支",
 
-  "DeleteBranch_NoOthersLocalBranches": "除当前分支外，没有其他本地分支可删除",
+  "DeleteBranch_NoOthersBranches": "There are no other branches than the current one to delete",
   "DeleteBranch_DeletingRemote": "正在删除远程分支...",
   "DeleteBranch_DeletingLocal": "正在删除本地分支...",
 

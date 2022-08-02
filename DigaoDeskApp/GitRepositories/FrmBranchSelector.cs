@@ -12,55 +12,8 @@ namespace DigaoDeskApp
 
         public Branch ResultBranch;
 
-        private class BranchInfo
-        {
-            private Branch _branch;
-
-            public BranchInfo(Branch branch)
-            {
-                _branch = branch;
-            }
-
-            public Branch GetBranch()
-            {
-                return _branch;
-            }
-
-            public string Name
-            {
-                get
-                {
-                    return GitUtils.GetBranchDisplayName(_branch);
-                }
-            }
-
-            public string Location
-            {
-                get
-                {
-                    return _branch.IsRemote ? Vars.Lang.BranchSelector_Remote : Vars.Lang.BranchSelector_Local;
-                }
-            }
-
-            public string Author
-            {
-                get
-                {
-                    return _branch.Tip.Author.Name;
-                }
-            }
-
-            public string Timestamp
-            {
-                get
-                {
-                    return _branch.Tip.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT);
-                }
-            }           
-        }
-
-        private List<BranchInfo> _internalBranchList = new();
-        private BindingListView<BranchInfo> _gridBind;
+        private List<BranchSelectorItem> _internalBranchList = new();
+        private BindingListView<BranchSelectorItem> _gridBind;
         private bool _useLocation;
 
         public FrmBranchSelector(string title, bool useLocation)
@@ -95,7 +48,7 @@ namespace DigaoDeskApp
         {
             foreach (var item in lst)
             {
-                _internalBranchList.Add(new BranchInfo(item));
+                _internalBranchList.Add(new BranchSelectorItem(item));
             }
         }
 
@@ -134,7 +87,7 @@ namespace DigaoDeskApp
 
         private Branch GetBranchByRow(DataGridViewRow row)
         {
-            return (row.DataBoundItem as ObjectView<BranchInfo>).Object.GetBranch();
+            return (row.DataBoundItem as ObjectView<BranchSelectorItem>).Object.GetBranch();
         }
 
         private void g_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
