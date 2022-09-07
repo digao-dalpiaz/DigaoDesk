@@ -36,9 +36,9 @@ namespace DigaoDeskApp
             lbLanguage.Text = Vars.Lang.Config_General_Language;
             lbLanguageInfo.Text = Vars.Lang.Config_General_LanguageInfo;
 
-            lbFont.Text = Vars.Lang.Config_Logs_Font;
-            lbTextColor.Text = Vars.Lang.Config_Logs_TextColor;
-            lbBackgroundColor.Text = Vars.Lang.Config_Logs_BackgroundColor;
+            lbConsoleFont.Text = Vars.Lang.Config_Logs_Font;
+            lbColorConsoleFore.Text = Vars.Lang.Config_Logs_TextColor;
+            lbColorConsoleBack.Text = Vars.Lang.Config_Logs_BackgroundColor;
             ckLogShowTs.Text = Vars.Lang.Config_Logs_ShowDateTime;
             ckLogWordWrap.Text = Vars.Lang.Config_Logs_WordWrap;
 
