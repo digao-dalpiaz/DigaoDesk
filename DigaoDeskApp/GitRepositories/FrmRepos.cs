@@ -26,6 +26,7 @@ namespace DigaoDeskApp
             Theme.setToolStrip(toolBar);
             Theme.setGrid(g);
             Theme.setSplitter(splitter);
+            Theme.setStatusStrip(statusBar);
 
             LoadLang();
 
