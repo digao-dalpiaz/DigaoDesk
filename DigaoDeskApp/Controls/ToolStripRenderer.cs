@@ -22,7 +22,7 @@ namespace DigaoDeskApp
         
         protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs e)
         {
-            if (!e.Item.Selected)
+            if (!e.Item.Selected && !e.Item.Pressed)
             {
                 base.OnRenderButtonBackground(e);
             }
