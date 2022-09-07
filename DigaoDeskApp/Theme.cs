@@ -12,11 +12,9 @@ namespace DigaoDeskApp
     internal class Theme
     {
 
-        private static Color BACK_COLOR = Color.FromArgb(30, 30, 30);
-
         public static void setToolStrip(ToolStrip c)
         {
-            c.BackColor = BACK_COLOR;
+            c.BackColor = Vars.Config.Theme.ToolbarBack;
             c.GripStyle = ToolStripGripStyle.Hidden;
             c.RenderMode = ToolStripRenderMode.Professional;
 
@@ -24,41 +22,51 @@ namespace DigaoDeskApp
 
             foreach (ToolStripItem item in c.Items)
             {
-                item.ForeColor = Color.White;
+                item.ForeColor = Vars.Config.Theme.ToolbarFore;
             }
         }
 
         public static void setGrid(DataGridView c)
         {
-            c.BackgroundColor = BACK_COLOR;
+            c.BackgroundColor = Vars.Config.Theme.GridBack;
             c.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             c.EnableHeadersVisualStyles = false;
-            c.GridColor = Color.DimGray;
+            c.GridColor = Vars.Config.Theme.GridLines;
 
-            c.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 0, 64);
+            c.ColumnHeadersDefaultCellStyle.BackColor = Vars.Config.Theme.GridHeadBack;
             c.ColumnHeadersDefaultCellStyle.SelectionBackColor = c.ColumnHeadersDefaultCellStyle.BackColor;
-            c.ColumnHeadersDefaultCellStyle.ForeColor = Color.Silver;
+            c.ColumnHeadersDefaultCellStyle.ForeColor = Vars.Config.Theme.GridHeadFore;
+            c.ColumnHeadersDefaultCellStyle.SelectionForeColor = c.ColumnHeadersDefaultCellStyle.ForeColor;
 
-            c.RowTemplate.DefaultCellStyle.BackColor = BACK_COLOR;
-            c.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 0);
-            c.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 192);
-            c.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+            c.RowTemplate.DefaultCellStyle.BackColor = Vars.Config.Theme.GridDataBack;
+            c.RowTemplate.DefaultCellStyle.SelectionBackColor = Vars.Config.Theme.GridSelBack;
+            c.RowTemplate.DefaultCellStyle.ForeColor = Vars.Config.Theme.GridDataFore;
+            c.RowTemplate.DefaultCellStyle.SelectionForeColor = Vars.Config.Theme.GridSelFore;
         }
 
         public static void setSplitter(Splitter c)
         {
-            c.BackColor = Color.FromArgb(64, 64, 64);
+            c.BackColor = Vars.Config.Theme.SplitterBack;
+        }
+
+        public static void setConsole(RichTextBoxEx c)
+        {
+            c.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
+            c.ForeColor = Vars.Config.Theme.ConsoleFore;
+            c.BackColor = Vars.Config.Theme.ConsoleBack;
+
+            c.WordWrap = Vars.Config.Log.WordWrap;
         }
 
         public static void setStatusStrip(StatusStrip c)
         {
-            c.BackColor = BACK_COLOR;
+            c.BackColor = Vars.Config.Theme.StatusBack;
 
             foreach (ToolStripStatusLabel item in c.Items)
             {
                 if (item.ForeColor == SystemColors.ControlText)
                 {
-                    item.ForeColor = Color.Silver;
+                    item.ForeColor = Vars.Config.Theme.StatusFore;
                 }
             }
         }
@@ -71,7 +79,7 @@ namespace DigaoDeskApp
         private const int DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19;
         private const int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
 
-        public static bool UseImmersiveDarkMode(IntPtr handle, bool enabled)
+        public static bool UseImmersiveDarkMode(IntPtr handle)
         {
             if (IsWindows10OrGreater(17763))
             {
@@ -81,7 +89,7 @@ namespace DigaoDeskApp
                     attribute = DWMWA_USE_IMMERSIVE_DARK_MODE;
                 }
 
-                int useImmersiveDarkMode = enabled ? 1 : 0;
+                int useImmersiveDarkMode = Vars.Config.Theme.DarkTitle ? 1 : 0;
                 return DwmSetWindowAttribute(handle, (int)attribute, ref useImmersiveDarkMode, sizeof(int)) == 0;
             }
 

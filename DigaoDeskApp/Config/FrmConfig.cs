@@ -79,17 +79,31 @@ namespace DigaoDeskApp
         private void LoadSettings()
         {
             edLanguage.SelectedItem = LangEngine.GetDefinitionByValue(Vars.Config.Language);
-
-            //--Apps tab
+            
             _dlgFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
             UpdateFontButton();
-
-            btnLogTextColor.BackColor = Vars.Config.Log.TextColor;
-            btnLogBgColor.BackColor = Vars.Config.Log.BgColor;
 
             ckLogShowTs.Checked = Vars.Config.Log.ShowTimestamp;
             ckLogWordWrap.Checked = Vars.Config.Log.WordWrap;
 
+            ckThemeDarkTitle.Checked = Vars.Config.Theme.DarkTitle;
+            btnColorToolbarBack.BackColor = Vars.Config.Theme.ToolbarBack;
+            btnColorToolbarFore.BackColor = Vars.Config.Theme.ToolbarFore;
+            btnColorGridHeadBack.BackColor = Vars.Config.Theme.GridHeadBack;
+            btnColorGridHeadFore.BackColor = Vars.Config.Theme.GridHeadFore;
+            btnColorGridBack.BackColor = Vars.Config.Theme.GridBack;
+            btnColorGridLines.BackColor = Vars.Config.Theme.GridLines;
+            btnColorGridDataBack.BackColor = Vars.Config.Theme.GridDataBack;
+            btnColorGridDataFore.BackColor = Vars.Config.Theme.GridDataFore;
+            btnColorGridSelBack.BackColor = Vars.Config.Theme.GridSelBack;
+            btnColorGridSelFore.BackColor = Vars.Config.Theme.GridSelFore;
+            btnColorSplitterBack.BackColor = Vars.Config.Theme.SplitterBack;
+            btnColorConsoleBack.BackColor = Vars.Config.Theme.ConsoleBack;
+            btnColorConsoleFore.BackColor = Vars.Config.Theme.ConsoleFore;
+            btnColorStatusBack.BackColor = Vars.Config.Theme.StatusBack;
+            btnColorStatusFore.BackColor = Vars.Config.Theme.StatusFore;
+
+            //--Apps tab
             ckNotifyWhenAppStops.Checked = Vars.Config.NotifyAppStops;
             CkDontNotifyWhenAppsActive.Checked = Vars.Config.DontNotifyWhenAppsActive;
             //--
@@ -167,16 +181,30 @@ namespace DigaoDeskApp
         {
             Vars.Config.Language = ((LangEngine.Definition)edLanguage.SelectedItem).Value;
 
-            //--Apps tab
             Vars.Config.Log.FontName = _dlgFont.Font.Name;
             Vars.Config.Log.FontSize = _dlgFont.Font.Size;
-
-            Vars.Config.Log.TextColor = btnLogTextColor.BackColor;
-            Vars.Config.Log.BgColor = btnLogBgColor.BackColor;
 
             Vars.Config.Log.ShowTimestamp = ckLogShowTs.Checked;
             Vars.Config.Log.WordWrap = ckLogWordWrap.Checked;
 
+            Vars.Config.Theme.DarkTitle = ckThemeDarkTitle.Checked;
+            Vars.Config.Theme.ToolbarBack = btnColorToolbarBack.BackColor;
+            Vars.Config.Theme.ToolbarFore = btnColorToolbarFore.BackColor;
+            Vars.Config.Theme.GridHeadBack = btnColorGridHeadBack.BackColor;
+            Vars.Config.Theme.GridHeadFore = btnColorGridHeadFore.BackColor;
+            Vars.Config.Theme.GridBack = btnColorGridBack.BackColor;
+            Vars.Config.Theme.GridLines = btnColorGridLines.BackColor;
+            Vars.Config.Theme.GridDataBack = btnColorGridDataBack.BackColor;
+            Vars.Config.Theme.GridDataFore = btnColorGridDataFore.BackColor;            
+            Vars.Config.Theme.GridSelBack = btnColorGridSelBack.BackColor;
+            Vars.Config.Theme.GridSelFore = btnColorGridSelFore.BackColor;
+            Vars.Config.Theme.SplitterBack = btnColorSplitterBack.BackColor;
+            Vars.Config.Theme.ConsoleBack = btnColorConsoleBack.BackColor;
+            Vars.Config.Theme.ConsoleFore = btnColorConsoleFore.BackColor;
+            Vars.Config.Theme.StatusBack = btnColorStatusBack.BackColor;
+            Vars.Config.Theme.StatusFore = btnColorStatusFore.BackColor;
+
+            //--Apps tab
             Vars.Config.NotifyAppStops = ckNotifyWhenAppStops.Checked;
             Vars.Config.DontNotifyWhenAppsActive = CkDontNotifyWhenAppsActive.Checked;
             //--
@@ -213,14 +241,9 @@ namespace DigaoDeskApp
             }
         }
 
-        private void btnLogTextColor_Click(object sender, System.EventArgs e)
+        private void btnColor_Click(object sender, System.EventArgs e)
         {
-            DoSelColor(btnLogTextColor);
-        }
-
-        private void btnLogBgColor_Click(object sender, System.EventArgs e)
-        {
-            DoSelColor(btnLogBgColor);
+            DoSelColor((Button)sender);
         }
 
         private void DoSelColor(Button btn)

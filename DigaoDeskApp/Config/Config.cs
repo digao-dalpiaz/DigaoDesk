@@ -10,6 +10,7 @@ namespace DigaoDeskApp
 
         public string Language = LangEngine.DEFAULT_LANG;
 
+        public ConfigTheme Theme;
         public ConfigLog Log;
         public bool NotifyAppStops = true;
         public bool DontNotifyWhenAppsActive = false;
@@ -23,12 +24,30 @@ namespace DigaoDeskApp
         public string GitCommitMessage;
         public ConfigGit Git;
 
+        public class ConfigTheme
+        {
+            public bool DarkTitle;
+            public Color ToolbarBack;
+            public Color ToolbarFore;
+            public Color GridHeadBack;
+            public Color GridHeadFore;
+            public Color GridBack;
+            public Color GridLines;
+            public Color GridDataBack;
+            public Color GridDataFore;
+            public Color GridSelBack;
+            public Color GridSelFore;
+            public Color SplitterBack;
+            public Color ConsoleBack;
+            public Color ConsoleFore;
+            public Color StatusBack;
+            public Color StatusFore;
+        }
+
         public class ConfigLog
         {
             public string FontName = "Consolas";
             public float FontSize = 10;
-            public Color TextColor = Color.Lime;
-            public Color BgColor = Color.FromArgb(30, 30, 30);
             public bool ShowTimestamp = false;
             public bool WordWrap = false;
         }
@@ -59,6 +78,7 @@ namespace DigaoDeskApp
                 Vars.Config = new();
             }
 
+            if (Vars.Config.Theme == null) Vars.Config.Theme = new();
             if (Vars.Config.Log == null) Vars.Config.Log = new();
             if (Vars.Config.Git == null) Vars.Config.Git = new();
         }
