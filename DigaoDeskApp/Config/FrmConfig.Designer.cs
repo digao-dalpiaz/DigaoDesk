@@ -34,7 +34,7 @@ namespace DigaoDeskApp
             this.lbLanguageInfo = new System.Windows.Forms.Label();
             this.lbLanguage = new System.Windows.Forms.Label();
             this.edLanguage = new System.Windows.Forms.ComboBox();
-            this.tabLogs = new System.Windows.Forms.TabPage();
+            this.tabTheme = new System.Windows.Forms.TabPage();
             this.lbColorGridDataBack = new System.Windows.Forms.Label();
             this.btnColorGridDataBack = new System.Windows.Forms.Button();
             this.lbColorGridLines = new System.Windows.Forms.Label();
@@ -107,7 +107,7 @@ namespace DigaoDeskApp
             this.btnCancel = new System.Windows.Forms.Button();
             this.pages.SuspendLayout();
             this.tabGeneral.SuspendLayout();
-            this.tabLogs.SuspendLayout();
+            this.tabTheme.SuspendLayout();
             this.tabApplications.SuspendLayout();
             this.tabRepos.SuspendLayout();
             this.boxGitAuthor.SuspendLayout();
@@ -117,7 +117,7 @@ namespace DigaoDeskApp
             // pages
             // 
             this.pages.Controls.Add(this.tabGeneral);
-            this.pages.Controls.Add(this.tabLogs);
+            this.pages.Controls.Add(this.tabTheme);
             this.pages.Controls.Add(this.tabApplications);
             this.pages.Controls.Add(this.tabRepos);
             this.pages.Location = new System.Drawing.Point(9, 11);
@@ -167,51 +167,51 @@ namespace DigaoDeskApp
             this.edLanguage.Size = new System.Drawing.Size(304, 28);
             this.edLanguage.TabIndex = 0;
             // 
-            // tabLogs
+            // tabTheme
             // 
-            this.tabLogs.Controls.Add(this.lbColorGridDataBack);
-            this.tabLogs.Controls.Add(this.btnColorGridDataBack);
-            this.tabLogs.Controls.Add(this.lbColorGridLines);
-            this.tabLogs.Controls.Add(this.btnColorGridLines);
-            this.tabLogs.Controls.Add(this.lbColorStatusFore);
-            this.tabLogs.Controls.Add(this.btnColorStatusFore);
-            this.tabLogs.Controls.Add(this.lbColorGridHeadBack);
-            this.tabLogs.Controls.Add(this.btnColorGridHeadBack);
-            this.tabLogs.Controls.Add(this.lbColorSplitterBack);
-            this.tabLogs.Controls.Add(this.btnColorSplitterBack);
-            this.tabLogs.Controls.Add(this.lbColorStatusBack);
-            this.tabLogs.Controls.Add(this.btnColorStatusBack);
-            this.tabLogs.Controls.Add(this.lbColorGridSelBack);
-            this.tabLogs.Controls.Add(this.btnColorGridSelBack);
-            this.tabLogs.Controls.Add(this.lbColorGridDataFore);
-            this.tabLogs.Controls.Add(this.btnColorGridDataFore);
-            this.tabLogs.Controls.Add(this.lbColorGridHeadFore);
-            this.tabLogs.Controls.Add(this.btnColorGridHeadFore);
-            this.tabLogs.Controls.Add(this.lbColorGridSelFore);
-            this.tabLogs.Controls.Add(this.btnColorGridSelFore);
-            this.tabLogs.Controls.Add(this.lbColorGridBack);
-            this.tabLogs.Controls.Add(this.btnColorGridBack);
-            this.tabLogs.Controls.Add(this.lbColorToolbarFore);
-            this.tabLogs.Controls.Add(this.btnColorToolbarFore);
-            this.tabLogs.Controls.Add(this.lbColorToolbarBack);
-            this.tabLogs.Controls.Add(this.btnColorToolbarBack);
-            this.tabLogs.Controls.Add(this.ckThemeDarkTitle);
-            this.tabLogs.Controls.Add(this.btnLogFont);
-            this.tabLogs.Controls.Add(this.lbColorConsoleFore);
-            this.tabLogs.Controls.Add(this.ckLogWordWrap);
-            this.tabLogs.Controls.Add(this.lbColorConsoleBack);
-            this.tabLogs.Controls.Add(this.ckLogShowTs);
-            this.tabLogs.Controls.Add(this.btnColorConsoleFore);
-            this.tabLogs.Controls.Add(this.btnColorConsoleBack);
-            this.tabLogs.Controls.Add(this.lbConsoleFont);
-            this.tabLogs.Location = new System.Drawing.Point(4, 29);
-            this.tabLogs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabLogs.Name = "tabLogs";
-            this.tabLogs.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabLogs.Size = new System.Drawing.Size(1039, 660);
-            this.tabLogs.TabIndex = 2;
-            this.tabLogs.Text = "Log";
-            this.tabLogs.UseVisualStyleBackColor = true;
+            this.tabTheme.Controls.Add(this.lbColorGridDataBack);
+            this.tabTheme.Controls.Add(this.btnColorGridDataBack);
+            this.tabTheme.Controls.Add(this.lbColorGridLines);
+            this.tabTheme.Controls.Add(this.btnColorGridLines);
+            this.tabTheme.Controls.Add(this.lbColorStatusFore);
+            this.tabTheme.Controls.Add(this.btnColorStatusFore);
+            this.tabTheme.Controls.Add(this.lbColorGridHeadBack);
+            this.tabTheme.Controls.Add(this.btnColorGridHeadBack);
+            this.tabTheme.Controls.Add(this.lbColorSplitterBack);
+            this.tabTheme.Controls.Add(this.btnColorSplitterBack);
+            this.tabTheme.Controls.Add(this.lbColorStatusBack);
+            this.tabTheme.Controls.Add(this.btnColorStatusBack);
+            this.tabTheme.Controls.Add(this.lbColorGridSelBack);
+            this.tabTheme.Controls.Add(this.btnColorGridSelBack);
+            this.tabTheme.Controls.Add(this.lbColorGridDataFore);
+            this.tabTheme.Controls.Add(this.btnColorGridDataFore);
+            this.tabTheme.Controls.Add(this.lbColorGridHeadFore);
+            this.tabTheme.Controls.Add(this.btnColorGridHeadFore);
+            this.tabTheme.Controls.Add(this.lbColorGridSelFore);
+            this.tabTheme.Controls.Add(this.btnColorGridSelFore);
+            this.tabTheme.Controls.Add(this.lbColorGridBack);
+            this.tabTheme.Controls.Add(this.btnColorGridBack);
+            this.tabTheme.Controls.Add(this.lbColorToolbarFore);
+            this.tabTheme.Controls.Add(this.btnColorToolbarFore);
+            this.tabTheme.Controls.Add(this.lbColorToolbarBack);
+            this.tabTheme.Controls.Add(this.btnColorToolbarBack);
+            this.tabTheme.Controls.Add(this.ckThemeDarkTitle);
+            this.tabTheme.Controls.Add(this.btnLogFont);
+            this.tabTheme.Controls.Add(this.lbColorConsoleFore);
+            this.tabTheme.Controls.Add(this.ckLogWordWrap);
+            this.tabTheme.Controls.Add(this.lbColorConsoleBack);
+            this.tabTheme.Controls.Add(this.ckLogShowTs);
+            this.tabTheme.Controls.Add(this.btnColorConsoleFore);
+            this.tabTheme.Controls.Add(this.btnColorConsoleBack);
+            this.tabTheme.Controls.Add(this.lbConsoleFont);
+            this.tabTheme.Location = new System.Drawing.Point(4, 29);
+            this.tabTheme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabTheme.Name = "tabTheme";
+            this.tabTheme.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabTheme.Size = new System.Drawing.Size(1039, 660);
+            this.tabTheme.TabIndex = 2;
+            this.tabTheme.Text = "Theme";
+            this.tabTheme.UseVisualStyleBackColor = true;
             // 
             // lbColorGridDataBack
             // 
@@ -945,8 +945,8 @@ namespace DigaoDeskApp
             this.pages.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
             this.tabGeneral.PerformLayout();
-            this.tabLogs.ResumeLayout(false);
-            this.tabLogs.PerformLayout();
+            this.tabTheme.ResumeLayout(false);
+            this.tabTheme.PerformLayout();
             this.tabApplications.ResumeLayout(false);
             this.tabApplications.PerformLayout();
             this.tabRepos.ResumeLayout(false);
@@ -974,7 +974,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbAuthorEmail;
         private System.Windows.Forms.TextBox edGitName;
         private System.Windows.Forms.Label lbAuthorName;
-        private System.Windows.Forms.TabPage tabLogs;
+        private System.Windows.Forms.TabPage tabTheme;
         private System.Windows.Forms.Button btnLogFont;
         private System.Windows.Forms.Label lbColorConsoleFore;
         private System.Windows.Forms.CheckBox ckLogWordWrap;

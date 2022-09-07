@@ -29,18 +29,32 @@ namespace DigaoDeskApp
             this.Text = Vars.Lang.Config_Title;
 
             tabGeneral.Text = Vars.Lang.Config_Tab_General;
-            tabLogs.Text = Vars.Lang.Config_Tab_Logs;
+            tabTheme.Text = Vars.Lang.Config_Tab_Theme;
             tabApplications.Text = Vars.Lang.Config_Tab_Applications;
             tabRepos.Text = Vars.Lang.Config_Tab_Repositories;
 
             lbLanguage.Text = Vars.Lang.Config_General_Language;
             lbLanguageInfo.Text = Vars.Lang.Config_General_LanguageInfo;
 
-            lbConsoleFont.Text = Vars.Lang.Config_Logs_Font;
-            lbColorConsoleFore.Text = Vars.Lang.Config_Logs_TextColor;
-            lbColorConsoleBack.Text = Vars.Lang.Config_Logs_BackgroundColor;
-            ckLogShowTs.Text = Vars.Lang.Config_Logs_ShowDateTime;
-            ckLogWordWrap.Text = Vars.Lang.Config_Logs_WordWrap;
+            ckThemeDarkTitle.Text = Vars.Lang.Config_Theme_DarkTitle;
+            lbColorToolbarBack.Text = Vars.Lang.Config_Theme_ColorToolbarBack;
+            lbColorToolbarFore.Text = Vars.Lang.Config_Theme_ColorToolbarFore;
+            lbColorGridHeadBack.Text = Vars.Lang.Config_Theme_ColorGridHeadBack;
+            lbColorGridHeadFore.Text = Vars.Lang.Config_Theme_ColorGridHeadFore;
+            lbColorGridBack.Text = Vars.Lang.Config_Theme_ColorGridBack;
+            lbColorGridLines.Text = Vars.Lang.Config_Theme_ColorGridLines;
+            lbColorGridDataBack.Text = Vars.Lang.Config_Theme_ColorGridDataBack;
+            lbColorGridDataFore.Text = Vars.Lang.Config_Theme_ColorGridDataFore;
+            lbColorGridSelBack.Text = Vars.Lang.Config_Theme_ColorGridSelBack;
+            lbColorGridSelFore.Text = Vars.Lang.Config_Theme_ColorGridSelFore;
+            lbColorSplitterBack.Text = Vars.Lang.Config_Theme_ColorSplitterBack;
+            lbColorConsoleBack.Text = Vars.Lang.Config_Theme_ColorConsoleBack;
+            lbColorConsoleFore.Text = Vars.Lang.Config_Theme_ColorConsoleFore;
+            lbColorStatusBack.Text = Vars.Lang.Config_Theme_ColorStatusBack;
+            lbColorStatusFore.Text = Vars.Lang.Config_Theme_ColorStatusFore;
+            lbConsoleFont.Text = Vars.Lang.Config_Theme_Font;
+            ckLogShowTs.Text = Vars.Lang.Config_Theme_ShowDateTime;
+            ckLogWordWrap.Text = Vars.Lang.Config_Theme_WordWrap;
 
             ckNotifyWhenAppStops.Text = Vars.Lang.Config_Apps_NotifyWhenStop;
             CkDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
