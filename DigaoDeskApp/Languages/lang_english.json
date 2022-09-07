@@ -72,6 +72,8 @@
   "Repos_BtnConfig": "Config",
   "Repos_BtnClearLog": "Clear Log",
 
+  "Repos_StatusBar_Info": "I see your work will be amazing!",
+
   "Repos_BranchCountFormat": "Local: {0} / Remote: {1}",
   "Repos_AheadFormat": "Ahead: {0}",
   "Repos_BehindFormat": "Behind: {0}",

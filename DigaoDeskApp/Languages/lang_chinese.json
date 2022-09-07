@@ -72,6 +72,8 @@
   "Repos_BtnConfig": "配置",
   "Repos_BtnClearLog": "清除日志",
 
+  "Repos_StatusBar_Info": "I see your work will be amazing!",
+
   "Repos_BranchCountFormat": "本地：{0} / 远程：{1}",
   "Repos_AheadFormat": "前面：{0}",
   "Repos_BehindFormat": "后面：{0}",

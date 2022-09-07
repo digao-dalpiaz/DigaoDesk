@@ -111,6 +111,8 @@ namespace DigaoDeskApp
             btnRepoConfig.Text = Vars.Lang.Repos_BtnConfig;
             btnClearLog.Text = Vars.Lang.Repos_BtnClearLog;
 
+            stFunInfo.Text = Vars.Lang.Repos_StatusBar_Info;
+
             colName.HeaderText = Vars.Lang.Repos_ColName;
             colBranch.HeaderText = Vars.Lang.Repos_ColBranch;
             colBranchesCount.HeaderText = Vars.Lang.Repos_ColBranchesCount;
