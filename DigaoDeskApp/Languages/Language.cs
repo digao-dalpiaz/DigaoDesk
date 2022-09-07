@@ -22,16 +22,32 @@
 
         public string Config_Title;
         public string Config_Tab_General;
-        public string Config_Tab_Logs;
+        public string Config_Tab_Theme;
         public string Config_Tab_Applications;
         public string Config_Tab_Repositories;
         public string Config_General_Language;
         public string Config_General_LanguageInfo;
-        public string Config_Logs_Font;
-        public string Config_Logs_TextColor;
-        public string Config_Logs_BackgroundColor;
-        public string Config_Logs_ShowDateTime;
-        public string Config_Logs_WordWrap;
+
+        public string Config_Theme_DarkTitle;
+        public string Config_Theme_ColorToolbarBack;
+        public string Config_Theme_ColorToolbarFore;
+        public string Config_Theme_ColorGridHeadBack;
+        public string Config_Theme_ColorGridHeadFore;
+        public string Config_Theme_ColorGridBack;
+        public string Config_Theme_ColorGridLines;
+        public string Config_Theme_ColorGridDataBack;
+        public string Config_Theme_ColorGridDataFore;
+        public string Config_Theme_ColorGridSelBack;
+        public string Config_Theme_ColorGridSelFore;
+        public string Config_Theme_ColorSplitterBack;
+        public string Config_Theme_ColorConsoleBack;
+        public string Config_Theme_ColorConsoleFore;
+        public string Config_Theme_ColorStatusBack;
+        public string Config_Theme_ColorStatusFore;
+        public string Config_Theme_Font;
+        public string Config_Theme_ShowDateTime;
+        public string Config_Theme_WordWrap;
+
         public string Config_Apps_NotifyWhenStop;
         public string Config_Apps_DontNotifyStopWhenActive;
         public string Config_Repos_Folder;
@@ -76,6 +92,8 @@
         public string Repos_BtnShell;
         public string Repos_BtnConfig;
         public string Repos_BtnClearLog;
+
+        public string Repos_StatusBar_Info;
 
         public string Repos_BranchCountFormat;
         public string Repos_AheadFormat;

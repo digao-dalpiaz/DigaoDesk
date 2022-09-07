@@ -10,6 +10,7 @@ namespace DigaoDeskApp
 
         public string Language = LangEngine.DEFAULT_LANG;
 
+        public ConfigTheme Theme;
         public ConfigLog Log;
         public bool NotifyAppStops = true;
         public bool DontNotifyWhenAppsActive = false;
@@ -23,12 +24,30 @@ namespace DigaoDeskApp
         public string GitCommitMessage;
         public ConfigGit Git;
 
+        public class ConfigTheme
+        {
+            public bool DarkTitle = true;
+            public Color ToolbarBack = Color.FromArgb(30, 30, 30);
+            public Color ToolbarFore = Color.White;
+            public Color GridHeadBack = Color.FromArgb(0, 35, 70);
+            public Color GridHeadFore = Color.White;
+            public Color GridBack = Color.FromArgb(30, 30, 30);
+            public Color GridLines = Color.FromArgb(65, 65, 65);
+            public Color GridDataBack = Color.FromArgb(30, 30, 30);
+            public Color GridDataFore = Color.FromArgb(255, 255, 128);
+            public Color GridSelBack = Color.FromArgb(255, 116, 2);
+            public Color GridSelFore = Color.White;
+            public Color SplitterBack = Color.FromArgb(50, 50, 50);
+            public Color ConsoleBack = Color.FromArgb(15, 15, 15);
+            public Color ConsoleFore = Color.FromArgb(128, 255, 128);
+            public Color StatusBack = Color.FromArgb(30, 30, 30);
+            public Color StatusFore = Color.Silver;
+        }
+
         public class ConfigLog
         {
             public string FontName = "Consolas";
             public float FontSize = 10;
-            public Color TextColor = Color.Lime;
-            public Color BgColor = Color.FromArgb(30, 30, 30);
             public bool ShowTimestamp = false;
             public bool WordWrap = false;
         }
@@ -59,6 +78,7 @@ namespace DigaoDeskApp
                 Vars.Config = new();
             }
 
+            if (Vars.Config.Theme == null) Vars.Config.Theme = new();
             if (Vars.Config.Log == null) Vars.Config.Log = new();
             if (Vars.Config.Git == null) Vars.Config.Git = new();
         }

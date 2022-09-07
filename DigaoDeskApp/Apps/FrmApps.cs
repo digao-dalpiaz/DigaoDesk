@@ -83,11 +83,12 @@ namespace DigaoDeskApp
 
         public void LoadConfig()
         {
-            edLog.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
-            edLog.ForeColor = Vars.Config.Log.TextColor;
-            edLog.BackColor = Vars.Config.Log.BgColor;
-
-            edLog.WordWrap = Vars.Config.Log.WordWrap;            
+            Theme.UseImmersiveDarkMode(Handle);
+            Theme.setToolStrip(toolBar);
+            Theme.setGrid(g);
+            Theme.setSplitter(splitter);
+            Theme.setConsole(edLog);
+            Theme.setStatusStrip(statusBar);
         }
 
         private void LoadGrid()
