@@ -338,32 +338,55 @@ namespace DigaoDeskApp
             if (_nextLogLineToRead > app.Logs.Count) throw new Exception("Log index control out of sync!");
             if (_nextLogLineToRead == app.Logs.Count) return; //everything already sync
 
-            StringBuilder sb = new();
-            for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
+            if (_nextLogLineToRead == 0) //only when fill from beggining
             {
-                var log = app.Logs[i];
-                var text = log.Text;
-                if (Vars.Config.Log.ShowTimestamp) text = log.Timestamp.ToString(Vars.DATETIME_FMT) + " - " + text;
-                sb.AppendLine(text);
-
-                _nextLogLineToRead = i + 1;
-            }
-
-            var contents = sb.ToString();
-            if (!edLog.Lines.Any())
-            {
-                var len = contents.Length;
-                const int MAX = 1000000;
-                if (len > MAX)
-                {
-                    contents = "[...]" + contents.Substring(len - MAX);
-                }
+                while (app.Logs.Count > 5000) app.Logs.RemoveAt(0);
             }
 
             var alreadyBottom = edLog.SelectionStart == edLog.TextLength;
+
             edLog.SuspendPainting();
-            edLog.AppendText(contents);
-            edLog.ResumePainting(!alreadyBottom);            
+            try
+            {
+                for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
+                {
+                    var log = app.Logs[i];
+                    if (Vars.Config.Log.ShowTimestamp)
+                    {
+                        edLog.SelectionStart = edLog.TextLength;
+                        edLog.SelectionColor = Color.Gray;
+                        edLog.SelectedText = log.Timestamp.ToString(Vars.DATETIME_FMT) + " - ";
+                    }
+
+                    edLog.SelectionStart = edLog.TextLength;
+
+                    Color textColor;
+                    switch (log.Type)
+                    {
+                        case DigaoApplication.LogType.INFO:
+                            textColor = Vars.Config.Theme.ConsoleFore;
+                            break;
+                        case DigaoApplication.LogType.ERROR:
+                            textColor = Color.Salmon;
+                            break;
+                        case DigaoApplication.LogType.DYN_ERROR:
+                            textColor = Color.Crimson;
+                            break;
+                        case DigaoApplication.LogType.DYN_WARN:
+                            textColor = Color.Orange;
+                            break;
+                        default:
+                            throw new Exception("Log type invalid");
+                    }
+                    edLog.SelectionColor = textColor;
+                    edLog.SelectedText = log.Text + Environment.NewLine;
+
+                    _nextLogLineToRead = i + 1;
+                }
+            } finally
+            {
+                edLog.ResumePainting(!alreadyBottom);
+            }
         }
 
         public bool FindInLog(bool fromCurrentPos)

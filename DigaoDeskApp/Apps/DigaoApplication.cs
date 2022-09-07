@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -72,10 +73,18 @@ namespace DigaoDeskApp
         private TimeSpan _lastProcessorTime;
         private DateTime _lastProcessorCapture;
 
+        public enum LogType
+        {
+            ERROR,
+            DYN_ERROR,
+            DYN_WARN,
+            INFO
+        }
         public class LogRecord
         {
             public DateTime Timestamp;
             public string Text;
+            public LogType Type;
         }
 
         public List<LogRecord> Logs = new();
@@ -176,11 +185,24 @@ namespace DigaoDeskApp
 
         private void AddLog(string text, bool error)
         {
-            if (error) text = "### " + text;
+            if (text == null) text = "";
 
             LogRecord r = new();
             r.Timestamp = DateTime.Now;
             r.Text = text;
+            if (error)
+            {
+                r.Type = LogType.ERROR;
+            } else if (text.Contains("ERROR", StringComparison.OrdinalIgnoreCase))
+            {
+                r.Type = LogType.DYN_ERROR;
+            } else if (text.Contains("WARN", StringComparison.OrdinalIgnoreCase))
+            {
+                r.Type = LogType.DYN_WARN;
+            } else
+            {
+                r.Type = LogType.INFO;
+            }
             Logs.Add(r);
 
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
