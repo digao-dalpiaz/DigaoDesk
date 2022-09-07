@@ -26,22 +26,22 @@ namespace DigaoDeskApp
 
         public class ConfigTheme
         {
-            public bool DarkTitle;
-            public Color ToolbarBack;
-            public Color ToolbarFore;
-            public Color GridHeadBack;
-            public Color GridHeadFore;
-            public Color GridBack;
-            public Color GridLines;
-            public Color GridDataBack;
-            public Color GridDataFore;
-            public Color GridSelBack;
-            public Color GridSelFore;
-            public Color SplitterBack;
-            public Color ConsoleBack;
-            public Color ConsoleFore;
-            public Color StatusBack;
-            public Color StatusFore;
+            public bool DarkTitle = true;
+            public Color ToolbarBack = Color.FromArgb(30, 30, 30);
+            public Color ToolbarFore = Color.White;
+            public Color GridHeadBack = Color.FromArgb(0, 35, 70);
+            public Color GridHeadFore = Color.White;
+            public Color GridBack = Color.FromArgb(30, 30, 30);
+            public Color GridLines = Color.FromArgb(65, 65, 65);
+            public Color GridDataBack = Color.FromArgb(30, 30, 30);
+            public Color GridDataFore = Color.FromArgb(255, 255, 128);
+            public Color GridSelBack = Color.FromArgb(255, 116, 2);
+            public Color GridSelFore = Color.White;
+            public Color SplitterBack = Color.FromArgb(50, 50, 50);
+            public Color ConsoleBack = Color.FromArgb(15, 15, 15);
+            public Color ConsoleFore = Color.FromArgb(128, 255, 128);
+            public Color StatusBack = Color.FromArgb(30, 30, 30);
+            public Color StatusFore = Color.Silver;
         }
 
         public class ConfigLog
