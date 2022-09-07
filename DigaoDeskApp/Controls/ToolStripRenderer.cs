@@ -22,16 +22,15 @@ namespace DigaoDeskApp
         
         protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs e)
         {
-            if (!e.Item.Selected && !e.Item.Pressed)
-            {
-                base.OnRenderButtonBackground(e);
-            }
-            else
+            if (e.Item.Selected || e.Item.Pressed)
             {
                 Rectangle rectangle = new Rectangle(0, 0, e.Item.Size.Width - 1, e.Item.Size.Height - 1);
                 e.Graphics.FillRectangle(new SolidBrush(ControlPaint.Light(Vars.Config.Theme.ToolbarBack, 5)), rectangle);
                 e.Graphics.DrawRectangle(new Pen(ControlPaint.Light(Vars.Config.Theme.ToolbarBack, 10)), rectangle);
+                return;
             }
+
+            base.OnRenderButtonBackground(e);
         }
 
         protected override void OnRenderDropDownButtonBackground(ToolStripItemRenderEventArgs e)
