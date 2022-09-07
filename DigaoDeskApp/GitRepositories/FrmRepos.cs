@@ -23,6 +23,10 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            Theme.setToolStrip(toolBar);
+            Theme.setGrid(g);
+            Theme.setSplitter(splitter);
+
             LoadLang();
 
             Utils.AdjustToolStrip(toolBar);
