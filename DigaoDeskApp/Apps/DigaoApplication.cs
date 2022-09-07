@@ -108,8 +108,8 @@ namespace DigaoDeskApp
             _process.StartInfo = si;
             _process.EnableRaisingEvents = true;
 
-            _process.OutputDataReceived += (s, e) => AddLog(e.Data, false);
-            _process.ErrorDataReceived += (s, e) => AddLog(e.Data, true);
+            _process.OutputDataReceived += (s, e) => AddLog(Utils.RemoveEsc(e.Data), false);
+            _process.ErrorDataReceived += (s, e) => AddLog(Utils.RemoveEsc(e.Data), true);
             _process.Exited += (s, e) =>
             {
                 _process.WaitForExit();
@@ -172,7 +172,7 @@ namespace DigaoDeskApp
 
             AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), true);
             parent.Kill();
-        }       
+        }
 
         private void AddLog(string text, bool error)
         {
