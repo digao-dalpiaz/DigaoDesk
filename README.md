@@ -53,9 +53,10 @@ Feel free to help me translating the app to your language. :)
 
 # Settings
 
-You can set usage preferences as needed.
+You can set usage preferences as needed, like Language, Theme, and Git Credentials and much more.
 
-![Config](images/config.png)
+![Config](images/config_git.png)
+![Config](images/config_theme.png)
 
 # Requirements
 
