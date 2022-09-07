@@ -227,7 +227,7 @@ namespace DigaoDeskApp
             this.btnColorGridDataBack.Location = new System.Drawing.Point(24, 304);
             this.btnColorGridDataBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridDataBack.Name = "btnColorGridDataBack";
-            this.btnColorGridDataBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridDataBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridDataBack.TabIndex = 40;
             this.btnColorGridDataBack.UseVisualStyleBackColor = true;
             this.btnColorGridDataBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -235,7 +235,7 @@ namespace DigaoDeskApp
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(382, 211);
+            this.label12.Location = new System.Drawing.Point(334, 211);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 20);
             this.label12.TabIndex = 37;
@@ -243,10 +243,10 @@ namespace DigaoDeskApp
             // 
             // btnColorGridLines
             // 
-            this.btnColorGridLines.Location = new System.Drawing.Point(384, 232);
+            this.btnColorGridLines.Location = new System.Drawing.Point(336, 232);
             this.btnColorGridLines.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridLines.Name = "btnColorGridLines";
-            this.btnColorGridLines.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridLines.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridLines.TabIndex = 38;
             this.btnColorGridLines.UseVisualStyleBackColor = true;
             this.btnColorGridLines.Click += new System.EventHandler(this.btnColor_Click);
@@ -254,7 +254,7 @@ namespace DigaoDeskApp
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(382, 571);
+            this.label11.Location = new System.Drawing.Point(334, 571);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(154, 20);
             this.label11.TabIndex = 35;
@@ -262,10 +262,10 @@ namespace DigaoDeskApp
             // 
             // btnColorStatusFore
             // 
-            this.btnColorStatusFore.Location = new System.Drawing.Point(384, 592);
+            this.btnColorStatusFore.Location = new System.Drawing.Point(336, 592);
             this.btnColorStatusFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorStatusFore.Name = "btnColorStatusFore";
-            this.btnColorStatusFore.Size = new System.Drawing.Size(347, 43);
+            this.btnColorStatusFore.Size = new System.Drawing.Size(296, 43);
             this.btnColorStatusFore.TabIndex = 36;
             this.btnColorStatusFore.UseVisualStyleBackColor = true;
             this.btnColorStatusFore.Click += new System.EventHandler(this.btnColor_Click);
@@ -284,7 +284,7 @@ namespace DigaoDeskApp
             this.btnColorGridHeadBack.Location = new System.Drawing.Point(24, 160);
             this.btnColorGridHeadBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridHeadBack.Name = "btnColorGridHeadBack";
-            this.btnColorGridHeadBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridHeadBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridHeadBack.TabIndex = 34;
             this.btnColorGridHeadBack.UseVisualStyleBackColor = true;
             this.btnColorGridHeadBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -303,7 +303,7 @@ namespace DigaoDeskApp
             this.btnColorSplitterBack.Location = new System.Drawing.Point(24, 448);
             this.btnColorSplitterBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorSplitterBack.Name = "btnColorSplitterBack";
-            this.btnColorSplitterBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorSplitterBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorSplitterBack.TabIndex = 32;
             this.btnColorSplitterBack.UseVisualStyleBackColor = true;
             this.btnColorSplitterBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -322,7 +322,7 @@ namespace DigaoDeskApp
             this.btnColorStatusBack.Location = new System.Drawing.Point(24, 592);
             this.btnColorStatusBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorStatusBack.Name = "btnColorStatusBack";
-            this.btnColorStatusBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorStatusBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorStatusBack.TabIndex = 30;
             this.btnColorStatusBack.UseVisualStyleBackColor = true;
             this.btnColorStatusBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -341,7 +341,7 @@ namespace DigaoDeskApp
             this.btnColorGridSelBack.Location = new System.Drawing.Point(24, 376);
             this.btnColorGridSelBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridSelBack.Name = "btnColorGridSelBack";
-            this.btnColorGridSelBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridSelBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridSelBack.TabIndex = 28;
             this.btnColorGridSelBack.UseVisualStyleBackColor = true;
             this.btnColorGridSelBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -349,7 +349,7 @@ namespace DigaoDeskApp
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 283);
+            this.label6.Location = new System.Drawing.Point(334, 283);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(150, 20);
             this.label6.TabIndex = 25;
@@ -357,10 +357,10 @@ namespace DigaoDeskApp
             // 
             // btnColorGridDataFore
             // 
-            this.btnColorGridDataFore.Location = new System.Drawing.Point(384, 304);
+            this.btnColorGridDataFore.Location = new System.Drawing.Point(336, 304);
             this.btnColorGridDataFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridDataFore.Name = "btnColorGridDataFore";
-            this.btnColorGridDataFore.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridDataFore.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridDataFore.TabIndex = 26;
             this.btnColorGridDataFore.UseVisualStyleBackColor = true;
             this.btnColorGridDataFore.Click += new System.EventHandler(this.btnColor_Click);
@@ -368,7 +368,7 @@ namespace DigaoDeskApp
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(382, 139);
+            this.label5.Location = new System.Drawing.Point(334, 139);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(166, 20);
             this.label5.TabIndex = 23;
@@ -376,10 +376,10 @@ namespace DigaoDeskApp
             // 
             // btnColorGridHeadFore
             // 
-            this.btnColorGridHeadFore.Location = new System.Drawing.Point(384, 160);
+            this.btnColorGridHeadFore.Location = new System.Drawing.Point(336, 160);
             this.btnColorGridHeadFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridHeadFore.Name = "btnColorGridHeadFore";
-            this.btnColorGridHeadFore.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridHeadFore.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridHeadFore.TabIndex = 24;
             this.btnColorGridHeadFore.UseVisualStyleBackColor = true;
             this.btnColorGridHeadFore.Click += new System.EventHandler(this.btnColor_Click);
@@ -387,7 +387,7 @@ namespace DigaoDeskApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(382, 355);
+            this.label3.Location = new System.Drawing.Point(334, 355);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(175, 20);
             this.label3.TabIndex = 21;
@@ -395,10 +395,10 @@ namespace DigaoDeskApp
             // 
             // btnColorGridSelFore
             // 
-            this.btnColorGridSelFore.Location = new System.Drawing.Point(384, 376);
+            this.btnColorGridSelFore.Location = new System.Drawing.Point(336, 376);
             this.btnColorGridSelFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridSelFore.Name = "btnColorGridSelFore";
-            this.btnColorGridSelFore.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridSelFore.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridSelFore.TabIndex = 22;
             this.btnColorGridSelFore.UseVisualStyleBackColor = true;
             this.btnColorGridSelFore.Click += new System.EventHandler(this.btnColor_Click);
@@ -417,7 +417,7 @@ namespace DigaoDeskApp
             this.btnColorGridBack.Location = new System.Drawing.Point(24, 232);
             this.btnColorGridBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridBack.Name = "btnColorGridBack";
-            this.btnColorGridBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorGridBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorGridBack.TabIndex = 20;
             this.btnColorGridBack.UseVisualStyleBackColor = true;
             this.btnColorGridBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -425,7 +425,7 @@ namespace DigaoDeskApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(382, 67);
+            this.label2.Location = new System.Drawing.Point(334, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(143, 20);
             this.label2.TabIndex = 17;
@@ -433,10 +433,10 @@ namespace DigaoDeskApp
             // 
             // btnColorToolbarFore
             // 
-            this.btnColorToolbarFore.Location = new System.Drawing.Point(384, 88);
+            this.btnColorToolbarFore.Location = new System.Drawing.Point(336, 88);
             this.btnColorToolbarFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorToolbarFore.Name = "btnColorToolbarFore";
-            this.btnColorToolbarFore.Size = new System.Drawing.Size(347, 43);
+            this.btnColorToolbarFore.Size = new System.Drawing.Size(296, 43);
             this.btnColorToolbarFore.TabIndex = 18;
             this.btnColorToolbarFore.UseVisualStyleBackColor = true;
             this.btnColorToolbarFore.Click += new System.EventHandler(this.btnColor_Click);
@@ -455,7 +455,7 @@ namespace DigaoDeskApp
             this.btnColorToolbarBack.Location = new System.Drawing.Point(24, 88);
             this.btnColorToolbarBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorToolbarBack.Name = "btnColorToolbarBack";
-            this.btnColorToolbarBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorToolbarBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorToolbarBack.TabIndex = 16;
             this.btnColorToolbarBack.UseVisualStyleBackColor = true;
             this.btnColorToolbarBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -472,10 +472,10 @@ namespace DigaoDeskApp
             // 
             // btnLogFont
             // 
-            this.btnLogFont.Location = new System.Drawing.Point(776, 136);
+            this.btnLogFont.Location = new System.Drawing.Point(648, 520);
             this.btnLogFont.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogFont.Name = "btnLogFont";
-            this.btnLogFont.Size = new System.Drawing.Size(179, 43);
+            this.btnLogFont.Size = new System.Drawing.Size(368, 43);
             this.btnLogFont.TabIndex = 6;
             this.btnLogFont.UseVisualStyleBackColor = true;
             this.btnLogFont.Click += new System.EventHandler(this.btnLogFont_Click);
@@ -483,7 +483,7 @@ namespace DigaoDeskApp
             // lbTextColor
             // 
             this.lbTextColor.AutoSize = true;
-            this.lbTextColor.Location = new System.Drawing.Point(382, 499);
+            this.lbTextColor.Location = new System.Drawing.Point(334, 499);
             this.lbTextColor.Name = "lbTextColor";
             this.lbTextColor.Size = new System.Drawing.Size(141, 20);
             this.lbTextColor.TabIndex = 7;
@@ -492,7 +492,7 @@ namespace DigaoDeskApp
             // ckLogWordWrap
             // 
             this.ckLogWordWrap.AutoSize = true;
-            this.ckLogWordWrap.Location = new System.Drawing.Point(776, 232);
+            this.ckLogWordWrap.Location = new System.Drawing.Point(648, 464);
             this.ckLogWordWrap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckLogWordWrap.Name = "ckLogWordWrap";
             this.ckLogWordWrap.Size = new System.Drawing.Size(104, 24);
@@ -512,7 +512,7 @@ namespace DigaoDeskApp
             // ckLogShowTs
             // 
             this.ckLogShowTs.AutoSize = true;
-            this.ckLogShowTs.Location = new System.Drawing.Point(776, 200);
+            this.ckLogShowTs.Location = new System.Drawing.Point(648, 432);
             this.ckLogShowTs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckLogShowTs.Name = "ckLogShowTs";
             this.ckLogShowTs.Size = new System.Drawing.Size(235, 24);
@@ -522,10 +522,10 @@ namespace DigaoDeskApp
             // 
             // btnColorConsoleFore
             // 
-            this.btnColorConsoleFore.Location = new System.Drawing.Point(384, 520);
+            this.btnColorConsoleFore.Location = new System.Drawing.Point(336, 520);
             this.btnColorConsoleFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorConsoleFore.Name = "btnColorConsoleFore";
-            this.btnColorConsoleFore.Size = new System.Drawing.Size(347, 43);
+            this.btnColorConsoleFore.Size = new System.Drawing.Size(296, 43);
             this.btnColorConsoleFore.TabIndex = 9;
             this.btnColorConsoleFore.UseVisualStyleBackColor = false;
             this.btnColorConsoleFore.Click += new System.EventHandler(this.btnColor_Click);
@@ -535,7 +535,7 @@ namespace DigaoDeskApp
             this.btnColorConsoleBack.Location = new System.Drawing.Point(24, 520);
             this.btnColorConsoleBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorConsoleBack.Name = "btnColorConsoleBack";
-            this.btnColorConsoleBack.Size = new System.Drawing.Size(347, 43);
+            this.btnColorConsoleBack.Size = new System.Drawing.Size(296, 43);
             this.btnColorConsoleBack.TabIndex = 10;
             this.btnColorConsoleBack.UseVisualStyleBackColor = true;
             this.btnColorConsoleBack.Click += new System.EventHandler(this.btnColor_Click);
@@ -543,11 +543,11 @@ namespace DigaoDeskApp
             // lbFont
             // 
             this.lbFont.AutoSize = true;
-            this.lbFont.Location = new System.Drawing.Point(774, 114);
+            this.lbFont.Location = new System.Drawing.Point(646, 498);
             this.lbFont.Name = "lbFont";
-            this.lbFont.Size = new System.Drawing.Size(38, 20);
+            this.lbFont.Size = new System.Drawing.Size(95, 20);
             this.lbFont.TabIndex = 13;
-            this.lbFont.Text = "Font";
+            this.lbFont.Text = "Console Font";
             // 
             // tabApplications
             // 
