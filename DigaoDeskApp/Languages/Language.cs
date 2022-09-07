@@ -28,6 +28,7 @@
         public string Config_General_Language;
         public string Config_General_LanguageInfo;
 
+        public string Config_Theme_Reset;
         public string Config_Theme_DarkTitle;
         public string Config_Theme_ColorToolbarBack;
         public string Config_Theme_ColorToolbarFore;

@@ -36,6 +36,7 @@ namespace DigaoDeskApp
             lbLanguage.Text = Vars.Lang.Config_General_Language;
             lbLanguageInfo.Text = Vars.Lang.Config_General_LanguageInfo;
 
+            btnResetColors.Text = Vars.Lang.Config_Theme_Reset;
             ckThemeDarkTitle.Text = Vars.Lang.Config_Theme_DarkTitle;
             lbColorToolbarBack.Text = Vars.Lang.Config_Theme_ColorToolbarBack;
             lbColorToolbarFore.Text = Vars.Lang.Config_Theme_ColorToolbarFore;
@@ -302,6 +303,27 @@ namespace DigaoDeskApp
             {
                 edDiffProgram.Text = dlg.FileName;
             }
+        }
+
+        private void btnResetColors_Click(object sender, System.EventArgs e)
+        {
+            Config.ConfigTheme def = new();
+
+            btnColorToolbarBack.BackColor = def.ToolbarBack;
+            btnColorToolbarFore.BackColor = def.ToolbarFore;
+            btnColorGridHeadBack.BackColor = def.GridHeadBack;
+            btnColorGridHeadFore.BackColor = def.GridHeadFore;
+            btnColorGridBack.BackColor = def.GridBack;
+            btnColorGridLines.BackColor = def.GridLines;
+            btnColorGridDataBack.BackColor = def.GridDataBack;
+            btnColorGridDataFore.BackColor = def.GridDataFore;
+            btnColorGridSelBack.BackColor = def.GridSelBack;
+            btnColorGridSelFore.BackColor = def.GridSelFore;
+            btnColorSplitterBack.BackColor = def.SplitterBack;
+            btnColorConsoleBack.BackColor = def.ConsoleBack;
+            btnColorConsoleFore.BackColor = def.ConsoleFore;
+            btnColorStatusBack.BackColor = def.StatusBack;
+            btnColorStatusFore.BackColor = def.StatusFore;
         }
 
     }

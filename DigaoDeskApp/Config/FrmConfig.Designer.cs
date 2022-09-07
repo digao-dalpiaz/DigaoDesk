@@ -35,6 +35,7 @@ namespace DigaoDeskApp
             this.lbLanguage = new System.Windows.Forms.Label();
             this.edLanguage = new System.Windows.Forms.ComboBox();
             this.tabTheme = new System.Windows.Forms.TabPage();
+            this.btnResetColors = new System.Windows.Forms.Button();
             this.lbColorGridDataBack = new System.Windows.Forms.Label();
             this.btnColorGridDataBack = new System.Windows.Forms.Button();
             this.lbColorGridLines = new System.Windows.Forms.Label();
@@ -169,6 +170,7 @@ namespace DigaoDeskApp
             // 
             // tabTheme
             // 
+            this.tabTheme.Controls.Add(this.btnResetColors);
             this.tabTheme.Controls.Add(this.lbColorGridDataBack);
             this.tabTheme.Controls.Add(this.btnColorGridDataBack);
             this.tabTheme.Controls.Add(this.lbColorGridLines);
@@ -213,6 +215,17 @@ namespace DigaoDeskApp
             this.tabTheme.Text = "Theme";
             this.tabTheme.UseVisualStyleBackColor = true;
             // 
+            // btnResetColors
+            // 
+            this.btnResetColors.Location = new System.Drawing.Point(832, 24);
+            this.btnResetColors.Name = "btnResetColors";
+            this.btnResetColors.Size = new System.Drawing.Size(184, 48);
+            this.btnResetColors.TabIndex = 1;
+            this.btnResetColors.TabStop = false;
+            this.btnResetColors.Text = "Reset Colors";
+            this.btnResetColors.UseVisualStyleBackColor = true;
+            this.btnResetColors.Click += new System.EventHandler(this.btnResetColors_Click);
+            // 
             // lbColorGridDataBack
             // 
             this.lbColorGridDataBack.AutoSize = true;
@@ -228,7 +241,7 @@ namespace DigaoDeskApp
             this.btnColorGridDataBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridDataBack.Name = "btnColorGridDataBack";
             this.btnColorGridDataBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridDataBack.TabIndex = 40;
+            this.btnColorGridDataBack.TabIndex = 8;
             this.btnColorGridDataBack.UseVisualStyleBackColor = true;
             this.btnColorGridDataBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -247,7 +260,7 @@ namespace DigaoDeskApp
             this.btnColorGridLines.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridLines.Name = "btnColorGridLines";
             this.btnColorGridLines.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridLines.TabIndex = 38;
+            this.btnColorGridLines.TabIndex = 7;
             this.btnColorGridLines.UseVisualStyleBackColor = true;
             this.btnColorGridLines.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -266,7 +279,7 @@ namespace DigaoDeskApp
             this.btnColorStatusFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorStatusFore.Name = "btnColorStatusFore";
             this.btnColorStatusFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorStatusFore.TabIndex = 36;
+            this.btnColorStatusFore.TabIndex = 16;
             this.btnColorStatusFore.UseVisualStyleBackColor = true;
             this.btnColorStatusFore.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -285,7 +298,7 @@ namespace DigaoDeskApp
             this.btnColorGridHeadBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridHeadBack.Name = "btnColorGridHeadBack";
             this.btnColorGridHeadBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridHeadBack.TabIndex = 34;
+            this.btnColorGridHeadBack.TabIndex = 4;
             this.btnColorGridHeadBack.UseVisualStyleBackColor = true;
             this.btnColorGridHeadBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -304,7 +317,7 @@ namespace DigaoDeskApp
             this.btnColorSplitterBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorSplitterBack.Name = "btnColorSplitterBack";
             this.btnColorSplitterBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorSplitterBack.TabIndex = 32;
+            this.btnColorSplitterBack.TabIndex = 12;
             this.btnColorSplitterBack.UseVisualStyleBackColor = true;
             this.btnColorSplitterBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -323,7 +336,7 @@ namespace DigaoDeskApp
             this.btnColorStatusBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorStatusBack.Name = "btnColorStatusBack";
             this.btnColorStatusBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorStatusBack.TabIndex = 30;
+            this.btnColorStatusBack.TabIndex = 15;
             this.btnColorStatusBack.UseVisualStyleBackColor = true;
             this.btnColorStatusBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -342,7 +355,7 @@ namespace DigaoDeskApp
             this.btnColorGridSelBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridSelBack.Name = "btnColorGridSelBack";
             this.btnColorGridSelBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridSelBack.TabIndex = 28;
+            this.btnColorGridSelBack.TabIndex = 10;
             this.btnColorGridSelBack.UseVisualStyleBackColor = true;
             this.btnColorGridSelBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -361,7 +374,7 @@ namespace DigaoDeskApp
             this.btnColorGridDataFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridDataFore.Name = "btnColorGridDataFore";
             this.btnColorGridDataFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridDataFore.TabIndex = 26;
+            this.btnColorGridDataFore.TabIndex = 9;
             this.btnColorGridDataFore.UseVisualStyleBackColor = true;
             this.btnColorGridDataFore.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -380,7 +393,7 @@ namespace DigaoDeskApp
             this.btnColorGridHeadFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridHeadFore.Name = "btnColorGridHeadFore";
             this.btnColorGridHeadFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridHeadFore.TabIndex = 24;
+            this.btnColorGridHeadFore.TabIndex = 5;
             this.btnColorGridHeadFore.UseVisualStyleBackColor = true;
             this.btnColorGridHeadFore.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -399,7 +412,7 @@ namespace DigaoDeskApp
             this.btnColorGridSelFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridSelFore.Name = "btnColorGridSelFore";
             this.btnColorGridSelFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridSelFore.TabIndex = 22;
+            this.btnColorGridSelFore.TabIndex = 11;
             this.btnColorGridSelFore.UseVisualStyleBackColor = true;
             this.btnColorGridSelFore.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -418,7 +431,7 @@ namespace DigaoDeskApp
             this.btnColorGridBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorGridBack.Name = "btnColorGridBack";
             this.btnColorGridBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridBack.TabIndex = 20;
+            this.btnColorGridBack.TabIndex = 6;
             this.btnColorGridBack.UseVisualStyleBackColor = true;
             this.btnColorGridBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -437,7 +450,7 @@ namespace DigaoDeskApp
             this.btnColorToolbarFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorToolbarFore.Name = "btnColorToolbarFore";
             this.btnColorToolbarFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorToolbarFore.TabIndex = 18;
+            this.btnColorToolbarFore.TabIndex = 3;
             this.btnColorToolbarFore.UseVisualStyleBackColor = true;
             this.btnColorToolbarFore.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -456,7 +469,7 @@ namespace DigaoDeskApp
             this.btnColorToolbarBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorToolbarBack.Name = "btnColorToolbarBack";
             this.btnColorToolbarBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorToolbarBack.TabIndex = 16;
+            this.btnColorToolbarBack.TabIndex = 2;
             this.btnColorToolbarBack.UseVisualStyleBackColor = true;
             this.btnColorToolbarBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -466,7 +479,7 @@ namespace DigaoDeskApp
             this.ckThemeDarkTitle.Location = new System.Drawing.Point(24, 24);
             this.ckThemeDarkTitle.Name = "ckThemeDarkTitle";
             this.ckThemeDarkTitle.Size = new System.Drawing.Size(121, 24);
-            this.ckThemeDarkTitle.TabIndex = 14;
+            this.ckThemeDarkTitle.TabIndex = 0;
             this.ckThemeDarkTitle.Text = "Dark Title Bar";
             this.ckThemeDarkTitle.UseVisualStyleBackColor = true;
             // 
@@ -476,7 +489,7 @@ namespace DigaoDeskApp
             this.btnLogFont.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogFont.Name = "btnLogFont";
             this.btnLogFont.Size = new System.Drawing.Size(368, 43);
-            this.btnLogFont.TabIndex = 6;
+            this.btnLogFont.TabIndex = 19;
             this.btnLogFont.UseVisualStyleBackColor = true;
             this.btnLogFont.Click += new System.EventHandler(this.btnLogFont_Click);
             // 
@@ -496,7 +509,7 @@ namespace DigaoDeskApp
             this.ckLogWordWrap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckLogWordWrap.Name = "ckLogWordWrap";
             this.ckLogWordWrap.Size = new System.Drawing.Size(104, 24);
-            this.ckLogWordWrap.TabIndex = 12;
+            this.ckLogWordWrap.TabIndex = 18;
             this.ckLogWordWrap.Text = "Word wrap";
             this.ckLogWordWrap.UseVisualStyleBackColor = true;
             // 
@@ -516,7 +529,7 @@ namespace DigaoDeskApp
             this.ckLogShowTs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckLogShowTs.Name = "ckLogShowTs";
             this.ckLogShowTs.Size = new System.Drawing.Size(235, 24);
-            this.ckLogShowTs.TabIndex = 11;
+            this.ckLogShowTs.TabIndex = 17;
             this.ckLogShowTs.Text = "Show date/time in each record";
             this.ckLogShowTs.UseVisualStyleBackColor = true;
             // 
@@ -526,7 +539,7 @@ namespace DigaoDeskApp
             this.btnColorConsoleFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorConsoleFore.Name = "btnColorConsoleFore";
             this.btnColorConsoleFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorConsoleFore.TabIndex = 9;
+            this.btnColorConsoleFore.TabIndex = 14;
             this.btnColorConsoleFore.UseVisualStyleBackColor = false;
             this.btnColorConsoleFore.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -536,7 +549,7 @@ namespace DigaoDeskApp
             this.btnColorConsoleBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnColorConsoleBack.Name = "btnColorConsoleBack";
             this.btnColorConsoleBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorConsoleBack.TabIndex = 10;
+            this.btnColorConsoleBack.TabIndex = 13;
             this.btnColorConsoleBack.UseVisualStyleBackColor = true;
             this.btnColorConsoleBack.Click += new System.EventHandler(this.btnColor_Click);
             // 
@@ -1037,5 +1050,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnColorGridLines;
         private System.Windows.Forms.Label lbColorGridDataBack;
         private System.Windows.Forms.Button btnColorGridDataBack;
+        private System.Windows.Forms.Button btnResetColors;
     }
 }

@@ -23,6 +23,7 @@
   "Config_General_Language": "Language",
   "Config_General_LanguageInfo": "* Restart needed",
 
+  "Config_Theme_Reset": "Reset Colors",
   "Config_Theme_DarkTitle": "Use Dark Title",
   "Config_Theme_ColorToolbarBack": "Tool bar background",
   "Config_Theme_ColorToolbarFore": "Tool bar foreground",
