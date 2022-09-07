@@ -22,6 +22,7 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            Theme.UseImmersiveDarkMode(Handle, true);
             Theme.setToolStrip(toolBar);
             Theme.setGrid(g);
             Theme.setSplitter(splitter);
