@@ -5,7 +5,7 @@ namespace DigaoDeskApp
     class Vars
     {
 
-        public const string APP_VERSION = "1.3.0";
+        public const string APP_VERSION = "1.3.1";
         public const string APP_REGKEY = @"SOFTWARE\DigaoDesk";
 
         public const string GITHUB_LINK = "https://github.com/digao-dalpiaz/DigaoDesk";
