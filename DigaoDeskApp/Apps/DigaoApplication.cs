@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -26,6 +27,9 @@ namespace DigaoDeskApp
 
         [JsonProperty]
         public Dictionary<string, string> EnvVars = new(); //auto new instance due to new version
+
+        [JsonProperty]
+        public ushort? HttpPort;
 
         public string Status
         {
@@ -72,6 +76,20 @@ namespace DigaoDeskApp
 
         private TimeSpan _lastProcessorTime;
         private DateTime _lastProcessorCapture;
+
+        private bool _httpOnline;
+        public string HttpStatus
+        {
+            get
+            {
+                if (Running && HttpPort.HasValue)
+                {
+                    return _httpOnline ? "UP" : "DOWN";
+                }
+
+                return null;
+            }
+        }
 
         public enum LogType
         {
@@ -132,6 +150,7 @@ namespace DigaoDeskApp
                 Memory = null;
                 Processor = null;
                 ProcCount = null;
+                _httpOnline = false;
                 InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this));
                 Vars.FrmMainObj.UpdateTrayIcon();
 
@@ -238,6 +257,8 @@ namespace DigaoDeskApp
             var ts = (DateTime.Now - _startTime.Value);
             RunningTime = (ts.TotalMinutes / 60).ToString("0") + ":" + (ts.TotalMinutes % 60).ToString("00");
 
+            CheckWebPort();
+
             try
             {
                 var r = new Resources();
@@ -264,6 +285,25 @@ namespace DigaoDeskApp
                 Processor = null;
                 ProcCount = null;
             }
+        }
+
+        public void CheckWebPort()
+        {
+            if (!HttpPort.HasValue) return;
+            if (_httpOnline) return; //already online
+
+            HttpClient h = new();
+            h.Timeout = TimeSpan.FromMilliseconds(100);
+            try
+            {
+                h.GetAsync("http://localhost:" + HttpPort.Value).GetAwaiter().GetResult();
+            } 
+            catch (Exception e)
+            {
+                Debug.WriteLine("HTTP REQUEST ERROR: " + e.Message);
+                return;
+            }
+            _httpOnline = true;
         }
 
         private void AnalyzeChildren(Process parent, Resources r)

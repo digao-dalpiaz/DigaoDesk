@@ -224,7 +224,7 @@ namespace DigaoDeskApp
             this.edLog.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edLog.Name = "edLog";
             this.edLog.ReadOnly = true;
-            this.edLog.Size = new System.Drawing.Size(1622, 464);
+            this.edLog.Size = new System.Drawing.Size(1622, 438);
             this.edLog.TabIndex = 1;
             this.edLog.Text = "";
             // 
@@ -501,8 +501,8 @@ namespace DigaoDeskApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1622, 864);
-            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.edLog);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.splitter);
             this.Controls.Add(this.g);
             this.Controls.Add(this.toolBar);

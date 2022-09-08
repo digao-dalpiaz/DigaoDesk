@@ -44,6 +44,9 @@ namespace DigaoDeskApp
             this.edEnv = new System.Windows.Forms.TextBox();
             this.lbEnv = new System.Windows.Forms.Label();
             this.lbEnvInfo = new System.Windows.Forms.Label();
+            this.lbHttpPort = new System.Windows.Forms.Label();
+            this.edHttpPort = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.edHttpPort)).BeginInit();
             this.SuspendLayout();
             // 
             // lbName
@@ -61,7 +64,7 @@ namespace DigaoDeskApp
             this.edName.Location = new System.Drawing.Point(18, 43);
             this.edName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edName.Name = "edName";
-            this.edName.Size = new System.Drawing.Size(740, 27);
+            this.edName.Size = new System.Drawing.Size(622, 27);
             this.edName.TabIndex = 0;
             // 
             // btnOK
@@ -94,7 +97,7 @@ namespace DigaoDeskApp
             this.edCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edCmd.Name = "edCmd";
             this.edCmd.Size = new System.Drawing.Size(713, 27);
-            this.edCmd.TabIndex = 1;
+            this.edCmd.TabIndex = 2;
             // 
             // lbCmd
             // 
@@ -112,7 +115,7 @@ namespace DigaoDeskApp
             this.edArgs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edArgs.Name = "edArgs";
             this.edArgs.Size = new System.Drawing.Size(740, 27);
-            this.edArgs.TabIndex = 3;
+            this.edArgs.TabIndex = 4;
             // 
             // lbArgs
             // 
@@ -131,7 +134,7 @@ namespace DigaoDeskApp
             this.edDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edDir.Name = "edDir";
             this.edDir.Size = new System.Drawing.Size(713, 27);
-            this.edDir.TabIndex = 4;
+            this.edDir.TabIndex = 5;
             // 
             // lbDir
             // 
@@ -148,7 +151,7 @@ namespace DigaoDeskApp
             this.btnSelCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelCmd.Name = "btnSelCmd";
             this.btnSelCmd.Size = new System.Drawing.Size(27, 33);
-            this.btnSelCmd.TabIndex = 2;
+            this.btnSelCmd.TabIndex = 3;
             this.btnSelCmd.TabStop = false;
             this.btnSelCmd.Text = "...";
             this.btnSelCmd.UseVisualStyleBackColor = true;
@@ -160,7 +163,7 @@ namespace DigaoDeskApp
             this.btnSelDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelDir.Name = "btnSelDir";
             this.btnSelDir.Size = new System.Drawing.Size(27, 33);
-            this.btnSelDir.TabIndex = 5;
+            this.btnSelDir.TabIndex = 6;
             this.btnSelDir.TabStop = false;
             this.btnSelDir.Text = "...";
             this.btnSelDir.UseVisualStyleBackColor = true;
@@ -175,7 +178,7 @@ namespace DigaoDeskApp
             this.edEnv.Name = "edEnv";
             this.edEnv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.edEnv.Size = new System.Drawing.Size(740, 180);
-            this.edEnv.TabIndex = 6;
+            this.edEnv.TabIndex = 7;
             // 
             // lbEnv
             // 
@@ -196,6 +199,23 @@ namespace DigaoDeskApp
             this.lbEnvInfo.TabIndex = 15;
             this.lbEnvInfo.Text = "Format: NAME=VALUE\r\nNew line: CTRL+ENTER ";
             // 
+            // lbHttpPort
+            // 
+            this.lbHttpPort.AutoSize = true;
+            this.lbHttpPort.Location = new System.Drawing.Point(654, 21);
+            this.lbHttpPort.Name = "lbHttpPort";
+            this.lbHttpPort.Size = new System.Drawing.Size(69, 20);
+            this.lbHttpPort.TabIndex = 16;
+            this.lbHttpPort.Text = "Http Port";
+            // 
+            // edHttpPort
+            // 
+            this.edHttpPort.Location = new System.Drawing.Point(656, 43);
+            this.edHttpPort.Name = "edHttpPort";
+            this.edHttpPort.Size = new System.Drawing.Size(104, 27);
+            this.edHttpPort.TabIndex = 1;
+            this.edHttpPort.TabStop = false;
+            // 
             // FrmAppEditor
             // 
             this.AcceptButton = this.btnOK;
@@ -203,6 +223,8 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(778, 604);
+            this.Controls.Add(this.edHttpPort);
+            this.Controls.Add(this.lbHttpPort);
             this.Controls.Add(this.lbEnvInfo);
             this.Controls.Add(this.lbEnv);
             this.Controls.Add(this.edEnv);
@@ -227,6 +249,7 @@ namespace DigaoDeskApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Application";
             this.Load += new System.EventHandler(this.FrmAppEditor_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.edHttpPort)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,5 +272,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TextBox edEnv;
         private System.Windows.Forms.Label lbEnv;
         private System.Windows.Forms.Label lbEnvInfo;
+        private System.Windows.Forms.Label lbHttpPort;
+        private System.Windows.Forms.NumericUpDown edHttpPort;
     }
 }
