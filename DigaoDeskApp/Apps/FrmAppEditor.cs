@@ -32,6 +32,7 @@ namespace DigaoDeskApp
             lbDir.Text = Vars.Lang.AppEditor_Directory;
             lbEnv.Text = Vars.Lang.AppEditor_EnvVars;
             lbEnvInfo.Text = Vars.Lang.AppEditor_EnvVarsInfo;
+            lbHttpPort.Text = Vars.Lang.AppEditor_HttpPort;
             btnOK.Text = Vars.Lang.BtnOK;
             btnCancel.Text = Vars.Lang.BtnCancel;
         }

@@ -282,6 +282,7 @@
   "AppEditor_Directory": "Working directory",
   "AppEditor_EnvVars": "Environment variables",
   "AppEditor_EnvVarsInfo": "Format: NAME=VALUE\nNew line: CTRL+ENTER",
+  "AppEditor_HttpPort": "Http Port",
 
   "AppEditor_AppNameRequired": "Specify an application name",
   "AppEditor_CmdLineRequired": "Specify an application file path",
@@ -310,7 +311,8 @@
   "Apps_Col_ThreadCount": "Thread Count",
   "Apps_Col_LastLogTime": "Last Log Time",
   "Apps_Col_LogStatistics": "Log Statistics",
-  "Apss_Col_LogHealth": "Log Health",
+  "Apps_Col_LogHealth": "Log Health",
+  "Apps_Col_HttpStatus": "Http Status",
   "Apps_StatusBar_Info": "Have a coffee! I am taking care of your applications.",
   "Apps_StatusBar_Scanning": "Scanning...",
 

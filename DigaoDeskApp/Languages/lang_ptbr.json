@@ -282,6 +282,7 @@
   "AppEditor_Directory": "Pasta de execução",
   "AppEditor_EnvVars": "Variáveis de ambiente",
   "AppEditor_EnvVarsInfo": "Formato: NOME=VALOR\nNova linha: CTRL+ENTER",
+  "AppEditor_HttpPort": "Porta Http",
 
   "AppEditor_AppNameRequired": "Especifique o nome da aplicação",
   "AppEditor_CmdLineRequired": "Especifique o caminho da aplicação",
@@ -310,7 +311,8 @@
   "Apps_Col_ThreadCount": "Total de threads",
   "Apps_Col_LastLogTime": "Último momento de log",
   "Apps_Col_LogStatistics": "Estatísticas do log",
-  "Apss_Col_LogHealth": "Saúde do log",
+  "Apps_Col_LogHealth": "Saúde do log",
+  "Apps_Col_HttpStatus": "Status Http",
   "Apps_StatusBar_Info": "Pode ir tomar um café! Estou cuidando de suas aplicações.",
   "Apps_StatusBar_Scanning": "Monitorando...",
 
