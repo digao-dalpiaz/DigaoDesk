@@ -1,5 +1,6 @@
 ﻿using Equin.ApplicationFramework;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -300,13 +301,19 @@ namespace DigaoDeskApp
 
         private void Analyze()
         {
+            List<Task> tasks = new();
+
             foreach (var app in Vars.AppList)
             {
                 if (app.Running)
                 {
-                    app.Analyze();
+                    var task = new Task(app.Analyze);
+                    task.Start();
+                    tasks.Add(task);
                 }
             }
+
+            Task.WaitAll(tasks.ToArray());
 
             if (Vars.FrmAppsObj != null)
             {
