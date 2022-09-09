@@ -269,6 +269,7 @@
         public string AppLog_Terminated;
         public string AppLog_Stopping;
         public string AppLog_TerminatingProcessLevel;
+        public string AppLog_TcpPortInUse;
 
         public string AppTerminatedBalloonTitle;
         public string AppTerminatedBalloonMsg;
@@ -286,7 +287,7 @@
         public string AppEditor_Directory;
         public string AppEditor_EnvVars;
         public string AppEditor_EnvVarsInfo;
-        public string AppEditor_HttpPort;
+        public string AppEditor_TcpPort;
 
         public string AppEditor_AppNameRequired;
         public string AppEditor_CmdLineRequired;
@@ -316,7 +317,7 @@
         public string Apps_Col_LastLogTime;
         public string Apps_Col_LogStatistics;
         public string Apps_Col_LogHealth;
-        public string Apps_Col_HttpStatus;
+        public string Apps_Col_TcpStatus;
         public string Apps_StatusBar_Info;
         public string Apps_StatusBar_Scanning;
 

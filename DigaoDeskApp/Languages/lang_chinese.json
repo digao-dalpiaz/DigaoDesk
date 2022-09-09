@@ -264,6 +264,7 @@
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
+  "AppLog_TcpPortInUse": "TCP Port {0} already in use",
 
   "AppTerminatedBalloonTitle": "进程已停止",
   "AppTerminatedBalloonMsg": "应用程序 \"{0}\" 已停止！",
@@ -282,7 +283,7 @@
   "AppEditor_Directory": "工作目录",
   "AppEditor_EnvVars": "环境变量",
   "AppEditor_EnvVarsInfo": "格式：NAME=VALUE\n新建行：CTRL+ENTER",
-  "AppEditor_HttpPort": "Http Port",
+  "AppEditor_TcpPort": "TCP Port",
 
   "AppEditor_AppNameRequired": "指定应用程序名称",
   "AppEditor_CmdLineRequired": "指定应用程序文件路径",
@@ -312,7 +313,7 @@
   "Apps_Col_LastLogTime": "上次记录时间",
   "Apps_Col_LogStatistics": "日志统计",
   "Apps_Col_LogHealth": "日志健康",
-  "Apps_Col_HttpStatus": "Http Status",
+  "Apps_Col_TcpStatus": "TCP Status",
   "Apps_StatusBar_Info": "喝杯咖啡吧！ 我正在处理你的应用程序。",
   "Apps_StatusBar_Scanning": "正在扫描...",
 

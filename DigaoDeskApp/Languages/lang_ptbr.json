@@ -264,6 +264,7 @@
   "AppLog_Terminated": "TERMINADO!",
   "AppLog_Stopping": "Parando processo...",
   "AppLog_TerminatingProcessLevel": "Terminando processo no nível {0} \"{1}\" ({2})...",
+  "AppLog_TcpPortInUse": "Porta TCP {0} já está em uso",
 
   "AppTerminatedBalloonTitle": "Processo parado",
   "AppTerminatedBalloonMsg": "A aplicação \"{0}\" parou!",
@@ -282,7 +283,7 @@
   "AppEditor_Directory": "Pasta de execução",
   "AppEditor_EnvVars": "Variáveis de ambiente",
   "AppEditor_EnvVarsInfo": "Formato: NOME=VALOR\nNova linha: CTRL+ENTER",
-  "AppEditor_HttpPort": "Porta Http",
+  "AppEditor_TcpPort": "Porta TCP",
 
   "AppEditor_AppNameRequired": "Especifique o nome da aplicação",
   "AppEditor_CmdLineRequired": "Especifique o caminho da aplicação",
@@ -312,7 +313,7 @@
   "Apps_Col_LastLogTime": "Último momento de log",
   "Apps_Col_LogStatistics": "Estatísticas do log",
   "Apps_Col_LogHealth": "Saúde do log",
-  "Apps_Col_HttpStatus": "Status Http",
+  "Apps_Col_TcpStatus": "Status TCP",
   "Apps_StatusBar_Info": "Pode ir tomar um café! Estou cuidando de suas aplicações.",
   "Apps_StatusBar_Scanning": "Monitorando...",
 

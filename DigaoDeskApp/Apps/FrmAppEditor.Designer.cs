@@ -44,9 +44,9 @@ namespace DigaoDeskApp
             this.edEnv = new System.Windows.Forms.TextBox();
             this.lbEnv = new System.Windows.Forms.Label();
             this.lbEnvInfo = new System.Windows.Forms.Label();
-            this.lbHttpPort = new System.Windows.Forms.Label();
-            this.edHttpPort = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.edHttpPort)).BeginInit();
+            this.lbTcpPort = new System.Windows.Forms.Label();
+            this.edTcpPort = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.edTcpPort)).BeginInit();
             this.SuspendLayout();
             // 
             // lbName
@@ -199,22 +199,22 @@ namespace DigaoDeskApp
             this.lbEnvInfo.TabIndex = 15;
             this.lbEnvInfo.Text = "Format: NAME=VALUE\r\nNew line: CTRL+ENTER ";
             // 
-            // lbHttpPort
+            // lbTcpPort
             // 
-            this.lbHttpPort.AutoSize = true;
-            this.lbHttpPort.Location = new System.Drawing.Point(654, 21);
-            this.lbHttpPort.Name = "lbHttpPort";
-            this.lbHttpPort.Size = new System.Drawing.Size(69, 20);
-            this.lbHttpPort.TabIndex = 16;
-            this.lbHttpPort.Text = "Http Port";
+            this.lbTcpPort.AutoSize = true;
+            this.lbTcpPort.Location = new System.Drawing.Point(654, 21);
+            this.lbTcpPort.Name = "lbTcpPort";
+            this.lbTcpPort.Size = new System.Drawing.Size(63, 20);
+            this.lbTcpPort.TabIndex = 16;
+            this.lbTcpPort.Text = "TCP Port";
             // 
-            // edHttpPort
+            // edTcpPort
             // 
-            this.edHttpPort.Location = new System.Drawing.Point(656, 43);
-            this.edHttpPort.Name = "edHttpPort";
-            this.edHttpPort.Size = new System.Drawing.Size(104, 27);
-            this.edHttpPort.TabIndex = 1;
-            this.edHttpPort.TabStop = false;
+            this.edTcpPort.Location = new System.Drawing.Point(656, 43);
+            this.edTcpPort.Name = "edTcpPort";
+            this.edTcpPort.Size = new System.Drawing.Size(104, 27);
+            this.edTcpPort.TabIndex = 1;
+            this.edTcpPort.TabStop = false;
             // 
             // FrmAppEditor
             // 
@@ -223,8 +223,8 @@ namespace DigaoDeskApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(778, 604);
-            this.Controls.Add(this.edHttpPort);
-            this.Controls.Add(this.lbHttpPort);
+            this.Controls.Add(this.edTcpPort);
+            this.Controls.Add(this.lbTcpPort);
             this.Controls.Add(this.lbEnvInfo);
             this.Controls.Add(this.lbEnv);
             this.Controls.Add(this.edEnv);
@@ -249,7 +249,7 @@ namespace DigaoDeskApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Application";
             this.Load += new System.EventHandler(this.FrmAppEditor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.edHttpPort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edTcpPort)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,7 +272,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TextBox edEnv;
         private System.Windows.Forms.Label lbEnv;
         private System.Windows.Forms.Label lbEnvInfo;
-        private System.Windows.Forms.Label lbHttpPort;
-        private System.Windows.Forms.NumericUpDown edHttpPort;
+        private System.Windows.Forms.Label lbTcpPort;
+        private System.Windows.Forms.NumericUpDown edTcpPort;
     }
 }

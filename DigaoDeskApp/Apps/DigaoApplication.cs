@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -29,7 +27,7 @@ namespace DigaoDeskApp
         public Dictionary<string, string> EnvVars = new(); //auto new instance due to new version
 
         [JsonProperty]
-        public ushort? HttpPort;
+        public ushort? TcpPort;
 
         public string Status
         {
@@ -77,14 +75,14 @@ namespace DigaoDeskApp
         private TimeSpan _lastProcessorTime;
         private DateTime _lastProcessorCapture;
 
-        private bool _httpOnline;
-        public string HttpStatus
+        private bool _tcpOnline;
+        public string TcpStatus
         {
             get
             {
-                if (Running && HttpPort.HasValue)
+                if (Running && TcpPort.HasValue)
                 {
-                    return _httpOnline ? "UP" : "DOWN";
+                    return _tcpOnline ? "UP" : "DOWN";
                 }
 
                 return null;
@@ -114,6 +112,15 @@ namespace DigaoDeskApp
         public void Start()
         {
             Logs.Clear();
+
+            if (TcpPort.HasValue)
+            {
+                if (Utils.TcpPortInUse(TcpPort.Value))
+                {
+                    AddLog(string.Format(Vars.Lang.AppLog_TcpPortInUse, TcpPort.Value), true);
+                    return;
+                }
+            }
 
             var si = new ProcessStartInfo();
             si.FileName = Cmd;
@@ -150,7 +157,7 @@ namespace DigaoDeskApp
                 Memory = null;
                 Processor = null;
                 ProcCount = null;
-                _httpOnline = false;
+                _tcpOnline = false;
                 InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this));
                 Vars.FrmMainObj.UpdateTrayIcon();
 
@@ -289,21 +296,9 @@ namespace DigaoDeskApp
 
         public void CheckWebPort()
         {
-            if (!HttpPort.HasValue) return;
-            if (_httpOnline) return; //already online
+            if (!TcpPort.HasValue) return;
 
-            HttpClient h = new();
-            h.Timeout = TimeSpan.FromMilliseconds(100);
-            try
-            {
-                h.GetAsync("http://localhost:" + HttpPort.Value).GetAwaiter().GetResult();
-            } 
-            catch (Exception e)
-            {
-                Debug.WriteLine("HTTP REQUEST ERROR: " + e.Message);
-                return;
-            }
-            _httpOnline = true;
+            _tcpOnline = Utils.TcpPortInUse(TcpPort.Value);
         }
 
         private void AnalyzeChildren(Process parent, Resources r)

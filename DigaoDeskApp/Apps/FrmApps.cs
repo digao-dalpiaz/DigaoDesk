@@ -51,7 +51,7 @@ namespace DigaoDeskApp
             colLastLogTime.HeaderText = Vars.Lang.Apps_Col_LastLogTime;
             colLogStatistics.HeaderText = Vars.Lang.Apps_Col_LogStatistics;
             colLogHealth.HeaderText = Vars.Lang.Apps_Col_LogHealth;
-            colHttpStatus.HeaderText = Vars.Lang.Apps_Col_HttpStatus;
+            colTcpStatus.HeaderText = Vars.Lang.Apps_Col_TcpStatus;
 
             stFunInfo.Text = Vars.Lang.Apps_StatusBar_Info;
             stMonitoring.Text = Vars.Lang.Apps_StatusBar_Scanning;

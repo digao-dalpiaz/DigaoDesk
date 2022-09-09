@@ -20,7 +20,7 @@ namespace DigaoDeskApp
             btnSelCmd.Height = edCmd.Height;
             btnSelDir.Height = edDir.Height;
 
-            edHttpPort.Maximum = ushort.MaxValue;
+            edTcpPort.Maximum = ushort.MaxValue;
         }
 
         private void LoadLang()
@@ -32,7 +32,7 @@ namespace DigaoDeskApp
             lbDir.Text = Vars.Lang.AppEditor_Directory;
             lbEnv.Text = Vars.Lang.AppEditor_EnvVars;
             lbEnvInfo.Text = Vars.Lang.AppEditor_EnvVarsInfo;
-            lbHttpPort.Text = Vars.Lang.AppEditor_HttpPort;
+            lbTcpPort.Text = Vars.Lang.AppEditor_TcpPort;
             btnOK.Text = Vars.Lang.BtnOK;
             btnCancel.Text = Vars.Lang.BtnCancel;
         }
@@ -56,7 +56,7 @@ namespace DigaoDeskApp
                 edArgs.Text = _app.Args;
                 edDir.Text = _app.WorkDir;
                 edEnv.Text = EnvVariablesParser.DictionaryToString(_app.EnvVars);
-                if (_app.HttpPort.HasValue) edHttpPort.Value = _app.HttpPort.Value;
+                if (_app.TcpPort.HasValue) edTcpPort.Value = _app.TcpPort.Value;
             }
         }
 
@@ -115,7 +115,7 @@ namespace DigaoDeskApp
             _app.Args = edArgs.Text;
             _app.WorkDir = edDir.Text;
             _app.EnvVars = dic;
-            _app.HttpPort = edHttpPort.Value > 0 ? (ushort)edHttpPort.Value : null;
+            _app.TcpPort = edTcpPort.Value > 0 ? (ushort)edTcpPort.Value : null;
 
             DialogResult = DialogResult.OK;
         }

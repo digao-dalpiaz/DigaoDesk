@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management;
+using System.Net.NetworkInformation;
+using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -215,6 +218,15 @@ namespace DigaoDeskApp
             }
 
             return text;
+        }
+
+        //-----------------------------------------------------------------
+
+        public static bool TcpPortInUse(ushort port)
+        {
+            IPGlobalProperties ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] lst = ipGlobalProperties.GetActiveTcpListeners();
+            return lst.Any(x => x.Port == port);
         }
 
     }

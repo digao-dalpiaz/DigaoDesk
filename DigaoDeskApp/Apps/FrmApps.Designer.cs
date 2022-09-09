@@ -68,7 +68,7 @@ namespace DigaoDeskApp
             this.colLastLogTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLogStatistics = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLogHealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHttpStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTcpStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -92,7 +92,7 @@ namespace DigaoDeskApp
             this.colLastLogTime,
             this.colLogStatistics,
             this.colLogHealth,
-            this.colHttpStatus});
+            this.colTcpStatus});
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
             this.g.Location = new System.Drawing.Point(0, 39);
             this.g.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -417,14 +417,14 @@ namespace DigaoDeskApp
             this.colLogHealth.ReadOnly = true;
             this.colLogHealth.Width = 80;
             // 
-            // colHttpStatus
+            // colTcpStatus
             // 
-            this.colHttpStatus.DataPropertyName = "HttpStatus";
-            this.colHttpStatus.HeaderText = "Http Status";
-            this.colHttpStatus.MinimumWidth = 6;
-            this.colHttpStatus.Name = "colHttpStatus";
-            this.colHttpStatus.ReadOnly = true;
-            this.colHttpStatus.Width = 75;
+            this.colTcpStatus.DataPropertyName = "TcpStatus";
+            this.colTcpStatus.HeaderText = "TCP Status";
+            this.colTcpStatus.MinimumWidth = 6;
+            this.colTcpStatus.Name = "colTcpStatus";
+            this.colTcpStatus.ReadOnly = true;
+            this.colTcpStatus.Width = 75;
             // 
             // FrmApps
             // 
@@ -490,6 +490,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastLogTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogStatistics;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogHealth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHttpStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTcpStatus;
     }
 }
