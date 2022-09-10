@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +23,8 @@ namespace DigaoDeskApp
             InitializeComponent();
 
             LoadLang();
+            
+            Utils.SetGridDoubleBuffer(g);
         }
 
         private void LoadLang()
@@ -119,10 +120,15 @@ namespace DigaoDeskApp
             }
         }
 
+        private DigaoApplication GetAppByRow(DataGridViewRow row)
+        {
+            return (row.DataBoundItem as ObjectView<DigaoApplication>).Object;
+        }
+
         private DigaoApplication GetSelApp()
         {
             if (g.CurrentRow == null) return null;
-            return (g.CurrentRow.DataBoundItem as ObjectView<DigaoApplication>).Object;
+            return GetAppByRow(g.CurrentRow);
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -425,6 +431,39 @@ namespace DigaoDeskApp
             if (e.KeyCode == Keys.F3 && e.Modifiers == Keys.None)
             {
                 FindNext();
+            }
+        }
+
+        private void g_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            var col = g.Columns[e.ColumnIndex];
+            var app = GetAppByRow(g.Rows[e.RowIndex]);
+
+            int? imageIndex = null;
+
+            if (Utils.IsSameGridColumn(col, colStatus))
+            {
+                imageIndex = app.Running ? 0 : 1;
+            } 
+            else if (Utils.IsSameGridColumn(col, colLogHealth))
+            {
+                if (app.LogHealth != null) imageIndex = app.LogHealth == "OK" ? 2 : 3;
+            }
+            else if (Utils.IsSameGridColumn(col, colTcpStatus))
+            {
+                if (app.TcpStatus != null) imageIndex = app.TcpStatus == "UP" ? 4 : 5;
+            }
+
+            if (imageIndex.HasValue)
+            {
+                e.PaintBackground(e.ClipBounds, true);
+                e.Graphics.DrawString(Convert.ToString(e.FormattedValue),
+                    e.CellStyle.Font, new SolidBrush(e.State.HasFlag(DataGridViewElementStates.Selected) ? e.CellStyle.SelectionForeColor : e.CellStyle.ForeColor),
+                    e.CellBounds.X + 20, e.CellBounds.Y + ((e.CellBounds.Height - e.CellStyle.Font.Height) / 2));
+                Utils.DrawGridImage(images, e, imageIndex.Value);
+                e.Handled = true;
             }
         }
 

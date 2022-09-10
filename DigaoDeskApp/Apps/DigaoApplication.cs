@@ -56,7 +56,7 @@ namespace DigaoDeskApp
         {
             get
             {
-                return LastLogIsError ? "# ERROR #" : "OK";
+                return LastLogIsError ? "ERROR" : "OK";
             }
         }
 

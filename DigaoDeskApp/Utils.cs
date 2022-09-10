@@ -229,5 +229,19 @@ namespace DigaoDeskApp
             return lst.Any(x => x.Port == port);
         }
 
+        //-----------------------------------------------------------------
+
+        public static void DrawGridImage(ImageList images, DataGridViewCellPaintingEventArgs e, int imageIndex)
+        {
+            images.Draw(e.Graphics, e.CellBounds.X+3, e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), imageIndex);
+        }
+
+        public static void SetGridDoubleBuffer(DataGridView g)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic |
+                BindingFlags.Instance | BindingFlags.SetProperty, null,
+                g, new object[] { true });
+        }
+
     }
 }

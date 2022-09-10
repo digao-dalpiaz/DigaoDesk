@@ -25,6 +25,7 @@ namespace DigaoDeskApp
 
             LoadLang();
 
+            Utils.SetGridDoubleBuffer(g);
             Utils.AdjustToolStrip(toolBar);
 
             Log = new(edLog, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gitrepos.log"));
@@ -210,7 +211,7 @@ namespace DigaoDeskApp
                 if (e.Value != null)
                 {
                     e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
-                    images.Draw(e.Graphics, e.CellBounds.X+2, e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), Utils.IsSameGridColumn(col, colUp) ? 0 : 1);
+                    Utils.DrawGridImage(images, e, Utils.IsSameGridColumn(col, colUp) ? 0 : 1);
 
                     e.Handled = true;
                 }
