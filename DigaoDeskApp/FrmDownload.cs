@@ -12,6 +12,7 @@ namespace DigaoDeskApp
         private const bool TESTING_MODE = false;
 
         private GitHubUpdater.ReleaseInfo _releaseInfo;
+        private GitHubUpdater.ReleaseAssetInfo _assetInfo;
 
         public FrmDownload(GitHubUpdater.ReleaseInfo releaseInfo)
         {
@@ -20,9 +21,15 @@ namespace DigaoDeskApp
             LoadLang();
 
             _releaseInfo = releaseInfo;
+            _assetInfo = GetAsset();
 
             lbVersion.Text = releaseInfo.tag_name;
             lbTimestamp.Text = releaseInfo.published_at.ToString("yyyy-MM-dd HH:mm");
+            
+            lbSize.Text = _assetInfo != null ? 
+                (Convert.ToDecimal(_assetInfo.size) / 1024 / 1024).ToString("0.00") + " MB" : null;
+
+            edNews.Text = _releaseInfo.body.Replace("\\r\\n", Environment.NewLine);
         }
 
         private void LoadLang()
@@ -31,13 +38,34 @@ namespace DigaoDeskApp
             lbNewVersionAvailable.Text = Vars.Lang.Updater_LabelNewVersionAvailable;
             lblbVersion.Text = Vars.Lang.Updater_LabelVersion;
             lblbTimestamp.Text = Vars.Lang.Updater_LabelTimestamp;
+            lblbSize.Text = Vars.Lang.Updater_LabelSize;
             lbDownloading.Text = Vars.Lang.Updater_LabelDownloading;
             btnDownload.Text = Vars.Lang.Updater_BtnDownload;
             btnCancel.Text = Vars.Lang.Updater_BtnCancel;
         }
 
+        private GitHubUpdater.ReleaseAssetInfo GetAsset()
+        {
+            if (_releaseInfo.assets != null && _releaseInfo.assets.Any())
+            {
+                GitHubUpdater.ReleaseAssetInfo asset = _releaseInfo.assets[0];
+                if (asset.browser_download_url.EndsWith(".exe"))
+                {
+                    return asset;
+                }
+            }
+
+            return null;
+        }
+
         private void btnDownload_Click(object sender, EventArgs e)
         {
+            if (_assetInfo == null)
+            {
+                Messages.Error("Invalid asset");
+                return;
+            }
+
             lbDownloading.Visible = true;
             btnDownload.Enabled = false;
             btnCancel.Enabled = false;
@@ -73,10 +101,7 @@ namespace DigaoDeskApp
 
         private void DownloadFile()
         {
-            if (!_releaseInfo.assets.Any()) throw new Exception("No assets found");
-
-            string urlExe = _releaseInfo.assets[0].browser_download_url;
-            if (!urlExe.EndsWith(".exe")) throw new Exception("Invalid asset file");
+            string urlExe = _assetInfo.browser_download_url;
 
             HttpClient http = new();
             Stream stm = http.GetAsync(urlExe).GetAwaiter().GetResult()

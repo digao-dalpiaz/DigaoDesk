@@ -21,6 +21,7 @@
   "Updater_LabelNewVersionAvailable": "A new version of Digao Desk is available!",
   "Updater_LabelVersion": "Version:",
   "Updater_LabelTimestamp": "Timestamp:",
+  "Updater_LabelSize": "Size:",
   "Updater_LabelDownloading": "Downloading...",
   "Updater_BtnDownload": "Update Now",
   "Updater_BtnCancel": "Leave me alone",

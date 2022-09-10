@@ -26,6 +26,7 @@
         public string Updater_LabelNewVersionAvailable;
         public string Updater_LabelVersion;
         public string Updater_LabelTimestamp;
+        public string Updater_LabelSize;
         public string Updater_LabelDownloading;
         public string Updater_BtnDownload;
         public string Updater_BtnCancel;
