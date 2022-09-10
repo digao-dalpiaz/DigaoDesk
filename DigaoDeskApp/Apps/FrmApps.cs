@@ -123,7 +123,7 @@ namespace DigaoDeskApp
             return (row.DataBoundItem as ObjectView<DigaoApplication>).Object;
         }
 
-        private DigaoApplication GetSelApp()
+        public DigaoApplication GetSelApp()
         {
             if (g.CurrentRow == null) return null;
             return GetAppByRow(g.CurrentRow);
@@ -235,6 +235,7 @@ namespace DigaoDeskApp
         {
             var app = GetSelApp();
             app.Logs.Clear();
+            app.LastLogTime = null;
             app.LastLogIsError = false;
 
             ReloadGrid();
@@ -362,6 +363,9 @@ namespace DigaoDeskApp
                         case DigaoApplication.LogType.DYN_WARN:
                             textColor = Color.Orange;
                             break;
+                        case DigaoApplication.LogType.STOP:
+                            textColor = Color.MediumPurple;
+                            break;
                         default:
                             throw new Exception("Log type invalid");
                     }
@@ -374,6 +378,8 @@ namespace DigaoDeskApp
             {
                 edLog.ResumePainting(!alreadyBottom);
             }
+
+            if (app == GetSelApp()) app.PendingLog = false;
         }
 
         public bool FindInLog(bool fromCurrentPos)
@@ -427,6 +433,10 @@ namespace DigaoDeskApp
             else if (Utils.IsSameGridColumn(col, colTcpStatus))
             {
                 if (app.TcpStatus != null) imageIndex = app.TcpStatus == "UP" ? 4 : 5;
+            }
+            else if (Utils.IsSameGridColumn(col, colLastLogTime))
+            {
+                imageIndex = app.PendingLog ? 6 : 7;
             }
 
             if (imageIndex.HasValue)

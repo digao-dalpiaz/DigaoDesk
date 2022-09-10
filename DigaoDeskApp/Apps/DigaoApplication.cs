@@ -95,7 +95,8 @@ namespace DigaoDeskApp
             ERROR,
             DYN_ERROR,
             DYN_WARN,
-            INFO
+            INFO,
+            STOP
         }
         public class LogRecord
         {
@@ -105,6 +106,8 @@ namespace DigaoDeskApp
         }
 
         public List<LogRecord> Logs = new();
+
+        public bool PendingLog;
 
         public bool Running;
 
@@ -150,13 +153,11 @@ namespace DigaoDeskApp
             _process.Exited += (s, e) =>
             {
                 _process.WaitForExit();
-                AddLog(Vars.Lang.AppLog_Terminated, true);
+                AddLog(Vars.Lang.AppLog_Terminated, false, true);
 
                 Running = false;
                 _startTime = null;
                 RunningTime = null;
-                LastLogTime = null;
-                LastLogIsError = false;
                 Memory = null;
                 Processor = null;
                 ProcCount = null;
@@ -196,7 +197,7 @@ namespace DigaoDeskApp
 
         public void Stop()
         {
-            AddLog(Vars.Lang.AppLog_Stopping, true);
+            AddLog(Vars.Lang.AppLog_Stopping, false, true);
             KillChildProcs(_process, 0);
         }
 
@@ -208,18 +209,21 @@ namespace DigaoDeskApp
                 KillChildProcs(child, level+1);
             }
 
-            AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), true);
+            AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), false, true);
             parent.Kill();
         }
 
-        private void AddLog(string text, bool error)
+        private void AddLog(string text, bool error, bool stop = false)
         {
             if (text == null) text = "";
 
             LogRecord r = new();
             r.Timestamp = DateTime.Now;
             r.Text = text;
-            if (error)
+            if (stop)
+            {
+                r.Type = LogType.STOP;
+            } else if (error)
             {
                 r.Type = LogType.ERROR;
             } else if (text.Contains("ERROR", StringComparison.OrdinalIgnoreCase))
@@ -236,7 +240,12 @@ namespace DigaoDeskApp
 
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
             LastLogIsError = error;
-                        
+
+            if (Vars.FrmAppsObj != null && Vars.FrmAppsObj.GetSelApp() != this)
+            {
+                PendingLog = true;
+            }
+
             Vars.FrmMainObj.UpdateTrayIcon();
         }
 
@@ -281,16 +290,19 @@ namespace DigaoDeskApp
 
                 AnalyzeChildren(_process, r);
 
-                Memory = (r.Mem / 1024 / 1024).ToString("0.00") + " MB";
+                if (Running) //can stop process when analysis running
+                {
+                    Memory = (r.Mem / 1024 / 1024).ToString("0.00") + " MB";
 
-                var utcNow = DateTime.UtcNow;
-                var percent = (r.ProcessorTime - _lastProcessorTime).TotalMilliseconds / (Environment.ProcessorCount * (utcNow - _lastProcessorCapture).TotalMilliseconds);
-                Processor = percent.ToString("0.00 %");
+                    var utcNow = DateTime.UtcNow;
+                    var percent = (r.ProcessorTime - _lastProcessorTime).TotalMilliseconds / (Environment.ProcessorCount * (utcNow - _lastProcessorCapture).TotalMilliseconds);
+                    Processor = percent.ToString("0.00 %");
 
-                _lastProcessorTime = r.ProcessorTime;
-                _lastProcessorCapture = utcNow;
+                    _lastProcessorTime = r.ProcessorTime;
+                    _lastProcessorCapture = utcNow;
 
-                ProcCount = r.ProcCount.ToString();
+                    ProcCount = r.ProcCount.ToString();
+                }
             } 
             catch (AbortAnalyzeException)
             {
