@@ -17,10 +17,23 @@ namespace DigaoDeskApp
         {
             InitializeComponent();
 
+            LoadLang();
+
             _releaseInfo = releaseInfo;
 
             lbVersion.Text = releaseInfo.tag_name;
-            lbTimestamp.Text = releaseInfo.published_at.ToString("dd/MM/yyyy HH:mm");
+            lbTimestamp.Text = releaseInfo.published_at.ToString("yyyy-MM-dd HH:mm");
+        }
+
+        private void LoadLang()
+        {
+            this.Text = Vars.Lang.Updater_Title;
+            lbNewVersionAvailable.Text = Vars.Lang.Updater_LabelNewVersionAvailable;
+            lblbVersion.Text = Vars.Lang.Updater_LabelVersion;
+            lblbTimestamp.Text = Vars.Lang.Updater_LabelTimestamp;
+            lbDownloading.Text = Vars.Lang.Updater_LabelDownloading;
+            btnDownload.Text = Vars.Lang.Updater_BtnDownload;
+            btnCancel.Text = Vars.Lang.Updater_BtnCancel;
         }
 
         private void btnDownload_Click(object sender, EventArgs e)
@@ -42,7 +55,7 @@ namespace DigaoDeskApp
                 }
 
                 this.Close();
-                Messages.Info("Please, close the program to finish the update process.");
+                Messages.Info(Vars.Lang.Updater_CloseToUpdate);
             }
             catch (Exception ex)
             {

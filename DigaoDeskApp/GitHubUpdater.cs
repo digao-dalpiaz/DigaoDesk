@@ -49,7 +49,7 @@ namespace DigaoDeskApp
             {
                 Vars.FrmMainObj.Invoke(new MethodInvoker(() =>
                 {
-                    Messages.Error("Failed to read version information from GitHub: " + ex.Message);
+                    Messages.Error(string.Format(Vars.Lang.Updater_FailedToReadVersionInfo, ex.Message));
                 }));
                 return;
             }
@@ -72,7 +72,7 @@ namespace DigaoDeskApp
 
             if (!File.Exists(Vars.UpdateTmpExe))
             {
-                Messages.Error("Unable to run the temp update program because is was removed!");
+                Messages.Warning(Vars.Lang.Updater_TmpExeRemoved);
                 return;
             }
 
@@ -85,6 +85,7 @@ namespace DigaoDeskApp
 
         public static bool CheckForUpdateExe()
         {
+            //Translation and config not available at this point!
             if (!Environment.GetCommandLineArgs().Any(x => x == UPDATE_ARG_PARAM)) return false;
 
             try

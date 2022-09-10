@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblbVersion = new System.Windows.Forms.Label();
             this.lbVersion = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblbTimestamp = new System.Windows.Forms.Label();
             this.lbTimestamp = new System.Windows.Forms.Label();
             this.btnDownload = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbNewVersionAvailable = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lbDownloading = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblbVersion
             // 
-            this.label1.Location = new System.Drawing.Point(16, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Version:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblbVersion.Location = new System.Drawing.Point(16, 56);
+            this.lblbVersion.Name = "lblbVersion";
+            this.lblbVersion.Size = new System.Drawing.Size(128, 20);
+            this.lblbVersion.TabIndex = 0;
+            this.lblbVersion.Text = "Version:";
+            this.lblbVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lbVersion
             // 
@@ -57,14 +57,14 @@
             this.lbVersion.TabIndex = 1;
             this.lbVersion.Text = "nnn";
             // 
-            // label2
+            // lblbTimestamp
             // 
-            this.label2.Location = new System.Drawing.Point(16, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Timestamp:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblbTimestamp.Location = new System.Drawing.Point(16, 88);
+            this.lblbTimestamp.Name = "lblbTimestamp";
+            this.lblbTimestamp.Size = new System.Drawing.Size(128, 20);
+            this.lblbTimestamp.TabIndex = 2;
+            this.lblbTimestamp.Text = "Timestamp:";
+            this.lblbTimestamp.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lbTimestamp
             // 
@@ -86,16 +86,16 @@
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
-            // label3
+            // lbNewVersionAvailable
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label3.Location = new System.Drawing.Point(16, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(295, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "A new version of Digao Desk is available!";
+            this.lbNewVersionAvailable.AutoSize = true;
+            this.lbNewVersionAvailable.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbNewVersionAvailable.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lbNewVersionAvailable.Location = new System.Drawing.Point(16, 16);
+            this.lbNewVersionAvailable.Name = "lbNewVersionAvailable";
+            this.lbNewVersionAvailable.Size = new System.Drawing.Size(295, 20);
+            this.lbNewVersionAvailable.TabIndex = 5;
+            this.lbNewVersionAvailable.Text = "A new version of Digao Desk is available!";
             // 
             // btnCancel
             // 
@@ -126,17 +126,17 @@
             this.ClientSize = new System.Drawing.Size(602, 253);
             this.Controls.Add(this.lbDownloading);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lbNewVersionAvailable);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.lbTimestamp);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblbTimestamp);
             this.Controls.Add(this.lbVersion);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblbVersion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmDownload";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Version Available";
+            this.Text = "New Version";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,12 +144,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblbVersion;
         private System.Windows.Forms.Label lbVersion;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblbTimestamp;
         private System.Windows.Forms.Label lbTimestamp;
         private System.Windows.Forms.Button btnDownload;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbNewVersionAvailable;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lbDownloading;
     }

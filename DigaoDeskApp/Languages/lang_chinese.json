@@ -14,6 +14,17 @@
 
   "CountLabel": "计数：{0}",
 
+  "Updater_FailedToReadVersionInfo": "Failed to read version information from GitHub: {0}",
+  "Updater_TmpExeRemoved": "Unable to run the temp update program because is was removed!",
+  "Updater_CloseToUpdate": "Please, close the program to finish the update process.",
+  "Updater_Title": "New Version",
+  "Updater_LabelNewVersionAvailable": "A new version of Digao Desk is available!",
+  "Updater_LabelVersion": "Version:",
+  "Updater_LabelTimestamp": "Timestamp:",
+  "Updater_LabelDownloading": "Downloading...",
+  "Updater_BtnDownload": "Update Now",
+  "Updater_BtnCancel": "Leave me alone",
+
   "Config_Title": "设置 - Digao Desk",
   "Config_Tab_General": "常规",
   "Config_Tab_Theme": "主题",

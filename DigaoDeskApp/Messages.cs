@@ -13,6 +13,11 @@ namespace DigaoDeskApp
             MessageBox.Show(msg, TITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void Warning(string msg)
+        {
+            MessageBox.Show(msg, TITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
         public static void Info(string msg)
         {
             MessageBox.Show(msg, TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);

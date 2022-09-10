@@ -19,6 +19,17 @@
 
         public string CountLabel;
 
+        public string Updater_FailedToReadVersionInfo;
+        public string Updater_TmpExeRemoved;
+        public string Updater_CloseToUpdate;
+        public string Updater_Title;
+        public string Updater_LabelNewVersionAvailable;
+        public string Updater_LabelVersion;
+        public string Updater_LabelTimestamp;
+        public string Updater_LabelDownloading;
+        public string Updater_BtnDownload;
+        public string Updater_BtnCancel;
+
         public string Config_Title;
         public string Config_Tab_General;
         public string Config_Tab_Theme;

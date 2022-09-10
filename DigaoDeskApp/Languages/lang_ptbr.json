@@ -14,6 +14,17 @@
 
   "CountLabel": "Total: {0}",
 
+  "Updater_FailedToReadVersionInfo": "Falha ao obter informações da versão no GitHub: {0}",
+  "Updater_TmpExeRemoved": "Não será possível rodar o arquivo temporário de atualização pois ele foi removido!",
+  "Updater_CloseToUpdate": "Feche o programa para completar o processo de atualização",
+  "Updater_Title": "Nova Versão",
+  "Updater_LabelNewVersionAvailable": "Uma nova versão do Digao Desk está disponível!",
+  "Updater_LabelVersion": "Versão:",
+  "Updater_LabelTimestamp": "Data/Hora:",
+  "Updater_LabelDownloading": "Baixando...",
+  "Updater_BtnDownload": "Atualizar agora",
+  "Updater_BtnCancel": "Deixar assim",
+
   "Config_Title": "Configurações - Digao Desk",
   "Config_Tab_General": "Geral",
   "Config_Tab_Theme": "Tema",
