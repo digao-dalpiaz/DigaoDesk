@@ -1,9 +1,7 @@
 ﻿using Equin.ApplicationFramework;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -300,49 +298,24 @@ namespace DigaoDeskApp
 
         private void timerMonitor_Tick(object sender, EventArgs e)
         {
-            timerMonitor.Enabled = false;
-            stMonitoring.Visible = true;
-            Task.Run(Analyze);
-        }
+            ReloadGrid();
+            UpdateButtons();
 
-        private void Analyze()
-        {
-            List<Task> tasks = new();
+            var appSelected = GetSelApp();
+            if (appSelected != null)
+            {
+                AddRemainingLog(appSelected);
+            }
 
             foreach (var app in Vars.AppList)
             {
                 if (app.Running)
                 {
-                    var task = new Task(app.Analyze);
-                    task.Start();
-                    tasks.Add(task);
-                }
-            }
-
-            Task.WaitAll(tasks.ToArray());
-
-            if (Vars.FrmAppsObj != null)
-            {
-                try
-                {
-                    this.Invoke(new MethodInvoker(() =>
+                    if (app.monitorTask == null || app.monitorTask.IsCompleted)
                     {
-                        ReloadGrid();
-                        UpdateButtons();
-
-                        var app = GetSelApp();
-                        if (app != null)
-                        {
-                            AddRemainingLog(app);
-                        }
-
-                        stMonitoring.Visible = false;
-                        timerMonitor.Enabled = true;
-                    }));
-                }
-                catch (Exception)
-                {
-                    if (Vars.FrmAppsObj != null) throw;
+                        app.monitorTask = new(app.Analyze);
+                        app.monitorTask.Start();
+                    }
                 }
             }
         }

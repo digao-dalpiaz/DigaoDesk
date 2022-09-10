@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -108,6 +109,8 @@ namespace DigaoDeskApp
         public bool Running;
 
         private Process _process;
+
+        public Task monitorTask;
 
         public void Start()
         {
@@ -261,6 +264,9 @@ namespace DigaoDeskApp
 
         public void Analyze()
         {
+            string[] debugArgs = { Name, Guid.NewGuid().ToString() }; 
+            Debug.WriteLine("Started Analyse App {0} {1}", debugArgs);
+
             var ts = (DateTime.Now - _startTime.Value);
             RunningTime = (ts.TotalMinutes / 60).ToString("0") + ":" + (ts.TotalMinutes % 60).ToString("00");
 
@@ -292,6 +298,8 @@ namespace DigaoDeskApp
                 Processor = null;
                 ProcCount = null;
             }
+
+            Debug.WriteLine("Finished Analyse App {0} {1}", debugArgs);
         }
 
         public void CheckWebPort()
@@ -316,8 +324,6 @@ namespace DigaoDeskApp
         {
             try
             {
-                p.Refresh();
-
                 r.Mem += p.PrivateMemorySize64;
                 r.ProcessorTime += p.TotalProcessorTime;
                 r.ProcCount++;
