@@ -215,6 +215,8 @@ namespace DigaoDeskApp
 
         private void AddLog(string text, bool error, bool stop = false)
         {
+            if (error && stop) throw new Exception("Invalid flags combining");
+
             if (text == null) text = "";
 
             LogRecord r = new();
