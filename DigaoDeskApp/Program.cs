@@ -19,6 +19,8 @@ namespace DigaoDeskApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            if (GitHubUpdater.CheckForUpdateExe()) return;
+
             Config.Load();
             LangEngine.Init();
 

@@ -1,6 +1,5 @@
 ﻿{
   "AlreadyRunningMessage": "Digao Desk is already running!",
-  "GitHubUpdNewVersion": "There is a new version of Digao Desk available!\n\nNew version: {0}\nPublished at: {1}\n\nDo you want to check this version in GitHub now?",
   "MenuVersion": "Version {0}",
   "MenuApplications": "Applications",
   "MenuGitRepositories": "Git Repositories",

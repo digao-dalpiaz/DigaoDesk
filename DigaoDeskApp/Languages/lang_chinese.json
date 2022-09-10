@@ -1,6 +1,5 @@
 ﻿{
   "AlreadyRunningMessage": "Digao Desk 已经运行！",
-  "GitHubUpdNewVersion": "Digao Desk 有新版本了！\n\n新版本：{0}\n发布在：{1}\n\n你想现在在 GitHub 上查看这个版本吗？",
   "MenuVersion": "版本 {0}",
   "MenuApplications": "应用程序",
   "MenuGitRepositories": "Git 存储库",

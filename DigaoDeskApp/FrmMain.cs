@@ -54,6 +54,8 @@ namespace DigaoDeskApp
             //force forms close before application terminate, otherwise close event of forms isn't triggered, so customizations are not saved.
             if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.Close();
             if (Vars.FrmReposObj != null) Vars.FrmReposObj.Close();
+
+            GitHubUpdater.CheckForRunTmpUpdateExeOnClosing();
         }
 
         private void LoadLang()

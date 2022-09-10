@@ -5,7 +5,6 @@
 #pragma warning disable 0649
 
         public string AlreadyRunningMessage;
-        public string GitHubUpdNewVersion;
         public string MenuVersion;
         public string MenuApplications;
         public string MenuGitRepositories;
