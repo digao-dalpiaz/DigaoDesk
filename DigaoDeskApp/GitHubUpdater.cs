@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,16 +20,18 @@ namespace DigaoDeskApp
 
         private static void Check()
         {
-            WebClient w = new();
-            w.Headers.Add("User-Agent", "request");
+            HttpClient http = new();
+            http.DefaultRequestHeaders.Add("User-Agent", "request");
 
             string data;
             try
             {
-                data = w.DownloadString(URL);
+                data = http.GetAsync(URL).GetAwaiter().GetResult()
+                    .Content.ReadAsStringAsync().GetAwaiter().GetResult();
             } 
-            catch (WebException)
+            catch (Exception e)
             {
+                Debug.WriteLine("Error checking updates: " + e.Message);
                 return;
             }
 
