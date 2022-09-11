@@ -339,7 +339,7 @@ namespace DigaoDeskApp
                 for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
                 {
                     var log = app.Logs[i];
-                    if (Vars.Config.Log.ShowTimestamp)
+                    if (Vars.Config.Theme.ShowTimestamp)
                     {
                         edLog.SelectionStart = edLog.TextLength;
                         edLog.SelectionColor = Color.Gray;

@@ -11,9 +11,7 @@ namespace DigaoDeskApp
         public string Language = LangEngine.DEFAULT_LANG;
 
         public ConfigTheme Theme;
-        public ConfigLog Log;
-        public bool NotifyAppStops = true;
-        public bool DontNotifyWhenAppsActive = false;
+        public ConfigApps Apps;
         
         public string ReposDir;
         public string ShellProgram = "cmd.exe";
@@ -42,14 +40,18 @@ namespace DigaoDeskApp
             public Color ConsoleFore = Color.FromArgb(128, 255, 128);
             public Color StatusBack = Color.FromArgb(30, 30, 30);
             public Color StatusFore = Color.Silver;
-        }
 
-        public class ConfigLog
-        {
             public string FontName = "Consolas";
             public float FontSize = 10;
             public bool ShowTimestamp = false;
             public bool WordWrap = false;
+        }
+
+        public class ConfigApps
+        {
+            public bool NotifyAppStops = true;
+            public bool DontNotifyWhenAppsActive = false;
+            public int LinesLog = 1000;
         }
 
         public class ConfigGit
@@ -79,7 +81,7 @@ namespace DigaoDeskApp
             }
 
             if (Vars.Config.Theme == null) Vars.Config.Theme = new();
-            if (Vars.Config.Log == null) Vars.Config.Log = new();
+            if (Vars.Config.Apps == null) Vars.Config.Apps = new();
             if (Vars.Config.Git == null) Vars.Config.Git = new();
         }
 

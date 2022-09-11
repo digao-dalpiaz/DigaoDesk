@@ -51,11 +51,11 @@ namespace DigaoDeskApp
 
         public static void setConsole(RichTextBoxEx c)
         {
-            c.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
+            c.Font = new Font(Vars.Config.Theme.FontName, Vars.Config.Theme.FontSize);
             c.ForeColor = Vars.Config.Theme.ConsoleFore;
             c.BackColor = Vars.Config.Theme.ConsoleBack;
 
-            c.WordWrap = Vars.Config.Log.WordWrap;
+            c.WordWrap = Vars.Config.Theme.WordWrap;
         }
 
         public static void setStatusStrip(StatusStrip c)

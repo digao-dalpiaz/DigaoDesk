@@ -106,6 +106,8 @@ namespace DigaoDeskApp
             this.lbRepositoryFolder = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.edAppLogLines = new System.Windows.Forms.NumericUpDown();
             this.pages.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabTheme.SuspendLayout();
@@ -113,6 +115,7 @@ namespace DigaoDeskApp
             this.tabRepos.SuspendLayout();
             this.boxGitAuthor.SuspendLayout();
             this.boxGitCredentials.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.edAppLogLines)).BeginInit();
             this.SuspendLayout();
             // 
             // pages
@@ -564,6 +567,8 @@ namespace DigaoDeskApp
             // 
             // tabApplications
             // 
+            this.tabApplications.Controls.Add(this.edAppLogLines);
+            this.tabApplications.Controls.Add(this.label1);
             this.tabApplications.Controls.Add(this.CkDontNotifyWhenAppsActive);
             this.tabApplications.Controls.Add(this.ckNotifyWhenAppStops);
             this.tabApplications.Location = new System.Drawing.Point(4, 29);
@@ -937,6 +942,37 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 112);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(194, 20);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Application log lines history";
+            // 
+            // edAppLogLines
+            // 
+            this.edAppLogLines.Location = new System.Drawing.Point(16, 136);
+            this.edAppLogLines.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.edAppLogLines.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.edAppLogLines.Name = "edAppLogLines";
+            this.edAppLogLines.Size = new System.Drawing.Size(150, 27);
+            this.edAppLogLines.TabIndex = 13;
+            this.edAppLogLines.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // FrmConfig
             // 
             this.AcceptButton = this.btnOK;
@@ -968,6 +1004,7 @@ namespace DigaoDeskApp
             this.boxGitAuthor.PerformLayout();
             this.boxGitCredentials.ResumeLayout(false);
             this.boxGitCredentials.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.edAppLogLines)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1051,5 +1088,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbColorGridDataBack;
         private System.Windows.Forms.Button btnColorGridDataBack;
         private System.Windows.Forms.Button btnResetColors;
+        private System.Windows.Forms.NumericUpDown edAppLogLines;
+        private System.Windows.Forms.Label label1;
     }
 }

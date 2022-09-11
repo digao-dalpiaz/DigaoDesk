@@ -57,7 +57,7 @@ namespace DigaoDeskApp
 
                 if (parts.Any())
                 {
-                    if (Vars.Config.Log.ShowTimestamp)
+                    if (Vars.Config.Theme.ShowTimestamp)
                     {
                         _edControl.SelectionColor = Color.Gray;
                         _edControl.SelectedText = GetTimestampPrefix();

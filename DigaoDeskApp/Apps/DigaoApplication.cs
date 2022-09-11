@@ -165,10 +165,10 @@ namespace DigaoDeskApp
                 InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this));
                 Vars.FrmMainObj.UpdateTrayIcon();
 
-                if (Vars.Config.NotifyAppStops)
+                if (Vars.Config.Apps.NotifyAppStops)
                 {
                     Vars.FrmMainObj.Invoke(new MethodInvoker(() => {
-                        if (!(Vars.Config.DontNotifyWhenAppsActive && Vars.FrmAppsObj != null && Form.ActiveForm == Vars.FrmAppsObj))
+                        if (!(Vars.Config.Apps.DontNotifyWhenAppsActive && Vars.FrmAppsObj != null && Form.ActiveForm == Vars.FrmAppsObj))
                             Vars.FrmMainObj.tray.ShowBalloonTip(5000, Vars.Lang.AppTerminatedBalloonTitle, string.Format(Vars.Lang.AppTerminatedBalloonMsg, Name), ToolTipIcon.Info);
                     }));
                 }

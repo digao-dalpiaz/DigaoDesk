@@ -95,11 +95,11 @@ namespace DigaoDeskApp
         {
             edLanguage.SelectedItem = LangEngine.GetDefinitionByValue(Vars.Config.Language);
             
-            _dlgFont.Font = new Font(Vars.Config.Log.FontName, Vars.Config.Log.FontSize);
+            _dlgFont.Font = new Font(Vars.Config.Theme.FontName, Vars.Config.Theme.FontSize);
             UpdateFontButton();
 
-            ckLogShowTs.Checked = Vars.Config.Log.ShowTimestamp;
-            ckLogWordWrap.Checked = Vars.Config.Log.WordWrap;
+            ckLogShowTs.Checked = Vars.Config.Theme.ShowTimestamp;
+            ckLogWordWrap.Checked = Vars.Config.Theme.WordWrap;
 
             ckThemeDarkTitle.Checked = Vars.Config.Theme.DarkTitle;
             btnColorToolbarBack.BackColor = Vars.Config.Theme.ToolbarBack;
@@ -119,8 +119,8 @@ namespace DigaoDeskApp
             btnColorStatusFore.BackColor = Vars.Config.Theme.StatusFore;
 
             //--Apps tab
-            ckNotifyWhenAppStops.Checked = Vars.Config.NotifyAppStops;
-            CkDontNotifyWhenAppsActive.Checked = Vars.Config.DontNotifyWhenAppsActive;
+            ckNotifyWhenAppStops.Checked = Vars.Config.Apps.NotifyAppStops;
+            CkDontNotifyWhenAppsActive.Checked = Vars.Config.Apps.DontNotifyWhenAppsActive;
             //--
 
             //--Repos tab
@@ -196,11 +196,11 @@ namespace DigaoDeskApp
         {
             Vars.Config.Language = ((LangEngine.Definition)edLanguage.SelectedItem).Value;
 
-            Vars.Config.Log.FontName = _dlgFont.Font.Name;
-            Vars.Config.Log.FontSize = _dlgFont.Font.Size;
+            Vars.Config.Theme.FontName = _dlgFont.Font.Name;
+            Vars.Config.Theme.FontSize = _dlgFont.Font.Size;
 
-            Vars.Config.Log.ShowTimestamp = ckLogShowTs.Checked;
-            Vars.Config.Log.WordWrap = ckLogWordWrap.Checked;
+            Vars.Config.Theme.ShowTimestamp = ckLogShowTs.Checked;
+            Vars.Config.Theme.WordWrap = ckLogWordWrap.Checked;
 
             Vars.Config.Theme.DarkTitle = ckThemeDarkTitle.Checked;
             Vars.Config.Theme.ToolbarBack = btnColorToolbarBack.BackColor;
@@ -220,8 +220,8 @@ namespace DigaoDeskApp
             Vars.Config.Theme.StatusFore = btnColorStatusFore.BackColor;
 
             //--Apps tab
-            Vars.Config.NotifyAppStops = ckNotifyWhenAppStops.Checked;
-            Vars.Config.DontNotifyWhenAppsActive = CkDontNotifyWhenAppsActive.Checked;
+            Vars.Config.Apps.NotifyAppStops = ckNotifyWhenAppStops.Checked;
+            Vars.Config.Apps.DontNotifyWhenAppsActive = CkDontNotifyWhenAppsActive.Checked;
             //--
 
             //--Repos tab
