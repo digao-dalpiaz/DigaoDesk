@@ -243,7 +243,7 @@ namespace DigaoDeskApp
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
             LastLogIsError = error;
 
-            if (Vars.FrmAppsObj != null && Vars.FrmAppsObj.GetSelApp() != this)
+            if (Vars.FrmAppsObj == null || Vars.FrmAppsObj.GetSelApp() != this)
             {
                 PendingLog = true;
             }
