@@ -115,7 +115,7 @@ namespace DigaoDeskApp
             _app.Args = edArgs.Text;
             _app.WorkDir = edDir.Text;
             _app.EnvVars = dic;
-            _app.TcpPort = edTcpPort.Controls[1].Text != "" && edTcpPort.Value > 0 ? (ushort)edTcpPort.Value : null;
+            _app.TcpPort = edTcpPort.Text != "" && edTcpPort.Value > 0 ? (ushort)edTcpPort.Value : null;
 
             DialogResult = DialogResult.OK;
         }

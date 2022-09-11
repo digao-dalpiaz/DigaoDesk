@@ -59,7 +59,7 @@ namespace DigaoDeskApp
 
             ckNotifyWhenAppStops.Text = Vars.Lang.Config_Apps_NotifyWhenStop;
             ckDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
-            edAppLogLines.Text = Vars.Lang.Config_Apps_LinesLog;
+            lbAppsLinesLog.Text = Vars.Lang.Config_Apps_LinesLog;
 
             lbRepositoryFolder.Text = Vars.Lang.Config_Repos_Folder;
             boxGitAuthor.Text = Vars.Lang.Config_Repos_BoxAuthor;
@@ -124,7 +124,7 @@ namespace DigaoDeskApp
             //--Apps tab
             ckNotifyWhenAppStops.Checked = Vars.Config.Apps.NotifyAppStops;
             ckDontNotifyWhenAppsActive.Checked = Vars.Config.Apps.DontNotifyWhenAppsActive;
-            edAppLogLines.Value = Vars.Config.Apps.LinesLog;
+            edAppsLinesLog.Value = Vars.Config.Apps.LinesLog;
             //--
 
             //--Repos tab
@@ -166,10 +166,10 @@ namespace DigaoDeskApp
                 return;
             }
 
-            if (edAppLogLines.Controls[1].Text == "" || edAppLogLines.Value == 0)
+            if (edAppsLinesLog.Text == "" || edAppsLinesLog.Value == 0)
             {
                 Messages.Error(Vars.Lang.Config_AppLogLinesRequired);
-                edAppLogLines.Select();
+                edAppsLinesLog.Select();
                 return;
             }
 
@@ -235,7 +235,7 @@ namespace DigaoDeskApp
             //--Apps tab
             Vars.Config.Apps.NotifyAppStops = ckNotifyWhenAppStops.Checked;
             Vars.Config.Apps.DontNotifyWhenAppsActive = ckDontNotifyWhenAppsActive.Checked;
-            Vars.Config.Apps.LinesLog = (int)edAppLogLines.Value;
+            Vars.Config.Apps.LinesLog = (int)edAppsLinesLog.Value;
             //--
 
             //--Repos tab

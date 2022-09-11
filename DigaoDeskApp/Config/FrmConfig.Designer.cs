@@ -72,8 +72,8 @@ namespace DigaoDeskApp
             this.btnColorConsoleBack = new System.Windows.Forms.Button();
             this.lbConsoleFont = new System.Windows.Forms.Label();
             this.tabApplications = new System.Windows.Forms.TabPage();
-            this.edAppLogLines = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.edAppsLinesLog = new System.Windows.Forms.NumericUpDown();
+            this.lbAppsLinesLog = new System.Windows.Forms.Label();
             this.ckDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.tabRepos = new System.Windows.Forms.TabPage();
@@ -112,7 +112,7 @@ namespace DigaoDeskApp
             this.tabGeneral.SuspendLayout();
             this.tabTheme.SuspendLayout();
             this.tabApplications.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edAppLogLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edAppsLinesLog)).BeginInit();
             this.tabRepos.SuspendLayout();
             this.boxGitAuthor.SuspendLayout();
             this.boxGitCredentials.SuspendLayout();
@@ -567,8 +567,8 @@ namespace DigaoDeskApp
             // 
             // tabApplications
             // 
-            this.tabApplications.Controls.Add(this.edAppLogLines);
-            this.tabApplications.Controls.Add(this.label1);
+            this.tabApplications.Controls.Add(this.edAppsLinesLog);
+            this.tabApplications.Controls.Add(this.lbAppsLinesLog);
             this.tabApplications.Controls.Add(this.ckDontNotifyWhenAppsActive);
             this.tabApplications.Controls.Add(this.ckNotifyWhenAppStops);
             this.tabApplications.Location = new System.Drawing.Point(4, 29);
@@ -580,36 +580,36 @@ namespace DigaoDeskApp
             this.tabApplications.Text = "Applications";
             this.tabApplications.UseVisualStyleBackColor = true;
             // 
-            // edAppLogLines
+            // edAppsLinesLog
             // 
-            this.edAppLogLines.Location = new System.Drawing.Point(16, 136);
-            this.edAppLogLines.Maximum = new decimal(new int[] {
+            this.edAppsLinesLog.Location = new System.Drawing.Point(16, 136);
+            this.edAppsLinesLog.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.edAppLogLines.Minimum = new decimal(new int[] {
+            this.edAppsLinesLog.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.edAppLogLines.Name = "edAppLogLines";
-            this.edAppLogLines.Size = new System.Drawing.Size(150, 27);
-            this.edAppLogLines.TabIndex = 13;
-            this.edAppLogLines.Value = new decimal(new int[] {
+            this.edAppsLinesLog.Name = "edAppsLinesLog";
+            this.edAppsLinesLog.Size = new System.Drawing.Size(150, 27);
+            this.edAppsLinesLog.TabIndex = 13;
+            this.edAppsLinesLog.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
             // 
-            // label1
+            // lbAppsLinesLog
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 112);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Application log lines history";
+            this.lbAppsLinesLog.AutoSize = true;
+            this.lbAppsLinesLog.Location = new System.Drawing.Point(14, 112);
+            this.lbAppsLinesLog.Name = "lbAppsLinesLog";
+            this.lbAppsLinesLog.Size = new System.Drawing.Size(194, 20);
+            this.lbAppsLinesLog.TabIndex = 12;
+            this.lbAppsLinesLog.Text = "Application log lines history";
             // 
             // ckDontNotifyWhenAppsActive
             // 
@@ -998,7 +998,7 @@ namespace DigaoDeskApp
             this.tabTheme.PerformLayout();
             this.tabApplications.ResumeLayout(false);
             this.tabApplications.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edAppLogLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edAppsLinesLog)).EndInit();
             this.tabRepos.ResumeLayout(false);
             this.tabRepos.PerformLayout();
             this.boxGitAuthor.ResumeLayout(false);
@@ -1088,7 +1088,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbColorGridDataBack;
         private System.Windows.Forms.Button btnColorGridDataBack;
         private System.Windows.Forms.Button btnResetColors;
-        private System.Windows.Forms.NumericUpDown edAppLogLines;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown edAppsLinesLog;
+        private System.Windows.Forms.Label lbAppsLinesLog;
     }
 }
