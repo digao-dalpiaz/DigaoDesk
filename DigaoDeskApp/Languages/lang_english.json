@@ -57,6 +57,8 @@
 
   "Config_Apps_NotifyWhenStop": "Notify when application stops",
   "Config_Apps_DontNotifyStopWhenActive": "Do not notify when apps form active",
+  "Config_Apps_LinesLog": "Application history lines log",
+
   "Config_Repos_Folder": "Repositories folder",
   "Config_Repos_BoxAuthor": "Author information",
   "Config_Repos_Author_Name": "Name",
@@ -74,6 +76,7 @@
   "Config_Repos_CommitMsg": "Commit message",
   "Config_Repos_CommitMsgInfo": "Use [branch] for branch name",
   "Config_InvalidLanguage": "Invalid language",
+  "Config_AppLogLinesRequired": "Application history log lines is required",
   "Config_GitRepositoryNotFound": "Git repository folder not found",
 
   "RepoConfig_Title": "Repository Settings",

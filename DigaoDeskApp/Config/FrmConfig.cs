@@ -58,7 +58,8 @@ namespace DigaoDeskApp
             ckLogWordWrap.Text = Vars.Lang.Config_Theme_WordWrap;
 
             ckNotifyWhenAppStops.Text = Vars.Lang.Config_Apps_NotifyWhenStop;
-            CkDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
+            ckDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
+            edAppLogLines.Text = Vars.Lang.Config_Apps_LinesLog;
 
             lbRepositoryFolder.Text = Vars.Lang.Config_Repos_Folder;
             boxGitAuthor.Text = Vars.Lang.Config_Repos_BoxAuthor;
@@ -95,6 +96,7 @@ namespace DigaoDeskApp
         {
             edLanguage.SelectedItem = LangEngine.GetDefinitionByValue(Vars.Config.Language);
             
+            //--Theme tab
             _dlgFont.Font = new Font(Vars.Config.Theme.FontName, Vars.Config.Theme.FontSize);
             UpdateFontButton();
 
@@ -117,10 +119,12 @@ namespace DigaoDeskApp
             btnColorConsoleFore.BackColor = Vars.Config.Theme.ConsoleFore;
             btnColorStatusBack.BackColor = Vars.Config.Theme.StatusBack;
             btnColorStatusFore.BackColor = Vars.Config.Theme.StatusFore;
+            //--
 
             //--Apps tab
             ckNotifyWhenAppStops.Checked = Vars.Config.Apps.NotifyAppStops;
-            CkDontNotifyWhenAppsActive.Checked = Vars.Config.Apps.DontNotifyWhenAppsActive;
+            ckDontNotifyWhenAppsActive.Checked = Vars.Config.Apps.DontNotifyWhenAppsActive;
+            edAppLogLines.Value = Vars.Config.Apps.LinesLog;
             //--
 
             //--Repos tab
@@ -162,6 +166,13 @@ namespace DigaoDeskApp
                 return;
             }
 
+            if (edAppLogLines.Controls[1].Text == "" || edAppLogLines.Value == 0)
+            {
+                Messages.Error(Vars.Lang.Config_AppLogLinesRequired);
+                edAppLogLines.Select();
+                return;
+            }
+
             edReposDir.Text = edReposDir.Text.Trim();
             if (edReposDir.Text != string.Empty)
             {
@@ -196,6 +207,7 @@ namespace DigaoDeskApp
         {
             Vars.Config.Language = ((LangEngine.Definition)edLanguage.SelectedItem).Value;
 
+            //--Theme tab
             Vars.Config.Theme.FontName = _dlgFont.Font.Name;
             Vars.Config.Theme.FontSize = _dlgFont.Font.Size;
 
@@ -218,10 +230,12 @@ namespace DigaoDeskApp
             Vars.Config.Theme.ConsoleFore = btnColorConsoleFore.BackColor;
             Vars.Config.Theme.StatusBack = btnColorStatusBack.BackColor;
             Vars.Config.Theme.StatusFore = btnColorStatusFore.BackColor;
+            //--
 
             //--Apps tab
             Vars.Config.Apps.NotifyAppStops = ckNotifyWhenAppStops.Checked;
-            Vars.Config.Apps.DontNotifyWhenAppsActive = CkDontNotifyWhenAppsActive.Checked;
+            Vars.Config.Apps.DontNotifyWhenAppsActive = ckDontNotifyWhenAppsActive.Checked;
+            Vars.Config.Apps.LinesLog = (int)edAppLogLines.Value;
             //--
 
             //--Repos tab

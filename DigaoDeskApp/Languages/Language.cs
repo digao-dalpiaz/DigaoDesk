@@ -62,6 +62,8 @@
 
         public string Config_Apps_NotifyWhenStop;
         public string Config_Apps_DontNotifyStopWhenActive;
+        public string Config_Apps_LinesLog;
+
         public string Config_Repos_Folder;
         public string Config_Repos_BoxAuthor;
         public string Config_Repos_Author_Name;
@@ -79,6 +81,7 @@
         public string Config_Repos_CommitMsg;
         public string Config_Repos_CommitMsgInfo;
         public string Config_InvalidLanguage;
+        public string Config_AppLogLinesRequired;
         public string Config_GitRepositoryNotFound;
 
         public string RepoConfig_Title;

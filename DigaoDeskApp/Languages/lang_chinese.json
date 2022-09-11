@@ -57,6 +57,8 @@
 
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
+  "Config_Apps_LinesLog": "Application history lines log",
+
   "Config_Repos_Folder": "存储库文件夹",
   "Config_Repos_BoxAuthor": "作者信息",
   "Config_Repos_Author_Name": "名称",
@@ -74,6 +76,7 @@
   "Config_Repos_CommitMsg": "提交信息",
   "Config_Repos_CommitMsgInfo": "使用 [branch] 作为分支名称",
   "Config_InvalidLanguage": "无效的语言",
+  "Config_AppLogLinesRequired": "Application log lines history is required",
   "Config_GitRepositoryNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",

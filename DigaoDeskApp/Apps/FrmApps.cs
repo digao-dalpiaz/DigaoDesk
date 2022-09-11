@@ -328,7 +328,7 @@ namespace DigaoDeskApp
 
             if (_nextLogLineToRead == 0) //only when fill from beggining
             {
-                while (app.Logs.Count > 5000) app.Logs.RemoveAt(0);
+                while (app.Logs.Count > Vars.Config.Apps.LinesLog) app.Logs.RemoveAt(0);
             }
 
             var alreadyBottom = edLog.SelectionStart == edLog.TextLength;
