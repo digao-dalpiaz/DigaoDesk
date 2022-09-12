@@ -14,17 +14,17 @@
 
   "CountLabel": "计数：{0}",
 
-  "Updater_FailedToReadVersionInfo": "Failed to read version information from GitHub: {0}",
-  "Updater_TmpExeRemoved": "Unable to run the temp update program because is was removed!",
-  "Updater_CloseToUpdate": "Please, close the program to finish the update process.",
-  "Updater_Title": "New Version",
-  "Updater_LabelNewVersionAvailable": "A new version of Digao Desk is available!",
-  "Updater_LabelVersion": "Version:",
-  "Updater_LabelTimestamp": "Timestamp:",
-  "Updater_LabelSize": "Size:",
-  "Updater_LabelDownloading": "Downloading...",
-  "Updater_BtnDownload": "Update Now",
-  "Updater_BtnCancel": "Leave me alone",
+  "Updater_FailedToReadVersionInfo": "无法从 GitHub 读取版本信息：{0}",
+  "Updater_TmpExeRemoved": "无法运行临时更新程序，因为它已被删除！",
+  "Updater_CloseToUpdate": "请关闭程序以完成更新过程。",
+  "Updater_Title": "新版本",
+  "Updater_LabelNewVersionAvailable": "一个新的 Digao Desk 版本可用！",
+  "Updater_LabelVersion": "版本：",
+  "Updater_LabelTimestamp": "时间戳：",
+  "Updater_LabelSize": "大小：",
+  "Updater_LabelDownloading": "正在下载...",
+  "Updater_BtnDownload": "立即更新",
+  "Updater_BtnCancel": "请别打扰我",
 
   "Config_Title": "设置 - Digao Desk",
   "Config_Tab_General": "常规",
@@ -57,7 +57,7 @@
 
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
-  "Config_Apps_LinesLog": "Application history lines log",
+  "Config_Apps_LinesLog": "应用程序历史记录行日志",
 
   "Config_Repos_Folder": "存储库文件夹",
   "Config_Repos_BoxAuthor": "作者信息",
@@ -76,7 +76,7 @@
   "Config_Repos_CommitMsg": "提交信息",
   "Config_Repos_CommitMsgInfo": "使用 [branch] 作为分支名称",
   "Config_InvalidLanguage": "无效的语言",
-  "Config_AppLogLinesRequired": "Application log lines history is required",
+  "Config_AppLogLinesRequired": "需要应用程序日志行历史记录",
   "Config_GitRepositoryNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",
@@ -278,7 +278,7 @@
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
-  "AppLog_TcpPortInUse": "TCP Port {0} already in use",
+  "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
 
   "AppTerminatedBalloonTitle": "进程已停止",
   "AppTerminatedBalloonMsg": "应用程序 \"{0}\" 已停止！",
@@ -327,7 +327,7 @@
   "Apps_Col_LastLogTime": "上次记录时间",
   "Apps_Col_LogStatistics": "日志统计",
   "Apps_Col_LogHealth": "日志健康",
-  "Apps_Col_TcpStatus": "TCP Status",
+  "Apps_Col_TcpStatus": "TCP 状态",
   "Apps_StatusBar_Info": "喝杯咖啡吧！ 我正在处理你的应用程序。",
   "Apps_StatusBar_Scanning": "正在扫描...",
 
