@@ -69,7 +69,6 @@ namespace DigaoDeskApp
                 {
                     Messages.Error(string.Format(Vars.Lang.Updater_FailedToReadVersionInfo, ex.Message));
                 }));
-                return;
             }
         }
 
