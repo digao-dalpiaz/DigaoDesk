@@ -73,8 +73,3 @@ Here you can get an example how to change you repository from SSH to HTTPS url:
 ```
 git remote set-url origin https://username@domain.com/cluster/my-repository.git
 ```
-
-## Applications Log Lines
-
-The log of application is limited by 5,000 lines due to increase log loading speed when reloading application log.
-
