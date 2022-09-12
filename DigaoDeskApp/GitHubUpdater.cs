@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,8 @@ namespace DigaoDeskApp
     public class GitHubUpdater
     {
 
-        private const string URL = "https://api.github.com/repos/digao-dalpiaz/DigaoDesk/releases/latest";
+        private const string URL_RELEASES = "https://api.github.com/repos/digao-dalpiaz/DigaoDesk/releases";
+        private const string URL_LATEST = URL_RELEASES + "/latest";
 
         private const string UPDATE_ARG_PARAM = "/update";
 
@@ -23,16 +25,21 @@ namespace DigaoDeskApp
             Task.Run(Check);      
         }
 
-        private static void Check()
+        private static string GetGitHubAPI(string url)
         {
             HttpClient http = new();
             http.DefaultRequestHeaders.Add("User-Agent", "request");
 
+            return http.GetAsync(url).GetAwaiter().GetResult()
+                .Content.ReadAsStringAsync().GetAwaiter().GetResult();
+        }
+
+        private static void Check()
+        {
             string data;
             try
             {
-                data = http.GetAsync(URL).GetAwaiter().GetResult()
-                    .Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                data = GetGitHubAPI(URL_LATEST);
             } 
             catch (Exception ex)
             {
@@ -40,10 +47,21 @@ namespace DigaoDeskApp
                 return;
             }
 
-            ReleaseInfo info;
             try
             {
-                info = JsonConvert.DeserializeObject<ReleaseInfo>(data);
+                var info = JsonConvert.DeserializeObject<ReleaseInfo>(data);
+                NormalizeVersion(info);
+
+                if (info.tag_name != Vars.APP_VERSION)
+                {
+                    string news = RetrieveNews();
+
+                    Vars.FrmMainObj.Invoke(new MethodInvoker(() =>
+                    {
+                        FrmDownload f = new(info, news);
+                        f.Show();
+                    }));
+                }
             }
             catch (Exception ex)
             {
@@ -53,16 +71,45 @@ namespace DigaoDeskApp
                 }));
                 return;
             }
+        }
 
+        private static void NormalizeVersion(ReleaseInfo info)
+        {
             if (info.tag_name.StartsWith("v")) info.tag_name = info.tag_name.Substring(1);
+        }
 
-            if (info.tag_name != Vars.APP_VERSION)
+        private static string RetrieveNews()
+        {
+            List<ReleaseInfo> lstVersionsNews = new();
+            FindVersions(lstVersionsNews);
+
+            StringBuilder sb = new();
+            foreach (var version in lstVersionsNews)
             {
-                Vars.FrmMainObj.Invoke(new MethodInvoker(() =>
+                sb.AppendLine(version.tag_name);
+                sb.AppendLine(version.body.Replace("\\r\\n", Environment.NewLine));
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
+        }
+
+        private static void FindVersions(List<ReleaseInfo> lstVersionsNews)
+        {
+            int page = 0;
+            while (true)
+            {
+                page++;
+                string data = GetGitHubAPI(URL_RELEASES + "?per_page=5&page=" + page);
+                var lstInfo = JsonConvert.DeserializeObject<List<ReleaseInfo>>(data);
+                if (!lstInfo.Any()) return; //anything wrong!
+                foreach (var version in lstInfo)
                 {
-                    FrmDownload f = new(info);
-                    f.Show();
-                }));
+                    NormalizeVersion(version);
+                    if (version.tag_name == Vars.APP_VERSION) return;
+
+                    lstVersionsNews.Add(version);
+                }
             }
         }
 

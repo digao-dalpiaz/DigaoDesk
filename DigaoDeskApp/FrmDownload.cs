@@ -14,7 +14,7 @@ namespace DigaoDeskApp
         private GitHubUpdater.ReleaseInfo _releaseInfo;
         private GitHubUpdater.ReleaseAssetInfo _assetInfo;
 
-        public FrmDownload(GitHubUpdater.ReleaseInfo releaseInfo)
+        public FrmDownload(GitHubUpdater.ReleaseInfo releaseInfo, string news)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace DigaoDeskApp
             lbSize.Text = _assetInfo != null ? 
                 (Convert.ToDecimal(_assetInfo.size) / 1024 / 1024).ToString("0.00") + " MB" : null;
 
-            edNews.Text = _releaseInfo.body.Replace("\\r\\n", Environment.NewLine);
+            edNews.Text = news;
         }
 
         private void LoadLang()
