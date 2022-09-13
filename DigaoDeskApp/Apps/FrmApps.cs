@@ -450,5 +450,10 @@ namespace DigaoDeskApp
             }
         }
 
+        private void FrmApps_Activated(object sender, EventArgs e)
+        {
+            edLog.ScrollToCaret();
+        }
+
     }
 }
