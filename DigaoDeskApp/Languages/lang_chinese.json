@@ -57,7 +57,7 @@
 
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
-  "Config_Apps_LinesLog": "应用程序历史记录行日志",
+  "Config_Apps_MaxLogSize": "Application maximum log size on loading",
 
   "Config_Repos_Folder": "存储库文件夹",
   "Config_Repos_BoxAuthor": "作者信息",

@@ -328,7 +328,12 @@ namespace DigaoDeskApp
 
             if (_nextLogLineToRead == 0) //only when fill from beggining
             {
-                while (app.Logs.Count > Vars.Config.Apps.LinesLog) app.Logs.RemoveAt(0);
+                int sum = app.Logs.Sum(x => x.Size);
+                while (sum > Vars.Config.Apps.MaxLogSize)
+                {
+                    sum -= app.Logs[0].Size;
+                    app.Logs.RemoveAt(0);
+                }
             }
 
             var alreadyBottom = edLog.SelectionStart == edLog.TextLength;

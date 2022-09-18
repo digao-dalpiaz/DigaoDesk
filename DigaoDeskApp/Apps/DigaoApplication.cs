@@ -102,6 +102,7 @@ namespace DigaoDeskApp
         {
             public DateTime Timestamp;
             public string Text;
+            public int Size;
             public LogType Type;
         }
 
@@ -222,6 +223,7 @@ namespace DigaoDeskApp
             LogRecord r = new();
             r.Timestamp = DateTime.Now;
             r.Text = text;
+            r.Size = text.Length;
             if (stop)
             {
                 r.Type = LogType.STOP;

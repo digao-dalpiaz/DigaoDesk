@@ -72,7 +72,7 @@ namespace DigaoDeskApp
             this.btnColorConsoleBack = new System.Windows.Forms.Button();
             this.lbConsoleFont = new System.Windows.Forms.Label();
             this.tabApplications = new System.Windows.Forms.TabPage();
-            this.edAppsLinesLog = new System.Windows.Forms.NumericUpDown();
+            this.edAppsLogMaxSize = new System.Windows.Forms.NumericUpDown();
             this.lbAppsLinesLog = new System.Windows.Forms.Label();
             this.ckDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
@@ -112,7 +112,7 @@ namespace DigaoDeskApp
             this.tabGeneral.SuspendLayout();
             this.tabTheme.SuspendLayout();
             this.tabApplications.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edAppsLinesLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edAppsLogMaxSize)).BeginInit();
             this.tabRepos.SuspendLayout();
             this.boxGitAuthor.SuspendLayout();
             this.boxGitCredentials.SuspendLayout();
@@ -567,7 +567,7 @@ namespace DigaoDeskApp
             // 
             // tabApplications
             // 
-            this.tabApplications.Controls.Add(this.edAppsLinesLog);
+            this.tabApplications.Controls.Add(this.edAppsLogMaxSize);
             this.tabApplications.Controls.Add(this.lbAppsLinesLog);
             this.tabApplications.Controls.Add(this.ckDontNotifyWhenAppsActive);
             this.tabApplications.Controls.Add(this.ckNotifyWhenAppStops);
@@ -580,24 +580,24 @@ namespace DigaoDeskApp
             this.tabApplications.Text = "Applications";
             this.tabApplications.UseVisualStyleBackColor = true;
             // 
-            // edAppsLinesLog
+            // edAppsLogMaxSize
             // 
-            this.edAppsLinesLog.Location = new System.Drawing.Point(16, 136);
-            this.edAppsLinesLog.Maximum = new decimal(new int[] {
-            10000,
+            this.edAppsLogMaxSize.Location = new System.Drawing.Point(16, 136);
+            this.edAppsLogMaxSize.Maximum = new decimal(new int[] {
+            1000000,
             0,
             0,
             0});
-            this.edAppsLinesLog.Minimum = new decimal(new int[] {
-            100,
+            this.edAppsLogMaxSize.Minimum = new decimal(new int[] {
+            1000,
             0,
             0,
             0});
-            this.edAppsLinesLog.Name = "edAppsLinesLog";
-            this.edAppsLinesLog.Size = new System.Drawing.Size(150, 27);
-            this.edAppsLinesLog.TabIndex = 13;
-            this.edAppsLinesLog.Value = new decimal(new int[] {
-            100,
+            this.edAppsLogMaxSize.Name = "edAppsLogMaxSize";
+            this.edAppsLogMaxSize.Size = new System.Drawing.Size(150, 27);
+            this.edAppsLogMaxSize.TabIndex = 13;
+            this.edAppsLogMaxSize.Value = new decimal(new int[] {
+            1000,
             0,
             0,
             0});
@@ -607,9 +607,9 @@ namespace DigaoDeskApp
             this.lbAppsLinesLog.AutoSize = true;
             this.lbAppsLinesLog.Location = new System.Drawing.Point(14, 112);
             this.lbAppsLinesLog.Name = "lbAppsLinesLog";
-            this.lbAppsLinesLog.Size = new System.Drawing.Size(194, 20);
+            this.lbAppsLinesLog.Size = new System.Drawing.Size(287, 20);
             this.lbAppsLinesLog.TabIndex = 12;
-            this.lbAppsLinesLog.Text = "Application log lines history";
+            this.lbAppsLinesLog.Text = "Application maximum log size on loading";
             // 
             // ckDontNotifyWhenAppsActive
             // 
@@ -998,7 +998,7 @@ namespace DigaoDeskApp
             this.tabTheme.PerformLayout();
             this.tabApplications.ResumeLayout(false);
             this.tabApplications.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edAppsLinesLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edAppsLogMaxSize)).EndInit();
             this.tabRepos.ResumeLayout(false);
             this.tabRepos.PerformLayout();
             this.boxGitAuthor.ResumeLayout(false);
@@ -1088,7 +1088,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbColorGridDataBack;
         private System.Windows.Forms.Button btnColorGridDataBack;
         private System.Windows.Forms.Button btnResetColors;
-        private System.Windows.Forms.NumericUpDown edAppsLinesLog;
+        private System.Windows.Forms.NumericUpDown edAppsLogMaxSize;
         private System.Windows.Forms.Label lbAppsLinesLog;
     }
 }

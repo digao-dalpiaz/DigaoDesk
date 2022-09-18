@@ -57,7 +57,7 @@
 
   "Config_Apps_NotifyWhenStop": "Exibir notificação quando aplicações pararem",
   "Config_Apps_DontNotifyStopWhenActive": "Não exibir a notificação caso a tela de aplicações esteja ativa",
-  "Config_Apps_LinesLog": "Número de linhas de log da aplicação",
+  "Config_Apps_MaxLogSize": "Tamanho máximo do log da aplicação ao carregar",
 
   "Config_Repos_Folder": "Pasta dos repositórios",
   "Config_Repos_BoxAuthor": "Informações do autor",
