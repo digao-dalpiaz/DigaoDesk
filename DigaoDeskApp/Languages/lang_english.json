@@ -76,7 +76,7 @@
   "Config_Repos_CommitMsg": "Commit message",
   "Config_Repos_CommitMsgInfo": "Use [branch] for branch name",
   "Config_InvalidLanguage": "Invalid language",
-  "Config_AppLogLinesRequired": "Application history log lines is required",
+  "Config_AppMaxLogSizeRequired": "Application maximum log size is required",
   "Config_GitRepositoryNotFound": "Git repository folder not found",
 
   "RepoConfig_Title": "Repository Settings",

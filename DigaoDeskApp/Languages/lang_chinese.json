@@ -76,7 +76,7 @@
   "Config_Repos_CommitMsg": "提交信息",
   "Config_Repos_CommitMsgInfo": "使用 [branch] 作为分支名称",
   "Config_InvalidLanguage": "无效的语言",
-  "Config_AppLogLinesRequired": "需要应用程序日志行历史记录",
+  "Config_AppMaxLogSizeRequired": "Application maximum log size is required",
   "Config_GitRepositoryNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",

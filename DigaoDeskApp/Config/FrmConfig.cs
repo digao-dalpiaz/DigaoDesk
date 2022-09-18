@@ -168,7 +168,7 @@ namespace DigaoDeskApp
 
             if (edAppsLogMaxSize.Text == "" || edAppsLogMaxSize.Value == 0)
             {
-                Messages.Error(Vars.Lang.Config_AppLogLinesRequired);
+                Messages.Error(Vars.Lang.Config_AppMaxLogSizeRequired);
                 edAppsLogMaxSize.Select();
                 return;
             }

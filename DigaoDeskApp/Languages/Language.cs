@@ -81,7 +81,7 @@
         public string Config_Repos_CommitMsg;
         public string Config_Repos_CommitMsgInfo;
         public string Config_InvalidLanguage;
-        public string Config_AppLogLinesRequired;
+        public string Config_AppMaxLogSizeRequired;
         public string Config_GitRepositoryNotFound;
 
         public string RepoConfig_Title;
