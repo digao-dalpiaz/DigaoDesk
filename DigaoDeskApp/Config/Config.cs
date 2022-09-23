@@ -27,13 +27,13 @@ namespace DigaoDeskApp
             public bool DarkTitle = true;
             public Color ToolbarBack = Color.FromArgb(30, 30, 30);
             public Color ToolbarFore = Color.White;
-            public Color GridHeadBack = Color.FromArgb(0, 35, 70);
+            public Color GridHeadBack = Color.FromArgb(0, 26, 50);
             public Color GridHeadFore = Color.White;
             public Color GridBack = Color.FromArgb(30, 30, 30);
             public Color GridLines = Color.FromArgb(65, 65, 65);
             public Color GridDataBack = Color.FromArgb(30, 30, 30);
             public Color GridDataFore = Color.FromArgb(255, 255, 128);
-            public Color GridSelBack = Color.FromArgb(255, 116, 2);
+            public Color GridSelBack = Color.FromArgb(1, 38, 118);
             public Color GridSelFore = Color.White;
             public Color SplitterBack = Color.FromArgb(50, 50, 50);
             public Color ConsoleBack = Color.FromArgb(15, 15, 15);
