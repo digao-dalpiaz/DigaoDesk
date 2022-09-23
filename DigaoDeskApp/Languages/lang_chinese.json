@@ -57,7 +57,7 @@
 
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
-  "Config_Apps_MaxLogSize": "Application maximum log size on loading",
+  "Config_Apps_MaxLogSize": "加载时应用程序最大日志大小",
 
   "Config_Repos_Folder": "存储库文件夹",
   "Config_Repos_BoxAuthor": "作者信息",
@@ -76,7 +76,7 @@
   "Config_Repos_CommitMsg": "提交信息",
   "Config_Repos_CommitMsgInfo": "使用 [branch] 作为分支名称",
   "Config_InvalidLanguage": "无效的语言",
-  "Config_AppMaxLogSizeRequired": "Application maximum log size is required",
+  "Config_AppMaxLogSizeRequired": "需要应用程序最大日志大小",
   "Config_GitRepositoryNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",
