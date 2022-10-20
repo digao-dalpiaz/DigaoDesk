@@ -278,6 +278,7 @@
   "AppLog_Terminated": "TERMINATED!",
   "AppLog_Stopping": "Stopping process...",
   "AppLog_TerminatingProcessLevel": "Terminating process level {0} \"{1}\" ({2})...",
+  "AppLog_ErrorTerminating": "Error terminating process \"{1}\": {2}",
   "AppLog_TcpPortInUse": "TCP Port {0} already in use",
 
   "AppTerminatedBalloonTitle": "Process stopped",

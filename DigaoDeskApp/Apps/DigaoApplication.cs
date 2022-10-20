@@ -199,7 +199,11 @@ namespace DigaoDeskApp
         public void Stop()
         {
             AddLog(Vars.Lang.AppLog_Stopping, false, true);
-            KillChildProcs(_process, 0);
+            try
+            {
+                KillChildProcs(_process, 0);
+            }
+            catch (AbortException) { }
         }
 
         private void KillChildProcs(Process parent, int level)
@@ -211,7 +215,15 @@ namespace DigaoDeskApp
             }
 
             AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), false, true);
-            parent.Kill();
+            try
+            {
+                parent.Kill();
+            } 
+            catch (Exception ex)
+            {
+                AddLog(string.Format(Vars.Lang.AppLog_ErrorTerminating, parent.ProcessName, ex.Message), true);
+                throw new AbortException();
+            }
         }
 
         private void AddLog(string text, bool error, bool stop = false)
@@ -308,7 +320,7 @@ namespace DigaoDeskApp
                     ProcCount = r.ProcCount.ToString();
                 }
             } 
-            catch (AbortAnalyzeException)
+            catch (AnalyzeException)
             {
                 Memory = null;
                 Processor = null;
@@ -347,11 +359,12 @@ namespace DigaoDeskApp
             catch (InvalidOperationException)
             {
                 //if process stops while checking info, it will fire an exception
-                throw new AbortAnalyzeException();
+                throw new AnalyzeException();
             }
         }
 
-        private class AbortAnalyzeException : Exception { }
+        private class AbortException : Exception { }
+        private class AnalyzeException : Exception { }
 
     }
 }
