@@ -111,6 +111,7 @@ namespace DigaoDeskApp
         public bool PendingLog;
 
         public bool Running;
+        private bool _stopping;
 
         private Process _process;
 
@@ -198,12 +199,23 @@ namespace DigaoDeskApp
 
         public void Stop()
         {
+            if (_stopping) return;
+            _stopping = true;
+
             AddLog(Vars.Lang.AppLog_Stopping, false, true);
-            try
+
+            Task.Run(() =>
             {
-                KillChildProcs(_process, 0);
-            }
-            catch (AbortException) { }
+                try
+                {
+                    KillChildProcs(_process, 0);
+                }
+                catch (AbortException) { }
+                finally
+                {
+                    _stopping = false;
+                }
+            });
         }
 
         private void KillChildProcs(Process parent, int level)
