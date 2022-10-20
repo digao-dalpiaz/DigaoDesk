@@ -278,6 +278,7 @@
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
+  "AppLog_ErrorTerminating": "Error terminating process \"{1}\": {2}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
 
   "AppTerminatedBalloonTitle": "进程已停止",
