@@ -34,28 +34,30 @@ namespace DigaoDeskApp
             // 
             // lbInfo
             // 
-            this.lbInfo.AutoSize = true;
+            this.lbInfo.BackColor = System.Drawing.Color.Black;
+            this.lbInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbInfo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbInfo.ForeColor = System.Drawing.Color.White;
-            this.lbInfo.Location = new System.Drawing.Point(16, 16);
+            this.lbInfo.Location = new System.Drawing.Point(0, 0);
             this.lbInfo.Name = "lbInfo";
-            this.lbInfo.Size = new System.Drawing.Size(49, 25);
+            this.lbInfo.Size = new System.Drawing.Size(576, 117);
             this.lbInfo.TabIndex = 0;
             this.lbInfo.Text = "Info";
+            this.lbInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmWait
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(456, 127);
+            this.ClientSize = new System.Drawing.Size(576, 117);
             this.Controls.Add(this.lbInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmWait";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
