@@ -49,13 +49,17 @@ namespace DigaoDeskApp
 
             g.DataSource = _gridBind;
 
+            if (!_repos.Any())
+            {
+                toolBar.Visible = false; //can't use "enabled" because is used to control if there is a process running
+            }
+        }
+
+        private void FrmRepos_Shown(object sender, EventArgs e)
+        {
             if (_repos.Any())
             {
                 btnRefresh.PerformClick();
-            } 
-            else
-            {
-                toolBar.Visible = false; //can't use "enabled" because is used to control if there is a process running
             }
         }
 
