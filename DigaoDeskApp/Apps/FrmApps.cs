@@ -14,7 +14,7 @@ namespace DigaoDeskApp
         private BindingListView<DigaoApplication> _gridBind;
         private bool _updatingGrid;
 
-        private int _nextLogLineToRead;
+        private DigaoApplication.LogRecord _lastLogRecord;
 
         public FrmApps()
         {
@@ -197,8 +197,7 @@ namespace DigaoDeskApp
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            edLog.Clear(); //clear control manually, because log object is not sinchronyzed when app already selected!
-            _nextLogLineToRead = 0;
+            ClearLog();
 
             var app = GetSelApp();
             app.Start();
@@ -257,11 +256,16 @@ namespace DigaoDeskApp
             ReloadSelectedLog();            
         }
 
+        private void ClearLog()
+        {
+            edLog.Clear();
+            _lastLogRecord = null;
+        }
+
         public void ReloadSelectedLog()
         {
-            _nextLogLineToRead = 0;
+            ClearLog();
 
-            edLog.Clear();
             var app = GetSelApp();
             if (app != null)
             {
@@ -323,27 +327,18 @@ namespace DigaoDeskApp
 
         private void AddRemainingLog(DigaoApplication app)
         {
-            if (_nextLogLineToRead > app.Logs.Count) throw new Exception("Log index control out of sync!");
-            if (_nextLogLineToRead == app.Logs.Count) return; //everything already sync
-
-            if (_nextLogLineToRead == 0) //only when fill from beggining
-            {
-                int sum = app.Logs.Sum(x => x.Size);
-                while (sum > Vars.Config.Apps.MaxLogSize)
-                {
-                    sum -= app.Logs[0].Size;
-                    app.Logs.RemoveAt(0);
-                }
-            }
+            if (!app.Logs.Any() || _lastLogRecord == app.Logs.Last()) return; //everything already sync
 
             var alreadyBottom = edLog.SelectionStart == edLog.TextLength;
 
             edLog.SuspendPainting();
             try
             {
-                for (int i = _nextLogLineToRead; i < app.Logs.Count; i++)
+                var nextIdx = app.Logs.IndexOf(_lastLogRecord) + 1;
+                var lst = app.Logs.GetRange(nextIdx, app.Logs.Count - nextIdx);
+
+                foreach (var log in lst)
                 {
-                    var log = app.Logs[i];
                     if (Vars.Config.Theme.ShowTimestamp)
                     {
                         edLog.SelectionStart = edLog.TextLength;
@@ -352,39 +347,37 @@ namespace DigaoDeskApp
                     }
 
                     edLog.SelectionStart = edLog.TextLength;
-
-                    Color textColor;
-                    switch (log.Type)
-                    {
-                        case DigaoApplication.LogType.INFO:
-                            textColor = Vars.Config.Theme.ConsoleFore;
-                            break;
-                        case DigaoApplication.LogType.ERROR:
-                            textColor = Color.Salmon;
-                            break;
-                        case DigaoApplication.LogType.DYN_ERROR:
-                            textColor = Color.Crimson;
-                            break;
-                        case DigaoApplication.LogType.DYN_WARN:
-                            textColor = Color.Orange;
-                            break;
-                        case DigaoApplication.LogType.STOP:
-                            textColor = Color.MediumPurple;
-                            break;
-                        default:
-                            throw new Exception("Log type invalid");
-                    }
-                    edLog.SelectionColor = textColor;
+                    edLog.SelectionColor = LogTypeToColor(log.Type);
                     edLog.SelectedText = log.Text + Environment.NewLine;
-
-                    _nextLogLineToRead = i + 1;
                 }
-            } finally
+
+                _lastLogRecord = lst.Last();
+            } 
+            finally
             {
                 edLog.ResumePainting(!alreadyBottom);
             }
 
-            if (app == GetSelApp()) app.PendingLog = false;
+            app.PendingLog = false;
+        }
+
+        private Color LogTypeToColor(DigaoApplication.LogType type)
+        {
+            switch (type)
+            {
+                case DigaoApplication.LogType.INFO:
+                    return Vars.Config.Theme.ConsoleFore;
+                case DigaoApplication.LogType.ERROR:
+                    return Color.Salmon;
+                case DigaoApplication.LogType.DYN_ERROR:
+                    return Color.Crimson;
+                case DigaoApplication.LogType.DYN_WARN:
+                    return Color.Orange;
+                case DigaoApplication.LogType.STOP:
+                    return Color.MediumPurple;
+                default:
+                    throw new Exception("Log type invalid");
+            }
         }
 
         public bool FindInLog(bool fromCurrentPos)

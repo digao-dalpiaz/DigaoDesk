@@ -51,7 +51,7 @@ namespace DigaoDeskApp
         {
             public bool NotifyAppStops = true;
             public bool DontNotifyWhenAppsActive = false;
-            public int MaxLogSize = 100000;
+            public int MaxLogLines = 10000;
         }
 
         public class ConfigGit

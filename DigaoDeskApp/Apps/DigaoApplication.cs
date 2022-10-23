@@ -102,7 +102,6 @@ namespace DigaoDeskApp
         {
             public DateTime Timestamp;
             public string Text;
-            public int Size;
             public LogType Type;
         }
 
@@ -247,7 +246,6 @@ namespace DigaoDeskApp
             LogRecord r = new();
             r.Timestamp = DateTime.Now;
             r.Text = text;
-            r.Size = text.Length;
             if (stop)
             {
                 r.Type = LogType.STOP;
@@ -265,6 +263,7 @@ namespace DigaoDeskApp
                 r.Type = LogType.INFO;
             }
             Logs.Add(r);
+            while (Logs.Count > Vars.Config.Apps.MaxLogLines) Logs.RemoveAt(0);
 
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
             LastLogIsError = error;

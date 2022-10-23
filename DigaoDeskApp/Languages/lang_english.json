@@ -57,7 +57,7 @@
 
   "Config_Apps_NotifyWhenStop": "Notify when application stops",
   "Config_Apps_DontNotifyStopWhenActive": "Do not notify when apps form active",
-  "Config_Apps_MaxLogSize": "Application maximum log size on loading",
+  "Config_Apps_MaxLogLines": "Application maximum log lines stored",
 
   "Config_Repos_Folder": "Repositories folder",
   "Config_Repos_BoxAuthor": "Author information",
