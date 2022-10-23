@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -65,7 +66,7 @@ namespace DigaoDeskApp
         {
             get
             {
-                return string.Format(Vars.Lang.AppStatistics, Logs.Count);
+                return string.Format(Vars.Lang.AppStatistics, Logs.Count, ((double)LogSize / 1024).ToString("0.00"));
             }
         }
 
@@ -106,7 +107,7 @@ namespace DigaoDeskApp
         }
 
         public List<LogRecord> Logs = new();
-
+        public long LogSize;
         public bool PendingLog;
 
         public bool Running;
@@ -119,6 +120,7 @@ namespace DigaoDeskApp
         public void Start()
         {
             Logs.Clear();
+            LogSize = 0;
 
             if (TcpPort.HasValue)
             {
@@ -263,7 +265,13 @@ namespace DigaoDeskApp
                 r.Type = LogType.INFO;
             }
             Logs.Add(r);
-            while (Logs.Count > Vars.Config.Apps.MaxLogLines) Logs.RemoveAt(0);
+            Interlocked.Add(ref LogSize, text.Length);
+
+            while (Logs.Count > Vars.Config.Apps.MaxLogLines)
+            {
+                Interlocked.Add(ref LogSize, -Logs[0].Text.Length);
+                Logs.RemoveAt(0);
+            }
 
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
             LastLogIsError = error;

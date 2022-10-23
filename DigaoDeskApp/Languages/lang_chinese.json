@@ -274,7 +274,7 @@
   "AppStatus_Running": "正在运行...",
   "AppStatus_Stoped": "已停止",
 
-  "AppStatistics": "行：{0}",
+  "AppStatistics": "Lines: {0} / Size: {1} KB",
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",

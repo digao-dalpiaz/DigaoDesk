@@ -274,7 +274,7 @@
   "AppStatus_Running": "Running...",
   "AppStatus_Stoped": "Stoped",
 
-  "AppStatistics": "Lines: {0}",
+  "AppStatistics": "Lines: {0} / Size: {1} KB",
   "AppLog_Terminated": "TERMINATED!",
   "AppLog_Stopping": "Stopping process...",
   "AppLog_TerminatingProcessLevel": "Terminating process level {0} \"{1}\" ({2})...",

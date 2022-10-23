@@ -234,6 +234,7 @@ namespace DigaoDeskApp
         {
             var app = GetSelApp();
             app.Logs.Clear();
+            app.LogSize = 0;
             app.LastLogTime = null;
             app.LastLogIsError = false;
 
