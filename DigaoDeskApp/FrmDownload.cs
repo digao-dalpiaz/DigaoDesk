@@ -23,7 +23,8 @@ namespace DigaoDeskApp
             _releaseInfo = releaseInfo;
             _assetInfo = GetAsset();
 
-            lbVersion.Text = releaseInfo.tag_name;
+            lbCurrentVersion.Text = Vars.APP_VERSION;
+            lbNewVersion.Text = releaseInfo.tag_name;
             lbTimestamp.Text = releaseInfo.published_at.ToString("yyyy-MM-dd HH:mm");
             
             lbSize.Text = _assetInfo != null ? 
@@ -36,7 +37,8 @@ namespace DigaoDeskApp
         {
             this.Text = Vars.Lang.Updater_Title;
             lbNewVersionAvailable.Text = Vars.Lang.Updater_LabelNewVersionAvailable;
-            lblbVersion.Text = Vars.Lang.Updater_LabelVersion;
+            lblbCurrentVersion.Text = Vars.Lang.Updater_LabelCurrentVersion;
+            lblbNewVersion.Text = Vars.Lang.Updater_LabelNewVersion;
             lblbTimestamp.Text = Vars.Lang.Updater_LabelTimestamp;
             lblbSize.Text = Vars.Lang.Updater_LabelSize;
             lbDownloading.Text = Vars.Lang.Updater_LabelDownloading;

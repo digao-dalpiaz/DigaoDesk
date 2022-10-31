@@ -24,7 +24,8 @@
         public string Updater_CloseToUpdate;
         public string Updater_Title;
         public string Updater_LabelNewVersionAvailable;
-        public string Updater_LabelVersion;
+        public string Updater_LabelCurrentVersion;
+        public string Updater_LabelNewVersion;
         public string Updater_LabelTimestamp;
         public string Updater_LabelSize;
         public string Updater_LabelDownloading;
