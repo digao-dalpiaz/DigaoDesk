@@ -222,6 +222,7 @@ namespace DigaoDeskApp
             // edLog
             // 
             this.edLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.edLog.DetectUrls = false;
             this.edLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.edLog.HideSelection = false;
             this.edLog.Location = new System.Drawing.Point(0, 247);

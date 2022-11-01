@@ -24,7 +24,8 @@
         public string Updater_CloseToUpdate;
         public string Updater_Title;
         public string Updater_LabelNewVersionAvailable;
-        public string Updater_LabelVersion;
+        public string Updater_LabelCurrentVersion;
+        public string Updater_LabelNewVersion;
         public string Updater_LabelTimestamp;
         public string Updater_LabelSize;
         public string Updater_LabelDownloading;
@@ -62,7 +63,7 @@
 
         public string Config_Apps_NotifyWhenStop;
         public string Config_Apps_DontNotifyStopWhenActive;
-        public string Config_Apps_MaxLogSize;
+        public string Config_Apps_MaxLogLines;
 
         public string Config_Repos_Folder;
         public string Config_Repos_BoxAuthor;

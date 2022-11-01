@@ -19,7 +19,8 @@
   "Updater_CloseToUpdate": "Please, close the program to finish the update process.",
   "Updater_Title": "New Version",
   "Updater_LabelNewVersionAvailable": "A new version of Digao Desk is available!",
-  "Updater_LabelVersion": "Version:",
+  "Updater_LabelCurrentVersion": "Current Version:",
+  "Updater_LabelNewVersion": "New Version:",
   "Updater_LabelTimestamp": "Timestamp:",
   "Updater_LabelSize": "Size:",
   "Updater_LabelDownloading": "Downloading...",
@@ -57,7 +58,7 @@
 
   "Config_Apps_NotifyWhenStop": "Notify when application stops",
   "Config_Apps_DontNotifyStopWhenActive": "Do not notify when apps form active",
-  "Config_Apps_MaxLogSize": "Application maximum log size on loading",
+  "Config_Apps_MaxLogLines": "Application maximum log lines stored",
 
   "Config_Repos_Folder": "Repositories folder",
   "Config_Repos_BoxAuthor": "Author information",
@@ -274,7 +275,7 @@
   "AppStatus_Running": "Running...",
   "AppStatus_Stoped": "Stoped",
 
-  "AppStatistics": "Lines: {0}",
+  "AppStatistics": "Lines: {0} / Size: {1} KB",
   "AppLog_Terminated": "TERMINATED!",
   "AppLog_Stopping": "Stopping process...",
   "AppLog_TerminatingProcessLevel": "Terminating process level {0} \"{1}\" ({2})...",

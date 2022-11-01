@@ -19,7 +19,8 @@
   "Updater_CloseToUpdate": "请关闭程序以完成更新过程。",
   "Updater_Title": "新版本",
   "Updater_LabelNewVersionAvailable": "一个新的 Digao Desk 版本可用！",
-  "Updater_LabelVersion": "版本：",
+  "Updater_LabelCurrentVersion": "Current Version:",
+  "Updater_LabelNewVersion": "New Version:",
   "Updater_LabelTimestamp": "时间戳：",
   "Updater_LabelSize": "大小：",
   "Updater_LabelDownloading": "正在下载...",
@@ -57,7 +58,7 @@
 
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
-  "Config_Apps_MaxLogSize": "加载时应用程序最大日志大小",
+  "Config_Apps_MaxLogLines": "Application maximum log lines stored",
 
   "Config_Repos_Folder": "存储库文件夹",
   "Config_Repos_BoxAuthor": "作者信息",
@@ -274,7 +275,7 @@
   "AppStatus_Running": "正在运行...",
   "AppStatus_Stoped": "已停止",
 
-  "AppStatistics": "行：{0}",
+  "AppStatistics": "Lines: {0} / Size: {1} KB",
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
