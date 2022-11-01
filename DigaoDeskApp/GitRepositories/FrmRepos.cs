@@ -189,7 +189,7 @@ namespace DigaoDeskApp
                 var repo = GetRepositoryOfRow(g.Rows[e.RowIndex]);
                 if (GitUtils.IsBranchMaster(repo._repoCtrl.Head)) 
                 {
-                    e.CellStyle.ForeColor = Color.Green;
+                    e.CellStyle.ForeColor = Color.Cyan;
                     e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
                 }
             }
@@ -198,7 +198,7 @@ namespace DigaoDeskApp
                 var repo = GetRepositoryOfRow(g.Rows[e.RowIndex]);
                 if (repo._repoCtrl.Info.CurrentOperation != CurrentOperation.None)
                 {
-                    e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.ForeColor = Color.PaleVioletRed;
                     e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
                 }
             }
