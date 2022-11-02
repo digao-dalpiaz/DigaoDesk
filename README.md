@@ -47,7 +47,7 @@ There is another function available in tray menu, allowing you to manage your gi
 
 1. Download and install [.NET 6 Desktop Runtime x64](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-2. Download last Digao Desk release (.exe) from [here](/releases/latest)
+2. Download last Digao Desk release (.exe) from [here](https://github.com/digao-dalpiaz/DigaoDesk/releases/latest)
 
 3. Create a folder in your computer, put the downloaded .exe in the folder and create a shortcut in your desktop.
 
