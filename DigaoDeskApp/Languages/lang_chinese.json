@@ -19,8 +19,8 @@
   "Updater_CloseToUpdate": "请关闭程序以完成更新过程。",
   "Updater_Title": "新版本",
   "Updater_LabelNewVersionAvailable": "一个新的 Digao Desk 版本可用！",
-  "Updater_LabelCurrentVersion": "Current Version:",
-  "Updater_LabelNewVersion": "New Version:",
+  "Updater_LabelCurrentVersion": "当前版本：",
+  "Updater_LabelNewVersion": "新版本：",
   "Updater_LabelTimestamp": "时间戳：",
   "Updater_LabelSize": "大小：",
   "Updater_LabelDownloading": "正在下载...",
@@ -58,7 +58,7 @@
 
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
-  "Config_Apps_MaxLogLines": "Application maximum log lines stored",
+  "Config_Apps_MaxLogLines": "存储的应用程序最大日志行数",
 
   "Config_Repos_Folder": "存储库文件夹",
   "Config_Repos_BoxAuthor": "作者信息",
@@ -279,7 +279,7 @@
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
-  "AppLog_ErrorTerminating": "Error terminating process \"{1}\": {2}",
+  "AppLog_ErrorTerminating": "终止进程错误 \"{1}\": {2}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
 
   "AppTerminatedBalloonTitle": "进程已停止",
