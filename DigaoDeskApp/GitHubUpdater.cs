@@ -85,7 +85,7 @@ namespace DigaoDeskApp
             StringBuilder sb = new();
             foreach (var version in lstVersionsNews)
             {
-                sb.AppendLine(string.Format("[Version {1}]", version.tag_name));
+                sb.AppendLine(string.Format("[Version {0}]", version.tag_name));
                 sb.AppendLine(version.body.Replace("\\r\\n", Environment.NewLine));
                 sb.AppendLine();
             }
