@@ -1,19 +1,19 @@
 > **WARNING!!! Version 1.4.7 contains a problem when trying to read version updates from GitHub. If you are in this version, please update to  next version manually.**
 
 # DigaoDesk
-Desktop App to Run and Monitor Console Processes
+Windows App to Run and Monitor Console Processes
 
 ![Preview](images/preview.png)
 
 # Purpose
 
-When we are working with local services, especially with Microservices, we often need to run and monitor several applications together.
+When we are working with local services, especially with Micro-services, we often need to run and monitor several applications together.
 
 If we are developing applications, we will have some services running directly in the IDE. However, we don't want to run all services directly in the IDE, usually when talking about dependencies.
 
 For these cases, I developed this tool, where you can add all local applications, allowing them to run simultaneously and monitor the output of each one.
 
-You will be able to configure backend and frontend applications.
+You will be able to configure back-end and front-end applications.
 
 # Press play and go get a coffee
 
@@ -42,6 +42,16 @@ There is another function available in tray menu, allowing you to manage your gi
 - Cancel Operation (cancel current git operation)
 - Push
 - Open Shell program
+
+# Installation
+
+1. Download and install [.NET 6 Desktop Runtime x64](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+
+2. Download last Digao Desk release (.exe) from [here](/releases/latest)
+
+3. Create a folder in your computer, put the downloaded .exe in the folder and create a shortcut in your desktop.
+
+You are set. Enjoy!
 
 # Languages
 
