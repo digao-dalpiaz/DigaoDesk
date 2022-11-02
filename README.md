@@ -1,3 +1,5 @@
+> **WARNING!!! Version 1.4.7 contains a problem when trying to read version updates from GitHub. If you are in this version, please update to  next version manually.**
+
 # DigaoDesk
 Desktop App to Run and Monitor Console Processes
 
