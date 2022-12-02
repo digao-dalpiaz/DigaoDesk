@@ -74,6 +74,7 @@
   "Config_Repos_DiffProgramArgsInfo": "[old] = old file / [new] = new file",
   "Config_Repos_NewBranchPrefixList": "New branch prefix list",
   "Config_Repos_CustomCommands": "Custom shell commands",
+  "Config_Repos_CustomCommandsHelp": "Enter one command per line\n\nLine syntax:\nOption 1: file.exe\nOption 2: Command Title|file.exe\nOption 3: Command Title|file.exe|argument1 argument2 argument3...",
   "Config_Repos_MemoInfo": "CTRL+ENTER = New line",
   "Config_Repos_AutoFetch": "Auto Fetch in remote operations",
   "Config_Repos_CommitMsg": "Commit message",

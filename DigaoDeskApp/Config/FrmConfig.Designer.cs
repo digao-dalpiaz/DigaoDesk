@@ -111,6 +111,7 @@ namespace DigaoDeskApp
             this.lbRepositoryFolder = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnCustomCommandsHelp = new System.Windows.Forms.Label();
             this.pages.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabTheme.SuspendLayout();
@@ -649,6 +650,7 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            this.tabRepos.Controls.Add(this.btnCustomCommandsHelp);
             this.tabRepos.Controls.Add(this.edGitCustomCommands);
             this.tabRepos.Controls.Add(this.lbCustomCommands);
             this.tabRepos.Controls.Add(this.lbDifProgramArgs);
@@ -1008,6 +1010,17 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // btnCustomCommandsHelp
+            // 
+            this.btnCustomCommandsHelp.AutoSize = true;
+            this.btnCustomCommandsHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCustomCommandsHelp.Location = new System.Drawing.Point(992, 400);
+            this.btnCustomCommandsHelp.Name = "btnCustomCommandsHelp";
+            this.btnCustomCommandsHelp.Size = new System.Drawing.Size(34, 20);
+            this.btnCustomCommandsHelp.TabIndex = 20;
+            this.btnCustomCommandsHelp.Text = "[ ? ]";
+            this.btnCustomCommandsHelp.Click += new System.EventHandler(this.btnCustomCommandsHelp_Click);
+            // 
             // FrmConfig
             // 
             this.AcceptButton = this.btnOK;
@@ -1128,5 +1141,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.CheckBox ckCalcAppResources;
         private System.Windows.Forms.TextBox edGitCustomCommands;
         private System.Windows.Forms.Label lbCustomCommands;
+        private System.Windows.Forms.Label btnCustomCommandsHelp;
     }
 }

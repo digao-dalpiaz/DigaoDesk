@@ -346,5 +346,10 @@ namespace DigaoDeskApp
             btnColorStatusFore.BackColor = def.StatusFore;
         }
 
+        private void btnCustomCommandsHelp_Click(object sender, System.EventArgs e)
+        {
+            Messages.Info(Vars.Lang.Config_Repos_CustomCommandsHelp);
+        }
+
     }
 }

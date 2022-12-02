@@ -74,6 +74,7 @@
   "Config_Repos_DiffProgramArgsInfo": "[old] = 旧文件 / [new] = 新文件",
   "Config_Repos_NewBranchPrefixList": "新分支前缀列表",
   "Config_Repos_CustomCommands": "Custom shell commands",
+  "Config_Repos_CustomCommandsHelp": "Enter one command per line\n\nLine syntax:\nOption 1: file.exe\nOption 2: Command Title|file.exe\nOption 3: Command Title|file.exe|argument1 argument2 argument3...",
   "Config_Repos_MemoInfo": "CTRL+ENTER = 新行",
   "Config_Repos_AutoFetch": "远程操作中的自动获取",
   "Config_Repos_CommitMsg": "提交信息",
