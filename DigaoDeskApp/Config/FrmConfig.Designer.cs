@@ -78,6 +78,8 @@ namespace DigaoDeskApp
             this.ckDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.tabRepos = new System.Windows.Forms.TabPage();
+            this.edGitCustomCommands = new System.Windows.Forms.TextBox();
+            this.lbCustomCommands = new System.Windows.Forms.Label();
             this.lbDifProgramArgs = new System.Windows.Forms.Label();
             this.edDiffProgramArguments = new System.Windows.Forms.TextBox();
             this.lbDifProgramArgsInfo = new System.Windows.Forms.Label();
@@ -89,7 +91,7 @@ namespace DigaoDeskApp
             this.edCommitMessage = new System.Windows.Forms.TextBox();
             this.lbCommitMsg = new System.Windows.Forms.Label();
             this.ckGitAutoFetch = new System.Windows.Forms.CheckBox();
-            this.lbNewBranchPrefixInfo = new System.Windows.Forms.Label();
+            this.lbMemoInfo = new System.Windows.Forms.Label();
             this.boxGitAuthor = new System.Windows.Forms.GroupBox();
             this.edGitName = new System.Windows.Forms.TextBox();
             this.lbAuthorName = new System.Windows.Forms.Label();
@@ -626,7 +628,7 @@ namespace DigaoDeskApp
             // ckDontNotifyWhenAppsActive
             // 
             this.ckDontNotifyWhenAppsActive.AutoSize = true;
-            this.ckDontNotifyWhenAppsActive.Location = new System.Drawing.Point(46, 101);
+            this.ckDontNotifyWhenAppsActive.Location = new System.Drawing.Point(40, 112);
             this.ckDontNotifyWhenAppsActive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckDontNotifyWhenAppsActive.Name = "ckDontNotifyWhenAppsActive";
             this.ckDontNotifyWhenAppsActive.Size = new System.Drawing.Size(273, 24);
@@ -637,7 +639,7 @@ namespace DigaoDeskApp
             // ckNotifyWhenAppStops
             // 
             this.ckNotifyWhenAppStops.AutoSize = true;
-            this.ckNotifyWhenAppStops.Location = new System.Drawing.Point(18, 69);
+            this.ckNotifyWhenAppStops.Location = new System.Drawing.Point(16, 80);
             this.ckNotifyWhenAppStops.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckNotifyWhenAppStops.Name = "ckNotifyWhenAppStops";
             this.ckNotifyWhenAppStops.Size = new System.Drawing.Size(229, 24);
@@ -647,6 +649,8 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            this.tabRepos.Controls.Add(this.edGitCustomCommands);
+            this.tabRepos.Controls.Add(this.lbCustomCommands);
             this.tabRepos.Controls.Add(this.lbDifProgramArgs);
             this.tabRepos.Controls.Add(this.edDiffProgramArguments);
             this.tabRepos.Controls.Add(this.lbDifProgramArgsInfo);
@@ -658,7 +662,7 @@ namespace DigaoDeskApp
             this.tabRepos.Controls.Add(this.edCommitMessage);
             this.tabRepos.Controls.Add(this.lbCommitMsg);
             this.tabRepos.Controls.Add(this.ckGitAutoFetch);
-            this.tabRepos.Controls.Add(this.lbNewBranchPrefixInfo);
+            this.tabRepos.Controls.Add(this.lbMemoInfo);
             this.tabRepos.Controls.Add(this.boxGitAuthor);
             this.tabRepos.Controls.Add(this.edGitNewBranchPrefixList);
             this.tabRepos.Controls.Add(this.lbNewBranchPrefix);
@@ -676,6 +680,25 @@ namespace DigaoDeskApp
             this.tabRepos.TabIndex = 1;
             this.tabRepos.Text = "Git Repositories";
             this.tabRepos.UseVisualStyleBackColor = true;
+            // 
+            // edGitCustomCommands
+            // 
+            this.edGitCustomCommands.Location = new System.Drawing.Point(536, 424);
+            this.edGitCustomCommands.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.edGitCustomCommands.Multiline = true;
+            this.edGitCustomCommands.Name = "edGitCustomCommands";
+            this.edGitCustomCommands.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.edGitCustomCommands.Size = new System.Drawing.Size(488, 95);
+            this.edGitCustomCommands.TabIndex = 12;
+            // 
+            // lbCustomCommands
+            // 
+            this.lbCustomCommands.AutoSize = true;
+            this.lbCustomCommands.Location = new System.Drawing.Point(536, 400);
+            this.lbCustomCommands.Name = "lbCustomCommands";
+            this.lbCustomCommands.Size = new System.Drawing.Size(174, 20);
+            this.lbCustomCommands.TabIndex = 19;
+            this.lbCustomCommands.Text = "Custom Shell Commands";
             // 
             // lbDifProgramArgs
             // 
@@ -760,7 +783,7 @@ namespace DigaoDeskApp
             this.edCommitMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edCommitMessage.Name = "edCommitMessage";
             this.edCommitMessage.Size = new System.Drawing.Size(504, 27);
-            this.edCommitMessage.TabIndex = 13;
+            this.edCommitMessage.TabIndex = 14;
             // 
             // lbCommitMsg
             // 
@@ -778,19 +801,19 @@ namespace DigaoDeskApp
             this.ckGitAutoFetch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckGitAutoFetch.Name = "ckGitAutoFetch";
             this.ckGitAutoFetch.Size = new System.Drawing.Size(249, 24);
-            this.ckGitAutoFetch.TabIndex = 12;
+            this.ckGitAutoFetch.TabIndex = 13;
             this.ckGitAutoFetch.Text = "Auto Fetch in Remote operations";
             this.ckGitAutoFetch.UseVisualStyleBackColor = true;
             // 
-            // lbNewBranchPrefixInfo
+            // lbMemoInfo
             // 
-            this.lbNewBranchPrefixInfo.AutoSize = true;
-            this.lbNewBranchPrefixInfo.ForeColor = System.Drawing.Color.Gray;
-            this.lbNewBranchPrefixInfo.Location = new System.Drawing.Point(288, 400);
-            this.lbNewBranchPrefixInfo.Name = "lbNewBranchPrefixInfo";
-            this.lbNewBranchPrefixInfo.Size = new System.Drawing.Size(172, 20);
-            this.lbNewBranchPrefixInfo.TabIndex = 10;
-            this.lbNewBranchPrefixInfo.Text = "CTRL+ENTER = New line";
+            this.lbMemoInfo.ForeColor = System.Drawing.Color.Gray;
+            this.lbMemoInfo.Location = new System.Drawing.Point(792, 528);
+            this.lbMemoInfo.Name = "lbMemoInfo";
+            this.lbMemoInfo.Size = new System.Drawing.Size(232, 20);
+            this.lbMemoInfo.TabIndex = 10;
+            this.lbMemoInfo.Text = "CTRL+ENTER = New line";
+            this.lbMemoInfo.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // boxGitAuthor
             // 
@@ -1057,7 +1080,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TextBox edGitNewBranchPrefixList;
         private System.Windows.Forms.Label lbNewBranchPrefix;
         private System.Windows.Forms.GroupBox boxGitAuthor;
-        private System.Windows.Forms.Label lbNewBranchPrefixInfo;
+        private System.Windows.Forms.Label lbMemoInfo;
         private System.Windows.Forms.CheckBox ckGitAutoFetch;
         private System.Windows.Forms.TextBox edCommitMessage;
         private System.Windows.Forms.Label lbCommitMsg;
@@ -1103,5 +1126,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.NumericUpDown edAppLogMaxSize;
         private System.Windows.Forms.Label lbAppsLinesLog;
         private System.Windows.Forms.CheckBox ckCalcAppResources;
+        private System.Windows.Forms.TextBox edGitCustomCommands;
+        private System.Windows.Forms.Label lbCustomCommands;
     }
 }

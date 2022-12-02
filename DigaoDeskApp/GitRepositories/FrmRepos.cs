@@ -1,4 +1,5 @@
-﻿using LibGit2Sharp;
+﻿using DigaoDeskApp.GitRepositories;
+using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -40,6 +41,8 @@ namespace DigaoDeskApp
             Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position                      
 
             LoadConfig();
+
+            BuildShellCustomCommands();
 
             //
 
@@ -133,6 +136,36 @@ namespace DigaoDeskApp
             Theme.setSplitter(splitter);
             Theme.setConsole(edLog);
             Theme.setStatusStrip(statusBar);
+        }
+
+        private void BuildShellCustomCommands()
+        {
+            var lstStr = Vars.Config.GitCustomCommands;
+            if (lstStr == null) return;
+
+            var lst = lstStr.Split(Environment.NewLine);
+
+            foreach (var item in lst)
+            {
+                var text = item.Trim();
+                if (text == string.Empty) continue;
+
+                var parts = text.Split("|");
+
+                CustomCommand cmd = new();
+                cmd.Cmd = parts.Length > 1 ? parts[1] : parts[0];
+                cmd.Parameters = parts.Length > 2 ? parts[2] : null;
+                btnShell.DropDownItems.Add(parts[0], null, btnShellCustomItem_Click).Tag = cmd;
+            }
+
+            if (btnShell.DropDownItems.Count > 0)
+            {
+                ToolStripMenuItem item = new();
+                item.Text = Vars.Lang.Repos_BtnShell;
+                item.Click += btnShell_Click;
+                btnShell.DropDownItems.Insert(0, item);
+                btnShell.DropDownItems.Insert(1, new ToolStripSeparator());
+            }
         }
 
         private void BuildRepositories()
@@ -410,8 +443,18 @@ namespace DigaoDeskApp
 
         private void btnShell_Click(object sender, EventArgs e)
         {
+            if (sender == btnShell && btnShell.DropDownItems.Count > 0) return;
+
             var r = GetSel();
             r.OpenShell();
+        }
+
+        private void btnShellCustomItem_Click(object sender, EventArgs e)
+        {
+            var cmd = (CustomCommand)((ToolStripDropDownItem)sender).Tag;
+
+            var r = GetSel();
+            r.RunCustomCommand(cmd.Cmd, cmd.Parameters);
         }
 
         private void btnRepoConfig_Click(object sender, EventArgs e)

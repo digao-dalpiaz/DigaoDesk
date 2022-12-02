@@ -18,6 +18,7 @@ namespace DigaoDeskApp
         public string DiffProgram;
         public string DiffProgramArguments;
         public string GitNewBranchPrefixList;
+        public string GitCustomCommands;
         public bool GitAutoFetch = true;
         public string GitCommitMessage;
         public ConfigGit Git;

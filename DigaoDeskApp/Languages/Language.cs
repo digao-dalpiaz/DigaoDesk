@@ -78,7 +78,8 @@
         public string Config_Repos_DiffProgramArgs;
         public string Config_Repos_DiffProgramArgsInfo;
         public string Config_Repos_NewBranchPrefixList;
-        public string Config_Repos_NewBranchPrefixListInfo;
+        public string Config_Repos_CustomCommands;
+        public string Config_Repos_MemoInfo;
         public string Config_Repos_AutoFetch;
         public string Config_Repos_CommitMsg;
         public string Config_Repos_CommitMsgInfo;

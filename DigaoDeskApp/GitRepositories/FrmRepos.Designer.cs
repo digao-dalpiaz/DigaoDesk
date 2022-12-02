@@ -65,7 +65,7 @@ namespace DigaoDeskApp
             this.btnCancelOperation = new System.Windows.Forms.ToolStripButton();
             this.btnPush = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnShell = new System.Windows.Forms.ToolStripButton();
+            this.btnShell = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnRepoConfig = new System.Windows.Forms.ToolStripButton();
             this.btnClearLog = new System.Windows.Forms.ToolStripButton();
             this.splitter = new System.Windows.Forms.Splitter();
@@ -433,7 +433,7 @@ namespace DigaoDeskApp
             this.btnShell.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnShell.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShell.Name = "btnShell";
-            this.btnShell.Size = new System.Drawing.Size(45, 48);
+            this.btnShell.Size = new System.Drawing.Size(55, 48);
             this.btnShell.Text = "Shell";
             this.btnShell.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnShell.Click += new System.EventHandler(this.btnShell_Click);
@@ -541,13 +541,11 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnFetchAll;
         private System.Windows.Forms.ToolStripButton btnCommit;
         private System.Windows.Forms.ToolStripButton btnDeleteBranch;
-        private System.Windows.Forms.ToolStripButton btnShell;
         private System.Windows.Forms.ToolStripButton btnCreateBranch;
         private System.Windows.Forms.ToolStripButton btnCherryPick;
         private System.Windows.Forms.ToolStripButton btnPush;
         private System.Windows.Forms.ToolStripButton btnCancelOperation;
         private System.Windows.Forms.ToolStripButton btnMerge;
-        private System.Windows.Forms.ToolStripButton btnRepoConfig;
         private System.Windows.Forms.ToolStripButton btnSyncWithMaster;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ImageList images;
@@ -563,5 +561,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colMasterCompare;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel stFunInfo;
+        private System.Windows.Forms.ToolStripButton btnRepoConfig;
+        private System.Windows.Forms.ToolStripDropDownButton btnShell;
     }
 }

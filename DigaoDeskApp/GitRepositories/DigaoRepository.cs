@@ -687,8 +687,14 @@ namespace DigaoDeskApp
                 return;
             }
 
+            RunCustomCommand(cmd, null);   
+        }
+
+        public void RunCustomCommand(string cmd, string parameters)
+        {
             ProcessStartInfo info = new();
             info.FileName = cmd;
+            info.Arguments = parameters;
             info.WorkingDirectory = _path;
             try
             {
