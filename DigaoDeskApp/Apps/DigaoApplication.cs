@@ -267,7 +267,7 @@ namespace DigaoDeskApp
             Logs.Add(r);
             Interlocked.Add(ref LogSize, text.Length);
 
-            while (Logs.Count > Vars.Config.Apps.MaxLogLines)
+            while (LogSize > Vars.Config.Apps.MaxLogSize)
             {
                 Interlocked.Add(ref LogSize, -Logs[0].Text.Length);
                 Logs.RemoveAt(0);
@@ -316,6 +316,23 @@ namespace DigaoDeskApp
 
             CheckWebPort();
 
+            if (Vars.Config.Apps.CalcResources)
+            {
+                AnalyseResources();
+            }
+
+            Debug.WriteLine("Finished Analyse App {0} {1}", debugArgs);
+        }
+
+        private void CheckWebPort()
+        {
+            if (!TcpPort.HasValue) return;
+
+            _tcpOnline = Utils.TcpPortInUse(TcpPort.Value);
+        }
+
+        private void AnalyseResources()
+        {
             try
             {
                 var r = new Resources();
@@ -338,22 +355,13 @@ namespace DigaoDeskApp
 
                     ProcCount = r.ProcCount.ToString();
                 }
-            } 
+            }
             catch (AnalyzeException)
             {
                 Memory = null;
                 Processor = null;
                 ProcCount = null;
             }
-
-            Debug.WriteLine("Finished Analyse App {0} {1}", debugArgs);
-        }
-
-        public void CheckWebPort()
-        {
-            if (!TcpPort.HasValue) return;
-
-            _tcpOnline = Utils.TcpPortInUse(TcpPort.Value);
         }
 
         private void AnalyzeChildren(Process parent, Resources r)

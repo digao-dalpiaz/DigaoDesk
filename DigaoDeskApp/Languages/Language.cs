@@ -61,9 +61,10 @@
         public string Config_Theme_ShowDateTime;
         public string Config_Theme_WordWrap;
 
+        public string Config_Apps_CalcResources;
         public string Config_Apps_NotifyWhenStop;
         public string Config_Apps_DontNotifyStopWhenActive;
-        public string Config_Apps_MaxLogLines;
+        public string Config_Apps_MaxLogSize;
 
         public string Config_Repos_Folder;
         public string Config_Repos_BoxAuthor;

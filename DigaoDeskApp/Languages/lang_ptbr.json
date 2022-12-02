@@ -56,9 +56,10 @@
   "Config_Theme_ShowDateTime": "Exibir data/hora em cada registro",
   "Config_Theme_WordWrap": "Quebrar linhas automaticamente",
 
+  "Config_Apps_CalcResources": "Calcular recursos da aplicação",
   "Config_Apps_NotifyWhenStop": "Exibir notificação quando aplicações pararem",
   "Config_Apps_DontNotifyStopWhenActive": "Não exibir a notificação caso a tela de aplicações esteja ativa",
-  "Config_Apps_MaxLogLines": "Tamanho máximo de linhas armazenadas do log da aplicação",
+  "Config_Apps_MaxLogSize": "Tamanho máximo de do log (bytes)",
 
   "Config_Repos_Folder": "Pasta dos repositórios",
   "Config_Repos_BoxAuthor": "Informações do autor",

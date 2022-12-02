@@ -56,9 +56,10 @@
   "Config_Theme_ShowDateTime": "Show date/time in each record",
   "Config_Theme_WordWrap": "Word wrap",
 
+  "Config_Apps_CalcResources": "Calculate application resources",
   "Config_Apps_NotifyWhenStop": "Notify when application stops",
   "Config_Apps_DontNotifyStopWhenActive": "Do not notify when apps form active",
-  "Config_Apps_MaxLogLines": "Application maximum log lines stored",
+  "Config_Apps_MaxLogSize": "Maximum log size (bytes)",
 
   "Config_Repos_Folder": "Repositories folder",
   "Config_Repos_BoxAuthor": "Author information",

@@ -57,9 +57,10 @@ namespace DigaoDeskApp
             ckLogShowTs.Text = Vars.Lang.Config_Theme_ShowDateTime;
             ckLogWordWrap.Text = Vars.Lang.Config_Theme_WordWrap;
 
+            ckCalcAppResources.Text = Vars.Lang.Config_Apps_CalcResources;
             ckNotifyWhenAppStops.Text = Vars.Lang.Config_Apps_NotifyWhenStop;
             ckDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
-            lbAppsLinesLog.Text = Vars.Lang.Config_Apps_MaxLogLines;
+            lbAppsLinesLog.Text = Vars.Lang.Config_Apps_MaxLogSize;
 
             lbRepositoryFolder.Text = Vars.Lang.Config_Repos_Folder;
             boxGitAuthor.Text = Vars.Lang.Config_Repos_BoxAuthor;
@@ -122,9 +123,10 @@ namespace DigaoDeskApp
             //--
 
             //--Apps tab
+            ckCalcAppResources.Checked = Vars.Config.Apps.CalcResources;
             ckNotifyWhenAppStops.Checked = Vars.Config.Apps.NotifyAppStops;
             ckDontNotifyWhenAppsActive.Checked = Vars.Config.Apps.DontNotifyWhenAppsActive;
-            edAppsLogMaxLines.Value = Vars.Config.Apps.MaxLogLines;
+            edAppLogMaxSize.Value = Vars.Config.Apps.MaxLogSize;
             //--
 
             //--Repos tab
@@ -166,10 +168,10 @@ namespace DigaoDeskApp
                 return;
             }
 
-            if (edAppsLogMaxLines.Text == "" || edAppsLogMaxLines.Value == 0)
+            if (edAppLogMaxSize.Text == "" || edAppLogMaxSize.Value == 0)
             {
                 Messages.Error(Vars.Lang.Config_AppMaxLogSizeRequired);
-                edAppsLogMaxLines.Select();
+                edAppLogMaxSize.Select();
                 return;
             }
 
@@ -233,9 +235,10 @@ namespace DigaoDeskApp
             //--
 
             //--Apps tab
+            Vars.Config.Apps.CalcResources = ckCalcAppResources.Checked;
             Vars.Config.Apps.NotifyAppStops = ckNotifyWhenAppStops.Checked;
             Vars.Config.Apps.DontNotifyWhenAppsActive = ckDontNotifyWhenAppsActive.Checked;
-            Vars.Config.Apps.MaxLogLines = (int)edAppsLogMaxLines.Value;
+            Vars.Config.Apps.MaxLogSize = (int)edAppLogMaxSize.Value;
             //--
 
             //--Repos tab
