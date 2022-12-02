@@ -281,7 +281,6 @@
         public string AppStatus_Running;
         public string AppStatus_Stoped;
 
-        public string AppStatistics;
         public string AppLog_Terminated;
         public string AppLog_Stopping;
         public string AppLog_TerminatingProcessLevel;
@@ -332,7 +331,8 @@
         public string Apps_Col_Processor;
         public string Apps_Col_ThreadCount;
         public string Apps_Col_LastLogTime;
-        public string Apps_Col_LogStatistics;
+        public string Apps_Col_LogLines;
+        public string Apps_Col_LogSize;
         public string Apps_Col_LogHealth;
         public string Apps_Col_TcpStatus;
         public string Apps_StatusBar_Info;

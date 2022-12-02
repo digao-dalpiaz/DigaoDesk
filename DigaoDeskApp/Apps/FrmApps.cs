@@ -49,7 +49,8 @@ namespace DigaoDeskApp
             colProcessor.HeaderText = Vars.Lang.Apps_Col_Processor;
             colProcCount.HeaderText = Vars.Lang.Apps_Col_ThreadCount;
             colLastLogTime.HeaderText = Vars.Lang.Apps_Col_LastLogTime;
-            colLogStatistics.HeaderText = Vars.Lang.Apps_Col_LogStatistics;
+            colLogLines.HeaderText = Vars.Lang.Apps_Col_LogLines;
+            colLogSize.HeaderText = Vars.Lang.Apps_Col_LogSize;
             colLogHealth.HeaderText = Vars.Lang.Apps_Col_LogHealth;
             colTcpStatus.HeaderText = Vars.Lang.Apps_Col_TcpStatus;
 
@@ -233,8 +234,7 @@ namespace DigaoDeskApp
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             var app = GetSelApp();
-            app.Logs.Clear();
-            app.LogSize = 0;
+            app.ClearLog();
             app.LastLogTime = null;
             app.LastLogIsError = false;
 

@@ -276,7 +276,6 @@
   "AppStatus_Running": "Running...",
   "AppStatus_Stoped": "Stoped",
 
-  "AppStatistics": "Lines: {0} / Size: {1} KB",
   "AppLog_Terminated": "TERMINATED!",
   "AppLog_Stopping": "Stopping process...",
   "AppLog_TerminatingProcessLevel": "Terminating process level {0} \"{1}\" ({2})...",
@@ -328,7 +327,8 @@
   "Apps_Col_Processor": "Processor",
   "Apps_Col_ThreadCount": "Thread Count",
   "Apps_Col_LastLogTime": "Last Log Time",
-  "Apps_Col_LogStatistics": "Log Statistics",
+  "Apps_Col_LogLines": "Log Lines",
+  "Apps_Col_LogSize": "Log Size",
   "Apps_Col_LogHealth": "Log Health",
   "Apps_Col_TcpStatus": "TCP Status",
   "Apps_StatusBar_Info": "Have a coffee! I am taking care of your applications.",

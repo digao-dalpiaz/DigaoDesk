@@ -30,24 +30,15 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.g = new System.Windows.Forms.DataGridView();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRunningTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProcessor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProcCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLastLogTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLogStatistics = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLogHealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTcpStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edLog = new DigaoDeskApp.RichTextBoxEx();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
@@ -71,6 +62,18 @@ namespace DigaoDeskApp
             this.stFunInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.stMonitoring = new System.Windows.Forms.ToolStripStatusLabel();
             this.images = new System.Windows.Forms.ImageList(this.components);
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRunningTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProcessor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProcCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLastLogTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLogLines = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLogSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLogHealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTcpStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             this.toolBar.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -92,7 +95,8 @@ namespace DigaoDeskApp
             this.colProcessor,
             this.colProcCount,
             this.colLastLogTime,
-            this.colLogStatistics,
+            this.colLogLines,
+            this.colLogSize,
             this.colLogHealth,
             this.colTcpStatus});
             this.g.Dock = System.Windows.Forms.DockStyle.Top;
@@ -109,115 +113,6 @@ namespace DigaoDeskApp
             this.g.TabIndex = 1;
             this.g.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.g_CellPainting);
             this.g.SelectionChanged += new System.EventHandler(this.g_SelectionChanged);
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.MinimumWidth = 6;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 300;
-            // 
-            // colStatus
-            // 
-            this.colStatus.DataPropertyName = "Status";
-            this.colStatus.HeaderText = "Status";
-            this.colStatus.MinimumWidth = 6;
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            this.colStatus.Width = 80;
-            // 
-            // colStartTime
-            // 
-            this.colStartTime.DataPropertyName = "StartTime";
-            this.colStartTime.HeaderText = "Start Time";
-            this.colStartTime.MinimumWidth = 6;
-            this.colStartTime.Name = "colStartTime";
-            this.colStartTime.ReadOnly = true;
-            this.colStartTime.Width = 120;
-            // 
-            // colRunningTime
-            // 
-            this.colRunningTime.DataPropertyName = "RunningTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colRunningTime.HeaderText = "Running Time";
-            this.colRunningTime.MinimumWidth = 6;
-            this.colRunningTime.Name = "colRunningTime";
-            this.colRunningTime.ReadOnly = true;
-            this.colRunningTime.Width = 80;
-            // 
-            // colMemory
-            // 
-            this.colMemory.DataPropertyName = "Memory";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colMemory.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colMemory.HeaderText = "Memory";
-            this.colMemory.MinimumWidth = 6;
-            this.colMemory.Name = "colMemory";
-            this.colMemory.ReadOnly = true;
-            this.colMemory.Width = 80;
-            // 
-            // colProcessor
-            // 
-            this.colProcessor.DataPropertyName = "Processor";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colProcessor.HeaderText = "Processor";
-            this.colProcessor.MinimumWidth = 6;
-            this.colProcessor.Name = "colProcessor";
-            this.colProcessor.ReadOnly = true;
-            this.colProcessor.Width = 80;
-            // 
-            // colProcCount
-            // 
-            this.colProcCount.DataPropertyName = "ProcCount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colProcCount.HeaderText = "Thread Count";
-            this.colProcCount.MinimumWidth = 6;
-            this.colProcCount.Name = "colProcCount";
-            this.colProcCount.ReadOnly = true;
-            this.colProcCount.Width = 80;
-            // 
-            // colLastLogTime
-            // 
-            this.colLastLogTime.DataPropertyName = "LastLogTime";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colLastLogTime.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colLastLogTime.HeaderText = "Last Log Time";
-            this.colLastLogTime.MinimumWidth = 6;
-            this.colLastLogTime.Name = "colLastLogTime";
-            this.colLastLogTime.ReadOnly = true;
-            this.colLastLogTime.Width = 120;
-            // 
-            // colLogStatistics
-            // 
-            this.colLogStatistics.DataPropertyName = "LogStatistics";
-            this.colLogStatistics.HeaderText = "Log Statistics";
-            this.colLogStatistics.MinimumWidth = 6;
-            this.colLogStatistics.Name = "colLogStatistics";
-            this.colLogStatistics.ReadOnly = true;
-            this.colLogStatistics.Width = 80;
-            // 
-            // colLogHealth
-            // 
-            this.colLogHealth.DataPropertyName = "LogHealth";
-            this.colLogHealth.HeaderText = "Log Health";
-            this.colLogHealth.MinimumWidth = 6;
-            this.colLogHealth.Name = "colLogHealth";
-            this.colLogHealth.ReadOnly = true;
-            this.colLogHealth.Width = 80;
-            // 
-            // colTcpStatus
-            // 
-            this.colTcpStatus.DataPropertyName = "TcpStatus";
-            this.colTcpStatus.HeaderText = "TCP Status";
-            this.colTcpStatus.MinimumWidth = 6;
-            this.colTcpStatus.Name = "colTcpStatus";
-            this.colTcpStatus.ReadOnly = true;
-            this.colTcpStatus.Width = 75;
             // 
             // edLog
             // 
@@ -446,6 +341,128 @@ namespace DigaoDeskApp
             this.images.Images.SetKeyName(6, "unread");
             this.images.Images.SetKeyName(7, "read");
             // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 300;
+            // 
+            // colStatus
+            // 
+            this.colStatus.DataPropertyName = "Status";
+            this.colStatus.HeaderText = "Status";
+            this.colStatus.MinimumWidth = 6;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            this.colStatus.Width = 80;
+            // 
+            // colStartTime
+            // 
+            this.colStartTime.DataPropertyName = "StartTime";
+            this.colStartTime.HeaderText = "Start Time";
+            this.colStartTime.MinimumWidth = 6;
+            this.colStartTime.Name = "colStartTime";
+            this.colStartTime.ReadOnly = true;
+            this.colStartTime.Width = 120;
+            // 
+            // colRunningTime
+            // 
+            this.colRunningTime.DataPropertyName = "RunningTime";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colRunningTime.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colRunningTime.HeaderText = "Running Time";
+            this.colRunningTime.MinimumWidth = 6;
+            this.colRunningTime.Name = "colRunningTime";
+            this.colRunningTime.ReadOnly = true;
+            this.colRunningTime.Width = 80;
+            // 
+            // colMemory
+            // 
+            this.colMemory.DataPropertyName = "Memory";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colMemory.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colMemory.HeaderText = "Memory";
+            this.colMemory.MinimumWidth = 6;
+            this.colMemory.Name = "colMemory";
+            this.colMemory.ReadOnly = true;
+            this.colMemory.Width = 80;
+            // 
+            // colProcessor
+            // 
+            this.colProcessor.DataPropertyName = "Processor";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcessor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colProcessor.HeaderText = "Processor";
+            this.colProcessor.MinimumWidth = 6;
+            this.colProcessor.Name = "colProcessor";
+            this.colProcessor.ReadOnly = true;
+            this.colProcessor.Width = 80;
+            // 
+            // colProcCount
+            // 
+            this.colProcCount.DataPropertyName = "ProcCount";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colProcCount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colProcCount.HeaderText = "Thread Count";
+            this.colProcCount.MinimumWidth = 6;
+            this.colProcCount.Name = "colProcCount";
+            this.colProcCount.ReadOnly = true;
+            this.colProcCount.Width = 80;
+            // 
+            // colLastLogTime
+            // 
+            this.colLastLogTime.DataPropertyName = "LastLogTime";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colLastLogTime.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colLastLogTime.HeaderText = "Last Log Time";
+            this.colLastLogTime.MinimumWidth = 6;
+            this.colLastLogTime.Name = "colLastLogTime";
+            this.colLastLogTime.ReadOnly = true;
+            this.colLastLogTime.Width = 120;
+            // 
+            // colLogLines
+            // 
+            this.colLogLines.DataPropertyName = "LogLines";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colLogLines.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colLogLines.HeaderText = "Log Lines";
+            this.colLogLines.MinimumWidth = 6;
+            this.colLogLines.Name = "colLogLines";
+            this.colLogLines.ReadOnly = true;
+            this.colLogLines.Width = 80;
+            // 
+            // colLogSize
+            // 
+            this.colLogSize.DataPropertyName = "LogSize";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colLogSize.DefaultCellStyle = dataGridViewCellStyle7;
+            this.colLogSize.HeaderText = "Log Size";
+            this.colLogSize.MinimumWidth = 6;
+            this.colLogSize.Name = "colLogSize";
+            this.colLogSize.ReadOnly = true;
+            this.colLogSize.Width = 125;
+            // 
+            // colLogHealth
+            // 
+            this.colLogHealth.DataPropertyName = "LogHealth";
+            this.colLogHealth.HeaderText = "Log Health";
+            this.colLogHealth.MinimumWidth = 6;
+            this.colLogHealth.Name = "colLogHealth";
+            this.colLogHealth.ReadOnly = true;
+            this.colLogHealth.Width = 80;
+            // 
+            // colTcpStatus
+            // 
+            this.colTcpStatus.DataPropertyName = "TcpStatus";
+            this.colTcpStatus.HeaderText = "TCP Status";
+            this.colTcpStatus.MinimumWidth = 6;
+            this.colTcpStatus.Name = "colTcpStatus";
+            this.colTcpStatus.ReadOnly = true;
+            this.colTcpStatus.Width = 75;
+            // 
             // FrmApps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -510,7 +527,8 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colProcessor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProcCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastLogTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLogStatistics;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLogLines;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLogSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogHealth;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTcpStatus;
     }

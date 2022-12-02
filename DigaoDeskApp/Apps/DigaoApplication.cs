@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -62,11 +63,18 @@ namespace DigaoDeskApp
             }
         }
 
-        public string LogStatistics
+        public string LogLines
         {
             get
             {
-                return string.Format(Vars.Lang.AppStatistics, Logs.Count, ((double)LogSize / 1024).ToString("0.00"));
+                return Logs.Count.ToString();
+            }
+        }
+        public string LogSize
+        {
+            get
+            {
+                return string.Format("{0}", _logSize);
             }
         }
 
@@ -107,8 +115,14 @@ namespace DigaoDeskApp
         }
 
         public List<LogRecord> Logs = new();
-        public long LogSize;
+        public long _logSize;
         public bool PendingLog;
+
+        public void ClearLog()
+        {
+            Logs.Clear();
+            _logSize = 0;
+        }
 
         public bool Running;
         private bool _stopping;
@@ -119,8 +133,7 @@ namespace DigaoDeskApp
 
         public void Start()
         {
-            Logs.Clear();
-            LogSize = 0;
+            ClearLog();
 
             if (TcpPort.HasValue)
             {
@@ -265,11 +278,11 @@ namespace DigaoDeskApp
                 r.Type = LogType.INFO;
             }
             Logs.Add(r);
-            Interlocked.Add(ref LogSize, text.Length);
+            Interlocked.Add(ref _logSize, text.Length);
 
-            while (LogSize > Vars.Config.Apps.MaxLogSize)
+            while (Logs.Any() && _logSize > Vars.Config.Apps.MaxLogSize)
             {
-                Interlocked.Add(ref LogSize, -Logs[0].Text.Length);
+                Interlocked.Add(ref _logSize, -Logs[0].Text.Length);
                 Logs.RemoveAt(0);
             }
 
