@@ -115,7 +115,7 @@ namespace DigaoDeskApp
         }
 
         public List<LogRecord> Logs = new();
-        public long _logSize;
+        private long _logSize;
         public bool PendingLog;
 
         public void ClearLog()
