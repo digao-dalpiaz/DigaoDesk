@@ -50,6 +50,7 @@ namespace DigaoDeskApp
             try
             {
                 var info = JsonConvert.DeserializeObject<ReleaseInfo>(data);
+                if (info.message != null) return; //some error message returned
                 NormalizeVersion(info);
 
                 if (info.tag_name != Vars.APP_VERSION)
@@ -171,6 +172,8 @@ namespace DigaoDeskApp
 
         public class ReleaseInfo
         {
+            public string message;
+
             public string html_url;
             public string tag_name;
             public string name;
