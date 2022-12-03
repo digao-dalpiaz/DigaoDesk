@@ -80,25 +80,5 @@ namespace DigaoDeskApp
             }
         }
 
-        public static Stream ConvertStreamToWin(Stream source)
-        {
-            const byte CR = 0x0D;
-            const byte LF = 0x0A;
-
-            MemoryStream destination = new();
-            
-            while (source.Position < source.Length)
-            {
-                byte b = (byte)source.ReadByte();
-                if (b == CR) return null; //the stream already contains CR, so is Win CR+LF already!
-
-                if (b == LF) destination.WriteByte(CR);
-                destination.WriteByte(b);
-            }
-
-            destination.Position = 0;
-            return destination;
-        }
-
     }
 }

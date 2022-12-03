@@ -193,13 +193,8 @@ namespace DigaoDeskApp
 
         private void SaveBlobToFile(Blob blob, string filePath)
         {
-            Stream stmSource = blob.GetContentStream();
-
-            if (!blob.IsBinary)
-            {
-                Stream converted = GitUtils.ConvertStreamToWin(stmSource);
-                if (converted != null) stmSource = converted; //when already Win format, returns null
-            }
+            FilteringOptions fo = new(""); //ensure correct CR/LF between Unix and Win
+            Stream stmSource = blob.GetContentStream(fo);
 
             using (var stmDest = File.Create(filePath))
             {
