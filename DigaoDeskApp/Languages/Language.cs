@@ -81,6 +81,7 @@
         public string Config_Repos_CustomCommands;
         public string Config_Repos_CustomCommandsHelp;
         public string Config_Repos_MemoInfo;
+        public string Config_Repos_AutoCRLF;
         public string Config_Repos_AutoFetch;
         public string Config_Repos_CommitMsg;
         public string Config_Repos_CommitMsgInfo;
@@ -133,6 +134,7 @@
 
         public string Repos_DenyExitByProcess;
         public string Repos_GitFolderNotFound;
+        public string Repos_CRLFEnabled;
         public string Repos_RefreshingAll;
         public string Repos_ProcessDone;
         public string Repos_FetchingAll;

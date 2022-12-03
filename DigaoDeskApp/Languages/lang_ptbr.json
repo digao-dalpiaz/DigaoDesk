@@ -76,6 +76,7 @@
   "Config_Repos_CustomCommands": "Comandos personalizados de linha de comando",
   "Config_Repos_CustomCommandsHelp": "Infore um comando por linha\n\nSintaxe:\nOpção 1: arquivo.exe\nOpção 2: Título do Comando|arquivo.exe\nOpção 3: Título do Comando|arquivo.exe|argumento1 argumento2 argumento3...",
   "Config_Repos_MemoInfo": "CTRL+ENTER = Nova linha",
+  "Config_Repos_AutoCRLF": "Habilitar automaticamente CR+LF nos repositórios (garante o funcionamento do Diff entre Unix e Windows)",
   "Config_Repos_AutoFetch": "Realizar Fetch automaticamente em operações remotas",
   "Config_Repos_CommitMsg": "Mensagem de commit",
   "Config_Repos_CommitMsgInfo": "Use [branch] para o nome do branch",
@@ -128,6 +129,7 @@
 
   "Repos_DenyExitByProcess": "Existe um processo em execução no momento",
   "Repos_GitFolderNotFound": "Pasta dos repositórios não encontrada: {0}",
+  "Repos_CRLFEnabled": "Configuração de CR+LF habilitada para o repositório '{0}'",
   "Repos_RefreshingAll": "Atualizando todos os repositórios...",
   "Repos_ProcessDone": "Pronto!",
   "Repos_FetchingAll": "Fazer fetch nos repositórios",

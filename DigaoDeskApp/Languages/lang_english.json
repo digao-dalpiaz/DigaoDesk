@@ -76,6 +76,7 @@
   "Config_Repos_CustomCommands": "Custom shell commands",
   "Config_Repos_CustomCommandsHelp": "Enter one command per line\n\nLine syntax:\nOption 1: file.exe\nOption 2: Command Title|file.exe\nOption 3: Command Title|file.exe|argument1 argument2 argument3...",
   "Config_Repos_MemoInfo": "CTRL+ENTER = New line",
+  "Config_Repos_AutoCRLF": "Auto enable CR+LF config in repositories (ensures diff between Unix and Win)",
   "Config_Repos_AutoFetch": "Auto Fetch in remote operations",
   "Config_Repos_CommitMsg": "Commit message",
   "Config_Repos_CommitMsgInfo": "Use [branch] for branch name",
@@ -128,6 +129,7 @@
 
   "Repos_DenyExitByProcess": "There is a process in execution right now",
   "Repos_GitFolderNotFound": "Git repositories folder not found: {0}",
+  "Repos_CRLFEnabled": "Auto CR+LF config has been enabled in repository '{0}'",
   "Repos_RefreshingAll": "Refreshing all repositories...",
   "Repos_ProcessDone": "Done!",
   "Repos_FetchingAll": "Fetch All Repositories",

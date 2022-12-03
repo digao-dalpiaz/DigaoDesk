@@ -62,6 +62,8 @@ namespace DigaoDeskApp
         {
             if (_repos.Any())
             {
+                CheckAutoCRLF();
+
                 btnRefresh.PerformClick();
             }
         }
@@ -209,6 +211,23 @@ namespace DigaoDeskApp
             _repos = _repos.OrderBy(x => x.Config.Order).ToList();
 
             _gridBind.DataSource = _repos;
+        }
+
+        private void CheckAutoCRLF()
+        {
+            if (!Vars.Config.GitAutoCRLF) return;
+            //ensure all repos have auto-crlf config enable to work with Unix x Win diffs
+
+            const string CFG_AUTOCRLF = "core.autocrlf";
+
+            foreach (var r in _repos)
+            {
+                if (!r._repoCtrl.Config.Get<bool>(CFG_AUTOCRLF).Value)
+                {
+                    r._repoCtrl.Config.Set(CFG_AUTOCRLF, true);
+                    Log.Log(string.Format(Vars.Lang.Repos_CRLFEnabled, r.Name), Color.OrangeRed, true);
+                }
+            }
         }
 
         private void g_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

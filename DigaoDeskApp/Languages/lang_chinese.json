@@ -76,6 +76,7 @@
   "Config_Repos_CustomCommands": "Custom shell commands",
   "Config_Repos_CustomCommandsHelp": "Enter one command per line\n\nLine syntax:\nOption 1: file.exe\nOption 2: Command Title|file.exe\nOption 3: Command Title|file.exe|argument1 argument2 argument3...",
   "Config_Repos_MemoInfo": "CTRL+ENTER = 新行",
+  "Config_Repos_AutoCRLF": "Auto enable CR+LF config in repositories (ensures diff between Unix and Win)",
   "Config_Repos_AutoFetch": "远程操作中的自动获取",
   "Config_Repos_CommitMsg": "提交信息",
   "Config_Repos_CommitMsgInfo": "使用 [branch] 作为分支名称",
@@ -128,6 +129,7 @@
 
   "Repos_DenyExitByProcess": "现在有一个进程正在执行",
   "Repos_GitFolderNotFound": "未找到 Git 存储库文件夹：{0}",
+  "Repos_CRLFEnabled": "Auto CR+LF config has been enabled in repository '{0}'",
   "Repos_RefreshingAll": "正在刷新所有存储库...",
   "Repos_ProcessDone": "完成!",
   "Repos_FetchingAll": "获取所有存储库",

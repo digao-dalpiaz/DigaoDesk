@@ -76,6 +76,7 @@ namespace DigaoDeskApp
             lbNewBranchPrefix.Text = Vars.Lang.Config_Repos_NewBranchPrefixList;
             lbCustomCommands.Text = Vars.Lang.Config_Repos_CustomCommands;
             lbMemoInfo.Text = Vars.Lang.Config_Repos_MemoInfo;
+            ckGitAutoCRLF.Text = Vars.Lang.Config_Repos_AutoCRLF;
             ckGitAutoFetch.Text = Vars.Lang.Config_Repos_AutoFetch;
             lbCommitMsg.Text = Vars.Lang.Config_Repos_CommitMsg;
             lbCommitMsgInfo.Text = Vars.Lang.Config_Repos_CommitMsgInfo;
@@ -137,6 +138,7 @@ namespace DigaoDeskApp
             edDiffProgramArguments.Text = Vars.Config.DiffProgramArguments;
             edGitNewBranchPrefixList.Text = Vars.Config.GitNewBranchPrefixList;
             edGitCustomCommands.Text = Vars.Config.GitCustomCommands;
+            ckGitAutoCRLF.Checked = Vars.Config.GitAutoCRLF;
             ckGitAutoFetch.Checked = Vars.Config.GitAutoFetch;
             edCommitMessage.Text = Vars.Config.GitCommitMessage;
 
@@ -250,6 +252,7 @@ namespace DigaoDeskApp
             Vars.Config.DiffProgramArguments = edDiffProgramArguments.Text;
             Vars.Config.GitNewBranchPrefixList = edGitNewBranchPrefixList.Text;
             Vars.Config.GitCustomCommands = edGitCustomCommands.Text;
+            Vars.Config.GitAutoCRLF = ckGitAutoCRLF.Checked;
             Vars.Config.GitAutoFetch = ckGitAutoFetch.Checked;
             Vars.Config.GitCommitMessage = edCommitMessage.Text;
 

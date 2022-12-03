@@ -78,6 +78,8 @@ namespace DigaoDeskApp
             this.ckDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
             this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
             this.tabRepos = new System.Windows.Forms.TabPage();
+            this.ckGitAutoCRLF = new System.Windows.Forms.CheckBox();
+            this.btnCustomCommandsHelp = new System.Windows.Forms.Label();
             this.edGitCustomCommands = new System.Windows.Forms.TextBox();
             this.lbCustomCommands = new System.Windows.Forms.Label();
             this.lbDifProgramArgs = new System.Windows.Forms.Label();
@@ -111,7 +113,6 @@ namespace DigaoDeskApp
             this.lbRepositoryFolder = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnCustomCommandsHelp = new System.Windows.Forms.Label();
             this.pages.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabTheme.SuspendLayout();
@@ -132,7 +133,7 @@ namespace DigaoDeskApp
             this.pages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pages.Name = "pages";
             this.pages.SelectedIndex = 0;
-            this.pages.Size = new System.Drawing.Size(1047, 693);
+            this.pages.Size = new System.Drawing.Size(1047, 717);
             this.pages.TabIndex = 0;
             // 
             // tabGeneral
@@ -143,7 +144,7 @@ namespace DigaoDeskApp
             this.tabGeneral.Location = new System.Drawing.Point(4, 29);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral.Size = new System.Drawing.Size(1039, 660);
+            this.tabGeneral.Size = new System.Drawing.Size(1039, 684);
             this.tabGeneral.TabIndex = 3;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
@@ -217,7 +218,7 @@ namespace DigaoDeskApp
             this.tabTheme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabTheme.Name = "tabTheme";
             this.tabTheme.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabTheme.Size = new System.Drawing.Size(1039, 660);
+            this.tabTheme.Size = new System.Drawing.Size(1039, 684);
             this.tabTheme.TabIndex = 2;
             this.tabTheme.Text = "Theme";
             this.tabTheme.UseVisualStyleBackColor = true;
@@ -580,7 +581,7 @@ namespace DigaoDeskApp
             this.tabApplications.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabApplications.Name = "tabApplications";
             this.tabApplications.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabApplications.Size = new System.Drawing.Size(1039, 660);
+            this.tabApplications.Size = new System.Drawing.Size(1039, 684);
             this.tabApplications.TabIndex = 0;
             this.tabApplications.Text = "Applications";
             this.tabApplications.UseVisualStyleBackColor = true;
@@ -650,6 +651,7 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            this.tabRepos.Controls.Add(this.ckGitAutoCRLF);
             this.tabRepos.Controls.Add(this.btnCustomCommandsHelp);
             this.tabRepos.Controls.Add(this.edGitCustomCommands);
             this.tabRepos.Controls.Add(this.lbCustomCommands);
@@ -678,10 +680,31 @@ namespace DigaoDeskApp
             this.tabRepos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabRepos.Name = "tabRepos";
             this.tabRepos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabRepos.Size = new System.Drawing.Size(1039, 660);
+            this.tabRepos.Size = new System.Drawing.Size(1039, 684);
             this.tabRepos.TabIndex = 1;
             this.tabRepos.Text = "Git Repositories";
             this.tabRepos.UseVisualStyleBackColor = true;
+            // 
+            // ckGitAutoCRLF
+            // 
+            this.ckGitAutoCRLF.AutoSize = true;
+            this.ckGitAutoCRLF.Location = new System.Drawing.Point(16, 536);
+            this.ckGitAutoCRLF.Name = "ckGitAutoCRLF";
+            this.ckGitAutoCRLF.Size = new System.Drawing.Size(545, 24);
+            this.ckGitAutoCRLF.TabIndex = 13;
+            this.ckGitAutoCRLF.Text = "Auto enable CR+LF config in repositories (ensures diff between Unix and Win)";
+            this.ckGitAutoCRLF.UseVisualStyleBackColor = true;
+            // 
+            // btnCustomCommandsHelp
+            // 
+            this.btnCustomCommandsHelp.AutoSize = true;
+            this.btnCustomCommandsHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCustomCommandsHelp.Location = new System.Drawing.Point(992, 400);
+            this.btnCustomCommandsHelp.Name = "btnCustomCommandsHelp";
+            this.btnCustomCommandsHelp.Size = new System.Drawing.Size(34, 20);
+            this.btnCustomCommandsHelp.TabIndex = 20;
+            this.btnCustomCommandsHelp.Text = "[ ? ]";
+            this.btnCustomCommandsHelp.Click += new System.EventHandler(this.btnCustomCommandsHelp_Click);
             // 
             // edGitCustomCommands
             // 
@@ -773,7 +796,7 @@ namespace DigaoDeskApp
             // 
             this.lbCommitMsgInfo.AutoSize = true;
             this.lbCommitMsgInfo.ForeColor = System.Drawing.Color.Gray;
-            this.lbCommitMsgInfo.Location = new System.Drawing.Point(240, 576);
+            this.lbCommitMsgInfo.Location = new System.Drawing.Point(240, 608);
             this.lbCommitMsgInfo.Name = "lbCommitMsgInfo";
             this.lbCommitMsgInfo.Size = new System.Drawing.Size(205, 20);
             this.lbCommitMsgInfo.TabIndex = 14;
@@ -781,16 +804,16 @@ namespace DigaoDeskApp
             // 
             // edCommitMessage
             // 
-            this.edCommitMessage.Location = new System.Drawing.Point(16, 600);
+            this.edCommitMessage.Location = new System.Drawing.Point(16, 632);
             this.edCommitMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edCommitMessage.Name = "edCommitMessage";
             this.edCommitMessage.Size = new System.Drawing.Size(504, 27);
-            this.edCommitMessage.TabIndex = 14;
+            this.edCommitMessage.TabIndex = 15;
             // 
             // lbCommitMsg
             // 
             this.lbCommitMsg.AutoSize = true;
-            this.lbCommitMsg.Location = new System.Drawing.Point(14, 576);
+            this.lbCommitMsg.Location = new System.Drawing.Point(14, 608);
             this.lbCommitMsg.Name = "lbCommitMsg";
             this.lbCommitMsg.Size = new System.Drawing.Size(124, 20);
             this.lbCommitMsg.TabIndex = 12;
@@ -799,11 +822,11 @@ namespace DigaoDeskApp
             // ckGitAutoFetch
             // 
             this.ckGitAutoFetch.AutoSize = true;
-            this.ckGitAutoFetch.Location = new System.Drawing.Point(16, 536);
+            this.ckGitAutoFetch.Location = new System.Drawing.Point(16, 568);
             this.ckGitAutoFetch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ckGitAutoFetch.Name = "ckGitAutoFetch";
             this.ckGitAutoFetch.Size = new System.Drawing.Size(249, 24);
-            this.ckGitAutoFetch.TabIndex = 13;
+            this.ckGitAutoFetch.TabIndex = 14;
             this.ckGitAutoFetch.Text = "Auto Fetch in Remote operations";
             this.ckGitAutoFetch.UseVisualStyleBackColor = true;
             // 
@@ -990,7 +1013,7 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(427, 712);
+            this.btnOK.Location = new System.Drawing.Point(427, 736);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(101, 43);
@@ -1001,7 +1024,7 @@ namespace DigaoDeskApp
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(536, 712);
+            this.btnCancel.Location = new System.Drawing.Point(536, 736);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(101, 43);
@@ -1010,24 +1033,13 @@ namespace DigaoDeskApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnCustomCommandsHelp
-            // 
-            this.btnCustomCommandsHelp.AutoSize = true;
-            this.btnCustomCommandsHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCustomCommandsHelp.Location = new System.Drawing.Point(992, 400);
-            this.btnCustomCommandsHelp.Name = "btnCustomCommandsHelp";
-            this.btnCustomCommandsHelp.Size = new System.Drawing.Size(34, 20);
-            this.btnCustomCommandsHelp.TabIndex = 20;
-            this.btnCustomCommandsHelp.Text = "[ ? ]";
-            this.btnCustomCommandsHelp.Click += new System.EventHandler(this.btnCustomCommandsHelp_Click);
-            // 
             // FrmConfig
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1065, 765);
+            this.ClientSize = new System.Drawing.Size(1065, 789);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.pages);
@@ -1142,5 +1154,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.TextBox edGitCustomCommands;
         private System.Windows.Forms.Label lbCustomCommands;
         private System.Windows.Forms.Label btnCustomCommandsHelp;
+        private System.Windows.Forms.CheckBox ckGitAutoCRLF;
     }
 }
