@@ -346,13 +346,21 @@ namespace DigaoDeskApp
                         edLog.SelectionColor = Color.Gray;
                         edLog.SelectedText = log.Timestamp.ToString(Vars.DATETIME_FMT) + " - ";
                     }
-
+                    
                     edLog.SelectionStart = edLog.TextLength;
                     edLog.SelectionColor = LogTypeToColor(log.Type);
                     edLog.SelectedText = log.Text + Environment.NewLine;
                 }
 
                 _lastLogRecord = lst.Last();
+
+                if (edLog.TextLength > Vars.Config.Apps.MaxLogSize)
+                {
+                    //clear bottom log when overloads max log size
+                    edLog.SelectionStart = 0;
+                    edLog.SelectionLength = edLog.TextLength - Vars.Config.Apps.MaxLogSize;
+                    edLog.SelectedText = "[...]";
+                }
             } 
             finally
             {
