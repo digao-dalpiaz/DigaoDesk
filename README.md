@@ -3,6 +3,8 @@
 # DigaoDesk
 Windows App to Run and Monitor Console Processes
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C53LVFN)
+
 ![Preview](images/preview.png)
 
 # Purpose
