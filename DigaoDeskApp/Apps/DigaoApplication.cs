@@ -54,12 +54,12 @@ namespace DigaoDeskApp
 
         public string LastLogTime { get; set; }
 
-        public bool LastLogIsError;
+        private bool _lastLogIsError;
         public string LogHealth
         {
             get
             {
-                return LastLogIsError ? "ERROR" : "OK";
+                return _lastLogIsError ? "ERROR" : "OK";
             }
         }
 
@@ -85,14 +85,14 @@ namespace DigaoDeskApp
         private TimeSpan _lastProcessorTime;
         private DateTime _lastProcessorCapture;
 
-        private bool _tcpOnline;
+        public bool TcpOnline;
         public string TcpStatus
         {
             get
             {
                 if (Running && TcpPort.HasValue)
                 {
-                    return _tcpOnline ? "UP" : "DOWN";
+                    return TcpOnline ? "UP" : "DOWN";
                 }
 
                 return null;
@@ -122,6 +122,9 @@ namespace DigaoDeskApp
         {
             Logs.Clear();
             _logSize = 0;
+
+            LastLogTime = null;
+            _lastLogIsError = false;
         }
 
         public bool Running;
@@ -177,7 +180,7 @@ namespace DigaoDeskApp
                 Memory = null;
                 Processor = null;
                 ProcCount = null;
-                _tcpOnline = false;
+                TcpOnline = false;
                 InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this));
                 Vars.FrmMainObj.UpdateTrayIcon();
 
@@ -287,7 +290,7 @@ namespace DigaoDeskApp
             }
 
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
-            LastLogIsError = error;
+            _lastLogIsError = error;
 
             if (Vars.FrmAppsObj == null || Vars.FrmAppsObj.GetSelApp() != this)
             {
@@ -341,7 +344,10 @@ namespace DigaoDeskApp
         {
             if (!TcpPort.HasValue) return;
 
-            _tcpOnline = Utils.TcpPortInUse(TcpPort.Value);
+            bool oldValue = TcpOnline;
+            TcpOnline = Utils.TcpPortInUse(TcpPort.Value);
+
+            if (TcpOnline != oldValue) Vars.FrmMainObj.UpdateTrayIcon();
         }
 
         private void AnalyseResources()

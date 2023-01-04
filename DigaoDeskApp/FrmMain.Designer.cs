@@ -53,6 +53,7 @@ namespace DigaoDeskApp
             // 
             // menu
             // 
+            this.menu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miDigaoDesk,
             this.miVersion,
@@ -63,35 +64,35 @@ namespace DigaoDeskApp
             this.miSeparator,
             this.miExit});
             this.menu.Name = "Menu";
-            this.menu.Size = new System.Drawing.Size(173, 244);
+            this.menu.Size = new System.Drawing.Size(200, 244);
             // 
             // miDigaoDesk
             // 
             this.miDigaoDesk.Image = ((System.Drawing.Image)(resources.GetObject("miDigaoDesk.Image")));
             this.miDigaoDesk.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miDigaoDesk.Name = "miDigaoDesk";
-            this.miDigaoDesk.Size = new System.Drawing.Size(172, 38);
+            this.miDigaoDesk.Size = new System.Drawing.Size(199, 38);
             this.miDigaoDesk.Text = "Digao Desk";
             this.miDigaoDesk.Click += new System.EventHandler(this.miDigaoDesk_Click);
             // 
             // miVersion
             // 
             this.miVersion.Name = "miVersion";
-            this.miVersion.Size = new System.Drawing.Size(172, 38);
+            this.miVersion.Size = new System.Drawing.Size(199, 38);
             this.miVersion.Text = "Version";
             this.miVersion.Click += new System.EventHandler(this.miVersion_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(169, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(196, 6);
             // 
             // miApplications
             // 
             this.miApplications.Image = ((System.Drawing.Image)(resources.GetObject("miApplications.Image")));
             this.miApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miApplications.Name = "miApplications";
-            this.miApplications.Size = new System.Drawing.Size(172, 38);
+            this.miApplications.Size = new System.Drawing.Size(199, 38);
             this.miApplications.Text = "Applications";
             this.miApplications.Click += new System.EventHandler(this.miApplications_Click);
             // 
@@ -100,7 +101,7 @@ namespace DigaoDeskApp
             this.miRepos.Image = ((System.Drawing.Image)(resources.GetObject("miRepos.Image")));
             this.miRepos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miRepos.Name = "miRepos";
-            this.miRepos.Size = new System.Drawing.Size(172, 38);
+            this.miRepos.Size = new System.Drawing.Size(199, 38);
             this.miRepos.Text = "Git Repositories";
             this.miRepos.Click += new System.EventHandler(this.miRepos_Click);
             // 
@@ -109,21 +110,21 @@ namespace DigaoDeskApp
             this.miConfig.Image = ((System.Drawing.Image)(resources.GetObject("miConfig.Image")));
             this.miConfig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miConfig.Name = "miConfig";
-            this.miConfig.Size = new System.Drawing.Size(172, 38);
+            this.miConfig.Size = new System.Drawing.Size(199, 38);
             this.miConfig.Text = "Settings";
             this.miConfig.Click += new System.EventHandler(this.miConfig_Click);
             // 
             // miSeparator
             // 
             this.miSeparator.Name = "miSeparator";
-            this.miSeparator.Size = new System.Drawing.Size(169, 6);
+            this.miSeparator.Size = new System.Drawing.Size(196, 6);
             // 
             // miExit
             // 
             this.miExit.Image = ((System.Drawing.Image)(resources.GetObject("miExit.Image")));
             this.miExit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(172, 38);
+            this.miExit.Size = new System.Drawing.Size(199, 38);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -134,13 +135,14 @@ namespace DigaoDeskApp
             this.images.TransparentColor = System.Drawing.Color.Transparent;
             this.images.Images.SetKeyName(0, "off");
             this.images.Images.SetKeyName(1, "on");
-            this.images.Images.SetKeyName(2, "error");
+            this.images.Images.SetKeyName(2, "half");
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 286);
+            this.ClientSize = new System.Drawing.Size(709, 381);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);

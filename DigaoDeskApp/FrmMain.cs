@@ -103,10 +103,12 @@ namespace DigaoDeskApp
             if (appsRunning.Any())
             {
                 idx = 1;
-                if (appsRunning.Any(x => x.LastLogIsError))
-                {
+
+                var appsRunningWithTcpPort = appsRunning.Where(x => x.TcpPort.HasValue);
+                if (appsRunningWithTcpPort.Any() && !appsRunningWithTcpPort.All(x => x.TcpOnline))
+                { 
                     idx = 2;
-                } 
+                }
             }
 
             if (idx != _lastTrayIndex)

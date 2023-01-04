@@ -235,8 +235,6 @@ namespace DigaoDeskApp
         {
             var app = GetSelApp();
             app.ClearLog();
-            app.LastLogTime = null;
-            app.LastLogIsError = false;
 
             ReloadGrid();
             RecordSelected();
