@@ -280,7 +280,7 @@ namespace DigaoDeskApp
             Logs.Add(r);
             Interlocked.Add(ref _logSize, text.Length);
 
-            while (Logs.Any() && _logSize > Vars.Config.Apps.MaxLogSize)
+            while (Logs.Count>1 && _logSize > Vars.Config.Apps.MaxLogSize)
             {
                 Interlocked.Add(ref _logSize, -Logs[0].Text.Length);
                 Logs.RemoveAt(0);
