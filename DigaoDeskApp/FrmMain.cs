@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -130,6 +132,34 @@ namespace DigaoDeskApp
         {
             Process.Start("explorer", Vars.GITHUB_LINK + "/releases");
         }
-        
+
+        private void timerApps_Tick(object sender, EventArgs e)
+        {
+            timerApps.Enabled = false;
+
+            new Task(() =>
+            {
+                List<Task> tasks = new();
+
+                foreach (var app in Vars.AppList.Where(x => x.Running && x.TcpPort.HasValue))
+                {
+                    Task t = new(() =>
+                    {
+                        if (app.CheckWebPort()) UpdateTrayIcon();
+                    });
+                    tasks.Add(t);
+                    t.Start();
+                }
+
+                Task.WaitAll(tasks.ToArray());
+
+                this.Invoke(new MethodInvoker(() =>
+                {
+                    timerApps.Enabled = true;
+                }));
+                
+            }).Start();
+        }
+
     }
 }

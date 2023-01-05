@@ -42,6 +42,7 @@ namespace DigaoDeskApp
             this.miSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.images = new System.Windows.Forms.ImageList(this.components);
+            this.timerApps = new System.Windows.Forms.Timer(this.components);
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,6 +138,12 @@ namespace DigaoDeskApp
             this.images.Images.SetKeyName(1, "on");
             this.images.Images.SetKeyName(2, "half");
             // 
+            // timerApps
+            // 
+            this.timerApps.Enabled = true;
+            this.timerApps.Interval = 5000;
+            this.timerApps.Tick += new System.EventHandler(this.timerApps_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -165,6 +172,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripMenuItem miConfig;
         public System.Windows.Forms.NotifyIcon tray;
         private System.Windows.Forms.ToolStripMenuItem miRepos;
+        private System.Windows.Forms.Timer timerApps;
     }
 }
 

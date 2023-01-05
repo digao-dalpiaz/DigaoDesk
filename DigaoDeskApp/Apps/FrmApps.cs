@@ -311,14 +311,17 @@ namespace DigaoDeskApp
                 AddRemainingLog(appSelected);
             }
 
-            foreach (var app in Vars.AppList)
+            if (Vars.Config.Apps.CalcResources)
             {
-                if (app.Running)
+                foreach (var app in Vars.AppList)
                 {
-                    if (app.monitorTask == null || app.monitorTask.IsCompleted)
+                    if (app.Running)
                     {
-                        app.monitorTask = new(app.Analyze);
-                        app.monitorTask.Start();
+                        if (app.monitorTask == null || app.monitorTask.IsCompleted)
+                        {
+                            app.monitorTask = new(app.Analyze);
+                            app.monitorTask.Start();
+                        }
                     }
                 }
             }

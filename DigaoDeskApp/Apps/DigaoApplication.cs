@@ -46,11 +46,22 @@ namespace DigaoDeskApp
             get
             {
                 if (_startTime == null) return null;
+
                 return _startTime.Value.ToString(Vars.DATETIME_FMT);
             }
         }
 
-        public string RunningTime { get; set; }
+        public string RunningTime
+        {
+            get
+            {
+                if (_startTime == null) return null;
+
+                var ts = (DateTime.Now - _startTime.Value);
+                var minutes = Math.Truncate(ts.TotalMinutes);
+                return (minutes / 60).ToString("0") + ":" + (minutes % 60).ToString("00");
+            }
+        }
 
         public string LastLogTime { get; set; }
 
@@ -176,7 +187,6 @@ namespace DigaoDeskApp
 
                 Running = false;
                 _startTime = null;
-                RunningTime = null;
                 Memory = null;
                 Processor = null;
                 ProcCount = null;
@@ -313,7 +323,15 @@ namespace DigaoDeskApp
                     if (Vars.FrmAppsObj != null) throw;
                 }
             }
-        }        
+        }
+
+        public bool CheckWebPort()
+        {
+            bool oldValue = TcpOnline;
+            TcpOnline = Utils.TcpPortInUse(TcpPort.Value);
+
+            return TcpOnline != oldValue;
+        }
 
         private class Resources
         {
@@ -327,27 +345,9 @@ namespace DigaoDeskApp
             string[] debugArgs = { Name, Guid.NewGuid().ToString() }; 
             Debug.WriteLine("Started Analyse App {0} {1}", debugArgs);
 
-            var ts = (DateTime.Now - _startTime.Value);
-            RunningTime = (ts.TotalMinutes / 60).ToString("0") + ":" + (ts.TotalMinutes % 60).ToString("00");
-
-            CheckWebPort();
-
-            if (Vars.Config.Apps.CalcResources)
-            {
-                AnalyseResources();
-            }
+            AnalyseResources();
 
             Debug.WriteLine("Finished Analyse App {0} {1}", debugArgs);
-        }
-
-        private void CheckWebPort()
-        {
-            if (!TcpPort.HasValue) return;
-
-            bool oldValue = TcpOnline;
-            TcpOnline = Utils.TcpPortInUse(TcpPort.Value);
-
-            if (TcpOnline != oldValue) Vars.FrmMainObj.UpdateTrayIcon();
         }
 
         private void AnalyseResources()
