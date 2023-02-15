@@ -139,7 +139,7 @@
   "Repos_InvalidMasterBranch": "Branch master inválido",
   "Repos_CantSyncAlreadyInMaster": "Não é possível sincronizar porque você já está no branch master",
   "Repos_ConfirmMergeFromBranch": "Confirma efetuar o merge do branch '{0}'?",
-  "Repos_ConfirmPush": "Conforma efetuar o Push?",
+  "Repos_ConfirmPush": "Confirma efetuar o Push?",
 
   "Commit_Title": "Commit",
   "Commit_Repository": "Repositório:",
