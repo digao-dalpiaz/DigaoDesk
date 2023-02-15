@@ -353,6 +353,12 @@
         public string FindLog_Tip;
         public string FindLog_NotFound;
 
+        public string DownloadDefs_Title;
+        public string DownloadDefs_URL;
+        public string DownloadDefs_Downloading;
+        public string DownloadDefs_FileAppsJsonNotFound;
+        public string DownloadDefs_Report;
+
 #pragma warning restore 0649
     }
 }

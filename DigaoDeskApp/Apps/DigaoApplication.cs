@@ -159,9 +159,9 @@ namespace DigaoDeskApp
             }
 
             var si = new ProcessStartInfo();
-            si.FileName = Cmd;
-            si.WorkingDirectory = !string.IsNullOrEmpty(WorkDir) ? WorkDir : Path.GetDirectoryName(Cmd);
-            si.Arguments = Args;
+            si.FileName = Environment.ExpandEnvironmentVariables(Cmd);
+            si.WorkingDirectory = !string.IsNullOrEmpty(WorkDir) ? Environment.ExpandEnvironmentVariables(WorkDir) : Path.GetDirectoryName(si.FileName);
+            si.Arguments = Environment.ExpandEnvironmentVariables(Args);
             si.UseShellExecute = false;
             si.CreateNoWindow = true;
             si.RedirectStandardOutput = true;

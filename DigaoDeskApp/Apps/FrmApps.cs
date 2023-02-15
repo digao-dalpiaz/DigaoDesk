@@ -463,5 +463,14 @@ namespace DigaoDeskApp
             edLog.ScrollToCaret();
         }
 
+        private void btnDownloadDefs_Click(object sender, EventArgs e)
+        {
+            DefinitionsDownload dd = new();
+            if (dd.DoDownloadDialog())
+            {
+                ReloadGrid();
+            }
+        }
+
     }
 }
