@@ -347,7 +347,13 @@
   "FindLog_WholeWord": "整个单词",
   "FindLog_FromPosition": "从当前位置",
   "FindLog_Tip": "使用 F3 键查找下一个匹配项",
-  "FindLog_NotFound": "找不到文本！"
+  "FindLog_NotFound": "找不到文本！",
+
+  "DownloadDefs_Title": "Definitions Download",
+  "DownloadDefs_URL": "URL",
+  "DownloadDefs_Downloading": "Downloading definitions...",
+  "DownloadDefs_FileAppsJsonNotFound": "File applications.json not found in zip file",
+  "DownloadDefs_Report": "Download finished!\n\nNew applications: {0}\nUpdated applications: {1}"
 
 
 }

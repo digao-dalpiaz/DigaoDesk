@@ -347,6 +347,12 @@
   "FindLog_WholeWord": "Whole word",
   "FindLog_FromPosition": "From current position",
   "FindLog_Tip": "Use F3 key to find next occurrences",
-  "FindLog_NotFound": "Text not found!"
+  "FindLog_NotFound": "Text not found!",
+
+  "DownloadDefs_Title": "Definitions Download",
+  "DownloadDefs_URL": "URL",
+  "DownloadDefs_Downloading": "Downloading definitions...",
+  "DownloadDefs_FileAppsJsonNotFound": "File applications.json not found in zip file",
+  "DownloadDefs_Report": "Download finished!\n\nNew applications: {0}\nUpdated applications: {1}"
 
 }
