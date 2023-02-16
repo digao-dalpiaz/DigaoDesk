@@ -313,6 +313,7 @@
   "Apps_Add": "Add",
   "Apps_Edit": "Edit",
   "Apps_Delete": "Delete",
+  "Apps_DownloadDefs": "Download Defs",
   "Apps_Filter": "Filter",
   "Apps_Filter_All": "All Applications",
   "Apps_Filter_Running": "Only Running",

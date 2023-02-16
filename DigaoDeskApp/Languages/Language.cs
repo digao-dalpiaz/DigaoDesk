@@ -317,6 +317,7 @@
         public string Apps_Add;
         public string Apps_Edit;
         public string Apps_Delete;
+        public string Apps_DownloadDefs;
         public string Apps_Filter;
         public string Apps_Filter_All;
         public string Apps_Filter_Running;
