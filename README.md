@@ -87,3 +87,25 @@ Here you can get an example how to change you repository from SSH to HTTPS url:
 ```
 git remote set-url origin https://username@domain.com/cluster/my-repository.git
 ```
+
+# Applications Definitions
+
+When you are using Digao Desk in a company environment, you may have a lot of develepers using the same applications in their environment.
+
+Each developer needs to include applications definitions in his environment. This action may take a lot of time and can result in different applications behaviors.
+
+To solve that, you can share a package of your company applications settings. Then, developers are able to download this package directly in Digao Desk environment.
+
+## How to create a package
+
+1. Create a zip file containing a copy of "applications.json" file. You can get this file in the same folder where DigaoDesk.exe is. Just configure the applications directly in Digao Desk as desired and then get the file.
+
+2. Upload the zip file in a host.
+
+3. Provide the URL to users so they can download the definitions!
+
+> When a user downloads the definitions, the applications will be inserted or updated in applications list, according to the **name** of application.
+
+> You can include other files in zip package. All files will be extracted in `%PROGRAMDATA%\DigaoDesk` folder.
+
+> The fields `Command line`, `Arguments` and `Working directory` of an application supports Windows folders variables, like `%PROGRAMDATA%`.
