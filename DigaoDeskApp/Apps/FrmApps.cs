@@ -488,6 +488,8 @@ namespace DigaoDeskApp
                 Vars.AppList.Clear();
                 Vars.AppList.AddRange(resultList);
 
+                ApplicationsStore.SaveApplications();
+
                 ReloadGrid();
             }
         }
