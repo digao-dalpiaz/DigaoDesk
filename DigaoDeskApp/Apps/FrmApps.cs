@@ -1,5 +1,6 @@
 ﻿using Equin.ApplicationFramework;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -21,7 +22,7 @@ namespace DigaoDeskApp
             InitializeComponent();
 
             LoadLang();
-            
+
             Utils.SetGridDoubleBuffer(g);
         }
 
@@ -68,7 +69,7 @@ namespace DigaoDeskApp
             Utils.LoadWindowStateFromRegistry(this, REGKEY); //load window position
 
             LoadConfig();
-                        
+
             LoadGrid();
             UpdateButtons();
         }
@@ -96,7 +97,7 @@ namespace DigaoDeskApp
 
         private void LoadGrid()
         {
-            _gridBind = new(Vars.AppList);            
+            _gridBind = new(Vars.AppList);
             LoadFilter();
 
             _updatingGrid = true;
@@ -105,7 +106,7 @@ namespace DigaoDeskApp
         }
 
         private void ReloadGrid()
-        {            
+        {
             //When ResetBindings is called, the event SelectionChanged is fired every row in the grid.
             //So we use this boolean control to avoid unnecessary event calls.
 
@@ -184,11 +185,11 @@ namespace DigaoDeskApp
                 _gridBind.ApplyFilter(x => !x.Running);
             }
             else
-                throw new Exception("Invalid object");            
+                throw new Exception("Invalid object");
         }
 
         private void ApplyFilter(object sender, EventArgs e)
-        { 
+        {
             foreach (ToolStripMenuItem item in btnFilter.DropDownItems)
             {
                 item.Checked = (sender == item);
@@ -251,9 +252,9 @@ namespace DigaoDeskApp
         }
 
         private void RecordSelected()
-        {           
+        {
             UpdateButtons();
-            ReloadSelectedLog();            
+            ReloadSelectedLog();
         }
 
         private void ClearLog()
@@ -348,7 +349,7 @@ namespace DigaoDeskApp
                         edLog.SelectionColor = Color.Gray;
                         edLog.SelectedText = log.Timestamp.ToString(Vars.DATETIME_FMT) + " - ";
                     }
-                    
+
                     edLog.SelectionStart = edLog.TextLength;
                     edLog.SelectionColor = LogTypeToColor(log.Type);
                     edLog.SelectedText = log.Text + Environment.NewLine;
@@ -363,7 +364,7 @@ namespace DigaoDeskApp
                     edLog.SelectionLength = edLog.TextLength - Vars.Config.Apps.MaxLogSize;
                     edLog.SelectedText = "[...]";
                 }
-            } 
+            }
             finally
             {
                 edLog.ResumePainting(!alreadyBottom);
@@ -434,7 +435,7 @@ namespace DigaoDeskApp
             if (Utils.IsSameGridColumn(col, colStatus))
             {
                 imageIndex = app.Running ? 0 : 1;
-            } 
+            }
             else if (Utils.IsSameGridColumn(col, colLogHealth))
             {
                 if (app.LogHealth != null) imageIndex = app.LogHealth == "OK" ? 2 : 3;
@@ -469,6 +470,24 @@ namespace DigaoDeskApp
             DefinitionsDownload dd = new();
             if (dd.DoDownloadDialog())
             {
+                ReloadGrid();
+            }
+        }
+
+        private void btnReorder_Click(object sender, EventArgs e)
+        {
+            List<FrmReorder.ReorderItem<DigaoApplication>> list = new();
+            foreach (var app in Vars.AppList)
+            {
+                list.Add(new FrmReorder.ReorderItem<DigaoApplication>(app.Name, app));
+            }
+
+            List<DigaoApplication> resultList = new();
+            if (FrmReorder.ReorderList(list, ref resultList))
+            {
+                Vars.AppList.Clear();
+                Vars.AppList.AddRange(resultList);
+
                 ReloadGrid();
             }
         }
