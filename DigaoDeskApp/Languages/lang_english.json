@@ -9,6 +9,8 @@
   "DenyExitByModal": "You can't close the program because there is a modal form running",
   "UntrackedTag": "untracked",
 
+  "SurveyQuestion": "Would you like to fill a quick survey about your use of Digao Desk?",
+
   "BtnOK": "OK",
   "BtnCancel": "Cancel",
 

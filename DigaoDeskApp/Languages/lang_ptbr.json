@@ -9,6 +9,8 @@
   "DenyExitByModal": "Você não pode sair do programa pois existem janelas modais abertas",
   "UntrackedTag": "desvinculado",
 
+  "SurveyQuestion": "Você gostaria de preencher uma rápida pesquisa sobre o uso do Digao Desk?",
+
   "BtnOK": "OK",
   "BtnCancel": "Cancelar",
 

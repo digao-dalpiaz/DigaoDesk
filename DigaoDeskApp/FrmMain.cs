@@ -34,6 +34,7 @@ namespace DigaoDeskApp
             UpdateTrayIcon();
 
             GitHubUpdater.RunTask();
+            Survey.Check();
         }       
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)

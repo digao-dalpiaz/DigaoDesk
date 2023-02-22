@@ -14,6 +14,8 @@
         public string DenyExitByModal;
         public string UntrackedTag;
 
+        public string SurveyQuestion;
+
         public string BtnOK;
         public string BtnCancel;
 

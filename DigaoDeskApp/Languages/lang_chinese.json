@@ -9,6 +9,8 @@
   "DenyExitByModal": "您无法关闭程序，因为有一个模态表单正在运行",
   "UntrackedTag": "未跟踪",
 
+  "SurveyQuestion": "Would you like to fill a quick survey about your use of Digao Desk?",
+
   "BtnOK": "确定",
   "BtnCancel": "取消",
 
