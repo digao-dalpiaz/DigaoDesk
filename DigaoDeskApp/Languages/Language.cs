@@ -92,7 +92,6 @@
         public string Config_GitRepositoryNotFound;
 
         public string RepoConfig_Title;
-        public string RepoConfig_Order;
         public string RepoConfig_MasterBranch;
         public string RepoConfig_Fetch;
 

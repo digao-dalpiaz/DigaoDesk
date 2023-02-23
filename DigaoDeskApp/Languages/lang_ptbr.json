@@ -87,7 +87,6 @@
   "Config_GitRepositoryNotFound": "Pasta do repositório não encontrada",
 
   "RepoConfig_Title": "Configurações do Repositório",
-  "RepoConfig_Order": "Ordem",
   "RepoConfig_MasterBranch": "Branch master",
   "RepoConfig_Fetch": "Incluir no Fetch Geral",
 

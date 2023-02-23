@@ -87,7 +87,6 @@
   "Config_GitRepositoryNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",
-  "RepoConfig_Order": "顺序",
   "RepoConfig_MasterBranch": "主分支",
   "RepoConfig_Fetch": "包含在“获取所有”中",
 

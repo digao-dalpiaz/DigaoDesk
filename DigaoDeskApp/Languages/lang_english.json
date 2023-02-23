@@ -87,7 +87,6 @@
   "Config_GitRepositoryNotFound": "Git repository folder not found",
 
   "RepoConfig_Title": "Repository Settings",
-  "RepoConfig_Order": "Order",
   "RepoConfig_MasterBranch": "Master branch",
   "RepoConfig_Fetch": "Include in Fetch All",
 
