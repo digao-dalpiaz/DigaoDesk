@@ -362,6 +362,9 @@
         public string DownloadDefs_FileAppsJsonNotFound;
         public string DownloadDefs_Report;
 
+        public string Reorder_Applications_Title;
+        public string Reorder_GitRepositories_Title;
+
 #pragma warning restore 0649
     }
 }

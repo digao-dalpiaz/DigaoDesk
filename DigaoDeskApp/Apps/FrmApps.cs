@@ -483,7 +483,7 @@ namespace DigaoDeskApp
             }
 
             List<DigaoApplication> resultList = new();
-            if (FrmReorder.ReorderList(list, ref resultList))
+            if (FrmReorder.ReorderList(list, ref resultList, Vars.Lang.Reorder_Applications_Title))
             {
                 Vars.AppList.Clear();
                 Vars.AppList.AddRange(resultList);

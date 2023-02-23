@@ -356,7 +356,9 @@
   "DownloadDefs_URL": "URL",
   "DownloadDefs_Downloading": "Downloading definitions...",
   "DownloadDefs_FileAppsJsonNotFound": "File applications.json not found in zip file",
-  "DownloadDefs_Report": "Download finished!\n\nNew applications: {0}\nUpdated applications: {1}"
+  "DownloadDefs_Report": "Download finished!\n\nNew applications: {0}\nUpdated applications: {1}",
 
+  "Reorder_Applications_Title": "Reorder Applications",
+  "Reorder_GitRepositories_Title": "Reorder Git Repositories"
 
 }

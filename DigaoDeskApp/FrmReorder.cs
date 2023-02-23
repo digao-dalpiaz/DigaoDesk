@@ -25,9 +25,10 @@ namespace DigaoDeskApp
             }
         }
 
-        public static bool ReorderList<T>(List<ReorderItem<T>> list, ref List<T> resultList)
+        public static bool ReorderList<T>(List<ReorderItem<T>> list, ref List<T> resultList, string title)
         {
             FrmReorder f = new();
+            f.Text = title;
             list.ForEach(x => f.list.Items.Add(x));
             if (f.ShowDialog() == DialogResult.OK)
             {
