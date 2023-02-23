@@ -19,7 +19,6 @@ namespace DigaoDeskApp
 
         private void FrmRepositoryConfig_Load(object sender, EventArgs e)
         {
-            edOrder.Text = _config.Order;
             edMasterBranch.Text = _config.MasterBranch;
             ckFetch.Checked = _config.Fetch;
         }
@@ -27,7 +26,6 @@ namespace DigaoDeskApp
         private void LoadLang()
         {
             this.Text = Vars.Lang.RepoConfig_Title;
-            lbOrder.Text = Vars.Lang.RepoConfig_Order;
             lbMasterBranch.Text = Vars.Lang.RepoConfig_MasterBranch;
             ckFetch.Text = Vars.Lang.RepoConfig_Fetch;
             btnOK.Text = Vars.Lang.BtnOK;
@@ -36,12 +34,10 @@ namespace DigaoDeskApp
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            edOrder.Text = edOrder.Text.Trim();
             edMasterBranch.Text = edMasterBranch.Text.Trim();
 
             //
 
-            _config.Order = edOrder.Text;
             _config.MasterBranch = edMasterBranch.Text;
             _config.Fetch = ckFetch.Checked;
 

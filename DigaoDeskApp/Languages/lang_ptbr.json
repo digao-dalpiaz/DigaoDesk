@@ -87,7 +87,6 @@
   "Config_GitRepositoryNotFound": "Pasta do repositório não encontrada",
 
   "RepoConfig_Title": "Configurações do Repositório",
-  "RepoConfig_Order": "Ordem",
   "RepoConfig_MasterBranch": "Branch master",
   "RepoConfig_Fetch": "Incluir no Fetch Geral",
 
@@ -356,6 +355,9 @@
   "DownloadDefs_URL": "URL",
   "DownloadDefs_Downloading": "Fazendo download de definições...",
   "DownloadDefs_FileAppsJsonNotFound": "Arquivo applications.json não encontrado no arquivo zip",
-  "DownloadDefs_Report": "Download concluído!\n\nAplicações incluídas: {0}\nAplicações atualizadas: {1}"
+  "DownloadDefs_Report": "Download concluído!\n\nAplicações incluídas: {0}\nAplicações atualizadas: {1}",
+
+  "Reorder_Applications_Title": "Reordenar Aplicações",
+  "Reorder_GitRepositories_Title": "Reordenar Repositórios Git"
 
 }

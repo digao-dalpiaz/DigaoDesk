@@ -8,7 +8,6 @@
 
     public class RepositoryConfigContents
     {
-        public string Order = ""; //if default null, when using repository config dialog and leave it blank, the order changes
         public string MasterBranch = "origin/main";
         public bool Fetch = true;
     }

@@ -46,10 +46,10 @@ namespace DigaoDeskApp
 
             //
 
-            _gridBind = new();
-
             BuildRepositories();
 
+            _gridBind = new();
+            _gridBind.DataSource = _repos;
             g.DataSource = _gridBind;
 
             if (!_repos.Any())
@@ -83,7 +83,7 @@ namespace DigaoDeskApp
                 repo.FreeCtrl();
             }
 
-            Vars.FrmReposObj = null;            
+            Vars.FrmReposObj = null;
         }
 
         private void FrmRepos_FormClosing(object sender, FormClosingEventArgs e)
@@ -182,35 +182,31 @@ namespace DigaoDeskApp
                 return;
             }
 
+            var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
+
+            //Add repositories by stored order
             var lstConfigItems = RepositoriesStore.Load();
-
-            var subfolderList = Directory.GetDirectories(dir);
-            foreach (var subfolder in subfolderList)
+            foreach (var item in lstConfigItems)
             {
-                if (!Directory.Exists(Path.Combine(subfolder, ".git"))) continue;
+                var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
+                if (index == -1) continue; //repository no longer exists
 
-                DigaoRepository r = new(subfolder);
-                _repos.Add(r);
-
-                var configItem = lstConfigItems.Find(x => x.Name.Equals(r.Name, StringComparison.InvariantCultureIgnoreCase));
-                if (configItem != null)
-                {
-                    r.Config = configItem.Config;
-                } 
-                else
-                {
-                    r.Config = new();
-                }
+                AddRepository(Path.Combine(dir, realReposList[index]), item.Config);
+                realReposList.RemoveAt(index);
             }
 
-            ReorderGrid();
+            //Add new repositories in git folder in the bottom of the list
+            foreach (var repoName in realReposList)
+            {
+                AddRepository(Path.Combine(dir, repoName), new RepositoryConfigContents());
+            }
         }
 
-        private void ReorderGrid()
+        private void AddRepository(string folder, RepositoryConfigContents configContents)
         {
-            _repos = _repos.OrderBy(x => x.Config.Order).ToList();
-
-            _gridBind.DataSource = _repos;
+            DigaoRepository r = new(folder);
+            r.Config = configContents;
+            _repos.Add(r);
         }
 
         private void CheckAutoCRLF()
@@ -239,7 +235,7 @@ namespace DigaoDeskApp
             if (Utils.IsSameGridColumn(col, colBranch))
             {
                 var repo = GetRepositoryOfRow(g.Rows[e.RowIndex]);
-                if (GitUtils.IsBranchMaster(repo._repoCtrl.Head)) 
+                if (GitUtils.IsBranchMaster(repo._repoCtrl.Head))
                 {
                     e.CellStyle.ForeColor = Color.Cyan;
                     e.CellStyle.SelectionForeColor = e.CellStyle.ForeColor;
@@ -279,7 +275,8 @@ namespace DigaoDeskApp
             Log.Log();
             this.ProcBackground(true);
 
-            Task.Run(() => {
+            Task.Run(() =>
+            {
                 try
                 {
                     proc();
@@ -304,7 +301,8 @@ namespace DigaoDeskApp
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            DoBackground(() => {
+            DoBackground(() =>
+            {
                 Log.Log(Vars.Lang.Repos_RefreshingAll, Color.Yellow, true);
 
                 foreach (var item in _repos)
@@ -313,12 +311,13 @@ namespace DigaoDeskApp
                 }
 
                 Log.Log(Vars.Lang.Repos_ProcessDone, Color.Lime);
-            });            
+            });
         }
 
         private void btnFetchAll_Click(object sender, EventArgs e)
         {
-            DoBackground(() => {
+            DoBackground(() =>
+            {
                 Log.Log(Vars.Lang.Repos_FetchingAll, Color.Yellow, true);
 
                 foreach (var item in _repos)
@@ -331,7 +330,7 @@ namespace DigaoDeskApp
                 }
 
                 Log.Log(Vars.Lang.Repos_ProcessDone, Color.Lime);
-            });            
+            });
         }
 
         private DigaoRepository GetRepositoryOfRow(DataGridViewRow row)
@@ -377,7 +376,7 @@ namespace DigaoDeskApp
             var r = GetSel();
             r.Pull();
         }
-        
+
         private void btnSwitchBranch_Click(object sender, EventArgs e)
         {
             var r = GetSel();
@@ -428,12 +427,12 @@ namespace DigaoDeskApp
                 if (string.IsNullOrEmpty(r.Config.MasterBranch)) Messages.ThrowMsg(Vars.Lang.Repos_MasterBranchNotConfigured);
                 if (r.MasterBranchCompare == "???") Messages.ThrowMsg(Vars.Lang.Repos_InvalidMasterBranch);
                 if (r.MasterBranchCompare == "self") Messages.ThrowMsg(Vars.Lang.Repos_CantSyncAlreadyInMaster);
-            })) return;            
+            })) return;
 
             if (Messages.Question(string.Format(Vars.Lang.Repos_ConfirmMergeFromBranch, r.Config.MasterBranch)))
             {
                 r.SyncWithMaster();
-            }            
+            }
         }
 
         private void btnPush_Click(object sender, EventArgs e)
@@ -476,7 +475,7 @@ namespace DigaoDeskApp
             r.RunCustomCommand(cmd.Cmd, cmd.Parameters);
         }
 
-        private void btnRepoConfig_Click(object sender, EventArgs e)
+        private void btnRepositorySettings_Click(object sender, EventArgs e)
         {
             var r = GetSel();
 
@@ -484,17 +483,15 @@ namespace DigaoDeskApp
             if (f.ShowDialog() == DialogResult.OK)
             {
                 r.Refresh();
+                _gridBind.ResetBindings(false);
+            }
+        }
 
-                ReorderGrid();
-
-                foreach (DataGridViewRow row in g.Rows)
-                {
-                    if (row.DataBoundItem == r)
-                    {
-                        g.CurrentCell = row.Cells[0];
-                        break;
-                    }
-                }
+        private void btnReorderList_Click(object sender, EventArgs e)
+        {
+            if (FrmReorder.ReorderList(_repos, Vars.Lang.Reorder_GitRepositories_Title))
+            {
+                _gridBind.ResetBindings(false);
             }
         }
 
@@ -502,6 +499,6 @@ namespace DigaoDeskApp
         {
             edLog.Clear();
         }
-
+        
     }
 }

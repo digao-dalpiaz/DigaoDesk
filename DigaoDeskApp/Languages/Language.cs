@@ -92,7 +92,6 @@
         public string Config_GitRepositoryNotFound;
 
         public string RepoConfig_Title;
-        public string RepoConfig_Order;
         public string RepoConfig_MasterBranch;
         public string RepoConfig_Fetch;
 
@@ -361,6 +360,9 @@
         public string DownloadDefs_Downloading;
         public string DownloadDefs_FileAppsJsonNotFound;
         public string DownloadDefs_Report;
+
+        public string Reorder_Applications_Title;
+        public string Reorder_GitRepositories_Title;
 
 #pragma warning restore 0649
     }

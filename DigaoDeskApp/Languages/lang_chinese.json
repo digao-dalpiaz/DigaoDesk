@@ -87,7 +87,6 @@
   "Config_GitRepositoryNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",
-  "RepoConfig_Order": "顺序",
   "RepoConfig_MasterBranch": "主分支",
   "RepoConfig_Fetch": "包含在“获取所有”中",
 
@@ -356,7 +355,9 @@
   "DownloadDefs_URL": "URL",
   "DownloadDefs_Downloading": "Downloading definitions...",
   "DownloadDefs_FileAppsJsonNotFound": "File applications.json not found in zip file",
-  "DownloadDefs_Report": "Download finished!\n\nNew applications: {0}\nUpdated applications: {1}"
+  "DownloadDefs_Report": "Download finished!\n\nNew applications: {0}\nUpdated applications: {1}",
 
+  "Reorder_Applications_Title": "Reorder Applications",
+  "Reorder_GitRepositories_Title": "Reorder Git Repositories"
 
 }

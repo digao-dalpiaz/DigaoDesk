@@ -129,6 +129,11 @@ namespace DigaoDeskApp
             }
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         public DigaoRepository(string path)
         {
             _path = path;
