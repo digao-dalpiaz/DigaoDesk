@@ -476,18 +476,8 @@ namespace DigaoDeskApp
 
         private void btnReorder_Click(object sender, EventArgs e)
         {
-            List<FrmReorder.ReorderItem<DigaoApplication>> list = new();
-            foreach (var app in Vars.AppList)
+            if (FrmReorder.ReorderList(Vars.AppList, Vars.Lang.Reorder_Applications_Title))
             {
-                list.Add(new FrmReorder.ReorderItem<DigaoApplication>(app.Name, app));
-            }
-
-            List<DigaoApplication> resultList = new();
-            if (FrmReorder.ReorderList(list, ref resultList, Vars.Lang.Reorder_Applications_Title))
-            {
-                Vars.AppList.Clear();
-                Vars.AppList.AddRange(resultList);
-
                 ApplicationsStore.SaveApplications();
 
                 ReloadGrid();

@@ -8,33 +8,17 @@ namespace DigaoDeskApp
     public partial class FrmReorder : Form
     {
 
-        public class ReorderItem<T>
-        {
-            public readonly string text;
-            public readonly T data;
-
-            public ReorderItem(string text, T data)
-            {
-                this.text = text;
-                this.data = data;
-            }
-
-            public override string ToString()
-            {
-                return text;
-            }
-        }
-
-        public static bool ReorderList<T>(List<ReorderItem<T>> list, ref List<T> resultList, string title)
+        public static bool ReorderList<T>(List<T> list, string title)
         {
             FrmReorder f = new();
             f.Text = title;
             list.ForEach(x => f.list.Items.Add(x));
             if (f.ShowDialog() == DialogResult.OK)
             {
-                foreach (ReorderItem<T> item in f.list.Items)
+                list.Clear();
+                foreach (T item in f.list.Items)
                 {
-                    resultList.Add(item.data);
+                    list.Add(item);
                 }
                 return true;
             }

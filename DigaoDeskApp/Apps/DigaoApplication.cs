@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +30,11 @@ namespace DigaoDeskApp
 
         [JsonProperty]
         public ushort? TcpPort;
+
+        public override string ToString()
+        {
+            return Name;
+        }
 
         public string Status
         {

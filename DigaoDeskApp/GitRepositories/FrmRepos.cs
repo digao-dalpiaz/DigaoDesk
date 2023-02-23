@@ -484,18 +484,8 @@ namespace DigaoDeskApp
 
         private void btnReorderList_Click(object sender, EventArgs e)
         {
-            List<FrmReorder.ReorderItem<DigaoRepository>> list = new();
-            foreach (var repo in _repos)
+            if (FrmReorder.ReorderList(_repos, Vars.Lang.Reorder_GitRepositories_Title))
             {
-                list.Add(new FrmReorder.ReorderItem<DigaoRepository>(repo.Name, repo));
-            }
-
-            List<DigaoRepository> resultList = new();
-            if (FrmReorder.ReorderList(list, ref resultList, Vars.Lang.Reorder_GitRepositories_Title))
-            {
-                _repos.Clear();
-                _repos.AddRange(resultList);
-
                 _gridBind.ResetBindings(false);
             }
         }
