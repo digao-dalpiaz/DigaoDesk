@@ -182,26 +182,31 @@ namespace DigaoDeskApp
                 return;
             }
 
+            var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
+
+            //Add repositories by stored order
             var lstConfigItems = RepositoriesStore.Load();
-
-            var subfolderList = Directory.GetDirectories(dir);
-            foreach (var subfolder in subfolderList)
+            foreach (var item in lstConfigItems)
             {
-                if (!Directory.Exists(Path.Combine(subfolder, ".git"))) continue;
+                var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
+                if (index == -1) continue; //repository no longer exists
 
-                DigaoRepository r = new(subfolder);
-                _repos.Add(r);
-
-                var configItem = lstConfigItems.Find(x => x.Name.Equals(r.Name, StringComparison.InvariantCultureIgnoreCase));
-                if (configItem != null)
-                {
-                    r.Config = configItem.Config;
-                }
-                else
-                {
-                    r.Config = new();
-                }
+                AddRepository(Path.Combine(dir, realReposList[index]), item.Config);
+                realReposList.RemoveAt(index);
             }
+
+            //Add new repositories in git folder in the bottom of the list
+            foreach (var repoName in realReposList)
+            {
+                AddRepository(Path.Combine(dir, repoName), new RepositoryConfigContents());
+            }
+        }
+
+        private void AddRepository(string folder, RepositoryConfigContents configContents)
+        {
+            DigaoRepository r = new(folder);
+            r.Config = configContents;
+            _repos.Add(r);
         }
 
         private void CheckAutoCRLF()

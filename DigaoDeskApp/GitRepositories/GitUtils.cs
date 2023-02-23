@@ -80,5 +80,10 @@ namespace DigaoDeskApp
             }
         }
 
+        public static bool IsGitFolder(string path)
+        {
+            return Directory.Exists(Path.Combine(path, ".git"));
+        }
+
     }
 }
