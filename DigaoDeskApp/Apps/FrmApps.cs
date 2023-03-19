@@ -480,6 +480,7 @@ namespace DigaoDeskApp
                 ApplicationsStore.SaveApplications();
 
                 ReloadGrid();
+                RecordSelected(); //the selection index remains original when reordering, so the selected app may have changed!
             }
         }
 
