@@ -338,7 +338,7 @@ namespace DigaoDeskApp
             try
             {
                 var nextIdx = app.Logs.IndexOf(_lastLogRecord) + 1;
-                var lst = app.Logs.GetRange(nextIdx, app.Logs.Count - nextIdx);
+                var lst = app.Logs.Take(new Range(nextIdx, app.Logs.Count)).ToList(); //converting to List to ensure a new locked list while adding lines into RichText
 
                 foreach (var log in lst)
                 {

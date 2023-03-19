@@ -116,7 +116,7 @@ namespace DigaoDeskApp
 
             if (idx != _lastTrayIndex)
             {
-                this.Invoke(new MethodInvoker(() => //using invoke because could be called by thread
+                this.BeginInvoke(new MethodInvoker(() => //using invoke because could be called by thread
                 {
                     tray.Icon = Icon.FromHandle((images.Images[idx] as Bitmap).GetHicon());
                     _lastTrayIndex = idx;
@@ -154,7 +154,7 @@ namespace DigaoDeskApp
 
                 Task.WaitAll(tasks.ToArray());
 
-                this.Invoke(new MethodInvoker(() =>
+                this.BeginInvoke(new MethodInvoker(() =>
                 {
                     timerApps.Enabled = true;
                 }));

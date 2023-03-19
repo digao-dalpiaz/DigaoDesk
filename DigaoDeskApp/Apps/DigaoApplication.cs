@@ -129,7 +129,7 @@ namespace DigaoDeskApp
             public LogType Type;
         }
 
-        public List<LogRecord> Logs = new();
+        public SynchronizedCollection<LogRecord> Logs = new();
         private long _logSize;
         public bool PendingLog;
 
@@ -195,15 +195,17 @@ namespace DigaoDeskApp
                 Processor = null;
                 ProcCount = null;
                 TcpOnline = false;
-                InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this));
-                Vars.FrmMainObj.UpdateTrayIcon();
+                DispatchApplicationAttributesChanged();
 
                 if (Vars.Config.Apps.NotifyAppStops)
                 {
-                    Vars.FrmMainObj.Invoke(new MethodInvoker(() => {
-                        if (!(Vars.Config.Apps.DontNotifyWhenAppsActive && Vars.FrmAppsObj != null && Form.ActiveForm == Vars.FrmAppsObj))
+                    if (!(Vars.Config.Apps.DontNotifyWhenAppsActive && Vars.FrmAppsObj != null && Form.ActiveForm == Vars.FrmAppsObj))
+                    {
+                        Vars.FrmMainObj.BeginInvoke(new MethodInvoker(() =>
+                        {
                             Vars.FrmMainObj.tray.ShowBalloonTip(5000, Vars.Lang.AppTerminatedBalloonTitle, string.Format(Vars.Lang.AppTerminatedBalloonMsg, Name), ToolTipIcon.Info);
-                    }));
+                        }));
+                    }
                 }
             };
             
@@ -221,8 +223,7 @@ namespace DigaoDeskApp
             _startTime = DateTime.Now;
             _lastProcessorTime = TimeSpan.Zero;
             _lastProcessorCapture = DateTime.UtcNow;
-            InvokeInForm(() => Vars.FrmAppsObj.EventUpdated(this)); //no need to use invoke
-            Vars.FrmMainObj.UpdateTrayIcon();
+            DispatchApplicationAttributesChanged();
 
             _process.BeginOutputReadLine();
             _process.BeginErrorReadLine();
@@ -314,19 +315,24 @@ namespace DigaoDeskApp
             Vars.FrmMainObj.UpdateTrayIcon();
         }
 
-        private void InvokeInForm(Action proc)
+        private void DispatchApplicationAttributesChanged()
         {
             if (Vars.FrmAppsObj != null)
             {
                 try
                 {
-                    Vars.FrmAppsObj.Invoke(new MethodInvoker(proc));
+                    Vars.FrmAppsObj.BeginInvoke(new MethodInvoker(() =>
+                    {
+                        Vars.FrmAppsObj.EventUpdated(this);
+                    }));
                 }
                 catch (Exception)
                 {
-                    if (Vars.FrmAppsObj != null) throw;
+                    if (Vars.FrmAppsObj != null) throw; //when closing form, can throw an exception when refreshing controls???
                 }
             }
+
+            Vars.FrmMainObj.UpdateTrayIcon();
         }
 
         public bool CheckWebPort()
