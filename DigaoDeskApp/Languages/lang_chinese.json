@@ -9,7 +9,7 @@
   "DenyExitByModal": "您无法关闭程序，因为有一个模态表单正在运行",
   "UntrackedTag": "未跟踪",
 
-  "SurveyQuestion": "Would you like to fill a quick survey about your use of Digao Desk?",
+  "SurveyQuestion": "您想填写一份关于您使用 Digao Desk 的快速调查吗？",
 
   "BtnOK": "确定",
   "BtnCancel": "取消",
@@ -58,10 +58,10 @@
   "Config_Theme_ShowDateTime": "在每条记录中显示日期/时间",
   "Config_Theme_WordWrap": "自动换行",
 
-  "Config_Apps_CalcResources": "Calculate application resources",
+  "Config_Apps_CalcResources": "计算应用资源",
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
-  "Config_Apps_MaxLogSize": "Maximum log size (bytes)",
+  "Config_Apps_MaxLogSize": "最大日志大小（字节）",
 
   "Config_Repos_Folder": "存储库文件夹",
   "Config_Repos_BoxAuthor": "作者信息",
@@ -75,10 +75,10 @@
   "Config_Repos_DiffProgramArgs": "参数",
   "Config_Repos_DiffProgramArgsInfo": "[old] = 旧文件 / [new] = 新文件",
   "Config_Repos_NewBranchPrefixList": "新分支前缀列表",
-  "Config_Repos_CustomCommands": "Custom shell commands",
-  "Config_Repos_CustomCommandsHelp": "Enter one command per line\n\nLine syntax:\nOption 1: file.exe\nOption 2: Command Title|file.exe\nOption 3: Command Title|file.exe|argument1 argument2 argument3...",
+  "Config_Repos_CustomCommands": "自定义外壳命令",
+  "Config_Repos_CustomCommandsHelp": "每行输入一个命令\n\n行语法:\n选项 1: file.exe\n选项 2: 命令标题|file.exe\n选项 3: 命令标题|file.exe|参数 1 参数 2 参数 3...",
   "Config_Repos_MemoInfo": "CTRL+ENTER = 新行",
-  "Config_Repos_AutoCRLF": "Auto enable CR+LF config in repositories (ensures diff between Unix and Win)",
+  "Config_Repos_AutoCRLF": "在存储库中自动启用 CRLF 配置（确保 Unix 和 Win 之间的区别）",
   "Config_Repos_AutoFetch": "远程操作中的自动获取",
   "Config_Repos_CommitMsg": "提交信息",
   "Config_Repos_CommitMsgInfo": "使用 [branch] 作为分支名称",
@@ -130,7 +130,7 @@
 
   "Repos_DenyExitByProcess": "现在有一个进程正在执行",
   "Repos_GitFolderNotFound": "未找到 Git 存储库文件夹：{0}",
-  "Repos_CRLFEnabled": "Auto CR+LF config has been enabled in repository '{0}'",
+  "Repos_CRLFEnabled": "存储库中已启用自动 CR+LF 配置 '{0}'",
   "Repos_RefreshingAll": "正在刷新所有存储库...",
   "Repos_ProcessDone": "完成!",
   "Repos_FetchingAll": "获取所有存储库",
@@ -314,7 +314,7 @@
   "Apps_Add": "添加",
   "Apps_Edit": "编辑",
   "Apps_Delete": "删除",
-  "Apps_DownloadDefs": "Download Defs",
+  "Apps_DownloadDefs": "下载定义",
   "Apps_Filter": "过滤器",
   "Apps_Filter_All": "所有应用程序",
   "Apps_Filter_Running": "仅正在运行",
@@ -333,8 +333,8 @@
   "Apps_Col_Processor": "处理器",
   "Apps_Col_ThreadCount": "线程数",
   "Apps_Col_LastLogTime": "上次记录时间",
-  "Apps_Col_LogLines": "Log Lines",
-  "Apps_Col_LogSize": "Log Size",
+  "Apps_Col_LogLines": "日志行",
+  "Apps_Col_LogSize": "日志大小",
   "Apps_Col_LogHealth": "日志健康",
   "Apps_Col_TcpStatus": "TCP 状态",
   "Apps_StatusBar_Info": "喝杯咖啡吧！ 我正在处理你的应用程序。",
@@ -351,13 +351,13 @@
   "FindLog_Tip": "使用 F3 键查找下一个匹配项",
   "FindLog_NotFound": "找不到文本！",
 
-  "DownloadDefs_Title": "Definitions Download",
+  "DownloadDefs_Title": "定义下载",
   "DownloadDefs_URL": "URL",
-  "DownloadDefs_Downloading": "Downloading definitions...",
-  "DownloadDefs_FileAppsJsonNotFound": "File applications.json not found in zip file",
-  "DownloadDefs_Report": "Download finished!\n\nNew applications: {0}\nUpdated applications: {1}",
+  "DownloadDefs_Downloading": "正在下载定义...",
+  "DownloadDefs_FileAppsJsonNotFound": "在 zip 文件中找不到 applications.json 文件",
+  "DownloadDefs_Report": "下载完成！\n\n新的应用程序: {0}\n已更新应用程序: {1}",
 
-  "Reorder_Applications_Title": "Reorder Applications",
-  "Reorder_GitRepositories_Title": "Reorder Git Repositories"
+  "Reorder_Applications_Title": "重新排序应用程序",
+  "Reorder_GitRepositories_Title": "重新排序 Git 存储库"
 
 }
