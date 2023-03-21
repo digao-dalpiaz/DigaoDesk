@@ -103,6 +103,7 @@ namespace DigaoDeskApp
             MaximizeBox=false;
             MinimizeBox=false;
             Name="FrmRepositoryConfig";
+            ShowInTaskbar=false;
             StartPosition=System.Windows.Forms.FormStartPosition.CenterScreen;
             Text="Repository Settings";
             Load+=FrmRepositoryConfig_Load;
