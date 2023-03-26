@@ -61,6 +61,8 @@ namespace DigaoDeskApp
 
         private void FrmApps_Load(object sender, EventArgs e)
         {
+            EventAudit.Do("Load Apps form");
+
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
             g.Height = (int)r.GetValue("GridH", g.Height);
             Utils.StringToGridColumns((string)r.GetValue("GridCols", string.Empty), g);
@@ -82,6 +84,8 @@ namespace DigaoDeskApp
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
             Vars.FrmAppsObj = null;
+
+            EventAudit.Do("Closed Apps form");
         }
 
         public void LoadConfig()

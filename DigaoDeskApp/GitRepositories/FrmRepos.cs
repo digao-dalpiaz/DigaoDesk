@@ -34,6 +34,8 @@ namespace DigaoDeskApp
 
         private void FrmRepos_Load(object sender, EventArgs e)
         {
+            EventAudit.Do("Load Repos form");
+
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
             g.Height = (int)r.GetValue("GridH", g.Height);
             Utils.StringToGridColumns((string)r.GetValue("GridCols", string.Empty), g);
@@ -84,6 +86,8 @@ namespace DigaoDeskApp
             }
 
             Vars.FrmReposObj = null;
+
+            EventAudit.Do("Closed Repos form");
         }
 
         private void FrmRepos_FormClosing(object sender, FormClosingEventArgs e)
