@@ -15,11 +15,13 @@ namespace DigaoDeskApp
         [STAThread]
         static void Main()
         {
+            EventAudit.Do("Starting program in: " + System.Reflection.Assembly.GetExecutingAssembly().Location);
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (GitHubUpdater.CheckForUpdateExe()) return;
+            if (GitHubUpdater.CheckForUpdateExe()) return; //returns true when running from temporary path (updating process)
 
             Config.Load();
             LangEngine.Init();

@@ -63,6 +63,8 @@ namespace DigaoDeskApp
             GitHubUpdater.CheckForRunTmpUpdateExeOnClosing();
 
             _powerCtrl.Release();
+
+            EventAudit.Do("Program finished");
         }
 
         private void LoadLang()
@@ -120,6 +122,8 @@ namespace DigaoDeskApp
 
             if (idx != _lastTrayIndex)
             {
+                EventAudit.Do("Program icon changed to " + idx);
+
                 this.BeginInvoke(new MethodInvoker(() => //using invoke because could be called by thread
                 {
                     tray.Icon = Icon.FromHandle((images.Images[idx] as Bitmap).GetHicon());

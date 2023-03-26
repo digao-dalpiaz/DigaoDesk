@@ -162,6 +162,8 @@ namespace DigaoDeskApp
                 }
             }
 
+            EventAudit.Do("Run app " + Name);
+
             var si = new ProcessStartInfo();
             si.FileName = Environment.ExpandEnvironmentVariables(Cmd);
             si.WorkingDirectory = !string.IsNullOrEmpty(WorkDir) ? Environment.ExpandEnvironmentVariables(WorkDir) : Path.GetDirectoryName(si.FileName);
@@ -189,6 +191,8 @@ namespace DigaoDeskApp
                 _process.WaitForExit();
                 _process.Dispose();
                 AddLog(Vars.Lang.AppLog_Terminated, false, true);
+
+                EventAudit.Do("Terminated app " + Name);
 
                 Running = false;
                 _startTime = null;
@@ -236,6 +240,7 @@ namespace DigaoDeskApp
             _stopping = true;
 
             AddLog(Vars.Lang.AppLog_Stopping, false, true);
+            EventAudit.Do("Stop app " + Name);
 
             Task.Run(() =>
             {
