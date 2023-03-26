@@ -119,7 +119,7 @@ namespace DigaoDeskApp
 
             if (!File.Exists(Vars.UpdateTmpExe))
             {
-                Messages.Warning(Vars.Lang.Updater_TmpExeRemoved);
+                Messages.Warning(Vars.Lang.Updater_TmpExeRemoved); //** this message won't be visible due to program closing!!!
                 return;
             }
 

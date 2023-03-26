@@ -12,6 +12,7 @@ namespace DigaoDeskApp
     {
 
         private int? _lastTrayIndex = null;
+        private WindowsPowerCtrl _powerCtrl = new();
 
         public FrmMain()
         {
@@ -33,6 +34,7 @@ namespace DigaoDeskApp
             ApplicationsStore.LoadApplications();
             UpdateTrayIcon();
 
+            _powerCtrl.Init();
             GitHubUpdater.RunTask();
             Survey.Check();
         }       
@@ -59,6 +61,8 @@ namespace DigaoDeskApp
             if (Vars.FrmReposObj != null) Vars.FrmReposObj.Close();
 
             GitHubUpdater.CheckForRunTmpUpdateExeOnClosing();
+
+            _powerCtrl.Release();
         }
 
         private void LoadLang()

@@ -17,7 +17,7 @@
   "CountLabel": "Count: {0}",
 
   "Updater_FailedToReadVersionInfo": "Failed to read version information from GitHub: {0}",
-  "Updater_TmpExeRemoved": "Unable to run the temp update program because is was removed!",
+  "Updater_TmpExeRemoved": "Unable to run the temp update program because it was removed!",
   "Updater_CloseToUpdate": "Please, close the program to finish the update process.",
   "Updater_Title": "New Version",
   "Updater_LabelNewVersionAvailable": "A new version of Digao Desk is available!",
