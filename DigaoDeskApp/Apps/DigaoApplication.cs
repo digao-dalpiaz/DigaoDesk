@@ -187,6 +187,7 @@ namespace DigaoDeskApp
             _process.Exited += (s, e) =>
             {
                 _process.WaitForExit();
+                _process.Dispose();
                 AddLog(Vars.Lang.AppLog_Terminated, false, true);
 
                 Running = false;
@@ -256,6 +257,7 @@ namespace DigaoDeskApp
             foreach (var child in children)
             {
                 KillChildProcs(child, level+1);
+                child.Dispose();
             }
 
             AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), false, true);
@@ -398,7 +400,8 @@ namespace DigaoDeskApp
             var children = Utils.GetChildProcesses(parent.Id);
             foreach (var child in children)
             {
-                AnalyzeChildren(child, r);               
+                AnalyzeChildren(child, r); 
+                child.Dispose();
             }
 
             SumResources(parent, r);
