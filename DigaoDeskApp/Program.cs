@@ -16,6 +16,7 @@ namespace DigaoDeskApp
         static void Main()
         {
             EventAudit.Do("Starting program in: " + System.Reflection.Assembly.GetExecutingAssembly().Location);
+            EventAudit.Do("Version " + Vars.APP_VERSION);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
