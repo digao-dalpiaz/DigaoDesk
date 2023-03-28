@@ -74,7 +74,7 @@
   "Config_Theme_ColorRepoLogStatusOK": "OK",
   "Config_Theme_ColorRepoLogStatusWarn": "Warning",
   "Config_Theme_ColorRepoLogStatusNone": "None",
-  "Config_Theme_ColorLogTimestamp": "Log Timestamp",
+  "Config_Theme_ColorLogTimestampFore": "Log Timestamp foreground",
   "Config_Theme_Font": "控制台字体",
   "Config_Theme_ShowDateTime": "在每条记录中显示日期/时间",
   "Config_Theme_WordWrap": "自动换行",

@@ -75,7 +75,7 @@ namespace DigaoDeskApp
             lbColorRepoLogStatusOK.Text = Vars.Lang.Config_Theme_ColorRepoLogStatusOK;
             lbColorRepoLogStatusWarn.Text = Vars.Lang.Config_Theme_ColorRepoLogStatusWarn;
             lbColorRepoLogStatusNone.Text = Vars.Lang.Config_Theme_ColorRepoLogStatusNone;
-            lbColorLogTimestamp.Text = Vars.Lang.Config_Theme_ColorLogTimestamp;
+            lbColorLogTimestampFore.Text = Vars.Lang.Config_Theme_ColorLogTimestampFore;
             lbConsoleFont.Text = Vars.Lang.Config_Theme_Font;
             ckLogShowTs.Text = Vars.Lang.Config_Theme_ShowDateTime;
             ckLogWordWrap.Text = Vars.Lang.Config_Theme_WordWrap;
@@ -286,8 +286,15 @@ namespace DigaoDeskApp
             dlg.Color = btn.BackColor;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                btn.BackColor = dlg.Color;
+                SetButtonColor(btn, dlg.Color);
             }
+        }
+
+        private void SetButtonColor(Button btn, Color color) 
+        {
+            btn.BackColor = color;
+            btn.Text = string.Format("{0}, {1}, {2}", color.R, color.G, color.B);
+            btn.ForeColor = Utils.GetNegativeColor(color);
         }
 
         private void btnSelReposDir_Click(object sender, EventArgs e)
@@ -348,7 +355,7 @@ namespace DigaoDeskApp
                 }
                 else
                 {
-                    btn.BackColor = (Color)f.GetValue(def);
+                    SetButtonColor(btn, (Color)f.GetValue(def));
                 }
             }
         }

@@ -75,7 +75,7 @@ namespace DigaoDeskApp
             lbColorAppLogDynError=new System.Windows.Forms.Label();
             btnColorAppLogDynWarn=new System.Windows.Forms.Button();
             lbColorAppLogDynWarn=new System.Windows.Forms.Label();
-            lbColorLogTimestamp=new System.Windows.Forms.Label();
+            lbColorLogTimestampFore=new System.Windows.Forms.Label();
             btnColorTimestampFore=new System.Windows.Forms.Button();
             btnResetColors=new System.Windows.Forms.Button();
             lbColorGridDataBack=new System.Windows.Forms.Label();
@@ -222,7 +222,7 @@ namespace DigaoDeskApp
             // 
             tabTheme.Controls.Add(BoxThemeRepoLog);
             tabTheme.Controls.Add(BoxThemeAppLog);
-            tabTheme.Controls.Add(lbColorLogTimestamp);
+            tabTheme.Controls.Add(lbColorLogTimestampFore);
             tabTheme.Controls.Add(btnColorTimestampFore);
             tabTheme.Controls.Add(btnResetColors);
             tabTheme.Controls.Add(lbColorGridDataBack);
@@ -665,14 +665,14 @@ namespace DigaoDeskApp
             lbColorAppLogDynWarn.TabIndex=49;
             lbColorAppLogDynWarn.Text="Dynamic Warning";
             // 
-            // lbColorLogTimestamp
+            // lbColorLogTimestampFore
             // 
-            lbColorLogTimestamp.AutoSize=true;
-            lbColorLogTimestamp.Location=new System.Drawing.Point(350, 603);
-            lbColorLogTimestamp.Name="lbColorLogTimestamp";
-            lbColorLogTimestamp.Size=new System.Drawing.Size(83, 20);
-            lbColorLogTimestamp.TabIndex=51;
-            lbColorLogTimestamp.Text="Timestamp";
+            lbColorLogTimestampFore.AutoSize=true;
+            lbColorLogTimestampFore.Location=new System.Drawing.Point(350, 603);
+            lbColorLogTimestampFore.Name="lbColorLogTimestampFore";
+            lbColorLogTimestampFore.Size=new System.Drawing.Size(191, 20);
+            lbColorLogTimestampFore.TabIndex=51;
+            lbColorLogTimestampFore.Text="Log Timestamp foreground";
             // 
             // btnColorTimestampFore
             // 
@@ -1581,7 +1581,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnColorAppLogStop;
         private System.Windows.Forms.Label lbColorAppLogNormal;
         private System.Windows.Forms.Button btnColorAppLogNormal;
-        private System.Windows.Forms.Label lbColorLogTimestamp;
+        private System.Windows.Forms.Label lbColorLogTimestampFore;
         private System.Windows.Forms.Button btnColorTimestampFore;
         private System.Windows.Forms.Label lbColorRepoLogError;
         private System.Windows.Forms.Button btnColorRepoLogError;

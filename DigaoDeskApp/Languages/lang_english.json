@@ -74,7 +74,7 @@
   "Config_Theme_ColorRepoLogStatusOK": "OK",
   "Config_Theme_ColorRepoLogStatusWarn": "Warning",
   "Config_Theme_ColorRepoLogStatusNone": "None",
-  "Config_Theme_ColorLogTimestamp": "Log Timestamp",
+  "Config_Theme_ColorLogTimestampFore": "Log Timestamp foreground",
   "Config_Theme_Font": "Console Font",
   "Config_Theme_ShowDateTime": "Show date/time in each record",
   "Config_Theme_WordWrap": "Word wrap",

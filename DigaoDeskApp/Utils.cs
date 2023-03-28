@@ -9,6 +9,7 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace DigaoDeskApp
 {
@@ -241,6 +242,18 @@ namespace DigaoDeskApp
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic |
                 BindingFlags.Instance | BindingFlags.SetProperty, null,
                 g, new object[] { true });
+        }
+
+        //-----------------------------------------------------------------
+
+        public static Color GetNegativeColor(Color color)
+        {
+            const int MAX = 255;
+            return Color.FromArgb(
+                MAX - color.R, 
+                MAX - color.G, 
+                MAX - color.B
+            );
         }
 
     }

@@ -79,7 +79,7 @@
         public string Config_Theme_ColorRepoLogStatusOK;
         public string Config_Theme_ColorRepoLogStatusWarn;
         public string Config_Theme_ColorRepoLogStatusNone;
-        public string Config_Theme_ColorLogTimestamp;
+        public string Config_Theme_ColorLogTimestampFore;
         public string Config_Theme_Font;
         public string Config_Theme_ShowDateTime;
         public string Config_Theme_WordWrap;
