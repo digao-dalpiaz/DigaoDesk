@@ -310,7 +310,7 @@ namespace DigaoDeskApp
             btnColorRepoLogStatusNone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusNone.Name="btnColorRepoLogStatusNone";
             btnColorRepoLogStatusNone.Size=new System.Drawing.Size(72, 32);
-            btnColorRepoLogStatusNone.TabIndex=81;
+            btnColorRepoLogStatusNone.TabIndex=65;
             btnColorRepoLogStatusNone.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogStatusNone
@@ -328,7 +328,7 @@ namespace DigaoDeskApp
             btnColorRepoLogStatusWarn.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusWarn.Name="btnColorRepoLogStatusWarn";
             btnColorRepoLogStatusWarn.Size=new System.Drawing.Size(72, 32);
-            btnColorRepoLogStatusWarn.TabIndex=79;
+            btnColorRepoLogStatusWarn.TabIndex=64;
             btnColorRepoLogStatusWarn.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogStatusWarn
@@ -355,7 +355,7 @@ namespace DigaoDeskApp
             btnColorRepoLogLabelValue.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogLabelValue.Name="btnColorRepoLogLabelValue";
             btnColorRepoLogLabelValue.Size=new System.Drawing.Size(112, 32);
-            btnColorRepoLogLabelValue.TabIndex=77;
+            btnColorRepoLogLabelValue.TabIndex=62;
             btnColorRepoLogLabelValue.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogLabelCaption
@@ -373,7 +373,7 @@ namespace DigaoDeskApp
             btnColorRepoLogLabelCaption.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogLabelCaption.Name="btnColorRepoLogLabelCaption";
             btnColorRepoLogLabelCaption.Size=new System.Drawing.Size(112, 32);
-            btnColorRepoLogLabelCaption.TabIndex=74;
+            btnColorRepoLogLabelCaption.TabIndex=61;
             btnColorRepoLogLabelCaption.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogStatusOK
@@ -382,7 +382,7 @@ namespace DigaoDeskApp
             btnColorRepoLogStatusOK.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusOK.Name="btnColorRepoLogStatusOK";
             btnColorRepoLogStatusOK.Size=new System.Drawing.Size(72, 32);
-            btnColorRepoLogStatusOK.TabIndex=70;
+            btnColorRepoLogStatusOK.TabIndex=63;
             btnColorRepoLogStatusOK.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogStatusOK
