@@ -35,36 +35,38 @@ namespace DigaoDeskApp
             lbLanguage=new System.Windows.Forms.Label();
             edLanguage=new System.Windows.Forms.ComboBox();
             tabTheme=new System.Windows.Forms.TabPage();
-            lbColorRepoLogDone=new System.Windows.Forms.Label();
-            btnColorRepoLogDone=new System.Windows.Forms.Button();
-            lbColorRepoLogRefreshing=new System.Windows.Forms.Label();
-            btnColorRepoLogRefreshing=new System.Windows.Forms.Button();
-            lbColorRepoLogProcessing=new System.Windows.Forms.Label();
-            btnColorRepoLogProcessing=new System.Windows.Forms.Button();
-            lbColorRepoLogRefreshDone=new System.Windows.Forms.Label();
+            groupBox2=new System.Windows.Forms.GroupBox();
             btnColorRepoLogRefreshDone=new System.Windows.Forms.Button();
-            lbColorRepoLogError=new System.Windows.Forms.Label();
-            btnColorRepoLogError=new System.Windows.Forms.Button();
-            lbColorRepoLogTitle=new System.Windows.Forms.Label();
-            btnColorRepoLogTitle=new System.Windows.Forms.Button();
-            lbColorRepoLogAlert=new System.Windows.Forms.Label();
-            btnColorRepoLogAlert=new System.Windows.Forms.Button();
-            lbColorRepoLogAggProcessing=new System.Windows.Forms.Label();
-            btnColorRepoLogAggProcessing=new System.Windows.Forms.Button();
-            lbColorRepoLogNormal=new System.Windows.Forms.Label();
             btnColorRepoLogNormal=new System.Windows.Forms.Button();
+            lbColorRepoLogDone=new System.Windows.Forms.Label();
+            lbColorRepoLogNormal=new System.Windows.Forms.Label();
+            btnColorRepoLogDone=new System.Windows.Forms.Button();
+            btnColorRepoLogAggProcessing=new System.Windows.Forms.Button();
+            lbColorRepoLogRefreshing=new System.Windows.Forms.Label();
+            lbColorRepoLogAggProcessing=new System.Windows.Forms.Label();
+            btnColorRepoLogRefreshing=new System.Windows.Forms.Button();
+            btnColorRepoLogAlert=new System.Windows.Forms.Button();
+            lbColorRepoLogProcessing=new System.Windows.Forms.Label();
+            lbColorRepoLogAlert=new System.Windows.Forms.Label();
+            btnColorRepoLogProcessing=new System.Windows.Forms.Button();
+            btnColorRepoLogTitle=new System.Windows.Forms.Button();
+            lbColorRepoLogRefreshDone=new System.Windows.Forms.Label();
+            lbColorRepoLogTitle=new System.Windows.Forms.Label();
+            btnColorRepoLogError=new System.Windows.Forms.Button();
+            lbColorRepoLogError=new System.Windows.Forms.Label();
+            groupBox1=new System.Windows.Forms.GroupBox();
+            btnColorAppLogStop=new System.Windows.Forms.Button();
+            btnColorAppLogNormal=new System.Windows.Forms.Button();
+            lbColorAppLogNormal=new System.Windows.Forms.Label();
+            lbColorAppLogStop=new System.Windows.Forms.Label();
+            btnColorAppLogError=new System.Windows.Forms.Button();
+            lbColorAppLogError=new System.Windows.Forms.Label();
+            btnColorAppLogDynError=new System.Windows.Forms.Button();
+            lbColorAppLogDynError=new System.Windows.Forms.Label();
+            btnColorAppLogDynWarn=new System.Windows.Forms.Button();
+            lbColorAppLogDynWarn=new System.Windows.Forms.Label();
             lbColorLogTimestamp=new System.Windows.Forms.Label();
             btnColorLogTimestamp=new System.Windows.Forms.Button();
-            lbColorAppLogDynWarn=new System.Windows.Forms.Label();
-            btnColorAppLogDynWarn=new System.Windows.Forms.Button();
-            lbColorAppLogDynError=new System.Windows.Forms.Label();
-            btnColorAppLogDynError=new System.Windows.Forms.Button();
-            lbColorAppLogError=new System.Windows.Forms.Label();
-            btnColorAppLogError=new System.Windows.Forms.Button();
-            lbColorAppLogStop=new System.Windows.Forms.Label();
-            btnColorAppLogStop=new System.Windows.Forms.Button();
-            lbColorAppLogNormal=new System.Windows.Forms.Label();
-            btnColorAppLogNormal=new System.Windows.Forms.Button();
             btnResetColors=new System.Windows.Forms.Button();
             lbColorGridDataBack=new System.Windows.Forms.Label();
             btnColorGridDataBack=new System.Windows.Forms.Button();
@@ -143,18 +145,16 @@ namespace DigaoDeskApp
             lbRepositoryFolder=new System.Windows.Forms.Label();
             btnOK=new System.Windows.Forms.Button();
             btnCancel=new System.Windows.Forms.Button();
-            groupBox1=new System.Windows.Forms.GroupBox();
-            groupBox2=new System.Windows.Forms.GroupBox();
             pages.SuspendLayout();
             tabGeneral.SuspendLayout();
             tabTheme.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
             tabApplications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).BeginInit();
             tabRepos.SuspendLayout();
             boxGitAuthor.SuspendLayout();
             boxGitCredentials.SuspendLayout();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // pages
@@ -261,68 +261,32 @@ namespace DigaoDeskApp
             tabTheme.Text="Theme";
             tabTheme.UseVisualStyleBackColor=true;
             // 
-            // lbColorRepoLogDone
+            // groupBox2
             // 
-            lbColorRepoLogDone.AutoSize=true;
-            lbColorRepoLogDone.Location=new System.Drawing.Point(6, 363);
-            lbColorRepoLogDone.Name="lbColorRepoLogDone";
-            lbColorRepoLogDone.Size=new System.Drawing.Size(45, 20);
-            lbColorRepoLogDone.TabIndex=69;
-            lbColorRepoLogDone.Text="Done";
-            // 
-            // btnColorRepoLogDone
-            // 
-            btnColorRepoLogDone.Location=new System.Drawing.Point(8, 384);
-            btnColorRepoLogDone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogDone.Name="btnColorRepoLogDone";
-            btnColorRepoLogDone.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogDone.TabIndex=63;
-            btnColorRepoLogDone.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogRefreshing
-            // 
-            lbColorRepoLogRefreshing.AutoSize=true;
-            lbColorRepoLogRefreshing.Location=new System.Drawing.Point(6, 419);
-            lbColorRepoLogRefreshing.Name="lbColorRepoLogRefreshing";
-            lbColorRepoLogRefreshing.Size=new System.Drawing.Size(79, 20);
-            lbColorRepoLogRefreshing.TabIndex=68;
-            lbColorRepoLogRefreshing.Text="Refreshing";
-            // 
-            // btnColorRepoLogRefreshing
-            // 
-            btnColorRepoLogRefreshing.Location=new System.Drawing.Point(8, 440);
-            btnColorRepoLogRefreshing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogRefreshing.Name="btnColorRepoLogRefreshing";
-            btnColorRepoLogRefreshing.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogRefreshing.TabIndex=64;
-            btnColorRepoLogRefreshing.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogProcessing
-            // 
-            lbColorRepoLogProcessing.AutoSize=true;
-            lbColorRepoLogProcessing.Location=new System.Drawing.Point(6, 307);
-            lbColorRepoLogProcessing.Name="lbColorRepoLogProcessing";
-            lbColorRepoLogProcessing.Size=new System.Drawing.Size(79, 20);
-            lbColorRepoLogProcessing.TabIndex=67;
-            lbColorRepoLogProcessing.Text="Processing";
-            // 
-            // btnColorRepoLogProcessing
-            // 
-            btnColorRepoLogProcessing.Location=new System.Drawing.Point(8, 328);
-            btnColorRepoLogProcessing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogProcessing.Name="btnColorRepoLogProcessing";
-            btnColorRepoLogProcessing.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogProcessing.TabIndex=62;
-            btnColorRepoLogProcessing.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogRefreshDone
-            // 
-            lbColorRepoLogRefreshDone.AutoSize=true;
-            lbColorRepoLogRefreshDone.Location=new System.Drawing.Point(6, 475);
-            lbColorRepoLogRefreshDone.Name="lbColorRepoLogRefreshDone";
-            lbColorRepoLogRefreshDone.Size=new System.Drawing.Size(98, 20);
-            lbColorRepoLogRefreshDone.TabIndex=66;
-            lbColorRepoLogRefreshDone.Text="Refresh Done";
+            groupBox2.Controls.Add(btnColorRepoLogRefreshDone);
+            groupBox2.Controls.Add(btnColorRepoLogNormal);
+            groupBox2.Controls.Add(lbColorRepoLogDone);
+            groupBox2.Controls.Add(lbColorRepoLogNormal);
+            groupBox2.Controls.Add(btnColorRepoLogDone);
+            groupBox2.Controls.Add(btnColorRepoLogAggProcessing);
+            groupBox2.Controls.Add(lbColorRepoLogRefreshing);
+            groupBox2.Controls.Add(lbColorRepoLogAggProcessing);
+            groupBox2.Controls.Add(btnColorRepoLogRefreshing);
+            groupBox2.Controls.Add(btnColorRepoLogAlert);
+            groupBox2.Controls.Add(lbColorRepoLogProcessing);
+            groupBox2.Controls.Add(lbColorRepoLogAlert);
+            groupBox2.Controls.Add(btnColorRepoLogProcessing);
+            groupBox2.Controls.Add(btnColorRepoLogTitle);
+            groupBox2.Controls.Add(lbColorRepoLogRefreshDone);
+            groupBox2.Controls.Add(lbColorRepoLogTitle);
+            groupBox2.Controls.Add(btnColorRepoLogError);
+            groupBox2.Controls.Add(lbColorRepoLogError);
+            groupBox2.Location=new System.Drawing.Point(768, 80);
+            groupBox2.Name="groupBox2";
+            groupBox2.Size=new System.Drawing.Size(248, 536);
+            groupBox2.TabIndex=22;
+            groupBox2.TabStop=false;
+            groupBox2.Text="Repositories Log";
             // 
             // btnColorRepoLogRefreshDone
             // 
@@ -330,89 +294,8 @@ namespace DigaoDeskApp
             btnColorRepoLogRefreshDone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogRefreshDone.Name="btnColorRepoLogRefreshDone";
             btnColorRepoLogRefreshDone.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogRefreshDone.TabIndex=65;
+            btnColorRepoLogRefreshDone.TabIndex=60;
             btnColorRepoLogRefreshDone.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogError
-            // 
-            lbColorRepoLogError.AutoSize=true;
-            lbColorRepoLogError.Location=new System.Drawing.Point(6, 139);
-            lbColorRepoLogError.Name="lbColorRepoLogError";
-            lbColorRepoLogError.Size=new System.Drawing.Size(41, 20);
-            lbColorRepoLogError.TabIndex=61;
-            lbColorRepoLogError.Text="Error";
-            // 
-            // btnColorRepoLogError
-            // 
-            btnColorRepoLogError.Location=new System.Drawing.Point(8, 160);
-            btnColorRepoLogError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogError.Name="btnColorRepoLogError";
-            btnColorRepoLogError.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogError.TabIndex=54;
-            btnColorRepoLogError.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogTitle
-            // 
-            lbColorRepoLogTitle.AutoSize=true;
-            lbColorRepoLogTitle.Location=new System.Drawing.Point(6, 195);
-            lbColorRepoLogTitle.Name="lbColorRepoLogTitle";
-            lbColorRepoLogTitle.Size=new System.Drawing.Size(38, 20);
-            lbColorRepoLogTitle.TabIndex=60;
-            lbColorRepoLogTitle.Text="Title";
-            // 
-            // btnColorRepoLogTitle
-            // 
-            btnColorRepoLogTitle.Location=new System.Drawing.Point(8, 216);
-            btnColorRepoLogTitle.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogTitle.Name="btnColorRepoLogTitle";
-            btnColorRepoLogTitle.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogTitle.TabIndex=55;
-            btnColorRepoLogTitle.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogAlert
-            // 
-            lbColorRepoLogAlert.AutoSize=true;
-            lbColorRepoLogAlert.Location=new System.Drawing.Point(6, 83);
-            lbColorRepoLogAlert.Name="lbColorRepoLogAlert";
-            lbColorRepoLogAlert.Size=new System.Drawing.Size(41, 20);
-            lbColorRepoLogAlert.TabIndex=59;
-            lbColorRepoLogAlert.Text="Alert";
-            // 
-            // btnColorRepoLogAlert
-            // 
-            btnColorRepoLogAlert.Location=new System.Drawing.Point(8, 104);
-            btnColorRepoLogAlert.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogAlert.Name="btnColorRepoLogAlert";
-            btnColorRepoLogAlert.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogAlert.TabIndex=53;
-            btnColorRepoLogAlert.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogAggProcessing
-            // 
-            lbColorRepoLogAggProcessing.AutoSize=true;
-            lbColorRepoLogAggProcessing.Location=new System.Drawing.Point(6, 251);
-            lbColorRepoLogAggProcessing.Name="lbColorRepoLogAggProcessing";
-            lbColorRepoLogAggProcessing.Size=new System.Drawing.Size(163, 20);
-            lbColorRepoLogAggProcessing.TabIndex=58;
-            lbColorRepoLogAggProcessing.Text="Aggregated Processing";
-            // 
-            // btnColorRepoLogAggProcessing
-            // 
-            btnColorRepoLogAggProcessing.Location=new System.Drawing.Point(8, 272);
-            btnColorRepoLogAggProcessing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogAggProcessing.Name="btnColorRepoLogAggProcessing";
-            btnColorRepoLogAggProcessing.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogAggProcessing.TabIndex=56;
-            btnColorRepoLogAggProcessing.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogNormal
-            // 
-            lbColorRepoLogNormal.AutoSize=true;
-            lbColorRepoLogNormal.Location=new System.Drawing.Point(6, 27);
-            lbColorRepoLogNormal.Name="lbColorRepoLogNormal";
-            lbColorRepoLogNormal.Size=new System.Drawing.Size(59, 20);
-            lbColorRepoLogNormal.TabIndex=57;
-            lbColorRepoLogNormal.Text="Normal";
             // 
             // btnColorRepoLogNormal
             // 
@@ -423,90 +306,168 @@ namespace DigaoDeskApp
             btnColorRepoLogNormal.TabIndex=52;
             btnColorRepoLogNormal.UseVisualStyleBackColor=true;
             // 
-            // lbColorLogTimestamp
+            // lbColorRepoLogDone
             // 
-            lbColorLogTimestamp.AutoSize=true;
-            lbColorLogTimestamp.Location=new System.Drawing.Point(390, 603);
-            lbColorLogTimestamp.Name="lbColorLogTimestamp";
-            lbColorLogTimestamp.Size=new System.Drawing.Size(83, 20);
-            lbColorLogTimestamp.TabIndex=51;
-            lbColorLogTimestamp.Text="Timestamp";
+            lbColorRepoLogDone.AutoSize=true;
+            lbColorRepoLogDone.Location=new System.Drawing.Point(6, 363);
+            lbColorRepoLogDone.Name="lbColorRepoLogDone";
+            lbColorRepoLogDone.Size=new System.Drawing.Size(45, 20);
+            lbColorRepoLogDone.TabIndex=69;
+            lbColorRepoLogDone.Text="Done";
             // 
-            // btnColorLogTimestamp
+            // lbColorRepoLogNormal
             // 
-            btnColorLogTimestamp.Location=new System.Drawing.Point(392, 624);
-            btnColorLogTimestamp.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorLogTimestamp.Name="btnColorLogTimestamp";
-            btnColorLogTimestamp.Size=new System.Drawing.Size(232, 32);
-            btnColorLogTimestamp.TabIndex=50;
-            btnColorLogTimestamp.UseVisualStyleBackColor=true;
-            btnColorLogTimestamp.Click+=btnColor_Click;
+            lbColorRepoLogNormal.AutoSize=true;
+            lbColorRepoLogNormal.Location=new System.Drawing.Point(6, 27);
+            lbColorRepoLogNormal.Name="lbColorRepoLogNormal";
+            lbColorRepoLogNormal.Size=new System.Drawing.Size(59, 20);
+            lbColorRepoLogNormal.TabIndex=57;
+            lbColorRepoLogNormal.Text="Normal";
             // 
-            // lbColorAppLogDynWarn
+            // btnColorRepoLogDone
             // 
-            lbColorAppLogDynWarn.AutoSize=true;
-            lbColorAppLogDynWarn.Location=new System.Drawing.Point(6, 139);
-            lbColorAppLogDynWarn.Name="lbColorAppLogDynWarn";
-            lbColorAppLogDynWarn.Size=new System.Drawing.Size(126, 20);
-            lbColorAppLogDynWarn.TabIndex=49;
-            lbColorAppLogDynWarn.Text="Dynamic Warning";
+            btnColorRepoLogDone.Location=new System.Drawing.Point(8, 384);
+            btnColorRepoLogDone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorRepoLogDone.Name="btnColorRepoLogDone";
+            btnColorRepoLogDone.Size=new System.Drawing.Size(232, 32);
+            btnColorRepoLogDone.TabIndex=58;
+            btnColorRepoLogDone.UseVisualStyleBackColor=true;
             // 
-            // btnColorAppLogDynWarn
+            // btnColorRepoLogAggProcessing
             // 
-            btnColorAppLogDynWarn.Location=new System.Drawing.Point(8, 160);
-            btnColorAppLogDynWarn.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorAppLogDynWarn.Name="btnColorAppLogDynWarn";
-            btnColorAppLogDynWarn.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogDynWarn.TabIndex=42;
-            btnColorAppLogDynWarn.UseVisualStyleBackColor=true;
-            btnColorAppLogDynWarn.Click+=btnColor_Click;
+            btnColorRepoLogAggProcessing.Location=new System.Drawing.Point(8, 272);
+            btnColorRepoLogAggProcessing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorRepoLogAggProcessing.Name="btnColorRepoLogAggProcessing";
+            btnColorRepoLogAggProcessing.Size=new System.Drawing.Size(232, 32);
+            btnColorRepoLogAggProcessing.TabIndex=56;
+            btnColorRepoLogAggProcessing.UseVisualStyleBackColor=true;
             // 
-            // lbColorAppLogDynError
+            // lbColorRepoLogRefreshing
             // 
-            lbColorAppLogDynError.AutoSize=true;
-            lbColorAppLogDynError.Location=new System.Drawing.Point(6, 195);
-            lbColorAppLogDynError.Name="lbColorAppLogDynError";
-            lbColorAppLogDynError.Size=new System.Drawing.Size(103, 20);
-            lbColorAppLogDynError.TabIndex=48;
-            lbColorAppLogDynError.Text="Dynamic Error";
+            lbColorRepoLogRefreshing.AutoSize=true;
+            lbColorRepoLogRefreshing.Location=new System.Drawing.Point(6, 419);
+            lbColorRepoLogRefreshing.Name="lbColorRepoLogRefreshing";
+            lbColorRepoLogRefreshing.Size=new System.Drawing.Size(79, 20);
+            lbColorRepoLogRefreshing.TabIndex=68;
+            lbColorRepoLogRefreshing.Text="Refreshing";
             // 
-            // btnColorAppLogDynError
+            // lbColorRepoLogAggProcessing
             // 
-            btnColorAppLogDynError.Location=new System.Drawing.Point(8, 216);
-            btnColorAppLogDynError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorAppLogDynError.Name="btnColorAppLogDynError";
-            btnColorAppLogDynError.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogDynError.TabIndex=43;
-            btnColorAppLogDynError.UseVisualStyleBackColor=true;
-            btnColorAppLogDynError.Click+=btnColor_Click;
+            lbColorRepoLogAggProcessing.AutoSize=true;
+            lbColorRepoLogAggProcessing.Location=new System.Drawing.Point(6, 251);
+            lbColorRepoLogAggProcessing.Name="lbColorRepoLogAggProcessing";
+            lbColorRepoLogAggProcessing.Size=new System.Drawing.Size(163, 20);
+            lbColorRepoLogAggProcessing.TabIndex=58;
+            lbColorRepoLogAggProcessing.Text="Aggregated Processing";
             // 
-            // lbColorAppLogError
+            // btnColorRepoLogRefreshing
             // 
-            lbColorAppLogError.AutoSize=true;
-            lbColorAppLogError.Location=new System.Drawing.Point(6, 83);
-            lbColorAppLogError.Name="lbColorAppLogError";
-            lbColorAppLogError.Size=new System.Drawing.Size(41, 20);
-            lbColorAppLogError.TabIndex=47;
-            lbColorAppLogError.Text="Error";
+            btnColorRepoLogRefreshing.Location=new System.Drawing.Point(8, 440);
+            btnColorRepoLogRefreshing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorRepoLogRefreshing.Name="btnColorRepoLogRefreshing";
+            btnColorRepoLogRefreshing.Size=new System.Drawing.Size(232, 32);
+            btnColorRepoLogRefreshing.TabIndex=59;
+            btnColorRepoLogRefreshing.UseVisualStyleBackColor=true;
             // 
-            // btnColorAppLogError
+            // btnColorRepoLogAlert
             // 
-            btnColorAppLogError.Location=new System.Drawing.Point(8, 104);
-            btnColorAppLogError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorAppLogError.Name="btnColorAppLogError";
-            btnColorAppLogError.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogError.TabIndex=41;
-            btnColorAppLogError.UseVisualStyleBackColor=true;
-            btnColorAppLogError.Click+=btnColor_Click;
+            btnColorRepoLogAlert.Location=new System.Drawing.Point(8, 104);
+            btnColorRepoLogAlert.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorRepoLogAlert.Name="btnColorRepoLogAlert";
+            btnColorRepoLogAlert.Size=new System.Drawing.Size(232, 32);
+            btnColorRepoLogAlert.TabIndex=53;
+            btnColorRepoLogAlert.UseVisualStyleBackColor=true;
             // 
-            // lbColorAppLogStop
+            // lbColorRepoLogProcessing
             // 
-            lbColorAppLogStop.AutoSize=true;
-            lbColorAppLogStop.Location=new System.Drawing.Point(6, 251);
-            lbColorAppLogStop.Name="lbColorAppLogStop";
-            lbColorAppLogStop.Size=new System.Drawing.Size(40, 20);
-            lbColorAppLogStop.TabIndex=46;
-            lbColorAppLogStop.Text="Stop";
+            lbColorRepoLogProcessing.AutoSize=true;
+            lbColorRepoLogProcessing.Location=new System.Drawing.Point(6, 307);
+            lbColorRepoLogProcessing.Name="lbColorRepoLogProcessing";
+            lbColorRepoLogProcessing.Size=new System.Drawing.Size(79, 20);
+            lbColorRepoLogProcessing.TabIndex=67;
+            lbColorRepoLogProcessing.Text="Processing";
+            // 
+            // lbColorRepoLogAlert
+            // 
+            lbColorRepoLogAlert.AutoSize=true;
+            lbColorRepoLogAlert.Location=new System.Drawing.Point(6, 83);
+            lbColorRepoLogAlert.Name="lbColorRepoLogAlert";
+            lbColorRepoLogAlert.Size=new System.Drawing.Size(41, 20);
+            lbColorRepoLogAlert.TabIndex=59;
+            lbColorRepoLogAlert.Text="Alert";
+            // 
+            // btnColorRepoLogProcessing
+            // 
+            btnColorRepoLogProcessing.Location=new System.Drawing.Point(8, 328);
+            btnColorRepoLogProcessing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorRepoLogProcessing.Name="btnColorRepoLogProcessing";
+            btnColorRepoLogProcessing.Size=new System.Drawing.Size(232, 32);
+            btnColorRepoLogProcessing.TabIndex=57;
+            btnColorRepoLogProcessing.UseVisualStyleBackColor=true;
+            // 
+            // btnColorRepoLogTitle
+            // 
+            btnColorRepoLogTitle.Location=new System.Drawing.Point(8, 216);
+            btnColorRepoLogTitle.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorRepoLogTitle.Name="btnColorRepoLogTitle";
+            btnColorRepoLogTitle.Size=new System.Drawing.Size(232, 32);
+            btnColorRepoLogTitle.TabIndex=55;
+            btnColorRepoLogTitle.UseVisualStyleBackColor=true;
+            // 
+            // lbColorRepoLogRefreshDone
+            // 
+            lbColorRepoLogRefreshDone.AutoSize=true;
+            lbColorRepoLogRefreshDone.Location=new System.Drawing.Point(6, 475);
+            lbColorRepoLogRefreshDone.Name="lbColorRepoLogRefreshDone";
+            lbColorRepoLogRefreshDone.Size=new System.Drawing.Size(98, 20);
+            lbColorRepoLogRefreshDone.TabIndex=66;
+            lbColorRepoLogRefreshDone.Text="Refresh Done";
+            // 
+            // lbColorRepoLogTitle
+            // 
+            lbColorRepoLogTitle.AutoSize=true;
+            lbColorRepoLogTitle.Location=new System.Drawing.Point(6, 195);
+            lbColorRepoLogTitle.Name="lbColorRepoLogTitle";
+            lbColorRepoLogTitle.Size=new System.Drawing.Size(38, 20);
+            lbColorRepoLogTitle.TabIndex=60;
+            lbColorRepoLogTitle.Text="Title";
+            // 
+            // btnColorRepoLogError
+            // 
+            btnColorRepoLogError.Location=new System.Drawing.Point(8, 160);
+            btnColorRepoLogError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorRepoLogError.Name="btnColorRepoLogError";
+            btnColorRepoLogError.Size=new System.Drawing.Size(232, 32);
+            btnColorRepoLogError.TabIndex=54;
+            btnColorRepoLogError.UseVisualStyleBackColor=true;
+            // 
+            // lbColorRepoLogError
+            // 
+            lbColorRepoLogError.AutoSize=true;
+            lbColorRepoLogError.Location=new System.Drawing.Point(6, 139);
+            lbColorRepoLogError.Name="lbColorRepoLogError";
+            lbColorRepoLogError.Size=new System.Drawing.Size(41, 20);
+            lbColorRepoLogError.TabIndex=61;
+            lbColorRepoLogError.Text="Error";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnColorAppLogStop);
+            groupBox1.Controls.Add(btnColorAppLogNormal);
+            groupBox1.Controls.Add(lbColorAppLogNormal);
+            groupBox1.Controls.Add(lbColorAppLogStop);
+            groupBox1.Controls.Add(btnColorAppLogError);
+            groupBox1.Controls.Add(lbColorAppLogError);
+            groupBox1.Controls.Add(btnColorAppLogDynError);
+            groupBox1.Controls.Add(lbColorAppLogDynError);
+            groupBox1.Controls.Add(btnColorAppLogDynWarn);
+            groupBox1.Controls.Add(lbColorAppLogDynWarn);
+            groupBox1.Location=new System.Drawing.Point(512, 80);
+            groupBox1.Name="groupBox1";
+            groupBox1.Size=new System.Drawing.Size(248, 320);
+            groupBox1.TabIndex=21;
+            groupBox1.TabStop=false;
+            groupBox1.Text="Applications Log";
             // 
             // btnColorAppLogStop
             // 
@@ -518,15 +479,6 @@ namespace DigaoDeskApp
             btnColorAppLogStop.UseVisualStyleBackColor=true;
             btnColorAppLogStop.Click+=btnColor_Click;
             // 
-            // lbColorAppLogNormal
-            // 
-            lbColorAppLogNormal.AutoSize=true;
-            lbColorAppLogNormal.Location=new System.Drawing.Point(6, 27);
-            lbColorAppLogNormal.Name="lbColorAppLogNormal";
-            lbColorAppLogNormal.Size=new System.Drawing.Size(59, 20);
-            lbColorAppLogNormal.TabIndex=45;
-            lbColorAppLogNormal.Text="Normal";
-            // 
             // btnColorAppLogNormal
             // 
             btnColorAppLogNormal.Location=new System.Drawing.Point(8, 48);
@@ -536,6 +488,100 @@ namespace DigaoDeskApp
             btnColorAppLogNormal.TabIndex=40;
             btnColorAppLogNormal.UseVisualStyleBackColor=true;
             btnColorAppLogNormal.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogNormal
+            // 
+            lbColorAppLogNormal.AutoSize=true;
+            lbColorAppLogNormal.Location=new System.Drawing.Point(6, 27);
+            lbColorAppLogNormal.Name="lbColorAppLogNormal";
+            lbColorAppLogNormal.Size=new System.Drawing.Size(59, 20);
+            lbColorAppLogNormal.TabIndex=45;
+            lbColorAppLogNormal.Text="Normal";
+            // 
+            // lbColorAppLogStop
+            // 
+            lbColorAppLogStop.AutoSize=true;
+            lbColorAppLogStop.Location=new System.Drawing.Point(6, 251);
+            lbColorAppLogStop.Name="lbColorAppLogStop";
+            lbColorAppLogStop.Size=new System.Drawing.Size(40, 20);
+            lbColorAppLogStop.TabIndex=46;
+            lbColorAppLogStop.Text="Stop";
+            // 
+            // btnColorAppLogError
+            // 
+            btnColorAppLogError.Location=new System.Drawing.Point(8, 104);
+            btnColorAppLogError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogError.Name="btnColorAppLogError";
+            btnColorAppLogError.Size=new System.Drawing.Size(232, 32);
+            btnColorAppLogError.TabIndex=41;
+            btnColorAppLogError.UseVisualStyleBackColor=true;
+            btnColorAppLogError.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogError
+            // 
+            lbColorAppLogError.AutoSize=true;
+            lbColorAppLogError.Location=new System.Drawing.Point(6, 83);
+            lbColorAppLogError.Name="lbColorAppLogError";
+            lbColorAppLogError.Size=new System.Drawing.Size(41, 20);
+            lbColorAppLogError.TabIndex=47;
+            lbColorAppLogError.Text="Error";
+            // 
+            // btnColorAppLogDynError
+            // 
+            btnColorAppLogDynError.Location=new System.Drawing.Point(8, 216);
+            btnColorAppLogDynError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogDynError.Name="btnColorAppLogDynError";
+            btnColorAppLogDynError.Size=new System.Drawing.Size(232, 32);
+            btnColorAppLogDynError.TabIndex=43;
+            btnColorAppLogDynError.UseVisualStyleBackColor=true;
+            btnColorAppLogDynError.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogDynError
+            // 
+            lbColorAppLogDynError.AutoSize=true;
+            lbColorAppLogDynError.Location=new System.Drawing.Point(6, 195);
+            lbColorAppLogDynError.Name="lbColorAppLogDynError";
+            lbColorAppLogDynError.Size=new System.Drawing.Size(103, 20);
+            lbColorAppLogDynError.TabIndex=48;
+            lbColorAppLogDynError.Text="Dynamic Error";
+            // 
+            // btnColorAppLogDynWarn
+            // 
+            btnColorAppLogDynWarn.Location=new System.Drawing.Point(8, 160);
+            btnColorAppLogDynWarn.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogDynWarn.Name="btnColorAppLogDynWarn";
+            btnColorAppLogDynWarn.Size=new System.Drawing.Size(232, 32);
+            btnColorAppLogDynWarn.TabIndex=42;
+            btnColorAppLogDynWarn.UseVisualStyleBackColor=true;
+            btnColorAppLogDynWarn.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogDynWarn
+            // 
+            lbColorAppLogDynWarn.AutoSize=true;
+            lbColorAppLogDynWarn.Location=new System.Drawing.Point(6, 139);
+            lbColorAppLogDynWarn.Name="lbColorAppLogDynWarn";
+            lbColorAppLogDynWarn.Size=new System.Drawing.Size(126, 20);
+            lbColorAppLogDynWarn.TabIndex=49;
+            lbColorAppLogDynWarn.Text="Dynamic Warning";
+            // 
+            // lbColorLogTimestamp
+            // 
+            lbColorLogTimestamp.AutoSize=true;
+            lbColorLogTimestamp.Location=new System.Drawing.Point(350, 603);
+            lbColorLogTimestamp.Name="lbColorLogTimestamp";
+            lbColorLogTimestamp.Size=new System.Drawing.Size(83, 20);
+            lbColorLogTimestamp.TabIndex=51;
+            lbColorLogTimestamp.Text="Timestamp";
+            // 
+            // btnColorLogTimestamp
+            // 
+            btnColorLogTimestamp.Location=new System.Drawing.Point(352, 624);
+            btnColorLogTimestamp.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorLogTimestamp.Name="btnColorLogTimestamp";
+            btnColorLogTimestamp.Size=new System.Drawing.Size(232, 32);
+            btnColorLogTimestamp.TabIndex=20;
+            btnColorLogTimestamp.UseVisualStyleBackColor=true;
+            btnColorLogTimestamp.Click+=btnColor_Click;
             // 
             // btnResetColors
             // 
@@ -810,8 +856,8 @@ namespace DigaoDeskApp
             btnLogFont.Location=new System.Drawing.Point(24, 552);
             btnLogFont.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnLogFont.Name="btnLogFont";
-            btnLogFont.Size=new System.Drawing.Size(600, 43);
-            btnLogFont.TabIndex=19;
+            btnLogFont.Size=new System.Drawing.Size(560, 43);
+            btnLogFont.TabIndex=17;
             btnLogFont.UseVisualStyleBackColor=true;
             btnLogFont.Click+=btnLogFont_Click;
             // 
@@ -831,7 +877,7 @@ namespace DigaoDeskApp
             ckLogWordWrap.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             ckLogWordWrap.Name="ckLogWordWrap";
             ckLogWordWrap.Size=new System.Drawing.Size(104, 24);
-            ckLogWordWrap.TabIndex=18;
+            ckLogWordWrap.TabIndex=19;
             ckLogWordWrap.Text="Word wrap";
             ckLogWordWrap.UseVisualStyleBackColor=true;
             // 
@@ -851,7 +897,7 @@ namespace DigaoDeskApp
             ckLogShowTs.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             ckLogShowTs.Name="ckLogShowTs";
             ckLogShowTs.Size=new System.Drawing.Size(235, 24);
-            ckLogShowTs.TabIndex=17;
+            ckLogShowTs.TabIndex=18;
             ckLogShowTs.Text="Show date/time in each record";
             ckLogShowTs.UseVisualStyleBackColor=true;
             // 
@@ -1335,52 +1381,6 @@ namespace DigaoDeskApp
             btnCancel.UseVisualStyleBackColor=true;
             btnCancel.Click+=btnCancel_Click;
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(btnColorAppLogStop);
-            groupBox1.Controls.Add(btnColorAppLogNormal);
-            groupBox1.Controls.Add(lbColorAppLogNormal);
-            groupBox1.Controls.Add(lbColorAppLogStop);
-            groupBox1.Controls.Add(btnColorAppLogError);
-            groupBox1.Controls.Add(lbColorAppLogError);
-            groupBox1.Controls.Add(btnColorAppLogDynError);
-            groupBox1.Controls.Add(lbColorAppLogDynError);
-            groupBox1.Controls.Add(btnColorAppLogDynWarn);
-            groupBox1.Controls.Add(lbColorAppLogDynWarn);
-            groupBox1.Location=new System.Drawing.Point(512, 80);
-            groupBox1.Name="groupBox1";
-            groupBox1.Size=new System.Drawing.Size(248, 320);
-            groupBox1.TabIndex=70;
-            groupBox1.TabStop=false;
-            groupBox1.Text="Applications Log";
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(btnColorRepoLogRefreshDone);
-            groupBox2.Controls.Add(btnColorRepoLogNormal);
-            groupBox2.Controls.Add(lbColorRepoLogDone);
-            groupBox2.Controls.Add(lbColorRepoLogNormal);
-            groupBox2.Controls.Add(btnColorRepoLogDone);
-            groupBox2.Controls.Add(btnColorRepoLogAggProcessing);
-            groupBox2.Controls.Add(lbColorRepoLogRefreshing);
-            groupBox2.Controls.Add(lbColorRepoLogAggProcessing);
-            groupBox2.Controls.Add(btnColorRepoLogRefreshing);
-            groupBox2.Controls.Add(btnColorRepoLogAlert);
-            groupBox2.Controls.Add(lbColorRepoLogProcessing);
-            groupBox2.Controls.Add(lbColorRepoLogAlert);
-            groupBox2.Controls.Add(btnColorRepoLogProcessing);
-            groupBox2.Controls.Add(btnColorRepoLogTitle);
-            groupBox2.Controls.Add(lbColorRepoLogRefreshDone);
-            groupBox2.Controls.Add(lbColorRepoLogTitle);
-            groupBox2.Controls.Add(btnColorRepoLogError);
-            groupBox2.Controls.Add(lbColorRepoLogError);
-            groupBox2.Location=new System.Drawing.Point(768, 80);
-            groupBox2.Name="groupBox2";
-            groupBox2.Size=new System.Drawing.Size(248, 536);
-            groupBox2.TabIndex=71;
-            groupBox2.TabStop=false;
-            groupBox2.Text="Repositories Log";
-            // 
             // FrmConfig
             // 
             AcceptButton=btnOK;
@@ -1404,6 +1404,10 @@ namespace DigaoDeskApp
             tabGeneral.PerformLayout();
             tabTheme.ResumeLayout(false);
             tabTheme.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             tabApplications.ResumeLayout(false);
             tabApplications.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).EndInit();
@@ -1413,10 +1417,6 @@ namespace DigaoDeskApp
             boxGitAuthor.PerformLayout();
             boxGitCredentials.ResumeLayout(false);
             boxGitCredentials.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
