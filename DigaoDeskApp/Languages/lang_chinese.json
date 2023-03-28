@@ -37,6 +37,8 @@
   "Config_General_Language": "语言",
   "Config_General_LanguageInfo": "* 需要重新启动",
 
+  "Config_Theme_BoxAppLog": "Applications Log",
+  "Config_Theme_BoxRepoLog": "Repositories Log",
   "Config_Theme_Reset": "重置颜色",
   "Config_Theme_DarkTitle": "使用深色标题",
   "Config_Theme_ColorToolbarBack": "工具栏背景",

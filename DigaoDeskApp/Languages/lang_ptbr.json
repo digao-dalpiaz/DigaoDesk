@@ -37,6 +37,8 @@
   "Config_General_Language": "Linguagem",
   "Config_General_LanguageInfo": "* Necessita reiniciar o programa",
 
+  "Config_Theme_BoxAppLog": "Log das Aplicações",
+  "Config_Theme_BoxRepoLog": "Log dos Repositórios",
   "Config_Theme_Reset": "Resetar Cores",
   "Config_Theme_DarkTitle": "Usar Título Escuro",
   "Config_Theme_ColorToolbarBack": "Fundo da Barra de botões",

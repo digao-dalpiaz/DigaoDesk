@@ -35,7 +35,7 @@ namespace DigaoDeskApp
             lbLanguage=new System.Windows.Forms.Label();
             edLanguage=new System.Windows.Forms.ComboBox();
             tabTheme=new System.Windows.Forms.TabPage();
-            groupBox2=new System.Windows.Forms.GroupBox();
+            BoxThemeRepoLog=new System.Windows.Forms.GroupBox();
             btnColorRepoLogRefreshDone=new System.Windows.Forms.Button();
             btnColorRepoLogNormal=new System.Windows.Forms.Button();
             lbColorRepoLogDone=new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@ namespace DigaoDeskApp
             lbColorRepoLogTitle=new System.Windows.Forms.Label();
             btnColorRepoLogError=new System.Windows.Forms.Button();
             lbColorRepoLogError=new System.Windows.Forms.Label();
-            groupBox1=new System.Windows.Forms.GroupBox();
+            BoxThemeAppLog=new System.Windows.Forms.GroupBox();
             btnColorAppLogStop=new System.Windows.Forms.Button();
             btnColorAppLogNormal=new System.Windows.Forms.Button();
             lbColorAppLogNormal=new System.Windows.Forms.Label();
@@ -148,8 +148,8 @@ namespace DigaoDeskApp
             pages.SuspendLayout();
             tabGeneral.SuspendLayout();
             tabTheme.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox1.SuspendLayout();
+            BoxThemeRepoLog.SuspendLayout();
+            BoxThemeAppLog.SuspendLayout();
             tabApplications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).BeginInit();
             tabRepos.SuspendLayout();
@@ -212,8 +212,8 @@ namespace DigaoDeskApp
             // 
             // tabTheme
             // 
-            tabTheme.Controls.Add(groupBox2);
-            tabTheme.Controls.Add(groupBox1);
+            tabTheme.Controls.Add(BoxThemeRepoLog);
+            tabTheme.Controls.Add(BoxThemeAppLog);
             tabTheme.Controls.Add(lbColorLogTimestamp);
             tabTheme.Controls.Add(btnColorLogTimestamp);
             tabTheme.Controls.Add(btnResetColors);
@@ -261,32 +261,32 @@ namespace DigaoDeskApp
             tabTheme.Text="Theme";
             tabTheme.UseVisualStyleBackColor=true;
             // 
-            // groupBox2
+            // BoxThemeRepoLog
             // 
-            groupBox2.Controls.Add(btnColorRepoLogRefreshDone);
-            groupBox2.Controls.Add(btnColorRepoLogNormal);
-            groupBox2.Controls.Add(lbColorRepoLogDone);
-            groupBox2.Controls.Add(lbColorRepoLogNormal);
-            groupBox2.Controls.Add(btnColorRepoLogDone);
-            groupBox2.Controls.Add(btnColorRepoLogAggProcessing);
-            groupBox2.Controls.Add(lbColorRepoLogRefreshing);
-            groupBox2.Controls.Add(lbColorRepoLogAggProcessing);
-            groupBox2.Controls.Add(btnColorRepoLogRefreshing);
-            groupBox2.Controls.Add(btnColorRepoLogAlert);
-            groupBox2.Controls.Add(lbColorRepoLogProcessing);
-            groupBox2.Controls.Add(lbColorRepoLogAlert);
-            groupBox2.Controls.Add(btnColorRepoLogProcessing);
-            groupBox2.Controls.Add(btnColorRepoLogTitle);
-            groupBox2.Controls.Add(lbColorRepoLogRefreshDone);
-            groupBox2.Controls.Add(lbColorRepoLogTitle);
-            groupBox2.Controls.Add(btnColorRepoLogError);
-            groupBox2.Controls.Add(lbColorRepoLogError);
-            groupBox2.Location=new System.Drawing.Point(768, 80);
-            groupBox2.Name="groupBox2";
-            groupBox2.Size=new System.Drawing.Size(248, 536);
-            groupBox2.TabIndex=22;
-            groupBox2.TabStop=false;
-            groupBox2.Text="Repositories Log";
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogRefreshDone);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogNormal);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogDone);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogNormal);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogDone);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogAggProcessing);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogRefreshing);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogAggProcessing);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogRefreshing);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogAlert);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogProcessing);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogAlert);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogProcessing);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogTitle);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogRefreshDone);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogTitle);
+            BoxThemeRepoLog.Controls.Add(btnColorRepoLogError);
+            BoxThemeRepoLog.Controls.Add(lbColorRepoLogError);
+            BoxThemeRepoLog.Location=new System.Drawing.Point(768, 80);
+            BoxThemeRepoLog.Name="BoxThemeRepoLog";
+            BoxThemeRepoLog.Size=new System.Drawing.Size(248, 536);
+            BoxThemeRepoLog.TabIndex=22;
+            BoxThemeRepoLog.TabStop=false;
+            BoxThemeRepoLog.Text="Repositories Log";
             // 
             // btnColorRepoLogRefreshDone
             // 
@@ -450,24 +450,24 @@ namespace DigaoDeskApp
             lbColorRepoLogError.TabIndex=61;
             lbColorRepoLogError.Text="Error";
             // 
-            // groupBox1
+            // BoxThemeAppLog
             // 
-            groupBox1.Controls.Add(btnColorAppLogStop);
-            groupBox1.Controls.Add(btnColorAppLogNormal);
-            groupBox1.Controls.Add(lbColorAppLogNormal);
-            groupBox1.Controls.Add(lbColorAppLogStop);
-            groupBox1.Controls.Add(btnColorAppLogError);
-            groupBox1.Controls.Add(lbColorAppLogError);
-            groupBox1.Controls.Add(btnColorAppLogDynError);
-            groupBox1.Controls.Add(lbColorAppLogDynError);
-            groupBox1.Controls.Add(btnColorAppLogDynWarn);
-            groupBox1.Controls.Add(lbColorAppLogDynWarn);
-            groupBox1.Location=new System.Drawing.Point(512, 80);
-            groupBox1.Name="groupBox1";
-            groupBox1.Size=new System.Drawing.Size(248, 320);
-            groupBox1.TabIndex=21;
-            groupBox1.TabStop=false;
-            groupBox1.Text="Applications Log";
+            BoxThemeAppLog.Controls.Add(btnColorAppLogStop);
+            BoxThemeAppLog.Controls.Add(btnColorAppLogNormal);
+            BoxThemeAppLog.Controls.Add(lbColorAppLogNormal);
+            BoxThemeAppLog.Controls.Add(lbColorAppLogStop);
+            BoxThemeAppLog.Controls.Add(btnColorAppLogError);
+            BoxThemeAppLog.Controls.Add(lbColorAppLogError);
+            BoxThemeAppLog.Controls.Add(btnColorAppLogDynError);
+            BoxThemeAppLog.Controls.Add(lbColorAppLogDynError);
+            BoxThemeAppLog.Controls.Add(btnColorAppLogDynWarn);
+            BoxThemeAppLog.Controls.Add(lbColorAppLogDynWarn);
+            BoxThemeAppLog.Location=new System.Drawing.Point(512, 80);
+            BoxThemeAppLog.Name="BoxThemeAppLog";
+            BoxThemeAppLog.Size=new System.Drawing.Size(248, 320);
+            BoxThemeAppLog.TabIndex=21;
+            BoxThemeAppLog.TabStop=false;
+            BoxThemeAppLog.Text="Applications Log";
             // 
             // btnColorAppLogStop
             // 
@@ -1404,10 +1404,10 @@ namespace DigaoDeskApp
             tabGeneral.PerformLayout();
             tabTheme.ResumeLayout(false);
             tabTheme.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            BoxThemeRepoLog.ResumeLayout(false);
+            BoxThemeRepoLog.PerformLayout();
+            BoxThemeAppLog.ResumeLayout(false);
+            BoxThemeAppLog.PerformLayout();
             tabApplications.ResumeLayout(false);
             tabApplications.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).EndInit();
@@ -1536,7 +1536,7 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnColorRepoLogProcessing;
         private System.Windows.Forms.Label lbColorRepoLogRefreshDone;
         private System.Windows.Forms.Button btnColorRepoLogRefreshDone;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox BoxThemeRepoLog;
+        private System.Windows.Forms.GroupBox BoxThemeAppLog;
     }
 }
