@@ -6,6 +6,20 @@ using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
+
+    public enum LogHighlightType
+    {
+        NORMAL,
+        ALERT,
+        ERROR,
+        TITLE,
+        AGG_PROCESSING,
+        PROCESSING,
+        DONE,
+        REFRESHING,
+        REFRESH_DONE
+    }
+
     public class LogHighlight
     {
 
@@ -17,9 +31,9 @@ namespace DigaoDeskApp
 
             public Part(string text, Color color, bool bold = false)
             {
-                this.Text = text;
-                this.Color = color;
-                this.Bold = bold;
+                Text = text;
+                Color = color;
+                Bold = bold;
             }
         }
 
@@ -28,8 +42,8 @@ namespace DigaoDeskApp
 
         public LogHighlight(RichTextBoxEx ed, string logFile)
         {
-            this._edControl = ed;
-            this._logFile = logFile;
+            _edControl = ed;
+            _logFile = logFile;
         }
 
         private string GetTimestampPrefix()
@@ -59,7 +73,7 @@ namespace DigaoDeskApp
                 {
                     if (Vars.Config.Theme.ShowTimestamp)
                     {
-                        _edControl.SelectionColor = Color.Gray;
+                        _edControl.SelectionColor = Vars.Config.Theme.TimestampFore;
                         _edControl.SelectedText = GetTimestampPrefix();
                     }
 
@@ -84,14 +98,44 @@ namespace DigaoDeskApp
             Log(new Part[] { });
         }
 
-        public void Log(string text, Color color, bool bold = false)
+        public void Log(string text, LogHighlightType type)
         {
-            Log(new Part[] { new Part(text, color, bold) });
+            Log(new Part[] { new Part(text, LogHighlightTypeToColor(type), type == LogHighlightType.TITLE) });
         }
 
         public void LogLabel(string label, string value)
         {
-            Log(new Part[] { new Part(label + ": ", Color.Wheat), new Part(value, Color.DodgerBlue) });
+            Log(new Part[] { 
+                new Part(label + ": ", Vars.Config.Theme.RepoLogLabelCaptionFore), 
+                new Part(value, Vars.Config.Theme.RepoLogLabelValueFore) 
+            });
+        }
+
+        private static Color LogHighlightTypeToColor(LogHighlightType type)
+        {
+            switch (type)
+            {
+                case LogHighlightType.NORMAL: 
+                    return Vars.Config.Theme.RepoLogNormalFore;
+                case LogHighlightType.ALERT:
+                    return Vars.Config.Theme.RepoLogAlertFore;
+                case LogHighlightType.ERROR: 
+                    return Vars.Config.Theme.RepoLogErrorFore;
+                case LogHighlightType.TITLE: 
+                    return Vars.Config.Theme.RepoLogTitleFore;
+                case LogHighlightType.AGG_PROCESSING:
+                    return Vars.Config.Theme.RepoLogAggProcessingFore;
+                case LogHighlightType.PROCESSING:
+                    return Vars.Config.Theme.RepoLogProcessingFore;
+                case LogHighlightType.DONE: 
+                    return Vars.Config.Theme.RepoLogDoneFore;
+                case LogHighlightType.REFRESHING:
+                    return Vars.Config.Theme.RepoLogRefreshing;
+                case LogHighlightType.REFRESH_DONE:
+                    return Vars.Config.Theme.RepoLogRefreshDone;
+                default: 
+                    throw new Exception("Invalid Log Highlight type");
+            }
         }
 
     }

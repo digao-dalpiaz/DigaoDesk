@@ -1,4 +1,5 @@
-﻿using LibGit2Sharp;
+﻿using DigaoDeskApp.GitRepositories;
+using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -214,7 +215,7 @@ namespace DigaoDeskApp
             if (branch.IsTracking && branch.TrackedBranch.Tip == null)
             {
                 _repoCtrl.Branches.Update(branch, b => b.TrackedBranch = null);
-                Log.Log(string.Format(Vars.Lang.Repos_BranchNoLongerTracked, branch.FriendlyName), Color.Fuchsia);
+                Log.Log(string.Format(Vars.Lang.Repos_BranchNoLongerTracked, branch.FriendlyName), LogHighlightType.ALERT);
             }
         }
 
@@ -253,37 +254,40 @@ namespace DigaoDeskApp
         {
             Vars.FrmReposObj.DoBackground(() =>
             {
-                Log.Log(cmdName, Color.Yellow, true);
+                Log.Log(cmdName, LogHighlightType.TITLE);
                 Log.LogLabel(Vars.Lang.LogLabelRepository, this.Name);
                 proc();
-                Log.Log(Vars.Lang.LogDone, Color.Lime);
+                Log.Log(Vars.Lang.LogDone, LogHighlightType.DONE);
 
                 if (performRefresh)
                 {
-                    Log.Log(Vars.Lang.LogRefreshing, Color.BlueViolet);
+                    Log.Log(Vars.Lang.LogRefreshing, LogHighlightType.REFRESHING);
                     Refresh();
-                    Log.Log(Vars.Lang.LogDone, Color.MediumPurple);
+                    Log.Log(Vars.Lang.LogDone, LogHighlightType.REFRESH_DONE);
                 }
             });                   
         }
 
         private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
         {
-            Color colorFlag = Color.MediumTurquoise;
+            Color colorFlag = Vars.Config.Theme.RepoLogNormalFore;
             if (notify.HasFlag(CheckoutNotifyFlags.Updated))
             {
-                colorFlag = Color.Gold;
+                colorFlag = Vars.Config.Theme.RepoLogStatusOK;
             }
             else if (notify.HasFlag(CheckoutNotifyFlags.Conflict))
             {
-                colorFlag = Color.DeepPink;
+                colorFlag = Vars.Config.Theme.RepoLogStatusWarn;
             } 
             else if (notify.HasFlag(CheckoutNotifyFlags.Dirty))
             {
-                colorFlag = Color.Sienna;
+                colorFlag = Vars.Config.Theme.RepoLogStatusNone;
             }
             
-            Log.Log(new LogHighlight.Part[] { new LogHighlight.Part($"[{notify.ToString()}] ", colorFlag), new LogHighlight.Part(path, Color.White) });
+            Log.Log(new LogHighlight.Part[] { 
+                new LogHighlight.Part($"[{notify.ToString()}] ", colorFlag), 
+                new LogHighlight.Part(path, Vars.Config.Theme.RepoLogNormalFore) 
+            });
             return true;
         }
 
@@ -387,24 +391,26 @@ namespace DigaoDeskApp
             {
                 case MergeStatus.UpToDate:
                     msg = Vars.Lang.LogMergeResult_UpToDate;
-                    color = Color.Green;
+                    color = Vars.Config.Theme.RepoLogStatusNone;
                     break;
                 case MergeStatus.Conflicts:
                     msg = Vars.Lang.LogMergeResult_Conflicts;
-                    color = Color.Crimson;
+                    color = Vars.Config.Theme.RepoLogStatusWarn;
                     break;
                 case MergeStatus.FastForward:
                     msg = Vars.Lang.LogMergeResult_FastForward;
-                    color = Color.Cyan;
+                    color = Vars.Config.Theme.RepoLogStatusOK;
                     break;
                 case MergeStatus.NonFastForward:
                     msg = Vars.Lang.LogMergeResult_NonFastForward;
-                    color = Color.Cyan;
+                    color = Vars.Config.Theme.RepoLogStatusOK;
                     break;
                 default:
                     throw new Exception("Unknown merge result status");
             }
-            Log.Log(msg, color);
+            Log.Log(new LogHighlight.Part[] {
+                new LogHighlight.Part(msg, color)
+            });
         }
 
         public void SwitchBranch()
@@ -473,17 +479,17 @@ namespace DigaoDeskApp
 
                     if (f.ResultParams.Tag != null)                    
                     {
-                        Log.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnTag, f.ResultParams.Tag.FriendlyName), Color.MediumAquamarine);
+                        Log.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnTag, f.ResultParams.Tag.FriendlyName), LogHighlightType.PROCESSING);
                         b = _repoCtrl.CreateBranch(name, f.ResultParams.Tag.Target as Commit); //cast already validated in form dialog
                     } else
                     {
-                        Log.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnBranch, _repoCtrl.Head.FriendlyName), Color.MediumAquamarine);
+                        Log.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnBranch, _repoCtrl.Head.FriendlyName), LogHighlightType.PROCESSING);
                         b = _repoCtrl.CreateBranch(name);
                     }
 
                     if (f.ResultParams.Switch)
                     {
-                        Log.Log(Vars.Lang.CreateBranch_Switching, Color.Tan);
+                        Log.Log(Vars.Lang.CreateBranch_Switching, LogHighlightType.AGG_PROCESSING);
                         Commands.Checkout(_repoCtrl, b, GetCheckoutOptions());
                     }
                 }, true);
@@ -515,7 +521,7 @@ namespace DigaoDeskApp
 
                         if (bfd.DelRemote)
                         {
-                            Log.Log(Vars.Lang.DeleteBranch_DeletingRemote, Color.Orange);
+                            Log.Log(Vars.Lang.DeleteBranch_DeletingRemote, LogHighlightType.PROCESSING);
                             _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + bfd.Branch.UpstreamBranchCanonicalName, GetPushOptions());
                             if (!bfd.Branch.IsRemote)
                             {
@@ -524,7 +530,7 @@ namespace DigaoDeskApp
                         }
                         if (bfd.DelLocal)
                         {
-                            Log.Log(Vars.Lang.DeleteBranch_DeletingLocal, Color.Orange);
+                            Log.Log(Vars.Lang.DeleteBranch_DeletingLocal, LogHighlightType.PROCESSING);
                             _repoCtrl.Branches.Remove(bfd.Branch);
                         }
                     }
@@ -582,23 +588,23 @@ namespace DigaoDeskApp
 
                 if (Vars.Config.GitAutoFetch && masterBranch.IsRemote)
                 {
-                    Log.Log(Vars.Lang.LogFetching, Color.Cyan);
+                    Log.Log(Vars.Lang.LogFetching, LogHighlightType.AGG_PROCESSING);
                     FetchDirectly();
                 }
 
-                Log.Log(Vars.Lang.SyncBranch_CalculatingDivergence, Color.Cyan);                
+                Log.Log(Vars.Lang.SyncBranch_CalculatingDivergence, LogHighlightType.AGG_PROCESSING);                
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, masterBranch.Tip);
 
                 int behind = divergence.BehindBy.Value;
                 if (behind == 0)
                 {
-                    Log.Log(Vars.Lang.SyncBrancj_NotBehindMasterBranch, Color.Orange);
+                    Log.Log(Vars.Lang.SyncBrancj_NotBehindMasterBranch, LogHighlightType.ERROR);
                     return; //allow update previous fetch
                 }
 
-                Log.Log(string.Format(Vars.Lang.SyncBranch_BehindMasterByCommits, behind), Color.Violet);
+                Log.Log(string.Format(Vars.Lang.SyncBranch_BehindMasterByCommits, behind), LogHighlightType.NORMAL);
 
-                Log.Log(Vars.Lang.LogMerging, Color.Cyan);
+                Log.Log(Vars.Lang.LogMerging, LogHighlightType.PROCESSING);
                 InternalMerge(masterBranch);
             }, true);
         }
@@ -655,14 +661,14 @@ namespace DigaoDeskApp
 
             if (!localBranch.IsTracking)
             {
-                Log.Log(Vars.Lang.LogPushLinking, Color.Orange);
+                Log.Log(Vars.Lang.LogPushLinking, LogHighlightType.ALERT);
 
                 _repoCtrl.Branches.Update(localBranch,
                     b => b.Remote = GetRemoteOrigin().Name,
                     b => b.UpstreamBranch = localBranch.CanonicalName);
             }
 
-            Log.Log(Vars.Lang.LogPushing, Color.Cyan);
+            Log.Log(Vars.Lang.LogPushing, LogHighlightType.PROCESSING);
             _repoCtrl.Network.Push(localBranch, GetPushOptions());
         }
 

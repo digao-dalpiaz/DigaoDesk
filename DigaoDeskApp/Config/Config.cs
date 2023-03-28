@@ -27,6 +27,7 @@ namespace DigaoDeskApp
         public class ConfigTheme
         {
             public bool DarkTitle = true;
+
             public Color ToolbarBack = Color.FromArgb(30, 30, 30);
             public Color ToolbarFore = Color.White;
             public Color GridHeadBack = Color.FromArgb(0, 26, 50);
@@ -48,6 +49,23 @@ namespace DigaoDeskApp
             public Color AppLogDynWarnFore = Color.Orange;
             public Color AppLogDynErrorFore = Color.Crimson;
             public Color AppLogStopFore = Color.MediumPurple;
+
+            public Color RepoLogNormalFore = Color.White;
+            public Color RepoLogAlertFore = Color.Fuchsia;
+            public Color RepoLogErrorFore = Color.Red;
+            public Color RepoLogDoneFore = Color.Lime;
+            public Color RepoLogTitleFore = Color.Yellow;
+            public Color RepoLogAggProcessingFore = Color.Cyan;
+            public Color RepoLogProcessingFore = Color.MediumAquamarine;
+            public Color RepoLogRefreshing = Color.BlueViolet;
+            public Color RepoLogRefreshDone = Color.MediumPurple;
+
+            public Color RepoLogStatusOK = Color.Cyan;
+            public Color RepoLogStatusNone = Color.Green;
+            public Color RepoLogStatusWarn = Color.Crimson;
+
+            public Color RepoLogLabelCaptionFore = Color.Wheat;
+            public Color RepoLogLabelValueFore = Color.DodgerBlue;
 
             public Color TimestampFore = Color.Gray;
 

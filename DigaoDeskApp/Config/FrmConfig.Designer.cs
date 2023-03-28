@@ -125,6 +125,16 @@ namespace DigaoDeskApp
             lbRepositoryFolder=new System.Windows.Forms.Label();
             btnOK=new System.Windows.Forms.Button();
             btnCancel=new System.Windows.Forms.Button();
+            label1=new System.Windows.Forms.Label();
+            button1=new System.Windows.Forms.Button();
+            label2=new System.Windows.Forms.Label();
+            button2=new System.Windows.Forms.Button();
+            label3=new System.Windows.Forms.Label();
+            button3=new System.Windows.Forms.Button();
+            label4=new System.Windows.Forms.Label();
+            button4=new System.Windows.Forms.Button();
+            label5=new System.Windows.Forms.Label();
+            button5=new System.Windows.Forms.Button();
             pages.SuspendLayout();
             tabGeneral.SuspendLayout();
             tabTheme.SuspendLayout();
@@ -190,6 +200,16 @@ namespace DigaoDeskApp
             // 
             // tabTheme
             // 
+            tabTheme.Controls.Add(label1);
+            tabTheme.Controls.Add(button1);
+            tabTheme.Controls.Add(label2);
+            tabTheme.Controls.Add(button2);
+            tabTheme.Controls.Add(label3);
+            tabTheme.Controls.Add(button3);
+            tabTheme.Controls.Add(label4);
+            tabTheme.Controls.Add(button4);
+            tabTheme.Controls.Add(label5);
+            tabTheme.Controls.Add(button5);
             tabTheme.Controls.Add(lbColorLogTimestamp);
             tabTheme.Controls.Add(btnColorLogTimestamp);
             tabTheme.Controls.Add(lbColorAppLogDynWarn);
@@ -1159,6 +1179,96 @@ namespace DigaoDeskApp
             btnCancel.UseVisualStyleBackColor=true;
             btnCancel.Click+=btnCancel_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize=true;
+            label1.Location=new System.Drawing.Point(758, 211);
+            label1.Name="label1";
+            label1.Size=new System.Drawing.Size(45, 20);
+            label1.TabIndex=61;
+            label1.Text="Done";
+            // 
+            // button1
+            // 
+            button1.Location=new System.Drawing.Point(760, 232);
+            button1.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button1.Name="button1";
+            button1.Size=new System.Drawing.Size(232, 43);
+            button1.TabIndex=54;
+            button1.UseVisualStyleBackColor=true;
+            // 
+            // label2
+            // 
+            label2.AutoSize=true;
+            label2.Location=new System.Drawing.Point(758, 283);
+            label2.Name="label2";
+            label2.Size=new System.Drawing.Size(103, 20);
+            label2.TabIndex=60;
+            label2.Text="Dynamic Error";
+            // 
+            // button2
+            // 
+            button2.Location=new System.Drawing.Point(760, 304);
+            button2.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button2.Name="button2";
+            button2.Size=new System.Drawing.Size(232, 43);
+            button2.TabIndex=55;
+            button2.UseVisualStyleBackColor=true;
+            // 
+            // label3
+            // 
+            label3.AutoSize=true;
+            label3.Location=new System.Drawing.Point(758, 139);
+            label3.Name="label3";
+            label3.Size=new System.Drawing.Size(41, 20);
+            label3.TabIndex=59;
+            label3.Text="Error";
+            // 
+            // button3
+            // 
+            button3.Location=new System.Drawing.Point(760, 160);
+            button3.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button3.Name="button3";
+            button3.Size=new System.Drawing.Size(232, 43);
+            button3.TabIndex=53;
+            button3.UseVisualStyleBackColor=true;
+            // 
+            // label4
+            // 
+            label4.AutoSize=true;
+            label4.Location=new System.Drawing.Point(758, 355);
+            label4.Name="label4";
+            label4.Size=new System.Drawing.Size(40, 20);
+            label4.TabIndex=58;
+            label4.Text="Stop";
+            // 
+            // button4
+            // 
+            button4.Location=new System.Drawing.Point(760, 376);
+            button4.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button4.Name="button4";
+            button4.Size=new System.Drawing.Size(232, 43);
+            button4.TabIndex=56;
+            button4.UseVisualStyleBackColor=true;
+            // 
+            // label5
+            // 
+            label5.AutoSize=true;
+            label5.Location=new System.Drawing.Point(758, 67);
+            label5.Name="label5";
+            label5.Size=new System.Drawing.Size(59, 20);
+            label5.TabIndex=57;
+            label5.Text="Normal";
+            // 
+            // button5
+            // 
+            button5.Location=new System.Drawing.Point(760, 88);
+            button5.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button5.Name="button5";
+            button5.Size=new System.Drawing.Size(232, 43);
+            button5.TabIndex=52;
+            button5.UseVisualStyleBackColor=true;
+            // 
             // FrmConfig
             // 
             AcceptButton=btnOK;
@@ -1292,5 +1402,15 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnColorAppLogNormal;
         private System.Windows.Forms.Label lbColorLogTimestamp;
         private System.Windows.Forms.Button btnColorLogTimestamp;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button5;
     }
 }

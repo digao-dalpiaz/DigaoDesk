@@ -225,7 +225,7 @@ namespace DigaoDeskApp
                 if (!r._repoCtrl.Config.Get<bool>(CFG_AUTOCRLF).Value)
                 {
                     r._repoCtrl.Config.Set(CFG_AUTOCRLF, true);
-                    Log.Log(string.Format(Vars.Lang.Repos_CRLFEnabled, r.Name), Color.OrangeRed, true);
+                    Log.Log(string.Format(Vars.Lang.Repos_CRLFEnabled, r.Name), LogHighlightType.ALERT);
                 }
             }
         }
@@ -287,7 +287,7 @@ namespace DigaoDeskApp
                 }
                 catch (Exception ex)
                 {
-                    Log.Log("ERROR: " + ex.Message, Color.Red);
+                    Log.Log("ERROR: " + ex.Message, LogHighlightType.ERROR);
                 }
 
                 this.Invoke(new MethodInvoker(() =>
@@ -307,14 +307,14 @@ namespace DigaoDeskApp
         {
             DoBackground(() =>
             {
-                Log.Log(Vars.Lang.Repos_RefreshingAll, Color.Yellow, true);
+                Log.Log(Vars.Lang.Repos_RefreshingAll, LogHighlightType.TITLE);
 
                 foreach (var item in _repos)
                 {
                     item.Refresh();
                 }
 
-                Log.Log(Vars.Lang.Repos_ProcessDone, Color.Lime);
+                Log.Log(Vars.Lang.Repos_ProcessDone, LogHighlightType.DONE);
             });
         }
 
@@ -322,18 +322,18 @@ namespace DigaoDeskApp
         {
             DoBackground(() =>
             {
-                Log.Log(Vars.Lang.Repos_FetchingAll, Color.Yellow, true);
+                Log.Log(Vars.Lang.Repos_FetchingAll, LogHighlightType.TITLE);
 
                 foreach (var item in _repos)
                 {
                     if (!item.Config.Fetch) continue;
 
-                    Log.Log(string.Format(Vars.Lang.Repos_FetchingRepo, item.Name), Color.White);
+                    Log.Log(string.Format(Vars.Lang.Repos_FetchingRepo, item.Name), LogHighlightType.PROCESSING);
                     item.FetchDirectly();
                     item.Refresh();
                 }
 
-                Log.Log(Vars.Lang.Repos_ProcessDone, Color.Lime);
+                Log.Log(Vars.Lang.Repos_ProcessDone, LogHighlightType.DONE);
             });
         }
 
