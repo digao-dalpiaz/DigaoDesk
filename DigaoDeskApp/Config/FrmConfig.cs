@@ -113,29 +113,7 @@ namespace DigaoDeskApp
             ckLogWordWrap.Checked = Vars.Config.Theme.WordWrap;
 
             ckThemeDarkTitle.Checked = Vars.Config.Theme.DarkTitle;
-            btnColorToolbarBack.BackColor = Vars.Config.Theme.ToolbarBack;
-            btnColorToolbarFore.BackColor = Vars.Config.Theme.ToolbarFore;
-            btnColorGridHeadBack.BackColor = Vars.Config.Theme.GridHeadBack;
-            btnColorGridHeadFore.BackColor = Vars.Config.Theme.GridHeadFore;
-            btnColorGridBack.BackColor = Vars.Config.Theme.GridBack;
-            btnColorGridLines.BackColor = Vars.Config.Theme.GridLines;
-            btnColorGridDataBack.BackColor = Vars.Config.Theme.GridDataBack;
-            btnColorGridDataFore.BackColor = Vars.Config.Theme.GridDataFore;
-            btnColorGridSelBack.BackColor = Vars.Config.Theme.GridSelBack;
-            btnColorGridSelFore.BackColor = Vars.Config.Theme.GridSelFore;
-            btnColorSplitterBack.BackColor = Vars.Config.Theme.SplitterBack;
-            btnColorConsoleBack.BackColor = Vars.Config.Theme.ConsoleBack;
-            btnColorConsoleFore.BackColor = Vars.Config.Theme.ConsoleFore;
-            btnColorStatusBack.BackColor = Vars.Config.Theme.StatusBack;
-            btnColorStatusFore.BackColor = Vars.Config.Theme.StatusFore;
-
-            btnColorAppLogNormal.BackColor = Vars.Config.Theme.AppLogNormalFore;
-            btnColorAppLogError.BackColor = Vars.Config.Theme.AppLogErrorFore;
-            btnColorAppLogDynWarn.BackColor = Vars.Config.Theme.AppLogDynWarnFore;
-            btnColorAppLogDynError.BackColor = Vars.Config.Theme.AppLogDynErrorFore;
-            btnColorAppLogStop.BackColor = Vars.Config.Theme.AppLogStopFore;
-
-            btnColorLogTimestamp.BackColor = Vars.Config.Theme.TimestampFore;
+            LoadTheme(Vars.Config.Theme);
             //--
 
             //--Apps tab
@@ -257,6 +235,16 @@ namespace DigaoDeskApp
             Vars.Config.Theme.AppLogDynErrorFore = btnColorAppLogDynError.BackColor;
             Vars.Config.Theme.AppLogStopFore = btnColorAppLogStop.BackColor;
 
+            Vars.Config.Theme.RepoLogNormalFore = btnColorRepoLogNormal.BackColor;
+            Vars.Config.Theme.RepoLogAlertFore = btnColorRepoLogAlert.BackColor;
+            Vars.Config.Theme.RepoLogErrorFore = btnColorRepoLogError.BackColor;
+            Vars.Config.Theme.RepoLogTitleFore = btnColorRepoLogTitle.BackColor;
+            Vars.Config.Theme.RepoLogAggProcessingFore = btnColorRepoLogProcessing.BackColor;
+            Vars.Config.Theme.RepoLogProcessingFore = btnColorRepoLogAggProcessing.BackColor;
+            Vars.Config.Theme.RepoLogDoneFore = btnColorRepoLogDone.BackColor;
+            Vars.Config.Theme.RepoLogRefreshing = btnColorRepoLogRefreshing.BackColor;
+            Vars.Config.Theme.RepoLogRefreshDone = btnColorRepoLogRefreshDone.BackColor;
+
             Vars.Config.Theme.TimestampFore = btnColorLogTimestamp.BackColor;
             //--
 
@@ -352,8 +340,11 @@ namespace DigaoDeskApp
 
         private void btnResetColors_Click(object sender, System.EventArgs e)
         {
-            Config.ConfigTheme def = new();
+            LoadTheme(new Config.ConfigTheme());
+        }
 
+        private void LoadTheme(Config.ConfigTheme def)
+        {
             btnColorToolbarBack.BackColor = def.ToolbarBack;
             btnColorToolbarFore.BackColor = def.ToolbarFore;
             btnColorGridHeadBack.BackColor = def.GridHeadBack;
@@ -375,6 +366,16 @@ namespace DigaoDeskApp
             btnColorAppLogDynWarn.BackColor = def.AppLogDynWarnFore;
             btnColorAppLogDynError.BackColor = def.AppLogDynErrorFore;
             btnColorAppLogStop.BackColor = def.AppLogStopFore;
+
+            btnColorRepoLogNormal.BackColor = def.RepoLogNormalFore;
+            btnColorRepoLogAlert.BackColor = def.RepoLogAlertFore;
+            btnColorRepoLogError.BackColor = def.RepoLogErrorFore;
+            btnColorRepoLogTitle.BackColor = def.RepoLogTitleFore;
+            btnColorRepoLogProcessing.BackColor = def.RepoLogAggProcessingFore;
+            btnColorRepoLogAggProcessing.BackColor = def.RepoLogProcessingFore;
+            btnColorRepoLogDone.BackColor = def.RepoLogDoneFore;
+            btnColorRepoLogRefreshing.BackColor = def.RepoLogRefreshing;
+            btnColorRepoLogRefreshDone.BackColor = def.RepoLogRefreshDone;
 
             btnColorLogTimestamp.BackColor = def.TimestampFore;
         }
