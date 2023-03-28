@@ -1,4 +1,4 @@
-﻿namespace DigaoDeskApp.GitRepositories
+﻿namespace DigaoDeskApp
 {
     internal class CustomCommand
     {
