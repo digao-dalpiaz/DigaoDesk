@@ -61,7 +61,7 @@ namespace DigaoDeskApp
 
             public Color RepoLogStatusOK = Color.Gold;
             public Color RepoLogStatusWarn = Color.Crimson;
-            public Color RepoLogStatusNone = Color.Green;
+            public Color RepoLogStatusNone = Color.SeaGreen;
 
             public Color RepoLogLabelCaption = Color.Wheat;
             public Color RepoLogLabelValue = Color.DodgerBlue;
