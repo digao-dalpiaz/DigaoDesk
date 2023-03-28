@@ -31,9 +31,9 @@ namespace DigaoDeskApp
 
             public Part(string text, Color color, bool bold = false)
             {
-                Text = text;
-                Color = color;
-                Bold = bold;
+                this.Text = text;
+                this.Color = color;
+                this.Bold = bold;
             }
         }
 
@@ -42,8 +42,8 @@ namespace DigaoDeskApp
 
         public LogHighlight(RichTextBoxEx ed, string logFile)
         {
-            _edControl = ed;
-            _logFile = logFile;
+            this._edControl = ed;
+            this._logFile = logFile;
         }
 
         private string GetTimestampPrefix()
