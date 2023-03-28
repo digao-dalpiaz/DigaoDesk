@@ -248,8 +248,8 @@ namespace DigaoDeskApp
             Vars.Config.Theme.RepoLogAlertFore = btnColorRepoLogAlert.BackColor;
             Vars.Config.Theme.RepoLogErrorFore = btnColorRepoLogError.BackColor;
             Vars.Config.Theme.RepoLogTitleFore = btnColorRepoLogTitle.BackColor;
-            Vars.Config.Theme.RepoLogAggProcessingFore = btnColorRepoLogProcessing.BackColor;
-            Vars.Config.Theme.RepoLogProcessingFore = btnColorRepoLogAggProcessing.BackColor;
+            Vars.Config.Theme.RepoLogAggProcessingFore = btnColorRepoLogAggProcessing.BackColor;
+            Vars.Config.Theme.RepoLogProcessingFore = btnColorRepoLogProcessing.BackColor;
             Vars.Config.Theme.RepoLogDoneFore = btnColorRepoLogDone.BackColor;
             Vars.Config.Theme.RepoLogRefreshing = btnColorRepoLogRefreshing.BackColor;
             Vars.Config.Theme.RepoLogRefreshDone = btnColorRepoLogRefreshDone.BackColor;
@@ -379,8 +379,8 @@ namespace DigaoDeskApp
             btnColorRepoLogAlert.BackColor = def.RepoLogAlertFore;
             btnColorRepoLogError.BackColor = def.RepoLogErrorFore;
             btnColorRepoLogTitle.BackColor = def.RepoLogTitleFore;
-            btnColorRepoLogProcessing.BackColor = def.RepoLogAggProcessingFore;
-            btnColorRepoLogAggProcessing.BackColor = def.RepoLogProcessingFore;
+            btnColorRepoLogAggProcessing.BackColor = def.RepoLogAggProcessingFore;
+            btnColorRepoLogProcessing.BackColor = def.RepoLogProcessingFore;
             btnColorRepoLogDone.BackColor = def.RepoLogDoneFore;
             btnColorRepoLogRefreshing.BackColor = def.RepoLogRefreshing;
             btnColorRepoLogRefreshDone.BackColor = def.RepoLogRefreshDone;

@@ -54,8 +54,8 @@ namespace DigaoDeskApp
             public Color RepoLogErrorFore = Color.Red;
             public Color RepoLogDoneFore = Color.Lime;
             public Color RepoLogTitleFore = Color.Yellow;
-            public Color RepoLogAggProcessingFore = Color.Cyan;
-            public Color RepoLogProcessingFore = Color.MediumAquamarine;
+            public Color RepoLogAggProcessingFore = Color.MediumAquamarine;
+            public Color RepoLogProcessingFore = Color.Cyan;
             public Color RepoLogRefreshing = Color.BlueViolet;
             public Color RepoLogRefreshDone = Color.MediumPurple;
 
