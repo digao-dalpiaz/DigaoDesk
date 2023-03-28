@@ -292,6 +292,7 @@ namespace DigaoDeskApp
             btnColorRepoLogRefreshDone.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogRefreshDone.TabIndex=60;
             btnColorRepoLogRefreshDone.UseVisualStyleBackColor=true;
+            btnColorRepoLogRefreshDone.Click+=btnColor_Click;
             // 
             // btnColorRepoLogNormal
             // 
@@ -301,6 +302,7 @@ namespace DigaoDeskApp
             btnColorRepoLogNormal.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogNormal.TabIndex=52;
             btnColorRepoLogNormal.UseVisualStyleBackColor=true;
+            btnColorRepoLogNormal.Click+=btnColor_Click;
             // 
             // lbColorRepoLogDone
             // 
@@ -328,6 +330,7 @@ namespace DigaoDeskApp
             btnColorRepoLogDone.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogDone.TabIndex=58;
             btnColorRepoLogDone.UseVisualStyleBackColor=true;
+            btnColorRepoLogDone.Click+=btnColor_Click;
             // 
             // btnColorRepoLogAggProcessing
             // 
@@ -337,6 +340,7 @@ namespace DigaoDeskApp
             btnColorRepoLogAggProcessing.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogAggProcessing.TabIndex=56;
             btnColorRepoLogAggProcessing.UseVisualStyleBackColor=true;
+            btnColorRepoLogAggProcessing.Click+=btnColor_Click;
             // 
             // lbColorRepoLogRefreshing
             // 
@@ -364,6 +368,7 @@ namespace DigaoDeskApp
             btnColorRepoLogRefreshing.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogRefreshing.TabIndex=59;
             btnColorRepoLogRefreshing.UseVisualStyleBackColor=true;
+            btnColorRepoLogRefreshing.Click+=btnColor_Click;
             // 
             // btnColorRepoLogAlert
             // 
@@ -373,6 +378,7 @@ namespace DigaoDeskApp
             btnColorRepoLogAlert.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogAlert.TabIndex=53;
             btnColorRepoLogAlert.UseVisualStyleBackColor=true;
+            btnColorRepoLogAlert.Click+=btnColor_Click;
             // 
             // lbColorRepoLogProcessing
             // 
@@ -400,6 +406,7 @@ namespace DigaoDeskApp
             btnColorRepoLogProcessing.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogProcessing.TabIndex=57;
             btnColorRepoLogProcessing.UseVisualStyleBackColor=true;
+            btnColorRepoLogProcessing.Click+=btnColor_Click;
             // 
             // btnColorRepoLogTitle
             // 
@@ -409,6 +416,7 @@ namespace DigaoDeskApp
             btnColorRepoLogTitle.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogTitle.TabIndex=55;
             btnColorRepoLogTitle.UseVisualStyleBackColor=true;
+            btnColorRepoLogTitle.Click+=btnColor_Click;
             // 
             // lbColorRepoLogRefreshDone
             // 
@@ -436,6 +444,7 @@ namespace DigaoDeskApp
             btnColorRepoLogError.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogError.TabIndex=54;
             btnColorRepoLogError.UseVisualStyleBackColor=true;
+            btnColorRepoLogError.Click+=btnColor_Click;
             // 
             // lbColorRepoLogError
             // 
