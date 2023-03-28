@@ -52,7 +52,6 @@ namespace DigaoDeskApp
             lbColorGridSelFore.Text = Vars.Lang.Config_Theme_ColorGridSelFore;
             lbColorSplitterBack.Text = Vars.Lang.Config_Theme_ColorSplitterBack;
             lbColorConsoleBack.Text = Vars.Lang.Config_Theme_ColorConsoleBack;
-            lbColorConsoleFore.Text = Vars.Lang.Config_Theme_ColorConsoleFore;
             lbColorStatusBack.Text = Vars.Lang.Config_Theme_ColorStatusBack;
             lbColorStatusFore.Text = Vars.Lang.Config_Theme_ColorStatusFore;
             lbColorAppLogNormal.Text = Vars.Lang.Config_Theme_ColorAppLogNormal;
@@ -236,7 +235,6 @@ namespace DigaoDeskApp
             Vars.Config.Theme.GridSelFore = btnColorGridSelFore.BackColor;
             Vars.Config.Theme.SplitterBack = btnColorSplitterBack.BackColor;
             Vars.Config.Theme.ConsoleBack = btnColorConsoleBack.BackColor;
-            Vars.Config.Theme.ConsoleFore = btnColorConsoleFore.BackColor;
             Vars.Config.Theme.StatusBack = btnColorStatusBack.BackColor;
             Vars.Config.Theme.StatusFore = btnColorStatusFore.BackColor;
 
@@ -368,7 +366,6 @@ namespace DigaoDeskApp
             btnColorGridSelFore.BackColor = def.GridSelFore;
             btnColorSplitterBack.BackColor = def.SplitterBack;
             btnColorConsoleBack.BackColor = def.ConsoleBack;
-            btnColorConsoleFore.BackColor = def.ConsoleFore;
             btnColorStatusBack.BackColor = def.StatusBack;
             btnColorStatusFore.BackColor = def.StatusFore;
 

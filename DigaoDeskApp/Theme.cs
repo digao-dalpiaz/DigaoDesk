@@ -48,7 +48,6 @@ namespace DigaoDeskApp
         public static void setConsole(RichTextBoxEx c)
         {
             c.Font = new Font(Vars.Config.Theme.FontName, Vars.Config.Theme.FontSize);
-            c.ForeColor = Vars.Config.Theme.ConsoleFore;
             c.BackColor = Vars.Config.Theme.ConsoleBack;
 
             c.WordWrap = Vars.Config.Theme.WordWrap;

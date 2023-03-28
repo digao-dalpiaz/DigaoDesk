@@ -40,7 +40,6 @@ namespace DigaoDeskApp
             public Color GridSelFore = Color.White;
             public Color SplitterBack = Color.FromArgb(50, 50, 50);
             public Color ConsoleBack = Color.FromArgb(15, 15, 15);
-            public Color ConsoleFore = Color.FromArgb(128, 255, 128);
             public Color StatusBack = Color.FromArgb(30, 30, 30);
             public Color StatusFore = Color.Silver;
 

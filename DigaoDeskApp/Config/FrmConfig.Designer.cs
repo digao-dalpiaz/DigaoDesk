@@ -96,11 +96,9 @@ namespace DigaoDeskApp
             btnColorToolbarBack=new System.Windows.Forms.Button();
             ckThemeDarkTitle=new System.Windows.Forms.CheckBox();
             btnLogFont=new System.Windows.Forms.Button();
-            lbColorConsoleFore=new System.Windows.Forms.Label();
             ckLogWordWrap=new System.Windows.Forms.CheckBox();
             lbColorConsoleBack=new System.Windows.Forms.Label();
             ckLogShowTs=new System.Windows.Forms.CheckBox();
-            btnColorConsoleFore=new System.Windows.Forms.Button();
             btnColorConsoleBack=new System.Windows.Forms.Button();
             lbConsoleFont=new System.Windows.Forms.Label();
             tabApplications=new System.Windows.Forms.TabPage();
@@ -245,11 +243,9 @@ namespace DigaoDeskApp
             tabTheme.Controls.Add(btnColorToolbarBack);
             tabTheme.Controls.Add(ckThemeDarkTitle);
             tabTheme.Controls.Add(btnLogFont);
-            tabTheme.Controls.Add(lbColorConsoleFore);
             tabTheme.Controls.Add(ckLogWordWrap);
             tabTheme.Controls.Add(lbColorConsoleBack);
             tabTheme.Controls.Add(ckLogShowTs);
-            tabTheme.Controls.Add(btnColorConsoleFore);
             tabTheme.Controls.Add(btnColorConsoleBack);
             tabTheme.Controls.Add(lbConsoleFont);
             tabTheme.Location=new System.Drawing.Point(4, 29);
@@ -861,15 +857,6 @@ namespace DigaoDeskApp
             btnLogFont.UseVisualStyleBackColor=true;
             btnLogFont.Click+=btnLogFont_Click;
             // 
-            // lbColorConsoleFore
-            // 
-            lbColorConsoleFore.AutoSize=true;
-            lbColorConsoleFore.Location=new System.Drawing.Point(262, 403);
-            lbColorConsoleFore.Name="lbColorConsoleFore";
-            lbColorConsoleFore.Size=new System.Drawing.Size(141, 20);
-            lbColorConsoleFore.TabIndex=7;
-            lbColorConsoleFore.Text="Console foreground";
-            // 
             // ckLogWordWrap
             // 
             ckLogWordWrap.AutoSize=true;
@@ -900,16 +887,6 @@ namespace DigaoDeskApp
             ckLogShowTs.TabIndex=18;
             ckLogShowTs.Text="Show date/time in each record";
             ckLogShowTs.UseVisualStyleBackColor=true;
-            // 
-            // btnColorConsoleFore
-            // 
-            btnColorConsoleFore.Location=new System.Drawing.Point(264, 424);
-            btnColorConsoleFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorConsoleFore.Name="btnColorConsoleFore";
-            btnColorConsoleFore.Size=new System.Drawing.Size(232, 32);
-            btnColorConsoleFore.TabIndex=14;
-            btnColorConsoleFore.UseVisualStyleBackColor=false;
-            btnColorConsoleFore.Click+=btnColor_Click;
             // 
             // btnColorConsoleBack
             // 
@@ -1437,11 +1414,9 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbAuthorName;
         private System.Windows.Forms.TabPage tabTheme;
         private System.Windows.Forms.Button btnLogFont;
-        private System.Windows.Forms.Label lbColorConsoleFore;
         private System.Windows.Forms.CheckBox ckLogWordWrap;
         private System.Windows.Forms.Label lbColorConsoleBack;
         private System.Windows.Forms.CheckBox ckLogShowTs;
-        private System.Windows.Forms.Button btnColorConsoleFore;
         private System.Windows.Forms.Button btnColorConsoleBack;
         private System.Windows.Forms.Label lbConsoleFont;
         private System.Windows.Forms.GroupBox boxGitCredentials;

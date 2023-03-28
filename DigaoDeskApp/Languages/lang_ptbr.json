@@ -53,7 +53,6 @@
   "Config_Theme_ColorGridSelFore": "Texto da seleção da tabela",
   "Config_Theme_ColorSplitterBack": "Fundo do divisor",
   "Config_Theme_ColorConsoleBack": "Fundo do Console",
-  "Config_Theme_ColorConsoleFore": "Texto do Console",
   "Config_Theme_ColorStatusBack": "Fundo da Barra de Status",
   "Config_Theme_ColorStatusFore": "Texto da Barra de Status",
   "Config_Theme_ColorAppLogNormal": "Normal",

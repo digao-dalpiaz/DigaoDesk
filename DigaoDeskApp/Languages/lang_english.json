@@ -53,7 +53,6 @@
   "Config_Theme_ColorGridSelFore": "Grid selection foreground",
   "Config_Theme_ColorSplitterBack": "Splitter background",
   "Config_Theme_ColorConsoleBack": "Console background",
-  "Config_Theme_ColorConsoleFore": "Console foreground",
   "Config_Theme_ColorStatusBack": "Status bar background",
   "Config_Theme_ColorStatusFore": "Status bar foreground",
   "Config_Theme_ColorAppLogNormal": "Normal",

@@ -58,7 +58,6 @@
         public string Config_Theme_ColorGridSelFore;
         public string Config_Theme_ColorSplitterBack;
         public string Config_Theme_ColorConsoleBack;
-        public string Config_Theme_ColorConsoleFore;
         public string Config_Theme_ColorStatusBack;
         public string Config_Theme_ColorStatusFore;
         public string Config_Theme_ColorAppLogNormal;
