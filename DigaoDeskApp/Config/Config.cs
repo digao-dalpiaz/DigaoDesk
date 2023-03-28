@@ -43,6 +43,14 @@ namespace DigaoDeskApp
             public Color StatusBack = Color.FromArgb(30, 30, 30);
             public Color StatusFore = Color.Silver;
 
+            public Color AppLogNormalFore = Color.FromArgb(128, 255, 128);
+            public Color AppLogErrorFore = Color.Salmon;
+            public Color AppLogDynWarnFore = Color.Orange;
+            public Color AppLogDynErrorFore = Color.Crimson;
+            public Color AppLogStopFore = Color.MediumPurple;
+
+            public Color TimestampFore = Color.Gray;
+
             public string FontName = "Consolas";
             public float FontSize = 10;
             public bool ShowTimestamp = false;

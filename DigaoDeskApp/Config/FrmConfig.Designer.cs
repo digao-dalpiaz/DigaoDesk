@@ -29,1044 +29,1169 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.pages = new System.Windows.Forms.TabControl();
-            this.tabGeneral = new System.Windows.Forms.TabPage();
-            this.lbLanguageInfo = new System.Windows.Forms.Label();
-            this.lbLanguage = new System.Windows.Forms.Label();
-            this.edLanguage = new System.Windows.Forms.ComboBox();
-            this.tabTheme = new System.Windows.Forms.TabPage();
-            this.btnResetColors = new System.Windows.Forms.Button();
-            this.lbColorGridDataBack = new System.Windows.Forms.Label();
-            this.btnColorGridDataBack = new System.Windows.Forms.Button();
-            this.lbColorGridLines = new System.Windows.Forms.Label();
-            this.btnColorGridLines = new System.Windows.Forms.Button();
-            this.lbColorStatusFore = new System.Windows.Forms.Label();
-            this.btnColorStatusFore = new System.Windows.Forms.Button();
-            this.lbColorGridHeadBack = new System.Windows.Forms.Label();
-            this.btnColorGridHeadBack = new System.Windows.Forms.Button();
-            this.lbColorSplitterBack = new System.Windows.Forms.Label();
-            this.btnColorSplitterBack = new System.Windows.Forms.Button();
-            this.lbColorStatusBack = new System.Windows.Forms.Label();
-            this.btnColorStatusBack = new System.Windows.Forms.Button();
-            this.lbColorGridSelBack = new System.Windows.Forms.Label();
-            this.btnColorGridSelBack = new System.Windows.Forms.Button();
-            this.lbColorGridDataFore = new System.Windows.Forms.Label();
-            this.btnColorGridDataFore = new System.Windows.Forms.Button();
-            this.lbColorGridHeadFore = new System.Windows.Forms.Label();
-            this.btnColorGridHeadFore = new System.Windows.Forms.Button();
-            this.lbColorGridSelFore = new System.Windows.Forms.Label();
-            this.btnColorGridSelFore = new System.Windows.Forms.Button();
-            this.lbColorGridBack = new System.Windows.Forms.Label();
-            this.btnColorGridBack = new System.Windows.Forms.Button();
-            this.lbColorToolbarFore = new System.Windows.Forms.Label();
-            this.btnColorToolbarFore = new System.Windows.Forms.Button();
-            this.lbColorToolbarBack = new System.Windows.Forms.Label();
-            this.btnColorToolbarBack = new System.Windows.Forms.Button();
-            this.ckThemeDarkTitle = new System.Windows.Forms.CheckBox();
-            this.btnLogFont = new System.Windows.Forms.Button();
-            this.lbColorConsoleFore = new System.Windows.Forms.Label();
-            this.ckLogWordWrap = new System.Windows.Forms.CheckBox();
-            this.lbColorConsoleBack = new System.Windows.Forms.Label();
-            this.ckLogShowTs = new System.Windows.Forms.CheckBox();
-            this.btnColorConsoleFore = new System.Windows.Forms.Button();
-            this.btnColorConsoleBack = new System.Windows.Forms.Button();
-            this.lbConsoleFont = new System.Windows.Forms.Label();
-            this.tabApplications = new System.Windows.Forms.TabPage();
-            this.ckCalcAppResources = new System.Windows.Forms.CheckBox();
-            this.edAppLogMaxSize = new System.Windows.Forms.NumericUpDown();
-            this.lbAppsLinesLog = new System.Windows.Forms.Label();
-            this.ckDontNotifyWhenAppsActive = new System.Windows.Forms.CheckBox();
-            this.ckNotifyWhenAppStops = new System.Windows.Forms.CheckBox();
-            this.tabRepos = new System.Windows.Forms.TabPage();
-            this.ckGitAutoCRLF = new System.Windows.Forms.CheckBox();
-            this.btnCustomCommandsHelp = new System.Windows.Forms.Label();
-            this.edGitCustomCommands = new System.Windows.Forms.TextBox();
-            this.lbCustomCommands = new System.Windows.Forms.Label();
-            this.lbDifProgramArgs = new System.Windows.Forms.Label();
-            this.edDiffProgramArguments = new System.Windows.Forms.TextBox();
-            this.lbDifProgramArgsInfo = new System.Windows.Forms.Label();
-            this.btnSelDiffProgram = new System.Windows.Forms.Button();
-            this.lbShellProgram = new System.Windows.Forms.Label();
-            this.edDiffProgram = new System.Windows.Forms.TextBox();
-            this.lbDiffProgram = new System.Windows.Forms.Label();
-            this.lbCommitMsgInfo = new System.Windows.Forms.Label();
-            this.edCommitMessage = new System.Windows.Forms.TextBox();
-            this.lbCommitMsg = new System.Windows.Forms.Label();
-            this.ckGitAutoFetch = new System.Windows.Forms.CheckBox();
-            this.lbMemoInfo = new System.Windows.Forms.Label();
-            this.boxGitAuthor = new System.Windows.Forms.GroupBox();
-            this.edGitName = new System.Windows.Forms.TextBox();
-            this.lbAuthorName = new System.Windows.Forms.Label();
-            this.lbAuthorEmail = new System.Windows.Forms.Label();
-            this.edGitEmail = new System.Windows.Forms.TextBox();
-            this.edGitNewBranchPrefixList = new System.Windows.Forms.TextBox();
-            this.lbNewBranchPrefix = new System.Windows.Forms.Label();
-            this.btnSelShellProgram = new System.Windows.Forms.Button();
-            this.edShellProgram = new System.Windows.Forms.TextBox();
-            this.boxGitCredentials = new System.Windows.Forms.GroupBox();
-            this.edGitCredPassword = new System.Windows.Forms.TextBox();
-            this.lbCredPassword = new System.Windows.Forms.Label();
-            this.edGitCredUsername = new System.Windows.Forms.TextBox();
-            this.lbCredUsername = new System.Windows.Forms.Label();
-            this.btnSelReposDir = new System.Windows.Forms.Button();
-            this.edReposDir = new System.Windows.Forms.TextBox();
-            this.lbRepositoryFolder = new System.Windows.Forms.Label();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.pages.SuspendLayout();
-            this.tabGeneral.SuspendLayout();
-            this.tabTheme.SuspendLayout();
-            this.tabApplications.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edAppLogMaxSize)).BeginInit();
-            this.tabRepos.SuspendLayout();
-            this.boxGitAuthor.SuspendLayout();
-            this.boxGitCredentials.SuspendLayout();
-            this.SuspendLayout();
+            pages=new System.Windows.Forms.TabControl();
+            tabGeneral=new System.Windows.Forms.TabPage();
+            lbLanguageInfo=new System.Windows.Forms.Label();
+            lbLanguage=new System.Windows.Forms.Label();
+            edLanguage=new System.Windows.Forms.ComboBox();
+            tabTheme=new System.Windows.Forms.TabPage();
+            lbColorLogTimestamp=new System.Windows.Forms.Label();
+            btnColorLogTimestamp=new System.Windows.Forms.Button();
+            lbColorAppLogDynWarn=new System.Windows.Forms.Label();
+            btnColorAppLogDynWarn=new System.Windows.Forms.Button();
+            lbColorAppLogDynError=new System.Windows.Forms.Label();
+            btnColorAppLogDynError=new System.Windows.Forms.Button();
+            lbColorAppLogError=new System.Windows.Forms.Label();
+            btnColorAppLogError=new System.Windows.Forms.Button();
+            lbColorAppLogStop=new System.Windows.Forms.Label();
+            btnColorAppLogStop=new System.Windows.Forms.Button();
+            lbColorAppLogNormal=new System.Windows.Forms.Label();
+            btnColorAppLogNormal=new System.Windows.Forms.Button();
+            btnResetColors=new System.Windows.Forms.Button();
+            lbColorGridDataBack=new System.Windows.Forms.Label();
+            btnColorGridDataBack=new System.Windows.Forms.Button();
+            lbColorGridLines=new System.Windows.Forms.Label();
+            btnColorGridLines=new System.Windows.Forms.Button();
+            lbColorStatusFore=new System.Windows.Forms.Label();
+            btnColorStatusFore=new System.Windows.Forms.Button();
+            lbColorGridHeadBack=new System.Windows.Forms.Label();
+            btnColorGridHeadBack=new System.Windows.Forms.Button();
+            lbColorSplitterBack=new System.Windows.Forms.Label();
+            btnColorSplitterBack=new System.Windows.Forms.Button();
+            lbColorStatusBack=new System.Windows.Forms.Label();
+            btnColorStatusBack=new System.Windows.Forms.Button();
+            lbColorGridSelBack=new System.Windows.Forms.Label();
+            btnColorGridSelBack=new System.Windows.Forms.Button();
+            lbColorGridDataFore=new System.Windows.Forms.Label();
+            btnColorGridDataFore=new System.Windows.Forms.Button();
+            lbColorGridHeadFore=new System.Windows.Forms.Label();
+            btnColorGridHeadFore=new System.Windows.Forms.Button();
+            lbColorGridSelFore=new System.Windows.Forms.Label();
+            btnColorGridSelFore=new System.Windows.Forms.Button();
+            lbColorGridBack=new System.Windows.Forms.Label();
+            btnColorGridBack=new System.Windows.Forms.Button();
+            lbColorToolbarFore=new System.Windows.Forms.Label();
+            btnColorToolbarFore=new System.Windows.Forms.Button();
+            lbColorToolbarBack=new System.Windows.Forms.Label();
+            btnColorToolbarBack=new System.Windows.Forms.Button();
+            ckThemeDarkTitle=new System.Windows.Forms.CheckBox();
+            btnLogFont=new System.Windows.Forms.Button();
+            lbColorConsoleFore=new System.Windows.Forms.Label();
+            ckLogWordWrap=new System.Windows.Forms.CheckBox();
+            lbColorConsoleBack=new System.Windows.Forms.Label();
+            ckLogShowTs=new System.Windows.Forms.CheckBox();
+            btnColorConsoleFore=new System.Windows.Forms.Button();
+            btnColorConsoleBack=new System.Windows.Forms.Button();
+            lbConsoleFont=new System.Windows.Forms.Label();
+            tabApplications=new System.Windows.Forms.TabPage();
+            ckCalcAppResources=new System.Windows.Forms.CheckBox();
+            edAppLogMaxSize=new System.Windows.Forms.NumericUpDown();
+            lbAppsLinesLog=new System.Windows.Forms.Label();
+            ckDontNotifyWhenAppsActive=new System.Windows.Forms.CheckBox();
+            ckNotifyWhenAppStops=new System.Windows.Forms.CheckBox();
+            tabRepos=new System.Windows.Forms.TabPage();
+            ckGitAutoCRLF=new System.Windows.Forms.CheckBox();
+            btnCustomCommandsHelp=new System.Windows.Forms.Label();
+            edGitCustomCommands=new System.Windows.Forms.TextBox();
+            lbCustomCommands=new System.Windows.Forms.Label();
+            lbDifProgramArgs=new System.Windows.Forms.Label();
+            edDiffProgramArguments=new System.Windows.Forms.TextBox();
+            lbDifProgramArgsInfo=new System.Windows.Forms.Label();
+            btnSelDiffProgram=new System.Windows.Forms.Button();
+            lbShellProgram=new System.Windows.Forms.Label();
+            edDiffProgram=new System.Windows.Forms.TextBox();
+            lbDiffProgram=new System.Windows.Forms.Label();
+            lbCommitMsgInfo=new System.Windows.Forms.Label();
+            edCommitMessage=new System.Windows.Forms.TextBox();
+            lbCommitMsg=new System.Windows.Forms.Label();
+            ckGitAutoFetch=new System.Windows.Forms.CheckBox();
+            lbMemoInfo=new System.Windows.Forms.Label();
+            boxGitAuthor=new System.Windows.Forms.GroupBox();
+            edGitName=new System.Windows.Forms.TextBox();
+            lbAuthorName=new System.Windows.Forms.Label();
+            lbAuthorEmail=new System.Windows.Forms.Label();
+            edGitEmail=new System.Windows.Forms.TextBox();
+            edGitNewBranchPrefixList=new System.Windows.Forms.TextBox();
+            lbNewBranchPrefix=new System.Windows.Forms.Label();
+            btnSelShellProgram=new System.Windows.Forms.Button();
+            edShellProgram=new System.Windows.Forms.TextBox();
+            boxGitCredentials=new System.Windows.Forms.GroupBox();
+            edGitCredPassword=new System.Windows.Forms.TextBox();
+            lbCredPassword=new System.Windows.Forms.Label();
+            edGitCredUsername=new System.Windows.Forms.TextBox();
+            lbCredUsername=new System.Windows.Forms.Label();
+            btnSelReposDir=new System.Windows.Forms.Button();
+            edReposDir=new System.Windows.Forms.TextBox();
+            lbRepositoryFolder=new System.Windows.Forms.Label();
+            btnOK=new System.Windows.Forms.Button();
+            btnCancel=new System.Windows.Forms.Button();
+            pages.SuspendLayout();
+            tabGeneral.SuspendLayout();
+            tabTheme.SuspendLayout();
+            tabApplications.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).BeginInit();
+            tabRepos.SuspendLayout();
+            boxGitAuthor.SuspendLayout();
+            boxGitCredentials.SuspendLayout();
+            SuspendLayout();
             // 
             // pages
             // 
-            this.pages.Controls.Add(this.tabGeneral);
-            this.pages.Controls.Add(this.tabTheme);
-            this.pages.Controls.Add(this.tabApplications);
-            this.pages.Controls.Add(this.tabRepos);
-            this.pages.Location = new System.Drawing.Point(9, 11);
-            this.pages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pages.Name = "pages";
-            this.pages.SelectedIndex = 0;
-            this.pages.Size = new System.Drawing.Size(1047, 717);
-            this.pages.TabIndex = 0;
+            pages.Controls.Add(tabGeneral);
+            pages.Controls.Add(tabTheme);
+            pages.Controls.Add(tabApplications);
+            pages.Controls.Add(tabRepos);
+            pages.Location=new System.Drawing.Point(9, 11);
+            pages.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            pages.Name="pages";
+            pages.SelectedIndex=0;
+            pages.Size=new System.Drawing.Size(1047, 717);
+            pages.TabIndex=0;
             // 
             // tabGeneral
             // 
-            this.tabGeneral.Controls.Add(this.lbLanguageInfo);
-            this.tabGeneral.Controls.Add(this.lbLanguage);
-            this.tabGeneral.Controls.Add(this.edLanguage);
-            this.tabGeneral.Location = new System.Drawing.Point(4, 29);
-            this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral.Size = new System.Drawing.Size(1039, 684);
-            this.tabGeneral.TabIndex = 3;
-            this.tabGeneral.Text = "General";
-            this.tabGeneral.UseVisualStyleBackColor = true;
+            tabGeneral.Controls.Add(lbLanguageInfo);
+            tabGeneral.Controls.Add(lbLanguage);
+            tabGeneral.Controls.Add(edLanguage);
+            tabGeneral.Location=new System.Drawing.Point(4, 29);
+            tabGeneral.Name="tabGeneral";
+            tabGeneral.Padding=new System.Windows.Forms.Padding(3);
+            tabGeneral.Size=new System.Drawing.Size(1039, 684);
+            tabGeneral.TabIndex=3;
+            tabGeneral.Text="General";
+            tabGeneral.UseVisualStyleBackColor=true;
             // 
             // lbLanguageInfo
             // 
-            this.lbLanguageInfo.AutoSize = true;
-            this.lbLanguageInfo.Location = new System.Drawing.Point(352, 44);
-            this.lbLanguageInfo.Name = "lbLanguageInfo";
-            this.lbLanguageInfo.Size = new System.Drawing.Size(119, 20);
-            this.lbLanguageInfo.TabIndex = 2;
-            this.lbLanguageInfo.Text = "* Restart needed";
+            lbLanguageInfo.AutoSize=true;
+            lbLanguageInfo.Location=new System.Drawing.Point(352, 44);
+            lbLanguageInfo.Name="lbLanguageInfo";
+            lbLanguageInfo.Size=new System.Drawing.Size(119, 20);
+            lbLanguageInfo.TabIndex=2;
+            lbLanguageInfo.Text="* Restart needed";
             // 
             // lbLanguage
             // 
-            this.lbLanguage.AutoSize = true;
-            this.lbLanguage.Location = new System.Drawing.Point(22, 16);
-            this.lbLanguage.Name = "lbLanguage";
-            this.lbLanguage.Size = new System.Drawing.Size(74, 20);
-            this.lbLanguage.TabIndex = 1;
-            this.lbLanguage.Text = "Language";
+            lbLanguage.AutoSize=true;
+            lbLanguage.Location=new System.Drawing.Point(22, 16);
+            lbLanguage.Name="lbLanguage";
+            lbLanguage.Size=new System.Drawing.Size(74, 20);
+            lbLanguage.TabIndex=1;
+            lbLanguage.Text="Language";
             // 
             // edLanguage
             // 
-            this.edLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.edLanguage.FormattingEnabled = true;
-            this.edLanguage.Location = new System.Drawing.Point(24, 40);
-            this.edLanguage.Name = "edLanguage";
-            this.edLanguage.Size = new System.Drawing.Size(304, 28);
-            this.edLanguage.TabIndex = 0;
+            edLanguage.DropDownStyle=System.Windows.Forms.ComboBoxStyle.DropDownList;
+            edLanguage.FormattingEnabled=true;
+            edLanguage.Location=new System.Drawing.Point(24, 40);
+            edLanguage.Name="edLanguage";
+            edLanguage.Size=new System.Drawing.Size(304, 28);
+            edLanguage.TabIndex=0;
             // 
             // tabTheme
             // 
-            this.tabTheme.Controls.Add(this.btnResetColors);
-            this.tabTheme.Controls.Add(this.lbColorGridDataBack);
-            this.tabTheme.Controls.Add(this.btnColorGridDataBack);
-            this.tabTheme.Controls.Add(this.lbColorGridLines);
-            this.tabTheme.Controls.Add(this.btnColorGridLines);
-            this.tabTheme.Controls.Add(this.lbColorStatusFore);
-            this.tabTheme.Controls.Add(this.btnColorStatusFore);
-            this.tabTheme.Controls.Add(this.lbColorGridHeadBack);
-            this.tabTheme.Controls.Add(this.btnColorGridHeadBack);
-            this.tabTheme.Controls.Add(this.lbColorSplitterBack);
-            this.tabTheme.Controls.Add(this.btnColorSplitterBack);
-            this.tabTheme.Controls.Add(this.lbColorStatusBack);
-            this.tabTheme.Controls.Add(this.btnColorStatusBack);
-            this.tabTheme.Controls.Add(this.lbColorGridSelBack);
-            this.tabTheme.Controls.Add(this.btnColorGridSelBack);
-            this.tabTheme.Controls.Add(this.lbColorGridDataFore);
-            this.tabTheme.Controls.Add(this.btnColorGridDataFore);
-            this.tabTheme.Controls.Add(this.lbColorGridHeadFore);
-            this.tabTheme.Controls.Add(this.btnColorGridHeadFore);
-            this.tabTheme.Controls.Add(this.lbColorGridSelFore);
-            this.tabTheme.Controls.Add(this.btnColorGridSelFore);
-            this.tabTheme.Controls.Add(this.lbColorGridBack);
-            this.tabTheme.Controls.Add(this.btnColorGridBack);
-            this.tabTheme.Controls.Add(this.lbColorToolbarFore);
-            this.tabTheme.Controls.Add(this.btnColorToolbarFore);
-            this.tabTheme.Controls.Add(this.lbColorToolbarBack);
-            this.tabTheme.Controls.Add(this.btnColorToolbarBack);
-            this.tabTheme.Controls.Add(this.ckThemeDarkTitle);
-            this.tabTheme.Controls.Add(this.btnLogFont);
-            this.tabTheme.Controls.Add(this.lbColorConsoleFore);
-            this.tabTheme.Controls.Add(this.ckLogWordWrap);
-            this.tabTheme.Controls.Add(this.lbColorConsoleBack);
-            this.tabTheme.Controls.Add(this.ckLogShowTs);
-            this.tabTheme.Controls.Add(this.btnColorConsoleFore);
-            this.tabTheme.Controls.Add(this.btnColorConsoleBack);
-            this.tabTheme.Controls.Add(this.lbConsoleFont);
-            this.tabTheme.Location = new System.Drawing.Point(4, 29);
-            this.tabTheme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabTheme.Name = "tabTheme";
-            this.tabTheme.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabTheme.Size = new System.Drawing.Size(1039, 684);
-            this.tabTheme.TabIndex = 2;
-            this.tabTheme.Text = "Theme";
-            this.tabTheme.UseVisualStyleBackColor = true;
+            tabTheme.Controls.Add(lbColorLogTimestamp);
+            tabTheme.Controls.Add(btnColorLogTimestamp);
+            tabTheme.Controls.Add(lbColorAppLogDynWarn);
+            tabTheme.Controls.Add(btnColorAppLogDynWarn);
+            tabTheme.Controls.Add(lbColorAppLogDynError);
+            tabTheme.Controls.Add(btnColorAppLogDynError);
+            tabTheme.Controls.Add(lbColorAppLogError);
+            tabTheme.Controls.Add(btnColorAppLogError);
+            tabTheme.Controls.Add(lbColorAppLogStop);
+            tabTheme.Controls.Add(btnColorAppLogStop);
+            tabTheme.Controls.Add(lbColorAppLogNormal);
+            tabTheme.Controls.Add(btnColorAppLogNormal);
+            tabTheme.Controls.Add(btnResetColors);
+            tabTheme.Controls.Add(lbColorGridDataBack);
+            tabTheme.Controls.Add(btnColorGridDataBack);
+            tabTheme.Controls.Add(lbColorGridLines);
+            tabTheme.Controls.Add(btnColorGridLines);
+            tabTheme.Controls.Add(lbColorStatusFore);
+            tabTheme.Controls.Add(btnColorStatusFore);
+            tabTheme.Controls.Add(lbColorGridHeadBack);
+            tabTheme.Controls.Add(btnColorGridHeadBack);
+            tabTheme.Controls.Add(lbColorSplitterBack);
+            tabTheme.Controls.Add(btnColorSplitterBack);
+            tabTheme.Controls.Add(lbColorStatusBack);
+            tabTheme.Controls.Add(btnColorStatusBack);
+            tabTheme.Controls.Add(lbColorGridSelBack);
+            tabTheme.Controls.Add(btnColorGridSelBack);
+            tabTheme.Controls.Add(lbColorGridDataFore);
+            tabTheme.Controls.Add(btnColorGridDataFore);
+            tabTheme.Controls.Add(lbColorGridHeadFore);
+            tabTheme.Controls.Add(btnColorGridHeadFore);
+            tabTheme.Controls.Add(lbColorGridSelFore);
+            tabTheme.Controls.Add(btnColorGridSelFore);
+            tabTheme.Controls.Add(lbColorGridBack);
+            tabTheme.Controls.Add(btnColorGridBack);
+            tabTheme.Controls.Add(lbColorToolbarFore);
+            tabTheme.Controls.Add(btnColorToolbarFore);
+            tabTheme.Controls.Add(lbColorToolbarBack);
+            tabTheme.Controls.Add(btnColorToolbarBack);
+            tabTheme.Controls.Add(ckThemeDarkTitle);
+            tabTheme.Controls.Add(btnLogFont);
+            tabTheme.Controls.Add(lbColorConsoleFore);
+            tabTheme.Controls.Add(ckLogWordWrap);
+            tabTheme.Controls.Add(lbColorConsoleBack);
+            tabTheme.Controls.Add(ckLogShowTs);
+            tabTheme.Controls.Add(btnColorConsoleFore);
+            tabTheme.Controls.Add(btnColorConsoleBack);
+            tabTheme.Controls.Add(lbConsoleFont);
+            tabTheme.Location=new System.Drawing.Point(4, 29);
+            tabTheme.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            tabTheme.Name="tabTheme";
+            tabTheme.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            tabTheme.Size=new System.Drawing.Size(1039, 684);
+            tabTheme.TabIndex=2;
+            tabTheme.Text="Theme";
+            tabTheme.UseVisualStyleBackColor=true;
+            // 
+            // lbColorLogTimestamp
+            // 
+            lbColorLogTimestamp.AutoSize=true;
+            lbColorLogTimestamp.Location=new System.Drawing.Point(510, 571);
+            lbColorLogTimestamp.Name="lbColorLogTimestamp";
+            lbColorLogTimestamp.Size=new System.Drawing.Size(83, 20);
+            lbColorLogTimestamp.TabIndex=51;
+            lbColorLogTimestamp.Text="Timestamp";
+            // 
+            // btnColorLogTimestamp
+            // 
+            btnColorLogTimestamp.Location=new System.Drawing.Point(512, 592);
+            btnColorLogTimestamp.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorLogTimestamp.Name="btnColorLogTimestamp";
+            btnColorLogTimestamp.Size=new System.Drawing.Size(232, 43);
+            btnColorLogTimestamp.TabIndex=50;
+            btnColorLogTimestamp.UseVisualStyleBackColor=true;
+            btnColorLogTimestamp.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogDynWarn
+            // 
+            lbColorAppLogDynWarn.AutoSize=true;
+            lbColorAppLogDynWarn.Location=new System.Drawing.Point(510, 211);
+            lbColorAppLogDynWarn.Name="lbColorAppLogDynWarn";
+            lbColorAppLogDynWarn.Size=new System.Drawing.Size(126, 20);
+            lbColorAppLogDynWarn.TabIndex=49;
+            lbColorAppLogDynWarn.Text="Dynamic Warning";
+            // 
+            // btnColorAppLogDynWarn
+            // 
+            btnColorAppLogDynWarn.Location=new System.Drawing.Point(512, 232);
+            btnColorAppLogDynWarn.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogDynWarn.Name="btnColorAppLogDynWarn";
+            btnColorAppLogDynWarn.Size=new System.Drawing.Size(232, 43);
+            btnColorAppLogDynWarn.TabIndex=42;
+            btnColorAppLogDynWarn.UseVisualStyleBackColor=true;
+            btnColorAppLogDynWarn.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogDynError
+            // 
+            lbColorAppLogDynError.AutoSize=true;
+            lbColorAppLogDynError.Location=new System.Drawing.Point(510, 283);
+            lbColorAppLogDynError.Name="lbColorAppLogDynError";
+            lbColorAppLogDynError.Size=new System.Drawing.Size(103, 20);
+            lbColorAppLogDynError.TabIndex=48;
+            lbColorAppLogDynError.Text="Dynamic Error";
+            // 
+            // btnColorAppLogDynError
+            // 
+            btnColorAppLogDynError.Location=new System.Drawing.Point(512, 304);
+            btnColorAppLogDynError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogDynError.Name="btnColorAppLogDynError";
+            btnColorAppLogDynError.Size=new System.Drawing.Size(232, 43);
+            btnColorAppLogDynError.TabIndex=43;
+            btnColorAppLogDynError.UseVisualStyleBackColor=true;
+            btnColorAppLogDynError.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogError
+            // 
+            lbColorAppLogError.AutoSize=true;
+            lbColorAppLogError.Location=new System.Drawing.Point(510, 139);
+            lbColorAppLogError.Name="lbColorAppLogError";
+            lbColorAppLogError.Size=new System.Drawing.Size(41, 20);
+            lbColorAppLogError.TabIndex=47;
+            lbColorAppLogError.Text="Error";
+            // 
+            // btnColorAppLogError
+            // 
+            btnColorAppLogError.Location=new System.Drawing.Point(512, 160);
+            btnColorAppLogError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogError.Name="btnColorAppLogError";
+            btnColorAppLogError.Size=new System.Drawing.Size(232, 43);
+            btnColorAppLogError.TabIndex=41;
+            btnColorAppLogError.UseVisualStyleBackColor=true;
+            btnColorAppLogError.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogStop
+            // 
+            lbColorAppLogStop.AutoSize=true;
+            lbColorAppLogStop.Location=new System.Drawing.Point(510, 355);
+            lbColorAppLogStop.Name="lbColorAppLogStop";
+            lbColorAppLogStop.Size=new System.Drawing.Size(40, 20);
+            lbColorAppLogStop.TabIndex=46;
+            lbColorAppLogStop.Text="Stop";
+            // 
+            // btnColorAppLogStop
+            // 
+            btnColorAppLogStop.Location=new System.Drawing.Point(512, 376);
+            btnColorAppLogStop.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogStop.Name="btnColorAppLogStop";
+            btnColorAppLogStop.Size=new System.Drawing.Size(232, 43);
+            btnColorAppLogStop.TabIndex=44;
+            btnColorAppLogStop.UseVisualStyleBackColor=true;
+            btnColorAppLogStop.Click+=btnColor_Click;
+            // 
+            // lbColorAppLogNormal
+            // 
+            lbColorAppLogNormal.AutoSize=true;
+            lbColorAppLogNormal.Location=new System.Drawing.Point(510, 67);
+            lbColorAppLogNormal.Name="lbColorAppLogNormal";
+            lbColorAppLogNormal.Size=new System.Drawing.Size(59, 20);
+            lbColorAppLogNormal.TabIndex=45;
+            lbColorAppLogNormal.Text="Normal";
+            // 
+            // btnColorAppLogNormal
+            // 
+            btnColorAppLogNormal.Location=new System.Drawing.Point(512, 88);
+            btnColorAppLogNormal.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorAppLogNormal.Name="btnColorAppLogNormal";
+            btnColorAppLogNormal.Size=new System.Drawing.Size(232, 43);
+            btnColorAppLogNormal.TabIndex=40;
+            btnColorAppLogNormal.UseVisualStyleBackColor=true;
+            btnColorAppLogNormal.Click+=btnColor_Click;
             // 
             // btnResetColors
             // 
-            this.btnResetColors.Location = new System.Drawing.Point(832, 24);
-            this.btnResetColors.Name = "btnResetColors";
-            this.btnResetColors.Size = new System.Drawing.Size(184, 48);
-            this.btnResetColors.TabIndex = 1;
-            this.btnResetColors.TabStop = false;
-            this.btnResetColors.Text = "Reset Colors";
-            this.btnResetColors.UseVisualStyleBackColor = true;
-            this.btnResetColors.Click += new System.EventHandler(this.btnResetColors_Click);
+            btnResetColors.Location=new System.Drawing.Point(832, 24);
+            btnResetColors.Name="btnResetColors";
+            btnResetColors.Size=new System.Drawing.Size(184, 48);
+            btnResetColors.TabIndex=1;
+            btnResetColors.TabStop=false;
+            btnResetColors.Text="Reset Colors";
+            btnResetColors.UseVisualStyleBackColor=true;
+            btnResetColors.Click+=btnResetColors_Click;
             // 
             // lbColorGridDataBack
             // 
-            this.lbColorGridDataBack.AutoSize = true;
-            this.lbColorGridDataBack.Location = new System.Drawing.Point(22, 283);
-            this.lbColorGridDataBack.Name = "lbColorGridDataBack";
-            this.lbColorGridDataBack.Size = new System.Drawing.Size(154, 20);
-            this.lbColorGridDataBack.TabIndex = 39;
-            this.lbColorGridDataBack.Text = "Grid data background";
+            lbColorGridDataBack.AutoSize=true;
+            lbColorGridDataBack.Location=new System.Drawing.Point(22, 283);
+            lbColorGridDataBack.Name="lbColorGridDataBack";
+            lbColorGridDataBack.Size=new System.Drawing.Size(154, 20);
+            lbColorGridDataBack.TabIndex=39;
+            lbColorGridDataBack.Text="Grid data background";
             // 
             // btnColorGridDataBack
             // 
-            this.btnColorGridDataBack.Location = new System.Drawing.Point(24, 304);
-            this.btnColorGridDataBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridDataBack.Name = "btnColorGridDataBack";
-            this.btnColorGridDataBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridDataBack.TabIndex = 8;
-            this.btnColorGridDataBack.UseVisualStyleBackColor = true;
-            this.btnColorGridDataBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridDataBack.Location=new System.Drawing.Point(24, 304);
+            btnColorGridDataBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridDataBack.Name="btnColorGridDataBack";
+            btnColorGridDataBack.Size=new System.Drawing.Size(232, 43);
+            btnColorGridDataBack.TabIndex=8;
+            btnColorGridDataBack.UseVisualStyleBackColor=true;
+            btnColorGridDataBack.Click+=btnColor_Click;
             // 
             // lbColorGridLines
             // 
-            this.lbColorGridLines.AutoSize = true;
-            this.lbColorGridLines.Location = new System.Drawing.Point(334, 211);
-            this.lbColorGridLines.Name = "lbColorGridLines";
-            this.lbColorGridLines.Size = new System.Drawing.Size(71, 20);
-            this.lbColorGridLines.TabIndex = 37;
-            this.lbColorGridLines.Text = "Grid lines";
+            lbColorGridLines.AutoSize=true;
+            lbColorGridLines.Location=new System.Drawing.Point(262, 211);
+            lbColorGridLines.Name="lbColorGridLines";
+            lbColorGridLines.Size=new System.Drawing.Size(71, 20);
+            lbColorGridLines.TabIndex=37;
+            lbColorGridLines.Text="Grid lines";
             // 
             // btnColorGridLines
             // 
-            this.btnColorGridLines.Location = new System.Drawing.Point(336, 232);
-            this.btnColorGridLines.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridLines.Name = "btnColorGridLines";
-            this.btnColorGridLines.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridLines.TabIndex = 7;
-            this.btnColorGridLines.UseVisualStyleBackColor = true;
-            this.btnColorGridLines.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridLines.Location=new System.Drawing.Point(264, 232);
+            btnColorGridLines.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridLines.Name="btnColorGridLines";
+            btnColorGridLines.Size=new System.Drawing.Size(232, 43);
+            btnColorGridLines.TabIndex=7;
+            btnColorGridLines.UseVisualStyleBackColor=true;
+            btnColorGridLines.Click+=btnColor_Click;
             // 
             // lbColorStatusFore
             // 
-            this.lbColorStatusFore.AutoSize = true;
-            this.lbColorStatusFore.Location = new System.Drawing.Point(334, 571);
-            this.lbColorStatusFore.Name = "lbColorStatusFore";
-            this.lbColorStatusFore.Size = new System.Drawing.Size(154, 20);
-            this.lbColorStatusFore.TabIndex = 35;
-            this.lbColorStatusFore.Text = "Status bar foreground";
+            lbColorStatusFore.AutoSize=true;
+            lbColorStatusFore.Location=new System.Drawing.Point(262, 571);
+            lbColorStatusFore.Name="lbColorStatusFore";
+            lbColorStatusFore.Size=new System.Drawing.Size(154, 20);
+            lbColorStatusFore.TabIndex=35;
+            lbColorStatusFore.Text="Status bar foreground";
             // 
             // btnColorStatusFore
             // 
-            this.btnColorStatusFore.Location = new System.Drawing.Point(336, 592);
-            this.btnColorStatusFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorStatusFore.Name = "btnColorStatusFore";
-            this.btnColorStatusFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorStatusFore.TabIndex = 16;
-            this.btnColorStatusFore.UseVisualStyleBackColor = true;
-            this.btnColorStatusFore.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorStatusFore.Location=new System.Drawing.Point(264, 592);
+            btnColorStatusFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorStatusFore.Name="btnColorStatusFore";
+            btnColorStatusFore.Size=new System.Drawing.Size(232, 43);
+            btnColorStatusFore.TabIndex=16;
+            btnColorStatusFore.UseVisualStyleBackColor=true;
+            btnColorStatusFore.Click+=btnColor_Click;
             // 
             // lbColorGridHeadBack
             // 
-            this.lbColorGridHeadBack.AutoSize = true;
-            this.lbColorGridHeadBack.Location = new System.Drawing.Point(22, 139);
-            this.lbColorGridHeadBack.Name = "lbColorGridHeadBack";
-            this.lbColorGridHeadBack.Size = new System.Drawing.Size(170, 20);
-            this.lbColorGridHeadBack.TabIndex = 33;
-            this.lbColorGridHeadBack.Text = "Grid header background";
+            lbColorGridHeadBack.AutoSize=true;
+            lbColorGridHeadBack.Location=new System.Drawing.Point(22, 139);
+            lbColorGridHeadBack.Name="lbColorGridHeadBack";
+            lbColorGridHeadBack.Size=new System.Drawing.Size(170, 20);
+            lbColorGridHeadBack.TabIndex=33;
+            lbColorGridHeadBack.Text="Grid header background";
             // 
             // btnColorGridHeadBack
             // 
-            this.btnColorGridHeadBack.Location = new System.Drawing.Point(24, 160);
-            this.btnColorGridHeadBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridHeadBack.Name = "btnColorGridHeadBack";
-            this.btnColorGridHeadBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridHeadBack.TabIndex = 4;
-            this.btnColorGridHeadBack.UseVisualStyleBackColor = true;
-            this.btnColorGridHeadBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridHeadBack.Location=new System.Drawing.Point(24, 160);
+            btnColorGridHeadBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridHeadBack.Name="btnColorGridHeadBack";
+            btnColorGridHeadBack.Size=new System.Drawing.Size(232, 43);
+            btnColorGridHeadBack.TabIndex=4;
+            btnColorGridHeadBack.UseVisualStyleBackColor=true;
+            btnColorGridHeadBack.Click+=btnColor_Click;
             // 
             // lbColorSplitterBack
             // 
-            this.lbColorSplitterBack.AutoSize = true;
-            this.lbColorSplitterBack.Location = new System.Drawing.Point(22, 427);
-            this.lbColorSplitterBack.Name = "lbColorSplitterBack";
-            this.lbColorSplitterBack.Size = new System.Drawing.Size(140, 20);
-            this.lbColorSplitterBack.TabIndex = 31;
-            this.lbColorSplitterBack.Text = "Splitter background";
+            lbColorSplitterBack.AutoSize=true;
+            lbColorSplitterBack.Location=new System.Drawing.Point(22, 427);
+            lbColorSplitterBack.Name="lbColorSplitterBack";
+            lbColorSplitterBack.Size=new System.Drawing.Size(140, 20);
+            lbColorSplitterBack.TabIndex=31;
+            lbColorSplitterBack.Text="Splitter background";
             // 
             // btnColorSplitterBack
             // 
-            this.btnColorSplitterBack.Location = new System.Drawing.Point(24, 448);
-            this.btnColorSplitterBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorSplitterBack.Name = "btnColorSplitterBack";
-            this.btnColorSplitterBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorSplitterBack.TabIndex = 12;
-            this.btnColorSplitterBack.UseVisualStyleBackColor = true;
-            this.btnColorSplitterBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorSplitterBack.Location=new System.Drawing.Point(24, 448);
+            btnColorSplitterBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorSplitterBack.Name="btnColorSplitterBack";
+            btnColorSplitterBack.Size=new System.Drawing.Size(232, 43);
+            btnColorSplitterBack.TabIndex=12;
+            btnColorSplitterBack.UseVisualStyleBackColor=true;
+            btnColorSplitterBack.Click+=btnColor_Click;
             // 
             // lbColorStatusBack
             // 
-            this.lbColorStatusBack.AutoSize = true;
-            this.lbColorStatusBack.Location = new System.Drawing.Point(22, 571);
-            this.lbColorStatusBack.Name = "lbColorStatusBack";
-            this.lbColorStatusBack.Size = new System.Drawing.Size(158, 20);
-            this.lbColorStatusBack.TabIndex = 29;
-            this.lbColorStatusBack.Text = "Status bar background";
+            lbColorStatusBack.AutoSize=true;
+            lbColorStatusBack.Location=new System.Drawing.Point(22, 571);
+            lbColorStatusBack.Name="lbColorStatusBack";
+            lbColorStatusBack.Size=new System.Drawing.Size(158, 20);
+            lbColorStatusBack.TabIndex=29;
+            lbColorStatusBack.Text="Status bar background";
             // 
             // btnColorStatusBack
             // 
-            this.btnColorStatusBack.Location = new System.Drawing.Point(24, 592);
-            this.btnColorStatusBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorStatusBack.Name = "btnColorStatusBack";
-            this.btnColorStatusBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorStatusBack.TabIndex = 15;
-            this.btnColorStatusBack.UseVisualStyleBackColor = true;
-            this.btnColorStatusBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorStatusBack.Location=new System.Drawing.Point(24, 592);
+            btnColorStatusBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorStatusBack.Name="btnColorStatusBack";
+            btnColorStatusBack.Size=new System.Drawing.Size(232, 43);
+            btnColorStatusBack.TabIndex=15;
+            btnColorStatusBack.UseVisualStyleBackColor=true;
+            btnColorStatusBack.Click+=btnColor_Click;
             // 
             // lbColorGridSelBack
             // 
-            this.lbColorGridSelBack.AutoSize = true;
-            this.lbColorGridSelBack.Location = new System.Drawing.Point(22, 355);
-            this.lbColorGridSelBack.Name = "lbColorGridSelBack";
-            this.lbColorGridSelBack.Size = new System.Drawing.Size(179, 20);
-            this.lbColorGridSelBack.TabIndex = 27;
-            this.lbColorGridSelBack.Text = "Grid selected background";
+            lbColorGridSelBack.AutoSize=true;
+            lbColorGridSelBack.Location=new System.Drawing.Point(22, 355);
+            lbColorGridSelBack.Name="lbColorGridSelBack";
+            lbColorGridSelBack.Size=new System.Drawing.Size(179, 20);
+            lbColorGridSelBack.TabIndex=27;
+            lbColorGridSelBack.Text="Grid selected background";
             // 
             // btnColorGridSelBack
             // 
-            this.btnColorGridSelBack.Location = new System.Drawing.Point(24, 376);
-            this.btnColorGridSelBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridSelBack.Name = "btnColorGridSelBack";
-            this.btnColorGridSelBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridSelBack.TabIndex = 10;
-            this.btnColorGridSelBack.UseVisualStyleBackColor = true;
-            this.btnColorGridSelBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridSelBack.Location=new System.Drawing.Point(24, 376);
+            btnColorGridSelBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridSelBack.Name="btnColorGridSelBack";
+            btnColorGridSelBack.Size=new System.Drawing.Size(232, 43);
+            btnColorGridSelBack.TabIndex=10;
+            btnColorGridSelBack.UseVisualStyleBackColor=true;
+            btnColorGridSelBack.Click+=btnColor_Click;
             // 
             // lbColorGridDataFore
             // 
-            this.lbColorGridDataFore.AutoSize = true;
-            this.lbColorGridDataFore.Location = new System.Drawing.Point(334, 283);
-            this.lbColorGridDataFore.Name = "lbColorGridDataFore";
-            this.lbColorGridDataFore.Size = new System.Drawing.Size(150, 20);
-            this.lbColorGridDataFore.TabIndex = 25;
-            this.lbColorGridDataFore.Text = "Grid data foreground";
+            lbColorGridDataFore.AutoSize=true;
+            lbColorGridDataFore.Location=new System.Drawing.Point(262, 283);
+            lbColorGridDataFore.Name="lbColorGridDataFore";
+            lbColorGridDataFore.Size=new System.Drawing.Size(150, 20);
+            lbColorGridDataFore.TabIndex=25;
+            lbColorGridDataFore.Text="Grid data foreground";
             // 
             // btnColorGridDataFore
             // 
-            this.btnColorGridDataFore.Location = new System.Drawing.Point(336, 304);
-            this.btnColorGridDataFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridDataFore.Name = "btnColorGridDataFore";
-            this.btnColorGridDataFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridDataFore.TabIndex = 9;
-            this.btnColorGridDataFore.UseVisualStyleBackColor = true;
-            this.btnColorGridDataFore.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridDataFore.Location=new System.Drawing.Point(264, 304);
+            btnColorGridDataFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridDataFore.Name="btnColorGridDataFore";
+            btnColorGridDataFore.Size=new System.Drawing.Size(232, 43);
+            btnColorGridDataFore.TabIndex=9;
+            btnColorGridDataFore.UseVisualStyleBackColor=true;
+            btnColorGridDataFore.Click+=btnColor_Click;
             // 
             // lbColorGridHeadFore
             // 
-            this.lbColorGridHeadFore.AutoSize = true;
-            this.lbColorGridHeadFore.Location = new System.Drawing.Point(334, 139);
-            this.lbColorGridHeadFore.Name = "lbColorGridHeadFore";
-            this.lbColorGridHeadFore.Size = new System.Drawing.Size(166, 20);
-            this.lbColorGridHeadFore.TabIndex = 23;
-            this.lbColorGridHeadFore.Text = "Grid header foreground";
+            lbColorGridHeadFore.AutoSize=true;
+            lbColorGridHeadFore.Location=new System.Drawing.Point(262, 139);
+            lbColorGridHeadFore.Name="lbColorGridHeadFore";
+            lbColorGridHeadFore.Size=new System.Drawing.Size(166, 20);
+            lbColorGridHeadFore.TabIndex=23;
+            lbColorGridHeadFore.Text="Grid header foreground";
             // 
             // btnColorGridHeadFore
             // 
-            this.btnColorGridHeadFore.Location = new System.Drawing.Point(336, 160);
-            this.btnColorGridHeadFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridHeadFore.Name = "btnColorGridHeadFore";
-            this.btnColorGridHeadFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridHeadFore.TabIndex = 5;
-            this.btnColorGridHeadFore.UseVisualStyleBackColor = true;
-            this.btnColorGridHeadFore.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridHeadFore.Location=new System.Drawing.Point(264, 160);
+            btnColorGridHeadFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridHeadFore.Name="btnColorGridHeadFore";
+            btnColorGridHeadFore.Size=new System.Drawing.Size(232, 43);
+            btnColorGridHeadFore.TabIndex=5;
+            btnColorGridHeadFore.UseVisualStyleBackColor=true;
+            btnColorGridHeadFore.Click+=btnColor_Click;
             // 
             // lbColorGridSelFore
             // 
-            this.lbColorGridSelFore.AutoSize = true;
-            this.lbColorGridSelFore.Location = new System.Drawing.Point(334, 355);
-            this.lbColorGridSelFore.Name = "lbColorGridSelFore";
-            this.lbColorGridSelFore.Size = new System.Drawing.Size(175, 20);
-            this.lbColorGridSelFore.TabIndex = 21;
-            this.lbColorGridSelFore.Text = "Grid selected foreground";
+            lbColorGridSelFore.AutoSize=true;
+            lbColorGridSelFore.Location=new System.Drawing.Point(262, 355);
+            lbColorGridSelFore.Name="lbColorGridSelFore";
+            lbColorGridSelFore.Size=new System.Drawing.Size(175, 20);
+            lbColorGridSelFore.TabIndex=21;
+            lbColorGridSelFore.Text="Grid selected foreground";
             // 
             // btnColorGridSelFore
             // 
-            this.btnColorGridSelFore.Location = new System.Drawing.Point(336, 376);
-            this.btnColorGridSelFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridSelFore.Name = "btnColorGridSelFore";
-            this.btnColorGridSelFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridSelFore.TabIndex = 11;
-            this.btnColorGridSelFore.UseVisualStyleBackColor = true;
-            this.btnColorGridSelFore.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridSelFore.Location=new System.Drawing.Point(264, 376);
+            btnColorGridSelFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridSelFore.Name="btnColorGridSelFore";
+            btnColorGridSelFore.Size=new System.Drawing.Size(232, 43);
+            btnColorGridSelFore.TabIndex=11;
+            btnColorGridSelFore.UseVisualStyleBackColor=true;
+            btnColorGridSelFore.Click+=btnColor_Click;
             // 
             // lbColorGridBack
             // 
-            this.lbColorGridBack.AutoSize = true;
-            this.lbColorGridBack.Location = new System.Drawing.Point(22, 211);
-            this.lbColorGridBack.Name = "lbColorGridBack";
-            this.lbColorGridBack.Size = new System.Drawing.Size(120, 20);
-            this.lbColorGridBack.TabIndex = 19;
-            this.lbColorGridBack.Text = "Grid background";
+            lbColorGridBack.AutoSize=true;
+            lbColorGridBack.Location=new System.Drawing.Point(22, 211);
+            lbColorGridBack.Name="lbColorGridBack";
+            lbColorGridBack.Size=new System.Drawing.Size(120, 20);
+            lbColorGridBack.TabIndex=19;
+            lbColorGridBack.Text="Grid background";
             // 
             // btnColorGridBack
             // 
-            this.btnColorGridBack.Location = new System.Drawing.Point(24, 232);
-            this.btnColorGridBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorGridBack.Name = "btnColorGridBack";
-            this.btnColorGridBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorGridBack.TabIndex = 6;
-            this.btnColorGridBack.UseVisualStyleBackColor = true;
-            this.btnColorGridBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorGridBack.Location=new System.Drawing.Point(24, 232);
+            btnColorGridBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorGridBack.Name="btnColorGridBack";
+            btnColorGridBack.Size=new System.Drawing.Size(232, 43);
+            btnColorGridBack.TabIndex=6;
+            btnColorGridBack.UseVisualStyleBackColor=true;
+            btnColorGridBack.Click+=btnColor_Click;
             // 
             // lbColorToolbarFore
             // 
-            this.lbColorToolbarFore.AutoSize = true;
-            this.lbColorToolbarFore.Location = new System.Drawing.Point(334, 67);
-            this.lbColorToolbarFore.Name = "lbColorToolbarFore";
-            this.lbColorToolbarFore.Size = new System.Drawing.Size(143, 20);
-            this.lbColorToolbarFore.TabIndex = 17;
-            this.lbColorToolbarFore.Text = "Tool bar foreground";
+            lbColorToolbarFore.AutoSize=true;
+            lbColorToolbarFore.Location=new System.Drawing.Point(262, 67);
+            lbColorToolbarFore.Name="lbColorToolbarFore";
+            lbColorToolbarFore.Size=new System.Drawing.Size(143, 20);
+            lbColorToolbarFore.TabIndex=17;
+            lbColorToolbarFore.Text="Tool bar foreground";
             // 
             // btnColorToolbarFore
             // 
-            this.btnColorToolbarFore.Location = new System.Drawing.Point(336, 88);
-            this.btnColorToolbarFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorToolbarFore.Name = "btnColorToolbarFore";
-            this.btnColorToolbarFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorToolbarFore.TabIndex = 3;
-            this.btnColorToolbarFore.UseVisualStyleBackColor = true;
-            this.btnColorToolbarFore.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorToolbarFore.Location=new System.Drawing.Point(264, 88);
+            btnColorToolbarFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorToolbarFore.Name="btnColorToolbarFore";
+            btnColorToolbarFore.Size=new System.Drawing.Size(232, 43);
+            btnColorToolbarFore.TabIndex=3;
+            btnColorToolbarFore.UseVisualStyleBackColor=true;
+            btnColorToolbarFore.Click+=btnColor_Click;
             // 
             // lbColorToolbarBack
             // 
-            this.lbColorToolbarBack.AutoSize = true;
-            this.lbColorToolbarBack.Location = new System.Drawing.Point(22, 67);
-            this.lbColorToolbarBack.Name = "lbColorToolbarBack";
-            this.lbColorToolbarBack.Size = new System.Drawing.Size(147, 20);
-            this.lbColorToolbarBack.TabIndex = 15;
-            this.lbColorToolbarBack.Text = "Tool bar background";
+            lbColorToolbarBack.AutoSize=true;
+            lbColorToolbarBack.Location=new System.Drawing.Point(22, 67);
+            lbColorToolbarBack.Name="lbColorToolbarBack";
+            lbColorToolbarBack.Size=new System.Drawing.Size(147, 20);
+            lbColorToolbarBack.TabIndex=15;
+            lbColorToolbarBack.Text="Tool bar background";
             // 
             // btnColorToolbarBack
             // 
-            this.btnColorToolbarBack.Location = new System.Drawing.Point(24, 88);
-            this.btnColorToolbarBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorToolbarBack.Name = "btnColorToolbarBack";
-            this.btnColorToolbarBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorToolbarBack.TabIndex = 2;
-            this.btnColorToolbarBack.UseVisualStyleBackColor = true;
-            this.btnColorToolbarBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorToolbarBack.Location=new System.Drawing.Point(24, 88);
+            btnColorToolbarBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorToolbarBack.Name="btnColorToolbarBack";
+            btnColorToolbarBack.Size=new System.Drawing.Size(232, 43);
+            btnColorToolbarBack.TabIndex=2;
+            btnColorToolbarBack.UseVisualStyleBackColor=true;
+            btnColorToolbarBack.Click+=btnColor_Click;
             // 
             // ckThemeDarkTitle
             // 
-            this.ckThemeDarkTitle.AutoSize = true;
-            this.ckThemeDarkTitle.Location = new System.Drawing.Point(24, 24);
-            this.ckThemeDarkTitle.Name = "ckThemeDarkTitle";
-            this.ckThemeDarkTitle.Size = new System.Drawing.Size(121, 24);
-            this.ckThemeDarkTitle.TabIndex = 0;
-            this.ckThemeDarkTitle.Text = "Dark Title Bar";
-            this.ckThemeDarkTitle.UseVisualStyleBackColor = true;
+            ckThemeDarkTitle.AutoSize=true;
+            ckThemeDarkTitle.Location=new System.Drawing.Point(24, 24);
+            ckThemeDarkTitle.Name="ckThemeDarkTitle";
+            ckThemeDarkTitle.Size=new System.Drawing.Size(121, 24);
+            ckThemeDarkTitle.TabIndex=0;
+            ckThemeDarkTitle.Text="Dark Title Bar";
+            ckThemeDarkTitle.UseVisualStyleBackColor=true;
             // 
             // btnLogFont
             // 
-            this.btnLogFont.Location = new System.Drawing.Point(648, 520);
-            this.btnLogFont.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLogFont.Name = "btnLogFont";
-            this.btnLogFont.Size = new System.Drawing.Size(368, 43);
-            this.btnLogFont.TabIndex = 19;
-            this.btnLogFont.UseVisualStyleBackColor = true;
-            this.btnLogFont.Click += new System.EventHandler(this.btnLogFont_Click);
+            btnLogFont.Location=new System.Drawing.Point(512, 520);
+            btnLogFont.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnLogFont.Name="btnLogFont";
+            btnLogFont.Size=new System.Drawing.Size(352, 43);
+            btnLogFont.TabIndex=19;
+            btnLogFont.UseVisualStyleBackColor=true;
+            btnLogFont.Click+=btnLogFont_Click;
             // 
             // lbColorConsoleFore
             // 
-            this.lbColorConsoleFore.AutoSize = true;
-            this.lbColorConsoleFore.Location = new System.Drawing.Point(334, 499);
-            this.lbColorConsoleFore.Name = "lbColorConsoleFore";
-            this.lbColorConsoleFore.Size = new System.Drawing.Size(141, 20);
-            this.lbColorConsoleFore.TabIndex = 7;
-            this.lbColorConsoleFore.Text = "Console foreground";
+            lbColorConsoleFore.AutoSize=true;
+            lbColorConsoleFore.Location=new System.Drawing.Point(262, 499);
+            lbColorConsoleFore.Name="lbColorConsoleFore";
+            lbColorConsoleFore.Size=new System.Drawing.Size(141, 20);
+            lbColorConsoleFore.TabIndex=7;
+            lbColorConsoleFore.Text="Console foreground";
             // 
             // ckLogWordWrap
             // 
-            this.ckLogWordWrap.AutoSize = true;
-            this.ckLogWordWrap.Location = new System.Drawing.Point(648, 464);
-            this.ckLogWordWrap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ckLogWordWrap.Name = "ckLogWordWrap";
-            this.ckLogWordWrap.Size = new System.Drawing.Size(104, 24);
-            this.ckLogWordWrap.TabIndex = 18;
-            this.ckLogWordWrap.Text = "Word wrap";
-            this.ckLogWordWrap.UseVisualStyleBackColor = true;
+            ckLogWordWrap.AutoSize=true;
+            ckLogWordWrap.Location=new System.Drawing.Point(512, 464);
+            ckLogWordWrap.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ckLogWordWrap.Name="ckLogWordWrap";
+            ckLogWordWrap.Size=new System.Drawing.Size(104, 24);
+            ckLogWordWrap.TabIndex=18;
+            ckLogWordWrap.Text="Word wrap";
+            ckLogWordWrap.UseVisualStyleBackColor=true;
             // 
             // lbColorConsoleBack
             // 
-            this.lbColorConsoleBack.AutoSize = true;
-            this.lbColorConsoleBack.Location = new System.Drawing.Point(22, 499);
-            this.lbColorConsoleBack.Name = "lbColorConsoleBack";
-            this.lbColorConsoleBack.Size = new System.Drawing.Size(145, 20);
-            this.lbColorConsoleBack.TabIndex = 8;
-            this.lbColorConsoleBack.Text = "Console background";
+            lbColorConsoleBack.AutoSize=true;
+            lbColorConsoleBack.Location=new System.Drawing.Point(22, 499);
+            lbColorConsoleBack.Name="lbColorConsoleBack";
+            lbColorConsoleBack.Size=new System.Drawing.Size(145, 20);
+            lbColorConsoleBack.TabIndex=8;
+            lbColorConsoleBack.Text="Console background";
             // 
             // ckLogShowTs
             // 
-            this.ckLogShowTs.AutoSize = true;
-            this.ckLogShowTs.Location = new System.Drawing.Point(648, 432);
-            this.ckLogShowTs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ckLogShowTs.Name = "ckLogShowTs";
-            this.ckLogShowTs.Size = new System.Drawing.Size(235, 24);
-            this.ckLogShowTs.TabIndex = 17;
-            this.ckLogShowTs.Text = "Show date/time in each record";
-            this.ckLogShowTs.UseVisualStyleBackColor = true;
+            ckLogShowTs.AutoSize=true;
+            ckLogShowTs.Location=new System.Drawing.Point(512, 432);
+            ckLogShowTs.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ckLogShowTs.Name="ckLogShowTs";
+            ckLogShowTs.Size=new System.Drawing.Size(235, 24);
+            ckLogShowTs.TabIndex=17;
+            ckLogShowTs.Text="Show date/time in each record";
+            ckLogShowTs.UseVisualStyleBackColor=true;
             // 
             // btnColorConsoleFore
             // 
-            this.btnColorConsoleFore.Location = new System.Drawing.Point(336, 520);
-            this.btnColorConsoleFore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorConsoleFore.Name = "btnColorConsoleFore";
-            this.btnColorConsoleFore.Size = new System.Drawing.Size(296, 43);
-            this.btnColorConsoleFore.TabIndex = 14;
-            this.btnColorConsoleFore.UseVisualStyleBackColor = false;
-            this.btnColorConsoleFore.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorConsoleFore.Location=new System.Drawing.Point(264, 520);
+            btnColorConsoleFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorConsoleFore.Name="btnColorConsoleFore";
+            btnColorConsoleFore.Size=new System.Drawing.Size(232, 43);
+            btnColorConsoleFore.TabIndex=14;
+            btnColorConsoleFore.UseVisualStyleBackColor=false;
+            btnColorConsoleFore.Click+=btnColor_Click;
             // 
             // btnColorConsoleBack
             // 
-            this.btnColorConsoleBack.Location = new System.Drawing.Point(24, 520);
-            this.btnColorConsoleBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnColorConsoleBack.Name = "btnColorConsoleBack";
-            this.btnColorConsoleBack.Size = new System.Drawing.Size(296, 43);
-            this.btnColorConsoleBack.TabIndex = 13;
-            this.btnColorConsoleBack.UseVisualStyleBackColor = true;
-            this.btnColorConsoleBack.Click += new System.EventHandler(this.btnColor_Click);
+            btnColorConsoleBack.Location=new System.Drawing.Point(24, 520);
+            btnColorConsoleBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorConsoleBack.Name="btnColorConsoleBack";
+            btnColorConsoleBack.Size=new System.Drawing.Size(232, 43);
+            btnColorConsoleBack.TabIndex=13;
+            btnColorConsoleBack.UseVisualStyleBackColor=true;
+            btnColorConsoleBack.Click+=btnColor_Click;
             // 
             // lbConsoleFont
             // 
-            this.lbConsoleFont.AutoSize = true;
-            this.lbConsoleFont.Location = new System.Drawing.Point(646, 498);
-            this.lbConsoleFont.Name = "lbConsoleFont";
-            this.lbConsoleFont.Size = new System.Drawing.Size(95, 20);
-            this.lbConsoleFont.TabIndex = 13;
-            this.lbConsoleFont.Text = "Console Font";
+            lbConsoleFont.AutoSize=true;
+            lbConsoleFont.Location=new System.Drawing.Point(510, 498);
+            lbConsoleFont.Name="lbConsoleFont";
+            lbConsoleFont.Size=new System.Drawing.Size(95, 20);
+            lbConsoleFont.TabIndex=13;
+            lbConsoleFont.Text="Console Font";
             // 
             // tabApplications
             // 
-            this.tabApplications.Controls.Add(this.ckCalcAppResources);
-            this.tabApplications.Controls.Add(this.edAppLogMaxSize);
-            this.tabApplications.Controls.Add(this.lbAppsLinesLog);
-            this.tabApplications.Controls.Add(this.ckDontNotifyWhenAppsActive);
-            this.tabApplications.Controls.Add(this.ckNotifyWhenAppStops);
-            this.tabApplications.Location = new System.Drawing.Point(4, 29);
-            this.tabApplications.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabApplications.Name = "tabApplications";
-            this.tabApplications.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabApplications.Size = new System.Drawing.Size(1039, 684);
-            this.tabApplications.TabIndex = 0;
-            this.tabApplications.Text = "Applications";
-            this.tabApplications.UseVisualStyleBackColor = true;
+            tabApplications.Controls.Add(ckCalcAppResources);
+            tabApplications.Controls.Add(edAppLogMaxSize);
+            tabApplications.Controls.Add(lbAppsLinesLog);
+            tabApplications.Controls.Add(ckDontNotifyWhenAppsActive);
+            tabApplications.Controls.Add(ckNotifyWhenAppStops);
+            tabApplications.Location=new System.Drawing.Point(4, 29);
+            tabApplications.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            tabApplications.Name="tabApplications";
+            tabApplications.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            tabApplications.Size=new System.Drawing.Size(1039, 684);
+            tabApplications.TabIndex=0;
+            tabApplications.Text="Applications";
+            tabApplications.UseVisualStyleBackColor=true;
             // 
             // ckCalcAppResources
             // 
-            this.ckCalcAppResources.AutoSize = true;
-            this.ckCalcAppResources.Location = new System.Drawing.Point(16, 24);
-            this.ckCalcAppResources.Name = "ckCalcAppResources";
-            this.ckCalcAppResources.Size = new System.Drawing.Size(237, 24);
-            this.ckCalcAppResources.TabIndex = 0;
-            this.ckCalcAppResources.Text = "Calculate application resources";
-            this.ckCalcAppResources.UseVisualStyleBackColor = true;
+            ckCalcAppResources.AutoSize=true;
+            ckCalcAppResources.Location=new System.Drawing.Point(16, 24);
+            ckCalcAppResources.Name="ckCalcAppResources";
+            ckCalcAppResources.Size=new System.Drawing.Size(237, 24);
+            ckCalcAppResources.TabIndex=0;
+            ckCalcAppResources.Text="Calculate application resources";
+            ckCalcAppResources.UseVisualStyleBackColor=true;
             // 
             // edAppLogMaxSize
             // 
-            this.edAppLogMaxSize.Location = new System.Drawing.Point(16, 184);
-            this.edAppLogMaxSize.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.edAppLogMaxSize.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.edAppLogMaxSize.Name = "edAppLogMaxSize";
-            this.edAppLogMaxSize.Size = new System.Drawing.Size(150, 27);
-            this.edAppLogMaxSize.TabIndex = 3;
-            this.edAppLogMaxSize.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
+            edAppLogMaxSize.Location=new System.Drawing.Point(16, 184);
+            edAppLogMaxSize.Maximum=new decimal(new int[] { 1000000, 0, 0, 0 });
+            edAppLogMaxSize.Minimum=new decimal(new int[] { 1000, 0, 0, 0 });
+            edAppLogMaxSize.Name="edAppLogMaxSize";
+            edAppLogMaxSize.Size=new System.Drawing.Size(150, 27);
+            edAppLogMaxSize.TabIndex=3;
+            edAppLogMaxSize.Value=new decimal(new int[] { 1000, 0, 0, 0 });
             // 
             // lbAppsLinesLog
             // 
-            this.lbAppsLinesLog.AutoSize = true;
-            this.lbAppsLinesLog.Location = new System.Drawing.Point(14, 160);
-            this.lbAppsLinesLog.Name = "lbAppsLinesLog";
-            this.lbAppsLinesLog.Size = new System.Drawing.Size(130, 20);
-            this.lbAppsLinesLog.TabIndex = 12;
-            this.lbAppsLinesLog.Text = "Maximum log size";
+            lbAppsLinesLog.AutoSize=true;
+            lbAppsLinesLog.Location=new System.Drawing.Point(14, 160);
+            lbAppsLinesLog.Name="lbAppsLinesLog";
+            lbAppsLinesLog.Size=new System.Drawing.Size(130, 20);
+            lbAppsLinesLog.TabIndex=12;
+            lbAppsLinesLog.Text="Maximum log size";
             // 
             // ckDontNotifyWhenAppsActive
             // 
-            this.ckDontNotifyWhenAppsActive.AutoSize = true;
-            this.ckDontNotifyWhenAppsActive.Location = new System.Drawing.Point(40, 112);
-            this.ckDontNotifyWhenAppsActive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ckDontNotifyWhenAppsActive.Name = "ckDontNotifyWhenAppsActive";
-            this.ckDontNotifyWhenAppsActive.Size = new System.Drawing.Size(273, 24);
-            this.ckDontNotifyWhenAppsActive.TabIndex = 2;
-            this.ckDontNotifyWhenAppsActive.Text = "Do not notify when apps form active";
-            this.ckDontNotifyWhenAppsActive.UseVisualStyleBackColor = true;
+            ckDontNotifyWhenAppsActive.AutoSize=true;
+            ckDontNotifyWhenAppsActive.Location=new System.Drawing.Point(40, 112);
+            ckDontNotifyWhenAppsActive.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ckDontNotifyWhenAppsActive.Name="ckDontNotifyWhenAppsActive";
+            ckDontNotifyWhenAppsActive.Size=new System.Drawing.Size(273, 24);
+            ckDontNotifyWhenAppsActive.TabIndex=2;
+            ckDontNotifyWhenAppsActive.Text="Do not notify when apps form active";
+            ckDontNotifyWhenAppsActive.UseVisualStyleBackColor=true;
             // 
             // ckNotifyWhenAppStops
             // 
-            this.ckNotifyWhenAppStops.AutoSize = true;
-            this.ckNotifyWhenAppStops.Location = new System.Drawing.Point(16, 80);
-            this.ckNotifyWhenAppStops.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ckNotifyWhenAppStops.Name = "ckNotifyWhenAppStops";
-            this.ckNotifyWhenAppStops.Size = new System.Drawing.Size(229, 24);
-            this.ckNotifyWhenAppStops.TabIndex = 1;
-            this.ckNotifyWhenAppStops.Text = "Notify when application stops";
-            this.ckNotifyWhenAppStops.UseVisualStyleBackColor = true;
+            ckNotifyWhenAppStops.AutoSize=true;
+            ckNotifyWhenAppStops.Location=new System.Drawing.Point(16, 80);
+            ckNotifyWhenAppStops.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ckNotifyWhenAppStops.Name="ckNotifyWhenAppStops";
+            ckNotifyWhenAppStops.Size=new System.Drawing.Size(229, 24);
+            ckNotifyWhenAppStops.TabIndex=1;
+            ckNotifyWhenAppStops.Text="Notify when application stops";
+            ckNotifyWhenAppStops.UseVisualStyleBackColor=true;
             // 
             // tabRepos
             // 
-            this.tabRepos.Controls.Add(this.ckGitAutoCRLF);
-            this.tabRepos.Controls.Add(this.btnCustomCommandsHelp);
-            this.tabRepos.Controls.Add(this.edGitCustomCommands);
-            this.tabRepos.Controls.Add(this.lbCustomCommands);
-            this.tabRepos.Controls.Add(this.lbDifProgramArgs);
-            this.tabRepos.Controls.Add(this.edDiffProgramArguments);
-            this.tabRepos.Controls.Add(this.lbDifProgramArgsInfo);
-            this.tabRepos.Controls.Add(this.btnSelDiffProgram);
-            this.tabRepos.Controls.Add(this.lbShellProgram);
-            this.tabRepos.Controls.Add(this.edDiffProgram);
-            this.tabRepos.Controls.Add(this.lbDiffProgram);
-            this.tabRepos.Controls.Add(this.lbCommitMsgInfo);
-            this.tabRepos.Controls.Add(this.edCommitMessage);
-            this.tabRepos.Controls.Add(this.lbCommitMsg);
-            this.tabRepos.Controls.Add(this.ckGitAutoFetch);
-            this.tabRepos.Controls.Add(this.lbMemoInfo);
-            this.tabRepos.Controls.Add(this.boxGitAuthor);
-            this.tabRepos.Controls.Add(this.edGitNewBranchPrefixList);
-            this.tabRepos.Controls.Add(this.lbNewBranchPrefix);
-            this.tabRepos.Controls.Add(this.btnSelShellProgram);
-            this.tabRepos.Controls.Add(this.edShellProgram);
-            this.tabRepos.Controls.Add(this.boxGitCredentials);
-            this.tabRepos.Controls.Add(this.btnSelReposDir);
-            this.tabRepos.Controls.Add(this.edReposDir);
-            this.tabRepos.Controls.Add(this.lbRepositoryFolder);
-            this.tabRepos.Location = new System.Drawing.Point(4, 29);
-            this.tabRepos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabRepos.Name = "tabRepos";
-            this.tabRepos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabRepos.Size = new System.Drawing.Size(1039, 684);
-            this.tabRepos.TabIndex = 1;
-            this.tabRepos.Text = "Git Repositories";
-            this.tabRepos.UseVisualStyleBackColor = true;
+            tabRepos.Controls.Add(ckGitAutoCRLF);
+            tabRepos.Controls.Add(btnCustomCommandsHelp);
+            tabRepos.Controls.Add(edGitCustomCommands);
+            tabRepos.Controls.Add(lbCustomCommands);
+            tabRepos.Controls.Add(lbDifProgramArgs);
+            tabRepos.Controls.Add(edDiffProgramArguments);
+            tabRepos.Controls.Add(lbDifProgramArgsInfo);
+            tabRepos.Controls.Add(btnSelDiffProgram);
+            tabRepos.Controls.Add(lbShellProgram);
+            tabRepos.Controls.Add(edDiffProgram);
+            tabRepos.Controls.Add(lbDiffProgram);
+            tabRepos.Controls.Add(lbCommitMsgInfo);
+            tabRepos.Controls.Add(edCommitMessage);
+            tabRepos.Controls.Add(lbCommitMsg);
+            tabRepos.Controls.Add(ckGitAutoFetch);
+            tabRepos.Controls.Add(lbMemoInfo);
+            tabRepos.Controls.Add(boxGitAuthor);
+            tabRepos.Controls.Add(edGitNewBranchPrefixList);
+            tabRepos.Controls.Add(lbNewBranchPrefix);
+            tabRepos.Controls.Add(btnSelShellProgram);
+            tabRepos.Controls.Add(edShellProgram);
+            tabRepos.Controls.Add(boxGitCredentials);
+            tabRepos.Controls.Add(btnSelReposDir);
+            tabRepos.Controls.Add(edReposDir);
+            tabRepos.Controls.Add(lbRepositoryFolder);
+            tabRepos.Location=new System.Drawing.Point(4, 29);
+            tabRepos.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            tabRepos.Name="tabRepos";
+            tabRepos.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            tabRepos.Size=new System.Drawing.Size(1039, 684);
+            tabRepos.TabIndex=1;
+            tabRepos.Text="Git Repositories";
+            tabRepos.UseVisualStyleBackColor=true;
             // 
             // ckGitAutoCRLF
             // 
-            this.ckGitAutoCRLF.AutoSize = true;
-            this.ckGitAutoCRLF.Location = new System.Drawing.Point(16, 536);
-            this.ckGitAutoCRLF.Name = "ckGitAutoCRLF";
-            this.ckGitAutoCRLF.Size = new System.Drawing.Size(545, 24);
-            this.ckGitAutoCRLF.TabIndex = 13;
-            this.ckGitAutoCRLF.Text = "Auto enable CR+LF config in repositories (ensures diff between Unix and Win)";
-            this.ckGitAutoCRLF.UseVisualStyleBackColor = true;
+            ckGitAutoCRLF.AutoSize=true;
+            ckGitAutoCRLF.Location=new System.Drawing.Point(16, 536);
+            ckGitAutoCRLF.Name="ckGitAutoCRLF";
+            ckGitAutoCRLF.Size=new System.Drawing.Size(545, 24);
+            ckGitAutoCRLF.TabIndex=13;
+            ckGitAutoCRLF.Text="Auto enable CR+LF config in repositories (ensures diff between Unix and Win)";
+            ckGitAutoCRLF.UseVisualStyleBackColor=true;
             // 
             // btnCustomCommandsHelp
             // 
-            this.btnCustomCommandsHelp.AutoSize = true;
-            this.btnCustomCommandsHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCustomCommandsHelp.Location = new System.Drawing.Point(992, 400);
-            this.btnCustomCommandsHelp.Name = "btnCustomCommandsHelp";
-            this.btnCustomCommandsHelp.Size = new System.Drawing.Size(34, 20);
-            this.btnCustomCommandsHelp.TabIndex = 20;
-            this.btnCustomCommandsHelp.Text = "[ ? ]";
-            this.btnCustomCommandsHelp.Click += new System.EventHandler(this.btnCustomCommandsHelp_Click);
+            btnCustomCommandsHelp.AutoSize=true;
+            btnCustomCommandsHelp.Cursor=System.Windows.Forms.Cursors.Hand;
+            btnCustomCommandsHelp.Location=new System.Drawing.Point(992, 400);
+            btnCustomCommandsHelp.Name="btnCustomCommandsHelp";
+            btnCustomCommandsHelp.Size=new System.Drawing.Size(34, 20);
+            btnCustomCommandsHelp.TabIndex=20;
+            btnCustomCommandsHelp.Text="[ ? ]";
+            btnCustomCommandsHelp.Click+=btnCustomCommandsHelp_Click;
             // 
             // edGitCustomCommands
             // 
-            this.edGitCustomCommands.Location = new System.Drawing.Point(536, 424);
-            this.edGitCustomCommands.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edGitCustomCommands.Multiline = true;
-            this.edGitCustomCommands.Name = "edGitCustomCommands";
-            this.edGitCustomCommands.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edGitCustomCommands.Size = new System.Drawing.Size(488, 95);
-            this.edGitCustomCommands.TabIndex = 12;
+            edGitCustomCommands.Location=new System.Drawing.Point(536, 424);
+            edGitCustomCommands.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edGitCustomCommands.Multiline=true;
+            edGitCustomCommands.Name="edGitCustomCommands";
+            edGitCustomCommands.ScrollBars=System.Windows.Forms.ScrollBars.Vertical;
+            edGitCustomCommands.Size=new System.Drawing.Size(488, 95);
+            edGitCustomCommands.TabIndex=12;
             // 
             // lbCustomCommands
             // 
-            this.lbCustomCommands.AutoSize = true;
-            this.lbCustomCommands.Location = new System.Drawing.Point(536, 400);
-            this.lbCustomCommands.Name = "lbCustomCommands";
-            this.lbCustomCommands.Size = new System.Drawing.Size(174, 20);
-            this.lbCustomCommands.TabIndex = 19;
-            this.lbCustomCommands.Text = "Custom Shell Commands";
+            lbCustomCommands.AutoSize=true;
+            lbCustomCommands.Location=new System.Drawing.Point(536, 400);
+            lbCustomCommands.Name="lbCustomCommands";
+            lbCustomCommands.Size=new System.Drawing.Size(174, 20);
+            lbCustomCommands.TabIndex=19;
+            lbCustomCommands.Text="Custom Shell Commands";
             // 
             // lbDifProgramArgs
             // 
-            this.lbDifProgramArgs.AutoSize = true;
-            this.lbDifProgramArgs.Location = new System.Drawing.Point(534, 336);
-            this.lbDifProgramArgs.Name = "lbDifProgramArgs";
-            this.lbDifProgramArgs.Size = new System.Drawing.Size(81, 20);
-            this.lbDifProgramArgs.TabIndex = 18;
-            this.lbDifProgramArgs.Text = "Arguments";
+            lbDifProgramArgs.AutoSize=true;
+            lbDifProgramArgs.Location=new System.Drawing.Point(534, 336);
+            lbDifProgramArgs.Name="lbDifProgramArgs";
+            lbDifProgramArgs.Size=new System.Drawing.Size(81, 20);
+            lbDifProgramArgs.TabIndex=18;
+            lbDifProgramArgs.Text="Arguments";
             // 
             // edDiffProgramArguments
             // 
-            this.edDiffProgramArguments.Location = new System.Drawing.Point(536, 360);
-            this.edDiffProgramArguments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edDiffProgramArguments.Name = "edDiffProgramArguments";
-            this.edDiffProgramArguments.Size = new System.Drawing.Size(488, 27);
-            this.edDiffProgramArguments.TabIndex = 10;
+            edDiffProgramArguments.Location=new System.Drawing.Point(536, 360);
+            edDiffProgramArguments.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edDiffProgramArguments.Name="edDiffProgramArguments";
+            edDiffProgramArguments.Size=new System.Drawing.Size(488, 27);
+            edDiffProgramArguments.TabIndex=10;
             // 
             // lbDifProgramArgsInfo
             // 
-            this.lbDifProgramArgsInfo.AutoSize = true;
-            this.lbDifProgramArgsInfo.ForeColor = System.Drawing.Color.Gray;
-            this.lbDifProgramArgsInfo.Location = new System.Drawing.Point(656, 336);
-            this.lbDifProgramArgsInfo.Name = "lbDifProgramArgsInfo";
-            this.lbDifProgramArgsInfo.Size = new System.Drawing.Size(227, 20);
-            this.lbDifProgramArgsInfo.TabIndex = 16;
-            this.lbDifProgramArgsInfo.Text = "[old] = old file / [new] = new file";
+            lbDifProgramArgsInfo.AutoSize=true;
+            lbDifProgramArgsInfo.ForeColor=System.Drawing.Color.Gray;
+            lbDifProgramArgsInfo.Location=new System.Drawing.Point(656, 336);
+            lbDifProgramArgsInfo.Name="lbDifProgramArgsInfo";
+            lbDifProgramArgsInfo.Size=new System.Drawing.Size(227, 20);
+            lbDifProgramArgsInfo.TabIndex=16;
+            lbDifProgramArgsInfo.Text="[old] = old file / [new] = new file";
             // 
             // btnSelDiffProgram
             // 
-            this.btnSelDiffProgram.Location = new System.Drawing.Point(496, 360);
-            this.btnSelDiffProgram.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSelDiffProgram.Name = "btnSelDiffProgram";
-            this.btnSelDiffProgram.Size = new System.Drawing.Size(27, 33);
-            this.btnSelDiffProgram.TabIndex = 9;
-            this.btnSelDiffProgram.TabStop = false;
-            this.btnSelDiffProgram.Text = "...";
-            this.btnSelDiffProgram.UseVisualStyleBackColor = true;
-            this.btnSelDiffProgram.Click += new System.EventHandler(this.btnSelDiffProgram_Click);
+            btnSelDiffProgram.Location=new System.Drawing.Point(496, 360);
+            btnSelDiffProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnSelDiffProgram.Name="btnSelDiffProgram";
+            btnSelDiffProgram.Size=new System.Drawing.Size(27, 33);
+            btnSelDiffProgram.TabIndex=9;
+            btnSelDiffProgram.TabStop=false;
+            btnSelDiffProgram.Text="...";
+            btnSelDiffProgram.UseVisualStyleBackColor=true;
+            btnSelDiffProgram.Click+=btnSelDiffProgram_Click;
             // 
             // lbShellProgram
             // 
-            this.lbShellProgram.AutoSize = true;
-            this.lbShellProgram.Location = new System.Drawing.Point(12, 264);
-            this.lbShellProgram.Name = "lbShellProgram";
-            this.lbShellProgram.Size = new System.Drawing.Size(103, 20);
-            this.lbShellProgram.TabIndex = 5;
-            this.lbShellProgram.Text = "Shell program";
+            lbShellProgram.AutoSize=true;
+            lbShellProgram.Location=new System.Drawing.Point(12, 264);
+            lbShellProgram.Name="lbShellProgram";
+            lbShellProgram.Size=new System.Drawing.Size(103, 20);
+            lbShellProgram.TabIndex=5;
+            lbShellProgram.Text="Shell program";
             // 
             // edDiffProgram
             // 
-            this.edDiffProgram.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.edDiffProgram.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.edDiffProgram.Location = new System.Drawing.Point(16, 360);
-            this.edDiffProgram.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edDiffProgram.Name = "edDiffProgram";
-            this.edDiffProgram.Size = new System.Drawing.Size(480, 27);
-            this.edDiffProgram.TabIndex = 8;
+            edDiffProgram.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            edDiffProgram.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystem;
+            edDiffProgram.Location=new System.Drawing.Point(16, 360);
+            edDiffProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edDiffProgram.Name="edDiffProgram";
+            edDiffProgram.Size=new System.Drawing.Size(480, 27);
+            edDiffProgram.TabIndex=8;
             // 
             // lbDiffProgram
             // 
-            this.lbDiffProgram.AutoSize = true;
-            this.lbDiffProgram.Location = new System.Drawing.Point(12, 336);
-            this.lbDiffProgram.Name = "lbDiffProgram";
-            this.lbDiffProgram.Size = new System.Drawing.Size(96, 20);
-            this.lbDiffProgram.TabIndex = 15;
-            this.lbDiffProgram.Text = "Diff program";
+            lbDiffProgram.AutoSize=true;
+            lbDiffProgram.Location=new System.Drawing.Point(12, 336);
+            lbDiffProgram.Name="lbDiffProgram";
+            lbDiffProgram.Size=new System.Drawing.Size(96, 20);
+            lbDiffProgram.TabIndex=15;
+            lbDiffProgram.Text="Diff program";
             // 
             // lbCommitMsgInfo
             // 
-            this.lbCommitMsgInfo.AutoSize = true;
-            this.lbCommitMsgInfo.ForeColor = System.Drawing.Color.Gray;
-            this.lbCommitMsgInfo.Location = new System.Drawing.Point(240, 608);
-            this.lbCommitMsgInfo.Name = "lbCommitMsgInfo";
-            this.lbCommitMsgInfo.Size = new System.Drawing.Size(205, 20);
-            this.lbCommitMsgInfo.TabIndex = 14;
-            this.lbCommitMsgInfo.Text = "Use [branch] for branch name";
+            lbCommitMsgInfo.AutoSize=true;
+            lbCommitMsgInfo.ForeColor=System.Drawing.Color.Gray;
+            lbCommitMsgInfo.Location=new System.Drawing.Point(240, 608);
+            lbCommitMsgInfo.Name="lbCommitMsgInfo";
+            lbCommitMsgInfo.Size=new System.Drawing.Size(205, 20);
+            lbCommitMsgInfo.TabIndex=14;
+            lbCommitMsgInfo.Text="Use [branch] for branch name";
             // 
             // edCommitMessage
             // 
-            this.edCommitMessage.Location = new System.Drawing.Point(16, 632);
-            this.edCommitMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edCommitMessage.Name = "edCommitMessage";
-            this.edCommitMessage.Size = new System.Drawing.Size(504, 27);
-            this.edCommitMessage.TabIndex = 15;
+            edCommitMessage.Location=new System.Drawing.Point(16, 632);
+            edCommitMessage.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edCommitMessage.Name="edCommitMessage";
+            edCommitMessage.Size=new System.Drawing.Size(504, 27);
+            edCommitMessage.TabIndex=15;
             // 
             // lbCommitMsg
             // 
-            this.lbCommitMsg.AutoSize = true;
-            this.lbCommitMsg.Location = new System.Drawing.Point(14, 608);
-            this.lbCommitMsg.Name = "lbCommitMsg";
-            this.lbCommitMsg.Size = new System.Drawing.Size(124, 20);
-            this.lbCommitMsg.TabIndex = 12;
-            this.lbCommitMsg.Text = "Commit message";
+            lbCommitMsg.AutoSize=true;
+            lbCommitMsg.Location=new System.Drawing.Point(14, 608);
+            lbCommitMsg.Name="lbCommitMsg";
+            lbCommitMsg.Size=new System.Drawing.Size(124, 20);
+            lbCommitMsg.TabIndex=12;
+            lbCommitMsg.Text="Commit message";
             // 
             // ckGitAutoFetch
             // 
-            this.ckGitAutoFetch.AutoSize = true;
-            this.ckGitAutoFetch.Location = new System.Drawing.Point(16, 568);
-            this.ckGitAutoFetch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ckGitAutoFetch.Name = "ckGitAutoFetch";
-            this.ckGitAutoFetch.Size = new System.Drawing.Size(249, 24);
-            this.ckGitAutoFetch.TabIndex = 14;
-            this.ckGitAutoFetch.Text = "Auto Fetch in Remote operations";
-            this.ckGitAutoFetch.UseVisualStyleBackColor = true;
+            ckGitAutoFetch.AutoSize=true;
+            ckGitAutoFetch.Location=new System.Drawing.Point(16, 568);
+            ckGitAutoFetch.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ckGitAutoFetch.Name="ckGitAutoFetch";
+            ckGitAutoFetch.Size=new System.Drawing.Size(249, 24);
+            ckGitAutoFetch.TabIndex=14;
+            ckGitAutoFetch.Text="Auto Fetch in Remote operations";
+            ckGitAutoFetch.UseVisualStyleBackColor=true;
             // 
             // lbMemoInfo
             // 
-            this.lbMemoInfo.ForeColor = System.Drawing.Color.Gray;
-            this.lbMemoInfo.Location = new System.Drawing.Point(792, 528);
-            this.lbMemoInfo.Name = "lbMemoInfo";
-            this.lbMemoInfo.Size = new System.Drawing.Size(232, 20);
-            this.lbMemoInfo.TabIndex = 10;
-            this.lbMemoInfo.Text = "CTRL+ENTER = New line";
-            this.lbMemoInfo.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            lbMemoInfo.ForeColor=System.Drawing.Color.Gray;
+            lbMemoInfo.Location=new System.Drawing.Point(792, 528);
+            lbMemoInfo.Name="lbMemoInfo";
+            lbMemoInfo.Size=new System.Drawing.Size(232, 20);
+            lbMemoInfo.TabIndex=10;
+            lbMemoInfo.Text="CTRL+ENTER = New line";
+            lbMemoInfo.TextAlign=System.Drawing.ContentAlignment.TopRight;
             // 
             // boxGitAuthor
             // 
-            this.boxGitAuthor.Controls.Add(this.edGitName);
-            this.boxGitAuthor.Controls.Add(this.lbAuthorName);
-            this.boxGitAuthor.Controls.Add(this.lbAuthorEmail);
-            this.boxGitAuthor.Controls.Add(this.edGitEmail);
-            this.boxGitAuthor.Location = new System.Drawing.Point(16, 80);
-            this.boxGitAuthor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxGitAuthor.Name = "boxGitAuthor";
-            this.boxGitAuthor.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxGitAuthor.Size = new System.Drawing.Size(496, 171);
-            this.boxGitAuthor.TabIndex = 3;
-            this.boxGitAuthor.TabStop = false;
-            this.boxGitAuthor.Text = "Author information";
+            boxGitAuthor.Controls.Add(edGitName);
+            boxGitAuthor.Controls.Add(lbAuthorName);
+            boxGitAuthor.Controls.Add(lbAuthorEmail);
+            boxGitAuthor.Controls.Add(edGitEmail);
+            boxGitAuthor.Location=new System.Drawing.Point(16, 80);
+            boxGitAuthor.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxGitAuthor.Name="boxGitAuthor";
+            boxGitAuthor.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxGitAuthor.Size=new System.Drawing.Size(496, 171);
+            boxGitAuthor.TabIndex=3;
+            boxGitAuthor.TabStop=false;
+            boxGitAuthor.Text="Author information";
             // 
             // edGitName
             // 
-            this.edGitName.Location = new System.Drawing.Point(16, 56);
-            this.edGitName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edGitName.Name = "edGitName";
-            this.edGitName.Size = new System.Drawing.Size(464, 27);
-            this.edGitName.TabIndex = 4;
+            edGitName.Location=new System.Drawing.Point(16, 56);
+            edGitName.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edGitName.Name="edGitName";
+            edGitName.Size=new System.Drawing.Size(464, 27);
+            edGitName.TabIndex=4;
             // 
             // lbAuthorName
             // 
-            this.lbAuthorName.AutoSize = true;
-            this.lbAuthorName.Location = new System.Drawing.Point(14, 32);
-            this.lbAuthorName.Name = "lbAuthorName";
-            this.lbAuthorName.Size = new System.Drawing.Size(49, 20);
-            this.lbAuthorName.TabIndex = 3;
-            this.lbAuthorName.Text = "Name";
+            lbAuthorName.AutoSize=true;
+            lbAuthorName.Location=new System.Drawing.Point(14, 32);
+            lbAuthorName.Name="lbAuthorName";
+            lbAuthorName.Size=new System.Drawing.Size(49, 20);
+            lbAuthorName.TabIndex=3;
+            lbAuthorName.Text="Name";
             // 
             // lbAuthorEmail
             // 
-            this.lbAuthorEmail.AutoSize = true;
-            this.lbAuthorEmail.Location = new System.Drawing.Point(14, 96);
-            this.lbAuthorEmail.Name = "lbAuthorEmail";
-            this.lbAuthorEmail.Size = new System.Drawing.Size(46, 20);
-            this.lbAuthorEmail.TabIndex = 5;
-            this.lbAuthorEmail.Text = "Email";
+            lbAuthorEmail.AutoSize=true;
+            lbAuthorEmail.Location=new System.Drawing.Point(14, 96);
+            lbAuthorEmail.Name="lbAuthorEmail";
+            lbAuthorEmail.Size=new System.Drawing.Size(46, 20);
+            lbAuthorEmail.TabIndex=5;
+            lbAuthorEmail.Text="Email";
             // 
             // edGitEmail
             // 
-            this.edGitEmail.Location = new System.Drawing.Point(16, 120);
-            this.edGitEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edGitEmail.Name = "edGitEmail";
-            this.edGitEmail.Size = new System.Drawing.Size(464, 27);
-            this.edGitEmail.TabIndex = 6;
+            edGitEmail.Location=new System.Drawing.Point(16, 120);
+            edGitEmail.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edGitEmail.Name="edGitEmail";
+            edGitEmail.Size=new System.Drawing.Size(464, 27);
+            edGitEmail.TabIndex=6;
             // 
             // edGitNewBranchPrefixList
             // 
-            this.edGitNewBranchPrefixList.Location = new System.Drawing.Point(16, 424);
-            this.edGitNewBranchPrefixList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edGitNewBranchPrefixList.Multiline = true;
-            this.edGitNewBranchPrefixList.Name = "edGitNewBranchPrefixList";
-            this.edGitNewBranchPrefixList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edGitNewBranchPrefixList.Size = new System.Drawing.Size(502, 95);
-            this.edGitNewBranchPrefixList.TabIndex = 11;
+            edGitNewBranchPrefixList.Location=new System.Drawing.Point(16, 424);
+            edGitNewBranchPrefixList.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edGitNewBranchPrefixList.Multiline=true;
+            edGitNewBranchPrefixList.Name="edGitNewBranchPrefixList";
+            edGitNewBranchPrefixList.ScrollBars=System.Windows.Forms.ScrollBars.Vertical;
+            edGitNewBranchPrefixList.Size=new System.Drawing.Size(502, 95);
+            edGitNewBranchPrefixList.TabIndex=11;
             // 
             // lbNewBranchPrefix
             // 
-            this.lbNewBranchPrefix.AutoSize = true;
-            this.lbNewBranchPrefix.Location = new System.Drawing.Point(14, 400);
-            this.lbNewBranchPrefix.Name = "lbNewBranchPrefix";
-            this.lbNewBranchPrefix.Size = new System.Drawing.Size(153, 20);
-            this.lbNewBranchPrefix.TabIndex = 8;
-            this.lbNewBranchPrefix.Text = "New Branch prefix list";
+            lbNewBranchPrefix.AutoSize=true;
+            lbNewBranchPrefix.Location=new System.Drawing.Point(14, 400);
+            lbNewBranchPrefix.Name="lbNewBranchPrefix";
+            lbNewBranchPrefix.Size=new System.Drawing.Size(153, 20);
+            lbNewBranchPrefix.TabIndex=8;
+            lbNewBranchPrefix.Text="New Branch prefix list";
             // 
             // btnSelShellProgram
             // 
-            this.btnSelShellProgram.Location = new System.Drawing.Point(1000, 288);
-            this.btnSelShellProgram.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSelShellProgram.Name = "btnSelShellProgram";
-            this.btnSelShellProgram.Size = new System.Drawing.Size(27, 33);
-            this.btnSelShellProgram.TabIndex = 7;
-            this.btnSelShellProgram.TabStop = false;
-            this.btnSelShellProgram.Text = "...";
-            this.btnSelShellProgram.UseVisualStyleBackColor = true;
-            this.btnSelShellProgram.Click += new System.EventHandler(this.btnSelShellProgram_Click);
+            btnSelShellProgram.Location=new System.Drawing.Point(1000, 288);
+            btnSelShellProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnSelShellProgram.Name="btnSelShellProgram";
+            btnSelShellProgram.Size=new System.Drawing.Size(27, 33);
+            btnSelShellProgram.TabIndex=7;
+            btnSelShellProgram.TabStop=false;
+            btnSelShellProgram.Text="...";
+            btnSelShellProgram.UseVisualStyleBackColor=true;
+            btnSelShellProgram.Click+=btnSelShellProgram_Click;
             // 
             // edShellProgram
             // 
-            this.edShellProgram.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.edShellProgram.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.edShellProgram.Location = new System.Drawing.Point(16, 288);
-            this.edShellProgram.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edShellProgram.Name = "edShellProgram";
-            this.edShellProgram.Size = new System.Drawing.Size(984, 27);
-            this.edShellProgram.TabIndex = 6;
+            edShellProgram.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            edShellProgram.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystem;
+            edShellProgram.Location=new System.Drawing.Point(16, 288);
+            edShellProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edShellProgram.Name="edShellProgram";
+            edShellProgram.Size=new System.Drawing.Size(984, 27);
+            edShellProgram.TabIndex=6;
             // 
             // boxGitCredentials
             // 
-            this.boxGitCredentials.Controls.Add(this.edGitCredPassword);
-            this.boxGitCredentials.Controls.Add(this.lbCredPassword);
-            this.boxGitCredentials.Controls.Add(this.edGitCredUsername);
-            this.boxGitCredentials.Controls.Add(this.lbCredUsername);
-            this.boxGitCredentials.Location = new System.Drawing.Point(528, 80);
-            this.boxGitCredentials.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxGitCredentials.Name = "boxGitCredentials";
-            this.boxGitCredentials.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxGitCredentials.Size = new System.Drawing.Size(496, 171);
-            this.boxGitCredentials.TabIndex = 4;
-            this.boxGitCredentials.TabStop = false;
-            this.boxGitCredentials.Text = "Credentials";
+            boxGitCredentials.Controls.Add(edGitCredPassword);
+            boxGitCredentials.Controls.Add(lbCredPassword);
+            boxGitCredentials.Controls.Add(edGitCredUsername);
+            boxGitCredentials.Controls.Add(lbCredUsername);
+            boxGitCredentials.Location=new System.Drawing.Point(528, 80);
+            boxGitCredentials.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxGitCredentials.Name="boxGitCredentials";
+            boxGitCredentials.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxGitCredentials.Size=new System.Drawing.Size(496, 171);
+            boxGitCredentials.TabIndex=4;
+            boxGitCredentials.TabStop=false;
+            boxGitCredentials.Text="Credentials";
             // 
             // edGitCredPassword
             // 
-            this.edGitCredPassword.Location = new System.Drawing.Point(16, 120);
-            this.edGitCredPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edGitCredPassword.Name = "edGitCredPassword";
-            this.edGitCredPassword.PasswordChar = '●';
-            this.edGitCredPassword.Size = new System.Drawing.Size(464, 27);
-            this.edGitCredPassword.TabIndex = 10;
+            edGitCredPassword.Location=new System.Drawing.Point(16, 120);
+            edGitCredPassword.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edGitCredPassword.Name="edGitCredPassword";
+            edGitCredPassword.PasswordChar='●';
+            edGitCredPassword.Size=new System.Drawing.Size(464, 27);
+            edGitCredPassword.TabIndex=10;
             // 
             // lbCredPassword
             // 
-            this.lbCredPassword.AutoSize = true;
-            this.lbCredPassword.Location = new System.Drawing.Point(14, 96);
-            this.lbCredPassword.Name = "lbCredPassword";
-            this.lbCredPassword.Size = new System.Drawing.Size(70, 20);
-            this.lbCredPassword.TabIndex = 9;
-            this.lbCredPassword.Text = "Password";
+            lbCredPassword.AutoSize=true;
+            lbCredPassword.Location=new System.Drawing.Point(14, 96);
+            lbCredPassword.Name="lbCredPassword";
+            lbCredPassword.Size=new System.Drawing.Size(70, 20);
+            lbCredPassword.TabIndex=9;
+            lbCredPassword.Text="Password";
             // 
             // edGitCredUsername
             // 
-            this.edGitCredUsername.Location = new System.Drawing.Point(16, 56);
-            this.edGitCredUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edGitCredUsername.Name = "edGitCredUsername";
-            this.edGitCredUsername.Size = new System.Drawing.Size(464, 27);
-            this.edGitCredUsername.TabIndex = 8;
+            edGitCredUsername.Location=new System.Drawing.Point(16, 56);
+            edGitCredUsername.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edGitCredUsername.Name="edGitCredUsername";
+            edGitCredUsername.Size=new System.Drawing.Size(464, 27);
+            edGitCredUsername.TabIndex=8;
             // 
             // lbCredUsername
             // 
-            this.lbCredUsername.AutoSize = true;
-            this.lbCredUsername.Location = new System.Drawing.Point(14, 32);
-            this.lbCredUsername.Name = "lbCredUsername";
-            this.lbCredUsername.Size = new System.Drawing.Size(75, 20);
-            this.lbCredUsername.TabIndex = 7;
-            this.lbCredUsername.Text = "Username";
+            lbCredUsername.AutoSize=true;
+            lbCredUsername.Location=new System.Drawing.Point(14, 32);
+            lbCredUsername.Name="lbCredUsername";
+            lbCredUsername.Size=new System.Drawing.Size(75, 20);
+            lbCredUsername.TabIndex=7;
+            lbCredUsername.Text="Username";
             // 
             // btnSelReposDir
             // 
-            this.btnSelReposDir.Location = new System.Drawing.Point(992, 32);
-            this.btnSelReposDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSelReposDir.Name = "btnSelReposDir";
-            this.btnSelReposDir.Size = new System.Drawing.Size(27, 33);
-            this.btnSelReposDir.TabIndex = 2;
-            this.btnSelReposDir.TabStop = false;
-            this.btnSelReposDir.Text = "...";
-            this.btnSelReposDir.UseVisualStyleBackColor = true;
-            this.btnSelReposDir.Click += new System.EventHandler(this.btnSelReposDir_Click);
+            btnSelReposDir.Location=new System.Drawing.Point(992, 32);
+            btnSelReposDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnSelReposDir.Name="btnSelReposDir";
+            btnSelReposDir.Size=new System.Drawing.Size(27, 33);
+            btnSelReposDir.TabIndex=2;
+            btnSelReposDir.TabStop=false;
+            btnSelReposDir.Text="...";
+            btnSelReposDir.UseVisualStyleBackColor=true;
+            btnSelReposDir.Click+=btnSelReposDir_Click;
             // 
             // edReposDir
             // 
-            this.edReposDir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.edReposDir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            this.edReposDir.Location = new System.Drawing.Point(16, 32);
-            this.edReposDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edReposDir.Name = "edReposDir";
-            this.edReposDir.Size = new System.Drawing.Size(976, 27);
-            this.edReposDir.TabIndex = 1;
+            edReposDir.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            edReposDir.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
+            edReposDir.Location=new System.Drawing.Point(16, 32);
+            edReposDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edReposDir.Name="edReposDir";
+            edReposDir.Size=new System.Drawing.Size(976, 27);
+            edReposDir.TabIndex=1;
             // 
             // lbRepositoryFolder
             // 
-            this.lbRepositoryFolder.AutoSize = true;
-            this.lbRepositoryFolder.Location = new System.Drawing.Point(14, 8);
-            this.lbRepositoryFolder.Name = "lbRepositoryFolder";
-            this.lbRepositoryFolder.Size = new System.Drawing.Size(135, 20);
-            this.lbRepositoryFolder.TabIndex = 0;
-            this.lbRepositoryFolder.Text = "Repositories folder";
+            lbRepositoryFolder.AutoSize=true;
+            lbRepositoryFolder.Location=new System.Drawing.Point(14, 8);
+            lbRepositoryFolder.Name="lbRepositoryFolder";
+            lbRepositoryFolder.Size=new System.Drawing.Size(135, 20);
+            lbRepositoryFolder.TabIndex=0;
+            lbRepositoryFolder.Text="Repositories folder";
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(427, 736);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(101, 43);
-            this.btnOK.TabIndex = 98;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            btnOK.Location=new System.Drawing.Point(427, 736);
+            btnOK.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnOK.Name="btnOK";
+            btnOK.Size=new System.Drawing.Size(101, 43);
+            btnOK.TabIndex=98;
+            btnOK.Text="OK";
+            btnOK.UseVisualStyleBackColor=true;
+            btnOK.Click+=btnOK_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(536, 736);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(101, 43);
-            this.btnCancel.TabIndex = 99;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location=new System.Drawing.Point(536, 736);
+            btnCancel.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCancel.Name="btnCancel";
+            btnCancel.Size=new System.Drawing.Size(101, 43);
+            btnCancel.TabIndex=99;
+            btnCancel.Text="Cancel";
+            btnCancel.UseVisualStyleBackColor=true;
+            btnCancel.Click+=btnCancel_Click;
             // 
             // FrmConfig
             // 
-            this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1065, 789);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.pages);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.Name = "FrmConfig";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Settings - Digao Desk";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmConfig_FormClosed);
-            this.Load += new System.EventHandler(this.FrmConfig_Load);
-            this.pages.ResumeLayout(false);
-            this.tabGeneral.ResumeLayout(false);
-            this.tabGeneral.PerformLayout();
-            this.tabTheme.ResumeLayout(false);
-            this.tabTheme.PerformLayout();
-            this.tabApplications.ResumeLayout(false);
-            this.tabApplications.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.edAppLogMaxSize)).EndInit();
-            this.tabRepos.ResumeLayout(false);
-            this.tabRepos.PerformLayout();
-            this.boxGitAuthor.ResumeLayout(false);
-            this.boxGitAuthor.PerformLayout();
-            this.boxGitCredentials.ResumeLayout(false);
-            this.boxGitCredentials.PerformLayout();
-            this.ResumeLayout(false);
-
+            AcceptButton=btnOK;
+            AutoScaleDimensions=new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode=System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton=btnCancel;
+            ClientSize=new System.Drawing.Size(1065, 789);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOK);
+            Controls.Add(pages);
+            FormBorderStyle=System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MaximizeBox=false;
+            Name="FrmConfig";
+            StartPosition=System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text="Settings - Digao Desk";
+            FormClosed+=FrmConfig_FormClosed;
+            Load+=FrmConfig_Load;
+            pages.ResumeLayout(false);
+            tabGeneral.ResumeLayout(false);
+            tabGeneral.PerformLayout();
+            tabTheme.ResumeLayout(false);
+            tabTheme.PerformLayout();
+            tabApplications.ResumeLayout(false);
+            tabApplications.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).EndInit();
+            tabRepos.ResumeLayout(false);
+            tabRepos.PerformLayout();
+            boxGitAuthor.ResumeLayout(false);
+            boxGitAuthor.PerformLayout();
+            boxGitCredentials.ResumeLayout(false);
+            boxGitCredentials.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -1155,5 +1280,17 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbCustomCommands;
         private System.Windows.Forms.Label btnCustomCommandsHelp;
         private System.Windows.Forms.CheckBox ckGitAutoCRLF;
+        private System.Windows.Forms.Label lbColorAppLogDynWarn;
+        private System.Windows.Forms.Button btnColorAppLogDynWarn;
+        private System.Windows.Forms.Label lbColorAppLogDynError;
+        private System.Windows.Forms.Button btnColorAppLogDynError;
+        private System.Windows.Forms.Label lbColorAppLogError;
+        private System.Windows.Forms.Button btnColorAppLogError;
+        private System.Windows.Forms.Label lbColorAppLogStop;
+        private System.Windows.Forms.Button btnColorAppLogStop;
+        private System.Windows.Forms.Label lbColorAppLogNormal;
+        private System.Windows.Forms.Button btnColorAppLogNormal;
+        private System.Windows.Forms.Label lbColorLogTimestamp;
+        private System.Windows.Forms.Button btnColorLogTimestamp;
     }
 }

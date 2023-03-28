@@ -53,6 +53,12 @@ namespace DigaoDeskApp
             lbColorConsoleFore.Text = Vars.Lang.Config_Theme_ColorConsoleFore;
             lbColorStatusBack.Text = Vars.Lang.Config_Theme_ColorStatusBack;
             lbColorStatusFore.Text = Vars.Lang.Config_Theme_ColorStatusFore;
+            lbColorAppLogNormal.Text = Vars.Lang.Config_Theme_ColorAppLogNormal;
+            lbColorAppLogError.Text = Vars.Lang.Config_Theme_ColorAppLogError;
+            lbColorAppLogDynWarn.Text = Vars.Lang.Config_Theme_ColorAppLogDynWarn;
+            lbColorAppLogDynError.Text = Vars.Lang.Config_Theme_ColorAppLogDynError;
+            lbColorAppLogStop.Text = Vars.Lang.Config_Theme_ColorAppLogStop;
+            lbColorLogTimestamp.Text = Vars.Lang.Config_Theme_ColorLogTimestamp;
             lbConsoleFont.Text = Vars.Lang.Config_Theme_Font;
             ckLogShowTs.Text = Vars.Lang.Config_Theme_ShowDateTime;
             ckLogWordWrap.Text = Vars.Lang.Config_Theme_WordWrap;
@@ -98,7 +104,7 @@ namespace DigaoDeskApp
         private void LoadSettings()
         {
             edLanguage.SelectedItem = LangEngine.GetDefinitionByValue(Vars.Config.Language);
-            
+
             //--Theme tab
             _dlgFont.Font = new Font(Vars.Config.Theme.FontName, Vars.Config.Theme.FontSize);
             UpdateFontButton();
@@ -122,6 +128,14 @@ namespace DigaoDeskApp
             btnColorConsoleFore.BackColor = Vars.Config.Theme.ConsoleFore;
             btnColorStatusBack.BackColor = Vars.Config.Theme.StatusBack;
             btnColorStatusFore.BackColor = Vars.Config.Theme.StatusFore;
+
+            btnColorAppLogNormal.BackColor = Vars.Config.Theme.AppLogNormalFore;
+            btnColorAppLogError.BackColor = Vars.Config.Theme.AppLogErrorFore;
+            btnColorAppLogDynWarn.BackColor = Vars.Config.Theme.AppLogDynWarnFore;
+            btnColorAppLogDynError.BackColor = Vars.Config.Theme.AppLogDynErrorFore;
+            btnColorAppLogStop.BackColor = Vars.Config.Theme.AppLogStopFore;
+
+            btnColorLogTimestamp.BackColor = Vars.Config.Theme.TimestampFore;
             //--
 
             //--Apps tab
@@ -228,7 +242,7 @@ namespace DigaoDeskApp
             Vars.Config.Theme.GridBack = btnColorGridBack.BackColor;
             Vars.Config.Theme.GridLines = btnColorGridLines.BackColor;
             Vars.Config.Theme.GridDataBack = btnColorGridDataBack.BackColor;
-            Vars.Config.Theme.GridDataFore = btnColorGridDataFore.BackColor;            
+            Vars.Config.Theme.GridDataFore = btnColorGridDataFore.BackColor;
             Vars.Config.Theme.GridSelBack = btnColorGridSelBack.BackColor;
             Vars.Config.Theme.GridSelFore = btnColorGridSelFore.BackColor;
             Vars.Config.Theme.SplitterBack = btnColorSplitterBack.BackColor;
@@ -236,6 +250,14 @@ namespace DigaoDeskApp
             Vars.Config.Theme.ConsoleFore = btnColorConsoleFore.BackColor;
             Vars.Config.Theme.StatusBack = btnColorStatusBack.BackColor;
             Vars.Config.Theme.StatusFore = btnColorStatusFore.BackColor;
+
+            Vars.Config.Theme.AppLogNormalFore = btnColorAppLogNormal.BackColor;
+            Vars.Config.Theme.AppLogErrorFore = btnColorAppLogError.BackColor;
+            Vars.Config.Theme.AppLogDynWarnFore = btnColorAppLogDynWarn.BackColor;
+            Vars.Config.Theme.AppLogDynErrorFore = btnColorAppLogDynError.BackColor;
+            Vars.Config.Theme.AppLogStopFore = btnColorAppLogStop.BackColor;
+
+            Vars.Config.Theme.TimestampFore = btnColorLogTimestamp.BackColor;
             //--
 
             //--Apps tab
@@ -347,6 +369,14 @@ namespace DigaoDeskApp
             btnColorConsoleFore.BackColor = def.ConsoleFore;
             btnColorStatusBack.BackColor = def.StatusBack;
             btnColorStatusFore.BackColor = def.StatusFore;
+
+            btnColorAppLogNormal.BackColor = def.AppLogNormalFore;
+            btnColorAppLogError.BackColor = def.AppLogErrorFore;
+            btnColorAppLogDynWarn.BackColor = def.AppLogDynWarnFore;
+            btnColorAppLogDynError.BackColor = def.AppLogDynErrorFore;
+            btnColorAppLogStop.BackColor = def.AppLogStopFore;
+
+            btnColorLogTimestamp.BackColor = def.TimestampFore;
         }
 
         private void btnCustomCommandsHelp_Click(object sender, System.EventArgs e)

@@ -59,6 +59,12 @@
         public string Config_Theme_ColorConsoleFore;
         public string Config_Theme_ColorStatusBack;
         public string Config_Theme_ColorStatusFore;
+        public string Config_Theme_ColorAppLogNormal;
+        public string Config_Theme_ColorAppLogError;
+        public string Config_Theme_ColorAppLogDynWarn;
+        public string Config_Theme_ColorAppLogDynError;
+        public string Config_Theme_ColorAppLogStop;
+        public string Config_Theme_ColorLogTimestamp;
         public string Config_Theme_Font;
         public string Config_Theme_ShowDateTime;
         public string Config_Theme_WordWrap;

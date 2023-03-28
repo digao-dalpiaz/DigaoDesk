@@ -349,7 +349,7 @@ namespace DigaoDeskApp
                     if (Vars.Config.Theme.ShowTimestamp)
                     {
                         edLog.SelectionStart = edLog.TextLength;
-                        edLog.SelectionColor = Color.Gray;
+                        edLog.SelectionColor = Vars.Config.Theme.TimestampFore;
                         edLog.SelectedText = log.Timestamp.ToString(Vars.DATETIME_FMT) + " - ";
                     }
 
@@ -381,15 +381,15 @@ namespace DigaoDeskApp
             switch (type)
             {
                 case DigaoApplication.LogType.INFO:
-                    return Vars.Config.Theme.ConsoleFore;
+                    return Vars.Config.Theme.AppLogNormalFore;
                 case DigaoApplication.LogType.ERROR:
-                    return Color.Salmon;
-                case DigaoApplication.LogType.DYN_ERROR:
-                    return Color.Crimson;
+                    return Vars.Config.Theme.AppLogErrorFore;
                 case DigaoApplication.LogType.DYN_WARN:
-                    return Color.Orange;
+                    return Vars.Config.Theme.AppLogDynWarnFore;
+                case DigaoApplication.LogType.DYN_ERROR:
+                    return Vars.Config.Theme.AppLogDynErrorFore;
                 case DigaoApplication.LogType.STOP:
-                    return Color.MediumPurple;
+                    return Vars.Config.Theme.AppLogStopFore;
                 default:
                     throw new Exception("Log type invalid");
             }
