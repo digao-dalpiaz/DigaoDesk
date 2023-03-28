@@ -43,28 +43,28 @@ namespace DigaoDeskApp
             public Color StatusBack = Color.FromArgb(30, 30, 30);
             public Color StatusFore = Color.Silver;
 
-            public Color AppLogNormalFore = Color.FromArgb(128, 255, 128);
-            public Color AppLogErrorFore = Color.Salmon;
-            public Color AppLogDynWarnFore = Color.Orange;
-            public Color AppLogDynErrorFore = Color.Crimson;
-            public Color AppLogStopFore = Color.MediumPurple;
+            public Color AppLogNormal = Color.FromArgb(128, 255, 128);
+            public Color AppLogError = Color.Salmon;
+            public Color AppLogDynWarn = Color.Orange;
+            public Color AppLogDynError = Color.Crimson;
+            public Color AppLogStop = Color.MediumPurple;
 
-            public Color RepoLogNormalFore = Color.White;
-            public Color RepoLogAlertFore = Color.Fuchsia;
-            public Color RepoLogErrorFore = Color.Red;
-            public Color RepoLogDoneFore = Color.Lime;
-            public Color RepoLogTitleFore = Color.Yellow;
-            public Color RepoLogAggProcessingFore = Color.MediumAquamarine;
-            public Color RepoLogProcessingFore = Color.Cyan;
+            public Color RepoLogNormal = Color.White;
+            public Color RepoLogAlert = Color.Fuchsia;
+            public Color RepoLogError = Color.Red;
+            public Color RepoLogDone = Color.Lime;
+            public Color RepoLogTitle = Color.Yellow;
+            public Color RepoLogAggProcessing = Color.MediumAquamarine;
+            public Color RepoLogProcessing = Color.Cyan;
             public Color RepoLogRefreshing = Color.BlueViolet;
             public Color RepoLogRefreshDone = Color.MediumPurple;
 
-            public Color RepoLogStatusOK = Color.Cyan;
-            public Color RepoLogStatusNone = Color.Green;
+            public Color RepoLogStatusOK = Color.Gold;
             public Color RepoLogStatusWarn = Color.Crimson;
+            public Color RepoLogStatusNone = Color.Green;
 
-            public Color RepoLogLabelCaptionFore = Color.Wheat;
-            public Color RepoLogLabelValueFore = Color.DodgerBlue;
+            public Color RepoLogLabelCaption = Color.Wheat;
+            public Color RepoLogLabelValue = Color.DodgerBlue;
 
             public Color TimestampFore = Color.Gray;
 

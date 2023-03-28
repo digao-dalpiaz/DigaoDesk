@@ -106,8 +106,8 @@ namespace DigaoDeskApp
         public void LogLabel(string label, string value)
         {
             Log(new Part[] { 
-                new Part(label + ": ", Vars.Config.Theme.RepoLogLabelCaptionFore), 
-                new Part(value, Vars.Config.Theme.RepoLogLabelValueFore) 
+                new Part(label + ": ", Vars.Config.Theme.RepoLogLabelCaption), 
+                new Part(value, Vars.Config.Theme.RepoLogLabelValue) 
             });
         }
 
@@ -115,20 +115,20 @@ namespace DigaoDeskApp
         {
             switch (type)
             {
-                case LogHighlightType.NORMAL: 
-                    return Vars.Config.Theme.RepoLogNormalFore;
+                case LogHighlightType.NORMAL:
+                    return Vars.Config.Theme.RepoLogNormal;
                 case LogHighlightType.ALERT:
-                    return Vars.Config.Theme.RepoLogAlertFore;
+                    return Vars.Config.Theme.RepoLogAlert;
                 case LogHighlightType.ERROR: 
-                    return Vars.Config.Theme.RepoLogErrorFore;
+                    return Vars.Config.Theme.RepoLogError;
                 case LogHighlightType.TITLE: 
-                    return Vars.Config.Theme.RepoLogTitleFore;
+                    return Vars.Config.Theme.RepoLogTitle;
                 case LogHighlightType.AGG_PROCESSING:
-                    return Vars.Config.Theme.RepoLogAggProcessingFore;
+                    return Vars.Config.Theme.RepoLogAggProcessing;
                 case LogHighlightType.PROCESSING:
-                    return Vars.Config.Theme.RepoLogProcessingFore;
+                    return Vars.Config.Theme.RepoLogProcessing;
                 case LogHighlightType.DONE: 
-                    return Vars.Config.Theme.RepoLogDoneFore;
+                    return Vars.Config.Theme.RepoLogDone;
                 case LogHighlightType.REFRESHING:
                     return Vars.Config.Theme.RepoLogRefreshing;
                 case LogHighlightType.REFRESH_DONE:

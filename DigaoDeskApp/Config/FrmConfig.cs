@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -106,7 +108,7 @@ namespace DigaoDeskApp
             Vars.FrmConfigObj = null;
         }
 
-        private void FrmConfig_Load(object sender, System.EventArgs e)
+        private void FrmConfig_Load(object sender, EventArgs e)
         {
             LoadSettings();
         }
@@ -123,7 +125,7 @@ namespace DigaoDeskApp
             ckLogWordWrap.Checked = Vars.Config.Theme.WordWrap;
 
             ckThemeDarkTitle.Checked = Vars.Config.Theme.DarkTitle;
-            LoadTheme(Vars.Config.Theme);
+            LoadOrSaveTheme(Vars.Config.Theme, false, true);
             //--
 
             //--Apps tab
@@ -165,7 +167,7 @@ namespace DigaoDeskApp
             btnLogFont.Text = $"{_dlgFont.Font.Name}, {_dlgFont.Font.Size}";
         }
 
-        private void btnOK_Click(object sender, System.EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
             if (edLanguage.SelectedItem == null)
             {
@@ -223,38 +225,7 @@ namespace DigaoDeskApp
             Vars.Config.Theme.WordWrap = ckLogWordWrap.Checked;
 
             Vars.Config.Theme.DarkTitle = ckThemeDarkTitle.Checked;
-            Vars.Config.Theme.ToolbarBack = btnColorToolbarBack.BackColor;
-            Vars.Config.Theme.ToolbarFore = btnColorToolbarFore.BackColor;
-            Vars.Config.Theme.GridHeadBack = btnColorGridHeadBack.BackColor;
-            Vars.Config.Theme.GridHeadFore = btnColorGridHeadFore.BackColor;
-            Vars.Config.Theme.GridBack = btnColorGridBack.BackColor;
-            Vars.Config.Theme.GridLines = btnColorGridLines.BackColor;
-            Vars.Config.Theme.GridDataBack = btnColorGridDataBack.BackColor;
-            Vars.Config.Theme.GridDataFore = btnColorGridDataFore.BackColor;
-            Vars.Config.Theme.GridSelBack = btnColorGridSelBack.BackColor;
-            Vars.Config.Theme.GridSelFore = btnColorGridSelFore.BackColor;
-            Vars.Config.Theme.SplitterBack = btnColorSplitterBack.BackColor;
-            Vars.Config.Theme.ConsoleBack = btnColorConsoleBack.BackColor;
-            Vars.Config.Theme.StatusBack = btnColorStatusBack.BackColor;
-            Vars.Config.Theme.StatusFore = btnColorStatusFore.BackColor;
-
-            Vars.Config.Theme.AppLogNormalFore = btnColorAppLogNormal.BackColor;
-            Vars.Config.Theme.AppLogErrorFore = btnColorAppLogError.BackColor;
-            Vars.Config.Theme.AppLogDynWarnFore = btnColorAppLogDynWarn.BackColor;
-            Vars.Config.Theme.AppLogDynErrorFore = btnColorAppLogDynError.BackColor;
-            Vars.Config.Theme.AppLogStopFore = btnColorAppLogStop.BackColor;
-
-            Vars.Config.Theme.RepoLogNormalFore = btnColorRepoLogNormal.BackColor;
-            Vars.Config.Theme.RepoLogAlertFore = btnColorRepoLogAlert.BackColor;
-            Vars.Config.Theme.RepoLogErrorFore = btnColorRepoLogError.BackColor;
-            Vars.Config.Theme.RepoLogTitleFore = btnColorRepoLogTitle.BackColor;
-            Vars.Config.Theme.RepoLogAggProcessingFore = btnColorRepoLogAggProcessing.BackColor;
-            Vars.Config.Theme.RepoLogProcessingFore = btnColorRepoLogProcessing.BackColor;
-            Vars.Config.Theme.RepoLogDoneFore = btnColorRepoLogDone.BackColor;
-            Vars.Config.Theme.RepoLogRefreshing = btnColorRepoLogRefreshing.BackColor;
-            Vars.Config.Theme.RepoLogRefreshDone = btnColorRepoLogRefreshDone.BackColor;
-
-            Vars.Config.Theme.TimestampFore = btnColorLogTimestamp.BackColor;
+            LoadOrSaveTheme(Vars.Config.Theme, true);
             //--
 
             //--Apps tab
@@ -285,12 +256,12 @@ namespace DigaoDeskApp
             Vars.Config.Save();
         }
 
-        private void btnCancel_Click(object sender, System.EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnLogFont_Click(object sender, System.EventArgs e)
+        private void btnLogFont_Click(object sender, EventArgs e)
         {
             if (_dlgFont.ShowDialog() == DialogResult.OK)
             {
@@ -298,7 +269,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void btnColor_Click(object sender, System.EventArgs e)
+        private void btnColor_Click(object sender, EventArgs e)
         {
             DoSelColor((Button)sender);
         }
@@ -314,7 +285,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void btnSelReposDir_Click(object sender, System.EventArgs e)
+        private void btnSelReposDir_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dlg = new();
 
@@ -325,7 +296,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void btnSelShellProgram_Click(object sender, System.EventArgs e)
+        private void btnSelShellProgram_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new();
 
@@ -336,7 +307,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void btnSelDiffProgram_Click(object sender, System.EventArgs e)
+        private void btnSelDiffProgram_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new();
 
@@ -347,48 +318,37 @@ namespace DigaoDeskApp
             }
         }
 
-        private void btnResetColors_Click(object sender, System.EventArgs e)
+        private void btnResetColors_Click(object sender, EventArgs e)
         {
-            LoadTheme(new Config.ConfigTheme());
+            LoadOrSaveTheme(new Config.ConfigTheme(), false);
         }
 
-        private void LoadTheme(Config.ConfigTheme def)
+        private void LoadOrSaveTheme(Config.ConfigTheme def, bool save, bool first = false)
         {
-            btnColorToolbarBack.BackColor = def.ToolbarBack;
-            btnColorToolbarFore.BackColor = def.ToolbarFore;
-            btnColorGridHeadBack.BackColor = def.GridHeadBack;
-            btnColorGridHeadFore.BackColor = def.GridHeadFore;
-            btnColorGridBack.BackColor = def.GridBack;
-            btnColorGridLines.BackColor = def.GridLines;
-            btnColorGridDataBack.BackColor = def.GridDataBack;
-            btnColorGridDataFore.BackColor = def.GridDataFore;
-            btnColorGridSelBack.BackColor = def.GridSelBack;
-            btnColorGridSelFore.BackColor = def.GridSelFore;
-            btnColorSplitterBack.BackColor = def.SplitterBack;
-            btnColorConsoleBack.BackColor = def.ConsoleBack;
-            btnColorStatusBack.BackColor = def.StatusBack;
-            btnColorStatusFore.BackColor = def.StatusFore;
+            foreach (var f in def.GetType().GetFields())
+            {
+                if (f.FieldType != typeof(Color)) continue;
 
-            btnColorAppLogNormal.BackColor = def.AppLogNormalFore;
-            btnColorAppLogError.BackColor = def.AppLogErrorFore;
-            btnColorAppLogDynWarn.BackColor = def.AppLogDynWarnFore;
-            btnColorAppLogDynError.BackColor = def.AppLogDynErrorFore;
-            btnColorAppLogStop.BackColor = def.AppLogStopFore;
+                string controlName = "btnColor" + f.Name;
+                var lstFind = tabTheme.Controls.Find(controlName, true);
+                if (!lstFind.Any()) throw new Exception(string.Format("Control {0} not found", controlName));
 
-            btnColorRepoLogNormal.BackColor = def.RepoLogNormalFore;
-            btnColorRepoLogAlert.BackColor = def.RepoLogAlertFore;
-            btnColorRepoLogError.BackColor = def.RepoLogErrorFore;
-            btnColorRepoLogTitle.BackColor = def.RepoLogTitleFore;
-            btnColorRepoLogAggProcessing.BackColor = def.RepoLogAggProcessingFore;
-            btnColorRepoLogProcessing.BackColor = def.RepoLogProcessingFore;
-            btnColorRepoLogDone.BackColor = def.RepoLogDoneFore;
-            btnColorRepoLogRefreshing.BackColor = def.RepoLogRefreshing;
-            btnColorRepoLogRefreshDone.BackColor = def.RepoLogRefreshDone;
+                var btn = (Button)lstFind.First();
 
-            btnColorLogTimestamp.BackColor = def.TimestampFore;
+                if (first) btn.Click += btnColor_Click;
+
+                if (save)
+                {
+                    f.SetValue(def, btn.BackColor);
+                }
+                else
+                {
+                    btn.BackColor = (Color)f.GetValue(def);
+                }
+            }
         }
 
-        private void btnCustomCommandsHelp_Click(object sender, System.EventArgs e)
+        private void btnCustomCommandsHelp_Click(object sender, EventArgs e)
         {
             Messages.Info(Vars.Lang.Config_Repos_CustomCommandsHelp);
         }

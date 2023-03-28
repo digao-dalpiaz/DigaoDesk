@@ -381,15 +381,15 @@ namespace DigaoDeskApp
             switch (type)
             {
                 case DigaoApplication.LogType.INFO:
-                    return Vars.Config.Theme.AppLogNormalFore;
+                    return Vars.Config.Theme.AppLogNormal;
                 case DigaoApplication.LogType.ERROR:
-                    return Vars.Config.Theme.AppLogErrorFore;
+                    return Vars.Config.Theme.AppLogError;
                 case DigaoApplication.LogType.DYN_WARN:
-                    return Vars.Config.Theme.AppLogDynWarnFore;
+                    return Vars.Config.Theme.AppLogDynWarn;
                 case DigaoApplication.LogType.DYN_ERROR:
-                    return Vars.Config.Theme.AppLogDynErrorFore;
+                    return Vars.Config.Theme.AppLogDynError;
                 case DigaoApplication.LogType.STOP:
-                    return Vars.Config.Theme.AppLogStopFore;
+                    return Vars.Config.Theme.AppLogStop;
                 default:
                     throw new Exception("Log type invalid");
             }

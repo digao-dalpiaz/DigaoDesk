@@ -270,7 +270,7 @@ namespace DigaoDeskApp
 
         private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
         {
-            Color colorFlag = Vars.Config.Theme.RepoLogNormalFore;
+            Color colorFlag = Vars.Config.Theme.RepoLogNormal;
             if (notify.HasFlag(CheckoutNotifyFlags.Updated))
             {
                 colorFlag = Vars.Config.Theme.RepoLogStatusOK;
@@ -286,7 +286,7 @@ namespace DigaoDeskApp
             
             Log.Log(new LogHighlight.Part[] { 
                 new LogHighlight.Part($"[{notify.ToString()}] ", colorFlag), 
-                new LogHighlight.Part(path, Vars.Config.Theme.RepoLogNormalFore) 
+                new LogHighlight.Part(path, Vars.Config.Theme.RepoLogNormal) 
             });
             return true;
         }
