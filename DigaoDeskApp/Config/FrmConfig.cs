@@ -290,7 +290,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void SetButtonColor(Button btn, Color color) 
+        private void SetButtonColor(Button btn, Color color)
         {
             btn.BackColor = color;
             btn.Text = string.Format("{0}, {1}, {2}", color.R, color.G, color.B);

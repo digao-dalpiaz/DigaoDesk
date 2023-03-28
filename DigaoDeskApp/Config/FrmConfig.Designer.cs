@@ -35,6 +35,15 @@ namespace DigaoDeskApp
             lbLanguage=new System.Windows.Forms.Label();
             edLanguage=new System.Windows.Forms.ComboBox();
             tabTheme=new System.Windows.Forms.TabPage();
+            groupBox1=new System.Windows.Forms.GroupBox();
+            btnLogFont=new System.Windows.Forms.Button();
+            lbConsoleFont=new System.Windows.Forms.Label();
+            ckLogShowTs=new System.Windows.Forms.CheckBox();
+            lbColorLogTimestampFore=new System.Windows.Forms.Label();
+            ckLogWordWrap=new System.Windows.Forms.CheckBox();
+            btnColorTimestampFore=new System.Windows.Forms.Button();
+            btnColorConsoleBack=new System.Windows.Forms.Button();
+            lbColorConsoleBack=new System.Windows.Forms.Label();
             BoxThemeRepoLog=new System.Windows.Forms.GroupBox();
             btnColorRepoLogStatusNone=new System.Windows.Forms.Button();
             lbColorRepoLogStatusNone=new System.Windows.Forms.Label();
@@ -75,8 +84,6 @@ namespace DigaoDeskApp
             lbColorAppLogDynError=new System.Windows.Forms.Label();
             btnColorAppLogDynWarn=new System.Windows.Forms.Button();
             lbColorAppLogDynWarn=new System.Windows.Forms.Label();
-            lbColorLogTimestampFore=new System.Windows.Forms.Label();
-            btnColorTimestampFore=new System.Windows.Forms.Button();
             btnResetColors=new System.Windows.Forms.Button();
             lbColorGridDataBack=new System.Windows.Forms.Label();
             btnColorGridDataBack=new System.Windows.Forms.Button();
@@ -105,12 +112,6 @@ namespace DigaoDeskApp
             lbColorToolbarBack=new System.Windows.Forms.Label();
             btnColorToolbarBack=new System.Windows.Forms.Button();
             ckThemeDarkTitle=new System.Windows.Forms.CheckBox();
-            btnLogFont=new System.Windows.Forms.Button();
-            ckLogWordWrap=new System.Windows.Forms.CheckBox();
-            lbColorConsoleBack=new System.Windows.Forms.Label();
-            ckLogShowTs=new System.Windows.Forms.CheckBox();
-            btnColorConsoleBack=new System.Windows.Forms.Button();
-            lbConsoleFont=new System.Windows.Forms.Label();
             tabApplications=new System.Windows.Forms.TabPage();
             ckCalcAppResources=new System.Windows.Forms.CheckBox();
             edAppLogMaxSize=new System.Windows.Forms.NumericUpDown();
@@ -156,6 +157,7 @@ namespace DigaoDeskApp
             pages.SuspendLayout();
             tabGeneral.SuspendLayout();
             tabTheme.SuspendLayout();
+            groupBox1.SuspendLayout();
             BoxThemeRepoLog.SuspendLayout();
             BoxThemeAppLog.SuspendLayout();
             tabApplications.SuspendLayout();
@@ -175,7 +177,7 @@ namespace DigaoDeskApp
             pages.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             pages.Name="pages";
             pages.SelectedIndex=0;
-            pages.Size=new System.Drawing.Size(1047, 717);
+            pages.Size=new System.Drawing.Size(1047, 765);
             pages.TabIndex=0;
             // 
             // tabGeneral
@@ -186,7 +188,7 @@ namespace DigaoDeskApp
             tabGeneral.Location=new System.Drawing.Point(4, 29);
             tabGeneral.Name="tabGeneral";
             tabGeneral.Padding=new System.Windows.Forms.Padding(3);
-            tabGeneral.Size=new System.Drawing.Size(1039, 684);
+            tabGeneral.Size=new System.Drawing.Size(1039, 740);
             tabGeneral.TabIndex=3;
             tabGeneral.Text="General";
             tabGeneral.UseVisualStyleBackColor=true;
@@ -220,10 +222,9 @@ namespace DigaoDeskApp
             // 
             // tabTheme
             // 
+            tabTheme.Controls.Add(groupBox1);
             tabTheme.Controls.Add(BoxThemeRepoLog);
             tabTheme.Controls.Add(BoxThemeAppLog);
-            tabTheme.Controls.Add(lbColorLogTimestampFore);
-            tabTheme.Controls.Add(btnColorTimestampFore);
             tabTheme.Controls.Add(btnResetColors);
             tabTheme.Controls.Add(lbColorGridDataBack);
             tabTheme.Controls.Add(btnColorGridDataBack);
@@ -252,20 +253,108 @@ namespace DigaoDeskApp
             tabTheme.Controls.Add(lbColorToolbarBack);
             tabTheme.Controls.Add(btnColorToolbarBack);
             tabTheme.Controls.Add(ckThemeDarkTitle);
-            tabTheme.Controls.Add(btnLogFont);
-            tabTheme.Controls.Add(ckLogWordWrap);
-            tabTheme.Controls.Add(lbColorConsoleBack);
-            tabTheme.Controls.Add(ckLogShowTs);
-            tabTheme.Controls.Add(btnColorConsoleBack);
-            tabTheme.Controls.Add(lbConsoleFont);
             tabTheme.Location=new System.Drawing.Point(4, 29);
             tabTheme.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             tabTheme.Name="tabTheme";
             tabTheme.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            tabTheme.Size=new System.Drawing.Size(1039, 684);
+            tabTheme.Size=new System.Drawing.Size(1039, 732);
             tabTheme.TabIndex=2;
             tabTheme.Text="Theme";
             tabTheme.UseVisualStyleBackColor=true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnLogFont);
+            groupBox1.Controls.Add(lbConsoleFont);
+            groupBox1.Controls.Add(ckLogShowTs);
+            groupBox1.Controls.Add(lbColorLogTimestampFore);
+            groupBox1.Controls.Add(ckLogWordWrap);
+            groupBox1.Controls.Add(btnColorTimestampFore);
+            groupBox1.Controls.Add(btnColorConsoleBack);
+            groupBox1.Controls.Add(lbColorConsoleBack);
+            groupBox1.Location=new System.Drawing.Point(24, 472);
+            groupBox1.Name="groupBox1";
+            groupBox1.Size=new System.Drawing.Size(488, 248);
+            groupBox1.TabIndex=15;
+            groupBox1.TabStop=false;
+            groupBox1.Text="Console";
+            // 
+            // btnLogFont
+            // 
+            btnLogFont.Location=new System.Drawing.Point(8, 48);
+            btnLogFont.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnLogFont.Name="btnLogFont";
+            btnLogFont.Size=new System.Drawing.Size(472, 43);
+            btnLogFont.TabIndex=0;
+            btnLogFont.UseVisualStyleBackColor=true;
+            btnLogFont.Click+=btnLogFont_Click;
+            // 
+            // lbConsoleFont
+            // 
+            lbConsoleFont.AutoSize=true;
+            lbConsoleFont.Location=new System.Drawing.Point(6, 26);
+            lbConsoleFont.Name="lbConsoleFont";
+            lbConsoleFont.Size=new System.Drawing.Size(95, 20);
+            lbConsoleFont.TabIndex=13;
+            lbConsoleFont.Text="Console Font";
+            // 
+            // ckLogShowTs
+            // 
+            ckLogShowTs.AutoSize=true;
+            ckLogShowTs.Location=new System.Drawing.Point(8, 168);
+            ckLogShowTs.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ckLogShowTs.Name="ckLogShowTs";
+            ckLogShowTs.Size=new System.Drawing.Size(235, 24);
+            ckLogShowTs.TabIndex=3;
+            ckLogShowTs.Text="Show date/time in each record";
+            ckLogShowTs.UseVisualStyleBackColor=true;
+            // 
+            // lbColorLogTimestampFore
+            // 
+            lbColorLogTimestampFore.AutoSize=true;
+            lbColorLogTimestampFore.Location=new System.Drawing.Point(246, 99);
+            lbColorLogTimestampFore.Name="lbColorLogTimestampFore";
+            lbColorLogTimestampFore.Size=new System.Drawing.Size(191, 20);
+            lbColorLogTimestampFore.TabIndex=51;
+            lbColorLogTimestampFore.Text="Log Timestamp foreground";
+            // 
+            // ckLogWordWrap
+            // 
+            ckLogWordWrap.AutoSize=true;
+            ckLogWordWrap.Location=new System.Drawing.Point(8, 200);
+            ckLogWordWrap.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ckLogWordWrap.Name="ckLogWordWrap";
+            ckLogWordWrap.Size=new System.Drawing.Size(104, 24);
+            ckLogWordWrap.TabIndex=4;
+            ckLogWordWrap.Text="Word wrap";
+            ckLogWordWrap.UseVisualStyleBackColor=true;
+            // 
+            // btnColorTimestampFore
+            // 
+            btnColorTimestampFore.Location=new System.Drawing.Point(248, 120);
+            btnColorTimestampFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorTimestampFore.Name="btnColorTimestampFore";
+            btnColorTimestampFore.Size=new System.Drawing.Size(232, 32);
+            btnColorTimestampFore.TabIndex=2;
+            btnColorTimestampFore.UseVisualStyleBackColor=true;
+            // 
+            // btnColorConsoleBack
+            // 
+            btnColorConsoleBack.Location=new System.Drawing.Point(8, 120);
+            btnColorConsoleBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnColorConsoleBack.Name="btnColorConsoleBack";
+            btnColorConsoleBack.Size=new System.Drawing.Size(232, 32);
+            btnColorConsoleBack.TabIndex=1;
+            btnColorConsoleBack.UseVisualStyleBackColor=true;
+            // 
+            // lbColorConsoleBack
+            // 
+            lbColorConsoleBack.AutoSize=true;
+            lbColorConsoleBack.Location=new System.Drawing.Point(6, 99);
+            lbColorConsoleBack.Name="lbColorConsoleBack";
+            lbColorConsoleBack.Size=new System.Drawing.Size(145, 20);
+            lbColorConsoleBack.TabIndex=8;
+            lbColorConsoleBack.Text="Console background";
             // 
             // BoxThemeRepoLog
             // 
@@ -297,10 +386,10 @@ namespace DigaoDeskApp
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogTitle);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogError);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogError);
-            BoxThemeRepoLog.Location=new System.Drawing.Point(768, 24);
+            BoxThemeRepoLog.Location=new System.Drawing.Point(768, 72);
             BoxThemeRepoLog.Name="BoxThemeRepoLog";
             BoxThemeRepoLog.Size=new System.Drawing.Size(248, 648);
-            BoxThemeRepoLog.TabIndex=22;
+            BoxThemeRepoLog.TabIndex=17;
             BoxThemeRepoLog.TabStop=false;
             BoxThemeRepoLog.Text="Repositories Log";
             // 
@@ -310,7 +399,7 @@ namespace DigaoDeskApp
             btnColorRepoLogStatusNone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusNone.Name="btnColorRepoLogStatusNone";
             btnColorRepoLogStatusNone.Size=new System.Drawing.Size(72, 32);
-            btnColorRepoLogStatusNone.TabIndex=65;
+            btnColorRepoLogStatusNone.TabIndex=13;
             btnColorRepoLogStatusNone.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogStatusNone
@@ -328,7 +417,7 @@ namespace DigaoDeskApp
             btnColorRepoLogStatusWarn.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusWarn.Name="btnColorRepoLogStatusWarn";
             btnColorRepoLogStatusWarn.Size=new System.Drawing.Size(72, 32);
-            btnColorRepoLogStatusWarn.TabIndex=64;
+            btnColorRepoLogStatusWarn.TabIndex=12;
             btnColorRepoLogStatusWarn.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogStatusWarn
@@ -355,7 +444,7 @@ namespace DigaoDeskApp
             btnColorRepoLogLabelValue.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogLabelValue.Name="btnColorRepoLogLabelValue";
             btnColorRepoLogLabelValue.Size=new System.Drawing.Size(112, 32);
-            btnColorRepoLogLabelValue.TabIndex=62;
+            btnColorRepoLogLabelValue.TabIndex=10;
             btnColorRepoLogLabelValue.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogLabelCaption
@@ -373,7 +462,7 @@ namespace DigaoDeskApp
             btnColorRepoLogLabelCaption.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogLabelCaption.Name="btnColorRepoLogLabelCaption";
             btnColorRepoLogLabelCaption.Size=new System.Drawing.Size(112, 32);
-            btnColorRepoLogLabelCaption.TabIndex=61;
+            btnColorRepoLogLabelCaption.TabIndex=9;
             btnColorRepoLogLabelCaption.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogStatusOK
@@ -382,7 +471,7 @@ namespace DigaoDeskApp
             btnColorRepoLogStatusOK.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusOK.Name="btnColorRepoLogStatusOK";
             btnColorRepoLogStatusOK.Size=new System.Drawing.Size(72, 32);
-            btnColorRepoLogStatusOK.TabIndex=63;
+            btnColorRepoLogStatusOK.TabIndex=11;
             btnColorRepoLogStatusOK.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogStatusOK
@@ -400,7 +489,7 @@ namespace DigaoDeskApp
             btnColorRepoLogRefreshDone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogRefreshDone.Name="btnColorRepoLogRefreshDone";
             btnColorRepoLogRefreshDone.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogRefreshDone.TabIndex=60;
+            btnColorRepoLogRefreshDone.TabIndex=8;
             btnColorRepoLogRefreshDone.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogNormal
@@ -409,7 +498,7 @@ namespace DigaoDeskApp
             btnColorRepoLogNormal.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogNormal.Name="btnColorRepoLogNormal";
             btnColorRepoLogNormal.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogNormal.TabIndex=52;
+            btnColorRepoLogNormal.TabIndex=0;
             btnColorRepoLogNormal.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogDone
@@ -436,7 +525,7 @@ namespace DigaoDeskApp
             btnColorRepoLogDone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogDone.Name="btnColorRepoLogDone";
             btnColorRepoLogDone.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogDone.TabIndex=58;
+            btnColorRepoLogDone.TabIndex=6;
             btnColorRepoLogDone.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogAggProcessing
@@ -445,7 +534,7 @@ namespace DigaoDeskApp
             btnColorRepoLogAggProcessing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogAggProcessing.Name="btnColorRepoLogAggProcessing";
             btnColorRepoLogAggProcessing.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogAggProcessing.TabIndex=56;
+            btnColorRepoLogAggProcessing.TabIndex=4;
             btnColorRepoLogAggProcessing.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogRefreshing
@@ -472,7 +561,7 @@ namespace DigaoDeskApp
             btnColorRepoLogRefreshing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogRefreshing.Name="btnColorRepoLogRefreshing";
             btnColorRepoLogRefreshing.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogRefreshing.TabIndex=59;
+            btnColorRepoLogRefreshing.TabIndex=7;
             btnColorRepoLogRefreshing.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogAlert
@@ -481,7 +570,7 @@ namespace DigaoDeskApp
             btnColorRepoLogAlert.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogAlert.Name="btnColorRepoLogAlert";
             btnColorRepoLogAlert.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogAlert.TabIndex=53;
+            btnColorRepoLogAlert.TabIndex=1;
             btnColorRepoLogAlert.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogProcessing
@@ -508,7 +597,7 @@ namespace DigaoDeskApp
             btnColorRepoLogProcessing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogProcessing.Name="btnColorRepoLogProcessing";
             btnColorRepoLogProcessing.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogProcessing.TabIndex=57;
+            btnColorRepoLogProcessing.TabIndex=5;
             btnColorRepoLogProcessing.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogTitle
@@ -517,7 +606,7 @@ namespace DigaoDeskApp
             btnColorRepoLogTitle.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogTitle.Name="btnColorRepoLogTitle";
             btnColorRepoLogTitle.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogTitle.TabIndex=55;
+            btnColorRepoLogTitle.TabIndex=3;
             btnColorRepoLogTitle.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogRefreshDone
@@ -544,7 +633,7 @@ namespace DigaoDeskApp
             btnColorRepoLogError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogError.Name="btnColorRepoLogError";
             btnColorRepoLogError.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogError.TabIndex=54;
+            btnColorRepoLogError.TabIndex=2;
             btnColorRepoLogError.UseVisualStyleBackColor=true;
             // 
             // lbColorRepoLogError
@@ -568,10 +657,10 @@ namespace DigaoDeskApp
             BoxThemeAppLog.Controls.Add(lbColorAppLogDynError);
             BoxThemeAppLog.Controls.Add(btnColorAppLogDynWarn);
             BoxThemeAppLog.Controls.Add(lbColorAppLogDynWarn);
-            BoxThemeAppLog.Location=new System.Drawing.Point(512, 24);
+            BoxThemeAppLog.Location=new System.Drawing.Point(512, 72);
             BoxThemeAppLog.Name="BoxThemeAppLog";
             BoxThemeAppLog.Size=new System.Drawing.Size(248, 320);
-            BoxThemeAppLog.TabIndex=21;
+            BoxThemeAppLog.TabIndex=16;
             BoxThemeAppLog.TabStop=false;
             BoxThemeAppLog.Text="Applications Log";
             // 
@@ -581,7 +670,7 @@ namespace DigaoDeskApp
             btnColorAppLogStop.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorAppLogStop.Name="btnColorAppLogStop";
             btnColorAppLogStop.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogStop.TabIndex=44;
+            btnColorAppLogStop.TabIndex=4;
             btnColorAppLogStop.UseVisualStyleBackColor=true;
             // 
             // btnColorAppLogNormal
@@ -590,7 +679,7 @@ namespace DigaoDeskApp
             btnColorAppLogNormal.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorAppLogNormal.Name="btnColorAppLogNormal";
             btnColorAppLogNormal.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogNormal.TabIndex=40;
+            btnColorAppLogNormal.TabIndex=0;
             btnColorAppLogNormal.UseVisualStyleBackColor=true;
             // 
             // lbColorAppLogNormal
@@ -617,7 +706,7 @@ namespace DigaoDeskApp
             btnColorAppLogError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorAppLogError.Name="btnColorAppLogError";
             btnColorAppLogError.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogError.TabIndex=41;
+            btnColorAppLogError.TabIndex=1;
             btnColorAppLogError.UseVisualStyleBackColor=true;
             // 
             // lbColorAppLogError
@@ -635,7 +724,7 @@ namespace DigaoDeskApp
             btnColorAppLogDynError.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorAppLogDynError.Name="btnColorAppLogDynError";
             btnColorAppLogDynError.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogDynError.TabIndex=43;
+            btnColorAppLogDynError.TabIndex=3;
             btnColorAppLogDynError.UseVisualStyleBackColor=true;
             // 
             // lbColorAppLogDynError
@@ -653,7 +742,7 @@ namespace DigaoDeskApp
             btnColorAppLogDynWarn.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorAppLogDynWarn.Name="btnColorAppLogDynWarn";
             btnColorAppLogDynWarn.Size=new System.Drawing.Size(232, 32);
-            btnColorAppLogDynWarn.TabIndex=42;
+            btnColorAppLogDynWarn.TabIndex=2;
             btnColorAppLogDynWarn.UseVisualStyleBackColor=true;
             // 
             // lbColorAppLogDynWarn
@@ -665,27 +754,9 @@ namespace DigaoDeskApp
             lbColorAppLogDynWarn.TabIndex=49;
             lbColorAppLogDynWarn.Text="Dynamic Warning";
             // 
-            // lbColorLogTimestampFore
-            // 
-            lbColorLogTimestampFore.AutoSize=true;
-            lbColorLogTimestampFore.Location=new System.Drawing.Point(350, 603);
-            lbColorLogTimestampFore.Name="lbColorLogTimestampFore";
-            lbColorLogTimestampFore.Size=new System.Drawing.Size(191, 20);
-            lbColorLogTimestampFore.TabIndex=51;
-            lbColorLogTimestampFore.Text="Log Timestamp foreground";
-            // 
-            // btnColorTimestampFore
-            // 
-            btnColorTimestampFore.Location=new System.Drawing.Point(352, 624);
-            btnColorTimestampFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorTimestampFore.Name="btnColorTimestampFore";
-            btnColorTimestampFore.Size=new System.Drawing.Size(232, 32);
-            btnColorTimestampFore.TabIndex=20;
-            btnColorTimestampFore.UseVisualStyleBackColor=true;
-            // 
             // btnResetColors
             // 
-            btnResetColors.Location=new System.Drawing.Point(600, 616);
+            btnResetColors.Location=new System.Drawing.Point(864, 16);
             btnResetColors.Name="btnResetColors";
             btnResetColors.Size=new System.Drawing.Size(152, 48);
             btnResetColors.TabIndex=1;
@@ -733,7 +804,7 @@ namespace DigaoDeskApp
             // lbColorStatusFore
             // 
             lbColorStatusFore.AutoSize=true;
-            lbColorStatusFore.Location=new System.Drawing.Point(262, 459);
+            lbColorStatusFore.Location=new System.Drawing.Point(262, 347);
             lbColorStatusFore.Name="lbColorStatusFore";
             lbColorStatusFore.Size=new System.Drawing.Size(154, 20);
             lbColorStatusFore.TabIndex=35;
@@ -741,11 +812,11 @@ namespace DigaoDeskApp
             // 
             // btnColorStatusFore
             // 
-            btnColorStatusFore.Location=new System.Drawing.Point(264, 480);
+            btnColorStatusFore.Location=new System.Drawing.Point(264, 368);
             btnColorStatusFore.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorStatusFore.Name="btnColorStatusFore";
             btnColorStatusFore.Size=new System.Drawing.Size(232, 32);
-            btnColorStatusFore.TabIndex=16;
+            btnColorStatusFore.TabIndex=13;
             btnColorStatusFore.UseVisualStyleBackColor=true;
             // 
             // lbColorGridHeadBack
@@ -769,7 +840,7 @@ namespace DigaoDeskApp
             // lbColorSplitterBack
             // 
             lbColorSplitterBack.AutoSize=true;
-            lbColorSplitterBack.Location=new System.Drawing.Point(22, 347);
+            lbColorSplitterBack.Location=new System.Drawing.Point(22, 403);
             lbColorSplitterBack.Name="lbColorSplitterBack";
             lbColorSplitterBack.Size=new System.Drawing.Size(140, 20);
             lbColorSplitterBack.TabIndex=31;
@@ -777,17 +848,17 @@ namespace DigaoDeskApp
             // 
             // btnColorSplitterBack
             // 
-            btnColorSplitterBack.Location=new System.Drawing.Point(24, 368);
+            btnColorSplitterBack.Location=new System.Drawing.Point(24, 424);
             btnColorSplitterBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorSplitterBack.Name="btnColorSplitterBack";
             btnColorSplitterBack.Size=new System.Drawing.Size(232, 32);
-            btnColorSplitterBack.TabIndex=12;
+            btnColorSplitterBack.TabIndex=14;
             btnColorSplitterBack.UseVisualStyleBackColor=true;
             // 
             // lbColorStatusBack
             // 
             lbColorStatusBack.AutoSize=true;
-            lbColorStatusBack.Location=new System.Drawing.Point(22, 459);
+            lbColorStatusBack.Location=new System.Drawing.Point(22, 347);
             lbColorStatusBack.Name="lbColorStatusBack";
             lbColorStatusBack.Size=new System.Drawing.Size(158, 20);
             lbColorStatusBack.TabIndex=29;
@@ -795,11 +866,11 @@ namespace DigaoDeskApp
             // 
             // btnColorStatusBack
             // 
-            btnColorStatusBack.Location=new System.Drawing.Point(24, 480);
+            btnColorStatusBack.Location=new System.Drawing.Point(24, 368);
             btnColorStatusBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorStatusBack.Name="btnColorStatusBack";
             btnColorStatusBack.Size=new System.Drawing.Size(232, 32);
-            btnColorStatusBack.TabIndex=15;
+            btnColorStatusBack.TabIndex=12;
             btnColorStatusBack.UseVisualStyleBackColor=true;
             // 
             // lbColorGridSelBack
@@ -938,65 +1009,6 @@ namespace DigaoDeskApp
             ckThemeDarkTitle.Text="Dark Title Bar";
             ckThemeDarkTitle.UseVisualStyleBackColor=true;
             // 
-            // btnLogFont
-            // 
-            btnLogFont.Location=new System.Drawing.Point(24, 552);
-            btnLogFont.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnLogFont.Name="btnLogFont";
-            btnLogFont.Size=new System.Drawing.Size(560, 43);
-            btnLogFont.TabIndex=17;
-            btnLogFont.UseVisualStyleBackColor=true;
-            btnLogFont.Click+=btnLogFont_Click;
-            // 
-            // ckLogWordWrap
-            // 
-            ckLogWordWrap.AutoSize=true;
-            ckLogWordWrap.Location=new System.Drawing.Point(24, 640);
-            ckLogWordWrap.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            ckLogWordWrap.Name="ckLogWordWrap";
-            ckLogWordWrap.Size=new System.Drawing.Size(104, 24);
-            ckLogWordWrap.TabIndex=19;
-            ckLogWordWrap.Text="Word wrap";
-            ckLogWordWrap.UseVisualStyleBackColor=true;
-            // 
-            // lbColorConsoleBack
-            // 
-            lbColorConsoleBack.AutoSize=true;
-            lbColorConsoleBack.Location=new System.Drawing.Point(22, 403);
-            lbColorConsoleBack.Name="lbColorConsoleBack";
-            lbColorConsoleBack.Size=new System.Drawing.Size(145, 20);
-            lbColorConsoleBack.TabIndex=8;
-            lbColorConsoleBack.Text="Console background";
-            // 
-            // ckLogShowTs
-            // 
-            ckLogShowTs.AutoSize=true;
-            ckLogShowTs.Location=new System.Drawing.Point(24, 608);
-            ckLogShowTs.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            ckLogShowTs.Name="ckLogShowTs";
-            ckLogShowTs.Size=new System.Drawing.Size(235, 24);
-            ckLogShowTs.TabIndex=18;
-            ckLogShowTs.Text="Show date/time in each record";
-            ckLogShowTs.UseVisualStyleBackColor=true;
-            // 
-            // btnColorConsoleBack
-            // 
-            btnColorConsoleBack.Location=new System.Drawing.Point(24, 424);
-            btnColorConsoleBack.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorConsoleBack.Name="btnColorConsoleBack";
-            btnColorConsoleBack.Size=new System.Drawing.Size(232, 32);
-            btnColorConsoleBack.TabIndex=13;
-            btnColorConsoleBack.UseVisualStyleBackColor=true;
-            // 
-            // lbConsoleFont
-            // 
-            lbConsoleFont.AutoSize=true;
-            lbConsoleFont.Location=new System.Drawing.Point(22, 530);
-            lbConsoleFont.Name="lbConsoleFont";
-            lbConsoleFont.Size=new System.Drawing.Size(95, 20);
-            lbConsoleFont.TabIndex=13;
-            lbConsoleFont.Text="Console Font";
-            // 
             // tabApplications
             // 
             tabApplications.Controls.Add(ckCalcAppResources);
@@ -1008,7 +1020,7 @@ namespace DigaoDeskApp
             tabApplications.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             tabApplications.Name="tabApplications";
             tabApplications.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            tabApplications.Size=new System.Drawing.Size(1039, 684);
+            tabApplications.Size=new System.Drawing.Size(1039, 740);
             tabApplications.TabIndex=0;
             tabApplications.Text="Applications";
             tabApplications.UseVisualStyleBackColor=true;
@@ -1095,7 +1107,7 @@ namespace DigaoDeskApp
             tabRepos.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             tabRepos.Name="tabRepos";
             tabRepos.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            tabRepos.Size=new System.Drawing.Size(1039, 684);
+            tabRepos.Size=new System.Drawing.Size(1039, 732);
             tabRepos.TabIndex=1;
             tabRepos.Text="Git Repositories";
             tabRepos.UseVisualStyleBackColor=true;
@@ -1103,7 +1115,7 @@ namespace DigaoDeskApp
             // ckGitAutoCRLF
             // 
             ckGitAutoCRLF.AutoSize=true;
-            ckGitAutoCRLF.Location=new System.Drawing.Point(16, 536);
+            ckGitAutoCRLF.Location=new System.Drawing.Point(16, 552);
             ckGitAutoCRLF.Name="ckGitAutoCRLF";
             ckGitAutoCRLF.Size=new System.Drawing.Size(545, 24);
             ckGitAutoCRLF.TabIndex=13;
@@ -1114,7 +1126,7 @@ namespace DigaoDeskApp
             // 
             btnCustomCommandsHelp.AutoSize=true;
             btnCustomCommandsHelp.Cursor=System.Windows.Forms.Cursors.Hand;
-            btnCustomCommandsHelp.Location=new System.Drawing.Point(992, 400);
+            btnCustomCommandsHelp.Location=new System.Drawing.Point(992, 408);
             btnCustomCommandsHelp.Name="btnCustomCommandsHelp";
             btnCustomCommandsHelp.Size=new System.Drawing.Size(34, 20);
             btnCustomCommandsHelp.TabIndex=20;
@@ -1123,7 +1135,7 @@ namespace DigaoDeskApp
             // 
             // edGitCustomCommands
             // 
-            edGitCustomCommands.Location=new System.Drawing.Point(536, 424);
+            edGitCustomCommands.Location=new System.Drawing.Point(536, 432);
             edGitCustomCommands.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edGitCustomCommands.Multiline=true;
             edGitCustomCommands.Name="edGitCustomCommands";
@@ -1134,7 +1146,7 @@ namespace DigaoDeskApp
             // lbCustomCommands
             // 
             lbCustomCommands.AutoSize=true;
-            lbCustomCommands.Location=new System.Drawing.Point(536, 400);
+            lbCustomCommands.Location=new System.Drawing.Point(536, 408);
             lbCustomCommands.Name="lbCustomCommands";
             lbCustomCommands.Size=new System.Drawing.Size(174, 20);
             lbCustomCommands.TabIndex=19;
@@ -1143,7 +1155,7 @@ namespace DigaoDeskApp
             // lbDifProgramArgs
             // 
             lbDifProgramArgs.AutoSize=true;
-            lbDifProgramArgs.Location=new System.Drawing.Point(534, 336);
+            lbDifProgramArgs.Location=new System.Drawing.Point(534, 344);
             lbDifProgramArgs.Name="lbDifProgramArgs";
             lbDifProgramArgs.Size=new System.Drawing.Size(81, 20);
             lbDifProgramArgs.TabIndex=18;
@@ -1151,7 +1163,7 @@ namespace DigaoDeskApp
             // 
             // edDiffProgramArguments
             // 
-            edDiffProgramArguments.Location=new System.Drawing.Point(536, 360);
+            edDiffProgramArguments.Location=new System.Drawing.Point(536, 368);
             edDiffProgramArguments.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edDiffProgramArguments.Name="edDiffProgramArguments";
             edDiffProgramArguments.Size=new System.Drawing.Size(488, 27);
@@ -1161,7 +1173,7 @@ namespace DigaoDeskApp
             // 
             lbDifProgramArgsInfo.AutoSize=true;
             lbDifProgramArgsInfo.ForeColor=System.Drawing.Color.Gray;
-            lbDifProgramArgsInfo.Location=new System.Drawing.Point(656, 336);
+            lbDifProgramArgsInfo.Location=new System.Drawing.Point(656, 344);
             lbDifProgramArgsInfo.Name="lbDifProgramArgsInfo";
             lbDifProgramArgsInfo.Size=new System.Drawing.Size(227, 20);
             lbDifProgramArgsInfo.TabIndex=16;
@@ -1169,7 +1181,7 @@ namespace DigaoDeskApp
             // 
             // btnSelDiffProgram
             // 
-            btnSelDiffProgram.Location=new System.Drawing.Point(496, 360);
+            btnSelDiffProgram.Location=new System.Drawing.Point(496, 368);
             btnSelDiffProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnSelDiffProgram.Name="btnSelDiffProgram";
             btnSelDiffProgram.Size=new System.Drawing.Size(27, 33);
@@ -1182,7 +1194,7 @@ namespace DigaoDeskApp
             // lbShellProgram
             // 
             lbShellProgram.AutoSize=true;
-            lbShellProgram.Location=new System.Drawing.Point(12, 264);
+            lbShellProgram.Location=new System.Drawing.Point(12, 272);
             lbShellProgram.Name="lbShellProgram";
             lbShellProgram.Size=new System.Drawing.Size(103, 20);
             lbShellProgram.TabIndex=5;
@@ -1192,7 +1204,7 @@ namespace DigaoDeskApp
             // 
             edDiffProgram.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             edDiffProgram.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystem;
-            edDiffProgram.Location=new System.Drawing.Point(16, 360);
+            edDiffProgram.Location=new System.Drawing.Point(16, 368);
             edDiffProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edDiffProgram.Name="edDiffProgram";
             edDiffProgram.Size=new System.Drawing.Size(480, 27);
@@ -1201,7 +1213,7 @@ namespace DigaoDeskApp
             // lbDiffProgram
             // 
             lbDiffProgram.AutoSize=true;
-            lbDiffProgram.Location=new System.Drawing.Point(12, 336);
+            lbDiffProgram.Location=new System.Drawing.Point(12, 344);
             lbDiffProgram.Name="lbDiffProgram";
             lbDiffProgram.Size=new System.Drawing.Size(96, 20);
             lbDiffProgram.TabIndex=15;
@@ -1211,7 +1223,7 @@ namespace DigaoDeskApp
             // 
             lbCommitMsgInfo.AutoSize=true;
             lbCommitMsgInfo.ForeColor=System.Drawing.Color.Gray;
-            lbCommitMsgInfo.Location=new System.Drawing.Point(240, 608);
+            lbCommitMsgInfo.Location=new System.Drawing.Point(240, 632);
             lbCommitMsgInfo.Name="lbCommitMsgInfo";
             lbCommitMsgInfo.Size=new System.Drawing.Size(205, 20);
             lbCommitMsgInfo.TabIndex=14;
@@ -1219,7 +1231,7 @@ namespace DigaoDeskApp
             // 
             // edCommitMessage
             // 
-            edCommitMessage.Location=new System.Drawing.Point(16, 632);
+            edCommitMessage.Location=new System.Drawing.Point(16, 656);
             edCommitMessage.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edCommitMessage.Name="edCommitMessage";
             edCommitMessage.Size=new System.Drawing.Size(504, 27);
@@ -1228,7 +1240,7 @@ namespace DigaoDeskApp
             // lbCommitMsg
             // 
             lbCommitMsg.AutoSize=true;
-            lbCommitMsg.Location=new System.Drawing.Point(14, 608);
+            lbCommitMsg.Location=new System.Drawing.Point(14, 632);
             lbCommitMsg.Name="lbCommitMsg";
             lbCommitMsg.Size=new System.Drawing.Size(124, 20);
             lbCommitMsg.TabIndex=12;
@@ -1237,7 +1249,7 @@ namespace DigaoDeskApp
             // ckGitAutoFetch
             // 
             ckGitAutoFetch.AutoSize=true;
-            ckGitAutoFetch.Location=new System.Drawing.Point(16, 568);
+            ckGitAutoFetch.Location=new System.Drawing.Point(16, 584);
             ckGitAutoFetch.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             ckGitAutoFetch.Name="ckGitAutoFetch";
             ckGitAutoFetch.Size=new System.Drawing.Size(249, 24);
@@ -1248,7 +1260,7 @@ namespace DigaoDeskApp
             // lbMemoInfo
             // 
             lbMemoInfo.ForeColor=System.Drawing.Color.Gray;
-            lbMemoInfo.Location=new System.Drawing.Point(792, 528);
+            lbMemoInfo.Location=new System.Drawing.Point(792, 536);
             lbMemoInfo.Name="lbMemoInfo";
             lbMemoInfo.Size=new System.Drawing.Size(232, 20);
             lbMemoInfo.TabIndex=10;
@@ -1261,7 +1273,7 @@ namespace DigaoDeskApp
             boxGitAuthor.Controls.Add(lbAuthorName);
             boxGitAuthor.Controls.Add(lbAuthorEmail);
             boxGitAuthor.Controls.Add(edGitEmail);
-            boxGitAuthor.Location=new System.Drawing.Point(16, 80);
+            boxGitAuthor.Location=new System.Drawing.Point(16, 88);
             boxGitAuthor.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             boxGitAuthor.Name="boxGitAuthor";
             boxGitAuthor.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1306,7 +1318,7 @@ namespace DigaoDeskApp
             // 
             // edGitNewBranchPrefixList
             // 
-            edGitNewBranchPrefixList.Location=new System.Drawing.Point(16, 424);
+            edGitNewBranchPrefixList.Location=new System.Drawing.Point(16, 432);
             edGitNewBranchPrefixList.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edGitNewBranchPrefixList.Multiline=true;
             edGitNewBranchPrefixList.Name="edGitNewBranchPrefixList";
@@ -1317,7 +1329,7 @@ namespace DigaoDeskApp
             // lbNewBranchPrefix
             // 
             lbNewBranchPrefix.AutoSize=true;
-            lbNewBranchPrefix.Location=new System.Drawing.Point(14, 400);
+            lbNewBranchPrefix.Location=new System.Drawing.Point(14, 408);
             lbNewBranchPrefix.Name="lbNewBranchPrefix";
             lbNewBranchPrefix.Size=new System.Drawing.Size(153, 20);
             lbNewBranchPrefix.TabIndex=8;
@@ -1325,7 +1337,7 @@ namespace DigaoDeskApp
             // 
             // btnSelShellProgram
             // 
-            btnSelShellProgram.Location=new System.Drawing.Point(1000, 288);
+            btnSelShellProgram.Location=new System.Drawing.Point(1000, 296);
             btnSelShellProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnSelShellProgram.Name="btnSelShellProgram";
             btnSelShellProgram.Size=new System.Drawing.Size(27, 33);
@@ -1339,7 +1351,7 @@ namespace DigaoDeskApp
             // 
             edShellProgram.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             edShellProgram.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystem;
-            edShellProgram.Location=new System.Drawing.Point(16, 288);
+            edShellProgram.Location=new System.Drawing.Point(16, 296);
             edShellProgram.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edShellProgram.Name="edShellProgram";
             edShellProgram.Size=new System.Drawing.Size(984, 27);
@@ -1351,7 +1363,7 @@ namespace DigaoDeskApp
             boxGitCredentials.Controls.Add(lbCredPassword);
             boxGitCredentials.Controls.Add(edGitCredUsername);
             boxGitCredentials.Controls.Add(lbCredUsername);
-            boxGitCredentials.Location=new System.Drawing.Point(528, 80);
+            boxGitCredentials.Location=new System.Drawing.Point(528, 88);
             boxGitCredentials.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             boxGitCredentials.Name="boxGitCredentials";
             boxGitCredentials.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1397,7 +1409,7 @@ namespace DigaoDeskApp
             // 
             // btnSelReposDir
             // 
-            btnSelReposDir.Location=new System.Drawing.Point(992, 32);
+            btnSelReposDir.Location=new System.Drawing.Point(992, 40);
             btnSelReposDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnSelReposDir.Name="btnSelReposDir";
             btnSelReposDir.Size=new System.Drawing.Size(27, 33);
@@ -1411,7 +1423,7 @@ namespace DigaoDeskApp
             // 
             edReposDir.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             edReposDir.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            edReposDir.Location=new System.Drawing.Point(16, 32);
+            edReposDir.Location=new System.Drawing.Point(16, 40);
             edReposDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edReposDir.Name="edReposDir";
             edReposDir.Size=new System.Drawing.Size(976, 27);
@@ -1420,7 +1432,7 @@ namespace DigaoDeskApp
             // lbRepositoryFolder
             // 
             lbRepositoryFolder.AutoSize=true;
-            lbRepositoryFolder.Location=new System.Drawing.Point(14, 8);
+            lbRepositoryFolder.Location=new System.Drawing.Point(14, 16);
             lbRepositoryFolder.Name="lbRepositoryFolder";
             lbRepositoryFolder.Size=new System.Drawing.Size(135, 20);
             lbRepositoryFolder.TabIndex=0;
@@ -1428,10 +1440,10 @@ namespace DigaoDeskApp
             // 
             // btnOK
             // 
-            btnOK.Location=new System.Drawing.Point(427, 736);
+            btnOK.Location=new System.Drawing.Point(427, 780);
             btnOK.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnOK.Name="btnOK";
-            btnOK.Size=new System.Drawing.Size(101, 43);
+            btnOK.Size=new System.Drawing.Size(101, 40);
             btnOK.TabIndex=98;
             btnOK.Text="OK";
             btnOK.UseVisualStyleBackColor=true;
@@ -1439,10 +1451,10 @@ namespace DigaoDeskApp
             // 
             // btnCancel
             // 
-            btnCancel.Location=new System.Drawing.Point(536, 736);
+            btnCancel.Location=new System.Drawing.Point(536, 780);
             btnCancel.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnCancel.Name="btnCancel";
-            btnCancel.Size=new System.Drawing.Size(101, 43);
+            btnCancel.Size=new System.Drawing.Size(101, 40);
             btnCancel.TabIndex=99;
             btnCancel.Text="Cancel";
             btnCancel.UseVisualStyleBackColor=true;
@@ -1454,7 +1466,7 @@ namespace DigaoDeskApp
             AutoScaleDimensions=new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode=System.Windows.Forms.AutoScaleMode.Font;
             CancelButton=btnCancel;
-            ClientSize=new System.Drawing.Size(1065, 789);
+            ClientSize=new System.Drawing.Size(1065, 830);
             Controls.Add(btnCancel);
             Controls.Add(btnOK);
             Controls.Add(pages);
@@ -1471,6 +1483,8 @@ namespace DigaoDeskApp
             tabGeneral.PerformLayout();
             tabTheme.ResumeLayout(false);
             tabTheme.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             BoxThemeRepoLog.ResumeLayout(false);
             BoxThemeRepoLog.PerformLayout();
             BoxThemeAppLog.ResumeLayout(false);
@@ -1613,5 +1627,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbColorRepoLogStatusNone;
         private System.Windows.Forms.Button btnColorRepoLogStatusWarn;
         private System.Windows.Forms.Label lbColorRepoLogStatusWarn;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
