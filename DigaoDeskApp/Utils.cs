@@ -246,13 +246,17 @@ namespace DigaoDeskApp
 
         //-----------------------------------------------------------------
 
+        private static int GetColorPartReversed(int part)
+        {
+            return part > 128 ? 0 : 255;
+        }
+
         public static Color GetNegativeColor(Color color)
         {
-            const int MAX = 255;
             return Color.FromArgb(
-                MAX - color.R, 
-                MAX - color.G, 
-                MAX - color.B
+                GetColorPartReversed(color.R),
+                GetColorPartReversed(color.G),
+                GetColorPartReversed(color.B)
             );
         }
 

@@ -293,8 +293,10 @@ namespace DigaoDeskApp
         private void SetButtonColor(Button btn, Color color)
         {
             btn.BackColor = color;
-            btn.Text = string.Format("{0}, {1}, {2}", color.R, color.G, color.B);
             btn.ForeColor = Utils.GetNegativeColor(color);
+            
+            btn.Text = string.Format("{0}, {1}, {2}", color.R, color.G, color.B);
+            btn.Font = new Font(btn.Font.FontFamily, 7);
         }
 
         private void btnSelReposDir_Click(object sender, EventArgs e)
