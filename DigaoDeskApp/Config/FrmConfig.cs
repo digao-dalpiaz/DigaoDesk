@@ -58,6 +58,15 @@ namespace DigaoDeskApp
             lbColorAppLogDynWarn.Text = Vars.Lang.Config_Theme_ColorAppLogDynWarn;
             lbColorAppLogDynError.Text = Vars.Lang.Config_Theme_ColorAppLogDynError;
             lbColorAppLogStop.Text = Vars.Lang.Config_Theme_ColorAppLogStop;
+            lbColorRepoLogNormal.Text = Vars.Lang.Config_Theme_ColorRepoLogNormal;
+            lbColorRepoLogAlert.Text = Vars.Lang.Config_Theme_ColorRepoLogAlert;
+            lbColorRepoLogError.Text = Vars.Lang.Config_Theme_ColorRepoLogError;
+            lbColorRepoLogDone.Text = Vars.Lang.Config_Theme_ColorRepoLogDone;
+            lbColorRepoLogTitle.Text = Vars.Lang.Config_Theme_ColorRepoLogTitle;
+            lbColorRepoLogAggProcessing.Text = Vars.Lang.Config_Theme_ColorRepoLogAggProcessing;
+            lbColorRepoLogProcessing.Text = Vars.Lang.Config_Theme_ColorRepoLogProcessing;
+            lbColorRepoLogRefreshing.Text = Vars.Lang.Config_Theme_ColorRepoLogRefreshing;
+            lbColorRepoLogRefreshDone.Text = Vars.Lang.Config_Theme_ColorRepoLogRefreshDone;
             lbColorLogTimestamp.Text = Vars.Lang.Config_Theme_ColorLogTimestamp;
             lbConsoleFont.Text = Vars.Lang.Config_Theme_Font;
             ckLogShowTs.Text = Vars.Lang.Config_Theme_ShowDateTime;

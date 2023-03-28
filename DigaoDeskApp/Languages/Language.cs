@@ -64,6 +64,15 @@
         public string Config_Theme_ColorAppLogDynWarn;
         public string Config_Theme_ColorAppLogDynError;
         public string Config_Theme_ColorAppLogStop;
+        public string Config_Theme_ColorRepoLogNormal;
+        public string Config_Theme_ColorRepoLogAlert;
+        public string Config_Theme_ColorRepoLogError;
+        public string Config_Theme_ColorRepoLogDone;
+        public string Config_Theme_ColorRepoLogTitle;
+        public string Config_Theme_ColorRepoLogAggProcessing;
+        public string Config_Theme_ColorRepoLogProcessing;
+        public string Config_Theme_ColorRepoLogRefreshing;
+        public string Config_Theme_ColorRepoLogRefreshDone;
         public string Config_Theme_ColorLogTimestamp;
         public string Config_Theme_Font;
         public string Config_Theme_ShowDateTime;
