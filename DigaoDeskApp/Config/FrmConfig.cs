@@ -294,7 +294,7 @@ namespace DigaoDeskApp
         {
             btn.BackColor = color;
             btn.ForeColor = Utils.GetNegativeColor(color);
-            
+
             btn.Text = string.Format("{0}, {1}, {2}", color.R, color.G, color.B);
             btn.Font = new Font(btn.Font.FontFamily, 7);
         }
