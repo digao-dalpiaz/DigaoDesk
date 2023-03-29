@@ -37,7 +37,7 @@ namespace DigaoDeskApp
             _powerCtrl.Init();
             GitHubUpdater.RunTask();
             Survey.Check();
-        }       
+        }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -115,7 +115,7 @@ namespace DigaoDeskApp
 
                 var appsRunningWithTcpPort = appsRunning.Where(x => x.TcpPort.HasValue);
                 if (appsRunningWithTcpPort.Any() && !appsRunningWithTcpPort.All(x => x.TcpOnline))
-                { 
+                {
                     idx = 2;
                 }
             }
@@ -128,7 +128,7 @@ namespace DigaoDeskApp
                 {
                     tray.Icon = Icon.FromHandle((images.Images[idx] as Bitmap).GetHicon());
                     _lastTrayIndex = idx;
-                }));                
+                }));
             }
         }
 
@@ -166,7 +166,7 @@ namespace DigaoDeskApp
                 {
                     timerApps.Enabled = true;
                 }));
-                
+
             }).Start();
         }
 
