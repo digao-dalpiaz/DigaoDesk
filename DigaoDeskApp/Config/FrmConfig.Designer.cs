@@ -1028,7 +1028,7 @@ namespace DigaoDeskApp
             // ckCalcAppResources
             // 
             ckCalcAppResources.AutoSize=true;
-            ckCalcAppResources.Location=new System.Drawing.Point(16, 24);
+            ckCalcAppResources.Location=new System.Drawing.Point(24, 24);
             ckCalcAppResources.Name="ckCalcAppResources";
             ckCalcAppResources.Size=new System.Drawing.Size(237, 24);
             ckCalcAppResources.TabIndex=0;
@@ -1037,7 +1037,7 @@ namespace DigaoDeskApp
             // 
             // edAppLogMaxSize
             // 
-            edAppLogMaxSize.Location=new System.Drawing.Point(16, 184);
+            edAppLogMaxSize.Location=new System.Drawing.Point(24, 184);
             edAppLogMaxSize.Maximum=new decimal(new int[] { 1000000, 0, 0, 0 });
             edAppLogMaxSize.Minimum=new decimal(new int[] { 1000, 0, 0, 0 });
             edAppLogMaxSize.Name="edAppLogMaxSize";
@@ -1048,7 +1048,7 @@ namespace DigaoDeskApp
             // lbAppsLinesLog
             // 
             lbAppsLinesLog.AutoSize=true;
-            lbAppsLinesLog.Location=new System.Drawing.Point(14, 160);
+            lbAppsLinesLog.Location=new System.Drawing.Point(22, 160);
             lbAppsLinesLog.Name="lbAppsLinesLog";
             lbAppsLinesLog.Size=new System.Drawing.Size(130, 20);
             lbAppsLinesLog.TabIndex=12;
@@ -1057,7 +1057,7 @@ namespace DigaoDeskApp
             // ckDontNotifyWhenAppsActive
             // 
             ckDontNotifyWhenAppsActive.AutoSize=true;
-            ckDontNotifyWhenAppsActive.Location=new System.Drawing.Point(40, 112);
+            ckDontNotifyWhenAppsActive.Location=new System.Drawing.Point(48, 112);
             ckDontNotifyWhenAppsActive.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             ckDontNotifyWhenAppsActive.Name="ckDontNotifyWhenAppsActive";
             ckDontNotifyWhenAppsActive.Size=new System.Drawing.Size(273, 24);
@@ -1068,7 +1068,7 @@ namespace DigaoDeskApp
             // ckNotifyWhenAppStops
             // 
             ckNotifyWhenAppStops.AutoSize=true;
-            ckNotifyWhenAppStops.Location=new System.Drawing.Point(16, 80);
+            ckNotifyWhenAppStops.Location=new System.Drawing.Point(24, 80);
             ckNotifyWhenAppStops.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             ckNotifyWhenAppStops.Name="ckNotifyWhenAppStops";
             ckNotifyWhenAppStops.Size=new System.Drawing.Size(229, 24);
