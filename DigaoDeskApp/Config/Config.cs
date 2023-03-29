@@ -102,10 +102,14 @@ namespace DigaoDeskApp
             if (File.Exists(path)) {
                 var data = File.ReadAllText(path);
                 Vars.Config = JsonConvert.DeserializeObject<Config>(data);
+
+                EventAudit.Do("Settings loaded from file");
             } 
             else
             {
                 Vars.Config = new();
+
+                EventAudit.Do("Settings initialized from defaults");
             }
 
             if (Vars.Config.Theme == null) Vars.Config.Theme = new();
@@ -118,6 +122,8 @@ namespace DigaoDeskApp
             var path = GetConfigFile();
             var data = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(path, data);
+
+            EventAudit.Do("Settings saved");
         }
 
     }

@@ -111,10 +111,14 @@ namespace DigaoDeskApp
         private void FrmConfig_FormClosed(object sender, FormClosedEventArgs e)
         {
             Vars.FrmConfigObj = null;
+
+            EventAudit.Do("Closed Config form");
         }
 
         private void FrmConfig_Load(object sender, EventArgs e)
         {
+            EventAudit.Do("Load Config form");
+
             LoadSettings();
         }
 

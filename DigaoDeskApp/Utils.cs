@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace DigaoDeskApp
 {
@@ -185,6 +186,8 @@ namespace DigaoDeskApp
 
         public static string GetResource(string resourceName)
         {
+            EventAudit.Do("Load resource " + resourceName);
+
             var assembly = Assembly.GetExecutingAssembly();
 
             var fullResName = "DigaoDeskApp." + resourceName;
@@ -204,20 +207,8 @@ namespace DigaoDeskApp
         {
             if (text != null)
             {
-                var esc = Convert.ToChar(27);
-
-                while (true)
-                {
-                    var i = text.IndexOf(esc);
-                    if (i == -1) break;
-
-                    var end = text.IndexOf('m', i+1);
-                    if (end == -1) break; //broken sequence
-
-                    text = text.Remove(i, end-i+1);
-                }
+                text = Regex.Replace(text, @"\x1B.*?m", "");
             }
-
             return text;
         }
 
