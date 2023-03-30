@@ -347,6 +347,7 @@
   "Apps_Filter_Stopped": "Somente Paradas",
   "Apps_Start": "Iniciar",
   "Apps_Stop": "Parar",
+  "Apps_StopForced": "Finalizar",
   "Apps_StopAll": "Parar tudo",
   "Apps_FindLog": "Localizar Log",
   "Apps_ClearLog": "Limpar Log",

@@ -39,6 +39,7 @@ namespace DigaoDeskApp
             miFilterStopped.Text = Vars.Lang.Apps_Filter_Stopped;
             btnStart.Text = Vars.Lang.Apps_Start;
             btnStop.Text = Vars.Lang.Apps_Stop;
+            btnStopForced.Text = Vars.Lang.Apps_StopForced;
             btnStopAll.Text = Vars.Lang.Apps_StopAll;
             btnFindLog.Text = Vars.Lang.Apps_FindLog;
             btnClearLog.Text = Vars.Lang.Apps_ClearLog;

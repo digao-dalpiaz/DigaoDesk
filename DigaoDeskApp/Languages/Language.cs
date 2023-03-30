@@ -351,6 +351,7 @@
         public string Apps_Filter_Stopped;
         public string Apps_Start;
         public string Apps_Stop;
+        public string Apps_StopForced;
         public string Apps_StopAll;
         public string Apps_FindLog;
         public string Apps_ClearLog;
