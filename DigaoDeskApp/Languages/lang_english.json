@@ -37,6 +37,7 @@
   "Config_General_Language": "Language",
   "Config_General_LanguageInfo": "* Restart needed",
 
+  "Config_Theme_BoxConsole": "Console",
   "Config_Theme_BoxAppLog": "Applications Log",
   "Config_Theme_BoxRepoLog": "Repositories Log",
   "Config_Theme_Reset": "Reset Colors",
@@ -128,6 +129,8 @@
   "Repos_BtnPush": "Push",
   "Repos_BtnShell": "Shell",
   "Repos_BtnConfig": "Config",
+  "Repos_BtnRepositoryConfig": "Repository Settings",
+  "Repos_BtnReorderList": "Reorder List",
   "Repos_BtnClearLog": "Clear Log",
 
   "Repos_StatusBar_Info": "I see your work will be amazing!",
@@ -336,6 +339,7 @@
   "Apps_Add": "Add",
   "Apps_Edit": "Edit",
   "Apps_Delete": "Delete",
+  "Apps_Reorder": "Reorder",
   "Apps_DownloadDefs": "Download Defs",
   "Apps_Filter": "Filter",
   "Apps_Filter_All": "All Applications",

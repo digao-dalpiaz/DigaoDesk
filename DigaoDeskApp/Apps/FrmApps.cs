@@ -31,6 +31,7 @@ namespace DigaoDeskApp
             btnAdd.Text = Vars.Lang.Apps_Add;
             btnEdit.Text = Vars.Lang.Apps_Edit;
             btnDelete.Text = Vars.Lang.Apps_Delete;
+            btnReorder.Text = Vars.Lang.Apps_Reorder;
             btnDownloadDefs.Text = Vars.Lang.Apps_DownloadDefs;
             btnFilter.Text = Vars.Lang.Apps_Filter;
             miFilterAll.Text = Vars.Lang.Apps_Filter_All;

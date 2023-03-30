@@ -35,7 +35,7 @@ namespace DigaoDeskApp
             lbLanguage=new System.Windows.Forms.Label();
             edLanguage=new System.Windows.Forms.ComboBox();
             tabTheme=new System.Windows.Forms.TabPage();
-            groupBox1=new System.Windows.Forms.GroupBox();
+            BoxThemeConsole=new System.Windows.Forms.GroupBox();
             btnLogFont=new System.Windows.Forms.Button();
             lbConsoleFont=new System.Windows.Forms.Label();
             ckLogShowTs=new System.Windows.Forms.CheckBox();
@@ -157,7 +157,7 @@ namespace DigaoDeskApp
             pages.SuspendLayout();
             tabGeneral.SuspendLayout();
             tabTheme.SuspendLayout();
-            groupBox1.SuspendLayout();
+            BoxThemeConsole.SuspendLayout();
             BoxThemeRepoLog.SuspendLayout();
             BoxThemeAppLog.SuspendLayout();
             tabApplications.SuspendLayout();
@@ -222,7 +222,7 @@ namespace DigaoDeskApp
             // 
             // tabTheme
             // 
-            tabTheme.Controls.Add(groupBox1);
+            tabTheme.Controls.Add(BoxThemeConsole);
             tabTheme.Controls.Add(BoxThemeRepoLog);
             tabTheme.Controls.Add(BoxThemeAppLog);
             tabTheme.Controls.Add(btnResetColors);
@@ -262,22 +262,22 @@ namespace DigaoDeskApp
             tabTheme.Text="Theme";
             tabTheme.UseVisualStyleBackColor=true;
             // 
-            // groupBox1
+            // BoxThemeConsole
             // 
-            groupBox1.Controls.Add(btnLogFont);
-            groupBox1.Controls.Add(lbConsoleFont);
-            groupBox1.Controls.Add(ckLogShowTs);
-            groupBox1.Controls.Add(lbColorLogTimestampFore);
-            groupBox1.Controls.Add(ckLogWordWrap);
-            groupBox1.Controls.Add(btnColorTimestampFore);
-            groupBox1.Controls.Add(btnColorConsoleBack);
-            groupBox1.Controls.Add(lbColorConsoleBack);
-            groupBox1.Location=new System.Drawing.Point(24, 472);
-            groupBox1.Name="groupBox1";
-            groupBox1.Size=new System.Drawing.Size(488, 248);
-            groupBox1.TabIndex=15;
-            groupBox1.TabStop=false;
-            groupBox1.Text="Console";
+            BoxThemeConsole.Controls.Add(btnLogFont);
+            BoxThemeConsole.Controls.Add(lbConsoleFont);
+            BoxThemeConsole.Controls.Add(ckLogShowTs);
+            BoxThemeConsole.Controls.Add(lbColorLogTimestampFore);
+            BoxThemeConsole.Controls.Add(ckLogWordWrap);
+            BoxThemeConsole.Controls.Add(btnColorTimestampFore);
+            BoxThemeConsole.Controls.Add(btnColorConsoleBack);
+            BoxThemeConsole.Controls.Add(lbColorConsoleBack);
+            BoxThemeConsole.Location=new System.Drawing.Point(24, 472);
+            BoxThemeConsole.Name="BoxThemeConsole";
+            BoxThemeConsole.Size=new System.Drawing.Size(488, 248);
+            BoxThemeConsole.TabIndex=15;
+            BoxThemeConsole.TabStop=false;
+            BoxThemeConsole.Text="Console";
             // 
             // btnLogFont
             // 
@@ -1483,8 +1483,8 @@ namespace DigaoDeskApp
             tabGeneral.PerformLayout();
             tabTheme.ResumeLayout(false);
             tabTheme.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            BoxThemeConsole.ResumeLayout(false);
+            BoxThemeConsole.PerformLayout();
             BoxThemeRepoLog.ResumeLayout(false);
             BoxThemeRepoLog.PerformLayout();
             BoxThemeAppLog.ResumeLayout(false);
@@ -1627,6 +1627,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbColorRepoLogStatusNone;
         private System.Windows.Forms.Button btnColorRepoLogStatusWarn;
         private System.Windows.Forms.Label lbColorRepoLogStatusWarn;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox BoxThemeConsole;
     }
 }

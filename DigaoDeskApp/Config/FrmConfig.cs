@@ -38,6 +38,7 @@ namespace DigaoDeskApp
             lbLanguage.Text = Vars.Lang.Config_General_Language;
             lbLanguageInfo.Text = Vars.Lang.Config_General_LanguageInfo;
 
+            BoxThemeConsole.Text = Vars.Lang.Config_Theme_BoxConsole;
             BoxThemeAppLog.Text = Vars.Lang.Config_Theme_BoxAppLog;
             BoxThemeRepoLog.Text = Vars.Lang.Config_Theme_BoxRepoLog;
             btnResetColors.Text = Vars.Lang.Config_Theme_Reset;

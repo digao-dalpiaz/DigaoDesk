@@ -117,6 +117,8 @@ namespace DigaoDeskApp
             btnPush.Text = Vars.Lang.Repos_BtnPush;
             btnShell.Text = Vars.Lang.Repos_BtnShell;
             btnRepoConfig.Text = Vars.Lang.Repos_BtnConfig;
+            btnRepositorySettings.Text = Vars.Lang.Repos_BtnRepositoryConfig;
+            btnReorderList.Text = Vars.Lang.Repos_BtnReorderList;
             btnClearLog.Text = Vars.Lang.Repos_BtnClearLog;
 
             stFunInfo.Text = Vars.Lang.Repos_StatusBar_Info;

@@ -37,6 +37,7 @@
   "Config_General_Language": "Linguagem",
   "Config_General_LanguageInfo": "* Necessita reiniciar o programa",
 
+  "Config_Theme_BoxConsole": "Console",
   "Config_Theme_BoxAppLog": "Log das Aplicações",
   "Config_Theme_BoxRepoLog": "Log dos Repositórios",
   "Config_Theme_Reset": "Resetar Cores",
@@ -128,6 +129,8 @@
   "Repos_BtnPush": "Push",
   "Repos_BtnShell": "Shell",
   "Repos_BtnConfig": "Config",
+  "Repos_BtnRepositoryConfig": "Configurações do Repositório",
+  "Repos_BtnReorderList": "Reordernar Lista",
   "Repos_BtnClearLog": "Limpar Log",
 
   "Repos_StatusBar_Info": "Estou vendo que seu trabalho será sensacional!",
@@ -336,6 +339,7 @@
   "Apps_Add": "Adicionar",
   "Apps_Edit": "Editar",
   "Apps_Delete": "Deletar",
+  "Apps_Reorder": "Reordenar",
   "Apps_DownloadDefs": "Obter Definições",
   "Apps_Filter": "Filtro",
   "Apps_Filter_All": "Todas Aplicações",

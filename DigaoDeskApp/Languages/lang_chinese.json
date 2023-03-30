@@ -37,6 +37,7 @@
   "Config_General_Language": "语言",
   "Config_General_LanguageInfo": "* 需要重新启动",
 
+  "Config_Theme_BoxConsole": "Console",
   "Config_Theme_BoxAppLog": "应用程序日志",
   "Config_Theme_BoxRepoLog": "存储库日志",
   "Config_Theme_Reset": "重置颜色",
@@ -128,6 +129,8 @@
   "Repos_BtnPush": "推送",
   "Repos_BtnShell": "外壳",
   "Repos_BtnConfig": "配置",
+  "Repos_BtnRepositoryConfig": "Repository Settings",
+  "Repos_BtnReorderList": "Reorder List",
   "Repos_BtnClearLog": "清除日志",
 
   "Repos_StatusBar_Info": "我看到你的工作会很棒！",
@@ -336,6 +339,7 @@
   "Apps_Add": "添加",
   "Apps_Edit": "编辑",
   "Apps_Delete": "删除",
+  "Apps_Reorder": "Reorder",
   "Apps_DownloadDefs": "下载定义",
   "Apps_Filter": "过滤器",
   "Apps_Filter_All": "所有应用程序",

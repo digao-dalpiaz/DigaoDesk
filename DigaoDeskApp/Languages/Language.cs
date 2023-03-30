@@ -42,6 +42,7 @@
         public string Config_General_Language;
         public string Config_General_LanguageInfo;
 
+        public string Config_Theme_BoxConsole;
         public string Config_Theme_BoxAppLog;
         public string Config_Theme_BoxRepoLog;
         public string Config_Theme_Reset;
@@ -133,6 +134,8 @@
         public string Repos_BtnPush;
         public string Repos_BtnShell;
         public string Repos_BtnConfig;
+        public string Repos_BtnRepositoryConfig;
+        public string Repos_BtnReorderList;
         public string Repos_BtnClearLog;
 
         public string Repos_StatusBar_Info;
@@ -340,6 +343,7 @@
         public string Apps_Add;
         public string Apps_Edit;
         public string Apps_Delete;
+        public string Apps_Reorder;
         public string Apps_DownloadDefs;
         public string Apps_Filter;
         public string Apps_Filter_All;
