@@ -116,7 +116,7 @@ namespace DigaoDeskApp
             btnCancelOperation.Text = Vars.Lang.Repos_BtnCancelOp;
             btnPush.Text = Vars.Lang.Repos_BtnPush;
             btnShell.Text = Vars.Lang.Repos_BtnShell;
-            btnRepoConfig.Text = Vars.Lang.Repos_BtnConfig;
+            btnConfig.Text = Vars.Lang.Repos_BtnConfig;
             btnRepositorySettings.Text = Vars.Lang.Repos_BtnRepositoryConfig;
             btnReorderList.Text = Vars.Lang.Repos_BtnReorderList;
             btnClearLog.Text = Vars.Lang.Repos_BtnClearLog;
@@ -504,6 +504,6 @@ namespace DigaoDeskApp
         {
             edLog.Clear();
         }
-        
+
     }
 }
