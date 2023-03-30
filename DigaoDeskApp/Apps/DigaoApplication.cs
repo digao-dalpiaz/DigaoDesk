@@ -239,14 +239,16 @@ namespace DigaoDeskApp
             if (_stopping) return;
             _stopping = true;
 
-            AddLog(Vars.Lang.AppLog_Stopping, false, true);
+            bool forced = Control.ModifierKeys == Keys.Shift;
+
+            AddLog(forced ? Vars.Lang.AppLog_StoppingForced : Vars.Lang.AppLog_Stopping, false, true);
             EventAudit.Do("Stop app " + Name);
 
             Task.Run(() =>
             {
                 try
                 {
-                    KillChildProcs(_process, 0);
+                    KillChildProcs(_process, 0, forced);
                 }
                 catch (AbortException) { }
                 finally
@@ -256,19 +258,26 @@ namespace DigaoDeskApp
             });
         }
 
-        private void KillChildProcs(Process parent, int level)
+        private void KillChildProcs(Process parent, int level, bool forced)
         {
             var children = Utils.GetChildProcesses(parent.Id);
             foreach (var child in children)
             {
-                KillChildProcs(child, level+1);
+                KillChildProcs(child, level+1, forced);
                 child.Dispose();
             }
 
             AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), false, true);
             try
             {
-                parent.Kill();
+                if (forced)
+                {
+                    Utils.TerminateProcess(parent);
+                }
+                else
+                {
+                    parent.Kill();
+                }
             } 
             catch (Exception ex)
             {

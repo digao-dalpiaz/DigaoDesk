@@ -135,6 +135,26 @@ namespace DigaoDeskApp
             return ret;
         }
 
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool TerminateProcess(IntPtr hProcess, uint uExitCode);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern uint GetLastError();
+
+        private static void ThrowWinLastError()
+        {
+            uint errorCode = GetLastError();
+            throw new Exception(new System.ComponentModel.Win32Exception((int)errorCode).Message);
+        }
+
+        public static void TerminateProcess(Process process)
+        {
+            if (!TerminateProcess(process.Handle, 0))
+            {
+                ThrowWinLastError();
+            }
+        }
+
         //-----------------------------------------------------------------
 
         public static void BeginUpdate(Control ctrl)

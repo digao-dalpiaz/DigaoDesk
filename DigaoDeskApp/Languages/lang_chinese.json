@@ -304,8 +304,9 @@
 
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
+  "AppLog_StoppingForced": "Stopping process... (FORCED)",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
-  "AppLog_ErrorTerminating": "终止进程错误 \"{1}\": {2}",
+  "AppLog_ErrorTerminating": "终止进程错误 \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
 
   "AppTerminatedBalloonTitle": "进程已停止",

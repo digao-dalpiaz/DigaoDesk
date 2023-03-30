@@ -309,6 +309,7 @@
 
         public string AppLog_Terminated;
         public string AppLog_Stopping;
+        public string AppLog_StoppingForced;
         public string AppLog_TerminatingProcessLevel;
         public string AppLog_ErrorTerminating;
         public string AppLog_TcpPortInUse;

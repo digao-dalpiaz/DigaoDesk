@@ -304,8 +304,9 @@
 
   "AppLog_Terminated": "TERMINADO!",
   "AppLog_Stopping": "Parando processo...",
+  "AppLog_StoppingForced": "Parando processo... (FORÇADO)",
   "AppLog_TerminatingProcessLevel": "Terminando processo no nível {0} \"{1}\" ({2})...",
-  "AppLog_ErrorTerminating": "Erro ao terminar processo \"{1}\": {2}",
+  "AppLog_ErrorTerminating": "Erro ao terminar processo \"{0}\": {1}",
   "AppLog_TcpPortInUse": "Porta TCP {0} já está em uso",
 
   "AppTerminatedBalloonTitle": "Processo parado",
