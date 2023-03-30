@@ -242,7 +242,7 @@ namespace DigaoDeskApp
             bool forced = Control.ModifierKeys == Keys.Shift;
 
             AddLog(forced ? Vars.Lang.AppLog_StoppingForced : Vars.Lang.AppLog_Stopping, false, true);
-            EventAudit.Do("Stop app " + Name);
+            EventAudit.Do("Stop app " + Name + (forced ? " (FORCED)" : ""));
 
             Task.Run(() =>
             {
