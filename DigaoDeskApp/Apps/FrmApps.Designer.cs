@@ -30,13 +30,13 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             components=new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApps));
             g=new System.Windows.Forms.DataGridView();
             colName=new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +77,7 @@ namespace DigaoDeskApp
             stFunInfo=new System.Windows.Forms.ToolStripStatusLabel();
             stMonitoring=new System.Windows.Forms.ToolStripStatusLabel();
             images=new System.Windows.Forms.ImageList(components);
+            btnStopForced=new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)g).BeginInit();
             toolBar.SuspendLayout();
             statusBar.SuspendLayout();
@@ -135,8 +136,8 @@ namespace DigaoDeskApp
             // colRunningTime
             // 
             colRunningTime.DataPropertyName="RunningTime";
-            dataGridViewCellStyle1.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colRunningTime.DefaultCellStyle=dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colRunningTime.DefaultCellStyle=dataGridViewCellStyle15;
             colRunningTime.HeaderText="Running Time";
             colRunningTime.MinimumWidth=6;
             colRunningTime.Name="colRunningTime";
@@ -146,8 +147,8 @@ namespace DigaoDeskApp
             // colMemory
             // 
             colMemory.DataPropertyName="Memory";
-            dataGridViewCellStyle2.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colMemory.DefaultCellStyle=dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colMemory.DefaultCellStyle=dataGridViewCellStyle16;
             colMemory.HeaderText="Memory";
             colMemory.MinimumWidth=6;
             colMemory.Name="colMemory";
@@ -157,8 +158,8 @@ namespace DigaoDeskApp
             // colProcessor
             // 
             colProcessor.DataPropertyName="Processor";
-            dataGridViewCellStyle3.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colProcessor.DefaultCellStyle=dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colProcessor.DefaultCellStyle=dataGridViewCellStyle17;
             colProcessor.HeaderText="Processor";
             colProcessor.MinimumWidth=6;
             colProcessor.Name="colProcessor";
@@ -168,8 +169,8 @@ namespace DigaoDeskApp
             // colProcCount
             // 
             colProcCount.DataPropertyName="ProcCount";
-            dataGridViewCellStyle4.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colProcCount.DefaultCellStyle=dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colProcCount.DefaultCellStyle=dataGridViewCellStyle18;
             colProcCount.HeaderText="Thread Count";
             colProcCount.MinimumWidth=6;
             colProcCount.Name="colProcCount";
@@ -179,8 +180,8 @@ namespace DigaoDeskApp
             // colLastLogTime
             // 
             colLastLogTime.DataPropertyName="LastLogTime";
-            dataGridViewCellStyle5.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colLastLogTime.DefaultCellStyle=dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colLastLogTime.DefaultCellStyle=dataGridViewCellStyle19;
             colLastLogTime.HeaderText="Last Log Time";
             colLastLogTime.MinimumWidth=6;
             colLastLogTime.Name="colLastLogTime";
@@ -190,8 +191,8 @@ namespace DigaoDeskApp
             // colLogLines
             // 
             colLogLines.DataPropertyName="LogLines";
-            dataGridViewCellStyle6.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colLogLines.DefaultCellStyle=dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colLogLines.DefaultCellStyle=dataGridViewCellStyle20;
             colLogLines.HeaderText="Log Lines";
             colLogLines.MinimumWidth=6;
             colLogLines.Name="colLogLines";
@@ -201,8 +202,8 @@ namespace DigaoDeskApp
             // colLogSize
             // 
             colLogSize.DataPropertyName="LogSize";
-            dataGridViewCellStyle7.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colLogSize.DefaultCellStyle=dataGridViewCellStyle7;
+            dataGridViewCellStyle21.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colLogSize.DefaultCellStyle=dataGridViewCellStyle21;
             colLogSize.HeaderText="Log Size";
             colLogSize.MinimumWidth=6;
             colLogSize.Name="colLogSize";
@@ -244,7 +245,7 @@ namespace DigaoDeskApp
             // toolBar
             // 
             toolBar.ImageScalingSize=new System.Drawing.Size(24, 24);
-            toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { btnAdd, btnEdit, btnDelete, toolStripSeparator4, btnReorder, btnDownloadDefs, toolStripSeparator3, btnFilter, toolStripSeparator1, btnStart, btnStop, btnStopAll, toolStripSeparator2, btnFindLog, btnClearLog });
+            toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { btnAdd, btnEdit, btnDelete, toolStripSeparator4, btnReorder, btnDownloadDefs, toolStripSeparator3, btnFilter, toolStripSeparator1, btnStart, btnStop, btnStopForced, btnStopAll, toolStripSeparator2, btnFindLog, btnClearLog });
             toolBar.Location=new System.Drawing.Point(0, 0);
             toolBar.Name="toolBar";
             toolBar.ShowItemToolTips=false;
@@ -462,6 +463,16 @@ namespace DigaoDeskApp
             images.Images.SetKeyName(6, "unread");
             images.Images.SetKeyName(7, "read");
             // 
+            // btnStopForced
+            // 
+            btnStopForced.Image=(System.Drawing.Image)resources.GetObject("btnStopForced.Image");
+            btnStopForced.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            btnStopForced.ImageTransparentColor=System.Drawing.Color.Magenta;
+            btnStopForced.Name="btnStopForced";
+            btnStopForced.Size=new System.Drawing.Size(66, 36);
+            btnStopForced.Text="Kill";
+            btnStopForced.Click+=btnStop_Click;
+            // 
             // FrmApps
             // 
             AutoScaleDimensions=new System.Drawing.SizeF(8F, 20F);
@@ -532,5 +543,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnDownloadDefs;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnReorder;
+        private System.Windows.Forms.ToolStripButton btnStopForced;
     }
 }

@@ -213,7 +213,7 @@ namespace DigaoDeskApp
         private void btnStop_Click(object sender, EventArgs e)
         {
             var app = GetSelApp();
-            app.Stop();
+            app.Stop(sender == btnStopForced);
         }
 
         private void btnStopAll_Click(object sender, EventArgs e)
@@ -222,7 +222,7 @@ namespace DigaoDeskApp
             {
                 if (item.Running)
                 {
-                    item.Stop();
+                    item.Stop(false);
                 }
             }
         }
@@ -283,11 +283,15 @@ namespace DigaoDeskApp
             var app = GetSelApp();
             var selected = app != null;
 
-            btnEdit.Enabled = selected;
-            btnDelete.Enabled = selected && !app.Running;
+            var selAndRunning = selected && app.Running;
+            var selAndNotRunning = selected && !app.Running;
 
-            btnStart.Enabled = selected && !app.Running;
-            btnStop.Enabled = selected && app.Running;
+            btnEdit.Enabled = selected;
+            btnDelete.Enabled = selAndNotRunning;
+
+            btnStart.Enabled = selAndNotRunning;
+            btnStop.Enabled = selAndRunning;
+            btnStopForced.Enabled = selAndRunning;
 
             var hasLog = selected && app.Logs.Any();
             btnFindLog.Enabled = hasLog;
