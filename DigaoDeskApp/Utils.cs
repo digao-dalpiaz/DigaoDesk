@@ -138,13 +138,9 @@ namespace DigaoDeskApp
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern bool TerminateProcess(IntPtr hProcess, uint uExitCode);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        private static extern uint GetLastError();
-
         private static void ThrowWinLastError()
         {
-            uint errorCode = GetLastError();
-            throw new Exception(new System.ComponentModel.Win32Exception((int)errorCode).Message);
+            throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
         }
 
         public static void TerminateProcess(Process process)
