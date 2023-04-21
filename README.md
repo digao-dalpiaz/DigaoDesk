@@ -44,6 +44,7 @@ There is another function available in tray menu, allowing you to manage your gi
 - Cancel Operation (cancel current git operation)
 - Push
 - Open Shell program
+- Run custom command in repository folder
 
 # Installation
 
@@ -71,6 +72,24 @@ You can set usage preferences as needed, like Language, Theme, and Git Credentia
 
 ![Config](images/config_git.png)
 ![Config](images/config_theme.png)
+
+## Bitbucket Authentication
+
+To use repositories with Bitbucket authentication, simply create an App Password in managing your Bitbucket account.
+
+When creating an App Password, you will receive an authentication hash. So, just configure the Digao Desk as follows:
+
+- Login = Bitbucket username
+- Password = Bitbucket App Password hash
+
+## GitHub Authentication
+
+To use repositories with GitHub authentication, simply create an Personal Access Token in GitHub Developer Settings.
+
+When creating an Personal Access Token, you will receive an authentication hash. So, just configure the Digao Desk as follows:
+
+- Login = GitHub account email
+- Password = GitHub personal access token hash
 
 # Requirements
 
