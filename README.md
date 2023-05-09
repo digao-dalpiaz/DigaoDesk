@@ -72,20 +72,20 @@ Feel free to help me translating the app to your language. :)
 
 ### Spring-boot
 
-- Command line: [MAVEN_PATH]\mvn.cmd
-- Arguments: spring-boot:run
+- Command line: `[MAVEN_PATH]\mvn.cmd`
+- Arguments: `spring-boot:run`
 - Working directory: Your app directory
 
 ### Quarkus
 
-- Command line: [MAVEN_PATH]\mvn.cmd
-- Arguments: quarkus:dev
+- Command line: `[MAVEN_PATH]\mvn.cmd`
+- Arguments: `quarkus:dev`
 - Working directory: Your app directory
 
 ## Frontend Applications
 
-- Command line: [NODE_PATH]\npm.cmd
-- Arguments: start
+- Command line: `[NODE_PATH]\npm.cmd`
+- Arguments: `start`
 - Working directory: Your app directory
 
 # Settings
