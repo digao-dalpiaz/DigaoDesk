@@ -66,6 +66,28 @@ The app supports following languages:
 
 Feel free to help me translating the app to your language. :)
 
+# Running Backend and Frontend applications
+
+## Backend Java Applications
+
+### Spring-boot
+
+- Command line: [MAVEN_PATH]\mvn.cmd
+- Arguments: spring-boot:run
+- Working directory: Your app directory
+
+### Quarkus
+
+- Command line: [MAVEN_PATH]\mvn.cmd
+- Arguments: quarkus:dev
+- Working directory: Your app directory
+
+## Frontend Applications
+
+- Command line: [NODE_PATH]\npm.cmd
+- Arguments: start
+- Working directory: Your app directory
+
 # Settings
 
 You can set usage preferences as needed, like Language, Theme, and Git Credentials and much more.
