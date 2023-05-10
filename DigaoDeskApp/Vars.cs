@@ -28,5 +28,7 @@ namespace DigaoDeskApp
 
         public static string UpdateTmpExe;
 
+        public static bool IsSuspended;
+
     }
 }
