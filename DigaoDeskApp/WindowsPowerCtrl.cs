@@ -20,9 +20,11 @@ namespace DigaoDeskApp
             switch (e.Mode)
             {
                 case PowerModes.Suspend:
+                    Vars.IsSuspended = true;
                     EventAudit.Do("Windows Suspended");
                     break;
                 case PowerModes.Resume:
+                    Vars.IsSuspended = false;
                     EventAudit.Do("Windows Resumed");
                     break;
             }

@@ -313,6 +313,7 @@ namespace DigaoDeskApp
 
         private void timerMonitor_Tick(object sender, EventArgs e)
         {
+            if (Vars.IsSuspended) return;
             ReloadGrid();
             UpdateButtons();
 

@@ -144,6 +144,7 @@ namespace DigaoDeskApp
 
         private void timerApps_Tick(object sender, EventArgs e)
         {
+            if (Vars.IsSuspended) return;
             timerApps.Enabled = false;
 
             new Task(() =>
