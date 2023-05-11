@@ -37,7 +37,7 @@
   "Config_General_Language": "语言",
   "Config_General_LanguageInfo": "* 需要重新启动",
 
-  "Config_Theme_BoxConsole": "Console",
+  "Config_Theme_BoxConsole": "控制台",
   "Config_Theme_BoxAppLog": "应用程序日志",
   "Config_Theme_BoxRepoLog": "存储库日志",
   "Config_Theme_Reset": "重置颜色",
@@ -129,8 +129,8 @@
   "Repos_BtnPush": "推送",
   "Repos_BtnShell": "外壳",
   "Repos_BtnConfig": "配置",
-  "Repos_BtnRepositoryConfig": "Repository Settings",
-  "Repos_BtnReorderList": "Reorder List",
+  "Repos_BtnRepositoryConfig": "存储库设置",
+  "Repos_BtnReorderList": "重新排序列表",
   "Repos_BtnClearLog": "清除日志",
 
   "Repos_StatusBar_Info": "我看到你的工作会很棒！",
@@ -307,7 +307,7 @@
 
   "AppLog_Terminated": "已终止！",
   "AppLog_Stopping": "停止进程...",
-  "AppLog_StoppingForced": "Stopping process... (FORCED)",
+  "AppLog_StoppingForced": "正在停止进程...（强制）",
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
   "AppLog_ErrorTerminating": "终止进程错误 \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
@@ -329,7 +329,7 @@
   "AppEditor_Directory": "工作目录",
   "AppEditor_EnvVars": "环境变量",
   "AppEditor_EnvVarsInfo": "格式：NAME=VALUE\n新建行：CTRL+ENTER",
-  "AppEditor_TcpPort": "TCP Port",
+  "AppEditor_TcpPort": "TCP 端口",
 
   "AppEditor_AppNameRequired": "指定应用程序名称",
   "AppEditor_CmdLineRequired": "指定应用程序文件路径",
