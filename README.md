@@ -72,13 +72,13 @@ Feel free to help me translating the app to your language. :)
 
 ### Spring-boot
 
-- Command line: `[MAVEN_PATH]\mvn.cmd`
+- Command line: `mvn.cmd`
 - Arguments: `spring-boot:run`
 - Working directory: Your app directory
 
 ### Quarkus
 
-- Command line: `[MAVEN_PATH]\mvn.cmd`
+- Command line: `mvn.cmd`
 - Arguments: `quarkus:dev`
 - Working directory: Your app directory
 
@@ -86,17 +86,17 @@ Feel free to help me translating the app to your language. :)
 
 ### NPM
 
-- Command line: `[NODE_PATH]\npm.cmd`
+- Command line: `npm.cmd`
 - Arguments: `start`
 - Working directory: Your app directory
 
 ### Yarn
 
-- Command line: `[NPM_PATH]\yarn.cmd`
+- Command line: `yarn.cmd`
 - Arguments: `start`
 - Working directory: Your app directory
 
-> You can use `where [command]` in Windows cmd prompt to find out which folder the desired command is in.
+> Important! Ensure the command file is included in PATH environment variable (or include full path in command line).
 
 # Settings
 

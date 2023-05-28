@@ -153,19 +153,32 @@ namespace DigaoDeskApp
         {
             ClearLog();
 
-            if (TcpPort.HasValue)
-            {
-                if (Utils.TcpPortInUse(TcpPort.Value))
-                {
-                    AddLog(string.Format(Vars.Lang.AppLog_TcpPortInUse, TcpPort.Value), true);
-                    return;
-                }
-            }
-
             EventAudit.Do("Run app " + Name);
 
+            try
+            {
+                InternalStart();
+            } 
+            catch (Messages.MessageException exMsg)
+            {
+                AddLog(exMsg.Message, true);
+                EventAudit.Do("Error: " + exMsg.Message);
+            }
+        }
+
+        private void InternalStart()
+        {
             var si = new ProcessStartInfo();
-            si.FileName = Environment.ExpandEnvironmentVariables(Cmd);
+            if (Cmd.Contains("\\"))
+            {
+                si.FileName = Environment.ExpandEnvironmentVariables(Cmd);
+            }
+            else
+            {
+                string cmdFolder = Utils.FindFolderInPathEnvironmentByFile(Cmd);
+                if (cmdFolder == null) Messages.ThrowMsg(string.Format(Vars.Lang.AppLog_FileNotInPath, Cmd));
+                si.FileName = Path.Combine(cmdFolder, Cmd);
+            }
             si.WorkingDirectory = !string.IsNullOrEmpty(WorkDir) ? Environment.ExpandEnvironmentVariables(WorkDir) : Path.GetDirectoryName(si.FileName);
             si.Arguments = Environment.ExpandEnvironmentVariables(Args);
             si.UseShellExecute = false;
@@ -213,15 +226,23 @@ namespace DigaoDeskApp
                     }
                 }
             };
-            
+
+            EventAudit.Do("FileName: " + si.FileName);
+            EventAudit.Do("WorkingDirectory: " + si.WorkingDirectory);
+            EventAudit.Do("Arguments: " + si.Arguments);
+
+            if (TcpPort.HasValue && Utils.TcpPortInUse(TcpPort.Value))
+            {
+                Messages.ThrowMsg(string.Format(Vars.Lang.AppLog_TcpPortInUse, TcpPort.Value));
+            }
+
             try
             {
                 _process.Start();
             } 
             catch (Exception ex)
             {
-                AddLog(ex.Message, true);
-                return;
+                Messages.ThrowMsg(ex.Message);
             }
 
             Running = true;

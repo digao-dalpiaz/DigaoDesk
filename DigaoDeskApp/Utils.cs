@@ -274,5 +274,14 @@ namespace DigaoDeskApp
             Process.Start("explorer", url);
         }
 
+        //-----------------------------------------------------------------
+
+        public static string FindFolderInPathEnvironmentByFile(string filename)
+        {
+            var paths = Environment.GetEnvironmentVariable("PATH").Split(";");
+
+            return paths.FirstOrDefault(folder => File.Exists(Path.Combine(folder, filename)));
+        }
+
     }
 }
