@@ -84,9 +84,19 @@ Feel free to help me translating the app to your language. :)
 
 ## Frontend Applications
 
+### NPM
+
 - Command line: `[NODE_PATH]\npm.cmd`
 - Arguments: `start`
 - Working directory: Your app directory
+
+### Yarn
+
+- Command line: `[NPM_PATH]\yarn.cmd`
+- Arguments: `start`
+- Working directory: Your app directory
+
+> You can use `where [command]` in Windows cmd prompt to find out which folder the desired command is in.
 
 # Settings
 

@@ -29,230 +29,243 @@ namespace DigaoDeskApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbName = new System.Windows.Forms.Label();
-            this.edName = new System.Windows.Forms.TextBox();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.edCmd = new System.Windows.Forms.TextBox();
-            this.lbCmd = new System.Windows.Forms.Label();
-            this.edArgs = new System.Windows.Forms.TextBox();
-            this.lbArgs = new System.Windows.Forms.Label();
-            this.edDir = new System.Windows.Forms.TextBox();
-            this.lbDir = new System.Windows.Forms.Label();
-            this.btnSelCmd = new System.Windows.Forms.Button();
-            this.btnSelDir = new System.Windows.Forms.Button();
-            this.edEnv = new System.Windows.Forms.TextBox();
-            this.lbEnv = new System.Windows.Forms.Label();
-            this.lbEnvInfo = new System.Windows.Forms.Label();
-            this.lbTcpPort = new System.Windows.Forms.Label();
-            this.edTcpPort = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.edTcpPort)).BeginInit();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAppEditor));
+            lbName=new System.Windows.Forms.Label();
+            edName=new System.Windows.Forms.TextBox();
+            btnOK=new System.Windows.Forms.Button();
+            btnCancel=new System.Windows.Forms.Button();
+            edCmd=new System.Windows.Forms.TextBox();
+            lbCmd=new System.Windows.Forms.Label();
+            edArgs=new System.Windows.Forms.TextBox();
+            lbArgs=new System.Windows.Forms.Label();
+            edDir=new System.Windows.Forms.TextBox();
+            lbDir=new System.Windows.Forms.Label();
+            btnSelCmd=new System.Windows.Forms.Button();
+            btnSelDir=new System.Windows.Forms.Button();
+            edEnv=new System.Windows.Forms.TextBox();
+            lbEnv=new System.Windows.Forms.Label();
+            lbEnvInfo=new System.Windows.Forms.Label();
+            lbTcpPort=new System.Windows.Forms.Label();
+            edTcpPort=new System.Windows.Forms.NumericUpDown();
+            btnHelp=new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)edTcpPort).BeginInit();
+            SuspendLayout();
             // 
             // lbName
             // 
-            this.lbName.AutoSize = true;
-            this.lbName.ForeColor = System.Drawing.Color.Red;
-            this.lbName.Location = new System.Drawing.Point(16, 21);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(130, 20);
-            this.lbName.TabIndex = 0;
-            this.lbName.Text = "Application Name";
+            lbName.AutoSize=true;
+            lbName.ForeColor=System.Drawing.Color.Red;
+            lbName.Location=new System.Drawing.Point(16, 21);
+            lbName.Name="lbName";
+            lbName.Size=new System.Drawing.Size(130, 20);
+            lbName.TabIndex=0;
+            lbName.Text="Application Name";
             // 
             // edName
             // 
-            this.edName.Location = new System.Drawing.Point(18, 43);
-            this.edName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edName.Name = "edName";
-            this.edName.Size = new System.Drawing.Size(622, 27);
-            this.edName.TabIndex = 0;
+            edName.Location=new System.Drawing.Point(18, 43);
+            edName.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edName.Name="edName";
+            edName.Size=new System.Drawing.Size(622, 27);
+            edName.TabIndex=0;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(274, 544);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(110, 43);
-            this.btnOK.TabIndex = 11;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            btnOK.Location=new System.Drawing.Point(274, 544);
+            btnOK.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnOK.Name="btnOK";
+            btnOK.Size=new System.Drawing.Size(110, 43);
+            btnOK.TabIndex=11;
+            btnOK.Text="OK";
+            btnOK.UseVisualStyleBackColor=true;
+            btnOK.Click+=btnOK_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(393, 544);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 43);
-            this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.DialogResult=System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Location=new System.Drawing.Point(393, 544);
+            btnCancel.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCancel.Name="btnCancel";
+            btnCancel.Size=new System.Drawing.Size(110, 43);
+            btnCancel.TabIndex=12;
+            btnCancel.Text="Cancel";
+            btnCancel.UseVisualStyleBackColor=true;
             // 
             // edCmd
             // 
-            this.edCmd.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.edCmd.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.edCmd.Location = new System.Drawing.Point(18, 117);
-            this.edCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edCmd.Name = "edCmd";
-            this.edCmd.Size = new System.Drawing.Size(713, 27);
-            this.edCmd.TabIndex = 2;
+            edCmd.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            edCmd.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystem;
+            edCmd.Location=new System.Drawing.Point(18, 117);
+            edCmd.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edCmd.Name="edCmd";
+            edCmd.Size=new System.Drawing.Size(713, 27);
+            edCmd.TabIndex=2;
             // 
             // lbCmd
             // 
-            this.lbCmd.AutoSize = true;
-            this.lbCmd.ForeColor = System.Drawing.Color.Red;
-            this.lbCmd.Location = new System.Drawing.Point(16, 96);
-            this.lbCmd.Name = "lbCmd";
-            this.lbCmd.Size = new System.Drawing.Size(106, 20);
-            this.lbCmd.TabIndex = 4;
-            this.lbCmd.Text = "Command line";
+            lbCmd.AutoSize=true;
+            lbCmd.ForeColor=System.Drawing.Color.Red;
+            lbCmd.Location=new System.Drawing.Point(16, 96);
+            lbCmd.Name="lbCmd";
+            lbCmd.Size=new System.Drawing.Size(106, 20);
+            lbCmd.TabIndex=4;
+            lbCmd.Text="Command line";
             // 
             // edArgs
             // 
-            this.edArgs.Location = new System.Drawing.Point(18, 192);
-            this.edArgs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edArgs.Name = "edArgs";
-            this.edArgs.Size = new System.Drawing.Size(740, 27);
-            this.edArgs.TabIndex = 4;
+            edArgs.Location=new System.Drawing.Point(18, 192);
+            edArgs.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edArgs.Name="edArgs";
+            edArgs.Size=new System.Drawing.Size(740, 27);
+            edArgs.TabIndex=4;
             // 
             // lbArgs
             // 
-            this.lbArgs.AutoSize = true;
-            this.lbArgs.Location = new System.Drawing.Point(16, 171);
-            this.lbArgs.Name = "lbArgs";
-            this.lbArgs.Size = new System.Drawing.Size(81, 20);
-            this.lbArgs.TabIndex = 6;
-            this.lbArgs.Text = "Arguments";
+            lbArgs.AutoSize=true;
+            lbArgs.Location=new System.Drawing.Point(16, 171);
+            lbArgs.Name="lbArgs";
+            lbArgs.Size=new System.Drawing.Size(81, 20);
+            lbArgs.TabIndex=6;
+            lbArgs.Text="Arguments";
             // 
             // edDir
             // 
-            this.edDir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.edDir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            this.edDir.Location = new System.Drawing.Point(18, 267);
-            this.edDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edDir.Name = "edDir";
-            this.edDir.Size = new System.Drawing.Size(713, 27);
-            this.edDir.TabIndex = 5;
+            edDir.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            edDir.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
+            edDir.Location=new System.Drawing.Point(18, 267);
+            edDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edDir.Name="edDir";
+            edDir.Size=new System.Drawing.Size(713, 27);
+            edDir.TabIndex=5;
             // 
             // lbDir
             // 
-            this.lbDir.AutoSize = true;
-            this.lbDir.Location = new System.Drawing.Point(16, 245);
-            this.lbDir.Name = "lbDir";
-            this.lbDir.Size = new System.Drawing.Size(127, 20);
-            this.lbDir.TabIndex = 8;
-            this.lbDir.Text = "Working directory";
+            lbDir.AutoSize=true;
+            lbDir.Location=new System.Drawing.Point(16, 245);
+            lbDir.Name="lbDir";
+            lbDir.Size=new System.Drawing.Size(127, 20);
+            lbDir.TabIndex=8;
+            lbDir.Text="Working directory";
             // 
             // btnSelCmd
             // 
-            this.btnSelCmd.Location = new System.Drawing.Point(731, 117);
-            this.btnSelCmd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSelCmd.Name = "btnSelCmd";
-            this.btnSelCmd.Size = new System.Drawing.Size(27, 33);
-            this.btnSelCmd.TabIndex = 3;
-            this.btnSelCmd.TabStop = false;
-            this.btnSelCmd.Text = "...";
-            this.btnSelCmd.UseVisualStyleBackColor = true;
-            this.btnSelCmd.Click += new System.EventHandler(this.btnSelCmd_Click);
+            btnSelCmd.Location=new System.Drawing.Point(731, 117);
+            btnSelCmd.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnSelCmd.Name="btnSelCmd";
+            btnSelCmd.Size=new System.Drawing.Size(27, 33);
+            btnSelCmd.TabIndex=3;
+            btnSelCmd.TabStop=false;
+            btnSelCmd.Text="...";
+            btnSelCmd.UseVisualStyleBackColor=true;
+            btnSelCmd.Click+=btnSelCmd_Click;
             // 
             // btnSelDir
             // 
-            this.btnSelDir.Location = new System.Drawing.Point(731, 267);
-            this.btnSelDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSelDir.Name = "btnSelDir";
-            this.btnSelDir.Size = new System.Drawing.Size(27, 33);
-            this.btnSelDir.TabIndex = 6;
-            this.btnSelDir.TabStop = false;
-            this.btnSelDir.Text = "...";
-            this.btnSelDir.UseVisualStyleBackColor = true;
-            this.btnSelDir.Click += new System.EventHandler(this.btnSelDir_Click);
+            btnSelDir.Location=new System.Drawing.Point(731, 267);
+            btnSelDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnSelDir.Name="btnSelDir";
+            btnSelDir.Size=new System.Drawing.Size(27, 33);
+            btnSelDir.TabIndex=6;
+            btnSelDir.TabStop=false;
+            btnSelDir.Text="...";
+            btnSelDir.UseVisualStyleBackColor=true;
+            btnSelDir.Click+=btnSelDir_Click;
             // 
             // edEnv
             // 
-            this.edEnv.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.edEnv.Location = new System.Drawing.Point(18, 341);
-            this.edEnv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edEnv.Multiline = true;
-            this.edEnv.Name = "edEnv";
-            this.edEnv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edEnv.Size = new System.Drawing.Size(740, 180);
-            this.edEnv.TabIndex = 7;
+            edEnv.Font=new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            edEnv.Location=new System.Drawing.Point(18, 341);
+            edEnv.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edEnv.Multiline=true;
+            edEnv.Name="edEnv";
+            edEnv.ScrollBars=System.Windows.Forms.ScrollBars.Vertical;
+            edEnv.Size=new System.Drawing.Size(740, 180);
+            edEnv.TabIndex=7;
             // 
             // lbEnv
             // 
-            this.lbEnv.AutoSize = true;
-            this.lbEnv.Location = new System.Drawing.Point(16, 320);
-            this.lbEnv.Name = "lbEnv";
-            this.lbEnv.Size = new System.Drawing.Size(155, 20);
-            this.lbEnv.TabIndex = 14;
-            this.lbEnv.Text = "Environment variables";
+            lbEnv.AutoSize=true;
+            lbEnv.Location=new System.Drawing.Point(16, 320);
+            lbEnv.Name="lbEnv";
+            lbEnv.Size=new System.Drawing.Size(155, 20);
+            lbEnv.TabIndex=14;
+            lbEnv.Text="Environment variables";
             // 
             // lbEnvInfo
             // 
-            this.lbEnvInfo.AutoSize = true;
-            this.lbEnvInfo.ForeColor = System.Drawing.Color.Gray;
-            this.lbEnvInfo.Location = new System.Drawing.Point(18, 533);
-            this.lbEnvInfo.Name = "lbEnvInfo";
-            this.lbEnvInfo.Size = new System.Drawing.Size(165, 40);
-            this.lbEnvInfo.TabIndex = 15;
-            this.lbEnvInfo.Text = "Format: NAME=VALUE\r\nNew line: CTRL+ENTER ";
+            lbEnvInfo.AutoSize=true;
+            lbEnvInfo.ForeColor=System.Drawing.Color.Gray;
+            lbEnvInfo.Location=new System.Drawing.Point(18, 533);
+            lbEnvInfo.Name="lbEnvInfo";
+            lbEnvInfo.Size=new System.Drawing.Size(165, 40);
+            lbEnvInfo.TabIndex=15;
+            lbEnvInfo.Text="Format: NAME=VALUE\r\nNew line: CTRL+ENTER ";
             // 
             // lbTcpPort
             // 
-            this.lbTcpPort.AutoSize = true;
-            this.lbTcpPort.Location = new System.Drawing.Point(654, 21);
-            this.lbTcpPort.Name = "lbTcpPort";
-            this.lbTcpPort.Size = new System.Drawing.Size(63, 20);
-            this.lbTcpPort.TabIndex = 16;
-            this.lbTcpPort.Text = "TCP Port";
+            lbTcpPort.AutoSize=true;
+            lbTcpPort.Location=new System.Drawing.Point(654, 21);
+            lbTcpPort.Name="lbTcpPort";
+            lbTcpPort.Size=new System.Drawing.Size(63, 20);
+            lbTcpPort.TabIndex=16;
+            lbTcpPort.Text="TCP Port";
             // 
             // edTcpPort
             // 
-            this.edTcpPort.Location = new System.Drawing.Point(656, 43);
-            this.edTcpPort.Name = "edTcpPort";
-            this.edTcpPort.Size = new System.Drawing.Size(104, 27);
-            this.edTcpPort.TabIndex = 1;
-            this.edTcpPort.TabStop = false;
+            edTcpPort.Location=new System.Drawing.Point(656, 43);
+            edTcpPort.Name="edTcpPort";
+            edTcpPort.Size=new System.Drawing.Size(104, 27);
+            edTcpPort.TabIndex=1;
+            edTcpPort.TabStop=false;
+            // 
+            // btnHelp
+            // 
+            btnHelp.Image=(System.Drawing.Image)resources.GetObject("btnHelp.Image");
+            btnHelp.Location=new System.Drawing.Point(720, 552);
+            btnHelp.Name="btnHelp";
+            btnHelp.Size=new System.Drawing.Size(40, 32);
+            btnHelp.TabIndex=20;
+            btnHelp.TabStop=false;
+            btnHelp.UseVisualStyleBackColor=true;
+            btnHelp.Click+=btnHelp_Click;
             // 
             // FrmAppEditor
             // 
-            this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(778, 604);
-            this.Controls.Add(this.edTcpPort);
-            this.Controls.Add(this.lbTcpPort);
-            this.Controls.Add(this.lbEnvInfo);
-            this.Controls.Add(this.lbEnv);
-            this.Controls.Add(this.edEnv);
-            this.Controls.Add(this.btnSelDir);
-            this.Controls.Add(this.btnSelCmd);
-            this.Controls.Add(this.edDir);
-            this.Controls.Add(this.lbDir);
-            this.Controls.Add(this.edArgs);
-            this.Controls.Add(this.lbArgs);
-            this.Controls.Add(this.edCmd);
-            this.Controls.Add(this.lbCmd);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.edName);
-            this.Controls.Add(this.lbName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FrmAppEditor";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Application";
-            this.Load += new System.EventHandler(this.FrmAppEditor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.edTcpPort)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AcceptButton=btnOK;
+            AutoScaleDimensions=new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode=System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton=btnCancel;
+            ClientSize=new System.Drawing.Size(778, 604);
+            Controls.Add(btnHelp);
+            Controls.Add(edTcpPort);
+            Controls.Add(lbTcpPort);
+            Controls.Add(lbEnvInfo);
+            Controls.Add(lbEnv);
+            Controls.Add(edEnv);
+            Controls.Add(btnSelDir);
+            Controls.Add(btnSelCmd);
+            Controls.Add(edDir);
+            Controls.Add(lbDir);
+            Controls.Add(edArgs);
+            Controls.Add(lbArgs);
+            Controls.Add(edCmd);
+            Controls.Add(lbCmd);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOK);
+            Controls.Add(edName);
+            Controls.Add(lbName);
+            FormBorderStyle=System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MaximizeBox=false;
+            MinimizeBox=false;
+            Name="FrmAppEditor";
+            ShowInTaskbar=false;
+            StartPosition=System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text="New Application";
+            Load+=FrmAppEditor_Load;
+            ((System.ComponentModel.ISupportInitialize)edTcpPort).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -274,5 +287,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbEnvInfo;
         private System.Windows.Forms.Label lbTcpPort;
         private System.Windows.Forms.NumericUpDown edTcpPort;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

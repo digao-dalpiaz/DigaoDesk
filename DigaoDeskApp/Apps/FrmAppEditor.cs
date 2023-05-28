@@ -94,7 +94,7 @@ namespace DigaoDeskApp
             Dictionary<string, string> dic;
             try
             {
-                dic = EnvVariablesParser.StringToDictionary(edEnv.Text); 
+                dic = EnvVariablesParser.StringToDictionary(edEnv.Text);
             }
             catch (Messages.MessageException msgEx)
             {
@@ -140,6 +140,11 @@ namespace DigaoDeskApp
             {
                 edDir.Text = dlg.SelectedPath;
             }
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Utils.Navigate(Vars.GITHUB_LINK + "#running-backend-and-frontend-applications");
         }
 
     }
