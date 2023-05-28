@@ -96,7 +96,7 @@ Feel free to help me translating the app to your language. :)
 - Arguments: `start`
 - Working directory: Your app directory
 
-> Important! Ensure the command file is included in PATH environment variable (or include full path in command line).
+> Important! Ensure the command file is included in PATH environment variable (or include full path in command line). If you change environment variables, please close and reopen Digao Desk to reload the variables.
 
 # Settings
 
