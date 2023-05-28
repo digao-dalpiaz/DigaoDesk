@@ -1,6 +1,7 @@
 ﻿{
   "AlreadyRunningMessage": "Digao Desk is already running!",
   "MenuVersion": "Version {0}",
+  "MenuDonate": "Donate",
   "MenuApplications": "Applications",
   "MenuGitRepositories": "Git Repositories",
   "MenuSettings": "Settings",

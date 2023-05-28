@@ -19,7 +19,7 @@ namespace DigaoDeskApp
             {
                 if (Messages.Question(Vars.Lang.SurveyQuestion))
                 {
-                    Process.Start("explorer", "https://digaodalpiaz.com/wp/digao-desk-usage/");
+                    Utils.Navigate(Vars.DIGAODALPIAZ_SURVEY_LINK);
                 }
 
                 r.SetValue(askedKey, 1);

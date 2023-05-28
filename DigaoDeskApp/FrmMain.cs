@@ -70,6 +70,7 @@ namespace DigaoDeskApp
         private void LoadLang()
         {
             miVersion.Text = string.Format(Vars.Lang.MenuVersion, Vars.APP_VERSION);
+            miDonate.Text = Vars.Lang.MenuDonate;
             miApplications.Text = Vars.Lang.MenuApplications;
             miRepos.Text = Vars.Lang.MenuGitRepositories;
             miConfig.Text = Vars.Lang.MenuSettings;
@@ -134,12 +135,17 @@ namespace DigaoDeskApp
 
         private void miDigaoDesk_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer", Vars.GITHUB_LINK);
+            Utils.Navigate(Vars.GITHUB_LINK);
         }
 
         private void miVersion_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer", Vars.GITHUB_LINK + "/releases");
+            Utils.Navigate(Vars.GITHUB_LINK + "/releases");
+        }
+
+        private void miDonate_Click(object sender, EventArgs e)
+        {
+            Utils.Navigate(Vars.DIGAODALPIAZ_DONATE_LINK);
         }
 
         private void timerApps_Tick(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿{
   "AlreadyRunningMessage": "Digao Desk 已经运行！",
   "MenuVersion": "版本 {0}",
+  "MenuDonate": "Donate",
   "MenuApplications": "应用程序",
   "MenuGitRepositories": "Git 存储库",
   "MenuSettings": "设置",

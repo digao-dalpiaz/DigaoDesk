@@ -267,5 +267,12 @@ namespace DigaoDeskApp
             );
         }
 
+        //-----------------------------------------------------------------
+
+        public static void Navigate(string url)
+        {
+            Process.Start("explorer", url);
+        }
+
     }
 }

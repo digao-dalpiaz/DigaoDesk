@@ -6,6 +6,7 @@
 
         public string AlreadyRunningMessage;
         public string MenuVersion;
+        public string MenuDonate;
         public string MenuApplications;
         public string MenuGitRepositories;
         public string MenuSettings;

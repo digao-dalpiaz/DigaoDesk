@@ -10,6 +10,10 @@ namespace DigaoDeskApp
 
         public const string GITHUB_LINK = "https://github.com/digao-dalpiaz/DigaoDesk";
 
+        private const string DIGAODALPIAZ_WP_LINK = "https://digaodalpiaz.com/wp/";
+        public const string DIGAODALPIAZ_DONATE_LINK = DIGAODALPIAZ_WP_LINK + "donate";
+        public const string DIGAODALPIAZ_SURVEY_LINK = DIGAODALPIAZ_WP_LINK + "digao-desk-usage";
+
         public const string DATETIME_FMT = "yyyy-MM-dd HH:mm:ss";
 
         public static FrmMain FrmMainObj;

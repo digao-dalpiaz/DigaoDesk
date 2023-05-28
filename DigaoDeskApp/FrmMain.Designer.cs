@@ -35,6 +35,8 @@ namespace DigaoDeskApp
             menu=new System.Windows.Forms.ContextMenuStrip(components);
             miDigaoDesk=new System.Windows.Forms.ToolStripMenuItem();
             miVersion=new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator1=new System.Windows.Forms.ToolStripSeparator();
+            miDonate=new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem1=new System.Windows.Forms.ToolStripSeparator();
             miApplications=new System.Windows.Forms.ToolStripMenuItem();
             miRepos=new System.Windows.Forms.ToolStripMenuItem();
@@ -55,16 +57,16 @@ namespace DigaoDeskApp
             // menu
             // 
             menu.ImageScalingSize=new System.Drawing.Size(20, 20);
-            menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { miDigaoDesk, miVersion, toolStripMenuItem1, miApplications, miRepos, miConfig, miSeparator, miExit });
+            menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { miDigaoDesk, miVersion, toolStripSeparator1, miDonate, toolStripMenuItem1, miApplications, miRepos, miConfig, miSeparator, miExit });
             menu.Name="Menu";
-            menu.Size=new System.Drawing.Size(200, 244);
+            menu.Size=new System.Drawing.Size(227, 316);
             // 
             // miDigaoDesk
             // 
             miDigaoDesk.Image=(System.Drawing.Image)resources.GetObject("miDigaoDesk.Image");
             miDigaoDesk.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             miDigaoDesk.Name="miDigaoDesk";
-            miDigaoDesk.Size=new System.Drawing.Size(199, 38);
+            miDigaoDesk.Size=new System.Drawing.Size(226, 38);
             miDigaoDesk.Text="Digao Desk";
             miDigaoDesk.Click+=miDigaoDesk_Click;
             // 
@@ -74,6 +76,20 @@ namespace DigaoDeskApp
             miVersion.Size=new System.Drawing.Size(226, 38);
             miVersion.Text="Version";
             miVersion.Click+=miVersion_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name="toolStripSeparator1";
+            toolStripSeparator1.Size=new System.Drawing.Size(223, 6);
+            // 
+            // miDonate
+            // 
+            miDonate.Image=(System.Drawing.Image)resources.GetObject("miDonate.Image");
+            miDonate.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            miDonate.Name="miDonate";
+            miDonate.Size=new System.Drawing.Size(226, 38);
+            miDonate.Text="Donate";
+            miDonate.Click+=miDonate_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -103,7 +119,7 @@ namespace DigaoDeskApp
             miConfig.Image=(System.Drawing.Image)resources.GetObject("miConfig.Image");
             miConfig.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             miConfig.Name="miConfig";
-            miConfig.Size=new System.Drawing.Size(199, 38);
+            miConfig.Size=new System.Drawing.Size(226, 38);
             miConfig.Text="Settings";
             miConfig.Click+=miConfig_Click;
             // 
@@ -164,6 +180,8 @@ namespace DigaoDeskApp
         public System.Windows.Forms.NotifyIcon tray;
         private System.Windows.Forms.ToolStripMenuItem miRepos;
         private System.Windows.Forms.Timer timerApps;
+        private System.Windows.Forms.ToolStripMenuItem miDonate;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
