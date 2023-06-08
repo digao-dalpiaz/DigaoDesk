@@ -144,14 +144,16 @@ namespace DigaoDeskApp
             foreach (ManagementObject mo in processList)
             {
                 var pid = Convert.ToInt32(mo.GetPropertyValue("ProcessId"));
-                Process proc = null;
+                Process proc;
                 try
                 {
                     proc = Process.GetProcessById(pid);
                 }
-                catch (ArgumentException) { } //PID already expired
-                
-                if (proc != null) ret.Add(proc);
+                catch (ArgumentException) 
+                {
+                    continue; //PID already expired
+                }
+                ret.Add(proc);
             }
             return ret;
         }
