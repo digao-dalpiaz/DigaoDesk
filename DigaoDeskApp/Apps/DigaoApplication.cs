@@ -269,7 +269,7 @@ namespace DigaoDeskApp
                 {
                     KillChildProcs(_process, 0, forced);
                 }
-                catch (AbortException) { }
+                catch (Messages.AbortException) { }
                 finally
                 {
                     _stopping = false;
@@ -279,7 +279,12 @@ namespace DigaoDeskApp
 
         private void KillChildProcs(Process parent, int level, bool forced)
         {
-            var children = Utils.GetChildProcesses(parent.Id);
+            if (!Utils.IsProcessValid(parent))
+            {
+                if (level == 0) throw new Exception("Main process is not valid");
+                return;
+            }
+            var children = Utils.GetChildProcesses(parent);
             foreach (var child in children)
             {
                 KillChildProcs(child, level+1, forced);
@@ -301,7 +306,7 @@ namespace DigaoDeskApp
             catch (Exception ex)
             {
                 AddLog(string.Format(Vars.Lang.AppLog_ErrorTerminating, parent.ProcessName, ex.Message), true);
-                throw new AbortException();
+                throw new Messages.AbortException();
             }
         }
 
@@ -397,40 +402,32 @@ namespace DigaoDeskApp
 
         private void AnalyseResources()
         {
-            try
+            var r = new Resources();
+            r.Mem = 0;
+            r.ProcessorTime = TimeSpan.Zero;
+            r.ProcCount = 0;
+
+            AnalyzeChildren(_process, r);
+
+            if (Running) //avoid set resources after process stoped and properties already empty (can stop while running analysis)
             {
-                var r = new Resources();
-                r.Mem = 0;
-                r.ProcessorTime = TimeSpan.Zero;
-                r.ProcCount = 0;
+                Memory = (r.Mem / 1024 / 1024).ToString("0.00") + " MB";
 
-                AnalyzeChildren(_process, r);
+                var utcNow = DateTime.UtcNow;
+                var percent = (r.ProcessorTime - _lastProcessorTime).TotalMilliseconds / (Environment.ProcessorCount * (utcNow - _lastProcessorCapture).TotalMilliseconds);
+                Processor = percent.ToString("0.00 %");
 
-                if (Running) //can stop process when analysis running
-                {
-                    Memory = (r.Mem / 1024 / 1024).ToString("0.00") + " MB";
+                _lastProcessorTime = r.ProcessorTime;
+                _lastProcessorCapture = utcNow;
 
-                    var utcNow = DateTime.UtcNow;
-                    var percent = (r.ProcessorTime - _lastProcessorTime).TotalMilliseconds / (Environment.ProcessorCount * (utcNow - _lastProcessorCapture).TotalMilliseconds);
-                    Processor = percent.ToString("0.00 %");
-
-                    _lastProcessorTime = r.ProcessorTime;
-                    _lastProcessorCapture = utcNow;
-
-                    ProcCount = r.ProcCount.ToString();
-                }
-            }
-            catch (AnalyzeException)
-            {
-                Memory = null;
-                Processor = null;
-                ProcCount = null;
+                ProcCount = r.ProcCount.ToString();
             }
         }
 
         private void AnalyzeChildren(Process parent, Resources r)
         {
-            var children = Utils.GetChildProcesses(parent.Id);
+            if (!Utils.IsProcessValid(parent)) return;
+            var children = Utils.GetChildProcesses(parent);
             foreach (var child in children)
             {
                 AnalyzeChildren(child, r); 
@@ -442,21 +439,23 @@ namespace DigaoDeskApp
 
         private void SumResources(Process p, Resources r)
         {
+            long mem;
+            TimeSpan processorTime;
+
             try
             {
-                r.Mem += p.PrivateMemorySize64;
-                r.ProcessorTime += p.TotalProcessorTime;
-                r.ProcCount++;
+                mem = p.PrivateMemorySize64;
+                processorTime = p.TotalProcessorTime;
             }
             catch (InvalidOperationException)
             {
-                //if process stops while checking info, it will fire an exception
-                throw new AnalyzeException();
+                return; //Process expired
             }
-        }
 
-        private class AbortException : Exception { }
-        private class AnalyzeException : Exception { }
+            r.Mem += mem;
+            r.ProcessorTime += processorTime;
+            r.ProcCount++;
+        }
 
     }
 }

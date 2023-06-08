@@ -121,16 +121,37 @@ namespace DigaoDeskApp
 
         //-----------------------------------------------------------------
 
-        public static List<Process> GetChildProcesses(int parentId)
+        public static bool IsProcessValid(Process process)
         {
-            var query = "Select ProcessId From Win32_Process Where ParentProcessId = " + parentId;
+            try
+            {
+                _ = process.Id;
+                return true;
+            }
+            catch (InvalidOperationException) 
+            {
+                return false;
+            }
+        }
+
+        public static List<Process> GetChildProcesses(Process parent)
+        {
+            var query = "Select ProcessId From Win32_Process Where ParentProcessId = " + parent.Id;
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
             ManagementObjectCollection processList = searcher.Get();
 
             List<Process> ret = new();
             foreach (ManagementObject mo in processList)
             {
-                ret.Add(Process.GetProcessById(Convert.ToInt32(mo.GetPropertyValue("ProcessId"))));
+                var pid = Convert.ToInt32(mo.GetPropertyValue("ProcessId"));
+                Process proc = null;
+                try
+                {
+                    proc = Process.GetProcessById(pid);
+                }
+                catch (ArgumentException) { } //PID already expired
+                
+                if (proc != null) ret.Add(proc);
             }
             return ret;
         }
