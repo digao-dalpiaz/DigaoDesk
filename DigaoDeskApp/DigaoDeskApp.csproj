@@ -12,10 +12,12 @@
     <None Remove="Languages\lang_chinese.json" />
     <None Remove="Languages\lang_english.json" />
     <None Remove="Languages\lang_ptbr.json" />
+    <None Remove="Languages\lang_romanian.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Languages\lang_chinese.json" />
+    <EmbeddedResource Include="Languages\lang_romanian.json" />
     <EmbeddedResource Include="Languages\lang_ptbr.json" />
     <EmbeddedResource Include="Languages\lang_english.json" />
   </ItemGroup>
