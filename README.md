@@ -63,6 +63,7 @@ The app supports following languages:
 - English
 - Chinese (Thanks to @wcxu21)
 - Portuguese Brazil
+- Romanian (Thanks to Tudor)
 
 Feel free to help me translating the app to your language. :)
 
