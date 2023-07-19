@@ -98,6 +98,16 @@ Feel free to help me translating the app to your language. :)
 
 > Important! Ensure the command file is included in PATH environment variable (or include full path in command line). If you change environment variables, please close and reopen Digao Desk to reload the variables.
 
+# Running Windows Script files
+
+## Running Batch files (.cmd)
+
+Just set ".cmd" file in application Command Line field.
+
+## Running PowerShell files (.ps1)
+
+Just set ".ps1" file in application Command Line field.
+
 # Settings
 
 You can set usage preferences as needed, like Language, Theme, and Git Credentials and much more.
