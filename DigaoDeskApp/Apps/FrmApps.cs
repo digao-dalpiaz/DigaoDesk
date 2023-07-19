@@ -118,7 +118,9 @@ namespace DigaoDeskApp
             _updatingGrid = true;
             try
             {
+                var idx = g.FirstDisplayedScrollingRowIndex;
                 _gridBind.Refresh();
+                g.FirstDisplayedScrollingRowIndex = idx;
             }
             finally
             {
