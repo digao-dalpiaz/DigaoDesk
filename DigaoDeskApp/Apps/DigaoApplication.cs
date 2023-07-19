@@ -188,6 +188,13 @@ namespace DigaoDeskApp
             si.StandardOutputEncoding = System.Text.Encoding.UTF8;
             si.StandardErrorEncoding = System.Text.Encoding.UTF8;
 
+            //PowerShell script - keep after ProcessStartInfo attributes ready
+            if (si.FileName.EndsWith(".ps1"))
+            {
+                si.Arguments = "-executionpolicy bypass -File " + si.FileName + " " + si.Arguments;
+                si.FileName = "powershell.exe";
+            }
+
             foreach (var ev in EnvVars)
             {
                 si.Environment.Add(ev.Key, ev.Value);
