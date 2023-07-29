@@ -31,11 +31,15 @@ namespace DigaoDeskApp
         {
             if (_Painting)
             {
+                //--save position
                 _SuspendIndex = this.SelectionStart;
                 _SuspendLength = this.SelectionLength;
                 SendMessage(this.Handle, EM_GETSCROLLPOS, 0, ref _ScrollPoint);
+                //--
+
                 SendMessage(this.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
                 _EventMask = SendMessage(this.Handle, EM_GETEVENTMASK, 0, IntPtr.Zero); // Stop sending of events
+
                 _Painting = false;
             }
         }
@@ -49,8 +53,10 @@ namespace DigaoDeskApp
                     this.Select(_SuspendIndex, _SuspendLength);
                     SendMessage(this.Handle, EM_SETSCROLLPOS, 0, ref _ScrollPoint);
                 }
+                
                 SendMessage(this.Handle, EM_SETEVENTMASK, 0, _EventMask); // turn on events
                 SendMessage(this.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+
                 _Painting = true;
                 this.Invalidate();
             }

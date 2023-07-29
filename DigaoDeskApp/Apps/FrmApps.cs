@@ -375,6 +375,8 @@ namespace DigaoDeskApp
                     edLog.SelectionStart = 0;
                     edLog.SelectionLength = edLog.TextLength - Vars.Config.Apps.MaxLogSize;
                     edLog.SelectedText = "[...]";
+
+                    edLog.SelectionStart = edLog.TextLength;
                 }
             }
             finally
