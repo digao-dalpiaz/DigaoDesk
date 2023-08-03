@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -17,7 +16,7 @@ namespace DigaoDeskApp
         private List<DigaoRepository> _repos = new();
         private BindingSource _gridBind;
 
-        public LogHighlight Log;
+        public RepositoryLogCtrl Log;
 
         public FrmRepos()
         {
@@ -55,7 +54,7 @@ namespace DigaoDeskApp
 
             if (!_repos.Any())
             {
-                toolBar.Visible = false; //can't use "enabled" because is used to control if there is a process running
+                toolBar.Visible = false; //can't use "enabled" because is used to control access to repository functions
             }
         }
 
@@ -91,7 +90,7 @@ namespace DigaoDeskApp
 
         private void FrmRepos_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!toolBar.Enabled)
+            if (_repos.Any(x => x.DoingBackgroundTask))
             {
                 Messages.Error(Vars.Lang.Repos_DenyExitByProcess);
                 e.Cancel = true;
@@ -226,7 +225,7 @@ namespace DigaoDeskApp
                 if (!r._repoCtrl.Config.Get<bool>(CFG_AUTOCRLF).Value)
                 {
                     r._repoCtrl.Config.Set(CFG_AUTOCRLF, true);
-                    Log.Log(string.Format(Vars.Lang.Repos_CRLFEnabled, r.Name), LogHighlightType.ALERT);
+                    Log.FastLog(g => g.Log(string.Format(Vars.Lang.Repos_CRLFEnabled, r.Name), LogHighlightType.ALERT));
                 }
             }
         }
@@ -263,7 +262,17 @@ namespace DigaoDeskApp
 
             var col = g.Columns[e.ColumnIndex];
 
-            if (Utils.IsSameGridColumn(col, colUp) || Utils.IsSameGridColumn(col, colDown))
+            if (Utils.IsSameGridColumn(col, colName))
+            {
+                e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
+                if (GetRepositoryOfRow(g.Rows[e.RowIndex]).DoingBackgroundTask)
+                {
+                    Utils.DrawGridImage(images, e, 2, true);
+                }
+
+                e.Handled = true;
+            }
+            else if (Utils.IsSameGridColumn(col, colUp) || Utils.IsSameGridColumn(col, colDown))
             {
                 if (e.Value != null)
                 {
@@ -275,67 +284,28 @@ namespace DigaoDeskApp
             }
         }
 
-        public void DoBackground(Action proc)
+        public void UpdateRowOfRepository(DigaoRepository repo)
         {
-            Log.Log();
-            this.ProcBackground(true);
-
-            Task.Run(() =>
-            {
-                try
-                {
-                    proc();
-                }
-                catch (Exception ex)
-                {
-                    Log.Log("ERROR: " + ex.Message, LogHighlightType.ERROR);
-                }
-
-                this.Invoke(new MethodInvoker(() =>
-                {
-                    this.ProcBackground(false);
-                }));
-            });
-        }
-
-        private void ProcBackground(bool activate)
-        {
-            toolBar.Enabled = !activate;
-            g.Enabled = !activate;
+            _gridBind.ResetItem(_repos.IndexOf(repo));
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            DoBackground(() =>
+            foreach (var repo in _repos)
             {
-                Log.Log(Vars.Lang.Repos_RefreshingAll, LogHighlightType.TITLE);
-
-                foreach (var item in _repos)
-                {
-                    item.Refresh();
-                }
-
-                Log.Log(Vars.Lang.Repos_ProcessDone, LogHighlightType.DONE);
-            });
+                repo.RefreshSurrounded();
+            }
         }
 
         private void btnFetchAll_Click(object sender, EventArgs e)
         {
-            DoBackground(() =>
+            foreach (var repo in _repos)
             {
-                Log.Log(Vars.Lang.Repos_FetchingAll, LogHighlightType.TITLE);
-
-                foreach (var item in _repos)
+                if (repo.Config.Fetch)
                 {
-                    if (!item.Config.Fetch) continue;
-
-                    Log.Log(string.Format(Vars.Lang.Repos_FetchingRepo, item.Name), LogHighlightType.PROCESSING);
-                    item.FetchDirectly();
-                    item.Refresh();
+                    repo.FetchSurrounded();
                 }
-
-                Log.Log(Vars.Lang.Repos_ProcessDone, LogHighlightType.DONE);
-            });
+            }
         }
 
         private DigaoRepository GetRepositoryOfRow(DataGridViewRow row)
@@ -343,43 +313,47 @@ namespace DigaoDeskApp
             return row.DataBoundItem as DigaoRepository;
         }
 
+        private List<DigaoRepository> GetSels()
+        {
+            return g.SelectedRows.Cast<DataGridViewRow>().Select(row => GetRepositoryOfRow(row)).ToList();
+        }
+
         private DigaoRepository GetSel()
         {
-            if (g.CurrentRow == null) return null;
-            return GetRepositoryOfRow(g.CurrentRow);
+            return GetSels().First();
         }
 
         private void CheckForAutoFetch()
         {
-            if (Vars.Config.GitAutoFetch)
+            if (!Vars.Config.GitAutoFetch) return;
+
+            Messages.SurroundMessageException(() =>
             {
-                Messages.SurroundMessageException(() =>
+                FrmWait.Start(Vars.Lang.Repos_Fetching);
+                try
                 {
-                    FrmWait.Start(Vars.Lang.Repos_Fetching);
-                    try
-                    {
-                        var r = GetSel();
-                        Messages.SurroundExceptionThenThrowMessageException(() => r.FetchDirectly());
-                        _gridBind.ResetBindings(false);
-                    }
-                    finally
-                    {
-                        FrmWait.Stop();
-                    }
-                });
-            }
+                    var r = GetSel();
+                    Messages.SurroundExceptionThenThrowMessageException(() => {
+                        r.FetchDirectly();
+                        r.RefreshDirectly();
+                    });
+                    UpdateRowOfRepository(r);
+                }
+                finally
+                {
+                    FrmWait.Stop();
+                }
+            });
         }
 
         private void btnFetch_Click(object sender, EventArgs e)
         {
-            var r = GetSel();
-            r.Fetch();
+            GetSels().ForEach(x => x.FetchSurrounded());
         }
 
         private void btnPull_Click(object sender, EventArgs e)
         {
-            var r = GetSel();
-            r.Pull();
+            GetSels().ForEach(x => x.Pull());
         }
 
         private void btnSwitchBranch_Click(object sender, EventArgs e)
@@ -444,8 +418,7 @@ namespace DigaoDeskApp
         {
             if (!Messages.Question(Vars.Lang.Repos_ConfirmPush)) return;
 
-            var r = GetSel();
-            r.Push();
+            GetSels().ForEach(x => x.Push());
         }
 
         private void btnCancelOperation_Click(object sender, EventArgs e)
@@ -459,8 +432,8 @@ namespace DigaoDeskApp
             var r = GetSel();
             if (!r.Commit())
             {
-                r.Refresh();
-                _gridBind.ResetBindings(false);
+                r.RefreshDirectly();
+                UpdateRowOfRepository(r);
             }
         }
 
@@ -487,8 +460,8 @@ namespace DigaoDeskApp
             FrmRepositoryConfig f = new(r.Config);
             if (f.ShowDialog() == DialogResult.OK)
             {
-                r.Refresh();
-                _gridBind.ResetBindings(false);
+                r.RefreshDirectly();
+                UpdateRowOfRepository(r);
             }
         }
 
@@ -502,7 +475,48 @@ namespace DigaoDeskApp
 
         private void btnClearLog_Click(object sender, EventArgs e)
         {
-            edLog.Clear();
+            Log.ClearLog();
+        }
+
+        public void UpdateButtons()
+        {
+            bool any = g.SelectedRows.Count > 0;
+            bool one = g.SelectedRows.Count == 1;
+
+            if (GetSels().Any(x => x.DoingBackgroundTask))
+            {
+                any = false;
+                one = false;
+            }
+
+            var someTaskOfAll = _repos.Any(x => x.DoingBackgroundTask);
+
+            btnRefresh.Enabled = !someTaskOfAll;
+            btnFetchAll.Enabled = !someTaskOfAll;
+
+            btnCreateBranch.Enabled = one;
+            btnDeleteBranch.Enabled = one;
+            btnCheckoutRemote.Enabled = one;
+            btnSwitchBranch.Enabled = one;
+
+            btnFetch.Enabled = any;
+            btnPull.Enabled = any;
+            btnCommit.Enabled = one;
+            btnCherryPick.Enabled = one;
+            btnMerge.Enabled = one;
+            btnSyncWithMaster.Enabled = one;
+            btnCancelOperation.Enabled = one;
+            btnPush.Enabled = any;
+
+            btnShell.Enabled = one;
+            //btnConfig.Enabled = one;
+
+            btnClearLog.Enabled = !someTaskOfAll;
+        }
+
+        private void g_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateButtons();
         }
 
     }

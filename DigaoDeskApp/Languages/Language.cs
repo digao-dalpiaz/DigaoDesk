@@ -161,10 +161,7 @@
         public string Repos_DenyExitByProcess;
         public string Repos_GitFolderNotFound;
         public string Repos_CRLFEnabled;
-        public string Repos_RefreshingAll;
         public string Repos_ProcessDone;
-        public string Repos_FetchingAll;
-        public string Repos_FetchingRepo;
         public string Repos_Fetching;
         public string Repos_MasterBranchNotConfigured;
         public string Repos_InvalidMasterBranch;
@@ -245,7 +242,6 @@
         public string BranchDivergenceUp;
         public string BranchDivergenceDown;
 
-        public string LogLabelRepository;
         public string LogLabelBranch;
         public string LogLabelCommit;
         public string LogLabelCommitId;
@@ -254,11 +250,9 @@
         public string LogLabelIntoBranch;
         public string LogLabelCurrentOperation;
         public string LogDone;
-        public string LogRefreshing;
         public string LogFetching;
         public string LogMerging;
         public string LogPushing;
-        public string LogFetch;
         public string LogPull;
         public string LogSwitch;
         public string LogCheckout;
