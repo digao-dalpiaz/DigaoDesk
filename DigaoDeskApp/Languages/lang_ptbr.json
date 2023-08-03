@@ -235,6 +235,7 @@
   "BranchDivergenceUp": "A frente: {0}",
   "BranchDivergenceDown": "Atrás: {0}",
 
+  "LogLabelRepository": "Repositório",
   "LogLabelBranch": "Branch",
   "LogLabelCommit": "Commit",
   "LogLabelCommitId": "Id do Commit",

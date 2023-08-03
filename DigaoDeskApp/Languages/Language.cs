@@ -240,6 +240,7 @@
         public string BranchDivergenceUp;
         public string BranchDivergenceDown;
 
+        public string LogLabelRepository;
         public string LogLabelBranch;
         public string LogLabelCommit;
         public string LogLabelCommitId;

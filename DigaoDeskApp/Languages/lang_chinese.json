@@ -235,6 +235,7 @@
   "BranchDivergenceUp": "向上：{0}",
   "BranchDivergenceDown": "向下：{0}",
 
+  "LogLabelRepository": "存储库",
   "LogLabelBranch": "分支",
   "LogLabelCommit": "提交",
   "LogLabelCommitId": "提交 ID",

@@ -274,10 +274,8 @@ namespace DigaoDeskApp
                 {
                     if (!hiddenLog)
                     {
-                        _logGroup.Log(new LogPart[] {
-                            new LogPart(cmdName, Vars.Config.Theme.RepoLogTitle, true),
-                            new LogPart(" " + this.Name, Vars.Config.Theme.RepoLogTitle)
-                        });
+                        _logGroup.Log(cmdName, LogHighlightType.TITLE);
+                        _logGroup.LogLabel(Vars.Lang.LogLabelRepository, this.Name);
                     }
 
                     proc();
