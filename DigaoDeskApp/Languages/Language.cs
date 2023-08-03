@@ -265,6 +265,9 @@
         public string LogPushLinking;
         public string LogNoCurrentOperationToAbort;
 
+        public string LogRepositoryProcError;
+        public string LogRepositoryProcErrorHidden;
+
         public string LogMergeResult_UpToDate;
         public string LogMergeResult_Conflicts;
         public string LogMergeResult_FastForward;

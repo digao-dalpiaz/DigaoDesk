@@ -260,6 +260,9 @@
   "LogPushLinking": "O branch não está vinculado a um branch remoto. Fazendo o vínculo agora...",
   "LogNoCurrentOperationToAbort": "Não há operação pendente para abortar",
 
+  "LogRepositoryProcError": "Erro: {0}",
+  "LogRepositoryProcErrorHidden": "Erro no comando {0} no repositório {1}: {2}",
+
   "LogMergeResult_UpToDate": "Nada a modificar",
   "LogMergeResult_Conflicts": "Conflitos - Merge pendente",
   "LogMergeResult_FastForward": "Merge completado (Fast forward)",

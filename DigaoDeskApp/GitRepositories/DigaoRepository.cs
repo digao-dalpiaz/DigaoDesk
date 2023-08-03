@@ -296,12 +296,12 @@ namespace DigaoDeskApp
                 {
                     if (hiddenLog)
                     {
-                        Log.FastLog(g => g.Log(/*translate !!!!!*/string.Format("ERROR in {0} {1}: {2}", 
+                        Log.FastLog(g => g.Log(string.Format(Vars.Lang.LogRepositoryProcErrorHidden,
                             cmdName, Vars.Config.Theme.RepoLogTitle, ex.Message), LogHighlightType.ERROR));
                     } 
                     else
                     {
-                        _logGroup.Log(/*translate !!!!!*/"ERROR: " + ex.Message, LogHighlightType.ERROR);
+                        _logGroup.Log(string.Format(Vars.Lang.LogRepositoryProcError, ex.Message), LogHighlightType.ERROR);
                     }
                 }
 

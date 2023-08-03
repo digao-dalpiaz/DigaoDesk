@@ -260,6 +260,9 @@
   "LogPushLinking": "该分支当前未链接到远程分支。 现在正在制作链接...",
   "LogNoCurrentOperationToAbort": "当前没有要中止的操作",
 
+  "LogRepositoryProcError": "Error: {0}",
+  "LogRepositoryProcErrorHidden": "Error on command {0} in repository {1}: {2}",
+
   "LogMergeResult_UpToDate": "没什么可更改的",
   "LogMergeResult_Conflicts": "冲突 - 合并待处理",
   "LogMergeResult_FastForward": "合并完成（快进）",

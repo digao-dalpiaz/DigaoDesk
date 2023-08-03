@@ -260,6 +260,9 @@
   "LogPushLinking": "The branch is not currently linked to a remote one. Making the link now...",
   "LogNoCurrentOperationToAbort": "There is no current operation to abort",
 
+  "LogRepositoryProcError": "Error: {0}",
+  "LogRepositoryProcErrorHidden": "Error on command {0} in repository {1}: {2}",
+
   "LogMergeResult_UpToDate": "Nothing to change",
   "LogMergeResult_Conflicts": "Conflicts - Merge pending",
   "LogMergeResult_FastForward": "Merge complete (Fast forward)",
