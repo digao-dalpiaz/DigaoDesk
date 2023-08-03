@@ -74,8 +74,6 @@
         public string Config_Theme_ColorRepoLogTitle;
         public string Config_Theme_ColorRepoLogAggProcessing;
         public string Config_Theme_ColorRepoLogProcessing;
-        public string Config_Theme_ColorRepoLogRefreshing;
-        public string Config_Theme_ColorRepoLogRefreshDone;
         public string Config_Theme_ColorRepoLogLabelCaption;
         public string Config_Theme_ColorRepoLogLabelValue;
         public string Config_Theme_ColorRepoLogStatusOK;

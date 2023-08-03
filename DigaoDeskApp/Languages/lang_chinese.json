@@ -69,8 +69,6 @@
   "Config_Theme_ColorRepoLogTitle": "标题",
   "Config_Theme_ColorRepoLogAggProcessing": "汇总处理",
   "Config_Theme_ColorRepoLogProcessing": "处理中",
-  "Config_Theme_ColorRepoLogRefreshing": "正在刷新",
-  "Config_Theme_ColorRepoLogRefreshDone": "刷新完成",
   "Config_Theme_ColorRepoLogLabelCaption": "标题",
   "Config_Theme_ColorRepoLogLabelValue": "值",
   "Config_Theme_ColorRepoLogStatusOK": "确定",

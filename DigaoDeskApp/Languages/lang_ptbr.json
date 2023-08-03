@@ -69,8 +69,6 @@
   "Config_Theme_ColorRepoLogTitle": "Título",
   "Config_Theme_ColorRepoLogAggProcessing": "Processamento agregado",
   "Config_Theme_ColorRepoLogProcessing": "Processando",
-  "Config_Theme_ColorRepoLogRefreshing": "Atualizando",
-  "Config_Theme_ColorRepoLogRefreshDone": "Atualização concluída",
   "Config_Theme_ColorRepoLogLabelCaption": "Dado",
   "Config_Theme_ColorRepoLogLabelValue": "Valor",
   "Config_Theme_ColorRepoLogStatusOK": "OK",

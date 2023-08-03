@@ -69,8 +69,6 @@ namespace DigaoDeskApp
             lbColorRepoLogTitle.Text = Vars.Lang.Config_Theme_ColorRepoLogTitle;
             lbColorRepoLogAggProcessing.Text = Vars.Lang.Config_Theme_ColorRepoLogAggProcessing;
             lbColorRepoLogProcessing.Text = Vars.Lang.Config_Theme_ColorRepoLogProcessing;
-            lbColorRepoLogRefreshing.Text = Vars.Lang.Config_Theme_ColorRepoLogRefreshing;
-            lbColorRepoLogRefreshDone.Text = Vars.Lang.Config_Theme_ColorRepoLogRefreshDone;
             lbColorRepoLogLabelCaption.Text = Vars.Lang.Config_Theme_ColorRepoLogLabelCaption;
             lbColorRepoLogLabelValue.Text = Vars.Lang.Config_Theme_ColorRepoLogLabelValue;
             lbColorRepoLogStatusOK.Text = Vars.Lang.Config_Theme_ColorRepoLogStatusOK;
