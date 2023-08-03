@@ -509,7 +509,9 @@ namespace DigaoDeskApp
             btnPush.Enabled = any;
 
             btnShell.Enabled = one;
-            //btnConfig.Enabled = one;
+
+            btnRepositorySettings.Enabled = one;
+            btnReorderList.Enabled = !someTaskOfAll; //when reordering, index changes and we call reset binding of specific index of row
 
             btnClearLog.Enabled = !someTaskOfAll;
         }
