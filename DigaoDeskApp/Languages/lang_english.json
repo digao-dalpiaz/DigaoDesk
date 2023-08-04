@@ -247,6 +247,8 @@
   "LogFetching": "Fetching...",
   "LogMerging": "Merging...",
   "LogPushing": "Pushing...",
+  "LogRefresh": "Refresh",
+  "LogFetch": "Fetch",
   "LogPull": "Pull",
   "LogSwitch": "Switch Local Branch",
   "LogCheckout": "Checkout Remote Branch",

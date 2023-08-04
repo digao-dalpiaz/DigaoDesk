@@ -256,23 +256,24 @@ namespace DigaoDeskApp
             return _repoCtrl.RetrieveStatus(so);
         }
 
-        private void DoCommand(string cmdName, Action proc, bool performRefresh, bool hiddenLog = false)
+        private void DoCommand(string cmdName, Action proc, bool performRefresh, bool showLog = true)
         {
             if (DoingBackgroundTask) throw new Exception("Already running repository task");
 
-            if (!hiddenLog)
-            {
-                _logGroup = Log.InitGroup(); //keep in main thread due to sync
-            }
             DoingBackgroundTask = true;
             Vars.FrmReposObj.UpdateButtons();
             Vars.FrmReposObj.UpdateRowOfRepository(this);
 
             Task.Run(() =>
             {
+                if (showLog)
+                {
+                    _logGroup = Log.InitGroup();
+                }
+
                 try
                 {
-                    if (!hiddenLog)
+                    if (showLog)
                     {
                         _logGroup.Log(cmdName, LogHighlightType.TITLE);
                         _logGroup.LogLabel(Vars.Lang.LogLabelRepository, this.Name);
@@ -285,32 +286,34 @@ namespace DigaoDeskApp
                         RefreshDirectly();
                     }
 
-                    if (!hiddenLog)
+                    if (showLog)
                     {
                         _logGroup.Log(Vars.Lang.LogDone, LogHighlightType.DONE);
                     }
                 }
                 catch (Exception ex)
                 {
-                    if (hiddenLog)
+                    if (showLog)
                     {
-                        Log.FastLog(g => g.Log(string.Format(Vars.Lang.LogRepositoryProcErrorHidden,
-                            cmdName, Vars.Config.Theme.RepoLogTitle, ex.Message), LogHighlightType.ERROR));
+                        _logGroup.Log(string.Format(Vars.Lang.LogRepositoryProcError, ex.Message), LogHighlightType.ERROR);
                     } 
                     else
                     {
-                        _logGroup.Log(string.Format(Vars.Lang.LogRepositoryProcError, ex.Message), LogHighlightType.ERROR);
+                        Log.FastLog(g => g.Log(string.Format(Vars.Lang.LogRepositoryProcErrorHidden,
+                            cmdName, this.Name, ex.Message), LogHighlightType.ERROR));
                     }
                 }
 
+                if (showLog)
+                {
+                    Log.TerminateGroup(_logGroup);
+                    _logGroup = null;
+                }
+
+                DoingBackgroundTask = false;
+
                 Vars.FrmReposObj.Invoke(new MethodInvoker(() =>
                 {
-                    if (!hiddenLog)
-                    {
-                        Log.TerminateGroup(_logGroup); //keep in main thread due to sync
-                        _logGroup = null;
-                    }
-                    DoingBackgroundTask = false;
                     Vars.FrmReposObj.UpdateButtons();
                     Vars.FrmReposObj.UpdateRowOfRepository(this);
                 }));
@@ -410,18 +413,18 @@ namespace DigaoDeskApp
 
         public void RefreshSurrounded()
         {
-            DoCommand(null, () =>
+            DoCommand(Vars.Lang.LogRefresh, () =>
             {
                 RefreshDirectly();
-            }, false, true);
+            }, false, false);
         }
 
         public void FetchSurrounded()
         {
-            DoCommand(null, () =>
+            DoCommand(Vars.Lang.LogFetch, () =>
             {
                 FetchDirectly();
-            }, true, true);
+            }, true, false);
         }        
 
         public void Pull()

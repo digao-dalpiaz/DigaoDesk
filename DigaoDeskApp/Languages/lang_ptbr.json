@@ -247,6 +247,8 @@
   "LogFetching": "Fazendo fetch...",
   "LogMerging": "Fazendo merge...",
   "LogPushing": "Fazendo push...",
+  "LogRefresh": "Atualizar",
+  "LogFetch": "Fetch",
   "LogPull": "Pull",
   "LogSwitch": "Trocar branch local",
   "LogCheckout": "Fazer checkout de branch remoto",

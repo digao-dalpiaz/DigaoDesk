@@ -252,6 +252,8 @@
         public string LogFetching;
         public string LogMerging;
         public string LogPushing;
+        public string LogRefresh;
+        public string LogFetch;
         public string LogPull;
         public string LogSwitch;
         public string LogCheckout;

@@ -247,6 +247,8 @@
   "LogFetching": "正在获取...",
   "LogMerging": "正在合并...",
   "LogPushing": "正在推送...",
+  "LogRefresh": "Refresh",
+  "LogFetch": "获取",
   "LogPull": "推送",
   "LogSwitch": "切换本地分支",
   "LogCheckout": "查看远程分支",
