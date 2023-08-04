@@ -293,14 +293,15 @@ namespace DigaoDeskApp
                 }
                 catch (Exception ex)
                 {
+                    string exMsg = ex.Message.Trim();
                     if (showLog)
                     {
-                        _logGroup.Log(string.Format(Vars.Lang.LogRepositoryProcError, ex.Message), LogHighlightType.ERROR);
+                        _logGroup.Log(string.Format(Vars.Lang.LogRepositoryProcError, exMsg), LogHighlightType.ERROR);
                     } 
                     else
                     {
                         Log.FastLog(g => g.Log(string.Format(Vars.Lang.LogRepositoryProcErrorHidden,
-                            cmdName, this.Name, ex.Message), LogHighlightType.ERROR));
+                            cmdName, this.Name, exMsg), LogHighlightType.ERROR));
                     }
                 }
 

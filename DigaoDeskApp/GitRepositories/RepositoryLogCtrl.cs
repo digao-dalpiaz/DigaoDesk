@@ -138,6 +138,8 @@ namespace DigaoDeskApp
         public RepositoryLogCtrl Master;
         public int Position;
 
+        public readonly Guid Ident = Guid.NewGuid();
+
         private List<LogPart[]> _lines = new();
 
         public void Log(LogPart[] parts)
@@ -152,6 +154,9 @@ namespace DigaoDeskApp
                 try
                 {
                     ed.SelectionStart = Position;
+
+                    //ed.SelectionColor = Color.White;
+                    //ed.SelectedText = Ident.ToString() + " > ";
 
                     if (parts.Any())
                     {
