@@ -1,5 +1,4 @@
-﻿using LibGit2Sharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -84,14 +83,25 @@ namespace DigaoDeskApp
             this._logFile = logFile;
         }
 
+        public void SafeUI(Action proc)
+        {
+            EdControl.Invoke(new MethodInvoker(proc));
+        }
+
         public LogGroup InitGroup()
         {
             LogGroup g = new();
             g.Master = this;
-            lock (LockGroupsCtrl)
-            {
-                Groups.Add(g);
-            }
+            SafeUI(() =>
+            { 
+                g.Position = EdControl.TextLength;
+
+                //lock inside SafeUI to ensure correct position in list
+                lock (LockGroupsCtrl)
+                {
+                    Groups.Add(g);
+                }
+            });
 
             g.Log(); //blank line
             return g;
@@ -126,7 +136,7 @@ namespace DigaoDeskApp
     public class LogGroup
     {
         public RepositoryLogCtrl Master;
-        public int? Position;
+        public int Position;
 
         private List<LogPart[]> _lines = new();
 
@@ -136,17 +146,12 @@ namespace DigaoDeskApp
 
             var ed = Master.EdControl;
 
-            ed.Invoke(new MethodInvoker(() => 
+            Master.SafeUI(() =>
             {
-                if (!Position.HasValue)
-                {
-                    Position = ed.TextLength;
-                }
-
                 ed.SuspendPainting();
                 try
                 {
-                    ed.SelectionStart = Position.Value;
+                    ed.SelectionStart = Position;
 
                     if (parts.Any())
                     {
@@ -171,10 +176,11 @@ namespace DigaoDeskApp
                     ed.ResumePainting(false);
                 }
 
-                var dif = ed.SelectionStart - Position.Value;
+                var dif = ed.SelectionStart - Position;
 
                 ed.SelectionStart = ed.TextLength;
 
+                //lock inside SafeUI to ensure correct position in list
                 lock (Master.LockGroupsCtrl)
                 {
                     var idx = Master.Groups.IndexOf(this);
@@ -183,7 +189,7 @@ namespace DigaoDeskApp
                         Master.Groups[i].Position += dif;
                     }
                 }
-            }));
+            });
         }
 
         public void Log()
