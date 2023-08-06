@@ -55,21 +55,17 @@ namespace DigaoDeskApp
             btnColorRepoLogLabelCaption=new System.Windows.Forms.Button();
             btnColorRepoLogStatusOK=new System.Windows.Forms.Button();
             lbColorRepoLogStatusOK=new System.Windows.Forms.Label();
-            btnColorRepoLogRefreshDone=new System.Windows.Forms.Button();
             btnColorRepoLogNormal=new System.Windows.Forms.Button();
             lbColorRepoLogDone=new System.Windows.Forms.Label();
             lbColorRepoLogNormal=new System.Windows.Forms.Label();
             btnColorRepoLogDone=new System.Windows.Forms.Button();
             btnColorRepoLogAggProcessing=new System.Windows.Forms.Button();
-            lbColorRepoLogRefreshing=new System.Windows.Forms.Label();
             lbColorRepoLogAggProcessing=new System.Windows.Forms.Label();
-            btnColorRepoLogRefreshing=new System.Windows.Forms.Button();
             btnColorRepoLogAlert=new System.Windows.Forms.Button();
             lbColorRepoLogProcessing=new System.Windows.Forms.Label();
             lbColorRepoLogAlert=new System.Windows.Forms.Label();
             btnColorRepoLogProcessing=new System.Windows.Forms.Button();
             btnColorRepoLogTitle=new System.Windows.Forms.Button();
-            lbColorRepoLogRefreshDone=new System.Windows.Forms.Label();
             lbColorRepoLogTitle=new System.Windows.Forms.Label();
             btnColorRepoLogError=new System.Windows.Forms.Button();
             lbColorRepoLogError=new System.Windows.Forms.Label();
@@ -368,21 +364,17 @@ namespace DigaoDeskApp
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogLabelCaption);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogStatusOK);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogStatusOK);
-            BoxThemeRepoLog.Controls.Add(btnColorRepoLogRefreshDone);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogNormal);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogDone);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogNormal);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogDone);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogAggProcessing);
-            BoxThemeRepoLog.Controls.Add(lbColorRepoLogRefreshing);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogAggProcessing);
-            BoxThemeRepoLog.Controls.Add(btnColorRepoLogRefreshing);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogAlert);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogProcessing);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogAlert);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogProcessing);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogTitle);
-            BoxThemeRepoLog.Controls.Add(lbColorRepoLogRefreshDone);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogTitle);
             BoxThemeRepoLog.Controls.Add(btnColorRepoLogError);
             BoxThemeRepoLog.Controls.Add(lbColorRepoLogError);
@@ -395,7 +387,7 @@ namespace DigaoDeskApp
             // 
             // btnColorRepoLogStatusNone
             // 
-            btnColorRepoLogStatusNone.Location=new System.Drawing.Point(162, 608);
+            btnColorRepoLogStatusNone.Location=new System.Drawing.Point(162, 496);
             btnColorRepoLogStatusNone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusNone.Name="btnColorRepoLogStatusNone";
             btnColorRepoLogStatusNone.Size=new System.Drawing.Size(78, 32);
@@ -405,7 +397,7 @@ namespace DigaoDeskApp
             // lbColorRepoLogStatusNone
             // 
             lbColorRepoLogStatusNone.AutoSize=true;
-            lbColorRepoLogStatusNone.Location=new System.Drawing.Point(160, 587);
+            lbColorRepoLogStatusNone.Location=new System.Drawing.Point(160, 475);
             lbColorRepoLogStatusNone.Name="lbColorRepoLogStatusNone";
             lbColorRepoLogStatusNone.Size=new System.Drawing.Size(45, 20);
             lbColorRepoLogStatusNone.TabIndex=82;
@@ -413,7 +405,7 @@ namespace DigaoDeskApp
             // 
             // btnColorRepoLogStatusWarn
             // 
-            btnColorRepoLogStatusWarn.Location=new System.Drawing.Point(85, 608);
+            btnColorRepoLogStatusWarn.Location=new System.Drawing.Point(85, 496);
             btnColorRepoLogStatusWarn.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusWarn.Name="btnColorRepoLogStatusWarn";
             btnColorRepoLogStatusWarn.Size=new System.Drawing.Size(78, 32);
@@ -423,7 +415,7 @@ namespace DigaoDeskApp
             // lbColorRepoLogStatusWarn
             // 
             lbColorRepoLogStatusWarn.AutoSize=true;
-            lbColorRepoLogStatusWarn.Location=new System.Drawing.Point(83, 587);
+            lbColorRepoLogStatusWarn.Location=new System.Drawing.Point(83, 475);
             lbColorRepoLogStatusWarn.Name="lbColorRepoLogStatusWarn";
             lbColorRepoLogStatusWarn.Size=new System.Drawing.Size(64, 20);
             lbColorRepoLogStatusWarn.TabIndex=80;
@@ -432,7 +424,7 @@ namespace DigaoDeskApp
             // lbColorRepoLogLabelValue
             // 
             lbColorRepoLogLabelValue.AutoSize=true;
-            lbColorRepoLogLabelValue.Location=new System.Drawing.Point(126, 531);
+            lbColorRepoLogLabelValue.Location=new System.Drawing.Point(126, 419);
             lbColorRepoLogLabelValue.Name="lbColorRepoLogLabelValue";
             lbColorRepoLogLabelValue.Size=new System.Drawing.Size(45, 20);
             lbColorRepoLogLabelValue.TabIndex=78;
@@ -440,7 +432,7 @@ namespace DigaoDeskApp
             // 
             // btnColorRepoLogLabelValue
             // 
-            btnColorRepoLogLabelValue.Location=new System.Drawing.Point(128, 552);
+            btnColorRepoLogLabelValue.Location=new System.Drawing.Point(128, 440);
             btnColorRepoLogLabelValue.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogLabelValue.Name="btnColorRepoLogLabelValue";
             btnColorRepoLogLabelValue.Size=new System.Drawing.Size(112, 32);
@@ -450,7 +442,7 @@ namespace DigaoDeskApp
             // lbColorRepoLogLabelCaption
             // 
             lbColorRepoLogLabelCaption.AutoSize=true;
-            lbColorRepoLogLabelCaption.Location=new System.Drawing.Point(6, 531);
+            lbColorRepoLogLabelCaption.Location=new System.Drawing.Point(6, 419);
             lbColorRepoLogLabelCaption.Name="lbColorRepoLogLabelCaption";
             lbColorRepoLogLabelCaption.Size=new System.Drawing.Size(61, 20);
             lbColorRepoLogLabelCaption.TabIndex=76;
@@ -458,7 +450,7 @@ namespace DigaoDeskApp
             // 
             // btnColorRepoLogLabelCaption
             // 
-            btnColorRepoLogLabelCaption.Location=new System.Drawing.Point(8, 552);
+            btnColorRepoLogLabelCaption.Location=new System.Drawing.Point(8, 440);
             btnColorRepoLogLabelCaption.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogLabelCaption.Name="btnColorRepoLogLabelCaption";
             btnColorRepoLogLabelCaption.Size=new System.Drawing.Size(112, 32);
@@ -467,7 +459,7 @@ namespace DigaoDeskApp
             // 
             // btnColorRepoLogStatusOK
             // 
-            btnColorRepoLogStatusOK.Location=new System.Drawing.Point(8, 608);
+            btnColorRepoLogStatusOK.Location=new System.Drawing.Point(8, 496);
             btnColorRepoLogStatusOK.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnColorRepoLogStatusOK.Name="btnColorRepoLogStatusOK";
             btnColorRepoLogStatusOK.Size=new System.Drawing.Size(78, 32);
@@ -477,20 +469,11 @@ namespace DigaoDeskApp
             // lbColorRepoLogStatusOK
             // 
             lbColorRepoLogStatusOK.AutoSize=true;
-            lbColorRepoLogStatusOK.Location=new System.Drawing.Point(6, 587);
+            lbColorRepoLogStatusOK.Location=new System.Drawing.Point(6, 475);
             lbColorRepoLogStatusOK.Name="lbColorRepoLogStatusOK";
             lbColorRepoLogStatusOK.Size=new System.Drawing.Size(29, 20);
             lbColorRepoLogStatusOK.TabIndex=71;
             lbColorRepoLogStatusOK.Text="OK";
-            // 
-            // btnColorRepoLogRefreshDone
-            // 
-            btnColorRepoLogRefreshDone.Location=new System.Drawing.Point(8, 496);
-            btnColorRepoLogRefreshDone.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogRefreshDone.Name="btnColorRepoLogRefreshDone";
-            btnColorRepoLogRefreshDone.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogRefreshDone.TabIndex=8;
-            btnColorRepoLogRefreshDone.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogNormal
             // 
@@ -537,15 +520,6 @@ namespace DigaoDeskApp
             btnColorRepoLogAggProcessing.TabIndex=4;
             btnColorRepoLogAggProcessing.UseVisualStyleBackColor=true;
             // 
-            // lbColorRepoLogRefreshing
-            // 
-            lbColorRepoLogRefreshing.AutoSize=true;
-            lbColorRepoLogRefreshing.Location=new System.Drawing.Point(6, 419);
-            lbColorRepoLogRefreshing.Name="lbColorRepoLogRefreshing";
-            lbColorRepoLogRefreshing.Size=new System.Drawing.Size(79, 20);
-            lbColorRepoLogRefreshing.TabIndex=68;
-            lbColorRepoLogRefreshing.Text="Refreshing";
-            // 
             // lbColorRepoLogAggProcessing
             // 
             lbColorRepoLogAggProcessing.AutoSize=true;
@@ -554,15 +528,6 @@ namespace DigaoDeskApp
             lbColorRepoLogAggProcessing.Size=new System.Drawing.Size(163, 20);
             lbColorRepoLogAggProcessing.TabIndex=58;
             lbColorRepoLogAggProcessing.Text="Aggregated Processing";
-            // 
-            // btnColorRepoLogRefreshing
-            // 
-            btnColorRepoLogRefreshing.Location=new System.Drawing.Point(8, 440);
-            btnColorRepoLogRefreshing.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnColorRepoLogRefreshing.Name="btnColorRepoLogRefreshing";
-            btnColorRepoLogRefreshing.Size=new System.Drawing.Size(232, 32);
-            btnColorRepoLogRefreshing.TabIndex=7;
-            btnColorRepoLogRefreshing.UseVisualStyleBackColor=true;
             // 
             // btnColorRepoLogAlert
             // 
@@ -608,15 +573,6 @@ namespace DigaoDeskApp
             btnColorRepoLogTitle.Size=new System.Drawing.Size(232, 32);
             btnColorRepoLogTitle.TabIndex=3;
             btnColorRepoLogTitle.UseVisualStyleBackColor=true;
-            // 
-            // lbColorRepoLogRefreshDone
-            // 
-            lbColorRepoLogRefreshDone.AutoSize=true;
-            lbColorRepoLogRefreshDone.Location=new System.Drawing.Point(6, 475);
-            lbColorRepoLogRefreshDone.Name="lbColorRepoLogRefreshDone";
-            lbColorRepoLogRefreshDone.Size=new System.Drawing.Size(98, 20);
-            lbColorRepoLogRefreshDone.TabIndex=66;
-            lbColorRepoLogRefreshDone.Text="Refresh Done";
             // 
             // lbColorRepoLogTitle
             // 
@@ -1609,12 +1565,8 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnColorRepoLogNormal;
         private System.Windows.Forms.Label lbColorRepoLogDone;
         private System.Windows.Forms.Button btnColorRepoLogDone;
-        private System.Windows.Forms.Label lbColorRepoLogRefreshing;
-        private System.Windows.Forms.Button btnColorRepoLogRefreshing;
         private System.Windows.Forms.Label lbColorRepoLogProcessing;
         private System.Windows.Forms.Button btnColorRepoLogProcessing;
-        private System.Windows.Forms.Label lbColorRepoLogRefreshDone;
-        private System.Windows.Forms.Button btnColorRepoLogRefreshDone;
         private System.Windows.Forms.GroupBox BoxThemeRepoLog;
         private System.Windows.Forms.GroupBox BoxThemeAppLog;
         private System.Windows.Forms.Button btnColorRepoLogStatusOK;

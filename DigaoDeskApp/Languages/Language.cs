@@ -74,8 +74,6 @@
         public string Config_Theme_ColorRepoLogTitle;
         public string Config_Theme_ColorRepoLogAggProcessing;
         public string Config_Theme_ColorRepoLogProcessing;
-        public string Config_Theme_ColorRepoLogRefreshing;
-        public string Config_Theme_ColorRepoLogRefreshDone;
         public string Config_Theme_ColorRepoLogLabelCaption;
         public string Config_Theme_ColorRepoLogLabelValue;
         public string Config_Theme_ColorRepoLogStatusOK;
@@ -161,10 +159,7 @@
         public string Repos_DenyExitByProcess;
         public string Repos_GitFolderNotFound;
         public string Repos_CRLFEnabled;
-        public string Repos_RefreshingAll;
         public string Repos_ProcessDone;
-        public string Repos_FetchingAll;
-        public string Repos_FetchingRepo;
         public string Repos_Fetching;
         public string Repos_MasterBranchNotConfigured;
         public string Repos_InvalidMasterBranch;
@@ -254,10 +249,10 @@
         public string LogLabelIntoBranch;
         public string LogLabelCurrentOperation;
         public string LogDone;
-        public string LogRefreshing;
         public string LogFetching;
         public string LogMerging;
         public string LogPushing;
+        public string LogRefresh;
         public string LogFetch;
         public string LogPull;
         public string LogSwitch;
@@ -272,6 +267,9 @@
         public string LogReset;
         public string LogPushLinking;
         public string LogNoCurrentOperationToAbort;
+
+        public string LogRepositoryProcError;
+        public string LogRepositoryProcErrorHidden;
 
         public string LogMergeResult_UpToDate;
         public string LogMergeResult_Conflicts;

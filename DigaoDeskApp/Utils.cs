@@ -262,9 +262,11 @@ namespace DigaoDeskApp
 
         //-----------------------------------------------------------------
 
-        public static void DrawGridImage(ImageList images, DataGridViewCellPaintingEventArgs e, int imageIndex)
+        public static void DrawGridImage(ImageList images, DataGridViewCellPaintingEventArgs e, int imageIndex, bool right = false)
         {
-            images.Draw(e.Graphics, e.CellBounds.X+3, e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), imageIndex);
+            images.Draw(e.Graphics, 
+                right ? e.CellBounds.Right-3-images.ImageSize.Width : e.CellBounds.X+3, 
+                e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), imageIndex);
         }
 
         public static void SetGridDoubleBuffer(DataGridView g)

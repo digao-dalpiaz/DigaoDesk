@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DigaoDeskApp
@@ -25,7 +26,7 @@ namespace DigaoDeskApp
 
         public RepositoryConfigContents Config;
 
-        private LogHighlight Log
+        private RepositoryLogCtrl Log
         {
             get
             {
@@ -129,6 +130,9 @@ namespace DigaoDeskApp
             }
         }
 
+        public bool DoingBackgroundTask;
+        public LogGroup _logGroup;
+
         public override string ToString()
         {
             return Name;
@@ -147,7 +151,7 @@ namespace DigaoDeskApp
             _repoCtrl.Dispose();
         }
 
-        public void Refresh()
+        public void RefreshDirectly()
         {
             _branch = GitUtils.GetBranchDisplayName(_repoCtrl.Head);
 
@@ -188,7 +192,7 @@ namespace DigaoDeskApp
                 var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
                 if (masterBranch == null)
                 {
-                    masterComp= "???";
+                    masterComp = "???";
                 } else
                 if (GitUtils.IsSameBranch(_repoCtrl.Head, masterBranch) || GitUtils.IsBranchLocalAndRemoteLinked(_repoCtrl.Head, masterBranch))
                 {
@@ -214,7 +218,10 @@ namespace DigaoDeskApp
             if (branch.IsTracking && branch.TrackedBranch.Tip == null)
             {
                 _repoCtrl.Branches.Update(branch, b => b.TrackedBranch = null);
-                Log.Log(string.Format(Vars.Lang.Repos_BranchNoLongerTracked, branch.FriendlyName), LogHighlightType.ALERT);
+                if (_logGroup != null) //if using Auto Fetch, modals trigger fetch without task running
+                {
+                    _logGroup.Log(string.Format(Vars.Lang.Repos_BranchNoLongerTracked, branch.FriendlyName), LogHighlightType.ALERT);
+                }
             }
         }
 
@@ -249,22 +256,69 @@ namespace DigaoDeskApp
             return _repoCtrl.RetrieveStatus(so);
         }
 
-        private void DoBackground(string cmdName, Action proc, bool performRefresh)
+        private void DoCommand(string cmdName, Action proc, bool performRefresh, bool showLog = true)
         {
-            Vars.FrmReposObj.DoBackground(() =>
-            {
-                Log.Log(cmdName, LogHighlightType.TITLE);
-                Log.LogLabel(Vars.Lang.LogLabelRepository, this.Name);
-                proc();
-                Log.Log(Vars.Lang.LogDone, LogHighlightType.DONE);
+            if (DoingBackgroundTask) throw new Exception("Already running repository task");
 
-                if (performRefresh)
+            DoingBackgroundTask = true;
+            Vars.FrmReposObj.UpdateButtons();
+            Vars.FrmReposObj.UpdateRowOfRepository(this);
+
+            Task.Run(() =>
+            {
+                if (showLog)
                 {
-                    Log.Log(Vars.Lang.LogRefreshing, LogHighlightType.REFRESHING);
-                    Refresh();
-                    Log.Log(Vars.Lang.LogDone, LogHighlightType.REFRESH_DONE);
+                    _logGroup = Log.InitGroup();
                 }
-            });                   
+
+                try
+                {
+                    if (showLog)
+                    {
+                        _logGroup.Log(cmdName, LogHighlightType.TITLE);
+                        _logGroup.LogLabel(Vars.Lang.LogLabelRepository, this.Name);
+                    }
+
+                    proc();
+
+                    if (performRefresh)
+                    {
+                        RefreshDirectly();
+                    }
+
+                    if (showLog)
+                    {
+                        _logGroup.Log(Vars.Lang.LogDone, LogHighlightType.DONE);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string exMsg = ex.Message.Trim();
+                    if (showLog)
+                    {
+                        _logGroup.Log(string.Format(Vars.Lang.LogRepositoryProcError, exMsg), LogHighlightType.ERROR);
+                    } 
+                    else
+                    {
+                        Log.FastLog(g => g.Log(string.Format(Vars.Lang.LogRepositoryProcErrorHidden,
+                            cmdName, this.Name, exMsg), LogHighlightType.ERROR));
+                    }
+                }
+
+                if (showLog)
+                {
+                    Log.TerminateGroup(_logGroup);
+                    _logGroup = null;
+                }
+
+                DoingBackgroundTask = false;
+
+                Vars.FrmReposObj.Invoke(new MethodInvoker(() =>
+                {
+                    Vars.FrmReposObj.UpdateButtons();
+                    Vars.FrmReposObj.UpdateRowOfRepository(this);
+                }));
+            });
         }
 
         private bool OnCheckoutNotify(string path, CheckoutNotifyFlags notify)
@@ -282,10 +336,10 @@ namespace DigaoDeskApp
             {
                 colorFlag = Vars.Config.Theme.RepoLogStatusNone;
             }
-            
-            Log.Log(new LogHighlight.Part[] { 
-                new LogHighlight.Part($"[{notify.ToString()}] ", colorFlag), 
-                new LogHighlight.Part(path, Vars.Config.Theme.RepoLogNormal) 
+
+            _logGroup.Log(new LogPart[] { 
+                new LogPart($"[{notify.ToString()}] ", colorFlag), 
+                new LogPart(path, Vars.Config.Theme.RepoLogNormal) 
             });
             return true;
         }
@@ -358,19 +412,27 @@ namespace DigaoDeskApp
             }
         }
 
-        public void Fetch()
+        public void RefreshSurrounded()
         {
-            DoBackground(Vars.Lang.LogFetch, () =>
+            DoCommand(Vars.Lang.LogRefresh, () =>
+            {
+                RefreshDirectly();
+            }, false, false);
+        }
+
+        public void FetchSurrounded()
+        {
+            DoCommand(Vars.Lang.LogFetch, () =>
             {
                 FetchDirectly();
-            }, true);
+            }, true, false);
         }        
 
         public void Pull()
         {
-            DoBackground(Vars.Lang.LogPull, () =>
+            DoCommand(Vars.Lang.LogPull, () =>
             {
-                Log.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
+                _logGroup.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
 
                 PullOptions po = new();
                 po.FetchOptions = GetFetchOptions();
@@ -407,8 +469,8 @@ namespace DigaoDeskApp
                 default:
                     throw new Exception("Unknown merge result status");
             }
-            Log.Log(new LogHighlight.Part[] {
-                new LogHighlight.Part(msg, color)
+            _logGroup.Log(new LogPart[] {
+                new LogPart(msg, color)
             });
         }
 
@@ -426,10 +488,10 @@ namespace DigaoDeskApp
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                DoBackground(Vars.Lang.LogSwitch, () =>
+                DoCommand(Vars.Lang.LogSwitch, () =>
                 {
                     var branch = f.ResultBranch;
-                    Log.LogLabel(Vars.Lang.LogLabelBranch, branch.FriendlyName);
+                    _logGroup.LogLabel(Vars.Lang.LogLabelBranch, branch.FriendlyName);
 
                     Commands.Checkout(_repoCtrl, branch, GetCheckoutOptions());
                 }, true);
@@ -450,10 +512,10 @@ namespace DigaoDeskApp
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                DoBackground(Vars.Lang.LogCheckout, () =>
+                DoCommand(Vars.Lang.LogCheckout, () =>
                 {
                     var remoteBranch = f.ResultBranch;
-                    Log.LogLabel(Vars.Lang.LogLabelBranch, remoteBranch.FriendlyName);
+                    _logGroup.LogLabel(Vars.Lang.LogLabelBranch, remoteBranch.FriendlyName);
 
                     var localBranchName = GitUtils.ExtractBranchNameFromOrigin(remoteBranch.FriendlyName);
                     var localBranch = _repoCtrl.CreateBranch(localBranchName, remoteBranch.Tip);
@@ -469,26 +531,26 @@ namespace DigaoDeskApp
             FrmBranchCreate f = new(_repoCtrl);
             if (f.ShowDialog() == DialogResult.OK)
             {
-                DoBackground(Vars.Lang.LogCreateBranch, () =>
+                DoCommand(Vars.Lang.LogCreateBranch, () =>
                 {
                     var name = f.ResultParams.Name;
-                    Log.LogLabel(Vars.Lang.LogLabelBranch, name);
+                    _logGroup.LogLabel(Vars.Lang.LogLabelBranch, name);
 
                     Branch b;
 
                     if (f.ResultParams.Tag != null)                    
                     {
-                        Log.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnTag, f.ResultParams.Tag.FriendlyName), LogHighlightType.PROCESSING);
+                        _logGroup.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnTag, f.ResultParams.Tag.FriendlyName), LogHighlightType.PROCESSING);
                         b = _repoCtrl.CreateBranch(name, f.ResultParams.Tag.Target as Commit); //cast already validated in form dialog
                     } else
                     {
-                        Log.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnBranch, _repoCtrl.Head.FriendlyName), LogHighlightType.PROCESSING);
+                        _logGroup.Log(string.Format(Vars.Lang.CreateBranch_CreatingBasedOnBranch, _repoCtrl.Head.FriendlyName), LogHighlightType.PROCESSING);
                         b = _repoCtrl.CreateBranch(name);
                     }
 
                     if (f.ResultParams.Switch)
                     {
-                        Log.Log(Vars.Lang.CreateBranch_Switching, LogHighlightType.AGG_PROCESSING);
+                        _logGroup.Log(Vars.Lang.CreateBranch_Switching, LogHighlightType.AGG_PROCESSING);
                         Commands.Checkout(_repoCtrl, b, GetCheckoutOptions());
                     }
                 }, true);
@@ -510,17 +572,17 @@ namespace DigaoDeskApp
 
             if (f.ShowDialog() == DialogResult.OK)
             {              
-                DoBackground(Vars.Lang.LogDeleteBranch, () =>
+                DoCommand(Vars.Lang.LogDeleteBranch, () =>
                 {
                     var lst = f.GetListBranchesForDeletion();
 
                     foreach (var bfd in lst)
                     {
-                        Log.LogLabel(Vars.Lang.LogLabelBranch, bfd.Branch.FriendlyName);
+                        _logGroup.LogLabel(Vars.Lang.LogLabelBranch, bfd.Branch.FriendlyName);
 
                         if (bfd.DelRemote)
                         {
-                            Log.Log(Vars.Lang.DeleteBranch_DeletingRemote, LogHighlightType.PROCESSING);
+                            _logGroup.Log(Vars.Lang.DeleteBranch_DeletingRemote, LogHighlightType.PROCESSING);
                             _repoCtrl.Network.Push(GetRemoteOrigin(), "+:" + bfd.Branch.UpstreamBranchCanonicalName, GetPushOptions());
                             if (!bfd.Branch.IsRemote)
                             {
@@ -529,7 +591,7 @@ namespace DigaoDeskApp
                         }
                         if (bfd.DelLocal)
                         {
-                            Log.Log(Vars.Lang.DeleteBranch_DeletingLocal, LogHighlightType.PROCESSING);
+                            _logGroup.Log(Vars.Lang.DeleteBranch_DeletingLocal, LogHighlightType.PROCESSING);
                             _repoCtrl.Branches.Remove(bfd.Branch);
                         }
                     }
@@ -542,15 +604,15 @@ namespace DigaoDeskApp
             FrmCherryPick f = new(_repoCtrl);
             if (f.ShowDialog() == DialogResult.OK)
             {
-                DoBackground(Vars.Lang.LogCherryPick, () =>
-                {                    
-                    Log.LogLabel(Vars.Lang.LogLabelIntoBranch, _repoCtrl.Head.FriendlyName);
+                DoCommand(Vars.Lang.LogCherryPick, () =>
+                {
+                    _logGroup.LogLabel(Vars.Lang.LogLabelIntoBranch, _repoCtrl.Head.FriendlyName);
 
                     var lst = f.ResultCommits;
                     lst.Reverse();
                     foreach (var item in lst)
                     {
-                        Log.LogLabel(Vars.Lang.LogLabelCommit, item.Id.Sha);
+                        _logGroup.LogLabel(Vars.Lang.LogLabelCommit, item.Id.Sha);
                         _repoCtrl.CherryPick(item, GetSignature());
                     }
                 }, true);
@@ -571,7 +633,7 @@ namespace DigaoDeskApp
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                DoBackground(Vars.Lang.LogMerge, () =>
+                DoCommand(Vars.Lang.LogMerge, () =>
                 {
                     InternalMerge(f.ResultBranch);
                 }, true);
@@ -580,38 +642,38 @@ namespace DigaoDeskApp
 
         public void SyncWithMaster()
         {
-            DoBackground(Vars.Lang.LogSync, () =>
+            DoCommand(Vars.Lang.LogSync, () =>
             {
                 var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
                 if (masterBranch == null) throw new Exception(Vars.Lang.SyncBranch_MasterBranchNotFound);
 
                 if (Vars.Config.GitAutoFetch && masterBranch.IsRemote)
                 {
-                    Log.Log(Vars.Lang.LogFetching, LogHighlightType.AGG_PROCESSING);
+                    _logGroup.Log(Vars.Lang.LogFetching, LogHighlightType.AGG_PROCESSING);
                     FetchDirectly();
                 }
 
-                Log.Log(Vars.Lang.SyncBranch_CalculatingDivergence, LogHighlightType.AGG_PROCESSING);                
+                _logGroup.Log(Vars.Lang.SyncBranch_CalculatingDivergence, LogHighlightType.AGG_PROCESSING);                
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, masterBranch.Tip);
 
                 int behind = divergence.BehindBy.Value;
                 if (behind == 0)
                 {
-                    Log.Log(Vars.Lang.SyncBrancj_NotBehindMasterBranch, LogHighlightType.ERROR);
+                    _logGroup.Log(Vars.Lang.SyncBrancj_NotBehindMasterBranch, LogHighlightType.ERROR);
                     return; //allow update previous fetch
                 }
 
-                Log.Log(string.Format(Vars.Lang.SyncBranch_BehindMasterByCommits, behind), LogHighlightType.NORMAL);
+                _logGroup.Log(string.Format(Vars.Lang.SyncBranch_BehindMasterByCommits, behind), LogHighlightType.NORMAL);
 
-                Log.Log(Vars.Lang.LogMerging, LogHighlightType.PROCESSING);
+                _logGroup.Log(Vars.Lang.LogMerging, LogHighlightType.PROCESSING);
                 InternalMerge(masterBranch);
             }, true);
         }
 
         private void InternalMerge(Branch from)
         {
-            Log.LogLabel(Vars.Lang.LogLabelFromBranch, from.FriendlyName);
-            Log.LogLabel(Vars.Lang.LogLabelIntoBranch, _repoCtrl.Head.FriendlyName);
+            _logGroup.LogLabel(Vars.Lang.LogLabelFromBranch, from.FriendlyName);
+            _logGroup.LogLabel(Vars.Lang.LogLabelIntoBranch, _repoCtrl.Head.FriendlyName);
 
             var res = _repoCtrl.Merge(from, GetSignature(), GetMergeOptions());
 
@@ -625,13 +687,13 @@ namespace DigaoDeskApp
 
             if (dr == DialogResult.OK || dr == DialogResult.Continue)
             {
-                DoBackground(Vars.Lang.LogCommit, () =>
+                DoCommand(Vars.Lang.LogCommit, () =>
                 {
                     string message = f.ReturnMessage;
-                    Log.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
-                    Log.LogLabel(Vars.Lang.LogLabelMessage, message);
+                    _logGroup.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
+                    _logGroup.LogLabel(Vars.Lang.LogLabelMessage, message);
                     Commit commit = _repoCtrl.Commit(message, GetSignature(), GetSignature());
-                    Log.LogLabel(Vars.Lang.LogLabelCommitId, commit.Sha);
+                    _logGroup.LogLabel(Vars.Lang.LogLabelCommitId, commit.Sha);
 
                     if (dr == DialogResult.Continue)
                     {
@@ -647,9 +709,9 @@ namespace DigaoDeskApp
 
         public void Push()
         {
-            DoBackground(Vars.Lang.LogPush, () =>
+            DoCommand(Vars.Lang.LogPush, () =>
             {
-                Log.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
+                _logGroup.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
                 InternalPush();
             }, true);
         }
@@ -660,14 +722,14 @@ namespace DigaoDeskApp
 
             if (!localBranch.IsTracking)
             {
-                Log.Log(Vars.Lang.LogPushLinking, LogHighlightType.ALERT);
+                _logGroup.Log(Vars.Lang.LogPushLinking, LogHighlightType.ALERT);
 
                 _repoCtrl.Branches.Update(localBranch,
                     b => b.Remote = GetRemoteOrigin().Name,
                     b => b.UpstreamBranch = localBranch.CanonicalName);
             }
 
-            Log.Log(Vars.Lang.LogPushing, LogHighlightType.PROCESSING);
+            _logGroup.Log(Vars.Lang.LogPushing, LogHighlightType.PROCESSING);
             _repoCtrl.Network.Push(localBranch, GetPushOptions());
         }
 
@@ -679,10 +741,10 @@ namespace DigaoDeskApp
                 return;
             }
 
-            DoBackground(Vars.Lang.LogReset, () =>
+            DoCommand(Vars.Lang.LogReset, () =>
             {
-                Log.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
-                Log.LogLabel(Vars.Lang.LogLabelCurrentOperation, _repoCtrl.Info.CurrentOperation.ToString());
+                _logGroup.LogLabel(Vars.Lang.LogLabelBranch, _repoCtrl.Head.FriendlyName);
+                _logGroup.LogLabel(Vars.Lang.LogLabelCurrentOperation, _repoCtrl.Info.CurrentOperation.ToString());
 
                 _repoCtrl.Reset(ResetMode.Hard);
             }, true);
