@@ -378,10 +378,8 @@ namespace DigaoDeskApp
                 try
                 {
                     var r = GetSel();
-                    Messages.SurroundExceptionThenThrowMessageException(() => {
-                        r.FetchDirectly();
-                        r.RefreshDirectly();
-                    });
+                    Messages.SurroundExceptionThenThrowMessageException(() => r.FetchDirectly());
+                    r.RefreshDirectly();
                     UpdateRowOfRepository(r);
                 }
                 finally
