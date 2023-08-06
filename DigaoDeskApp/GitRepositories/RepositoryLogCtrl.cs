@@ -152,7 +152,7 @@ namespace DigaoDeskApp
             //lock inside SafeUI to ensure correct position in list
             lock (Master.LockGroupsCtrl)
             {
-                int dif = 0;
+                int? dif = null;
 
                 Master.SafeUI(() =>
                 {
@@ -195,7 +195,7 @@ namespace DigaoDeskApp
                 var idx = Master.Groups.IndexOf(this);
                 for (int i = idx; i < Master.Groups.Count; i++)
                 {
-                    Master.Groups[i].Position += dif;
+                    Master.Groups[i].Position += dif.Value;
                 }
             }
         }
