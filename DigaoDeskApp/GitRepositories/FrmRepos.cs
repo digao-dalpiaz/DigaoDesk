@@ -293,6 +293,14 @@ namespace DigaoDeskApp
         {
             bool someTaskOfAll = _repos.Any(x => x.DoingBackgroundTask);
 
+            btnRefresh.Enabled = !someTaskOfAll;
+            btnFetchAll.Enabled = !someTaskOfAll;
+            
+            btnReorderList.Enabled = !someTaskOfAll; //we call reset binding of specific index of row when running tasks
+            btnClearLog.Enabled = !someTaskOfAll; //deny clear log when running tasks because log positions of RichText control are changing
+
+            //
+
             bool any = g.SelectedRows.Count > 0;
             bool one = g.SelectedRows.Count == 1;
 
@@ -303,9 +311,6 @@ namespace DigaoDeskApp
                 any = false;
                 one = false;
             }
-
-            btnRefresh.Enabled = !someTaskOfAll;
-            btnFetchAll.Enabled = !someTaskOfAll;
 
             btnCreateBranch.Enabled = one;
             btnDeleteBranch.Enabled = one;
@@ -322,9 +327,6 @@ namespace DigaoDeskApp
             btnPush.Enabled = any;
 
             btnRepositorySettings.Enabled = one;
-            btnReorderList.Enabled = !someTaskOfAll; //when reordering, index changes and we call reset binding of specific index of row
-
-            btnClearLog.Enabled = !someTaskOfAll;
         }
 
         private void g_SelectionChanged(object sender, EventArgs e)
