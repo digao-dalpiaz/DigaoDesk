@@ -289,6 +289,49 @@ namespace DigaoDeskApp
             _gridBind.ResetItem(_repos.IndexOf(repo));
         }
 
+        public void UpdateButtons()
+        {
+            bool someTaskOfAll = _repos.Any(x => x.DoingBackgroundTask);
+
+            bool any = g.SelectedRows.Count > 0;
+            bool one = g.SelectedRows.Count == 1;
+
+            btnShell.Enabled = one;
+
+            if (GetSels().Any(x => x.DoingBackgroundTask))
+            {
+                any = false;
+                one = false;
+            }
+
+            btnRefresh.Enabled = !someTaskOfAll;
+            btnFetchAll.Enabled = !someTaskOfAll;
+
+            btnCreateBranch.Enabled = one;
+            btnDeleteBranch.Enabled = one;
+            btnCheckoutRemote.Enabled = one;
+            btnSwitchBranch.Enabled = one;
+
+            btnFetch.Enabled = any;
+            btnPull.Enabled = any;
+            btnCommit.Enabled = one;
+            btnCherryPick.Enabled = one;
+            btnMerge.Enabled = one;
+            btnSyncWithMaster.Enabled = one;
+            btnCancelOperation.Enabled = one;
+            btnPush.Enabled = any;
+
+            btnRepositorySettings.Enabled = one;
+            btnReorderList.Enabled = !someTaskOfAll; //when reordering, index changes and we call reset binding of specific index of row
+
+            btnClearLog.Enabled = !someTaskOfAll;
+        }
+
+        private void g_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateButtons();
+        }
+
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             foreach (var repo in _repos)
@@ -476,49 +519,6 @@ namespace DigaoDeskApp
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             Log.ClearLog();
-        }
-
-        public void UpdateButtons()
-        {
-            bool any = g.SelectedRows.Count > 0;
-            bool one = g.SelectedRows.Count == 1;
-
-            if (GetSels().Any(x => x.DoingBackgroundTask))
-            {
-                any = false;
-                one = false;
-            }
-
-            var someTaskOfAll = _repos.Any(x => x.DoingBackgroundTask);
-
-            btnRefresh.Enabled = !someTaskOfAll;
-            btnFetchAll.Enabled = !someTaskOfAll;
-
-            btnCreateBranch.Enabled = one;
-            btnDeleteBranch.Enabled = one;
-            btnCheckoutRemote.Enabled = one;
-            btnSwitchBranch.Enabled = one;
-
-            btnFetch.Enabled = any;
-            btnPull.Enabled = any;
-            btnCommit.Enabled = one;
-            btnCherryPick.Enabled = one;
-            btnMerge.Enabled = one;
-            btnSyncWithMaster.Enabled = one;
-            btnCancelOperation.Enabled = one;
-            btnPush.Enabled = any;
-
-            btnShell.Enabled = one;
-
-            btnRepositorySettings.Enabled = one;
-            btnReorderList.Enabled = !someTaskOfAll; //when reordering, index changes and we call reset binding of specific index of row
-
-            btnClearLog.Enabled = !someTaskOfAll;
-        }
-
-        private void g_SelectionChanged(object sender, EventArgs e)
-        {
-            UpdateButtons();
         }
 
     }
