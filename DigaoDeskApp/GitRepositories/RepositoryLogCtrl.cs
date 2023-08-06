@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibGit2Sharp;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -92,16 +93,16 @@ namespace DigaoDeskApp
         {
             LogGroup g = new();
             g.Master = this;
-            SafeUI(() =>
-            { 
-                g.Position = EdControl.TextLength;
 
-                //lock inside SafeUI to ensure correct position in list
-                lock (LockGroupsCtrl)
+            lock (LockGroupsCtrl)
+            {
+                SafeUI(() =>
                 {
-                    Groups.Add(g);
-                }
-            });
+                    g.Position = EdControl.TextLength;
+                });
+
+                Groups.Add(g);
+            }
 
             g.Log(); //blank line
             return g;
@@ -148,53 +149,55 @@ namespace DigaoDeskApp
 
             var ed = Master.EdControl;
 
-            Master.SafeUI(() =>
+            //lock inside SafeUI to ensure correct position in list
+            lock (Master.LockGroupsCtrl)
             {
-                ed.SuspendPainting();
-                try
+                int dif = 0;
+
+                Master.SafeUI(() =>
                 {
-                    ed.SelectionStart = Position;
-
-                    //ed.SelectionColor = Color.White;
-                    //ed.SelectedText = Ident.ToString() + " > ";
-
-                    if (parts.Any())
+                    ed.SuspendPainting();
+                    try
                     {
-                        if (Vars.Config.Theme.ShowTimestamp)
+                        ed.SelectionStart = Position;
+
+                        //ed.SelectionColor = Color.White;
+                        //ed.SelectedText = Ident.ToString() + " > ";
+
+                        if (parts.Any())
                         {
-                            ed.SelectionColor = Vars.Config.Theme.TimestampFore;
-                            ed.SelectedText = LogUtils.GetTimestampPrefix();
+                            if (Vars.Config.Theme.ShowTimestamp)
+                            {
+                                ed.SelectionColor = Vars.Config.Theme.TimestampFore;
+                                ed.SelectedText = LogUtils.GetTimestampPrefix();
+                            }
+
+                            foreach (var part in parts)
+                            {
+                                ed.SelectionColor = part.Color;
+                                ed.SelectionFont = new Font(ed.Font, part.Bold ? FontStyle.Bold : FontStyle.Regular);
+                                ed.SelectedText = part.Text;
+                            }
                         }
 
-                        foreach (var part in parts)
-                        {
-                            ed.SelectionColor = part.Color;
-                            ed.SelectionFont = new Font(ed.Font, part.Bold ? FontStyle.Bold : FontStyle.Regular);
-                            ed.SelectedText = part.Text;
-                        }
+                        ed.SelectedText = Environment.NewLine;
                     }
-
-                    ed.SelectedText = Environment.NewLine;
-                }
-                finally
-                {
-                    ed.ResumePainting(false);
-                }
-
-                var dif = ed.SelectionStart - Position;
-
-                ed.SelectionStart = ed.TextLength;
-
-                //lock inside SafeUI to ensure correct position in list
-                lock (Master.LockGroupsCtrl)
-                {
-                    var idx = Master.Groups.IndexOf(this);
-                    for (int i = idx; i < Master.Groups.Count; i++)
+                    finally
                     {
-                        Master.Groups[i].Position += dif;
+                        ed.ResumePainting(false);
                     }
+
+                    dif = ed.SelectionStart - Position;
+
+                    ed.SelectionStart = ed.TextLength;
+                });
+
+                var idx = Master.Groups.IndexOf(this);
+                for (int i = idx; i < Master.Groups.Count; i++)
+                {
+                    Master.Groups[i].Position += dif;
                 }
-            });
+            }
         }
 
         public void Log()
