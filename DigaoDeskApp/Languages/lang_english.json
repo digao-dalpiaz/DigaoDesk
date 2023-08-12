@@ -152,7 +152,9 @@
   "Repos_ColMasterBranchCompare": "Master Branch Compare",
 
   "Repos_DenyExitByProcess": "There is a process in execution right now",
+  "Repos_GitFolderNotConfigured": "Git Repositories folder not configured",
   "Repos_GitFolderNotFound": "Git repositories folder not found: {0}",
+  "Repos_GitFolderNoneRepositories": "No Git repository found in folder: {0}",
   "Repos_CRLFEnabled": "Auto CR+LF config has been enabled in repository '{0}'",
   "Repos_ProcessDone": "Done!",
   "Repos_Fetching": "Fetching...",

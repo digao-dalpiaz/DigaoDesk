@@ -152,7 +152,9 @@
   "Repos_ColMasterBranchCompare": "主分支比较",
 
   "Repos_DenyExitByProcess": "现在有一个进程正在执行",
+  "Repos_GitFolderNotConfigured": "Git Repositories folder not configured",
   "Repos_GitFolderNotFound": "未找到 Git 存储库文件夹：{0}",
+  "Repos_GitFolderNoneRepositories": "No Git repository found in folder: {0}",
   "Repos_CRLFEnabled": "存储库中已启用自动 CR+LF 配置 '{0}'",
   "Repos_ProcessDone": "完成!",
   "Repos_Fetching": "正在获取...",

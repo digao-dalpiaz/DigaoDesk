@@ -152,7 +152,9 @@
   "Repos_ColMasterBranchCompare": "Comparação do branch master",
 
   "Repos_DenyExitByProcess": "Existe um processo em execução no momento",
+  "Repos_GitFolderNotConfigured": "Pasta dos Repositórios Git não configurada",
   "Repos_GitFolderNotFound": "Pasta dos repositórios não encontrada: {0}",
+  "Repos_GitFolderNoneRepositories": "Nenhum repositório Git encontrado na pasta: {0}",
   "Repos_CRLFEnabled": "Configuração de CR+LF habilitada para o repositório '{0}'",
   "Repos_ProcessDone": "Pronto!",
   "Repos_Fetching": "Fazendo fetch...",

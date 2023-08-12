@@ -157,7 +157,9 @@
         public string Repos_ColMasterBranchCompare;
 
         public string Repos_DenyExitByProcess;
+        public string Repos_GitFolderNotConfigured;
         public string Repos_GitFolderNotFound;
+        public string Repos_GitFolderNoneRepositories;
         public string Repos_CRLFEnabled;
         public string Repos_ProcessDone;
         public string Repos_Fetching;

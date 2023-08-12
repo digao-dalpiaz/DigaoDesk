@@ -178,7 +178,11 @@ namespace DigaoDeskApp
         {
             var dir = Vars.Config.ReposDir;
 
-            if (string.IsNullOrEmpty(dir)) return;
+            if (string.IsNullOrEmpty(dir))
+            {
+                Messages.Error(Vars.Lang.Repos_GitFolderNotConfigured);
+                return;
+            }
 
             if (!Directory.Exists(dir))
             {
@@ -187,6 +191,12 @@ namespace DigaoDeskApp
             }
 
             var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
+
+            if (!realReposList.Any())
+            {
+                Messages.Error(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
+                return;
+            }
 
             //Add repositories by stored order
             var lstConfigItems = RepositoriesStore.Load();
