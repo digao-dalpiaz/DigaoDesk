@@ -115,6 +115,11 @@ namespace DigaoDeskApp
             ckDontNotifyWhenAppsActive=new System.Windows.Forms.CheckBox();
             ckNotifyWhenAppStops=new System.Windows.Forms.CheckBox();
             tabRepos=new System.Windows.Forms.TabPage();
+            btnDelGitGroup=new System.Windows.Forms.Button();
+            btnEditGitGroup=new System.Windows.Forms.Button();
+            btnAddGitGroup=new System.Windows.Forms.Button();
+            label1=new System.Windows.Forms.Label();
+            listGitGroups=new System.Windows.Forms.ListBox();
             ckGitAutoCRLF=new System.Windows.Forms.CheckBox();
             btnCustomCommandsHelp=new System.Windows.Forms.Label();
             edGitCustomCommands=new System.Windows.Forms.TextBox();
@@ -131,23 +136,10 @@ namespace DigaoDeskApp
             lbCommitMsg=new System.Windows.Forms.Label();
             ckGitAutoFetch=new System.Windows.Forms.CheckBox();
             lbMemoInfo=new System.Windows.Forms.Label();
-            boxGitAuthor=new System.Windows.Forms.GroupBox();
-            edGitName=new System.Windows.Forms.TextBox();
-            lbAuthorName=new System.Windows.Forms.Label();
-            lbAuthorEmail=new System.Windows.Forms.Label();
-            edGitEmail=new System.Windows.Forms.TextBox();
             edGitNewBranchPrefixList=new System.Windows.Forms.TextBox();
             lbNewBranchPrefix=new System.Windows.Forms.Label();
             btnSelShellProgram=new System.Windows.Forms.Button();
             edShellProgram=new System.Windows.Forms.TextBox();
-            boxGitCredentials=new System.Windows.Forms.GroupBox();
-            edGitCredPassword=new System.Windows.Forms.TextBox();
-            lbCredPassword=new System.Windows.Forms.Label();
-            edGitCredUsername=new System.Windows.Forms.TextBox();
-            lbCredUsername=new System.Windows.Forms.Label();
-            btnSelReposDir=new System.Windows.Forms.Button();
-            edReposDir=new System.Windows.Forms.TextBox();
-            lbRepositoryFolder=new System.Windows.Forms.Label();
             btnOK=new System.Windows.Forms.Button();
             btnCancel=new System.Windows.Forms.Button();
             pages.SuspendLayout();
@@ -159,8 +151,6 @@ namespace DigaoDeskApp
             tabApplications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).BeginInit();
             tabRepos.SuspendLayout();
-            boxGitAuthor.SuspendLayout();
-            boxGitCredentials.SuspendLayout();
             SuspendLayout();
             // 
             // pages
@@ -1034,6 +1024,11 @@ namespace DigaoDeskApp
             // 
             // tabRepos
             // 
+            tabRepos.Controls.Add(btnDelGitGroup);
+            tabRepos.Controls.Add(btnEditGitGroup);
+            tabRepos.Controls.Add(btnAddGitGroup);
+            tabRepos.Controls.Add(label1);
+            tabRepos.Controls.Add(listGitGroups);
             tabRepos.Controls.Add(ckGitAutoCRLF);
             tabRepos.Controls.Add(btnCustomCommandsHelp);
             tabRepos.Controls.Add(edGitCustomCommands);
@@ -1050,15 +1045,10 @@ namespace DigaoDeskApp
             tabRepos.Controls.Add(lbCommitMsg);
             tabRepos.Controls.Add(ckGitAutoFetch);
             tabRepos.Controls.Add(lbMemoInfo);
-            tabRepos.Controls.Add(boxGitAuthor);
             tabRepos.Controls.Add(edGitNewBranchPrefixList);
             tabRepos.Controls.Add(lbNewBranchPrefix);
             tabRepos.Controls.Add(btnSelShellProgram);
             tabRepos.Controls.Add(edShellProgram);
-            tabRepos.Controls.Add(boxGitCredentials);
-            tabRepos.Controls.Add(btnSelReposDir);
-            tabRepos.Controls.Add(edReposDir);
-            tabRepos.Controls.Add(lbRepositoryFolder);
             tabRepos.Location=new System.Drawing.Point(4, 29);
             tabRepos.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             tabRepos.Name="tabRepos";
@@ -1067,6 +1057,56 @@ namespace DigaoDeskApp
             tabRepos.TabIndex=1;
             tabRepos.Text="Git Repositories";
             tabRepos.UseVisualStyleBackColor=true;
+            // 
+            // btnDelGitGroup
+            // 
+            btnDelGitGroup.Location=new System.Drawing.Point(536, 136);
+            btnDelGitGroup.Name="btnDelGitGroup";
+            btnDelGitGroup.Size=new System.Drawing.Size(104, 40);
+            btnDelGitGroup.TabIndex=3;
+            btnDelGitGroup.Text="Delete";
+            btnDelGitGroup.UseVisualStyleBackColor=true;
+            btnDelGitGroup.Click+=btnDelGitGroup_Click;
+            // 
+            // btnEditGitGroup
+            // 
+            btnEditGitGroup.Location=new System.Drawing.Point(536, 88);
+            btnEditGitGroup.Name="btnEditGitGroup";
+            btnEditGitGroup.Size=new System.Drawing.Size(104, 40);
+            btnEditGitGroup.TabIndex=2;
+            btnEditGitGroup.Text="Edit";
+            btnEditGitGroup.UseVisualStyleBackColor=true;
+            btnEditGitGroup.Click+=btnEditGitGroup_Click;
+            // 
+            // btnAddGitGroup
+            // 
+            btnAddGitGroup.Location=new System.Drawing.Point(536, 40);
+            btnAddGitGroup.Name="btnAddGitGroup";
+            btnAddGitGroup.Size=new System.Drawing.Size(104, 40);
+            btnAddGitGroup.TabIndex=1;
+            btnAddGitGroup.Text="New";
+            btnAddGitGroup.UseVisualStyleBackColor=true;
+            btnAddGitGroup.Click+=btnAddGitGroup_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize=true;
+            label1.Location=new System.Drawing.Point(14, 16);
+            label1.Name="label1";
+            label1.Size=new System.Drawing.Size(165, 20);
+            label1.TabIndex=22;
+            label1.Text="Git Repositories Groups";
+            // 
+            // listGitGroups
+            // 
+            listGitGroups.FormattingEnabled=true;
+            listGitGroups.IntegralHeight=false;
+            listGitGroups.ItemHeight=20;
+            listGitGroups.Location=new System.Drawing.Point(16, 40);
+            listGitGroups.Name="listGitGroups";
+            listGitGroups.Size=new System.Drawing.Size(504, 208);
+            listGitGroups.TabIndex=0;
+            listGitGroups.SelectedIndexChanged+=listGitGroups_SelectedIndexChanged;
             // 
             // ckGitAutoCRLF
             // 
@@ -1223,55 +1263,6 @@ namespace DigaoDeskApp
             lbMemoInfo.Text="CTRL+ENTER = New line";
             lbMemoInfo.TextAlign=System.Drawing.ContentAlignment.TopRight;
             // 
-            // boxGitAuthor
-            // 
-            boxGitAuthor.Controls.Add(edGitName);
-            boxGitAuthor.Controls.Add(lbAuthorName);
-            boxGitAuthor.Controls.Add(lbAuthorEmail);
-            boxGitAuthor.Controls.Add(edGitEmail);
-            boxGitAuthor.Location=new System.Drawing.Point(16, 88);
-            boxGitAuthor.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            boxGitAuthor.Name="boxGitAuthor";
-            boxGitAuthor.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            boxGitAuthor.Size=new System.Drawing.Size(496, 171);
-            boxGitAuthor.TabIndex=3;
-            boxGitAuthor.TabStop=false;
-            boxGitAuthor.Text="Author information";
-            // 
-            // edGitName
-            // 
-            edGitName.Location=new System.Drawing.Point(16, 56);
-            edGitName.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            edGitName.Name="edGitName";
-            edGitName.Size=new System.Drawing.Size(464, 27);
-            edGitName.TabIndex=4;
-            // 
-            // lbAuthorName
-            // 
-            lbAuthorName.AutoSize=true;
-            lbAuthorName.Location=new System.Drawing.Point(14, 32);
-            lbAuthorName.Name="lbAuthorName";
-            lbAuthorName.Size=new System.Drawing.Size(49, 20);
-            lbAuthorName.TabIndex=3;
-            lbAuthorName.Text="Name";
-            // 
-            // lbAuthorEmail
-            // 
-            lbAuthorEmail.AutoSize=true;
-            lbAuthorEmail.Location=new System.Drawing.Point(14, 96);
-            lbAuthorEmail.Name="lbAuthorEmail";
-            lbAuthorEmail.Size=new System.Drawing.Size(46, 20);
-            lbAuthorEmail.TabIndex=5;
-            lbAuthorEmail.Text="Email";
-            // 
-            // edGitEmail
-            // 
-            edGitEmail.Location=new System.Drawing.Point(16, 120);
-            edGitEmail.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            edGitEmail.Name="edGitEmail";
-            edGitEmail.Size=new System.Drawing.Size(464, 27);
-            edGitEmail.TabIndex=6;
-            // 
             // edGitNewBranchPrefixList
             // 
             edGitNewBranchPrefixList.Location=new System.Drawing.Point(16, 432);
@@ -1312,87 +1303,6 @@ namespace DigaoDeskApp
             edShellProgram.Name="edShellProgram";
             edShellProgram.Size=new System.Drawing.Size(984, 27);
             edShellProgram.TabIndex=6;
-            // 
-            // boxGitCredentials
-            // 
-            boxGitCredentials.Controls.Add(edGitCredPassword);
-            boxGitCredentials.Controls.Add(lbCredPassword);
-            boxGitCredentials.Controls.Add(edGitCredUsername);
-            boxGitCredentials.Controls.Add(lbCredUsername);
-            boxGitCredentials.Location=new System.Drawing.Point(528, 88);
-            boxGitCredentials.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            boxGitCredentials.Name="boxGitCredentials";
-            boxGitCredentials.Padding=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            boxGitCredentials.Size=new System.Drawing.Size(496, 171);
-            boxGitCredentials.TabIndex=4;
-            boxGitCredentials.TabStop=false;
-            boxGitCredentials.Text="Credentials";
-            // 
-            // edGitCredPassword
-            // 
-            edGitCredPassword.Location=new System.Drawing.Point(16, 120);
-            edGitCredPassword.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            edGitCredPassword.Name="edGitCredPassword";
-            edGitCredPassword.PasswordChar='●';
-            edGitCredPassword.Size=new System.Drawing.Size(464, 27);
-            edGitCredPassword.TabIndex=10;
-            // 
-            // lbCredPassword
-            // 
-            lbCredPassword.AutoSize=true;
-            lbCredPassword.Location=new System.Drawing.Point(14, 96);
-            lbCredPassword.Name="lbCredPassword";
-            lbCredPassword.Size=new System.Drawing.Size(70, 20);
-            lbCredPassword.TabIndex=9;
-            lbCredPassword.Text="Password";
-            // 
-            // edGitCredUsername
-            // 
-            edGitCredUsername.Location=new System.Drawing.Point(16, 56);
-            edGitCredUsername.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            edGitCredUsername.Name="edGitCredUsername";
-            edGitCredUsername.Size=new System.Drawing.Size(464, 27);
-            edGitCredUsername.TabIndex=8;
-            // 
-            // lbCredUsername
-            // 
-            lbCredUsername.AutoSize=true;
-            lbCredUsername.Location=new System.Drawing.Point(14, 32);
-            lbCredUsername.Name="lbCredUsername";
-            lbCredUsername.Size=new System.Drawing.Size(75, 20);
-            lbCredUsername.TabIndex=7;
-            lbCredUsername.Text="Username";
-            // 
-            // btnSelReposDir
-            // 
-            btnSelReposDir.Location=new System.Drawing.Point(992, 40);
-            btnSelReposDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            btnSelReposDir.Name="btnSelReposDir";
-            btnSelReposDir.Size=new System.Drawing.Size(27, 33);
-            btnSelReposDir.TabIndex=2;
-            btnSelReposDir.TabStop=false;
-            btnSelReposDir.Text="...";
-            btnSelReposDir.UseVisualStyleBackColor=true;
-            btnSelReposDir.Click+=btnSelReposDir_Click;
-            // 
-            // edReposDir
-            // 
-            edReposDir.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            edReposDir.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            edReposDir.Location=new System.Drawing.Point(16, 40);
-            edReposDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
-            edReposDir.Name="edReposDir";
-            edReposDir.Size=new System.Drawing.Size(976, 27);
-            edReposDir.TabIndex=1;
-            // 
-            // lbRepositoryFolder
-            // 
-            lbRepositoryFolder.AutoSize=true;
-            lbRepositoryFolder.Location=new System.Drawing.Point(14, 16);
-            lbRepositoryFolder.Name="lbRepositoryFolder";
-            lbRepositoryFolder.Size=new System.Drawing.Size(135, 20);
-            lbRepositoryFolder.TabIndex=0;
-            lbRepositoryFolder.Text="Repositories folder";
             // 
             // btnOK
             // 
@@ -1450,10 +1360,6 @@ namespace DigaoDeskApp
             ((System.ComponentModel.ISupportInitialize)edAppLogMaxSize).EndInit();
             tabRepos.ResumeLayout(false);
             tabRepos.PerformLayout();
-            boxGitAuthor.ResumeLayout(false);
-            boxGitAuthor.PerformLayout();
-            boxGitCredentials.ResumeLayout(false);
-            boxGitCredentials.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1465,13 +1371,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox ckNotifyWhenAppStops;
         private System.Windows.Forms.TabPage tabRepos;
-        private System.Windows.Forms.TextBox edReposDir;
-        private System.Windows.Forms.Label lbRepositoryFolder;
-        private System.Windows.Forms.Button btnSelReposDir;
-        private System.Windows.Forms.TextBox edGitEmail;
-        private System.Windows.Forms.Label lbAuthorEmail;
-        private System.Windows.Forms.TextBox edGitName;
-        private System.Windows.Forms.Label lbAuthorName;
         private System.Windows.Forms.TabPage tabTheme;
         private System.Windows.Forms.Button btnLogFont;
         private System.Windows.Forms.CheckBox ckLogWordWrap;
@@ -1479,18 +1378,12 @@ namespace DigaoDeskApp
         private System.Windows.Forms.CheckBox ckLogShowTs;
         private System.Windows.Forms.Button btnColorConsoleBack;
         private System.Windows.Forms.Label lbConsoleFont;
-        private System.Windows.Forms.GroupBox boxGitCredentials;
-        private System.Windows.Forms.TextBox edGitCredPassword;
-        private System.Windows.Forms.Label lbCredPassword;
-        private System.Windows.Forms.TextBox edGitCredUsername;
-        private System.Windows.Forms.Label lbCredUsername;
         private System.Windows.Forms.CheckBox ckDontNotifyWhenAppsActive;
         private System.Windows.Forms.TextBox edShellProgram;
         private System.Windows.Forms.Label lbShellProgram;
         private System.Windows.Forms.Button btnSelShellProgram;
         private System.Windows.Forms.TextBox edGitNewBranchPrefixList;
         private System.Windows.Forms.Label lbNewBranchPrefix;
-        private System.Windows.Forms.GroupBox boxGitAuthor;
         private System.Windows.Forms.Label lbMemoInfo;
         private System.Windows.Forms.CheckBox ckGitAutoFetch;
         private System.Windows.Forms.TextBox edCommitMessage;
@@ -1580,5 +1473,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnColorRepoLogStatusWarn;
         private System.Windows.Forms.Label lbColorRepoLogStatusWarn;
         private System.Windows.Forms.GroupBox BoxThemeConsole;
+        private System.Windows.Forms.ListBox listGitGroups;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDelGitGroup;
+        private System.Windows.Forms.Button btnEditGitGroup;
+        private System.Windows.Forms.Button btnAddGitGroup;
     }
 }

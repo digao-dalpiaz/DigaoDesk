@@ -21,6 +21,7 @@ namespace DigaoDeskApp
             //CheckoutNotifyFlags.Untracked |
             CheckoutNotifyFlags.Updated;
 
+        private Config.CfgGitGroup _gitGroup;
         private string _path;
         public Repository _repoCtrl;
 
@@ -138,8 +139,9 @@ namespace DigaoDeskApp
             return Name;
         }
 
-        public DigaoRepository(string path)
+        public DigaoRepository(Config.CfgGitGroup gitGroup, string path)
         {
+            _gitGroup = gitGroup;
             _path = path;
 
             _name = Path.GetFileName(path);
@@ -346,20 +348,20 @@ namespace DigaoDeskApp
 
         private Credentials OnCredentialsProvider(string url, string usernameFromUrl, SupportedCredentialTypes types)
         {
-            if (string.IsNullOrEmpty(Vars.Config.Git.CredUsername)) return null;
+            if (string.IsNullOrEmpty(_gitGroup.CredUsername)) return null;
 
             UsernamePasswordCredentials c = new();
-            c.Username = Vars.Config.Git.CredUsername;
-            c.Password = Vars.Config.Git.CredPassword;
+            c.Username = _gitGroup.CredUsername;
+            c.Password = _gitGroup.CredPassword;
             return c;
         }
 
         private Signature GetSignature()
         {
-            if (string.IsNullOrEmpty(Vars.Config.Git.Name)) throw new Exception(Vars.Lang.GitSignatureNameEmpty);
-            if (string.IsNullOrEmpty(Vars.Config.Git.Email)) throw new Exception(Vars.Lang.GitSignatureEmailEmpty);
+            if (string.IsNullOrEmpty(_gitGroup.AuthorName)) throw new Exception(Vars.Lang.GitSignatureNameEmpty);
+            if (string.IsNullOrEmpty(_gitGroup.AuthorEmail)) throw new Exception(Vars.Lang.GitSignatureEmailEmpty);
 
-            return new(Vars.Config.Git.Name, Vars.Config.Git.Email, DateTimeOffset.Now);
+            return new(_gitGroup.AuthorName, _gitGroup.AuthorEmail, DateTimeOffset.Now);
         }
 
         private FetchOptions GetFetchOptions()
@@ -647,7 +649,7 @@ namespace DigaoDeskApp
                 var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
                 if (masterBranch == null) throw new Exception(Vars.Lang.SyncBranch_MasterBranchNotFound);
 
-                if (Vars.Config.GitAutoFetch && masterBranch.IsRemote)
+                if (Vars.Config.Repos.GitAutoFetch && masterBranch.IsRemote)
                 {
                     _logGroup.Log(Vars.Lang.LogFetching, LogHighlightType.AGG_PROCESSING);
                     FetchDirectly();
@@ -752,7 +754,7 @@ namespace DigaoDeskApp
 
         public void OpenShell()
         {
-            var cmd = Vars.Config.ShellProgram;
+            var cmd = Vars.Config.Repos.ShellProgram;
             if (string.IsNullOrEmpty(cmd))
             {
                 Messages.Error(Vars.Lang.ShellProgramNotConfigured);

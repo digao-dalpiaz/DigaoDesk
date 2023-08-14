@@ -89,13 +89,6 @@
         public string Config_Apps_DontNotifyStopWhenActive;
         public string Config_Apps_MaxLogSize;
 
-        public string Config_Repos_Folder;
-        public string Config_Repos_BoxAuthor;
-        public string Config_Repos_Author_Name;
-        public string Config_Repos_Author_Email;
-        public string Config_Repos_BoxCredentials;
-        public string Config_Repos_Credentials_Username;
-        public string Config_Repos_Credentials_Password;
         public string Config_Repos_ShellProgram;
         public string Config_Repos_DiffProgram;
         public string Config_Repos_DiffProgramArgs;
@@ -110,7 +103,20 @@
         public string Config_Repos_CommitMsgInfo;
         public string Config_InvalidLanguage;
         public string Config_AppMaxLogSizeRequired;
-        public string Config_GitRepositoryNotFound;
+
+        public string ConfigGitGroup_TitleNew;
+        public string ConfigGitGroup_TitleEdit;
+        public string ConfigGitGroup_Ident;
+        public string ConfigGitGroup_Path;
+        public string ConfigGitGroup_BoxAuthor;
+        public string ConfigGitGroup_Author_Name;
+        public string ConfigGitGroup_Author_Email;
+        public string ConfigGitGroup_BoxCredentials;
+        public string ConfigGitGroup_Credentials_Username;
+        public string ConfigGitGroup_Credentials_Password;
+        public string ConfigGitGroup_IdentRequired;
+        public string ConfigGitGroup_PathRequired;
+        public string ConfigGitGroup_PathNotFound;
 
         public string RepoConfig_Title;
         public string RepoConfig_MasterBranch;
@@ -156,8 +162,8 @@
         public string Repos_ColOperation;
         public string Repos_ColMasterBranchCompare;
 
+        public string Repos_NoGitGroupsConfigured;
         public string Repos_DenyExitByProcess;
-        public string Repos_GitFolderNotConfigured;
         public string Repos_GitFolderNotFound;
         public string Repos_GitFolderNoneRepositories;
         public string Repos_CRLFEnabled;

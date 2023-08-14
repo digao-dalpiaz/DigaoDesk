@@ -30,10 +30,10 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             components=new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             g=new System.Windows.Forms.DataGridView();
             colName=new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +74,7 @@ namespace DigaoDeskApp
             images=new System.Windows.Forms.ImageList(components);
             statusBar=new System.Windows.Forms.StatusStrip();
             stFunInfo=new System.Windows.Forms.ToolStripStatusLabel();
+            menuGroup=new System.Windows.Forms.ToolStripDropDownButton();
             ((System.ComponentModel.ISupportInitialize)g).BeginInit();
             toolBar.SuspendLayout();
             statusBar.SuspendLayout();
@@ -87,14 +88,14 @@ namespace DigaoDeskApp
             g.BorderStyle=System.Windows.Forms.BorderStyle.None;
             g.ColumnHeadersHeightSizeMode=System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             g.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colName, colBranch, colBranchesCount, colUp, colDown, colDifs, colOtherBranchesDifs, colLastFetch, colOperation, colMasterCompare });
-            dataGridViewCellStyle4.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor=System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font=new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor=System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor=System.Drawing.Color.Gold;
-            dataGridViewCellStyle4.SelectionForeColor=System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode=System.Windows.Forms.DataGridViewTriState.False;
-            g.DefaultCellStyle=dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor=System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font=new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor=System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor=System.Drawing.Color.Gold;
+            dataGridViewCellStyle8.SelectionForeColor=System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode=System.Windows.Forms.DataGridViewTriState.False;
+            g.DefaultCellStyle=dataGridViewCellStyle8;
             g.Dock=System.Windows.Forms.DockStyle.Top;
             g.Location=new System.Drawing.Point(0, 51);
             g.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -141,8 +142,8 @@ namespace DigaoDeskApp
             // colUp
             // 
             colUp.DataPropertyName="PendingUp";
-            dataGridViewCellStyle1.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colUp.DefaultCellStyle=dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colUp.DefaultCellStyle=dataGridViewCellStyle5;
             colUp.HeaderText="Pending Up";
             colUp.MinimumWidth=6;
             colUp.Name="colUp";
@@ -152,8 +153,8 @@ namespace DigaoDeskApp
             // colDown
             // 
             colDown.DataPropertyName="PendingDown";
-            dataGridViewCellStyle2.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colDown.DefaultCellStyle=dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colDown.DefaultCellStyle=dataGridViewCellStyle6;
             colDown.HeaderText="Pending Down";
             colDown.MinimumWidth=6;
             colDown.Name="colDown";
@@ -163,8 +164,8 @@ namespace DigaoDeskApp
             // colDifs
             // 
             colDifs.DataPropertyName="Difs";
-            dataGridViewCellStyle3.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colDifs.DefaultCellStyle=dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colDifs.DefaultCellStyle=dataGridViewCellStyle7;
             colDifs.HeaderText="Difs";
             colDifs.MinimumWidth=6;
             colDifs.Name="colDifs";
@@ -468,7 +469,7 @@ namespace DigaoDeskApp
             // statusBar
             // 
             statusBar.ImageScalingSize=new System.Drawing.Size(20, 20);
-            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo });
+            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo, menuGroup });
             statusBar.Location=new System.Drawing.Point(0, 838);
             statusBar.Name="statusBar";
             statusBar.Padding=new System.Windows.Forms.Padding(1, 0, 16, 0);
@@ -481,6 +482,14 @@ namespace DigaoDeskApp
             stFunInfo.Name="stFunInfo";
             stFunInfo.Size=new System.Drawing.Size(241, 20);
             stFunInfo.Text="I see your work will be amazing!";
+            // 
+            // menuGroup
+            // 
+            menuGroup.Image=(System.Drawing.Image)resources.GetObject("menuGroup.Image");
+            menuGroup.ImageTransparentColor=System.Drawing.Color.Magenta;
+            menuGroup.Name="menuGroup";
+            menuGroup.Size=new System.Drawing.Size(170, 24);
+            menuGroup.Text="Repositories Group";
             // 
             // FrmRepos
             // 
@@ -550,5 +559,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripDropDownButton btnConfig;
         private System.Windows.Forms.ToolStripMenuItem btnRepositorySettings;
         private System.Windows.Forms.ToolStripMenuItem btnReorderList;
+        private System.Windows.Forms.ToolStripDropDownButton menuGroup;
     }
 }

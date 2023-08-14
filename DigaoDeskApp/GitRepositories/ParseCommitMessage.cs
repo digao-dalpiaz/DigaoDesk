@@ -38,7 +38,7 @@ namespace DigaoDeskApp
 
         public string GetMessage()
         {
-            string message = Vars.Config.GitCommitMessage;
+            string message = Vars.Config.Repos.GitCommitMessage;
             if (message == null) return string.Empty;
 
             foreach (var token in _tokens)

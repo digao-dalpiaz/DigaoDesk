@@ -13,7 +13,9 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Repos";
 
-        private List<DigaoRepository> _repos = new();
+        private Config.CfgGitGroup _gitGroup;
+
+        private List<DigaoRepository> _repos;
         private BindingSource _gridBind;
 
         public RepositoryLogCtrl Log;
@@ -27,6 +29,8 @@ namespace DigaoDeskApp
             Utils.SetGridDoubleBuffer(g);
             Utils.AdjustToolStrip(toolBar);
 
+            g.AutoGenerateColumns = false;
+
             Log = new(edLog, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gitrepos.log"));
         }
 
@@ -35,6 +39,7 @@ namespace DigaoDeskApp
             EventAudit.Do("Load Repos form");
 
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
+            var lastGroup = (string)r.GetValue("GitGroup");
             g.Height = (int)r.GetValue("GridH", g.Height);
             Utils.StringToGridColumns((string)r.GetValue("GridCols", string.Empty), g);
 
@@ -44,44 +49,44 @@ namespace DigaoDeskApp
 
             BuildShellCustomCommands();
 
-            //
-
-            BuildRepositories();
-
-            _gridBind = new();
-            _gridBind.DataSource = _repos;
-            g.DataSource = _gridBind;
-
-            if (!_repos.Any())
+            if (Vars.Config.Repos.GitGroups.Any())
             {
-                toolBar.Visible = false; //can't use "enabled" because is used to control access to repository functions
+                BuildGroupMenu();
+                if (!string.IsNullOrEmpty(lastGroup))
+                {
+                    _gitGroup = Vars.Config.Repos.GitGroups.Find(x => x.Ident == lastGroup);
+                }
+                if (_gitGroup == null)
+                {
+                    _gitGroup = Vars.Config.Repos.GitGroups.First();
+                }
+            }
+            else
+            {
+                toolBar.Visible = false;
+                menuGroup.Visible = false;
+                Messages.Error(Vars.Lang.Repos_NoGitGroupsConfigured);
             }
         }
 
         private void FrmRepos_Shown(object sender, EventArgs e)
         {
-            if (_repos.Any())
+            if (_gitGroup != null)
             {
-                CheckAutoCRLF();
-
-                btnRefresh.PerformClick();
+                BuildRepositories();
             }
         }
 
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
         {
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
+            r.SetValue("GitGroup", _gitGroup != null ? _gitGroup.Ident : string.Empty);
             r.SetValue("GridH", g.Height);
             r.SetValue("GridCols", Utils.GridColumnsToString(g));
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
-            RepositoriesStore.Save(_repos);
-
-            foreach (var repo in _repos)
-            {
-                repo.FreeCtrl();
-            }
+            if (_repos != null) SaveAndFreeRepositories();
 
             Vars.FrmReposObj = null;
 
@@ -90,7 +95,7 @@ namespace DigaoDeskApp
 
         private void FrmRepos_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_repos.Any(x => x.DoingBackgroundTask))
+            if (_repos != null && _repos.Any(x => x.DoingBackgroundTask))
             {
                 Messages.Error(Vars.Lang.Repos_DenyExitByProcess);
                 e.Cancel = true;
@@ -146,7 +151,7 @@ namespace DigaoDeskApp
 
         private void BuildShellCustomCommands()
         {
-            var lstStr = Vars.Config.GitCustomCommands;
+            var lstStr = Vars.Config.Repos.GitCustomCommands;
             if (lstStr == null) return;
 
             var lst = lstStr.Split(Environment.NewLine);
@@ -174,15 +179,32 @@ namespace DigaoDeskApp
             }
         }
 
+        private void BuildGroupMenu()
+        {
+            foreach (var item in Vars.Config.Repos.GitGroups)
+            {
+                var menuItem = menuGroup.DropDownItems.Add(item.Ident, null, btnItemGroup_Click);
+                menuItem.Tag = item;
+            }
+        }
+
+        private void btnItemGroup_Click(object sender, EventArgs e)
+        {
+            _gitGroup = ((ToolStripItem)sender).Tag as Config.CfgGitGroup;
+            BuildRepositories();
+        }
+
         private void BuildRepositories()
         {
-            var dir = Vars.Config.ReposDir;
+            g.DataSource = null;
+            if (_repos != null) SaveAndFreeRepositories();
+            _repos = new();
 
-            if (string.IsNullOrEmpty(dir))
-            {
-                Messages.Error(Vars.Lang.Repos_GitFolderNotConfigured);
-                return;
-            }
+            UpdateButtons(); //prevent buttons enabled if no git repositories
+
+            menuGroup.Text = _gitGroup.Ident;
+
+            var dir = _gitGroup.Path;
 
             if (!Directory.Exists(dir))
             {
@@ -214,18 +236,32 @@ namespace DigaoDeskApp
             {
                 AddRepository(Path.Combine(dir, repoName), new RepositoryConfigContents());
             }
+
+            _gridBind = new();
+            _gridBind.DataSource = _repos;
+            g.DataSource = _gridBind;
+
+            CheckAutoCRLF();
+
+            btnRefresh.PerformClick();
         }
 
         private void AddRepository(string folder, RepositoryConfigContents configContents)
         {
-            DigaoRepository r = new(folder);
+            DigaoRepository r = new(_gitGroup, folder);
             r.Config = configContents;
             _repos.Add(r);
         }
 
+        private void SaveAndFreeRepositories()
+        {
+            RepositoriesStore.Save(_repos);
+            _repos.ForEach(repo => repo.FreeCtrl());
+        }
+
         private void CheckAutoCRLF()
         {
-            if (!Vars.Config.GitAutoCRLF) return;
+            if (!Vars.Config.Repos.GitAutoCRLF) return;
             //ensure all repos have auto-crlf config enable to work with Unix x Win diffs
 
             const string CFG_AUTOCRLF = "core.autocrlf";
@@ -303,9 +339,11 @@ namespace DigaoDeskApp
         {
             bool someTaskOfAll = _repos.Any(x => x.DoingBackgroundTask);
 
+            menuGroup.Enabled = !someTaskOfAll;
+
             btnRefresh.Enabled = !someTaskOfAll;
             btnFetchAll.Enabled = !someTaskOfAll;
-            
+
             btnReorderList.Enabled = !someTaskOfAll; //we call reset binding of specific index of row when running tasks
             btnClearLog.Enabled = !someTaskOfAll; //deny clear log when running tasks because log positions of RichText control are changing
 
@@ -380,7 +418,7 @@ namespace DigaoDeskApp
 
         private void CheckForAutoFetch()
         {
-            if (!Vars.Config.GitAutoFetch) return;
+            if (!Vars.Config.Repos.GitAutoFetch) return;
 
             Messages.SurroundMessageException(() =>
             {

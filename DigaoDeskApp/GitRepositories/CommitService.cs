@@ -213,17 +213,17 @@ namespace DigaoDeskApp
 
         private void OpenDiff(string pathOld, string pathNew)
         {
-            if (string.IsNullOrEmpty(Vars.Config.DiffProgram))
+            if (string.IsNullOrEmpty(Vars.Config.Repos.DiffProgram))
             {
                 Messages.ThrowMsg(Vars.Lang.CompareFile_DiffProgramNotConfigured);
             }
 
-            string args = Vars.Config.DiffProgramArguments;
+            string args = Vars.Config.Repos.DiffProgramArguments;
             args = args.Replace("[old]", $"\"{pathOld}\"");
             args = args.Replace("[new]", $"\"{pathNew}\"");
 
             Messages.SurroundExceptionThenThrowMessageException(
-                () => Process.Start(Vars.Config.DiffProgram, args));
+                () => Process.Start(Vars.Config.Repos.DiffProgram, args));
         }
 
     }

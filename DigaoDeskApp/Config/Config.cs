@@ -1,30 +1,21 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
 namespace DigaoDeskApp
 {
-    class Config
+    public class Config
     {
 
         public string Language = LangEngine.DEFAULT_LANG;
 
-        public ConfigTheme Theme;
-        public ConfigApps Apps;
-        
-        public string ReposDir;
-        public string ShellProgram = "cmd.exe";
-        public string DiffProgram;
-        public string DiffProgramArguments;
-        public string GitNewBranchPrefixList;
-        public string GitCustomCommands;
-        public bool GitAutoCRLF = true;
-        public bool GitAutoFetch = true;
-        public string GitCommitMessage;
-        public ConfigGit Git;
+        public CfgTheme Theme;
+        public CfgApps Apps;
+        public CfgRepos Repos;
 
-        public class ConfigTheme
+        public class CfgTheme
         {
             public bool DarkTitle = true;
 
@@ -72,7 +63,7 @@ namespace DigaoDeskApp
             public bool WordWrap = false;
         }
 
-        public class ConfigApps
+        public class CfgApps
         {
             public bool CalcResources = true;
             public bool NotifyAppStops = true;
@@ -80,13 +71,35 @@ namespace DigaoDeskApp
             public int MaxLogSize = 25000;
         }
 
-        public class ConfigGit
+        public class CfgRepos
         {
-            public string Name;
-            public string Email;
+            public List<CfgGitGroup> GitGroups;
+
+            public string ShellProgram = "cmd.exe";
+            public string DiffProgram;
+            public string DiffProgramArguments;
+            public string GitNewBranchPrefixList;
+            public string GitCustomCommands;
+            public bool GitAutoCRLF = true;
+            public bool GitAutoFetch = true;
+            public string GitCommitMessage;
+        }
+
+        public class CfgGitGroup
+        {
+            public string Ident;
+            public string Path;
+
+            public string AuthorName;
+            public string AuthorEmail;
 
             public string CredUsername;
             public string CredPassword;
+
+            public override string ToString()
+            {
+                return Ident;
+            }
         }
 
         private static string GetConfigFile()
@@ -112,7 +125,8 @@ namespace DigaoDeskApp
 
             if (Vars.Config.Theme == null) Vars.Config.Theme = new();
             if (Vars.Config.Apps == null) Vars.Config.Apps = new();
-            if (Vars.Config.Git == null) Vars.Config.Git = new();
+            if (Vars.Config.Repos == null) Vars.Config.Repos = new();
+            if (Vars.Config.Repos.GitGroups == null) Vars.Config.Repos.GitGroups = new();
         }
 
         public void Save()
