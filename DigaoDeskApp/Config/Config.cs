@@ -87,6 +87,8 @@ namespace DigaoDeskApp
 
         public class CfgGitGroup
         {
+            public Guid UUID;
+
             public string Ident;
             public string Path;
 

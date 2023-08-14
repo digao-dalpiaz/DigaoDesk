@@ -82,13 +82,14 @@ namespace DigaoDeskApp
             if (Group == null)
             {
                 Group = new();
+                Group.UUID = Guid.NewGuid();
             }
-            Group.Ident = edIdent.Text;
-            Group.Path = edPath.Text;
-            Group.AuthorName = edAuthorName.Text;
-            Group.AuthorEmail = edAuthorEmail.Text;
-            Group.CredUsername = edCredUsername.Text;
-            Group.CredPassword = edCredPassword.Text;
+            Group.Ident = edIdent.Text; //already trim
+            Group.Path = edPath.Text; //already trim
+            Group.AuthorName = edAuthorName.Text.Trim();
+            Group.AuthorEmail = edAuthorEmail.Text.Trim();
+            Group.CredUsername = edCredUsername.Text.Trim();
+            Group.CredPassword = edCredPassword.Text; //NO trim!!!
 
             DialogResult = DialogResult.OK;
         }

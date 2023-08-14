@@ -190,6 +190,8 @@ namespace DigaoDeskApp
 
         private void btnItemGroup_Click(object sender, EventArgs e)
         {
+            if (_repos != null) SaveAndFreeRepositories();
+
             _gitGroup = ((ToolStripItem)sender).Tag as Config.CfgGitGroup;
             BuildRepositories();
         }
@@ -197,7 +199,7 @@ namespace DigaoDeskApp
         private void BuildRepositories()
         {
             g.DataSource = null;
-            if (_repos != null) SaveAndFreeRepositories();
+            
             _repos = new();
 
             UpdateButtons(); //prevent buttons enabled if no git repositories
@@ -221,7 +223,7 @@ namespace DigaoDeskApp
             }
 
             //Add repositories by stored order
-            var lstConfigItems = RepositoriesStore.Load();
+            var lstConfigItems = new RepositoriesStore(_gitGroup).Load();
             foreach (var item in lstConfigItems)
             {
                 var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
@@ -255,7 +257,7 @@ namespace DigaoDeskApp
 
         private void SaveAndFreeRepositories()
         {
-            RepositoriesStore.Save(_repos);
+            new RepositoriesStore(_gitGroup).Save(_repos);
             _repos.ForEach(repo => repo.FreeCtrl());
         }
 
