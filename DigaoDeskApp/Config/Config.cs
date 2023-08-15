@@ -102,6 +102,13 @@ namespace DigaoDeskApp
             {
                 return Ident;
             }
+
+            public Guid ReadSafeUUID()
+            {
+                if (UUID == Guid.Empty) throw new Exception("UUID of Git Group is null");
+
+                return UUID;
+            }
         }
 
         private static string GetConfigFile()

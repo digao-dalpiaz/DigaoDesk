@@ -75,6 +75,8 @@ namespace DigaoDeskApp
             statusBar=new System.Windows.Forms.StatusStrip();
             stFunInfo=new System.Windows.Forms.ToolStripStatusLabel();
             menuGroup=new System.Windows.Forms.ToolStripDropDownButton();
+            stRepositories=new System.Windows.Forms.ToolStripStatusLabel();
+            stDoing=new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)g).BeginInit();
             toolBar.SuspendLayout();
             statusBar.SuspendLayout();
@@ -137,7 +139,7 @@ namespace DigaoDeskApp
             colBranchesCount.MinimumWidth=6;
             colBranchesCount.Name="colBranchesCount";
             colBranchesCount.ReadOnly=true;
-            colBranchesCount.Width=120;
+            colBranchesCount.Width=150;
             // 
             // colUp
             // 
@@ -148,7 +150,7 @@ namespace DigaoDeskApp
             colUp.MinimumWidth=6;
             colUp.Name="colUp";
             colUp.ReadOnly=true;
-            colUp.Width=60;
+            colUp.Width=80;
             // 
             // colDown
             // 
@@ -159,7 +161,7 @@ namespace DigaoDeskApp
             colDown.MinimumWidth=6;
             colDown.Name="colDown";
             colDown.ReadOnly=true;
-            colDown.Width=60;
+            colDown.Width=80;
             // 
             // colDifs
             // 
@@ -188,7 +190,7 @@ namespace DigaoDeskApp
             colLastFetch.MinimumWidth=6;
             colLastFetch.Name="colLastFetch";
             colLastFetch.ReadOnly=true;
-            colLastFetch.Width=120;
+            colLastFetch.Width=150;
             // 
             // colOperation
             // 
@@ -469,7 +471,7 @@ namespace DigaoDeskApp
             // statusBar
             // 
             statusBar.ImageScalingSize=new System.Drawing.Size(20, 20);
-            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo, menuGroup });
+            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo, menuGroup, stRepositories, stDoing });
             statusBar.Location=new System.Drawing.Point(0, 838);
             statusBar.Name="statusBar";
             statusBar.Padding=new System.Windows.Forms.Padding(1, 0, 16, 0);
@@ -479,6 +481,7 @@ namespace DigaoDeskApp
             // stFunInfo
             // 
             stFunInfo.Image=(System.Drawing.Image)resources.GetObject("stFunInfo.Image");
+            stFunInfo.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
             stFunInfo.Name="stFunInfo";
             stFunInfo.Size=new System.Drawing.Size(241, 20);
             stFunInfo.Text="I see your work will be amazing!";
@@ -487,9 +490,24 @@ namespace DigaoDeskApp
             // 
             menuGroup.Image=(System.Drawing.Image)resources.GetObject("menuGroup.Image");
             menuGroup.ImageTransparentColor=System.Drawing.Color.Magenta;
+            menuGroup.Margin=new System.Windows.Forms.Padding(0, 2, 10, 0);
             menuGroup.Name="menuGroup";
             menuGroup.Size=new System.Drawing.Size(170, 24);
             menuGroup.Text="Repositories Group";
+            // 
+            // stRepositories
+            // 
+            stRepositories.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
+            stRepositories.Name="stRepositories";
+            stRepositories.Size=new System.Drawing.Size(91, 20);
+            stRepositories.Text="Repositories";
+            // 
+            // stDoing
+            // 
+            stDoing.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
+            stDoing.Name="stDoing";
+            stDoing.Size=new System.Drawing.Size(59, 20);
+            stDoing.Text="Doing...";
             // 
             // FrmRepos
             // 
@@ -543,6 +561,15 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnSyncWithMaster;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ImageList images;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel stFunInfo;
+        private System.Windows.Forms.ToolStripDropDownButton btnShell;
+        private System.Windows.Forms.ToolStripDropDownButton btnConfig;
+        private System.Windows.Forms.ToolStripMenuItem btnRepositorySettings;
+        private System.Windows.Forms.ToolStripMenuItem btnReorderList;
+        private System.Windows.Forms.ToolStripDropDownButton menuGroup;
+        private System.Windows.Forms.ToolStripStatusLabel stRepositories;
+        private System.Windows.Forms.ToolStripStatusLabel stDoing;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranchesCount;
@@ -553,12 +580,5 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMasterCompare;
-        private System.Windows.Forms.StatusStrip statusBar;
-        private System.Windows.Forms.ToolStripStatusLabel stFunInfo;
-        private System.Windows.Forms.ToolStripDropDownButton btnShell;
-        private System.Windows.Forms.ToolStripDropDownButton btnConfig;
-        private System.Windows.Forms.ToolStripMenuItem btnRepositorySettings;
-        private System.Windows.Forms.ToolStripMenuItem btnReorderList;
-        private System.Windows.Forms.ToolStripDropDownButton menuGroup;
     }
 }

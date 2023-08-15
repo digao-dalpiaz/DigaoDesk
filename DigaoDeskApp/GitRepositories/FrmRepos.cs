@@ -13,7 +13,7 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Repos";
 
-        private Config.CfgGitGroup _gitGroup;
+        public Config.CfgGitGroup GitGroup;
 
         private List<DigaoRepository> _repos;
         private BindingSource _gridBind;
@@ -31,7 +31,10 @@ namespace DigaoDeskApp
 
             g.AutoGenerateColumns = false;
 
-            Log = new(edLog, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gitrepos.log"));
+            _gridBind = new();
+            g.DataSource = _gridBind;
+
+            Log = new(edLog);
         }
 
         private void FrmRepos_Load(object sender, EventArgs e)
@@ -54,11 +57,11 @@ namespace DigaoDeskApp
                 BuildGroupMenu();
                 if (!string.IsNullOrEmpty(lastGroup))
                 {
-                    _gitGroup = Vars.Config.Repos.GitGroups.Find(x => x.Ident == lastGroup);
+                    GitGroup = Vars.Config.Repos.GitGroups.Find(x => x.Ident == lastGroup);
                 }
-                if (_gitGroup == null)
+                if (GitGroup == null)
                 {
-                    _gitGroup = Vars.Config.Repos.GitGroups.First();
+                    GitGroup = Vars.Config.Repos.GitGroups.First();
                 }
             }
             else
@@ -71,7 +74,7 @@ namespace DigaoDeskApp
 
         private void FrmRepos_Shown(object sender, EventArgs e)
         {
-            if (_gitGroup != null)
+            if (GitGroup != null)
             {
                 BuildRepositories();
             }
@@ -80,13 +83,13 @@ namespace DigaoDeskApp
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
         {
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
-            r.SetValue("GitGroup", _gitGroup != null ? _gitGroup.Ident : string.Empty);
+            r.SetValue("GitGroup", GitGroup != null ? GitGroup.Ident : string.Empty);
             r.SetValue("GridH", g.Height);
             r.SetValue("GridCols", Utils.GridColumnsToString(g));
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
-            if (_repos != null) SaveAndFreeRepositories();
+            SaveAndFreeRepositories();
 
             Vars.FrmReposObj = null;
 
@@ -126,6 +129,7 @@ namespace DigaoDeskApp
             btnClearLog.Text = Vars.Lang.Repos_BtnClearLog;
 
             stFunInfo.Text = Vars.Lang.Repos_StatusBar_Info;
+            stDoing.Text = Vars.Lang.Repos_StatusBar_Doing;
 
             colName.HeaderText = Vars.Lang.Repos_ColName;
             colBranch.HeaderText = Vars.Lang.Repos_ColBranch;
@@ -190,58 +194,63 @@ namespace DigaoDeskApp
 
         private void btnItemGroup_Click(object sender, EventArgs e)
         {
-            if (_repos != null) SaveAndFreeRepositories();
+            SaveAndFreeRepositories();
 
-            _gitGroup = ((ToolStripItem)sender).Tag as Config.CfgGitGroup;
+            GitGroup = ((ToolStripItem)sender).Tag as Config.CfgGitGroup;
             BuildRepositories();
         }
 
         private void BuildRepositories()
         {
-            g.DataSource = null;
-            
+            _gridBind.DataSource = null;
+
             _repos = new();
 
-            UpdateButtons(); //prevent buttons enabled if no git repositories
+            menuGroup.Text = GitGroup.Ident;
 
-            menuGroup.Text = _gitGroup.Ident;
+            var dir = GitGroup.Path;
 
-            var dir = _gitGroup.Path;
-
-            if (!Directory.Exists(dir))
+            try
             {
-                Messages.Error(string.Format(Vars.Lang.Repos_GitFolderNotFound, dir));
+                try
+                {
+                    if (!Directory.Exists(dir)) Messages.ThrowMsg(string.Format(Vars.Lang.Repos_GitFolderNotFound, dir));
+
+                    var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
+
+                    if (!realReposList.Any()) Messages.ThrowMsg(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
+
+                    //Add repositories by stored order
+                    var lstConfigItems = new RepositoriesStore(GitGroup).Load();
+                    foreach (var item in lstConfigItems)
+                    {
+                        var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
+                        if (index == -1) continue; //repository no longer exists
+
+                        AddRepository(Path.Combine(dir, realReposList[index]), item.Config);
+                        realReposList.RemoveAt(index);
+                    }
+
+                    //Add new repositories in git folder in the bottom of the list
+                    foreach (var repoName in realReposList)
+                    {
+                        AddRepository(Path.Combine(dir, repoName), new RepositoryConfigContents());
+                    }
+                }
+                finally
+                {
+                    stRepositories.Text = string.Format(Vars.Lang.Repos_StatusBar_Repositories, _repos.Count);
+
+                    if (!_repos.Any()) UpdateButtons(); //prevent buttons enabled if no git repositories
+                }
+            }
+            catch (Messages.MessageException exMsg)
+            {
+                Messages.Error(exMsg.Message);
                 return;
             }
 
-            var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
-
-            if (!realReposList.Any())
-            {
-                Messages.Error(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
-                return;
-            }
-
-            //Add repositories by stored order
-            var lstConfigItems = new RepositoriesStore(_gitGroup).Load();
-            foreach (var item in lstConfigItems)
-            {
-                var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
-                if (index == -1) continue; //repository no longer exists
-
-                AddRepository(Path.Combine(dir, realReposList[index]), item.Config);
-                realReposList.RemoveAt(index);
-            }
-
-            //Add new repositories in git folder in the bottom of the list
-            foreach (var repoName in realReposList)
-            {
-                AddRepository(Path.Combine(dir, repoName), new RepositoryConfigContents());
-            }
-
-            _gridBind = new();
             _gridBind.DataSource = _repos;
-            g.DataSource = _gridBind;
 
             CheckAutoCRLF();
 
@@ -250,14 +259,16 @@ namespace DigaoDeskApp
 
         private void AddRepository(string folder, RepositoryConfigContents configContents)
         {
-            DigaoRepository r = new(_gitGroup, folder);
+            DigaoRepository r = new(GitGroup, folder);
             r.Config = configContents;
             _repos.Add(r);
         }
 
         private void SaveAndFreeRepositories()
         {
-            new RepositoriesStore(_gitGroup).Save(_repos);
+            if (_repos == null) return;
+            
+            new RepositoriesStore(GitGroup).Save(_repos);
             _repos.ForEach(repo => repo.FreeCtrl());
         }
 
@@ -340,6 +351,8 @@ namespace DigaoDeskApp
         public void UpdateButtons()
         {
             bool someTaskOfAll = _repos.Any(x => x.DoingBackgroundTask);
+
+            stDoing.Visible = someTaskOfAll;
 
             menuGroup.Enabled = !someTaskOfAll;
 

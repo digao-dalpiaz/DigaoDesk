@@ -139,6 +139,8 @@
   "Repos_BtnClearLog": "清除日志",
 
   "Repos_StatusBar_Info": "我看到你的工作会很棒！",
+  "Repos_StatusBar_Repositories": "Repositories: {0}",
+  "Repos_StatusBar_Doing": "Running process...",
 
   "Repos_BranchCountFormat": "本地：{0} / 远程：{1}",
   "Repos_AheadFormat": "前面：{0}",

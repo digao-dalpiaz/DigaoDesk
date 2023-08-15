@@ -17,9 +17,7 @@ namespace DigaoDeskApp
 
         private string GetRepositoriesFile()
         {
-            if (_group.UUID == Guid.Empty) throw new Exception("UUID of Git Group is null");
-
-            string fileName = string.Format("repositories_{0}.json", _group.UUID);
+            string fileName = string.Format("repositories_{0}.json", _group.ReadSafeUUID());
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
         }
 

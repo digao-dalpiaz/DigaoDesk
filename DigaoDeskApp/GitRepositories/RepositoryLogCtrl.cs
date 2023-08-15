@@ -75,12 +75,9 @@ namespace DigaoDeskApp
         public object LockGroupsCtrl = new object();
         public object LockFileCtrl = new object();
 
-        private string _logFile;
-
-        public RepositoryLogCtrl(RichTextBoxEx ed, string logFile)
+        public RepositoryLogCtrl(RichTextBoxEx ed)
         {
             this.EdControl = ed;
-            this._logFile = logFile;
         }
 
         public void SafeUI(Action proc)
@@ -114,7 +111,7 @@ namespace DigaoDeskApp
                 Groups.Remove(g);
             }
 
-            g.Save(_logFile);
+            g.Save(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("gitrepos_{0}.log", Vars.FrmReposObj.GitGroup.ReadSafeUUID())));
         }
 
         public void FastLog(Action<LogGroup> proc)

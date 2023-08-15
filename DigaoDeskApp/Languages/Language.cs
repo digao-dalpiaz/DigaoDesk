@@ -144,6 +144,8 @@
         public string Repos_BtnClearLog;
 
         public string Repos_StatusBar_Info;
+        public string Repos_StatusBar_Repositories;
+        public string Repos_StatusBar_Doing;
 
         public string Repos_BranchCountFormat;
         public string Repos_AheadFormat;

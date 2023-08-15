@@ -139,6 +139,8 @@
   "Repos_BtnClearLog": "Limpar Log",
 
   "Repos_StatusBar_Info": "Estou vendo que seu trabalho será sensacional!",
+  "Repos_StatusBar_Repositories": "Repositórios: {0}",
+  "Repos_StatusBar_Doing": "Executando processo...",
 
   "Repos_BranchCountFormat": "Local: {0} / Remoto: {1}",
   "Repos_AheadFormat": "A frente: {0}",
