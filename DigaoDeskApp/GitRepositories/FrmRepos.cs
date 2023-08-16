@@ -1,6 +1,7 @@
 ﻿using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -130,6 +131,10 @@ namespace DigaoDeskApp
 
             stFunInfo.Text = Vars.Lang.Repos_StatusBar_Info;
             stDoing.Text = Vars.Lang.Repos_StatusBar_Doing;
+
+            menuLogManager.Text = Vars.Lang.Repos_LogManager_MenuTitle;
+            btnOpenCurrentLogFile.Text = Vars.Lang.Repos_LogManager_OpenFile;
+            btnDeleteLogFile.Text = Vars.Lang.Repos_LogManager_DeleteFile;
 
             colName.HeaderText = Vars.Lang.Repos_ColName;
             colBranch.HeaderText = Vars.Lang.Repos_ColBranch;
@@ -267,7 +272,7 @@ namespace DigaoDeskApp
         private void SaveAndFreeRepositories()
         {
             if (_repos == null) return;
-            
+
             new RepositoriesStore(GitGroup).Save(_repos);
             _repos.ForEach(repo => repo.FreeCtrl());
         }
@@ -582,6 +587,32 @@ namespace DigaoDeskApp
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             Log.ClearLog();
+        }
+
+        private void menuLogManager_DropDownOpening(object sender, EventArgs e)
+        {
+            var file = LogUtils.GetCurrentGitLogFile();
+            bool exists = File.Exists(file);
+
+            btnOpenCurrentLogFile.Enabled = exists;
+            btnDeleteLogFile.Enabled = exists;
+
+            double size = exists ? Math.Round((double)new FileInfo(file).Length / 1024, 2) : 0;
+
+            btnCurrentLogFileSize.Text = string.Format(Vars.Lang.Repos_LogManager_FileSize, size);
+        }
+
+        private void btnOpenCurrentLogFile_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad.exe", LogUtils.GetCurrentGitLogFile());
+        }
+
+        private void btnDeleteLogFile_Click(object sender, EventArgs e)
+        {
+            if (Messages.Question(Vars.Lang.Repos_LogManager_ConfirmDelete))
+            {
+                File.Delete(LogUtils.GetCurrentGitLogFile());
+            }
         }
 
     }

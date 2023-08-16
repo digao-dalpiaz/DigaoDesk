@@ -142,6 +142,12 @@
   "Repos_StatusBar_Repositories": "Repositórios: {0}",
   "Repos_StatusBar_Doing": "Executando processo...",
 
+  "Repos_LogManager_MenuTitle": "Gerenciador de Log",
+  "Repos_LogManager_FileSize": "Tamanho: {0} kb",
+  "Repos_LogManager_OpenFile": "Abrir Arquivo Log",
+  "Repos_LogManager_DeleteFile": "Excluir Arquivo Log",
+  "Repos_LogManager_ConfirmDelete": "Confirma excluir o arquivo de log?",
+
   "Repos_BranchCountFormat": "Local: {0} / Remoto: {1}",
   "Repos_AheadFormat": "A frente: {0}",
   "Repos_BehindFormat": "Atrás: {0}",

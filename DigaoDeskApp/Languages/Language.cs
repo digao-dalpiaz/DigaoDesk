@@ -147,6 +147,12 @@
         public string Repos_StatusBar_Repositories;
         public string Repos_StatusBar_Doing;
 
+        public string Repos_LogManager_MenuTitle;
+        public string Repos_LogManager_FileSize;
+        public string Repos_LogManager_OpenFile;
+        public string Repos_LogManager_DeleteFile;
+        public string Repos_LogManager_ConfirmDelete;
+
         public string Repos_BranchCountFormat;
         public string Repos_AheadFormat;
         public string Repos_BehindFormat;

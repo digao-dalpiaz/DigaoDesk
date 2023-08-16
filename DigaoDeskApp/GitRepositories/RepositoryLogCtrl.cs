@@ -34,7 +34,7 @@ namespace DigaoDeskApp
         DONE
     }
 
-    internal class LogUtils
+    public class LogUtils
     {
 
         public static Color LogHighlightTypeToColor(LogHighlightType type)
@@ -63,6 +63,11 @@ namespace DigaoDeskApp
         public static string GetTimestampPrefix()
         {
             return DateTime.Now.ToString(Vars.DATETIME_FMT) + " - ";
+        }
+
+        public static string GetCurrentGitLogFile()
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("gitrepos_{0}.log", Vars.FrmReposObj.GitGroup.ReadSafeUUID()));
         }
 
     }
@@ -111,7 +116,7 @@ namespace DigaoDeskApp
                 Groups.Remove(g);
             }
 
-            g.Save(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("gitrepos_{0}.log", Vars.FrmReposObj.GitGroup.ReadSafeUUID())));
+            g.Save(LogUtils.GetCurrentGitLogFile());
         }
 
         public void FastLog(Action<LogGroup> proc)

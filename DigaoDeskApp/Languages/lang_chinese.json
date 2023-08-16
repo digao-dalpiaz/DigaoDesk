@@ -142,6 +142,12 @@
   "Repos_StatusBar_Repositories": "Repositories: {0}",
   "Repos_StatusBar_Doing": "Running process...",
 
+  "Repos_LogManager_MenuTitle": "Log Manager",
+  "Repos_LogManager_FileSize": "Size: {0} kb",
+  "Repos_LogManager_OpenFile": "Open Log File",
+  "Repos_LogManager_DeleteFile": "Delete Log File",
+  "Repos_LogManager_ConfirmDelete": "Confirm delete log file?",
+
   "Repos_BranchCountFormat": "本地：{0} / 远程：{1}",
   "Repos_AheadFormat": "前面：{0}",
   "Repos_BehindFormat": "后面：{0}",
