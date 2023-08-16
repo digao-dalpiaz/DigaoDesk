@@ -179,6 +179,7 @@ namespace DigaoDeskApp
                 CustomCommand cmd = new();
                 cmd.Cmd = parts.Length > 1 ? parts[1] : parts[0];
                 cmd.Parameters = parts.Length > 2 ? parts[2] : null;
+
                 var menuItem = btnShell.DropDownItems.Add(parts[0], images24.Images[1], btnShellCustomItem_Click);
                 menuItem.ImageScaling = ToolStripItemImageScaling.None;
                 menuItem.Tag = cmd;
@@ -186,12 +187,9 @@ namespace DigaoDeskApp
 
             if (btnShell.DropDownItems.Count > 0)
             {
-                ToolStripMenuItem item = new();
-                item.Text = Vars.Lang.Repos_BtnShell;
-                item.Click += btnShell_Click;
-                item.Image = images24.Images[0];
-                item.ImageScaling = ToolStripItemImageScaling.None;
-                btnShell.DropDownItems.Insert(0, item);
+                ToolStripMenuItem menuItem = new(Vars.Lang.Repos_BtnShell, images24.Images[0], btnShell_Click);
+                menuItem.ImageScaling = ToolStripItemImageScaling.None;
+                btnShell.DropDownItems.Insert(0, menuItem);
                 btnShell.DropDownItems.Insert(1, new ToolStripSeparator());
             }
         }
@@ -626,6 +624,14 @@ namespace DigaoDeskApp
             if (Messages.Question(Vars.Lang.Repos_LogManager_ConfirmDelete))
             {
                 File.Delete(GetCurrentGitLogFile());
+            }
+        }
+
+        private void FrmRepos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5 && e.Modifiers == Keys.None)
+            {
+                if (btnRefresh.Enabled) btnRefresh.PerformClick();
             }
         }
 

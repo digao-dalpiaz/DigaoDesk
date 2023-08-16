@@ -30,10 +30,10 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             components=new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             g=new System.Windows.Forms.DataGridView();
             colName=new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,11 +76,11 @@ namespace DigaoDeskApp
             stFunInfo=new System.Windows.Forms.ToolStripStatusLabel();
             menuGroup=new System.Windows.Forms.ToolStripDropDownButton();
             stRepositories=new System.Windows.Forms.ToolStripStatusLabel();
-            stDoing=new System.Windows.Forms.ToolStripStatusLabel();
             menuLogManager=new System.Windows.Forms.ToolStripDropDownButton();
             btnCurrentLogFileSize=new System.Windows.Forms.ToolStripMenuItem();
             btnOpenCurrentLogFile=new System.Windows.Forms.ToolStripMenuItem();
             btnDeleteLogFile=new System.Windows.Forms.ToolStripMenuItem();
+            stDoing=new System.Windows.Forms.ToolStripStatusLabel();
             images24=new System.Windows.Forms.ImageList(components);
             ((System.ComponentModel.ISupportInitialize)g).BeginInit();
             toolBar.SuspendLayout();
@@ -95,14 +95,14 @@ namespace DigaoDeskApp
             g.BorderStyle=System.Windows.Forms.BorderStyle.None;
             g.ColumnHeadersHeightSizeMode=System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             g.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colName, colBranch, colBranchesCount, colUp, colDown, colDifs, colOtherBranchesDifs, colLastFetch, colOperation, colMasterCompare });
-            dataGridViewCellStyle4.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor=System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font=new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor=System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor=System.Drawing.Color.Gold;
-            dataGridViewCellStyle4.SelectionForeColor=System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode=System.Windows.Forms.DataGridViewTriState.False;
-            g.DefaultCellStyle=dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor=System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font=new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor=System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor=System.Drawing.Color.Gold;
+            dataGridViewCellStyle8.SelectionForeColor=System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode=System.Windows.Forms.DataGridViewTriState.False;
+            g.DefaultCellStyle=dataGridViewCellStyle8;
             g.Dock=System.Windows.Forms.DockStyle.Top;
             g.Location=new System.Drawing.Point(0, 51);
             g.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -149,8 +149,8 @@ namespace DigaoDeskApp
             // colUp
             // 
             colUp.DataPropertyName="PendingUp";
-            dataGridViewCellStyle1.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colUp.DefaultCellStyle=dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colUp.DefaultCellStyle=dataGridViewCellStyle5;
             colUp.HeaderText="Pending Up";
             colUp.MinimumWidth=6;
             colUp.Name="colUp";
@@ -160,8 +160,8 @@ namespace DigaoDeskApp
             // colDown
             // 
             colDown.DataPropertyName="PendingDown";
-            dataGridViewCellStyle2.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colDown.DefaultCellStyle=dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colDown.DefaultCellStyle=dataGridViewCellStyle6;
             colDown.HeaderText="Pending Down";
             colDown.MinimumWidth=6;
             colDown.Name="colDown";
@@ -171,8 +171,8 @@ namespace DigaoDeskApp
             // colDifs
             // 
             colDifs.DataPropertyName="Difs";
-            dataGridViewCellStyle3.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colDifs.DefaultCellStyle=dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colDifs.DefaultCellStyle=dataGridViewCellStyle7;
             colDifs.HeaderText="Difs";
             colDifs.MinimumWidth=6;
             colDifs.Name="colDifs";
@@ -515,15 +515,6 @@ namespace DigaoDeskApp
             stRepositories.Size=new System.Drawing.Size(107, 20);
             stRepositories.Text="Repositories";
             // 
-            // stDoing
-            // 
-            stDoing.Image=(System.Drawing.Image)resources.GetObject("stDoing.Image");
-            stDoing.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
-            stDoing.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
-            stDoing.Name="stDoing";
-            stDoing.Size=new System.Drawing.Size(75, 20);
-            stDoing.Text="Doing...";
-            // 
             // menuLogManager
             // 
             menuLogManager.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { btnCurrentLogFileSize, btnOpenCurrentLogFile, btnDeleteLogFile });
@@ -561,6 +552,15 @@ namespace DigaoDeskApp
             btnDeleteLogFile.Text="Delete Log File";
             btnDeleteLogFile.Click+=btnDeleteLogFile_Click;
             // 
+            // stDoing
+            // 
+            stDoing.Image=(System.Drawing.Image)resources.GetObject("stDoing.Image");
+            stDoing.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            stDoing.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
+            stDoing.Name="stDoing";
+            stDoing.Size=new System.Drawing.Size(75, 20);
+            stDoing.Text="Doing...";
+            // 
             // images24
             // 
             images24.ColorDepth=System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -581,6 +581,7 @@ namespace DigaoDeskApp
             Controls.Add(g);
             Controls.Add(toolBar);
             Icon=(System.Drawing.Icon)resources.GetObject("$this.Icon");
+            KeyPreview=true;
             Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name="FrmRepos";
             Text="Git Repositories - Digao Desk";
@@ -588,6 +589,7 @@ namespace DigaoDeskApp
             FormClosed+=FrmRepos_FormClosed;
             Load+=FrmRepos_Load;
             Shown+=FrmRepos_Shown;
+            KeyDown+=FrmRepos_KeyDown;
             ((System.ComponentModel.ISupportInitialize)g).EndInit();
             toolBar.ResumeLayout(false);
             toolBar.PerformLayout();
