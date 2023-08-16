@@ -30,10 +30,10 @@ namespace DigaoDeskApp
         private void InitializeComponent()
         {
             components=new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRepos));
             g=new System.Windows.Forms.DataGridView();
             colName=new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +74,14 @@ namespace DigaoDeskApp
             images=new System.Windows.Forms.ImageList(components);
             statusBar=new System.Windows.Forms.StatusStrip();
             stFunInfo=new System.Windows.Forms.ToolStripStatusLabel();
+            menuGroup=new System.Windows.Forms.ToolStripDropDownButton();
+            stRepositories=new System.Windows.Forms.ToolStripStatusLabel();
+            menuLogManager=new System.Windows.Forms.ToolStripDropDownButton();
+            btnCurrentLogFileSize=new System.Windows.Forms.ToolStripMenuItem();
+            btnOpenCurrentLogFile=new System.Windows.Forms.ToolStripMenuItem();
+            btnDeleteLogFile=new System.Windows.Forms.ToolStripMenuItem();
+            stDoing=new System.Windows.Forms.ToolStripStatusLabel();
+            images24=new System.Windows.Forms.ImageList(components);
             ((System.ComponentModel.ISupportInitialize)g).BeginInit();
             toolBar.SuspendLayout();
             statusBar.SuspendLayout();
@@ -87,14 +95,14 @@ namespace DigaoDeskApp
             g.BorderStyle=System.Windows.Forms.BorderStyle.None;
             g.ColumnHeadersHeightSizeMode=System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             g.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colName, colBranch, colBranchesCount, colUp, colDown, colDifs, colOtherBranchesDifs, colLastFetch, colOperation, colMasterCompare });
-            dataGridViewCellStyle4.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor=System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font=new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor=System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor=System.Drawing.Color.Gold;
-            dataGridViewCellStyle4.SelectionForeColor=System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode=System.Windows.Forms.DataGridViewTriState.False;
-            g.DefaultCellStyle=dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor=System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font=new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor=System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor=System.Drawing.Color.Gold;
+            dataGridViewCellStyle8.SelectionForeColor=System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode=System.Windows.Forms.DataGridViewTriState.False;
+            g.DefaultCellStyle=dataGridViewCellStyle8;
             g.Dock=System.Windows.Forms.DockStyle.Top;
             g.Location=new System.Drawing.Point(0, 51);
             g.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -136,35 +144,35 @@ namespace DigaoDeskApp
             colBranchesCount.MinimumWidth=6;
             colBranchesCount.Name="colBranchesCount";
             colBranchesCount.ReadOnly=true;
-            colBranchesCount.Width=120;
+            colBranchesCount.Width=150;
             // 
             // colUp
             // 
             colUp.DataPropertyName="PendingUp";
-            dataGridViewCellStyle1.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colUp.DefaultCellStyle=dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colUp.DefaultCellStyle=dataGridViewCellStyle5;
             colUp.HeaderText="Pending Up";
             colUp.MinimumWidth=6;
             colUp.Name="colUp";
             colUp.ReadOnly=true;
-            colUp.Width=60;
+            colUp.Width=80;
             // 
             // colDown
             // 
             colDown.DataPropertyName="PendingDown";
-            dataGridViewCellStyle2.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colDown.DefaultCellStyle=dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colDown.DefaultCellStyle=dataGridViewCellStyle6;
             colDown.HeaderText="Pending Down";
             colDown.MinimumWidth=6;
             colDown.Name="colDown";
             colDown.ReadOnly=true;
-            colDown.Width=60;
+            colDown.Width=80;
             // 
             // colDifs
             // 
             colDifs.DataPropertyName="Difs";
-            dataGridViewCellStyle3.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            colDifs.DefaultCellStyle=dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment=System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            colDifs.DefaultCellStyle=dataGridViewCellStyle7;
             colDifs.HeaderText="Difs";
             colDifs.MinimumWidth=6;
             colDifs.Name="colDifs";
@@ -187,7 +195,7 @@ namespace DigaoDeskApp
             colLastFetch.MinimumWidth=6;
             colLastFetch.Name="colLastFetch";
             colLastFetch.ReadOnly=true;
-            colLastFetch.Width=120;
+            colLastFetch.Width=150;
             // 
             // colOperation
             // 
@@ -423,15 +431,19 @@ namespace DigaoDeskApp
             // 
             // btnRepositorySettings
             // 
+            btnRepositorySettings.Image=(System.Drawing.Image)resources.GetObject("btnRepositorySettings.Image");
+            btnRepositorySettings.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             btnRepositorySettings.Name="btnRepositorySettings";
-            btnRepositorySettings.Size=new System.Drawing.Size(220, 26);
+            btnRepositorySettings.Size=new System.Drawing.Size(224, 30);
             btnRepositorySettings.Text="Repository Settings";
             btnRepositorySettings.Click+=btnRepositorySettings_Click;
             // 
             // btnReorderList
             // 
+            btnReorderList.Image=(System.Drawing.Image)resources.GetObject("btnReorderList.Image");
+            btnReorderList.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             btnReorderList.Name="btnReorderList";
-            btnReorderList.Size=new System.Drawing.Size(220, 26);
+            btnReorderList.Size=new System.Drawing.Size(224, 30);
             btnReorderList.Text="Reorder List";
             btnReorderList.Click+=btnReorderList_Click;
             // 
@@ -468,7 +480,7 @@ namespace DigaoDeskApp
             // statusBar
             // 
             statusBar.ImageScalingSize=new System.Drawing.Size(20, 20);
-            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo });
+            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo, menuGroup, stRepositories, menuLogManager, stDoing });
             statusBar.Location=new System.Drawing.Point(0, 838);
             statusBar.Name="statusBar";
             statusBar.Padding=new System.Windows.Forms.Padding(1, 0, 16, 0);
@@ -478,9 +490,85 @@ namespace DigaoDeskApp
             // stFunInfo
             // 
             stFunInfo.Image=(System.Drawing.Image)resources.GetObject("stFunInfo.Image");
+            stFunInfo.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            stFunInfo.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
             stFunInfo.Name="stFunInfo";
-            stFunInfo.Size=new System.Drawing.Size(241, 20);
+            stFunInfo.Size=new System.Drawing.Size(237, 20);
             stFunInfo.Text="I see your work will be amazing!";
+            // 
+            // menuGroup
+            // 
+            menuGroup.Image=(System.Drawing.Image)resources.GetObject("menuGroup.Image");
+            menuGroup.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            menuGroup.ImageTransparentColor=System.Drawing.Color.Magenta;
+            menuGroup.Margin=new System.Windows.Forms.Padding(0, 2, 10, 0);
+            menuGroup.Name="menuGroup";
+            menuGroup.Size=new System.Drawing.Size(166, 24);
+            menuGroup.Text="Repositories Group";
+            // 
+            // stRepositories
+            // 
+            stRepositories.Image=(System.Drawing.Image)resources.GetObject("stRepositories.Image");
+            stRepositories.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            stRepositories.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
+            stRepositories.Name="stRepositories";
+            stRepositories.Size=new System.Drawing.Size(107, 20);
+            stRepositories.Text="Repositories";
+            // 
+            // menuLogManager
+            // 
+            menuLogManager.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { btnCurrentLogFileSize, btnOpenCurrentLogFile, btnDeleteLogFile });
+            menuLogManager.Image=(System.Drawing.Image)resources.GetObject("menuLogManager.Image");
+            menuLogManager.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            menuLogManager.ImageTransparentColor=System.Drawing.Color.Magenta;
+            menuLogManager.Margin=new System.Windows.Forms.Padding(0, 2, 10, 0);
+            menuLogManager.Name="menuLogManager";
+            menuLogManager.Size=new System.Drawing.Size(127, 24);
+            menuLogManager.Text="Log Manager";
+            menuLogManager.DropDownOpening+=menuLogManager_DropDownOpening;
+            // 
+            // btnCurrentLogFileSize
+            // 
+            btnCurrentLogFileSize.Enabled=false;
+            btnCurrentLogFileSize.Name="btnCurrentLogFileSize";
+            btnCurrentLogFileSize.Size=new System.Drawing.Size(240, 30);
+            btnCurrentLogFileSize.Text="File Size";
+            // 
+            // btnOpenCurrentLogFile
+            // 
+            btnOpenCurrentLogFile.Image=(System.Drawing.Image)resources.GetObject("btnOpenCurrentLogFile.Image");
+            btnOpenCurrentLogFile.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            btnOpenCurrentLogFile.Name="btnOpenCurrentLogFile";
+            btnOpenCurrentLogFile.Size=new System.Drawing.Size(240, 30);
+            btnOpenCurrentLogFile.Text="Open Current Log File";
+            btnOpenCurrentLogFile.Click+=btnOpenCurrentLogFile_Click;
+            // 
+            // btnDeleteLogFile
+            // 
+            btnDeleteLogFile.Image=(System.Drawing.Image)resources.GetObject("btnDeleteLogFile.Image");
+            btnDeleteLogFile.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            btnDeleteLogFile.Name="btnDeleteLogFile";
+            btnDeleteLogFile.Size=new System.Drawing.Size(240, 30);
+            btnDeleteLogFile.Text="Delete Log File";
+            btnDeleteLogFile.Click+=btnDeleteLogFile_Click;
+            // 
+            // stDoing
+            // 
+            stDoing.Image=(System.Drawing.Image)resources.GetObject("stDoing.Image");
+            stDoing.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
+            stDoing.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
+            stDoing.Name="stDoing";
+            stDoing.Size=new System.Drawing.Size(75, 20);
+            stDoing.Text="Doing...";
+            // 
+            // images24
+            // 
+            images24.ColorDepth=System.Windows.Forms.ColorDepth.Depth32Bit;
+            images24.ImageStream=(System.Windows.Forms.ImageListStreamer)resources.GetObject("images24.ImageStream");
+            images24.TransparentColor=System.Drawing.Color.Transparent;
+            images24.Images.SetKeyName(0, "cmd");
+            images24.Images.SetKeyName(1, "cmd_custom");
+            images24.Images.SetKeyName(2, "group");
             // 
             // FrmRepos
             // 
@@ -493,6 +581,7 @@ namespace DigaoDeskApp
             Controls.Add(g);
             Controls.Add(toolBar);
             Icon=(System.Drawing.Icon)resources.GetObject("$this.Icon");
+            KeyPreview=true;
             Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name="FrmRepos";
             Text="Git Repositories - Digao Desk";
@@ -500,6 +589,7 @@ namespace DigaoDeskApp
             FormClosed+=FrmRepos_FormClosed;
             Load+=FrmRepos_Load;
             Shown+=FrmRepos_Shown;
+            KeyDown+=FrmRepos_KeyDown;
             ((System.ComponentModel.ISupportInitialize)g).EndInit();
             toolBar.ResumeLayout(false);
             toolBar.PerformLayout();
@@ -534,6 +624,15 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripButton btnSyncWithMaster;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ImageList images;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel stFunInfo;
+        private System.Windows.Forms.ToolStripDropDownButton btnShell;
+        private System.Windows.Forms.ToolStripDropDownButton btnConfig;
+        private System.Windows.Forms.ToolStripMenuItem btnRepositorySettings;
+        private System.Windows.Forms.ToolStripMenuItem btnReorderList;
+        private System.Windows.Forms.ToolStripDropDownButton menuGroup;
+        private System.Windows.Forms.ToolStripStatusLabel stRepositories;
+        private System.Windows.Forms.ToolStripStatusLabel stDoing;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBranchesCount;
@@ -544,11 +643,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastFetch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMasterCompare;
-        private System.Windows.Forms.StatusStrip statusBar;
-        private System.Windows.Forms.ToolStripStatusLabel stFunInfo;
-        private System.Windows.Forms.ToolStripDropDownButton btnShell;
-        private System.Windows.Forms.ToolStripDropDownButton btnConfig;
-        private System.Windows.Forms.ToolStripMenuItem btnRepositorySettings;
-        private System.Windows.Forms.ToolStripMenuItem btnReorderList;
+        private System.Windows.Forms.ToolStripDropDownButton menuLogManager;
+        private System.Windows.Forms.ToolStripMenuItem btnOpenCurrentLogFile;
+        private System.Windows.Forms.ToolStripMenuItem btnCurrentLogFileSize;
+        private System.Windows.Forms.ToolStripMenuItem btnDeleteLogFile;
+        private System.Windows.Forms.ImageList images24;
     }
 }

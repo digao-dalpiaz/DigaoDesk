@@ -57,7 +57,9 @@ namespace DigaoDeskApp
         {
             c.BackColor = Vars.Config.Theme.StatusBack;
 
-            foreach (ToolStripStatusLabel item in c.Items)
+            c.Renderer = new TSRenderer();
+
+            foreach (ToolStripItem item in c.Items)
             {
                 if (item.ForeColor == SystemColors.ControlText)
                 {

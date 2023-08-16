@@ -75,12 +75,9 @@ namespace DigaoDeskApp
         public object LockGroupsCtrl = new object();
         public object LockFileCtrl = new object();
 
-        private string _logFile;
-
-        public RepositoryLogCtrl(RichTextBoxEx ed, string logFile)
+        public RepositoryLogCtrl(RichTextBoxEx ed)
         {
             this.EdControl = ed;
-            this._logFile = logFile;
         }
 
         public void SafeUI(Action proc)
@@ -114,7 +111,7 @@ namespace DigaoDeskApp
                 Groups.Remove(g);
             }
 
-            g.Save(_logFile);
+            g.Save(Vars.FrmReposObj.GetCurrentGitLogFile()); //here current Git Group is the same until task is complete (and only then the user can change group)
         }
 
         public void FastLog(Action<LogGroup> proc)

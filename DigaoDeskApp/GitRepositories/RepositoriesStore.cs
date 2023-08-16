@@ -8,12 +8,20 @@ namespace DigaoDeskApp
     public class RepositoriesStore
     {
 
-        private static string GetRepositoriesFile()
+        private readonly Config.CfgGitGroup _group;
+
+        public RepositoriesStore(Config.CfgGitGroup group)
         {
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "repositories.json");
+            _group = group;
         }
 
-        public static List<RepositoryConfigItem> Load()
+        private string GetRepositoriesFile()
+        {
+            string fileName = string.Format("repositories_{0}.json", _group.ReadSafeUUID());
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+        }
+
+        public List<RepositoryConfigItem> Load()
         {
             var path = GetRepositoriesFile();
             if (File.Exists(path))
@@ -27,7 +35,7 @@ namespace DigaoDeskApp
             }
         }
 
-        public static void Save(List<DigaoRepository> lstRepositories)
+        public void Save(List<DigaoRepository> lstRepositories)
         {
             var path = GetRepositoriesFile();
 

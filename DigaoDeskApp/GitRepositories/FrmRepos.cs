@@ -1,6 +1,7 @@
 ﻿using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,9 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Repos";
 
-        private List<DigaoRepository> _repos = new();
+        private Config.CfgGitGroup _gitGroup;
+
+        private List<DigaoRepository> _repos;
         private BindingSource _gridBind;
 
         public RepositoryLogCtrl Log;
@@ -27,7 +30,14 @@ namespace DigaoDeskApp
             Utils.SetGridDoubleBuffer(g);
             Utils.AdjustToolStrip(toolBar);
 
-            Log = new(edLog, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gitrepos.log"));
+            g.AutoGenerateColumns = false;
+
+            _gridBind = new();
+            g.DataSource = _gridBind;
+
+            Log = new(edLog);
+
+            stDoing.Visible = false;
         }
 
         private void FrmRepos_Load(object sender, EventArgs e)
@@ -35,6 +45,7 @@ namespace DigaoDeskApp
             EventAudit.Do("Load Repos form");
 
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
+            var lastGroup = (string)r.GetValue("GitGroup");
             g.Height = (int)r.GetValue("GridH", g.Height);
             Utils.StringToGridColumns((string)r.GetValue("GridCols", string.Empty), g);
 
@@ -44,44 +55,46 @@ namespace DigaoDeskApp
 
             BuildShellCustomCommands();
 
-            //
-
-            BuildRepositories();
-
-            _gridBind = new();
-            _gridBind.DataSource = _repos;
-            g.DataSource = _gridBind;
-
-            if (!_repos.Any())
+            if (Vars.Config.Repos.GitGroups.Any())
             {
-                toolBar.Visible = false; //can't use "enabled" because is used to control access to repository functions
+                BuildGroupMenu();
+                if (!string.IsNullOrEmpty(lastGroup))
+                {
+                    _gitGroup = Vars.Config.Repos.GitGroups.Find(x => x.Ident == lastGroup);
+                }
+                if (_gitGroup == null)
+                {
+                    _gitGroup = Vars.Config.Repos.GitGroups.First();
+                }
+            }
+            else
+            {
+                toolBar.Visible = false;
+                menuGroup.Visible = false;
+                menuLogManager.Visible = false;
+                stRepositories.Visible = false;
+                Messages.Error(Vars.Lang.Repos_NoGitGroupsConfigured);
             }
         }
 
         private void FrmRepos_Shown(object sender, EventArgs e)
         {
-            if (_repos.Any())
+            if (_gitGroup != null)
             {
-                CheckAutoCRLF();
-
-                btnRefresh.PerformClick();
+                BuildRepositories();
             }
         }
 
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
         {
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
+            r.SetValue("GitGroup", _gitGroup != null ? _gitGroup.Ident : string.Empty);
             r.SetValue("GridH", g.Height);
             r.SetValue("GridCols", Utils.GridColumnsToString(g));
 
             Utils.SaveWindowStateToRegistry(this, REGKEY); //save window position
 
-            RepositoriesStore.Save(_repos);
-
-            foreach (var repo in _repos)
-            {
-                repo.FreeCtrl();
-            }
+            SaveAndFreeRepositories();
 
             Vars.FrmReposObj = null;
 
@@ -90,7 +103,7 @@ namespace DigaoDeskApp
 
         private void FrmRepos_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_repos.Any(x => x.DoingBackgroundTask))
+            if (_repos != null && _repos.Any(x => x.DoingBackgroundTask))
             {
                 Messages.Error(Vars.Lang.Repos_DenyExitByProcess);
                 e.Cancel = true;
@@ -121,6 +134,11 @@ namespace DigaoDeskApp
             btnClearLog.Text = Vars.Lang.Repos_BtnClearLog;
 
             stFunInfo.Text = Vars.Lang.Repos_StatusBar_Info;
+            stDoing.Text = Vars.Lang.Repos_StatusBar_Doing;
+
+            menuLogManager.Text = Vars.Lang.Repos_LogManager_MenuTitle;
+            btnOpenCurrentLogFile.Text = Vars.Lang.Repos_LogManager_OpenFile;
+            btnDeleteLogFile.Text = Vars.Lang.Repos_LogManager_DeleteFile;
 
             colName.HeaderText = Vars.Lang.Repos_ColName;
             colBranch.HeaderText = Vars.Lang.Repos_ColBranch;
@@ -146,7 +164,7 @@ namespace DigaoDeskApp
 
         private void BuildShellCustomCommands()
         {
-            var lstStr = Vars.Config.GitCustomCommands;
+            var lstStr = Vars.Config.Repos.GitCustomCommands;
             if (lstStr == null) return;
 
             var lst = lstStr.Split(Environment.NewLine);
@@ -161,71 +179,114 @@ namespace DigaoDeskApp
                 CustomCommand cmd = new();
                 cmd.Cmd = parts.Length > 1 ? parts[1] : parts[0];
                 cmd.Parameters = parts.Length > 2 ? parts[2] : null;
-                btnShell.DropDownItems.Add(parts[0], null, btnShellCustomItem_Click).Tag = cmd;
+
+                var menuItem = btnShell.DropDownItems.Add(parts[0], images24.Images[1], btnShellCustomItem_Click);
+                menuItem.ImageScaling = ToolStripItemImageScaling.None;
+                menuItem.Tag = cmd;
             }
 
             if (btnShell.DropDownItems.Count > 0)
             {
-                ToolStripMenuItem item = new();
-                item.Text = Vars.Lang.Repos_BtnShell;
-                item.Click += btnShell_Click;
-                btnShell.DropDownItems.Insert(0, item);
+                ToolStripMenuItem menuItem = new(Vars.Lang.Repos_BtnShell, images24.Images[0], btnShell_Click);
+                menuItem.ImageScaling = ToolStripItemImageScaling.None;
+                btnShell.DropDownItems.Insert(0, menuItem);
                 btnShell.DropDownItems.Insert(1, new ToolStripSeparator());
             }
         }
 
+        private void BuildGroupMenu()
+        {
+            foreach (var item in Vars.Config.Repos.GitGroups)
+            {
+                var menuItem = menuGroup.DropDownItems.Add(item.Ident, images24.Images[2], btnItemGroup_Click);
+                menuItem.ImageScaling = ToolStripItemImageScaling.None;
+                menuItem.Tag = item;
+            }
+        }
+
+        private void btnItemGroup_Click(object sender, EventArgs e)
+        {
+            SaveAndFreeRepositories();
+
+            _gitGroup = ((ToolStripItem)sender).Tag as Config.CfgGitGroup;
+            BuildRepositories();
+        }
+
         private void BuildRepositories()
         {
-            var dir = Vars.Config.ReposDir;
+            _gridBind.DataSource = null;
 
-            if (string.IsNullOrEmpty(dir))
+            _repos = new();
+
+            menuGroup.Text = _gitGroup.Ident;
+
+            var dir = _gitGroup.Path;
+
+            try
             {
-                Messages.Error(Vars.Lang.Repos_GitFolderNotConfigured);
+                try
+                {
+                    if (!Directory.Exists(dir)) Messages.ThrowMsg(string.Format(Vars.Lang.Repos_GitFolderNotFound, dir));
+
+                    var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
+
+                    if (!realReposList.Any()) Messages.ThrowMsg(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
+
+                    //Add repositories by stored order
+                    var lstConfigItems = new RepositoriesStore(_gitGroup).Load();
+                    foreach (var item in lstConfigItems)
+                    {
+                        var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
+                        if (index == -1) continue; //repository no longer exists
+
+                        AddRepository(Path.Combine(dir, realReposList[index]), item.Config);
+                        realReposList.RemoveAt(index);
+                    }
+
+                    //Add new repositories in git folder in the bottom of the list
+                    foreach (var repoName in realReposList)
+                    {
+                        AddRepository(Path.Combine(dir, repoName), new RepositoryConfigContents());
+                    }
+                }
+                finally
+                {
+                    stRepositories.Text = string.Format(Vars.Lang.Repos_StatusBar_Repositories, _repos.Count);
+
+                    if (!_repos.Any()) UpdateButtons(); //prevent buttons enabled if no git repositories
+                }
+            }
+            catch (Messages.MessageException exMsg)
+            {
+                Messages.Error(exMsg.Message);
                 return;
             }
 
-            if (!Directory.Exists(dir))
-            {
-                Messages.Error(string.Format(Vars.Lang.Repos_GitFolderNotFound, dir));
-                return;
-            }
+            _gridBind.DataSource = _repos;
 
-            var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
+            CheckAutoCRLF();
 
-            if (!realReposList.Any())
-            {
-                Messages.Error(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
-                return;
-            }
-
-            //Add repositories by stored order
-            var lstConfigItems = RepositoriesStore.Load();
-            foreach (var item in lstConfigItems)
-            {
-                var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
-                if (index == -1) continue; //repository no longer exists
-
-                AddRepository(Path.Combine(dir, realReposList[index]), item.Config);
-                realReposList.RemoveAt(index);
-            }
-
-            //Add new repositories in git folder in the bottom of the list
-            foreach (var repoName in realReposList)
-            {
-                AddRepository(Path.Combine(dir, repoName), new RepositoryConfigContents());
-            }
+            btnRefresh.PerformClick();
         }
 
         private void AddRepository(string folder, RepositoryConfigContents configContents)
         {
-            DigaoRepository r = new(folder);
+            DigaoRepository r = new(_gitGroup, folder);
             r.Config = configContents;
             _repos.Add(r);
         }
 
+        private void SaveAndFreeRepositories()
+        {
+            if (_repos == null) return;
+
+            new RepositoriesStore(_gitGroup).Save(_repos);
+            _repos.ForEach(repo => repo.FreeCtrl());
+        }
+
         private void CheckAutoCRLF()
         {
-            if (!Vars.Config.GitAutoCRLF) return;
+            if (!Vars.Config.Repos.GitAutoCRLF) return;
             //ensure all repos have auto-crlf config enable to work with Unix x Win diffs
 
             const string CFG_AUTOCRLF = "core.autocrlf";
@@ -303,9 +364,13 @@ namespace DigaoDeskApp
         {
             bool someTaskOfAll = _repos.Any(x => x.DoingBackgroundTask);
 
+            stDoing.Visible = someTaskOfAll;
+
+            menuGroup.Enabled = !someTaskOfAll;
+
             btnRefresh.Enabled = !someTaskOfAll;
             btnFetchAll.Enabled = !someTaskOfAll;
-            
+
             btnReorderList.Enabled = !someTaskOfAll; //we call reset binding of specific index of row when running tasks
             btnClearLog.Enabled = !someTaskOfAll; //deny clear log when running tasks because log positions of RichText control are changing
 
@@ -380,7 +445,7 @@ namespace DigaoDeskApp
 
         private void CheckForAutoFetch()
         {
-            if (!Vars.Config.GitAutoFetch) return;
+            if (!Vars.Config.Repos.GitAutoFetch) return;
 
             Messages.SurroundMessageException(() =>
             {
@@ -529,6 +594,45 @@ namespace DigaoDeskApp
         private void btnClearLog_Click(object sender, EventArgs e)
         {
             Log.ClearLog();
+        }
+
+        public string GetCurrentGitLogFile()
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("gitrepos_{0}.log", _gitGroup.ReadSafeUUID()));
+        }
+
+        private void menuLogManager_DropDownOpening(object sender, EventArgs e)
+        {
+            var file = GetCurrentGitLogFile();
+            bool exists = File.Exists(file);
+
+            btnOpenCurrentLogFile.Enabled = exists;
+            btnDeleteLogFile.Enabled = exists;
+
+            double size = exists ? Math.Round((double)new FileInfo(file).Length / 1024, 2) : 0;
+
+            btnCurrentLogFileSize.Text = string.Format(Vars.Lang.Repos_LogManager_FileSize, size);
+        }
+
+        private void btnOpenCurrentLogFile_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad.exe", GetCurrentGitLogFile());
+        }
+
+        private void btnDeleteLogFile_Click(object sender, EventArgs e)
+        {
+            if (Messages.Question(Vars.Lang.Repos_LogManager_ConfirmDelete))
+            {
+                File.Delete(GetCurrentGitLogFile());
+            }
+        }
+
+        private void FrmRepos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5 && e.Modifiers == Keys.None)
+            {
+                if (btnRefresh.Enabled) btnRefresh.PerformClick();
+            }
         }
 
     }

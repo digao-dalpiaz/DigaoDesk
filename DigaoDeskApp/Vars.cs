@@ -34,5 +34,7 @@ namespace DigaoDeskApp
 
         public static bool IsSuspended;
 
+        public static bool IsConfigVersion1Converted;
+
     }
 }

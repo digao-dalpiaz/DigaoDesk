@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,6 +12,9 @@ namespace DigaoDeskApp
 
         private FontDialog _dlgFont;
 
+        private List<Config.CfgGitGroup> _gitGroups;
+        private BindingList<Config.CfgGitGroup> _bindGitGroups;
+
         public FrmConfig()
         {
             InitializeComponent();
@@ -18,7 +22,6 @@ namespace DigaoDeskApp
             LoadLang();
             LoadLanguageList();
 
-            btnSelReposDir.Height = edReposDir.Height;
             btnSelShellProgram.Height = edShellProgram.Height;
             btnSelDiffProgram.Height = edDiffProgram.Height;
 
@@ -84,13 +87,6 @@ namespace DigaoDeskApp
             ckDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
             lbAppsLinesLog.Text = Vars.Lang.Config_Apps_MaxLogSize;
 
-            lbRepositoryFolder.Text = Vars.Lang.Config_Repos_Folder;
-            boxGitAuthor.Text = Vars.Lang.Config_Repos_BoxAuthor;
-            lbAuthorName.Text = Vars.Lang.Config_Repos_Author_Name;
-            lbAuthorEmail.Text = Vars.Lang.Config_Repos_Author_Email;
-            boxGitCredentials.Text = Vars.Lang.Config_Repos_BoxCredentials;
-            lbCredUsername.Text = Vars.Lang.Config_Repos_Credentials_Username;
-            lbCredPassword.Text = Vars.Lang.Config_Repos_Credentials_Password;
             lbShellProgram.Text = Vars.Lang.Config_Repos_ShellProgram;
             lbDiffProgram.Text = Vars.Lang.Config_Repos_DiffProgram;
             lbDifProgramArgs.Text = Vars.Lang.Config_Repos_DiffProgramArgs;
@@ -144,21 +140,20 @@ namespace DigaoDeskApp
             //--
 
             //--Repos tab
-            edReposDir.Text = Vars.Config.ReposDir;
-            edShellProgram.Text = Vars.Config.ShellProgram;
-            edDiffProgram.Text = Vars.Config.DiffProgram;
-            edDiffProgramArguments.Text = Vars.Config.DiffProgramArguments;
-            edGitNewBranchPrefixList.Text = Vars.Config.GitNewBranchPrefixList;
-            edGitCustomCommands.Text = Vars.Config.GitCustomCommands;
-            ckGitAutoCRLF.Checked = Vars.Config.GitAutoCRLF;
-            ckGitAutoFetch.Checked = Vars.Config.GitAutoFetch;
-            edCommitMessage.Text = Vars.Config.GitCommitMessage;
+            _gitGroups = new();
+            _gitGroups.AddRange(Vars.Config.Repos.GitGroups);
+            _bindGitGroups = new(_gitGroups);
+            listGitGroups.DataSource = _bindGitGroups;
+            UpdateGitGroupButtons();
 
-            edGitName.Text = Vars.Config.Git.Name;
-            edGitEmail.Text = Vars.Config.Git.Email;
-
-            edGitCredUsername.Text = Vars.Config.Git.CredUsername;
-            edGitCredPassword.Text = Vars.Config.Git.CredPassword;
+            edShellProgram.Text = Vars.Config.Repos.ShellProgram;
+            edDiffProgram.Text = Vars.Config.Repos.DiffProgram;
+            edDiffProgramArguments.Text = Vars.Config.Repos.DiffProgramArguments;
+            edGitNewBranchPrefixList.Text = Vars.Config.Repos.GitNewBranchPrefixList;
+            edGitCustomCommands.Text = Vars.Config.Repos.GitCustomCommands;
+            ckGitAutoCRLF.Checked = Vars.Config.Repos.GitAutoCRLF;
+            ckGitAutoFetch.Checked = Vars.Config.Repos.GitAutoFetch;
+            edCommitMessage.Text = Vars.Config.Repos.GitCommitMessage;
             //--
         }
 
@@ -191,25 +186,10 @@ namespace DigaoDeskApp
                 return;
             }
 
-            edReposDir.Text = edReposDir.Text.Trim();
-            if (edReposDir.Text != string.Empty)
-            {
-                if (!Directory.Exists(edReposDir.Text))
-                {
-                    Messages.Error(Vars.Lang.Config_GitRepositoryNotFound);
-                    edReposDir.Select();
-                    return;
-                }
-            }
-
             edShellProgram.Text = edShellProgram.Text.Trim();
 
             edDiffProgram.Text = edDiffProgram.Text.Trim();
             edDiffProgramArguments.Text = edDiffProgramArguments.Text.Trim();
-
-            edGitName.Text = edGitName.Text.Trim();
-            edGitEmail.Text = edGitEmail.Text.Trim();
-            edGitCredUsername.Text = edGitCredUsername.Text.Trim();
 
             //
 
@@ -244,21 +224,16 @@ namespace DigaoDeskApp
             //--
 
             //--Repos tab
-            Vars.Config.ReposDir = edReposDir.Text;
-            Vars.Config.ShellProgram = edShellProgram.Text;
-            Vars.Config.DiffProgram = edDiffProgram.Text;
-            Vars.Config.DiffProgramArguments = edDiffProgramArguments.Text;
-            Vars.Config.GitNewBranchPrefixList = edGitNewBranchPrefixList.Text;
-            Vars.Config.GitCustomCommands = edGitCustomCommands.Text;
-            Vars.Config.GitAutoCRLF = ckGitAutoCRLF.Checked;
-            Vars.Config.GitAutoFetch = ckGitAutoFetch.Checked;
-            Vars.Config.GitCommitMessage = edCommitMessage.Text;
+            Vars.Config.Repos.GitGroups = _gitGroups;
 
-            Vars.Config.Git.Name = edGitName.Text;
-            Vars.Config.Git.Email = edGitEmail.Text;
-
-            Vars.Config.Git.CredUsername = edGitCredUsername.Text;
-            Vars.Config.Git.CredPassword = edGitCredPassword.Text;
+            Vars.Config.Repos.ShellProgram = edShellProgram.Text;
+            Vars.Config.Repos.DiffProgram = edDiffProgram.Text;
+            Vars.Config.Repos.DiffProgramArguments = edDiffProgramArguments.Text;
+            Vars.Config.Repos.GitNewBranchPrefixList = edGitNewBranchPrefixList.Text;
+            Vars.Config.Repos.GitCustomCommands = edGitCustomCommands.Text;
+            Vars.Config.Repos.GitAutoCRLF = ckGitAutoCRLF.Checked;
+            Vars.Config.Repos.GitAutoFetch = ckGitAutoFetch.Checked;
+            Vars.Config.Repos.GitCommitMessage = edCommitMessage.Text;
             //--
 
             Vars.Config.Save();
@@ -302,17 +277,6 @@ namespace DigaoDeskApp
             btn.Font = new Font(btn.Font.FontFamily, 7);
         }
 
-        private void btnSelReposDir_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog dlg = new();
-
-            dlg.SelectedPath = edReposDir.Text;
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                edReposDir.Text = dlg.SelectedPath;
-            }
-        }
-
         private void btnSelShellProgram_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new();
@@ -337,10 +301,10 @@ namespace DigaoDeskApp
 
         private void btnResetColors_Click(object sender, EventArgs e)
         {
-            LoadOrSaveTheme(new Config.ConfigTheme(), false);
+            LoadOrSaveTheme(new Config.CfgTheme(), false);
         }
 
-        private void LoadOrSaveTheme(Config.ConfigTheme def, bool save, bool first = false)
+        private void LoadOrSaveTheme(Config.CfgTheme def, bool save, bool first = false)
         {
             foreach (var f in def.GetType().GetFields())
             {
@@ -368,6 +332,45 @@ namespace DigaoDeskApp
         private void btnCustomCommandsHelp_Click(object sender, EventArgs e)
         {
             Messages.Info(Vars.Lang.Config_Repos_CustomCommandsHelp);
+        }
+
+        private void btnAddGitGroup_Click(object sender, EventArgs e)
+        {
+            FrmConfigGitGroup f = new();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                _bindGitGroups.Add(f.Group);
+                listGitGroups.SelectedItem = f.Group;
+                UpdateGitGroupButtons();
+            }
+        }
+
+        private void btnEditGitGroup_Click(object sender, EventArgs e)
+        {
+            FrmConfigGitGroup f = new();
+            f.Group = (Config.CfgGitGroup)listGitGroups.SelectedItem;
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                _bindGitGroups.ResetBindings();
+            }
+        }
+
+        private void btnDelGitGroup_Click(object sender, EventArgs e)
+        {
+            _bindGitGroups.Remove((Config.CfgGitGroup)listGitGroups.SelectedItem);
+        }
+
+        private void listGitGroups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateGitGroupButtons();
+        }
+
+        private void UpdateGitGroupButtons()
+        {
+            bool hasSel = listGitGroups.SelectedItem != null;
+
+            btnEditGitGroup.Enabled = hasSel;
+            btnDelGitGroup.Enabled = hasSel;
         }
 
     }

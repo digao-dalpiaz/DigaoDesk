@@ -12,6 +12,8 @@
 
   "SurveyQuestion": "Você gostaria de preencher uma rápida pesquisa sobre o uso do Digao Desk?",
 
+  "MsgNewFeatureGitGroups": "Agora você pode configurar múltiplas pastas que contém repositórios Git. Cada grupo de repositórios pode conter seus próprios parâmetros. Acesse a tela de configurações para definir seus grupos de repositórios.",
+
   "BtnOK": "OK",
   "BtnCancel": "Cancelar",
 
@@ -84,13 +86,6 @@
   "Config_Apps_DontNotifyStopWhenActive": "Não exibir a notificação caso a tela de aplicações esteja ativa",
   "Config_Apps_MaxLogSize": "Tamanho máximo de do log (bytes)",
 
-  "Config_Repos_Folder": "Pasta dos repositórios",
-  "Config_Repos_BoxAuthor": "Informações do autor",
-  "Config_Repos_Author_Name": "Nome",
-  "Config_Repos_Author_Email": "E-mail",
-  "Config_Repos_BoxCredentials": "Credenciais",
-  "Config_Repos_Credentials_Username": "Usuário",
-  "Config_Repos_Credentials_Password": "Senha",
   "Config_Repos_ShellProgram": "Programa de linha de comando",
   "Config_Repos_DiffProgram": "Programa de comparação",
   "Config_Repos_DiffProgramArgs": "Argumentos",
@@ -105,7 +100,20 @@
   "Config_Repos_CommitMsgInfo": "Use [branch] para o nome do branch",
   "Config_InvalidLanguage": "Linguagem inválida",
   "Config_AppMaxLogSizeRequired": "Necessário especificar o tamanho máximo do log da aplicação",
-  "Config_GitRepositoryNotFound": "Pasta do repositório não encontrada",
+
+  "ConfigGitGroup_TitleNew": "Novo Grupo de Repositorios Git",
+  "ConfigGitGroup_TitleEdit": "Editar Grupo de Repositorios Git",
+  "ConfigGitGroup_Ident": "Identificador",
+  "ConfigGitGroup_Path": "Pasta dos repositórios",
+  "ConfigGitGroup_BoxAuthor": "Informações do autor",
+  "ConfigGitGroup_Author_Name": "Nome",
+  "ConfigGitGroup_Author_Email": "E-mail",
+  "ConfigGitGroup_BoxCredentials": "Credenciais",
+  "ConfigGitGroup_Credentials_Username": "Usuário",
+  "ConfigGitGroup_Credentials_Password": "Senha",
+  "ConfigGitGroup_IdentRequired": "Especifique o identificador",
+  "ConfigGitGroup_PathRequired": "Especifique a pasta dos repositórios",
+  "ConfigGitGroup_PathNotFound": "Pasta dos repositórios não encontrada",
 
   "RepoConfig_Title": "Configurações do Repositório",
   "RepoConfig_MasterBranch": "Branch master",
@@ -133,6 +141,14 @@
   "Repos_BtnClearLog": "Limpar Log",
 
   "Repos_StatusBar_Info": "Estou vendo que seu trabalho será sensacional!",
+  "Repos_StatusBar_Repositories": "Repositórios: {0}",
+  "Repos_StatusBar_Doing": "Executando processo...",
+
+  "Repos_LogManager_MenuTitle": "Gerenciador de Log",
+  "Repos_LogManager_FileSize": "Tamanho: {0} kb",
+  "Repos_LogManager_OpenFile": "Abrir Arquivo Log",
+  "Repos_LogManager_DeleteFile": "Excluir Arquivo Log",
+  "Repos_LogManager_ConfirmDelete": "Confirma excluir o arquivo de log?",
 
   "Repos_BranchCountFormat": "Local: {0} / Remoto: {1}",
   "Repos_AheadFormat": "A frente: {0}",
@@ -151,8 +167,8 @@
   "Repos_ColOperation": "Operação",
   "Repos_ColMasterBranchCompare": "Comparação do branch master",
 
+  "Repos_NoGitGroupsConfigured": "Não há nenhum grupo de repositórios configurado. Por favor acesse a tela de configurações.",
   "Repos_DenyExitByProcess": "Existe um processo em execução no momento",
-  "Repos_GitFolderNotConfigured": "Pasta dos Repositórios Git não configurada",
   "Repos_GitFolderNotFound": "Pasta dos repositórios não encontrada: {0}",
   "Repos_GitFolderNoneRepositories": "Nenhum repositório Git encontrado na pasta: {0}",
   "Repos_CRLFEnabled": "Configuração de CR+LF habilitada para o repositório '{0}'",
