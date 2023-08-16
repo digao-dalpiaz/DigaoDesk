@@ -81,6 +81,7 @@ namespace DigaoDeskApp
             btnCurrentLogFileSize=new System.Windows.Forms.ToolStripMenuItem();
             btnOpenCurrentLogFile=new System.Windows.Forms.ToolStripMenuItem();
             btnDeleteLogFile=new System.Windows.Forms.ToolStripMenuItem();
+            images24=new System.Windows.Forms.ImageList(components);
             ((System.ComponentModel.ISupportInitialize)g).BeginInit();
             toolBar.SuspendLayout();
             statusBar.SuspendLayout();
@@ -430,15 +431,19 @@ namespace DigaoDeskApp
             // 
             // btnRepositorySettings
             // 
+            btnRepositorySettings.Image=(System.Drawing.Image)resources.GetObject("btnRepositorySettings.Image");
+            btnRepositorySettings.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             btnRepositorySettings.Name="btnRepositorySettings";
-            btnRepositorySettings.Size=new System.Drawing.Size(220, 26);
+            btnRepositorySettings.Size=new System.Drawing.Size(224, 30);
             btnRepositorySettings.Text="Repository Settings";
             btnRepositorySettings.Click+=btnRepositorySettings_Click;
             // 
             // btnReorderList
             // 
+            btnReorderList.Image=(System.Drawing.Image)resources.GetObject("btnReorderList.Image");
+            btnReorderList.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             btnReorderList.Name="btnReorderList";
-            btnReorderList.Size=new System.Drawing.Size(220, 26);
+            btnReorderList.Size=new System.Drawing.Size(224, 30);
             btnReorderList.Text="Reorder List";
             btnReorderList.Click+=btnReorderList_Click;
             // 
@@ -485,42 +490,49 @@ namespace DigaoDeskApp
             // stFunInfo
             // 
             stFunInfo.Image=(System.Drawing.Image)resources.GetObject("stFunInfo.Image");
+            stFunInfo.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             stFunInfo.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
             stFunInfo.Name="stFunInfo";
-            stFunInfo.Size=new System.Drawing.Size(241, 20);
+            stFunInfo.Size=new System.Drawing.Size(237, 20);
             stFunInfo.Text="I see your work will be amazing!";
             // 
             // menuGroup
             // 
             menuGroup.Image=(System.Drawing.Image)resources.GetObject("menuGroup.Image");
+            menuGroup.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             menuGroup.ImageTransparentColor=System.Drawing.Color.Magenta;
             menuGroup.Margin=new System.Windows.Forms.Padding(0, 2, 10, 0);
             menuGroup.Name="menuGroup";
-            menuGroup.Size=new System.Drawing.Size(170, 24);
+            menuGroup.Size=new System.Drawing.Size(166, 24);
             menuGroup.Text="Repositories Group";
             // 
             // stRepositories
             // 
+            stRepositories.Image=(System.Drawing.Image)resources.GetObject("stRepositories.Image");
+            stRepositories.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             stRepositories.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
             stRepositories.Name="stRepositories";
-            stRepositories.Size=new System.Drawing.Size(91, 20);
+            stRepositories.Size=new System.Drawing.Size(107, 20);
             stRepositories.Text="Repositories";
             // 
             // stDoing
             // 
+            stDoing.Image=(System.Drawing.Image)resources.GetObject("stDoing.Image");
+            stDoing.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             stDoing.Margin=new System.Windows.Forms.Padding(0, 4, 10, 2);
             stDoing.Name="stDoing";
-            stDoing.Size=new System.Drawing.Size(59, 20);
+            stDoing.Size=new System.Drawing.Size(75, 20);
             stDoing.Text="Doing...";
             // 
             // menuLogManager
             // 
             menuLogManager.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { btnCurrentLogFileSize, btnOpenCurrentLogFile, btnDeleteLogFile });
             menuLogManager.Image=(System.Drawing.Image)resources.GetObject("menuLogManager.Image");
+            menuLogManager.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             menuLogManager.ImageTransparentColor=System.Drawing.Color.Magenta;
             menuLogManager.Margin=new System.Windows.Forms.Padding(0, 2, 10, 0);
             menuLogManager.Name="menuLogManager";
-            menuLogManager.Size=new System.Drawing.Size(131, 24);
+            menuLogManager.Size=new System.Drawing.Size(127, 24);
             menuLogManager.Text="Log Manager";
             menuLogManager.DropDownOpening+=menuLogManager_DropDownOpening;
             // 
@@ -528,22 +540,35 @@ namespace DigaoDeskApp
             // 
             btnCurrentLogFileSize.Enabled=false;
             btnCurrentLogFileSize.Name="btnCurrentLogFileSize";
-            btnCurrentLogFileSize.Size=new System.Drawing.Size(236, 26);
+            btnCurrentLogFileSize.Size=new System.Drawing.Size(240, 30);
             btnCurrentLogFileSize.Text="File Size";
             // 
             // btnOpenCurrentLogFile
             // 
+            btnOpenCurrentLogFile.Image=(System.Drawing.Image)resources.GetObject("btnOpenCurrentLogFile.Image");
+            btnOpenCurrentLogFile.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             btnOpenCurrentLogFile.Name="btnOpenCurrentLogFile";
-            btnOpenCurrentLogFile.Size=new System.Drawing.Size(236, 26);
+            btnOpenCurrentLogFile.Size=new System.Drawing.Size(240, 30);
             btnOpenCurrentLogFile.Text="Open Current Log File";
             btnOpenCurrentLogFile.Click+=btnOpenCurrentLogFile_Click;
             // 
             // btnDeleteLogFile
             // 
+            btnDeleteLogFile.Image=(System.Drawing.Image)resources.GetObject("btnDeleteLogFile.Image");
+            btnDeleteLogFile.ImageScaling=System.Windows.Forms.ToolStripItemImageScaling.None;
             btnDeleteLogFile.Name="btnDeleteLogFile";
-            btnDeleteLogFile.Size=new System.Drawing.Size(236, 26);
+            btnDeleteLogFile.Size=new System.Drawing.Size(240, 30);
             btnDeleteLogFile.Text="Delete Log File";
             btnDeleteLogFile.Click+=btnDeleteLogFile_Click;
+            // 
+            // images24
+            // 
+            images24.ColorDepth=System.Windows.Forms.ColorDepth.Depth32Bit;
+            images24.ImageStream=(System.Windows.Forms.ImageListStreamer)resources.GetObject("images24.ImageStream");
+            images24.TransparentColor=System.Drawing.Color.Transparent;
+            images24.Images.SetKeyName(0, "cmd");
+            images24.Images.SetKeyName(1, "cmd_custom");
+            images24.Images.SetKeyName(2, "group");
             // 
             // FrmRepos
             // 
@@ -620,5 +645,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.ToolStripMenuItem btnOpenCurrentLogFile;
         private System.Windows.Forms.ToolStripMenuItem btnCurrentLogFileSize;
         private System.Windows.Forms.ToolStripMenuItem btnDeleteLogFile;
+        private System.Windows.Forms.ImageList images24;
     }
 }

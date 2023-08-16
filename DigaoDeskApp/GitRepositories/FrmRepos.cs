@@ -175,7 +175,9 @@ namespace DigaoDeskApp
                 CustomCommand cmd = new();
                 cmd.Cmd = parts.Length > 1 ? parts[1] : parts[0];
                 cmd.Parameters = parts.Length > 2 ? parts[2] : null;
-                btnShell.DropDownItems.Add(parts[0], null, btnShellCustomItem_Click).Tag = cmd;
+                var menuItem = btnShell.DropDownItems.Add(parts[0], images24.Images[1], btnShellCustomItem_Click);
+                menuItem.ImageScaling = ToolStripItemImageScaling.None;
+                menuItem.Tag = cmd;
             }
 
             if (btnShell.DropDownItems.Count > 0)
@@ -183,6 +185,8 @@ namespace DigaoDeskApp
                 ToolStripMenuItem item = new();
                 item.Text = Vars.Lang.Repos_BtnShell;
                 item.Click += btnShell_Click;
+                item.Image = images24.Images[0];
+                item.ImageScaling = ToolStripItemImageScaling.None;
                 btnShell.DropDownItems.Insert(0, item);
                 btnShell.DropDownItems.Insert(1, new ToolStripSeparator());
             }
@@ -192,7 +196,8 @@ namespace DigaoDeskApp
         {
             foreach (var item in Vars.Config.Repos.GitGroups)
             {
-                var menuItem = menuGroup.DropDownItems.Add(item.Ident, null, btnItemGroup_Click);
+                var menuItem = menuGroup.DropDownItems.Add(item.Ident, images24.Images[2], btnItemGroup_Click);
+                menuItem.ImageScaling = ToolStripItemImageScaling.None;
                 menuItem.Tag = item;
             }
         }
