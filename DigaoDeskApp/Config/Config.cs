@@ -130,7 +130,7 @@ namespace DigaoDeskApp
                 var data = File.ReadAllText(path);
                 Vars.Config = JsonConvert.DeserializeObject<Config>(data);
 
-                EventAudit.Do("Settings loaded from file");
+                EventAudit.Do(string.Format("Settings loaded from file (Version {0})", Vars.Config.Version));
 
                 if (Vars.Config.Version == 0)
                 {
