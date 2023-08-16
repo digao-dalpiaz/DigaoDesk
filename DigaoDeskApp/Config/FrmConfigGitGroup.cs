@@ -82,7 +82,7 @@ namespace DigaoDeskApp
             if (Group == null)
             {
                 Group = new();
-                Group.UUID = Guid.NewGuid();
+                Group.InitUUID();
             }
             Group.Ident = edIdent.Text; //already trim
             Group.Path = edPath.Text; //already trim

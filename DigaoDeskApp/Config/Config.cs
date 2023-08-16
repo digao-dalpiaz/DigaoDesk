@@ -11,6 +11,8 @@ namespace DigaoDeskApp
 
         public string Language = LangEngine.DEFAULT_LANG;
 
+        public int Version;
+
         public CfgTheme Theme;
         public CfgApps Apps;
         public CfgRepos Repos;
@@ -103,6 +105,11 @@ namespace DigaoDeskApp
                 return Ident;
             }
 
+            public void InitUUID()
+            {
+                UUID = Guid.NewGuid();
+            }
+
             public Guid ReadSafeUUID()
             {
                 if (UUID == Guid.Empty) throw new Exception("UUID of Git Group is null");
@@ -124,10 +131,19 @@ namespace DigaoDeskApp
                 Vars.Config = JsonConvert.DeserializeObject<Config>(data);
 
                 EventAudit.Do("Settings loaded from file");
+
+                if (Vars.Config.Version == 0)
+                {
+                    OldConfig oldConfig = JsonConvert.DeserializeObject<OldConfig>(data);
+                    oldConfig.ConvertToNew(Vars.Config);
+
+                    EventAudit.Do("Old config file converted");
+                }
             } 
             else
             {
                 Vars.Config = new();
+                Vars.Config.Version = 2;
 
                 EventAudit.Do("Settings initialized from defaults");
             }
