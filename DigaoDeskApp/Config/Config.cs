@@ -139,7 +139,7 @@ namespace DigaoDeskApp
 
                     EventAudit.Do("Old config file converted");
                 }
-            } 
+            }
             else
             {
                 Vars.Config = new();

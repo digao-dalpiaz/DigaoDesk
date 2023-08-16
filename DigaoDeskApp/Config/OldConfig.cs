@@ -24,6 +24,9 @@
 
         public void ConvertToNew(Config config)
         {
+            config.Repos = new();
+            config.Repos.GitGroups = new();
+
             config.Repos.ShellProgram = ShellProgram;
             config.Repos.DiffProgram = DiffProgram;
             config.Repos.DiffProgramArguments = DiffProgramArguments;
@@ -48,6 +51,7 @@
             }
 
             config.Version = 2;
+            config.Save();
         }
     }
 }
