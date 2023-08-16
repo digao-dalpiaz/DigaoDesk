@@ -36,6 +36,8 @@ namespace DigaoDeskApp
             g.DataSource = _gridBind;
 
             Log = new(edLog);
+
+            stDoing.Visible = false;
         }
 
         private void FrmRepos_Load(object sender, EventArgs e)
@@ -69,6 +71,8 @@ namespace DigaoDeskApp
             {
                 toolBar.Visible = false;
                 menuGroup.Visible = false;
+                menuLogManager.Visible = false;
+                stRepositories.Visible = false;
                 Messages.Error(Vars.Lang.Repos_NoGitGroupsConfigured);
             }
         }

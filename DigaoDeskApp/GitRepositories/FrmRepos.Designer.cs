@@ -480,7 +480,7 @@ namespace DigaoDeskApp
             // statusBar
             // 
             statusBar.ImageScalingSize=new System.Drawing.Size(20, 20);
-            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo, menuGroup, stRepositories, stDoing, menuLogManager });
+            statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { stFunInfo, menuGroup, stRepositories, menuLogManager, stDoing });
             statusBar.Location=new System.Drawing.Point(0, 838);
             statusBar.Name="statusBar";
             statusBar.Padding=new System.Windows.Forms.Padding(1, 0, 16, 0);
