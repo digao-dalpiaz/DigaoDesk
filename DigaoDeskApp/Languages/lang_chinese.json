@@ -12,6 +12,8 @@
 
   "SurveyQuestion": "您想填写一份关于您使用 Digao Desk 的快速调查吗？",
 
+  "MsgNewFeatureGitGroups": "You can now configure multiple folders that contain Git repositories. Each repository group can contain its own parameters. Access the settings screen to define your repository groups.",
+
   "BtnOK": "确定",
   "BtnCancel": "取消",
 

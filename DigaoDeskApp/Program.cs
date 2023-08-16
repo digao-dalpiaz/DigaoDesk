@@ -33,6 +33,8 @@ namespace DigaoDeskApp
                 return;
             }
 
+            if (Vars.IsConfigVersion1Converted) Messages.Info(Vars.Lang.MsgNewFeatureGitGroups);
+
             Vars.FrmMainObj = new();
             Application.Run(Vars.FrmMainObj);
         }

@@ -12,6 +12,8 @@
 
   "SurveyQuestion": "Você gostaria de preencher uma rápida pesquisa sobre o uso do Digao Desk?",
 
+  "MsgNewFeatureGitGroups": "Agora você pode configurar múltiplas pastas que contém repositórios Git. Cada grupo de repositórios pode conter seus próprios parâmetros. Acesse a tela de configurações para definir seus grupos de repositórios.",
+
   "BtnOK": "OK",
   "BtnCancel": "Cancelar",
 

@@ -17,6 +17,8 @@
 
         public string SurveyQuestion;
 
+        public string MsgNewFeatureGitGroups;
+
         public string BtnOK;
         public string BtnCancel;
 

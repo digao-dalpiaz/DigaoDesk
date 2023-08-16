@@ -138,6 +138,8 @@ namespace DigaoDeskApp
                     oldConfig.ConvertToNew(Vars.Config);
 
                     EventAudit.Do("Old config file converted");
+
+                    Vars.IsConfigVersion1Converted = true;
                 }
             }
             else
