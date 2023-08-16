@@ -105,6 +105,11 @@ namespace DigaoDeskApp
                 return Ident;
             }
 
+            public CfgGitGroup Clone()
+            {
+                return (CfgGitGroup)MemberwiseClone();
+            }
+
             public void InitUUID()
             {
                 UUID = Guid.NewGuid();

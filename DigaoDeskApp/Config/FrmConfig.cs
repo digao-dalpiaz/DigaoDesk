@@ -141,7 +141,10 @@ namespace DigaoDeskApp
 
             //--Repos tab
             _gitGroups = new();
-            _gitGroups.AddRange(Vars.Config.Repos.GitGroups);
+            foreach (var item in Vars.Config.Repos.GitGroups)
+            {
+                _gitGroups.Add(item.Clone());
+            }
             _bindGitGroups = new(_gitGroups);
             listGitGroups.DataSource = _bindGitGroups;
             UpdateGitGroupButtons();
