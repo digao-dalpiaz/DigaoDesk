@@ -14,7 +14,7 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Repos";
 
-        public Config.CfgGitGroup GitGroup;
+        private Config.CfgGitGroup _gitGroup;
 
         private List<DigaoRepository> _repos;
         private BindingSource _gridBind;
@@ -60,11 +60,11 @@ namespace DigaoDeskApp
                 BuildGroupMenu();
                 if (!string.IsNullOrEmpty(lastGroup))
                 {
-                    GitGroup = Vars.Config.Repos.GitGroups.Find(x => x.Ident == lastGroup);
+                    _gitGroup = Vars.Config.Repos.GitGroups.Find(x => x.Ident == lastGroup);
                 }
-                if (GitGroup == null)
+                if (_gitGroup == null)
                 {
-                    GitGroup = Vars.Config.Repos.GitGroups.First();
+                    _gitGroup = Vars.Config.Repos.GitGroups.First();
                 }
             }
             else
@@ -79,7 +79,7 @@ namespace DigaoDeskApp
 
         private void FrmRepos_Shown(object sender, EventArgs e)
         {
-            if (GitGroup != null)
+            if (_gitGroup != null)
             {
                 BuildRepositories();
             }
@@ -88,7 +88,7 @@ namespace DigaoDeskApp
         private void FrmRepos_FormClosed(object sender, FormClosedEventArgs e)
         {
             var r = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REGKEY);
-            r.SetValue("GitGroup", GitGroup != null ? GitGroup.Ident : string.Empty);
+            r.SetValue("GitGroup", _gitGroup != null ? _gitGroup.Ident : string.Empty);
             r.SetValue("GridH", g.Height);
             r.SetValue("GridCols", Utils.GridColumnsToString(g));
 
@@ -210,7 +210,7 @@ namespace DigaoDeskApp
         {
             SaveAndFreeRepositories();
 
-            GitGroup = ((ToolStripItem)sender).Tag as Config.CfgGitGroup;
+            _gitGroup = ((ToolStripItem)sender).Tag as Config.CfgGitGroup;
             BuildRepositories();
         }
 
@@ -220,9 +220,9 @@ namespace DigaoDeskApp
 
             _repos = new();
 
-            menuGroup.Text = GitGroup.Ident;
+            menuGroup.Text = _gitGroup.Ident;
 
-            var dir = GitGroup.Path;
+            var dir = _gitGroup.Path;
 
             try
             {
@@ -235,7 +235,7 @@ namespace DigaoDeskApp
                     if (!realReposList.Any()) Messages.ThrowMsg(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
 
                     //Add repositories by stored order
-                    var lstConfigItems = new RepositoriesStore(GitGroup).Load();
+                    var lstConfigItems = new RepositoriesStore(_gitGroup).Load();
                     foreach (var item in lstConfigItems)
                     {
                         var index = realReposList.FindIndex(x => x.Equals(item.Name, StringComparison.InvariantCultureIgnoreCase));
@@ -273,7 +273,7 @@ namespace DigaoDeskApp
 
         private void AddRepository(string folder, RepositoryConfigContents configContents)
         {
-            DigaoRepository r = new(GitGroup, folder);
+            DigaoRepository r = new(_gitGroup, folder);
             r.Config = configContents;
             _repos.Add(r);
         }
@@ -282,7 +282,7 @@ namespace DigaoDeskApp
         {
             if (_repos == null) return;
 
-            new RepositoriesStore(GitGroup).Save(_repos);
+            new RepositoriesStore(_gitGroup).Save(_repos);
             _repos.ForEach(repo => repo.FreeCtrl());
         }
 
@@ -598,9 +598,14 @@ namespace DigaoDeskApp
             Log.ClearLog();
         }
 
+        public string GetCurrentGitLogFile()
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("gitrepos_{0}.log", _gitGroup.ReadSafeUUID()));
+        }
+
         private void menuLogManager_DropDownOpening(object sender, EventArgs e)
         {
-            var file = LogUtils.GetCurrentGitLogFile();
+            var file = GetCurrentGitLogFile();
             bool exists = File.Exists(file);
 
             btnOpenCurrentLogFile.Enabled = exists;
@@ -613,14 +618,14 @@ namespace DigaoDeskApp
 
         private void btnOpenCurrentLogFile_Click(object sender, EventArgs e)
         {
-            Process.Start("notepad.exe", LogUtils.GetCurrentGitLogFile());
+            Process.Start("notepad.exe", GetCurrentGitLogFile());
         }
 
         private void btnDeleteLogFile_Click(object sender, EventArgs e)
         {
             if (Messages.Question(Vars.Lang.Repos_LogManager_ConfirmDelete))
             {
-                File.Delete(LogUtils.GetCurrentGitLogFile());
+                File.Delete(GetCurrentGitLogFile());
             }
         }
 

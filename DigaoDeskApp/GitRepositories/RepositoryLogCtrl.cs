@@ -34,7 +34,7 @@ namespace DigaoDeskApp
         DONE
     }
 
-    public class LogUtils
+    internal class LogUtils
     {
 
         public static Color LogHighlightTypeToColor(LogHighlightType type)
@@ -63,11 +63,6 @@ namespace DigaoDeskApp
         public static string GetTimestampPrefix()
         {
             return DateTime.Now.ToString(Vars.DATETIME_FMT) + " - ";
-        }
-
-        public static string GetCurrentGitLogFile()
-        {
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("gitrepos_{0}.log", Vars.FrmReposObj.GitGroup.ReadSafeUUID()));
         }
 
     }
@@ -116,7 +111,7 @@ namespace DigaoDeskApp
                 Groups.Remove(g);
             }
 
-            g.Save(LogUtils.GetCurrentGitLogFile());
+            g.Save(Vars.FrmReposObj.GetCurrentGitLogFile()); //here current Git Group is the same until task is complete (and only then the user can change group)
         }
 
         public void FastLog(Action<LogGroup> proc)
