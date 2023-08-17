@@ -12,7 +12,7 @@
 
   "SurveyQuestion": "您想填写一份关于您使用 Digao Desk 的快速调查吗？",
 
-  "MsgNewFeatureGitGroups": "You can now configure multiple folders that contain Git repositories. Each repository group can contain its own parameters. Access the settings screen to define your repository groups.",
+  "MsgNewFeatureGitGroups": "您现在可以配置多个包含 Git 存储库的文件夹。 每个存储库组都可以包含自己的参数。 访问设置屏幕以定义您的存储库组。",
 
   "BtnOK": "确定",
   "BtnCancel": "取消",
@@ -101,9 +101,9 @@
   "Config_InvalidLanguage": "无效的语言",
   "Config_AppMaxLogSizeRequired": "需要应用程序最大日志大小",
 
-  "ConfigGitGroup_TitleNew": "New Git Repositories Group",
-  "ConfigGitGroup_TitleEdit": "Edit Git Repositories Group",
-  "ConfigGitGroup_Ident": "Identifier Tag",
+  "ConfigGitGroup_TitleNew": "新建 Git 存储库组",
+  "ConfigGitGroup_TitleEdit": "编辑 Git 存储库组",
+  "ConfigGitGroup_Ident": "识别标签",
   "ConfigGitGroup_Path": "存储库文件夹",
   "ConfigGitGroup_BoxAuthor": "作者信息",
   "ConfigGitGroup_Author_Name": "名称",
@@ -111,8 +111,8 @@
   "ConfigGitGroup_BoxCredentials": "凭证",
   "ConfigGitGroup_Credentials_Username": "用户名",
   "ConfigGitGroup_Credentials_Password": "密码",
-  "ConfigGitGroup_IdentRequired": "Identifier tag is required",
-  "ConfigGitGroup_PathRequired": "Repositories folder is required",
+  "ConfigGitGroup_IdentRequired": "需要标识符标签",
+  "ConfigGitGroup_PathRequired": "需要存储库文件夹",
   "ConfigGitGroup_PathNotFound": "未找到 Git 存储库文件夹",
 
   "RepoConfig_Title": "存储库设置",
@@ -141,14 +141,14 @@
   "Repos_BtnClearLog": "清除日志",
 
   "Repos_StatusBar_Info": "我看到你的工作会很棒！",
-  "Repos_StatusBar_Repositories": "Repositories: {0}",
-  "Repos_StatusBar_Doing": "Running process...",
+  "Repos_StatusBar_Repositories": "存储库: {0}",
+  "Repos_StatusBar_Doing": "正在运行的进程...",
 
-  "Repos_LogManager_MenuTitle": "Log Manager",
-  "Repos_LogManager_FileSize": "Size: {0} kb",
-  "Repos_LogManager_OpenFile": "Open Log File",
-  "Repos_LogManager_DeleteFile": "Delete Log File",
-  "Repos_LogManager_ConfirmDelete": "Confirm delete log file?",
+  "Repos_LogManager_MenuTitle": "日志管理器",
+  "Repos_LogManager_FileSize": "大小: {0} kb",
+  "Repos_LogManager_OpenFile": "打开日志文件",
+  "Repos_LogManager_DeleteFile": "删除日志文件",
+  "Repos_LogManager_ConfirmDelete": "确认删除日志文件？",
 
   "Repos_BranchCountFormat": "本地：{0} / 远程：{1}",
   "Repos_AheadFormat": "前面：{0}",
@@ -167,10 +167,10 @@
   "Repos_ColOperation": "操作",
   "Repos_ColMasterBranchCompare": "主分支比较",
 
-  "Repos_NoGitGroupsConfigured": "There are no Git groups configured. Please access the settings screen.",
+  "Repos_NoGitGroupsConfigured": "没有配置 Git 组。 请访问设置屏幕。",
   "Repos_DenyExitByProcess": "现在有一个进程正在执行",
   "Repos_GitFolderNotFound": "未找到 Git 存储库文件夹：{0}",
-  "Repos_GitFolderNoneRepositories": "No Git repository found in folder: {0}",
+  "Repos_GitFolderNoneRepositories": "在文件夹中找不到 Git 存储库: {0}",
   "Repos_CRLFEnabled": "存储库中已启用自动 CR+LF 配置 '{0}'",
   "Repos_ProcessDone": "完成!",
   "Repos_Fetching": "正在获取...",
@@ -281,8 +281,8 @@
   "LogPushLinking": "该分支当前未链接到远程分支。 现在正在制作链接...",
   "LogNoCurrentOperationToAbort": "当前没有要中止的操作",
 
-  "LogRepositoryProcError": "Error: {0}",
-  "LogRepositoryProcErrorHidden": "Error on command {0} in repository {1}: {2}",
+  "LogRepositoryProcError": "错误: {0}",
+  "LogRepositoryProcErrorHidden": "存储库 {1} 中命令 {0} 出错：{2}",
 
   "LogMergeResult_UpToDate": "没什么可更改的",
   "LogMergeResult_Conflicts": "冲突 - 合并待处理",
@@ -328,7 +328,7 @@
   "AppLog_TerminatingProcessLevel": "终止进程级别 {0} \"{1}\" ({2})...",
   "AppLog_ErrorTerminating": "终止进程错误 \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
-  "AppLog_FileNotInPath": "File {0} not found in any PATH environment variable",
+  "AppLog_FileNotInPath": "在任何 PATH 环境变量中都找不到文件 {0}",
 
   "AppTerminatedBalloonTitle": "进程已停止",
   "AppTerminatedBalloonMsg": "应用程序 \"{0}\" 已停止！",
@@ -357,7 +357,7 @@
   "Apps_Add": "添加",
   "Apps_Edit": "编辑",
   "Apps_Delete": "删除",
-  "Apps_Reorder": "Reorder",
+  "Apps_Reorder": "重新排序",
   "Apps_DownloadDefs": "下载定义",
   "Apps_Filter": "过滤器",
   "Apps_Filter_All": "所有应用程序",
@@ -365,7 +365,7 @@
   "Apps_Filter_Stopped": "仅已停止",
   "Apps_Start": "启动",
   "Apps_Stop": "停止",
-  "Apps_StopForced": "Kill",
+  "Apps_StopForced": "结束",
   "Apps_StopAll": "全部停止",
   "Apps_FindLog": "在日志中查找",
   "Apps_ClearLog": "清除日志",
