@@ -66,22 +66,26 @@ namespace DigaoDeskApp
 
                 Guid uuid = config.Repos.GitGroups.First().ReadSafeUUID();
 
-                string oldLogFile = Path.Combine(dir, "gitrepos.log");
-                if (File.Exists(oldLogFile))
-                {
-                    string newLogFile = Path.Combine(dir, string.Format("gitrepos_{0}.log", uuid));
-                    File.Move(oldLogFile, newLogFile);
+                MoveFile(uuid, dir, "gitrepos", ".log");
+                MoveFile(uuid, dir, "repositories", ".json");
+            }
+        }
 
-                    EventAudit.Do("Old repositories log file converted");
+        private static void MoveFile(Guid uuid, string dir, string name, string extension)
+        {
+            string oldFile = Path.Combine(dir, name + extension);
+            if (File.Exists(oldFile))
+            {
+                string newFile = Path.Combine(dir, name + "_" + uuid + extension);
+
+                EventAudit.Do(string.Format("Rename old file {0} to {1}", oldFile, newFile));
+                try
+                {
+                    File.Move(oldFile, newFile);
                 }
-
-                string oldReposCfg = Path.Combine(dir, "repositories.json");
-                if (File.Exists(oldReposCfg))
+                catch (Exception e)
                 {
-                    string newReposCfg = Path.Combine(dir, string.Format("repositories_{0}.json", uuid));
-                    File.Move(oldReposCfg, newReposCfg);
-
-                    EventAudit.Do("Old repositories config file converted");
+                    EventAudit.Do("Error renaming file: " + e.Message);
                 }
             }
         }
