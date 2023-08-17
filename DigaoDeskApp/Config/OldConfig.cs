@@ -1,4 +1,8 @@
-﻿namespace DigaoDeskApp
+﻿using System.IO;
+using System.Linq;
+using System;
+
+namespace DigaoDeskApp
 {
     public class OldConfig
     {
@@ -53,5 +57,34 @@
             config.Version = 2;
             config.Save();
         }
+
+        public static void ConvertOldFiles(Config config)
+        {
+            if (config.Repos.GitGroups.Any())
+            {
+                string dir = AppDomain.CurrentDomain.BaseDirectory;
+
+                Guid uuid = config.Repos.GitGroups.First().ReadSafeUUID();
+
+                string oldLogFile = Path.Combine(dir, "gitrepos.log");
+                if (File.Exists(oldLogFile))
+                {
+                    string newLogFile = Path.Combine(dir, string.Format("gitrepos_{0}.log", uuid));
+                    File.Move(oldLogFile, newLogFile);
+
+                    EventAudit.Do("Old repositories log file converted");
+                }
+
+                string oldReposCfg = Path.Combine(dir, "repositories.json");
+                if (File.Exists(oldReposCfg))
+                {
+                    string newReposCfg = Path.Combine(dir, string.Format("repositories_{0}.json", uuid));
+                    File.Move(oldReposCfg, newReposCfg);
+
+                    EventAudit.Do("Old repositories config file converted");
+                }
+            }
+        }
+
     }
 }

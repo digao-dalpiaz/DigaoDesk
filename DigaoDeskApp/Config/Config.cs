@@ -144,6 +144,8 @@ namespace DigaoDeskApp
 
                     EventAudit.Do("Old config file converted");
 
+                    OldConfig.ConvertOldFiles(Vars.Config);
+
                     Vars.IsConfigVersion1Converted = true;
                 }
             }
