@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 
 namespace DigaoDeskApp
 {
-    class Utils
+    public class Utils
     {
 
         public static void LoadWindowStateFromRegistry(Form f, string key) {
@@ -242,13 +242,90 @@ namespace DigaoDeskApp
 
         //-----------------------------------------------------------------
 
-        public static string RemoveEsc(string text)
+        public record ConsoleHighlightParams
         {
-            if (text != null)
+            public Color Foreground = Color.Empty;
+            public Color Background = Color.Empty;
+            public bool Bold;
+        }
+
+        public static List<(string Text, ConsoleHighlightParams Params)> ParseConsoleString(string input, ConsoleHighlightParams lastParams)
+        {
+            List<(string Text, ConsoleHighlightParams Params)> segments = new();
+
+            while (input.Length > 0)
             {
-                text = Regex.Replace(text, @"\x1B.*?m", "");
+                var m = Regex.Match(input, @"\u001b\[\d+m");
+
+                int subLen = m.Success ? m.Index : input.Length;
+                string sub = input.Substring(0, subLen);
+                input = input.Remove(0, subLen + m.Length);
+
+                var p = lastParams with { };
+                segments.Add((sub, p));
+
+                if (m.Success)
+                {
+                    int code = int.Parse(m.Value.Replace("\u001b[", "").Replace("m", ""));
+
+                    if (code == 0)
+                    {
+                        lastParams.Foreground = Color.Empty;
+                        lastParams.Background = Color.Empty;
+                        lastParams.Bold = false;
+                    }
+                    else if (code == 1)
+                    {
+                        lastParams.Bold = true;
+                    }
+                    else if (code == 21)
+                    {
+                        lastParams.Bold = false;
+                    }
+                    else if (code == 39)
+                    {
+                        lastParams.Foreground = Color.Empty;
+                    }
+                    else if (code == 49)
+                    {
+                        lastParams.Background = Color.Empty;
+                    }
+                    else if ((code >= 30 && code <= 37) || (code >= 90 && code <= 97))
+                    {
+                        lastParams.Foreground = ColorFromConsoleColor(code);
+                    }
+                    else if ((code >= 40 && code <= 47) || (code >= 100 && code <= 107))
+                    {
+                        lastParams.Background = ColorFromConsoleColor(code);
+                    }
+                } 
             }
-            return text;
+
+            return segments;
+        }
+
+        private static Color ColorFromConsoleColor(int consoleColor)
+        {
+            return consoleColor switch
+            {
+                30 or 40 => Color.Black,
+                31 or 41 => Color.DarkRed,
+                32 or 42 => Color.DarkGreen,
+                33 or 43 => Color.Orange,
+                34 or 44 => Color.DarkBlue,
+                35 or 45 => Color.DarkMagenta,
+                36 or 46 => Color.DarkCyan,
+                37 or 47 => Color.Silver,
+                90 or 100 => Color.Gray,
+                91 or 101 => Color.Red,
+                92 or 102 => Color.Green,
+                93 or 103 => Color.Yellow,
+                94 or 104 => Color.Blue,
+                95 or 105 => Color.Magenta,
+                96 or 106 => Color.Cyan,
+                97 or 107 => Color.White,
+                _ => Color.Empty
+            };
         }
 
         //-----------------------------------------------------------------

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -125,13 +126,14 @@ namespace DigaoDeskApp
         public class LogRecord
         {
             public DateTime Timestamp;
-            public string Text;
+            public List<(string Text, Utils.ConsoleHighlightParams Params)> Texts;
             public int Size;
             public LogType Type;
         }
 
         public SynchronizedCollection<LogRecord> Logs = new();
         private long _logSize;
+        private Utils.ConsoleHighlightParams _lastConsoleHighlightParams;
         public bool PendingLog;
 
         public void ClearLog()
@@ -154,6 +156,8 @@ namespace DigaoDeskApp
         {
             ClearLog();
 
+            _lastConsoleHighlightParams = new();
+
             EventAudit.Do("Run app " + Name);
 
             try
@@ -162,7 +166,7 @@ namespace DigaoDeskApp
             } 
             catch (Messages.MessageException exMsg)
             {
-                AddLog(exMsg.Message, true);
+                AddLog(exMsg.Message, AddLogFlags.ERROR);
                 EventAudit.Do("Error: " + exMsg.Message);
             }
         }
@@ -205,13 +209,13 @@ namespace DigaoDeskApp
             _process.StartInfo = si;
             _process.EnableRaisingEvents = true;
 
-            _process.OutputDataReceived += (s, e) => AddLog(Utils.RemoveEsc(e.Data), false);
-            _process.ErrorDataReceived += (s, e) => AddLog(Utils.RemoveEsc(e.Data), true);
+            _process.OutputDataReceived += (s, e) => AddLog(e.Data, AddLogFlags.PARSE_CONSOLE);
+            _process.ErrorDataReceived += (s, e) => AddLog(e.Data, AddLogFlags.PARSE_CONSOLE | AddLogFlags.ERROR);
             _process.Exited += (s, e) =>
             {
                 _process.WaitForExit();
                 _process.Dispose();
-                AddLog(Vars.Lang.AppLog_Terminated, false, true);
+                AddLog(Vars.Lang.AppLog_Terminated, AddLogFlags.STOP);
 
                 EventAudit.Do("Terminated app " + Name);
 
@@ -268,7 +272,7 @@ namespace DigaoDeskApp
             if (_stopping) return;
             _stopping = true;
 
-            AddLog(forced ? Vars.Lang.AppLog_StoppingForced : Vars.Lang.AppLog_Stopping, false, true);
+            AddLog(forced ? Vars.Lang.AppLog_StoppingForced : Vars.Lang.AppLog_Stopping, AddLogFlags.STOP);
             EventAudit.Do("Stop app " + Name + (forced ? " (FORCED)" : ""));
 
             Task.Run(() =>
@@ -299,7 +303,7 @@ namespace DigaoDeskApp
                 child.Dispose();
             }
 
-            AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), false, true);
+            AddLog(string.Format(Vars.Lang.AppLog_TerminatingProcessLevel, level, parent.ProcessName, parent.Id), AddLogFlags.STOP);
             try
             {
                 if (forced)
@@ -313,25 +317,28 @@ namespace DigaoDeskApp
             } 
             catch (Exception ex)
             {
-                AddLog(string.Format(Vars.Lang.AppLog_ErrorTerminating, parent.ProcessName, ex.Message), true);
+                AddLog(string.Format(Vars.Lang.AppLog_ErrorTerminating, parent.ProcessName, ex.Message), AddLogFlags.ERROR);
                 throw new Messages.AbortException();
             }
         }
 
-        private void AddLog(string text, bool error, bool stop = false)
+        [Flags] enum AddLogFlags { NORMAL = 0, ERROR = 1, STOP = 2, PARSE_CONSOLE = 4 }
+        private void AddLog(string text, AddLogFlags flags = AddLogFlags.NORMAL)
         {
-            if (error && stop) throw new Exception("Invalid flags combining");
+            bool flagError = flags.HasFlag(AddLogFlags.ERROR);
+            bool flagStop = flags.HasFlag(AddLogFlags.STOP);
+            if (flagError && flagStop) throw new Exception("Invalid flags combining");
 
             if (text == null) text = "";
 
             LogRecord r = new();
             r.Timestamp = DateTime.Now;
-            r.Text = text;
-            r.Size = text.Length + Environment.NewLine.Length;
-            if (stop)
+            r.Texts = flags.HasFlag(AddLogFlags.PARSE_CONSOLE) ? Utils.ParseConsoleString(text, _lastConsoleHighlightParams) : new() { (text, new()) };
+            r.Size = r.Texts.Sum(x => x.Text.Length) + Environment.NewLine.Length;
+            if (flagStop)
             {
                 r.Type = LogType.STOP;
-            } else if (error)
+            } else if (flagError)
             {
                 r.Type = LogType.ERROR;
             } else if (text.Contains("ERROR", StringComparison.OrdinalIgnoreCase))
@@ -354,7 +361,7 @@ namespace DigaoDeskApp
             }
 
             LastLogTime = r.Timestamp.ToString(Vars.DATETIME_FMT);
-            _lastLogIsError = error;
+            _lastLogIsError = flagError;
 
             if (Vars.FrmAppsObj == null || Vars.FrmAppsObj.GetSelApp() != this)
             {

@@ -356,16 +356,23 @@ namespace DigaoDeskApp
 
                 foreach (var log in lst)
                 {
+                    edLog.SelectionStart = edLog.TextLength;
+                    
                     if (Vars.Config.Theme.ShowTimestamp)
                     {
-                        edLog.SelectionStart = edLog.TextLength;
                         edLog.SelectionColor = Vars.Config.Theme.TimestampFore;
+                        edLog.SelectionBackColor = Vars.Config.Theme.ConsoleBack;
                         edLog.SelectedText = log.Timestamp.ToString(Vars.DATETIME_FMT) + " - ";
                     }
 
-                    edLog.SelectionStart = edLog.TextLength;
-                    edLog.SelectionColor = LogTypeToColor(log.Type);
-                    edLog.SelectedText = log.Text + Environment.NewLine;
+                    foreach (var textItem in log.Texts)
+                    {
+                        edLog.SelectionColor = textItem.Params.Foreground == Color.Empty ? LogTypeToColor(log.Type) : textItem.Params.Foreground;
+                        edLog.SelectionBackColor = textItem.Params.Background == Color.Empty ? Vars.Config.Theme.ConsoleBack : textItem.Params.Background;
+                        edLog.SelectedText = textItem.Text;
+                    }
+
+                    edLog.SelectedText = Environment.NewLine;
                 }
 
                 _lastLogRecord = lst.Last();
