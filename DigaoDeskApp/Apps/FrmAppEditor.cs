@@ -21,6 +21,7 @@ namespace DigaoDeskApp
             btnSelDir.Height = edDir.Height;
 
             edTcpPort.Maximum = ushort.MaxValue;
+            edRestartWait.Maximum = int.MaxValue;
         }
 
         private void LoadLang()
