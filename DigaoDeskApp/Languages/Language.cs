@@ -90,6 +90,7 @@
         public string Config_Apps_NotifyWhenStop;
         public string Config_Apps_DontNotifyStopWhenActive;
         public string Config_Apps_MaxLogSize;
+        public string Config_Apps_ClearLogWhenStartApp;
 
         public string Config_Repos_ShellProgram;
         public string Config_Repos_DiffProgram;

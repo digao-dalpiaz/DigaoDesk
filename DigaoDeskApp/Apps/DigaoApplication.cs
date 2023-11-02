@@ -160,7 +160,7 @@ namespace DigaoDeskApp
 
         public void Start(bool restarting = false)
         {
-            if (!restarting)
+            if (Vars.Config.Apps.ClearLogWhenStartApp && !restarting)
             {
                 ClearLog();
             }

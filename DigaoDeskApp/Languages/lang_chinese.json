@@ -85,6 +85,7 @@
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
   "Config_Apps_MaxLogSize": "最大日志大小（字节）",
+  "Config_Apps_ClearLogWhenStartApp": "Clear previous log when start application",
 
   "Config_Repos_ShellProgram": "外壳程序",
   "Config_Repos_DiffProgram": "差异程序",

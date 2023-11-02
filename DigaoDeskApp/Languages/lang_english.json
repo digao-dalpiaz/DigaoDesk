@@ -85,6 +85,7 @@
   "Config_Apps_NotifyWhenStop": "Notify when application stops",
   "Config_Apps_DontNotifyStopWhenActive": "Do not notify when apps form active",
   "Config_Apps_MaxLogSize": "Maximum log size (bytes)",
+  "Config_Apps_ClearLogWhenStartApp": "Clear previous log when start application",
 
   "Config_Repos_ShellProgram": "Shell program",
   "Config_Repos_DiffProgram": "Diff program",

@@ -71,6 +71,7 @@ namespace DigaoDeskApp
             public bool NotifyAppStops = true;
             public bool DontNotifyWhenAppsActive = false;
             public int MaxLogSize = 25000;
+            public bool ClearLogWhenStartApp = true;
         }
 
         public class CfgRepos
