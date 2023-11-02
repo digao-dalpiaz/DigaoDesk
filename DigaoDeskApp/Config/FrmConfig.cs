@@ -86,6 +86,7 @@ namespace DigaoDeskApp
             ckNotifyWhenAppStops.Text = Vars.Lang.Config_Apps_NotifyWhenStop;
             ckDontNotifyWhenAppsActive.Text = Vars.Lang.Config_Apps_DontNotifyStopWhenActive;
             lbAppsLinesLog.Text = Vars.Lang.Config_Apps_MaxLogSize;
+            ckClearLogWhenStartApp.Text = Vars.Lang.Config_Apps_ClearLogWhenStartApp;
 
             lbShellProgram.Text = Vars.Lang.Config_Repos_ShellProgram;
             lbDiffProgram.Text = Vars.Lang.Config_Repos_DiffProgram;
@@ -137,6 +138,7 @@ namespace DigaoDeskApp
             ckNotifyWhenAppStops.Checked = Vars.Config.Apps.NotifyAppStops;
             ckDontNotifyWhenAppsActive.Checked = Vars.Config.Apps.DontNotifyWhenAppsActive;
             edAppLogMaxSize.Value = Vars.Config.Apps.MaxLogSize;
+            ckClearLogWhenStartApp.Checked = Vars.Config.Apps.ClearLogWhenStartApp;
             //--
 
             //--Repos tab
@@ -224,6 +226,7 @@ namespace DigaoDeskApp
             Vars.Config.Apps.NotifyAppStops = ckNotifyWhenAppStops.Checked;
             Vars.Config.Apps.DontNotifyWhenAppsActive = ckDontNotifyWhenAppsActive.Checked;
             Vars.Config.Apps.MaxLogSize = (int)edAppLogMaxSize.Value;
+            Vars.Config.Apps.ClearLogWhenStartApp = ckClearLogWhenStartApp.Checked;
             //--
 
             //--Repos tab

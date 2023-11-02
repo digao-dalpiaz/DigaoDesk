@@ -85,6 +85,7 @@
   "Config_Apps_NotifyWhenStop": "Notify when application stops",
   "Config_Apps_DontNotifyStopWhenActive": "Do not notify when apps form active",
   "Config_Apps_MaxLogSize": "Maximum log size (bytes)",
+  "Config_Apps_ClearLogWhenStartApp": "Clear previous log when start application",
 
   "Config_Repos_ShellProgram": "Shell program",
   "Config_Repos_DiffProgram": "Diff program",
@@ -329,6 +330,7 @@
   "AppLog_ErrorTerminating": "Error terminating process \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP Port {0} already in use",
   "AppLog_FileNotInPath": "File {0} not found in any PATH environment variable",
+  "AppLog_Restarting": "Restarting process in {0} second(s)",
 
   "AppTerminatedBalloonTitle": "Process stopped",
   "AppTerminatedBalloonMsg": "The application \"{0}\" has stopped!",
@@ -341,6 +343,9 @@
   "AppEditor_Title_New": "New Application",
   "AppEditor_Title_Edit": "Edit Application",
 
+  "AppEditor_TabGeneral": "General",
+  "AppEditor_TabMore": "More",
+
   "AppEditor_AppName": "Application name",
   "AppEditor_CmdLine": "Command line",
   "AppEditor_Arguments": "Arguments",
@@ -348,6 +353,9 @@
   "AppEditor_EnvVars": "Environment variables",
   "AppEditor_EnvVarsInfo": "Format: NAME=VALUE\nNew line: CTRL+ENTER",
   "AppEditor_TcpPort": "TCP Port",
+
+  "AppEditor_AutoRestart": "Restart the application if it stops",
+  "AppEditor_RestartWait": "Wait for restart (seconds)",
 
   "AppEditor_AppNameRequired": "Specify an application name",
   "AppEditor_CmdLineRequired": "Specify an application file path",

@@ -31,6 +31,12 @@ namespace DigaoDeskApp
         [JsonProperty]
         public ushort? TcpPort;
 
+        [JsonProperty]
+        public bool AutoRestart;
+
+        [JsonProperty]
+        public int RestartWait;
+
         public override string ToString()
         {
             return Name;
@@ -145,14 +151,19 @@ namespace DigaoDeskApp
 
         public bool Running;
         private bool _stopping;
+        private bool _stopCalledManually;
+        private bool _keepStartSchedulle;
 
         private Process _process;
 
         public Task monitorTask;
 
-        public void Start()
+        public void Start(bool restarting = false)
         {
-            ClearLog();
+            if (Vars.Config.Apps.ClearLogWhenStartApp && !restarting)
+            {
+                ClearLog();
+            }
 
             EventAudit.Do("Run app " + Name);
 
@@ -169,6 +180,9 @@ namespace DigaoDeskApp
 
         private void InternalStart()
         {
+            _stopCalledManually = false; 
+            _keepStartSchedulle = false;
+
             var si = new ProcessStartInfo();
             if (Cmd.Contains("\\"))
             {
@@ -233,6 +247,25 @@ namespace DigaoDeskApp
                         }));
                     }
                 }
+                
+                if (!_stopCalledManually && AutoRestart)
+                {
+                    Task.Run(() =>
+                    {
+                        AddLog(string.Format(Vars.Lang.AppLog_Restarting, RestartWait), false, true);
+                        _keepStartSchedulle = true;
+                        for (int i = 0; i < RestartWait; i++)
+                        {
+                            Thread.Sleep(1000);
+                            if (!_keepStartSchedulle)
+                            {
+                                Debug.WriteLine("Auto-restart cancelled!");
+                                return; //cancel auto restart
+                            }
+                        }
+                        Start(true);
+                    });
+                }
             };
 
             EventAudit.Do("FileName: " + si.FileName);
@@ -267,6 +300,7 @@ namespace DigaoDeskApp
         {
             if (_stopping) return;
             _stopping = true;
+            _stopCalledManually = true;
 
             AddLog(forced ? Vars.Lang.AppLog_StoppingForced : Vars.Lang.AppLog_Stopping, false, true);
             EventAudit.Do("Stop app " + Name + (forced ? " (FORCED)" : ""));

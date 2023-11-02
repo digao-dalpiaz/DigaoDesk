@@ -90,6 +90,7 @@
         public string Config_Apps_NotifyWhenStop;
         public string Config_Apps_DontNotifyStopWhenActive;
         public string Config_Apps_MaxLogSize;
+        public string Config_Apps_ClearLogWhenStartApp;
 
         public string Config_Repos_ShellProgram;
         public string Config_Repos_DiffProgram;
@@ -334,6 +335,7 @@
         public string AppLog_ErrorTerminating;
         public string AppLog_TcpPortInUse;
         public string AppLog_FileNotInPath;
+        public string AppLog_Restarting;
 
         public string AppTerminatedBalloonTitle;
         public string AppTerminatedBalloonMsg;
@@ -345,6 +347,10 @@
 
         public string AppEditor_Title_New;
         public string AppEditor_Title_Edit;
+
+        public string AppEditor_TabGeneral;
+        public string AppEditor_TabMore;
+
         public string AppEditor_AppName;
         public string AppEditor_CmdLine;
         public string AppEditor_Arguments;
@@ -352,6 +358,9 @@
         public string AppEditor_EnvVars;
         public string AppEditor_EnvVarsInfo;
         public string AppEditor_TcpPort;
+
+        public string AppEditor_AutoRestart;
+        public string AppEditor_RestartWait;
 
         public string AppEditor_AppNameRequired;
         public string AppEditor_CmdLineRequired;

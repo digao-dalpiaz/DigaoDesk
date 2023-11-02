@@ -85,6 +85,7 @@
   "Config_Apps_NotifyWhenStop": "Exibir notificação quando aplicações pararem",
   "Config_Apps_DontNotifyStopWhenActive": "Não exibir a notificação caso a tela de aplicações esteja ativa",
   "Config_Apps_MaxLogSize": "Tamanho máximo de do log (bytes)",
+  "Config_Apps_ClearLogWhenStartApp": "Limpar log anterior ao rodar aplicação",
 
   "Config_Repos_ShellProgram": "Programa de linha de comando",
   "Config_Repos_DiffProgram": "Programa de comparação",
@@ -329,6 +330,7 @@
   "AppLog_ErrorTerminating": "Erro ao terminar processo \"{0}\": {1}",
   "AppLog_TcpPortInUse": "Porta TCP {0} já está em uso",
   "AppLog_FileNotInPath": "Arquivo {0} não encontrado em nenhum diretório na variável de ambiente 'PATH'",
+  "AppLog_Restarting": "Reiniciando processo em {0} segundo(s)",
 
   "AppTerminatedBalloonTitle": "Processo parado",
   "AppTerminatedBalloonMsg": "A aplicação \"{0}\" parou!",
@@ -341,6 +343,9 @@
   "AppEditor_Title_New": "Nova Aplicação",
   "AppEditor_Title_Edit": "Editar Aplicação",
 
+  "AppEditor_TabGeneral": "Geral",
+  "AppEditor_TabMore": "Outros",
+
   "AppEditor_AppName": "Nome da aplicação",
   "AppEditor_CmdLine": "Linha de comando",
   "AppEditor_Arguments": "Argumentos",
@@ -348,6 +353,9 @@
   "AppEditor_EnvVars": "Variáveis de ambiente",
   "AppEditor_EnvVarsInfo": "Formato: NOME=VALOR\nNova linha: CTRL+ENTER",
   "AppEditor_TcpPort": "Porta TCP",
+
+  "AppEditor_AutoRestart": "Reiniciar a aplicação se ela parar",
+  "AppEditor_RestartWait": "Aguardar para reiniciar (segundos)",
 
   "AppEditor_AppNameRequired": "Especifique o nome da aplicação",
   "AppEditor_CmdLineRequired": "Especifique o caminho da aplicação",

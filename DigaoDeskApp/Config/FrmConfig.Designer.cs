@@ -142,6 +142,7 @@ namespace DigaoDeskApp
             edShellProgram=new System.Windows.Forms.TextBox();
             btnOK=new System.Windows.Forms.Button();
             btnCancel=new System.Windows.Forms.Button();
+            ckClearLogWhenStartApp=new System.Windows.Forms.CheckBox();
             pages.SuspendLayout();
             tabGeneral.SuspendLayout();
             tabTheme.SuspendLayout();
@@ -957,6 +958,7 @@ namespace DigaoDeskApp
             // 
             // tabApplications
             // 
+            tabApplications.Controls.Add(ckClearLogWhenStartApp);
             tabApplications.Controls.Add(ckCalcAppResources);
             tabApplications.Controls.Add(edAppLogMaxSize);
             tabApplications.Controls.Add(lbAppsLinesLog);
@@ -974,7 +976,7 @@ namespace DigaoDeskApp
             // ckCalcAppResources
             // 
             ckCalcAppResources.AutoSize=true;
-            ckCalcAppResources.Location=new System.Drawing.Point(24, 24);
+            ckCalcAppResources.Location=new System.Drawing.Point(16, 16);
             ckCalcAppResources.Name="ckCalcAppResources";
             ckCalcAppResources.Size=new System.Drawing.Size(237, 24);
             ckCalcAppResources.TabIndex=0;
@@ -983,18 +985,18 @@ namespace DigaoDeskApp
             // 
             // edAppLogMaxSize
             // 
-            edAppLogMaxSize.Location=new System.Drawing.Point(24, 184);
+            edAppLogMaxSize.Location=new System.Drawing.Point(16, 160);
             edAppLogMaxSize.Maximum=new decimal(new int[] { 1000000, 0, 0, 0 });
             edAppLogMaxSize.Minimum=new decimal(new int[] { 1000, 0, 0, 0 });
             edAppLogMaxSize.Name="edAppLogMaxSize";
-            edAppLogMaxSize.Size=new System.Drawing.Size(150, 27);
+            edAppLogMaxSize.Size=new System.Drawing.Size(184, 27);
             edAppLogMaxSize.TabIndex=3;
             edAppLogMaxSize.Value=new decimal(new int[] { 1000, 0, 0, 0 });
             // 
             // lbAppsLinesLog
             // 
             lbAppsLinesLog.AutoSize=true;
-            lbAppsLinesLog.Location=new System.Drawing.Point(22, 160);
+            lbAppsLinesLog.Location=new System.Drawing.Point(14, 136);
             lbAppsLinesLog.Name="lbAppsLinesLog";
             lbAppsLinesLog.Size=new System.Drawing.Size(130, 20);
             lbAppsLinesLog.TabIndex=12;
@@ -1003,7 +1005,7 @@ namespace DigaoDeskApp
             // ckDontNotifyWhenAppsActive
             // 
             ckDontNotifyWhenAppsActive.AutoSize=true;
-            ckDontNotifyWhenAppsActive.Location=new System.Drawing.Point(48, 112);
+            ckDontNotifyWhenAppsActive.Location=new System.Drawing.Point(40, 88);
             ckDontNotifyWhenAppsActive.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             ckDontNotifyWhenAppsActive.Name="ckDontNotifyWhenAppsActive";
             ckDontNotifyWhenAppsActive.Size=new System.Drawing.Size(273, 24);
@@ -1014,7 +1016,7 @@ namespace DigaoDeskApp
             // ckNotifyWhenAppStops
             // 
             ckNotifyWhenAppStops.AutoSize=true;
-            ckNotifyWhenAppStops.Location=new System.Drawing.Point(24, 80);
+            ckNotifyWhenAppStops.Location=new System.Drawing.Point(16, 56);
             ckNotifyWhenAppStops.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             ckNotifyWhenAppStops.Name="ckNotifyWhenAppStops";
             ckNotifyWhenAppStops.Size=new System.Drawing.Size(229, 24);
@@ -1326,6 +1328,16 @@ namespace DigaoDeskApp
             btnCancel.UseVisualStyleBackColor=true;
             btnCancel.Click+=btnCancel_Click;
             // 
+            // ckClearLogWhenStartApp
+            // 
+            ckClearLogWhenStartApp.AutoSize=true;
+            ckClearLogWhenStartApp.Location=new System.Drawing.Point(16, 208);
+            ckClearLogWhenStartApp.Name="ckClearLogWhenStartApp";
+            ckClearLogWhenStartApp.Size=new System.Drawing.Size(323, 24);
+            ckClearLogWhenStartApp.TabIndex=13;
+            ckClearLogWhenStartApp.Text="Clear previous log when starting application";
+            ckClearLogWhenStartApp.UseVisualStyleBackColor=true;
+            // 
             // FrmConfig
             // 
             AcceptButton=btnOK;
@@ -1478,5 +1490,6 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Button btnDelGitGroup;
         private System.Windows.Forms.Button btnEditGitGroup;
         private System.Windows.Forms.Button btnAddGitGroup;
+        private System.Windows.Forms.CheckBox ckClearLogWhenStartApp;
     }
 }

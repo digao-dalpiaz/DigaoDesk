@@ -85,6 +85,7 @@
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
   "Config_Apps_MaxLogSize": "最大日志大小（字节）",
+  "Config_Apps_ClearLogWhenStartApp": "Clear previous log when start application",
 
   "Config_Repos_ShellProgram": "外壳程序",
   "Config_Repos_DiffProgram": "差异程序",
@@ -329,6 +330,7 @@
   "AppLog_ErrorTerminating": "终止进程错误 \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
   "AppLog_FileNotInPath": "在任何 PATH 环境变量中都找不到文件 {0}",
+  "AppLog_Restarting": "Restarting process in {0} second(s)",
 
   "AppTerminatedBalloonTitle": "进程已停止",
   "AppTerminatedBalloonMsg": "应用程序 \"{0}\" 已停止！",
@@ -341,6 +343,9 @@
   "AppEditor_Title_New": "新建应用程序",
   "AppEditor_Title_Edit": "编辑应用程序",
 
+  "AppEditor_TabGeneral": "General",
+  "AppEditor_TabMore": "More",
+
   "AppEditor_AppName": "应用程序名称",
   "AppEditor_CmdLine": "命令行",
   "AppEditor_Arguments": "参数",
@@ -348,6 +353,9 @@
   "AppEditor_EnvVars": "环境变量",
   "AppEditor_EnvVarsInfo": "格式：NAME=VALUE\n新建行：CTRL+ENTER",
   "AppEditor_TcpPort": "TCP 端口",
+
+  "AppEditor_AutoRestart": "Restart the application if it stops",
+  "AppEditor_RestartWait": "Wait for restart (seconds)",
 
   "AppEditor_AppNameRequired": "指定应用程序名称",
   "AppEditor_CmdLineRequired": "指定应用程序文件路径",

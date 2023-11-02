@@ -21,11 +21,14 @@ namespace DigaoDeskApp
             btnSelDir.Height = edDir.Height;
 
             edTcpPort.Maximum = ushort.MaxValue;
+            edRestartWait.Maximum = int.MaxValue;
         }
 
         private void LoadLang()
         {
             this.Text = Vars.Lang.AppEditor_Title_New;
+            tabGeneral.Text = Vars.Lang.AppEditor_TabGeneral;
+            tabMore.Text = Vars.Lang.AppEditor_TabMore;
             lbName.Text = Vars.Lang.AppEditor_AppName;
             lbCmd.Text = Vars.Lang.AppEditor_CmdLine;
             lbArgs.Text = Vars.Lang.AppEditor_Arguments;
@@ -33,6 +36,8 @@ namespace DigaoDeskApp
             lbEnv.Text = Vars.Lang.AppEditor_EnvVars;
             lbEnvInfo.Text = Vars.Lang.AppEditor_EnvVarsInfo;
             lbTcpPort.Text = Vars.Lang.AppEditor_TcpPort;
+            ckAutoRestart.Text = Vars.Lang.AppEditor_AutoRestart;
+            lbRestartWait.Text = Vars.Lang.AppEditor_RestartWait;
             btnOK.Text = Vars.Lang.BtnOK;
             btnCancel.Text = Vars.Lang.BtnCancel;
         }
@@ -57,6 +62,9 @@ namespace DigaoDeskApp
                 edDir.Text = _app.WorkDir;
                 edEnv.Text = EnvVariablesParser.DictionaryToString(_app.EnvVars);
                 if (_app.TcpPort.HasValue) edTcpPort.Value = _app.TcpPort.Value;
+
+                ckAutoRestart.Checked = _app.AutoRestart;
+                edRestartWait.Value = _app.RestartWait;
             }
         }
 
@@ -116,6 +124,9 @@ namespace DigaoDeskApp
             _app.WorkDir = edDir.Text;
             _app.EnvVars = dic;
             _app.TcpPort = edTcpPort.Text != "" && edTcpPort.Value > 0 ? (ushort)edTcpPort.Value : null;
+
+            _app.AutoRestart = ckAutoRestart.Checked;
+            _app.RestartWait = (int)edRestartWait.Value;
 
             DialogResult = DialogResult.OK;
         }
