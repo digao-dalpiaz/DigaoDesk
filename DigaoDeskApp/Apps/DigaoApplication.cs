@@ -257,7 +257,11 @@ namespace DigaoDeskApp
                         for (int i = 0; i < RestartWait; i++)
                         {
                             Thread.Sleep(1000);
-                            if (!_keepStartSchedulle) return; //cancel auto restart
+                            if (!_keepStartSchedulle)
+                            {
+                                Debug.WriteLine("Auto-restart cancelled!");
+                                return; //cancel auto restart
+                            }
                         }
                         Start(true);
                     });
