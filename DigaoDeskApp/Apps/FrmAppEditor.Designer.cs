@@ -248,6 +248,7 @@ namespace DigaoDeskApp
             pages.SelectedIndex=0;
             pages.Size=new System.Drawing.Size(792, 552);
             pages.TabIndex=0;
+            pages.TabStop=false;
             // 
             // tabGeneral
             // 
