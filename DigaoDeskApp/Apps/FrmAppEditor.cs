@@ -57,6 +57,9 @@ namespace DigaoDeskApp
                 edDir.Text = _app.WorkDir;
                 edEnv.Text = EnvVariablesParser.DictionaryToString(_app.EnvVars);
                 if (_app.TcpPort.HasValue) edTcpPort.Value = _app.TcpPort.Value;
+
+                ckAutoRestart.Checked = _app.AutoRestart;
+                edRestartWait.Value = _app.RestartWait;
             }
         }
 
@@ -116,6 +119,9 @@ namespace DigaoDeskApp
             _app.WorkDir = edDir.Text;
             _app.EnvVars = dic;
             _app.TcpPort = edTcpPort.Text != "" && edTcpPort.Value > 0 ? (ushort)edTcpPort.Value : null;
+
+            _app.AutoRestart = ckAutoRestart.Checked;
+            _app.RestartWait = (int)edRestartWait.Value;
 
             DialogResult = DialogResult.OK;
         }

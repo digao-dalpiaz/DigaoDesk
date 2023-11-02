@@ -48,14 +48,24 @@ namespace DigaoDeskApp
             lbTcpPort=new System.Windows.Forms.Label();
             edTcpPort=new System.Windows.Forms.NumericUpDown();
             btnHelp=new System.Windows.Forms.Button();
+            pages=new System.Windows.Forms.TabControl();
+            tabRestart=new System.Windows.Forms.TabPage();
+            tabPage2=new System.Windows.Forms.TabPage();
+            edRestartWait=new System.Windows.Forms.NumericUpDown();
+            label1=new System.Windows.Forms.Label();
+            ckAutoRestart=new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)edTcpPort).BeginInit();
+            pages.SuspendLayout();
+            tabRestart.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)edRestartWait).BeginInit();
             SuspendLayout();
             // 
             // lbName
             // 
             lbName.AutoSize=true;
             lbName.ForeColor=System.Drawing.Color.Red;
-            lbName.Location=new System.Drawing.Point(16, 21);
+            lbName.Location=new System.Drawing.Point(14, 16);
             lbName.Name="lbName";
             lbName.Size=new System.Drawing.Size(130, 20);
             lbName.TabIndex=0;
@@ -63,18 +73,18 @@ namespace DigaoDeskApp
             // 
             // edName
             // 
-            edName.Location=new System.Drawing.Point(18, 43);
+            edName.Location=new System.Drawing.Point(16, 40);
             edName.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edName.Name="edName";
-            edName.Size=new System.Drawing.Size(622, 27);
+            edName.Size=new System.Drawing.Size(648, 27);
             edName.TabIndex=0;
             // 
             // btnOK
             // 
-            btnOK.Location=new System.Drawing.Point(274, 544);
+            btnOK.Location=new System.Drawing.Point(296, 568);
             btnOK.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnOK.Name="btnOK";
-            btnOK.Size=new System.Drawing.Size(110, 43);
+            btnOK.Size=new System.Drawing.Size(104, 40);
             btnOK.TabIndex=11;
             btnOK.Text="OK";
             btnOK.UseVisualStyleBackColor=true;
@@ -83,10 +93,10 @@ namespace DigaoDeskApp
             // btnCancel
             // 
             btnCancel.DialogResult=System.Windows.Forms.DialogResult.Cancel;
-            btnCancel.Location=new System.Drawing.Point(393, 544);
+            btnCancel.Location=new System.Drawing.Point(408, 568);
             btnCancel.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnCancel.Name="btnCancel";
-            btnCancel.Size=new System.Drawing.Size(110, 43);
+            btnCancel.Size=new System.Drawing.Size(104, 40);
             btnCancel.TabIndex=12;
             btnCancel.Text="Cancel";
             btnCancel.UseVisualStyleBackColor=true;
@@ -95,17 +105,17 @@ namespace DigaoDeskApp
             // 
             edCmd.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             edCmd.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystem;
-            edCmd.Location=new System.Drawing.Point(18, 117);
+            edCmd.Location=new System.Drawing.Point(16, 104);
             edCmd.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edCmd.Name="edCmd";
-            edCmd.Size=new System.Drawing.Size(713, 27);
+            edCmd.Size=new System.Drawing.Size(720, 27);
             edCmd.TabIndex=2;
             // 
             // lbCmd
             // 
             lbCmd.AutoSize=true;
             lbCmd.ForeColor=System.Drawing.Color.Red;
-            lbCmd.Location=new System.Drawing.Point(16, 96);
+            lbCmd.Location=new System.Drawing.Point(14, 80);
             lbCmd.Name="lbCmd";
             lbCmd.Size=new System.Drawing.Size(106, 20);
             lbCmd.TabIndex=4;
@@ -113,16 +123,16 @@ namespace DigaoDeskApp
             // 
             // edArgs
             // 
-            edArgs.Location=new System.Drawing.Point(18, 192);
+            edArgs.Location=new System.Drawing.Point(16, 168);
             edArgs.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edArgs.Name="edArgs";
-            edArgs.Size=new System.Drawing.Size(740, 27);
+            edArgs.Size=new System.Drawing.Size(752, 27);
             edArgs.TabIndex=4;
             // 
             // lbArgs
             // 
             lbArgs.AutoSize=true;
-            lbArgs.Location=new System.Drawing.Point(16, 171);
+            lbArgs.Location=new System.Drawing.Point(14, 144);
             lbArgs.Name="lbArgs";
             lbArgs.Size=new System.Drawing.Size(81, 20);
             lbArgs.TabIndex=6;
@@ -132,16 +142,16 @@ namespace DigaoDeskApp
             // 
             edDir.AutoCompleteMode=System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             edDir.AutoCompleteSource=System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            edDir.Location=new System.Drawing.Point(18, 267);
+            edDir.Location=new System.Drawing.Point(16, 232);
             edDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edDir.Name="edDir";
-            edDir.Size=new System.Drawing.Size(713, 27);
+            edDir.Size=new System.Drawing.Size(720, 27);
             edDir.TabIndex=5;
             // 
             // lbDir
             // 
             lbDir.AutoSize=true;
-            lbDir.Location=new System.Drawing.Point(16, 245);
+            lbDir.Location=new System.Drawing.Point(14, 208);
             lbDir.Name="lbDir";
             lbDir.Size=new System.Drawing.Size(127, 20);
             lbDir.TabIndex=8;
@@ -149,10 +159,10 @@ namespace DigaoDeskApp
             // 
             // btnSelCmd
             // 
-            btnSelCmd.Location=new System.Drawing.Point(731, 117);
+            btnSelCmd.Location=new System.Drawing.Point(736, 104);
             btnSelCmd.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnSelCmd.Name="btnSelCmd";
-            btnSelCmd.Size=new System.Drawing.Size(27, 33);
+            btnSelCmd.Size=new System.Drawing.Size(32, 33);
             btnSelCmd.TabIndex=3;
             btnSelCmd.TabStop=false;
             btnSelCmd.Text="...";
@@ -161,10 +171,10 @@ namespace DigaoDeskApp
             // 
             // btnSelDir
             // 
-            btnSelDir.Location=new System.Drawing.Point(731, 267);
+            btnSelDir.Location=new System.Drawing.Point(736, 232);
             btnSelDir.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnSelDir.Name="btnSelDir";
-            btnSelDir.Size=new System.Drawing.Size(27, 33);
+            btnSelDir.Size=new System.Drawing.Size(32, 34);
             btnSelDir.TabIndex=6;
             btnSelDir.TabStop=false;
             btnSelDir.Text="...";
@@ -174,18 +184,18 @@ namespace DigaoDeskApp
             // edEnv
             // 
             edEnv.Font=new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            edEnv.Location=new System.Drawing.Point(18, 341);
+            edEnv.Location=new System.Drawing.Point(16, 296);
             edEnv.Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             edEnv.Multiline=true;
             edEnv.Name="edEnv";
             edEnv.ScrollBars=System.Windows.Forms.ScrollBars.Vertical;
-            edEnv.Size=new System.Drawing.Size(740, 180);
+            edEnv.Size=new System.Drawing.Size(752, 168);
             edEnv.TabIndex=7;
             // 
             // lbEnv
             // 
             lbEnv.AutoSize=true;
-            lbEnv.Location=new System.Drawing.Point(16, 320);
+            lbEnv.Location=new System.Drawing.Point(14, 272);
             lbEnv.Name="lbEnv";
             lbEnv.Size=new System.Drawing.Size(155, 20);
             lbEnv.TabIndex=14;
@@ -195,7 +205,7 @@ namespace DigaoDeskApp
             // 
             lbEnvInfo.AutoSize=true;
             lbEnvInfo.ForeColor=System.Drawing.Color.Gray;
-            lbEnvInfo.Location=new System.Drawing.Point(18, 533);
+            lbEnvInfo.Location=new System.Drawing.Point(14, 472);
             lbEnvInfo.Name="lbEnvInfo";
             lbEnvInfo.Size=new System.Drawing.Size(165, 40);
             lbEnvInfo.TabIndex=15;
@@ -204,7 +214,7 @@ namespace DigaoDeskApp
             // lbTcpPort
             // 
             lbTcpPort.AutoSize=true;
-            lbTcpPort.Location=new System.Drawing.Point(654, 21);
+            lbTcpPort.Location=new System.Drawing.Point(670, 16);
             lbTcpPort.Name="lbTcpPort";
             lbTcpPort.Size=new System.Drawing.Size(63, 20);
             lbTcpPort.TabIndex=16;
@@ -212,16 +222,16 @@ namespace DigaoDeskApp
             // 
             // edTcpPort
             // 
-            edTcpPort.Location=new System.Drawing.Point(656, 43);
+            edTcpPort.Location=new System.Drawing.Point(672, 40);
             edTcpPort.Name="edTcpPort";
-            edTcpPort.Size=new System.Drawing.Size(104, 27);
+            edTcpPort.Size=new System.Drawing.Size(96, 27);
             edTcpPort.TabIndex=1;
             edTcpPort.TabStop=false;
             // 
             // btnHelp
             // 
             btnHelp.Image=(System.Drawing.Image)resources.GetObject("btnHelp.Image");
-            btnHelp.Location=new System.Drawing.Point(720, 552);
+            btnHelp.Location=new System.Drawing.Point(16, 568);
             btnHelp.Name="btnHelp";
             btnHelp.Size=new System.Drawing.Size(40, 32);
             btnHelp.TabIndex=20;
@@ -229,31 +239,91 @@ namespace DigaoDeskApp
             btnHelp.UseVisualStyleBackColor=true;
             btnHelp.Click+=btnHelp_Click;
             // 
+            // pages
+            // 
+            pages.Controls.Add(tabRestart);
+            pages.Controls.Add(tabPage2);
+            pages.Location=new System.Drawing.Point(8, 8);
+            pages.Name="pages";
+            pages.SelectedIndex=0;
+            pages.Size=new System.Drawing.Size(792, 552);
+            pages.TabIndex=21;
+            // 
+            // tabRestart
+            // 
+            tabRestart.Controls.Add(edEnv);
+            tabRestart.Controls.Add(lbName);
+            tabRestart.Controls.Add(lbEnvInfo);
+            tabRestart.Controls.Add(edTcpPort);
+            tabRestart.Controls.Add(edName);
+            tabRestart.Controls.Add(lbTcpPort);
+            tabRestart.Controls.Add(lbCmd);
+            tabRestart.Controls.Add(edCmd);
+            tabRestart.Controls.Add(lbEnv);
+            tabRestart.Controls.Add(lbArgs);
+            tabRestart.Controls.Add(edArgs);
+            tabRestart.Controls.Add(btnSelDir);
+            tabRestart.Controls.Add(lbDir);
+            tabRestart.Controls.Add(btnSelCmd);
+            tabRestart.Controls.Add(edDir);
+            tabRestart.Location=new System.Drawing.Point(4, 29);
+            tabRestart.Name="tabRestart";
+            tabRestart.Padding=new System.Windows.Forms.Padding(3);
+            tabRestart.Size=new System.Drawing.Size(784, 519);
+            tabRestart.TabIndex=0;
+            tabRestart.Text="tabPage1";
+            tabRestart.UseVisualStyleBackColor=true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(edRestartWait);
+            tabPage2.Controls.Add(label1);
+            tabPage2.Controls.Add(ckAutoRestart);
+            tabPage2.Location=new System.Drawing.Point(4, 29);
+            tabPage2.Name="tabPage2";
+            tabPage2.Padding=new System.Windows.Forms.Padding(3);
+            tabPage2.Size=new System.Drawing.Size(784, 519);
+            tabPage2.TabIndex=1;
+            tabPage2.Text="tabPage2";
+            tabPage2.UseVisualStyleBackColor=true;
+            // 
+            // edRestartWait
+            // 
+            edRestartWait.Location=new System.Drawing.Point(40, 80);
+            edRestartWait.Name="edRestartWait";
+            edRestartWait.Size=new System.Drawing.Size(150, 27);
+            edRestartWait.TabIndex=2;
+            // 
+            // label1
+            // 
+            label1.AutoSize=true;
+            label1.Location=new System.Drawing.Point(32, 56);
+            label1.Name="label1";
+            label1.Size=new System.Drawing.Size(175, 20);
+            label1.TabIndex=1;
+            label1.Text="Wait for restart (seconds)";
+            // 
+            // ckAutoRestart
+            // 
+            ckAutoRestart.AutoSize=true;
+            ckAutoRestart.Location=new System.Drawing.Point(16, 16);
+            ckAutoRestart.Name="ckAutoRestart";
+            ckAutoRestart.Size=new System.Drawing.Size(246, 24);
+            ckAutoRestart.TabIndex=0;
+            ckAutoRestart.Text="Restart the application if it stops";
+            ckAutoRestart.UseVisualStyleBackColor=true;
+            // 
             // FrmAppEditor
             // 
             AcceptButton=btnOK;
             AutoScaleDimensions=new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode=System.Windows.Forms.AutoScaleMode.Font;
             CancelButton=btnCancel;
-            ClientSize=new System.Drawing.Size(778, 604);
+            ClientSize=new System.Drawing.Size(806, 617);
+            Controls.Add(pages);
             Controls.Add(btnHelp);
-            Controls.Add(edTcpPort);
-            Controls.Add(lbTcpPort);
-            Controls.Add(lbEnvInfo);
-            Controls.Add(lbEnv);
-            Controls.Add(edEnv);
-            Controls.Add(btnSelDir);
-            Controls.Add(btnSelCmd);
-            Controls.Add(edDir);
-            Controls.Add(lbDir);
-            Controls.Add(edArgs);
-            Controls.Add(lbArgs);
-            Controls.Add(edCmd);
-            Controls.Add(lbCmd);
             Controls.Add(btnCancel);
             Controls.Add(btnOK);
-            Controls.Add(edName);
-            Controls.Add(lbName);
             FormBorderStyle=System.Windows.Forms.FormBorderStyle.FixedDialog;
             Margin=new System.Windows.Forms.Padding(3, 4, 3, 4);
             MaximizeBox=false;
@@ -264,8 +334,13 @@ namespace DigaoDeskApp
             Text="New Application";
             Load+=FrmAppEditor_Load;
             ((System.ComponentModel.ISupportInitialize)edTcpPort).EndInit();
+            pages.ResumeLayout(false);
+            tabRestart.ResumeLayout(false);
+            tabRestart.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)edRestartWait).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -288,5 +363,11 @@ namespace DigaoDeskApp
         private System.Windows.Forms.Label lbTcpPort;
         private System.Windows.Forms.NumericUpDown edTcpPort;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.TabControl pages;
+        private System.Windows.Forms.TabPage tabRestart;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.CheckBox ckAutoRestart;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown edRestartWait;
     }
 }
