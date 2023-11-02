@@ -49,15 +49,15 @@ namespace DigaoDeskApp
             edTcpPort=new System.Windows.Forms.NumericUpDown();
             btnHelp=new System.Windows.Forms.Button();
             pages=new System.Windows.Forms.TabControl();
-            tabRestart=new System.Windows.Forms.TabPage();
-            tabPage2=new System.Windows.Forms.TabPage();
+            tabGeneral=new System.Windows.Forms.TabPage();
+            tabMore=new System.Windows.Forms.TabPage();
             edRestartWait=new System.Windows.Forms.NumericUpDown();
-            label1=new System.Windows.Forms.Label();
+            lbRestartWait=new System.Windows.Forms.Label();
             ckAutoRestart=new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)edTcpPort).BeginInit();
             pages.SuspendLayout();
-            tabRestart.SuspendLayout();
-            tabPage2.SuspendLayout();
+            tabGeneral.SuspendLayout();
+            tabMore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)edRestartWait).BeginInit();
             SuspendLayout();
             // 
@@ -241,67 +241,67 @@ namespace DigaoDeskApp
             // 
             // pages
             // 
-            pages.Controls.Add(tabRestart);
-            pages.Controls.Add(tabPage2);
+            pages.Controls.Add(tabGeneral);
+            pages.Controls.Add(tabMore);
             pages.Location=new System.Drawing.Point(8, 8);
             pages.Name="pages";
             pages.SelectedIndex=0;
             pages.Size=new System.Drawing.Size(792, 552);
-            pages.TabIndex=21;
+            pages.TabIndex=0;
             // 
-            // tabRestart
+            // tabGeneral
             // 
-            tabRestart.Controls.Add(edEnv);
-            tabRestart.Controls.Add(lbName);
-            tabRestart.Controls.Add(lbEnvInfo);
-            tabRestart.Controls.Add(edTcpPort);
-            tabRestart.Controls.Add(edName);
-            tabRestart.Controls.Add(lbTcpPort);
-            tabRestart.Controls.Add(lbCmd);
-            tabRestart.Controls.Add(edCmd);
-            tabRestart.Controls.Add(lbEnv);
-            tabRestart.Controls.Add(lbArgs);
-            tabRestart.Controls.Add(edArgs);
-            tabRestart.Controls.Add(btnSelDir);
-            tabRestart.Controls.Add(lbDir);
-            tabRestart.Controls.Add(btnSelCmd);
-            tabRestart.Controls.Add(edDir);
-            tabRestart.Location=new System.Drawing.Point(4, 29);
-            tabRestart.Name="tabRestart";
-            tabRestart.Padding=new System.Windows.Forms.Padding(3);
-            tabRestart.Size=new System.Drawing.Size(784, 519);
-            tabRestart.TabIndex=0;
-            tabRestart.Text="tabPage1";
-            tabRestart.UseVisualStyleBackColor=true;
+            tabGeneral.Controls.Add(edEnv);
+            tabGeneral.Controls.Add(lbName);
+            tabGeneral.Controls.Add(lbEnvInfo);
+            tabGeneral.Controls.Add(edTcpPort);
+            tabGeneral.Controls.Add(edName);
+            tabGeneral.Controls.Add(lbTcpPort);
+            tabGeneral.Controls.Add(lbCmd);
+            tabGeneral.Controls.Add(edCmd);
+            tabGeneral.Controls.Add(lbEnv);
+            tabGeneral.Controls.Add(lbArgs);
+            tabGeneral.Controls.Add(edArgs);
+            tabGeneral.Controls.Add(btnSelDir);
+            tabGeneral.Controls.Add(lbDir);
+            tabGeneral.Controls.Add(btnSelCmd);
+            tabGeneral.Controls.Add(edDir);
+            tabGeneral.Location=new System.Drawing.Point(4, 29);
+            tabGeneral.Name="tabGeneral";
+            tabGeneral.Padding=new System.Windows.Forms.Padding(3);
+            tabGeneral.Size=new System.Drawing.Size(784, 519);
+            tabGeneral.TabIndex=0;
+            tabGeneral.Text="General";
+            tabGeneral.UseVisualStyleBackColor=true;
             // 
-            // tabPage2
+            // tabMore
             // 
-            tabPage2.Controls.Add(edRestartWait);
-            tabPage2.Controls.Add(label1);
-            tabPage2.Controls.Add(ckAutoRestart);
-            tabPage2.Location=new System.Drawing.Point(4, 29);
-            tabPage2.Name="tabPage2";
-            tabPage2.Padding=new System.Windows.Forms.Padding(3);
-            tabPage2.Size=new System.Drawing.Size(784, 519);
-            tabPage2.TabIndex=1;
-            tabPage2.Text="tabPage2";
-            tabPage2.UseVisualStyleBackColor=true;
+            tabMore.Controls.Add(edRestartWait);
+            tabMore.Controls.Add(lbRestartWait);
+            tabMore.Controls.Add(ckAutoRestart);
+            tabMore.Location=new System.Drawing.Point(4, 29);
+            tabMore.Name="tabMore";
+            tabMore.Padding=new System.Windows.Forms.Padding(3);
+            tabMore.Size=new System.Drawing.Size(784, 519);
+            tabMore.TabIndex=1;
+            tabMore.Text="More";
+            tabMore.UseVisualStyleBackColor=true;
             // 
             // edRestartWait
             // 
             edRestartWait.Location=new System.Drawing.Point(40, 80);
             edRestartWait.Name="edRestartWait";
-            edRestartWait.Size=new System.Drawing.Size(150, 27);
+            edRestartWait.Size=new System.Drawing.Size(168, 27);
             edRestartWait.TabIndex=2;
             // 
-            // label1
+            // lbRestartWait
             // 
-            label1.AutoSize=true;
-            label1.Location=new System.Drawing.Point(32, 56);
-            label1.Name="label1";
-            label1.Size=new System.Drawing.Size(175, 20);
-            label1.TabIndex=1;
-            label1.Text="Wait for restart (seconds)";
+            lbRestartWait.AutoSize=true;
+            lbRestartWait.Location=new System.Drawing.Point(38, 56);
+            lbRestartWait.Name="lbRestartWait";
+            lbRestartWait.Size=new System.Drawing.Size(175, 20);
+            lbRestartWait.TabIndex=1;
+            lbRestartWait.Text="Wait for restart (seconds)";
             // 
             // ckAutoRestart
             // 
@@ -335,10 +335,10 @@ namespace DigaoDeskApp
             Load+=FrmAppEditor_Load;
             ((System.ComponentModel.ISupportInitialize)edTcpPort).EndInit();
             pages.ResumeLayout(false);
-            tabRestart.ResumeLayout(false);
-            tabRestart.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            tabGeneral.ResumeLayout(false);
+            tabGeneral.PerformLayout();
+            tabMore.ResumeLayout(false);
+            tabMore.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)edRestartWait).EndInit();
             ResumeLayout(false);
         }
@@ -364,10 +364,10 @@ namespace DigaoDeskApp
         private System.Windows.Forms.NumericUpDown edTcpPort;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.TabControl pages;
-        private System.Windows.Forms.TabPage tabRestart;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabGeneral;
+        private System.Windows.Forms.TabPage tabMore;
         private System.Windows.Forms.CheckBox ckAutoRestart;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbRestartWait;
         private System.Windows.Forms.NumericUpDown edRestartWait;
     }
 }

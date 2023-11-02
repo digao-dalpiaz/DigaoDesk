@@ -342,6 +342,9 @@
   "AppEditor_Title_New": "新建应用程序",
   "AppEditor_Title_Edit": "编辑应用程序",
 
+  "AppEditor_TabGeneral": "General",
+  "AppEditor_TabMore": "More",
+
   "AppEditor_AppName": "应用程序名称",
   "AppEditor_CmdLine": "命令行",
   "AppEditor_Arguments": "参数",
@@ -349,6 +352,9 @@
   "AppEditor_EnvVars": "环境变量",
   "AppEditor_EnvVarsInfo": "格式：NAME=VALUE\n新建行：CTRL+ENTER",
   "AppEditor_TcpPort": "TCP 端口",
+
+  "AppEditor_AutoRestart": "Restart the application if it stops",
+  "AppEditor_RestartWait": "Wait for restart (seconds)",
 
   "AppEditor_AppNameRequired": "指定应用程序名称",
   "AppEditor_CmdLineRequired": "指定应用程序文件路径",

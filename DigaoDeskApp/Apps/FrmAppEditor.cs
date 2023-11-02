@@ -26,6 +26,8 @@ namespace DigaoDeskApp
         private void LoadLang()
         {
             this.Text = Vars.Lang.AppEditor_Title_New;
+            tabGeneral.Text = Vars.Lang.AppEditor_TabGeneral;
+            tabMore.Text = Vars.Lang.AppEditor_TabMore;
             lbName.Text = Vars.Lang.AppEditor_AppName;
             lbCmd.Text = Vars.Lang.AppEditor_CmdLine;
             lbArgs.Text = Vars.Lang.AppEditor_Arguments;
@@ -33,6 +35,8 @@ namespace DigaoDeskApp
             lbEnv.Text = Vars.Lang.AppEditor_EnvVars;
             lbEnvInfo.Text = Vars.Lang.AppEditor_EnvVarsInfo;
             lbTcpPort.Text = Vars.Lang.AppEditor_TcpPort;
+            ckAutoRestart.Text = Vars.Lang.AppEditor_AutoRestart;
+            lbRestartWait.Text = Vars.Lang.AppEditor_RestartWait;
             btnOK.Text = Vars.Lang.BtnOK;
             btnCancel.Text = Vars.Lang.BtnCancel;
         }

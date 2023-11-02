@@ -342,6 +342,9 @@
   "AppEditor_Title_New": "New Application",
   "AppEditor_Title_Edit": "Edit Application",
 
+  "AppEditor_TabGeneral": "General",
+  "AppEditor_TabMore": "More",
+
   "AppEditor_AppName": "Application name",
   "AppEditor_CmdLine": "Command line",
   "AppEditor_Arguments": "Arguments",
@@ -349,6 +352,9 @@
   "AppEditor_EnvVars": "Environment variables",
   "AppEditor_EnvVarsInfo": "Format: NAME=VALUE\nNew line: CTRL+ENTER",
   "AppEditor_TcpPort": "TCP Port",
+
+  "AppEditor_AutoRestart": "Restart the application if it stops",
+  "AppEditor_RestartWait": "Wait for restart (seconds)",
 
   "AppEditor_AppNameRequired": "Specify an application name",
   "AppEditor_CmdLineRequired": "Specify an application file path",

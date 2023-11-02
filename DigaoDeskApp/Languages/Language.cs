@@ -346,6 +346,10 @@
 
         public string AppEditor_Title_New;
         public string AppEditor_Title_Edit;
+
+        public string AppEditor_TabGeneral;
+        public string AppEditor_TabMore;
+
         public string AppEditor_AppName;
         public string AppEditor_CmdLine;
         public string AppEditor_Arguments;
@@ -353,6 +357,9 @@
         public string AppEditor_EnvVars;
         public string AppEditor_EnvVarsInfo;
         public string AppEditor_TcpPort;
+
+        public string AppEditor_AutoRestart;
+        public string AppEditor_RestartWait;
 
         public string AppEditor_AppNameRequired;
         public string AppEditor_CmdLineRequired;
