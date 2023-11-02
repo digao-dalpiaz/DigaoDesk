@@ -252,12 +252,12 @@ namespace DigaoDeskApp
                 {
                     Task.Run(() =>
                     {
-                        AddLog(string.Format("Restarting app in {0} second(s)", RestartWait), false);
+                        AddLog(string.Format(Vars.Lang.AppLog_Restarting, RestartWait), false, true);
                         _keepStartSchedulle = true;
                         for (int i = 0; i < RestartWait; i++)
                         {
                             Thread.Sleep(1000);
-                            if (!_keepStartSchedulle) return;
+                            if (!_keepStartSchedulle) return; //cancel auto restart
                         }
                         Start(true);
                     });

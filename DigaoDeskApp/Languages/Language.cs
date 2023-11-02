@@ -335,6 +335,7 @@
         public string AppLog_ErrorTerminating;
         public string AppLog_TcpPortInUse;
         public string AppLog_FileNotInPath;
+        public string AppLog_Restarting;
 
         public string AppTerminatedBalloonTitle;
         public string AppTerminatedBalloonMsg;

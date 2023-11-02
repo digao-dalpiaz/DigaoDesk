@@ -330,6 +330,7 @@
   "AppLog_ErrorTerminating": "Error terminating process \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP Port {0} already in use",
   "AppLog_FileNotInPath": "File {0} not found in any PATH environment variable",
+  "AppLog_Restarting": "Restarting process in {0} second(s)",
 
   "AppTerminatedBalloonTitle": "Process stopped",
   "AppTerminatedBalloonMsg": "The application \"{0}\" has stopped!",

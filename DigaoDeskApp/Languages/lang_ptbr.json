@@ -330,6 +330,7 @@
   "AppLog_ErrorTerminating": "Erro ao terminar processo \"{0}\": {1}",
   "AppLog_TcpPortInUse": "Porta TCP {0} já está em uso",
   "AppLog_FileNotInPath": "Arquivo {0} não encontrado em nenhum diretório na variável de ambiente 'PATH'",
+  "AppLog_Restarting": "Reiniciando processo em {0} segundo(s)",
 
   "AppTerminatedBalloonTitle": "Processo parado",
   "AppTerminatedBalloonMsg": "A aplicação \"{0}\" parou!",

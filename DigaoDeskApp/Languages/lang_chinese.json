@@ -330,6 +330,7 @@
   "AppLog_ErrorTerminating": "终止进程错误 \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
   "AppLog_FileNotInPath": "在任何 PATH 环境变量中都找不到文件 {0}",
+  "AppLog_Restarting": "Restarting process in {0} second(s)",
 
   "AppTerminatedBalloonTitle": "进程已停止",
   "AppTerminatedBalloonMsg": "应用程序 \"{0}\" 已停止！",
