@@ -1,12 +1,9 @@
-﻿using System;
-using System.IO;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     internal class EventAudit
     {
 
-        private static object _lockCtrl = new();
+        private static readonly object _lockCtrl = new();
 
         public static void Do(string info)
         {

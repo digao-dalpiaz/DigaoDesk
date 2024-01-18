@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     class Vars
     {

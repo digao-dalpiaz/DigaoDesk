@@ -1,7 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace DigaoDeskApp
 {
@@ -23,7 +20,7 @@ namespace DigaoDeskApp
             }
             else
             {
-                Vars.AppList = new();
+                Vars.AppList = [];
             }
         }
 

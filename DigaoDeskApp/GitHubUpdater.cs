@@ -1,14 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -75,12 +67,12 @@ namespace DigaoDeskApp
 
         private static void NormalizeVersion(ReleaseInfo info)
         {
-            if (info.tag_name.StartsWith("v")) info.tag_name = info.tag_name.Substring(1);
+            if (info.tag_name.StartsWith('v')) info.tag_name = info.tag_name[1..];
         }
 
         private static string RetrieveNews()
         {
-            List<ReleaseInfo> lstVersionsNews = new();
+            List<ReleaseInfo> lstVersionsNews = [];
             FindVersions(lstVersionsNews);
 
             StringBuilder sb = new();
@@ -102,7 +94,7 @@ namespace DigaoDeskApp
                 page++;
                 string data = GetGitHubAPI(URL_RELEASES + "?per_page=5&page=" + page);
                 var lstInfo = JsonConvert.DeserializeObject<List<ReleaseInfo>>(data);
-                if (!lstInfo.Any()) return; //anything wrong!
+                if (lstInfo.Count == 0) return; //anything wrong!
                 foreach (var version in lstInfo)
                 {
                     NormalizeVersion(version);
@@ -123,11 +115,7 @@ namespace DigaoDeskApp
                 return;
             }
 
-            List<string> args = new();
-            args.Add(Application.ExecutablePath);
-            args.Add(UPDATE_ARG_PARAM);
-
-            Process.Start(Vars.UpdateTmpExe, args);
+            Process.Start(Vars.UpdateTmpExe, [Application.ExecutablePath, UPDATE_ARG_PARAM]);
         }
 
         public static bool CheckForUpdateExe()

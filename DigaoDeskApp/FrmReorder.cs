@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     public partial class FrmReorder : Form
     {

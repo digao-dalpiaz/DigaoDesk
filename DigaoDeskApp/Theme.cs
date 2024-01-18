@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace DigaoDeskApp
 {

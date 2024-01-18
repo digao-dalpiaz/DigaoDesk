@@ -1,13 +1,9 @@
-using System;
-using System.Threading;
-using System.Windows.Forms;
-
 namespace DigaoDeskApp
 {
     static class Program
     {
 
-        static Mutex mutex = new Mutex(true, "DigaoDeskApp");
+        private static readonly Mutex mutex = new(true, "DigaoDeskApp");
 
         /// <summary>
         ///  The main entry point for the application.
@@ -15,12 +11,12 @@ namespace DigaoDeskApp
         [STAThread]
         static void Main()
         {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+
             EventAudit.Do("Starting program in: " + System.AppContext.BaseDirectory);
             EventAudit.Do("Version " + Vars.APP_VERSION);
-
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
             if (GitHubUpdater.CheckForUpdateExe()) return; //returns true when running from temporary path (updating process)
 

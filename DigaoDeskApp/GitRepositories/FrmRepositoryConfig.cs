@@ -1,12 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     public partial class FrmRepositoryConfig : Form
     {
 
-        private RepositoryConfigContents _config;
+        private readonly RepositoryConfigContents _config;
 
         public FrmRepositoryConfig(RepositoryConfigContents config)
         {

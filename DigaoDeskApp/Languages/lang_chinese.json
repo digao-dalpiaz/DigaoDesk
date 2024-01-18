@@ -391,7 +391,6 @@
   "Apps_Col_LogHealth": "日志健康",
   "Apps_Col_TcpStatus": "TCP 状态",
   "Apps_StatusBar_Info": "喝杯咖啡吧！ 我正在处理你的应用程序。",
-  "Apps_StatusBar_Scanning": "正在扫描...",
 
   "Apps_ConfirmDelete": "您确认删除所选的应用程序吗？",
   "Apps_FindNextNotFound": "未找到文本“{0}”！",

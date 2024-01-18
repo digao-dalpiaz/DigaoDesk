@@ -28,459 +28,445 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCommit));
-            this.btnStage = new System.Windows.Forms.Button();
-            this.btnUnstage = new System.Windows.Forms.Button();
-            this.boxTop = new System.Windows.Forms.Panel();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.boxInfo = new System.Windows.Forms.Panel();
-            this.lblbRepository = new System.Windows.Forms.Label();
-            this.lbBranch = new System.Windows.Forms.Label();
-            this.lbRepository = new System.Windows.Forms.Label();
-            this.lblbBranch = new System.Windows.Forms.Label();
-            this.btnCommitAndPush = new System.Windows.Forms.Button();
-            this.btnCommit = new System.Windows.Forms.Button();
-            this.edMessage = new System.Windows.Forms.TextBox();
-            this.lstOther = new System.Windows.Forms.ListBox();
-            this.lstDif = new DigaoDeskApp.CheckedListBoxEx();
-            this.boxTitleUnstaged = new System.Windows.Forms.Panel();
-            this.btnUndoDif = new System.Windows.Forms.Label();
-            this.btnInvertDif = new System.Windows.Forms.Label();
-            this.btnNoneDif = new System.Windows.Forms.Label();
-            this.btnAllDif = new System.Windows.Forms.Label();
-            this.lbCountDif = new System.Windows.Forms.Label();
-            this.lblbCountUnstaged = new System.Windows.Forms.Label();
-            this.lbUnstaged = new System.Windows.Forms.Label();
-            this.splitterLists = new System.Windows.Forms.Splitter();
-            this.lstStaged = new DigaoDeskApp.CheckedListBoxEx();
-            this.boxTitleStaged = new System.Windows.Forms.Panel();
-            this.btnInvertStaged = new System.Windows.Forms.Label();
-            this.btnNoneStaged = new System.Windows.Forms.Label();
-            this.btnAllStaged = new System.Windows.Forms.Label();
-            this.lbCountStaged = new System.Windows.Forms.Label();
-            this.lblbCountStaged = new System.Windows.Forms.Label();
-            this.lbStaged = new System.Windows.Forms.Label();
-            this.images = new System.Windows.Forms.ImageList(this.components);
-            this.boxTop.SuspendLayout();
-            this.boxInfo.SuspendLayout();
-            this.boxTitleUnstaged.SuspendLayout();
-            this.boxTitleStaged.SuspendLayout();
-            this.SuspendLayout();
+            btnStage = new System.Windows.Forms.Button();
+            btnUnstage = new System.Windows.Forms.Button();
+            boxTop = new System.Windows.Forms.Panel();
+            btnRefresh = new System.Windows.Forms.Button();
+            boxInfo = new System.Windows.Forms.Panel();
+            lblbRepository = new System.Windows.Forms.Label();
+            lbBranch = new System.Windows.Forms.Label();
+            lbRepository = new System.Windows.Forms.Label();
+            lblbBranch = new System.Windows.Forms.Label();
+            btnCommitAndPush = new System.Windows.Forms.Button();
+            btnCommit = new System.Windows.Forms.Button();
+            edMessage = new System.Windows.Forms.TextBox();
+            lstOther = new System.Windows.Forms.ListBox();
+            lstDif = new CheckedListBoxEx();
+            boxTitleUnstaged = new System.Windows.Forms.Panel();
+            btnUndoDif = new System.Windows.Forms.Label();
+            btnInvertDif = new System.Windows.Forms.Label();
+            btnNoneDif = new System.Windows.Forms.Label();
+            btnAllDif = new System.Windows.Forms.Label();
+            lbCountDif = new System.Windows.Forms.Label();
+            lblbCountUnstaged = new System.Windows.Forms.Label();
+            lbUnstaged = new System.Windows.Forms.Label();
+            splitterLists = new System.Windows.Forms.Splitter();
+            lstStaged = new CheckedListBoxEx();
+            boxTitleStaged = new System.Windows.Forms.Panel();
+            btnInvertStaged = new System.Windows.Forms.Label();
+            btnNoneStaged = new System.Windows.Forms.Label();
+            btnAllStaged = new System.Windows.Forms.Label();
+            lbCountStaged = new System.Windows.Forms.Label();
+            lblbCountStaged = new System.Windows.Forms.Label();
+            lbStaged = new System.Windows.Forms.Label();
+            boxTop.SuspendLayout();
+            boxInfo.SuspendLayout();
+            boxTitleUnstaged.SuspendLayout();
+            boxTitleStaged.SuspendLayout();
+            SuspendLayout();
             // 
             // btnStage
             // 
-            this.btnStage.Image = ((System.Drawing.Image)(resources.GetObject("btnStage.Image")));
-            this.btnStage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnStage.Location = new System.Drawing.Point(128, 64);
-            this.btnStage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnStage.Name = "btnStage";
-            this.btnStage.Size = new System.Drawing.Size(110, 64);
-            this.btnStage.TabIndex = 2;
-            this.btnStage.TabStop = false;
-            this.btnStage.Text = "Stage";
-            this.btnStage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStage.UseVisualStyleBackColor = true;
-            this.btnStage.Click += new System.EventHandler(this.btnStage_Click);
+            btnStage.Image = (System.Drawing.Image)resources.GetObject("btnStage.Image");
+            btnStage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnStage.Location = new System.Drawing.Point(128, 64);
+            btnStage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnStage.Name = "btnStage";
+            btnStage.Size = new System.Drawing.Size(110, 64);
+            btnStage.TabIndex = 2;
+            btnStage.TabStop = false;
+            btnStage.Text = "Stage";
+            btnStage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnStage.UseVisualStyleBackColor = true;
+            btnStage.Click += btnStage_Click;
             // 
             // btnUnstage
             // 
-            this.btnUnstage.Image = ((System.Drawing.Image)(resources.GetObject("btnUnstage.Image")));
-            this.btnUnstage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUnstage.Location = new System.Drawing.Point(247, 64);
-            this.btnUnstage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnUnstage.Name = "btnUnstage";
-            this.btnUnstage.Size = new System.Drawing.Size(110, 64);
-            this.btnUnstage.TabIndex = 3;
-            this.btnUnstage.TabStop = false;
-            this.btnUnstage.Text = "Unstage";
-            this.btnUnstage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUnstage.UseVisualStyleBackColor = true;
-            this.btnUnstage.Click += new System.EventHandler(this.btnUnstage_Click);
+            btnUnstage.Image = (System.Drawing.Image)resources.GetObject("btnUnstage.Image");
+            btnUnstage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnUnstage.Location = new System.Drawing.Point(247, 64);
+            btnUnstage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnUnstage.Name = "btnUnstage";
+            btnUnstage.Size = new System.Drawing.Size(110, 64);
+            btnUnstage.TabIndex = 3;
+            btnUnstage.TabStop = false;
+            btnUnstage.Text = "Unstage";
+            btnUnstage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnUnstage.UseVisualStyleBackColor = true;
+            btnUnstage.Click += btnUnstage_Click;
             // 
             // boxTop
             // 
-            this.boxTop.Controls.Add(this.btnRefresh);
-            this.boxTop.Controls.Add(this.boxInfo);
-            this.boxTop.Controls.Add(this.btnCommitAndPush);
-            this.boxTop.Controls.Add(this.btnCommit);
-            this.boxTop.Controls.Add(this.edMessage);
-            this.boxTop.Controls.Add(this.btnUnstage);
-            this.boxTop.Controls.Add(this.btnStage);
-            this.boxTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxTop.Location = new System.Drawing.Point(0, 0);
-            this.boxTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxTop.Name = "boxTop";
-            this.boxTop.Size = new System.Drawing.Size(990, 139);
-            this.boxTop.TabIndex = 0;
+            boxTop.Controls.Add(btnRefresh);
+            boxTop.Controls.Add(boxInfo);
+            boxTop.Controls.Add(btnCommitAndPush);
+            boxTop.Controls.Add(btnCommit);
+            boxTop.Controls.Add(edMessage);
+            boxTop.Controls.Add(btnUnstage);
+            boxTop.Controls.Add(btnStage);
+            boxTop.Dock = System.Windows.Forms.DockStyle.Top;
+            boxTop.Location = new System.Drawing.Point(0, 0);
+            boxTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxTop.Name = "boxTop";
+            boxTop.Size = new System.Drawing.Size(990, 139);
+            boxTop.TabIndex = 0;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRefresh.Location = new System.Drawing.Point(9, 64);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(110, 64);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.TabStop = false;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            btnRefresh.Image = (System.Drawing.Image)resources.GetObject("btnRefresh.Image");
+            btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnRefresh.Location = new System.Drawing.Point(9, 64);
+            btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new System.Drawing.Size(110, 64);
+            btnRefresh.TabIndex = 1;
+            btnRefresh.TabStop = false;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // boxInfo
             // 
-            this.boxInfo.BackColor = System.Drawing.SystemColors.Info;
-            this.boxInfo.Controls.Add(this.lblbRepository);
-            this.boxInfo.Controls.Add(this.lbBranch);
-            this.boxInfo.Controls.Add(this.lbRepository);
-            this.boxInfo.Controls.Add(this.lblbBranch);
-            this.boxInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxInfo.Location = new System.Drawing.Point(0, 0);
-            this.boxInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxInfo.Name = "boxInfo";
-            this.boxInfo.Size = new System.Drawing.Size(990, 53);
-            this.boxInfo.TabIndex = 0;
+            boxInfo.BackColor = System.Drawing.SystemColors.Info;
+            boxInfo.Controls.Add(lblbRepository);
+            boxInfo.Controls.Add(lbBranch);
+            boxInfo.Controls.Add(lbRepository);
+            boxInfo.Controls.Add(lblbBranch);
+            boxInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            boxInfo.Location = new System.Drawing.Point(0, 0);
+            boxInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxInfo.Name = "boxInfo";
+            boxInfo.Size = new System.Drawing.Size(990, 53);
+            boxInfo.TabIndex = 0;
             // 
             // lblbRepository
             // 
-            this.lblbRepository.Location = new System.Drawing.Point(9, 3);
-            this.lblbRepository.Name = "lblbRepository";
-            this.lblbRepository.Size = new System.Drawing.Size(91, 20);
-            this.lblbRepository.TabIndex = 5;
-            this.lblbRepository.Text = "Repository:";
-            this.lblbRepository.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            lblbRepository.Location = new System.Drawing.Point(9, 3);
+            lblbRepository.Name = "lblbRepository";
+            lblbRepository.Size = new System.Drawing.Size(91, 20);
+            lblbRepository.TabIndex = 5;
+            lblbRepository.Text = "Repository:";
+            lblbRepository.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lbBranch
             // 
-            this.lbBranch.AutoSize = true;
-            this.lbBranch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbBranch.Location = new System.Drawing.Point(101, 29);
-            this.lbBranch.Name = "lbBranch";
-            this.lbBranch.Size = new System.Drawing.Size(27, 20);
-            this.lbBranch.TabIndex = 8;
-            this.lbBranch.Text = "---";
+            lbBranch.AutoSize = true;
+            lbBranch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            lbBranch.Location = new System.Drawing.Point(101, 29);
+            lbBranch.Name = "lbBranch";
+            lbBranch.Size = new System.Drawing.Size(27, 20);
+            lbBranch.TabIndex = 8;
+            lbBranch.Text = "---";
             // 
             // lbRepository
             // 
-            this.lbRepository.AutoSize = true;
-            this.lbRepository.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbRepository.Location = new System.Drawing.Point(101, 3);
-            this.lbRepository.Name = "lbRepository";
-            this.lbRepository.Size = new System.Drawing.Size(27, 20);
-            this.lbRepository.TabIndex = 6;
-            this.lbRepository.Text = "---";
+            lbRepository.AutoSize = true;
+            lbRepository.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            lbRepository.Location = new System.Drawing.Point(101, 3);
+            lbRepository.Name = "lbRepository";
+            lbRepository.Size = new System.Drawing.Size(27, 20);
+            lbRepository.TabIndex = 6;
+            lbRepository.Text = "---";
             // 
             // lblbBranch
             // 
-            this.lblbBranch.Location = new System.Drawing.Point(9, 29);
-            this.lblbBranch.Name = "lblbBranch";
-            this.lblbBranch.Size = new System.Drawing.Size(91, 20);
-            this.lblbBranch.TabIndex = 7;
-            this.lblbBranch.Text = "Branch:";
-            this.lblbBranch.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            lblbBranch.Location = new System.Drawing.Point(9, 29);
+            lblbBranch.Name = "lblbBranch";
+            lblbBranch.Size = new System.Drawing.Size(91, 20);
+            lblbBranch.TabIndex = 7;
+            lblbBranch.Text = "Branch:";
+            lblbBranch.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnCommitAndPush
             // 
-            this.btnCommitAndPush.Location = new System.Drawing.Point(832, 96);
-            this.btnCommitAndPush.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCommitAndPush.Name = "btnCommitAndPush";
-            this.btnCommitAndPush.Size = new System.Drawing.Size(146, 32);
-            this.btnCommitAndPush.TabIndex = 6;
-            this.btnCommitAndPush.Text = "Commit and Push";
-            this.btnCommitAndPush.UseVisualStyleBackColor = true;
-            this.btnCommitAndPush.Click += new System.EventHandler(this.btnCommit_Click);
+            btnCommitAndPush.Location = new System.Drawing.Point(832, 96);
+            btnCommitAndPush.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCommitAndPush.Name = "btnCommitAndPush";
+            btnCommitAndPush.Size = new System.Drawing.Size(146, 32);
+            btnCommitAndPush.TabIndex = 6;
+            btnCommitAndPush.Text = "Commit and Push";
+            btnCommitAndPush.UseVisualStyleBackColor = true;
+            btnCommitAndPush.Click += btnCommit_Click;
             // 
             // btnCommit
             // 
-            this.btnCommit.Location = new System.Drawing.Point(832, 64);
-            this.btnCommit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(146, 32);
-            this.btnCommit.TabIndex = 5;
-            this.btnCommit.Text = "Commit";
-            this.btnCommit.UseVisualStyleBackColor = true;
-            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+            btnCommit.Location = new System.Drawing.Point(832, 64);
+            btnCommit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnCommit.Name = "btnCommit";
+            btnCommit.Size = new System.Drawing.Size(146, 32);
+            btnCommit.TabIndex = 5;
+            btnCommit.Text = "Commit";
+            btnCommit.UseVisualStyleBackColor = true;
+            btnCommit.Click += btnCommit_Click;
             // 
             // edMessage
             // 
-            this.edMessage.Location = new System.Drawing.Point(366, 64);
-            this.edMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.edMessage.Multiline = true;
-            this.edMessage.Name = "edMessage";
-            this.edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.edMessage.Size = new System.Drawing.Size(457, 63);
-            this.edMessage.TabIndex = 4;
+            edMessage.Location = new System.Drawing.Point(366, 64);
+            edMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            edMessage.Multiline = true;
+            edMessage.Name = "edMessage";
+            edMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            edMessage.Size = new System.Drawing.Size(457, 63);
+            edMessage.TabIndex = 4;
             // 
             // lstOther
             // 
-            this.lstOther.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lstOther.FormattingEnabled = true;
-            this.lstOther.IntegralHeight = false;
-            this.lstOther.ItemHeight = 20;
-            this.lstOther.Location = new System.Drawing.Point(0, 722);
-            this.lstOther.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lstOther.Name = "lstOther";
-            this.lstOther.Size = new System.Drawing.Size(990, 175);
-            this.lstOther.TabIndex = 12;
+            lstOther.Dock = System.Windows.Forms.DockStyle.Bottom;
+            lstOther.FormattingEnabled = true;
+            lstOther.IntegralHeight = false;
+            lstOther.Location = new System.Drawing.Point(0, 722);
+            lstOther.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            lstOther.Name = "lstOther";
+            lstOther.Size = new System.Drawing.Size(990, 175);
+            lstOther.TabIndex = 12;
             // 
             // lstDif
             // 
-            this.lstDif.CheckOnClick = true;
-            this.lstDif.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstDif.FormattingEnabled = true;
-            this.lstDif.IntegralHeight = false;
-            this.lstDif.Location = new System.Drawing.Point(0, 476);
-            this.lstDif.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lstDif.Name = "lstDif";
-            this.lstDif.Size = new System.Drawing.Size(990, 246);
-            this.lstDif.TabIndex = 11;
-            this.lstDif.DoubleClick += new System.EventHandler(this.lstItem_Click);
+            lstDif.CheckOnClick = true;
+            lstDif.Dock = System.Windows.Forms.DockStyle.Fill;
+            lstDif.FormattingEnabled = true;
+            lstDif.IntegralHeight = false;
+            lstDif.Location = new System.Drawing.Point(0, 476);
+            lstDif.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            lstDif.Name = "lstDif";
+            lstDif.Size = new System.Drawing.Size(990, 246);
+            lstDif.TabIndex = 11;
+            lstDif.DoubleClick += lstItem_Click;
             // 
             // boxTitleUnstaged
             // 
-            this.boxTitleUnstaged.BackColor = System.Drawing.Color.Crimson;
-            this.boxTitleUnstaged.Controls.Add(this.btnUndoDif);
-            this.boxTitleUnstaged.Controls.Add(this.btnInvertDif);
-            this.boxTitleUnstaged.Controls.Add(this.btnNoneDif);
-            this.boxTitleUnstaged.Controls.Add(this.btnAllDif);
-            this.boxTitleUnstaged.Controls.Add(this.lbCountDif);
-            this.boxTitleUnstaged.Controls.Add(this.lblbCountUnstaged);
-            this.boxTitleUnstaged.Controls.Add(this.lbUnstaged);
-            this.boxTitleUnstaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxTitleUnstaged.Location = new System.Drawing.Point(0, 444);
-            this.boxTitleUnstaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxTitleUnstaged.Name = "boxTitleUnstaged";
-            this.boxTitleUnstaged.Size = new System.Drawing.Size(990, 32);
-            this.boxTitleUnstaged.TabIndex = 10;
+            boxTitleUnstaged.BackColor = System.Drawing.Color.Crimson;
+            boxTitleUnstaged.Controls.Add(btnUndoDif);
+            boxTitleUnstaged.Controls.Add(btnInvertDif);
+            boxTitleUnstaged.Controls.Add(btnNoneDif);
+            boxTitleUnstaged.Controls.Add(btnAllDif);
+            boxTitleUnstaged.Controls.Add(lbCountDif);
+            boxTitleUnstaged.Controls.Add(lblbCountUnstaged);
+            boxTitleUnstaged.Controls.Add(lbUnstaged);
+            boxTitleUnstaged.Dock = System.Windows.Forms.DockStyle.Top;
+            boxTitleUnstaged.Location = new System.Drawing.Point(0, 444);
+            boxTitleUnstaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxTitleUnstaged.Name = "boxTitleUnstaged";
+            boxTitleUnstaged.Size = new System.Drawing.Size(990, 32);
+            boxTitleUnstaged.TabIndex = 10;
             // 
             // btnUndoDif
             // 
-            this.btnUndoDif.AutoSize = true;
-            this.btnUndoDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUndoDif.ForeColor = System.Drawing.Color.Gold;
-            this.btnUndoDif.Location = new System.Drawing.Point(539, 5);
-            this.btnUndoDif.Name = "btnUndoDif";
-            this.btnUndoDif.Size = new System.Drawing.Size(45, 20);
-            this.btnUndoDif.TabIndex = 9;
-            this.btnUndoDif.Text = "Undo";
-            this.btnUndoDif.Click += new System.EventHandler(this.btnUndoDif_Click);
+            btnUndoDif.AutoSize = true;
+            btnUndoDif.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnUndoDif.ForeColor = System.Drawing.Color.Gold;
+            btnUndoDif.Location = new System.Drawing.Point(539, 5);
+            btnUndoDif.Name = "btnUndoDif";
+            btnUndoDif.Size = new System.Drawing.Size(45, 20);
+            btnUndoDif.TabIndex = 9;
+            btnUndoDif.Text = "Undo";
+            btnUndoDif.Click += btnUndoDif_Click;
             // 
             // btnInvertDif
             // 
-            this.btnInvertDif.AutoSize = true;
-            this.btnInvertDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInvertDif.ForeColor = System.Drawing.Color.Aqua;
-            this.btnInvertDif.Location = new System.Drawing.Point(439, 5);
-            this.btnInvertDif.Name = "btnInvertDif";
-            this.btnInvertDif.Size = new System.Drawing.Size(46, 20);
-            this.btnInvertDif.TabIndex = 8;
-            this.btnInvertDif.Text = "Invert";
-            this.btnInvertDif.Click += new System.EventHandler(this.btnGroupSelection_Click);
+            btnInvertDif.AutoSize = true;
+            btnInvertDif.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnInvertDif.ForeColor = System.Drawing.Color.Aqua;
+            btnInvertDif.Location = new System.Drawing.Point(439, 5);
+            btnInvertDif.Name = "btnInvertDif";
+            btnInvertDif.Size = new System.Drawing.Size(46, 20);
+            btnInvertDif.TabIndex = 8;
+            btnInvertDif.Text = "Invert";
+            btnInvertDif.Click += btnGroupSelection_Click;
             // 
             // btnNoneDif
             // 
-            this.btnNoneDif.AutoSize = true;
-            this.btnNoneDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNoneDif.ForeColor = System.Drawing.Color.Aqua;
-            this.btnNoneDif.Location = new System.Drawing.Point(375, 5);
-            this.btnNoneDif.Name = "btnNoneDif";
-            this.btnNoneDif.Size = new System.Drawing.Size(45, 20);
-            this.btnNoneDif.TabIndex = 7;
-            this.btnNoneDif.Text = "None";
-            this.btnNoneDif.Click += new System.EventHandler(this.btnGroupSelection_Click);
+            btnNoneDif.AutoSize = true;
+            btnNoneDif.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnNoneDif.ForeColor = System.Drawing.Color.Aqua;
+            btnNoneDif.Location = new System.Drawing.Point(375, 5);
+            btnNoneDif.Name = "btnNoneDif";
+            btnNoneDif.Size = new System.Drawing.Size(45, 20);
+            btnNoneDif.TabIndex = 7;
+            btnNoneDif.Text = "None";
+            btnNoneDif.Click += btnGroupSelection_Click;
             // 
             // btnAllDif
             // 
-            this.btnAllDif.AutoSize = true;
-            this.btnAllDif.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAllDif.ForeColor = System.Drawing.Color.Aqua;
-            this.btnAllDif.Location = new System.Drawing.Point(320, 5);
-            this.btnAllDif.Name = "btnAllDif";
-            this.btnAllDif.Size = new System.Drawing.Size(27, 20);
-            this.btnAllDif.TabIndex = 6;
-            this.btnAllDif.Text = "All";
-            this.btnAllDif.Click += new System.EventHandler(this.btnGroupSelection_Click);
+            btnAllDif.AutoSize = true;
+            btnAllDif.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAllDif.ForeColor = System.Drawing.Color.Aqua;
+            btnAllDif.Location = new System.Drawing.Point(320, 5);
+            btnAllDif.Name = "btnAllDif";
+            btnAllDif.Size = new System.Drawing.Size(27, 20);
+            btnAllDif.TabIndex = 6;
+            btnAllDif.Text = "All";
+            btnAllDif.Click += btnGroupSelection_Click;
             // 
             // lbCountDif
             // 
-            this.lbCountDif.AutoSize = true;
-            this.lbCountDif.ForeColor = System.Drawing.Color.White;
-            this.lbCountDif.Location = new System.Drawing.Point(238, 5);
-            this.lbCountDif.Name = "lbCountDif";
-            this.lbCountDif.Size = new System.Drawing.Size(33, 20);
-            this.lbCountDif.TabIndex = 2;
-            this.lbCountDif.Text = "000";
+            lbCountDif.AutoSize = true;
+            lbCountDif.ForeColor = System.Drawing.Color.White;
+            lbCountDif.Location = new System.Drawing.Point(238, 5);
+            lbCountDif.Name = "lbCountDif";
+            lbCountDif.Size = new System.Drawing.Size(33, 20);
+            lbCountDif.TabIndex = 2;
+            lbCountDif.Text = "000";
             // 
             // lblbCountUnstaged
             // 
-            this.lblbCountUnstaged.AutoSize = true;
-            this.lblbCountUnstaged.ForeColor = System.Drawing.Color.White;
-            this.lblbCountUnstaged.Location = new System.Drawing.Point(184, 5);
-            this.lblbCountUnstaged.Name = "lblbCountUnstaged";
-            this.lblbCountUnstaged.Size = new System.Drawing.Size(51, 20);
-            this.lblbCountUnstaged.TabIndex = 1;
-            this.lblbCountUnstaged.Text = "Count:";
+            lblbCountUnstaged.AutoSize = true;
+            lblbCountUnstaged.ForeColor = System.Drawing.Color.White;
+            lblbCountUnstaged.Location = new System.Drawing.Point(184, 5);
+            lblbCountUnstaged.Name = "lblbCountUnstaged";
+            lblbCountUnstaged.Size = new System.Drawing.Size(51, 20);
+            lblbCountUnstaged.TabIndex = 1;
+            lblbCountUnstaged.Text = "Count:";
             // 
             // lbUnstaged
             // 
-            this.lbUnstaged.AutoSize = true;
-            this.lbUnstaged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbUnstaged.ForeColor = System.Drawing.Color.White;
-            this.lbUnstaged.Location = new System.Drawing.Point(9, 5);
-            this.lbUnstaged.Name = "lbUnstaged";
-            this.lbUnstaged.Size = new System.Drawing.Size(111, 20);
-            this.lbUnstaged.TabIndex = 0;
-            this.lbUnstaged.Text = "Unstaged Files";
+            lbUnstaged.AutoSize = true;
+            lbUnstaged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            lbUnstaged.ForeColor = System.Drawing.Color.White;
+            lbUnstaged.Location = new System.Drawing.Point(9, 5);
+            lbUnstaged.Name = "lbUnstaged";
+            lbUnstaged.Size = new System.Drawing.Size(111, 20);
+            lbUnstaged.TabIndex = 0;
+            lbUnstaged.Text = "Unstaged Files";
             // 
             // splitterLists
             // 
-            this.splitterLists.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitterLists.Location = new System.Drawing.Point(0, 436);
-            this.splitterLists.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.splitterLists.Name = "splitterLists";
-            this.splitterLists.Size = new System.Drawing.Size(990, 8);
-            this.splitterLists.TabIndex = 13;
-            this.splitterLists.TabStop = false;
+            splitterLists.Dock = System.Windows.Forms.DockStyle.Top;
+            splitterLists.Location = new System.Drawing.Point(0, 436);
+            splitterLists.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            splitterLists.Name = "splitterLists";
+            splitterLists.Size = new System.Drawing.Size(990, 8);
+            splitterLists.TabIndex = 13;
+            splitterLists.TabStop = false;
             // 
             // lstStaged
             // 
-            this.lstStaged.CheckOnClick = true;
-            this.lstStaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lstStaged.FormattingEnabled = true;
-            this.lstStaged.IntegralHeight = false;
-            this.lstStaged.Location = new System.Drawing.Point(0, 171);
-            this.lstStaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lstStaged.Name = "lstStaged";
-            this.lstStaged.Size = new System.Drawing.Size(990, 265);
-            this.lstStaged.TabIndex = 9;
-            this.lstStaged.DoubleClick += new System.EventHandler(this.lstItem_Click);
+            lstStaged.CheckOnClick = true;
+            lstStaged.Dock = System.Windows.Forms.DockStyle.Top;
+            lstStaged.FormattingEnabled = true;
+            lstStaged.IntegralHeight = false;
+            lstStaged.Location = new System.Drawing.Point(0, 171);
+            lstStaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            lstStaged.Name = "lstStaged";
+            lstStaged.Size = new System.Drawing.Size(990, 265);
+            lstStaged.TabIndex = 9;
+            lstStaged.DoubleClick += lstItem_Click;
             // 
             // boxTitleStaged
             // 
-            this.boxTitleStaged.BackColor = System.Drawing.Color.MediumBlue;
-            this.boxTitleStaged.Controls.Add(this.btnInvertStaged);
-            this.boxTitleStaged.Controls.Add(this.btnNoneStaged);
-            this.boxTitleStaged.Controls.Add(this.btnAllStaged);
-            this.boxTitleStaged.Controls.Add(this.lbCountStaged);
-            this.boxTitleStaged.Controls.Add(this.lblbCountStaged);
-            this.boxTitleStaged.Controls.Add(this.lbStaged);
-            this.boxTitleStaged.Dock = System.Windows.Forms.DockStyle.Top;
-            this.boxTitleStaged.Location = new System.Drawing.Point(0, 139);
-            this.boxTitleStaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.boxTitleStaged.Name = "boxTitleStaged";
-            this.boxTitleStaged.Size = new System.Drawing.Size(990, 32);
-            this.boxTitleStaged.TabIndex = 8;
+            boxTitleStaged.BackColor = System.Drawing.Color.MediumBlue;
+            boxTitleStaged.Controls.Add(btnInvertStaged);
+            boxTitleStaged.Controls.Add(btnNoneStaged);
+            boxTitleStaged.Controls.Add(btnAllStaged);
+            boxTitleStaged.Controls.Add(lbCountStaged);
+            boxTitleStaged.Controls.Add(lblbCountStaged);
+            boxTitleStaged.Controls.Add(lbStaged);
+            boxTitleStaged.Dock = System.Windows.Forms.DockStyle.Top;
+            boxTitleStaged.Location = new System.Drawing.Point(0, 139);
+            boxTitleStaged.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            boxTitleStaged.Name = "boxTitleStaged";
+            boxTitleStaged.Size = new System.Drawing.Size(990, 32);
+            boxTitleStaged.TabIndex = 8;
             // 
             // btnInvertStaged
             // 
-            this.btnInvertStaged.AutoSize = true;
-            this.btnInvertStaged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInvertStaged.ForeColor = System.Drawing.Color.Aqua;
-            this.btnInvertStaged.Location = new System.Drawing.Point(439, 5);
-            this.btnInvertStaged.Name = "btnInvertStaged";
-            this.btnInvertStaged.Size = new System.Drawing.Size(46, 20);
-            this.btnInvertStaged.TabIndex = 5;
-            this.btnInvertStaged.Text = "Invert";
-            this.btnInvertStaged.Click += new System.EventHandler(this.btnGroupSelection_Click);
+            btnInvertStaged.AutoSize = true;
+            btnInvertStaged.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnInvertStaged.ForeColor = System.Drawing.Color.Aqua;
+            btnInvertStaged.Location = new System.Drawing.Point(439, 5);
+            btnInvertStaged.Name = "btnInvertStaged";
+            btnInvertStaged.Size = new System.Drawing.Size(46, 20);
+            btnInvertStaged.TabIndex = 5;
+            btnInvertStaged.Text = "Invert";
+            btnInvertStaged.Click += btnGroupSelection_Click;
             // 
             // btnNoneStaged
             // 
-            this.btnNoneStaged.AutoSize = true;
-            this.btnNoneStaged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNoneStaged.ForeColor = System.Drawing.Color.Aqua;
-            this.btnNoneStaged.Location = new System.Drawing.Point(375, 5);
-            this.btnNoneStaged.Name = "btnNoneStaged";
-            this.btnNoneStaged.Size = new System.Drawing.Size(45, 20);
-            this.btnNoneStaged.TabIndex = 4;
-            this.btnNoneStaged.Text = "None";
-            this.btnNoneStaged.Click += new System.EventHandler(this.btnGroupSelection_Click);
+            btnNoneStaged.AutoSize = true;
+            btnNoneStaged.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnNoneStaged.ForeColor = System.Drawing.Color.Aqua;
+            btnNoneStaged.Location = new System.Drawing.Point(375, 5);
+            btnNoneStaged.Name = "btnNoneStaged";
+            btnNoneStaged.Size = new System.Drawing.Size(45, 20);
+            btnNoneStaged.TabIndex = 4;
+            btnNoneStaged.Text = "None";
+            btnNoneStaged.Click += btnGroupSelection_Click;
             // 
             // btnAllStaged
             // 
-            this.btnAllStaged.AutoSize = true;
-            this.btnAllStaged.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAllStaged.ForeColor = System.Drawing.Color.Aqua;
-            this.btnAllStaged.Location = new System.Drawing.Point(320, 5);
-            this.btnAllStaged.Name = "btnAllStaged";
-            this.btnAllStaged.Size = new System.Drawing.Size(27, 20);
-            this.btnAllStaged.TabIndex = 3;
-            this.btnAllStaged.Text = "All";
-            this.btnAllStaged.Click += new System.EventHandler(this.btnGroupSelection_Click);
+            btnAllStaged.AutoSize = true;
+            btnAllStaged.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAllStaged.ForeColor = System.Drawing.Color.Aqua;
+            btnAllStaged.Location = new System.Drawing.Point(320, 5);
+            btnAllStaged.Name = "btnAllStaged";
+            btnAllStaged.Size = new System.Drawing.Size(27, 20);
+            btnAllStaged.TabIndex = 3;
+            btnAllStaged.Text = "All";
+            btnAllStaged.Click += btnGroupSelection_Click;
             // 
             // lbCountStaged
             // 
-            this.lbCountStaged.AutoSize = true;
-            this.lbCountStaged.ForeColor = System.Drawing.Color.White;
-            this.lbCountStaged.Location = new System.Drawing.Point(238, 5);
-            this.lbCountStaged.Name = "lbCountStaged";
-            this.lbCountStaged.Size = new System.Drawing.Size(33, 20);
-            this.lbCountStaged.TabIndex = 2;
-            this.lbCountStaged.Text = "000";
+            lbCountStaged.AutoSize = true;
+            lbCountStaged.ForeColor = System.Drawing.Color.White;
+            lbCountStaged.Location = new System.Drawing.Point(238, 5);
+            lbCountStaged.Name = "lbCountStaged";
+            lbCountStaged.Size = new System.Drawing.Size(33, 20);
+            lbCountStaged.TabIndex = 2;
+            lbCountStaged.Text = "000";
             // 
             // lblbCountStaged
             // 
-            this.lblbCountStaged.AutoSize = true;
-            this.lblbCountStaged.ForeColor = System.Drawing.Color.White;
-            this.lblbCountStaged.Location = new System.Drawing.Point(184, 5);
-            this.lblbCountStaged.Name = "lblbCountStaged";
-            this.lblbCountStaged.Size = new System.Drawing.Size(51, 20);
-            this.lblbCountStaged.TabIndex = 1;
-            this.lblbCountStaged.Text = "Count:";
+            lblbCountStaged.AutoSize = true;
+            lblbCountStaged.ForeColor = System.Drawing.Color.White;
+            lblbCountStaged.Location = new System.Drawing.Point(184, 5);
+            lblbCountStaged.Name = "lblbCountStaged";
+            lblbCountStaged.Size = new System.Drawing.Size(51, 20);
+            lblbCountStaged.TabIndex = 1;
+            lblbCountStaged.Text = "Count:";
             // 
             // lbStaged
             // 
-            this.lbStaged.AutoSize = true;
-            this.lbStaged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbStaged.ForeColor = System.Drawing.Color.White;
-            this.lbStaged.Location = new System.Drawing.Point(9, 5);
-            this.lbStaged.Name = "lbStaged";
-            this.lbStaged.Size = new System.Drawing.Size(92, 20);
-            this.lbStaged.TabIndex = 0;
-            this.lbStaged.Text = "Staged Files";
-            // 
-            // images
-            // 
-            this.images.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.images.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("images.ImageStream")));
-            this.images.TransparentColor = System.Drawing.Color.Transparent;
-            this.images.Images.SetKeyName(0, "new");
-            this.images.Images.SetKeyName(1, "edit");
-            this.images.Images.SetKeyName(2, "delete");
-            this.images.Images.SetKeyName(3, "rename");
+            lbStaged.AutoSize = true;
+            lbStaged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            lbStaged.ForeColor = System.Drawing.Color.White;
+            lbStaged.Location = new System.Drawing.Point(9, 5);
+            lbStaged.Name = "lbStaged";
+            lbStaged.Size = new System.Drawing.Size(92, 20);
+            lbStaged.TabIndex = 0;
+            lbStaged.Text = "Staged Files";
             // 
             // FrmCommit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 897);
-            this.Controls.Add(this.lstDif);
-            this.Controls.Add(this.boxTitleUnstaged);
-            this.Controls.Add(this.splitterLists);
-            this.Controls.Add(this.lstStaged);
-            this.Controls.Add(this.boxTitleStaged);
-            this.Controls.Add(this.boxTop);
-            this.Controls.Add(this.lstOther);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimizeBox = false;
-            this.Name = "FrmCommit";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Commit";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCommit_FormClosed);
-            this.Load += new System.EventHandler(this.FrmCommit_Load);
-            this.boxTop.ResumeLayout(false);
-            this.boxTop.PerformLayout();
-            this.boxInfo.ResumeLayout(false);
-            this.boxInfo.PerformLayout();
-            this.boxTitleUnstaged.ResumeLayout(false);
-            this.boxTitleUnstaged.PerformLayout();
-            this.boxTitleStaged.ResumeLayout(false);
-            this.boxTitleStaged.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(990, 897);
+            Controls.Add(lstDif);
+            Controls.Add(boxTitleUnstaged);
+            Controls.Add(splitterLists);
+            Controls.Add(lstStaged);
+            Controls.Add(boxTitleStaged);
+            Controls.Add(boxTop);
+            Controls.Add(lstOther);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MinimizeBox = false;
+            Name = "FrmCommit";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Commit";
+            FormClosed += FrmCommit_FormClosed;
+            Load += FrmCommit_Load;
+            boxTop.ResumeLayout(false);
+            boxTop.PerformLayout();
+            boxInfo.ResumeLayout(false);
+            boxInfo.PerformLayout();
+            boxTitleUnstaged.ResumeLayout(false);
+            boxTitleUnstaged.PerformLayout();
+            boxTitleStaged.ResumeLayout(false);
+            boxTitleStaged.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -515,6 +501,5 @@
         private System.Windows.Forms.Label lblbRepository;
         private System.Windows.Forms.Panel boxInfo;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.ImageList images;
     }
 }

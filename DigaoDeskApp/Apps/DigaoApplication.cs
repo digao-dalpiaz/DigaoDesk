@@ -1,11 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -26,7 +20,7 @@ namespace DigaoDeskApp
         public string WorkDir;
 
         [JsonProperty]
-        public Dictionary<string, string> EnvVars = new(); //auto new instance due to new version
+        public Dictionary<string, string> EnvVars = []; //auto new instance due to new version
 
         [JsonProperty]
         public ushort? TcpPort;
@@ -136,7 +130,7 @@ namespace DigaoDeskApp
             public LogType Type;
         }
 
-        public SynchronizedCollection<LogRecord> Logs = new();
+        public SynchronizedCollection<LogRecord> Logs = [];
         private long _logSize;
         public bool PendingLog;
 
@@ -184,7 +178,7 @@ namespace DigaoDeskApp
             _keepStartSchedulle = false;
 
             var si = new ProcessStartInfo();
-            if (Cmd.Contains("\\"))
+            if (Cmd.Contains('\\'))
             {
                 si.FileName = Environment.ExpandEnvironmentVariables(Cmd);
             }
@@ -435,7 +429,7 @@ namespace DigaoDeskApp
 
         public void Analyze()
         {
-            string[] debugArgs = { Name, Guid.NewGuid().ToString() }; 
+            string[] debugArgs = [Name, Guid.NewGuid().ToString()]; 
             Debug.WriteLine("Started Analyse App {0} {1}", debugArgs);
 
             AnalyseResources();
@@ -467,7 +461,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void AnalyzeChildren(Process parent, Resources r)
+        private static void AnalyzeChildren(Process parent, Resources r)
         {
             if (!Utils.IsProcessValid(parent)) return;
             var children = Utils.GetChildProcesses(parent);
@@ -480,7 +474,7 @@ namespace DigaoDeskApp
             SumResources(parent, r);
         }
 
-        private void SumResources(Process p, Resources r)
+        private static void SumResources(Process p, Resources r)
         {
             long mem;
             TimeSpan processorTime;

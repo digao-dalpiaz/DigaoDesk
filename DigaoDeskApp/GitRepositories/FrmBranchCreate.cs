@@ -1,7 +1,4 @@
 ﻿using LibGit2Sharp;
-using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -9,7 +6,7 @@ namespace DigaoDeskApp
     {
 
         private bool _tagsLoaded = false;
-        private Repository _repoCtrl;
+        private readonly Repository _repoCtrl;
         public NewBranchParams ResultParams;
 
         public class NewBranchParams
@@ -21,7 +18,7 @@ namespace DigaoDeskApp
 
         public class TagView
         {
-            Tag _tag;
+            private readonly Tag _tag;
 
             public TagView(Tag tag)
             {
@@ -90,17 +87,17 @@ namespace DigaoDeskApp
                 var text = item.Trim();
                 if (text == string.Empty) continue;
 
-                if (!text.EndsWith("/")) text += "/";
+                if (!text.EndsWith('/')) text += "/";
                 menuPrefix.Items.Add(text, null, OnPrefixClick);
             }
         }
 
         private void OnPrefixClick(object sender, EventArgs e)
         {
-            var i = edName.Text.LastIndexOf("/");
+            var i = edName.Text.LastIndexOf('/');
             if (i != -1)
             {
-                edName.Text = edName.Text.Substring(i + 1);
+                edName.Text = edName.Text[(i + 1)..];
             }
 
             var prefix = (sender as ToolStripItem).Text;

@@ -1,11 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+<!-- 
+IDE0063 'using' statement can be simplified 
+IDE0017 Object initialization can be simplified
+IDE1006 Naming rule violation: These words must begin with upper case characters: nnn
+IDE0290 Use primary constructor
+IDE0079 Remove unnecessary suppression
+IDE0074 Use compound assignment
+IDE0019 Use pattern matching
+SYSLIB1045 Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time
+SYSLIB1054 Mark the method 'nnn' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time
+-->
+
+	<PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>IDE0063,IDE0017,IDE1006,IDE0290,IDE0079,IDE0074,IDE0019,SYSLIB1045,SYSLIB1054</NoWarn>
     <ApplicationIcon>coffee.ico</ApplicationIcon>
-    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,10 +36,10 @@
 
   <ItemGroup>
     <PackageReference Include="Geomatics.IO.BindingListView" Version="1.3.2" />
-    <PackageReference Include="LibGit2Sharp" Version="0.27.2" />
+    <PackageReference Include="LibGit2Sharp" Version="0.29.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="System.Management" Version="7.0.1" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.2" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

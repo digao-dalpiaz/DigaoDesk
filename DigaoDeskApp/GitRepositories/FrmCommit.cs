@@ -1,8 +1,5 @@
-﻿using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using DigaoDeskApp.Properties;
+using LibGit2Sharp;
 
 namespace DigaoDeskApp
 {
@@ -11,8 +8,8 @@ namespace DigaoDeskApp
 
         private const string REGKEY = Vars.APP_REGKEY + @"\Commit";
 
-        private Repository _repository;
-        private CommitService _service;
+        private readonly Repository _repository;
+        private readonly CommitService _service;
 
         private int _itemTextHeight;
 
@@ -90,7 +87,7 @@ namespace DigaoDeskApp
         private void InitListsDrawItem()
         {
             _itemTextHeight = Font.Height;
-            int h = Math.Max(_itemTextHeight, images.ImageSize.Height) + 5;
+            int h = Math.Max(_itemTextHeight, 16) + 5;
             lstStaged.SetItemHeight(h);
             lstDif.SetItemHeight(h);
 
@@ -103,17 +100,17 @@ namespace DigaoDeskApp
             var control = sender as CheckedListBoxEx;
             var item = control.Items[e.Index] as CommitItemView;
 
-            List<int> lstImages = new();
-            if (item.ContainsFlagNew) lstImages.Add(0);
-            if (item.ContainsFlagModified) lstImages.Add(1);
-            if (item.ContainsFlagDeleted) lstImages.Add(2);
-            if (item.ContainsFlagRenamed) lstImages.Add(3);
+            List<Bitmap> lstImages = [];
+            if (item.ContainsFlagNew) lstImages.Add(Resources.commit_new);
+            if (item.ContainsFlagModified) lstImages.Add(Resources.commit_changed);
+            if (item.ContainsFlagDeleted) lstImages.Add(Resources.commit_deleted);
+            if (item.ContainsFlagRenamed) lstImages.Add(Resources.commit_renamed);
 
             int lastX = e.Bounds.X + control.BoxAreaWidth + 4;
-            foreach (var idx in lstImages)
+            foreach (var img in lstImages)
             {
-                images.Draw(e.Graphics, lastX, e.Bounds.Y + ((e.Bounds.Height - images.ImageSize.Height)/2), idx);
-                lastX += images.ImageSize.Width + 4;
+                e.Graphics.DrawImage(img, lastX, e.Bounds.Y + ((e.Bounds.Height - img.Height)/2));
+                lastX += img.Width + 4;
             }
 
             e.Graphics.DrawString(item.DisplayText, control.Font, Brushes.Black, lastX, e.Bounds.Y + ((e.Bounds.Height - _itemTextHeight)/2));
@@ -171,7 +168,7 @@ namespace DigaoDeskApp
             throw new Exception("Invalid control");
         }
 
-        private void GroupSelection(CheckedListBoxEx lst, bool? op)
+        private static void GroupSelection(CheckedListBoxEx lst, bool? op)
         {
             for (int i = 0; i < lst.Items.Count; i++)
             {

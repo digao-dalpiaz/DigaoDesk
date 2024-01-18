@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DigaoDeskApp.Properties;
 
 namespace DigaoDeskApp
 {
@@ -12,7 +6,7 @@ namespace DigaoDeskApp
     {
 
         private int? _lastTrayIndex = null;
-        private WindowsPowerCtrl _powerCtrl = new();
+        private readonly WindowsPowerCtrl _powerCtrl = new();
 
         public FrmMain()
         {
@@ -57,8 +51,8 @@ namespace DigaoDeskApp
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             //force forms close before application terminate, otherwise close event of forms isn't triggered, so customizations are not saved.
-            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.Close();
-            if (Vars.FrmReposObj != null) Vars.FrmReposObj.Close();
+            Vars.FrmAppsObj?.Close();
+            Vars.FrmReposObj?.Close();
 
             GitHubUpdater.CheckForRunTmpUpdateExeOnClosing();
 
@@ -77,7 +71,7 @@ namespace DigaoDeskApp
             miExit.Text = Vars.Lang.MenuExit;
         }
 
-        private void ShowForm<T>(ref T f) where T : Form
+        private static void ShowForm<T>(ref T f) where T : Form
         {
             if (f == null) f = (T)Activator.CreateInstance(typeof(T));
             f.Show();
@@ -123,11 +117,19 @@ namespace DigaoDeskApp
 
             if (idx != _lastTrayIndex)
             {
+                var img = idx switch
+                {
+                    0 => Resources.tray_off,
+                    1 => Resources.tray_on,
+                    2 => Resources.tray_half,
+                    _ => throw new Exception("Invalid tray icon index")
+                };
+
                 EventAudit.Do("Program icon changed to " + idx);
 
                 this.BeginInvoke(new MethodInvoker(() => //using invoke because could be called by thread
                 {
-                    tray.Icon = Icon.FromHandle((images.Images[idx] as Bitmap).GetHicon());
+                    tray.Icon = img;
                     _lastTrayIndex = idx;
                 }));
             }
@@ -155,7 +157,7 @@ namespace DigaoDeskApp
 
             new Task(() =>
             {
-                List<Task> tasks = new();
+                List<Task> tasks = [];
 
                 foreach (var app in Vars.AppList.Where(x => x.Running && x.TcpPort.HasValue))
                 {
@@ -167,7 +169,7 @@ namespace DigaoDeskApp
                     t.Start();
                 }
 
-                Task.WaitAll(tasks.ToArray());
+                Task.WaitAll([.. tasks]);
 
                 this.BeginInvoke(new MethodInvoker(() =>
                 {

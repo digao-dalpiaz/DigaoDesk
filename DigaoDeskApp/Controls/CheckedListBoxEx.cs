@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Reflection;
-using System.Windows.Forms;
+﻿using System.Reflection;
 using System.Windows.Forms.VisualStyles;
 
 namespace DigaoDeskApp
@@ -116,10 +113,7 @@ namespace DigaoDeskApp
             var status = GetItemChecked(e.Index) ? CheckBoxState.CheckedNormal : CheckBoxState.UncheckedNormal;
             var p = new Point(e.Bounds.X + _check.X, e.Bounds.Y + _check.Y);
             CheckBoxRenderer.DrawCheckBox(e.Graphics, p, status);
-            if (CustomDrawItem != null)
-            {
-                CustomDrawItem(this, e);
-            }
+            CustomDrawItem?.Invoke(this, e);
             //e.DrawFocusRectangle();
 
             //base.OnDrawItem(e);

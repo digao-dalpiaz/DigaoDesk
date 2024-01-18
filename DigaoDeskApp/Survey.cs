@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     internal class Survey
     {

@@ -1,9 +1,5 @@
 ﻿using Equin.ApplicationFramework;
 using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -12,9 +8,9 @@ namespace DigaoDeskApp
 
         public Branch ResultBranch;
 
-        private List<BranchSelectorItem> _internalBranchList = new();
+        private readonly List<BranchSelectorItem> _internalBranchList = [];
         private BindingListView<BranchSelectorItem> _gridBind;
-        private bool _useLocation;
+        private readonly bool _useLocation;
 
         public FrmBranchSelector(string title, bool useLocation)
         {
@@ -85,7 +81,7 @@ namespace DigaoDeskApp
             DoFilter();
         }
 
-        private Branch GetBranchByRow(DataGridViewRow row)
+        private static Branch GetBranchByRow(DataGridViewRow row)
         {
             return (row.DataBoundItem as ObjectView<BranchSelectorItem>).Object.GetBranch();
         }

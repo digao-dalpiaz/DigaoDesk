@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+﻿using System.Runtime.InteropServices;
 
 namespace DigaoDeskApp
 {
@@ -15,7 +13,7 @@ namespace DigaoDeskApp
         {
             if (form.WindowState == FormWindowState.Minimized)
             {
-                ShowWindow(form.Handle, SW_RESTORE);
+                _ = ShowWindow(form.Handle, SW_RESTORE);
             }
         }
     }

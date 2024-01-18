@@ -1,8 +1,4 @@
 ﻿using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -11,7 +7,7 @@ namespace DigaoDeskApp
 
         private class CommitView
         {
-            private Commit _commit;
+            private readonly Commit _commit;
 
             public CommitView(Commit commit)
             {
@@ -29,7 +25,7 @@ namespace DigaoDeskApp
             public string DateTime { get { return _commit.Author.When.ToLocalTime().ToString(Vars.DATETIME_FMT); } }
         }
 
-        private Repository _repository;
+        private readonly Repository _repository;
         private Branch _branch;
         private List<CommitView> _lstCommits;
         private BindingSource _gridBind;
@@ -60,9 +56,9 @@ namespace DigaoDeskApp
 
         private void FrmCherryPick_Load(object sender, EventArgs e)
         {
-            _lstCommits = new();
+            _lstCommits = [];
 
-            _gridBind = new();
+            _gridBind = [];
             _gridBind.DataSource = _lstCommits;
 
             g.DataSource = _gridBind;
@@ -151,7 +147,7 @@ namespace DigaoDeskApp
 
             //
 
-            List<CommitView> selectedsCommitView = new();
+            List<CommitView> selectedsCommitView = [];
             foreach (DataGridViewRow row in g.SelectedRows) //SelectedRows contain order accorind to the user selection order
             {
                 selectedsCommitView.Add(row.DataBoundItem as CommitView);

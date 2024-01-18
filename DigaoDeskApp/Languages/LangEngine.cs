@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
 namespace DigaoDeskApp;
 
@@ -8,11 +6,11 @@ internal class LangEngine
 {
     public const string DEFAULT_LANG = "english";
 
-    public static List<Definition> Definitions = new() {
+    public static List<Definition> Definitions = [
         new Definition { Name = "English", Value = "english" },
         new Definition { Name = "Chinese", Value = "chinese" },
         new Definition { Name = "Portuguese Brazil", Value = "ptbr" }
-    };
+    ];
 
     public class Definition
     {

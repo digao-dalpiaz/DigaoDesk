@@ -1,9 +1,5 @@
 ﻿using Equin.ApplicationFramework;
 using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -25,7 +21,7 @@ namespace DigaoDeskApp
 
             public override string ToString()
             {
-                List<string> lst = new();
+                List<string> lst = [];
                 if (DelLocal) lst.Add(Vars.Lang.BranchDelete_DeleteLocal);
                 if (DelRemote) lst.Add(Vars.Lang.BranchDelete_DeleteRemote);
 
@@ -33,9 +29,9 @@ namespace DigaoDeskApp
             }
         }
 
-        private Repository _repository;
+        private readonly Repository _repository;
 
-        private List<BranchSelectorItem> _internalBranchList = new();
+        private readonly List<BranchSelectorItem> _internalBranchList = [];
         private BindingListView<BranchSelectorItem> _gridBind;
 
         public FrmBranchDelete(Repository repository)
@@ -112,7 +108,7 @@ namespace DigaoDeskApp
             });
         }
 
-        private Branch GetBranchByRow(DataGridViewRow row)
+        private static Branch GetBranchByRow(DataGridViewRow row)
         {
             return (row.DataBoundItem as ObjectView<BranchSelectorItem>).Object.GetBranch();
         }

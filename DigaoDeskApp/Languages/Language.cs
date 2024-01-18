@@ -396,7 +396,6 @@
         public string Apps_Col_LogHealth;
         public string Apps_Col_TcpStatus;
         public string Apps_StatusBar_Info;
-        public string Apps_StatusBar_Scanning;
 
         public string Apps_ConfirmDelete;
         public string Apps_FindNextNotFound;
