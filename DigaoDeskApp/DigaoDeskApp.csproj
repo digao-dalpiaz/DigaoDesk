@@ -12,7 +12,7 @@ SYSLIB1045 Use 'GeneratedRegexAttribute' to generate the regular expression impl
 SYSLIB1054 Mark the method 'nnn' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time
 -->
 
-	<PropertyGroup>
+  <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>disable</Nullable>
@@ -20,6 +20,7 @@ SYSLIB1054 Mark the method 'nnn' with 'LibraryImportAttribute' instead of 'DllIm
     <ImplicitUsings>enable</ImplicitUsings>
     <NoWarn>IDE0063,IDE0017,IDE1006,IDE0290,IDE0079,IDE0074,IDE0019,SYSLIB1045,SYSLIB1054</NoWarn>
     <ApplicationIcon>coffee.ico</ApplicationIcon>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
