@@ -1,6 +1,4 @@
 ﻿using LibGit2Sharp;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace DigaoDeskApp
 {
@@ -28,7 +26,7 @@ namespace DigaoDeskApp
 
         public string GetPathOrOld()
         {
-            return OldPath != null ? OldPath : Path;
+            return OldPath ?? Path;
         }
 
         public bool ContainsFlagNew { get { return LstStatus.Any(x => x == FileStatus.NewInIndex || x == FileStatus.NewInWorkdir); } }

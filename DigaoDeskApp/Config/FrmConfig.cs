@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 
 namespace DigaoDeskApp
 {
     public partial class FrmConfig : Form
     {
 
-        private FontDialog _dlgFont;
+        private readonly FontDialog _dlgFont;
 
         private List<Config.CfgGitGroup> _gitGroups;
         private BindingList<Config.CfgGitGroup> _bindGitGroups;
@@ -142,7 +137,7 @@ namespace DigaoDeskApp
             //--
 
             //--Repos tab
-            _gitGroups = new();
+            _gitGroups = [];
             foreach (var item in Vars.Config.Repos.GitGroups)
             {
                 _gitGroups.Add(item.Clone());
@@ -200,8 +195,8 @@ namespace DigaoDeskApp
 
             SaveSettings();
 
-            if (Vars.FrmAppsObj != null) Vars.FrmAppsObj.LoadConfig();
-            if (Vars.FrmReposObj != null) Vars.FrmReposObj.LoadConfig();
+            Vars.FrmAppsObj?.LoadConfig();
+            Vars.FrmReposObj?.LoadConfig();
 
             this.Close();
         }
@@ -263,7 +258,7 @@ namespace DigaoDeskApp
             DoSelColor((Button)sender);
         }
 
-        private void DoSelColor(Button btn)
+        private static void DoSelColor(Button btn)
         {
             ColorDialog dlg = new();
 
@@ -274,7 +269,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private void SetButtonColor(Button btn, Color color)
+        private static void SetButtonColor(Button btn, Color color)
         {
             btn.BackColor = color;
             btn.ForeColor = Utils.GetNegativeColor(color);
@@ -318,7 +313,7 @@ namespace DigaoDeskApp
 
                 string controlName = "btnColor" + f.Name;
                 var lstFind = tabTheme.Controls.Find(controlName, true);
-                if (!lstFind.Any()) throw new Exception(string.Format("Control {0} not found", controlName));
+                if (lstFind.Length==0) throw new Exception(string.Format("Control {0} not found", controlName));
 
                 var btn = (Button)lstFind.First();
 

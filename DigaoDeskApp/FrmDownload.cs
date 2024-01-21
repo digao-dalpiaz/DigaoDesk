@@ -1,18 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Windows.Forms;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     public partial class FrmDownload : Form
     {
 
         private const bool TESTING_MODE = false;
 
-        private GitHubUpdater.ReleaseInfo _releaseInfo;
-        private GitHubUpdater.ReleaseAssetInfo _assetInfo;
+        private readonly GitHubUpdater.ReleaseInfo _releaseInfo;
+        private readonly GitHubUpdater.ReleaseAssetInfo _assetInfo;
 
         public FrmDownload(GitHubUpdater.ReleaseInfo releaseInfo, string news)
         {
@@ -48,7 +42,7 @@ namespace DigaoDeskApp
 
         private GitHubUpdater.ReleaseAssetInfo GetAsset()
         {
-            if (_releaseInfo.assets != null && _releaseInfo.assets.Any())
+            if (_releaseInfo.assets != null && _releaseInfo.assets.Count > 0)
             {
                 GitHubUpdater.ReleaseAssetInfo asset = _releaseInfo.assets[0];
                 if (asset.browser_download_url.EndsWith(".exe"))
@@ -116,7 +110,9 @@ namespace DigaoDeskApp
                 stm.CopyTo(fileStream);
             }
 
+#pragma warning disable CS0162 // Unreachable code detected
             if (TESTING_MODE) File.Copy(Application.ExecutablePath, tmpExe, true);
+#pragma warning restore CS0162 // Unreachable code detected
 
             Vars.UpdateTmpExe = tmpExe;
         }

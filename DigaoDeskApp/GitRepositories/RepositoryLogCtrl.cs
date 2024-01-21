@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Text;
 
 namespace DigaoDeskApp
 {
@@ -39,25 +33,17 @@ namespace DigaoDeskApp
 
         public static Color LogHighlightTypeToColor(LogHighlightType type)
         {
-            switch (type)
+            return type switch
             {
-                case LogHighlightType.NORMAL:
-                    return Vars.Config.Theme.RepoLogNormal;
-                case LogHighlightType.ALERT:
-                    return Vars.Config.Theme.RepoLogAlert;
-                case LogHighlightType.ERROR:
-                    return Vars.Config.Theme.RepoLogError;
-                case LogHighlightType.TITLE:
-                    return Vars.Config.Theme.RepoLogTitle;
-                case LogHighlightType.AGG_PROCESSING:
-                    return Vars.Config.Theme.RepoLogAggProcessing;
-                case LogHighlightType.PROCESSING:
-                    return Vars.Config.Theme.RepoLogProcessing;
-                case LogHighlightType.DONE:
-                    return Vars.Config.Theme.RepoLogDone;
-                default:
-                    throw new Exception("Invalid Log Highlight type");
-            }
+                LogHighlightType.NORMAL => Vars.Config.Theme.RepoLogNormal,
+                LogHighlightType.ALERT => Vars.Config.Theme.RepoLogAlert,
+                LogHighlightType.ERROR => Vars.Config.Theme.RepoLogError,
+                LogHighlightType.TITLE => Vars.Config.Theme.RepoLogTitle,
+                LogHighlightType.AGG_PROCESSING => Vars.Config.Theme.RepoLogAggProcessing,
+                LogHighlightType.PROCESSING => Vars.Config.Theme.RepoLogProcessing,
+                LogHighlightType.DONE => Vars.Config.Theme.RepoLogDone,
+                _ => throw new Exception("Invalid Log Highlight type"),
+            };
         }
 
         public static string GetTimestampPrefix()
@@ -70,10 +56,10 @@ namespace DigaoDeskApp
     public class RepositoryLogCtrl
     {
         public RichTextBoxEx EdControl;
-        public List<LogGroup> Groups = new();
+        public List<LogGroup> Groups = [];
 
-        public object LockGroupsCtrl = new object();
-        public object LockFileCtrl = new object();
+        public object LockGroupsCtrl = new();
+        public object LockFileCtrl = new();
 
         public RepositoryLogCtrl(RichTextBoxEx ed)
         {
@@ -123,7 +109,7 @@ namespace DigaoDeskApp
 
         public void ClearLog()
         {
-            if (Groups.Any()) throw new Exception("Trying to clear log with cached groups");
+            if (Groups.Count > 0) throw new Exception("Trying to clear log with cached groups");
 
             EdControl.Clear();
         }
@@ -137,7 +123,7 @@ namespace DigaoDeskApp
 
         public readonly Guid Ident = Guid.NewGuid();
 
-        private List<LogPart[]> _lines = new();
+        private readonly List<LogPart[]> _lines = [];
 
         public void Log(LogPart[] parts)
         {
@@ -160,7 +146,7 @@ namespace DigaoDeskApp
                         //ed.SelectionColor = Color.White;
                         //ed.SelectedText = Ident.ToString() + " > ";
 
-                        if (parts.Any())
+                        if (parts.Length > 0)
                         {
                             if (Vars.Config.Theme.ShowTimestamp)
                             {
@@ -198,20 +184,20 @@ namespace DigaoDeskApp
 
         public void Log()
         {
-            Log(new LogPart[] { });
+            Log([]);
         }
 
         public void Log(string text, LogHighlightType type)
         {
-            Log(new LogPart[] { new LogPart(text, LogUtils.LogHighlightTypeToColor(type), type == LogHighlightType.TITLE) });
+            Log([new(text, LogUtils.LogHighlightTypeToColor(type), type == LogHighlightType.TITLE)]);
         }
 
         public void LogLabel(string label, string value)
         {
-            Log(new LogPart[] {
-                new LogPart(label + ": ", Vars.Config.Theme.RepoLogLabelCaption),
-                new LogPart(value, Vars.Config.Theme.RepoLogLabelValue)
-            });
+            Log([
+                new(label + ": ", Vars.Config.Theme.RepoLogLabelCaption),
+                new(value, Vars.Config.Theme.RepoLogLabelValue)
+            ]);
         }
 
         public void Save(string logFile)
@@ -221,7 +207,7 @@ namespace DigaoDeskApp
             foreach (var line in _lines)
             {
                 string info = null;
-                if (line.Any())
+                if (line.Length > 0)
                 {
                     info = LogUtils.GetTimestampPrefix() + string.Join(null, line.Select(x => x.Text));
                 }

@@ -1,8 +1,5 @@
-﻿using Equin.ApplicationFramework;
-using System;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
+﻿using DigaoDeskApp.Properties;
+using Equin.ApplicationFramework;
 
 namespace DigaoDeskApp
 {
@@ -58,7 +55,6 @@ namespace DigaoDeskApp
             colTcpStatus.HeaderText = Vars.Lang.Apps_Col_TcpStatus;
 
             stFunInfo.Text = Vars.Lang.Apps_StatusBar_Info;
-            stMonitoring.Text = Vars.Lang.Apps_StatusBar_Scanning;
         }
 
         private void FrmApps_Load(object sender, EventArgs e)
@@ -129,7 +125,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private DigaoApplication GetAppByRow(DataGridViewRow row)
+        private static DigaoApplication GetAppByRow(DataGridViewRow row)
         {
             return (row.DataBoundItem as ObjectView<DigaoApplication>).Object;
         }
@@ -297,7 +293,7 @@ namespace DigaoDeskApp
             btnStop.Enabled = selAndRunning;
             btnStopForced.Enabled = selAndRunning;
 
-            var hasLog = selected && app.Logs.Any();
+            var hasLog = selected && app.Logs.Count > 0;
             btnFindLog.Enabled = hasLog;
             btnClearLog.Enabled = hasLog;
 
@@ -344,7 +340,7 @@ namespace DigaoDeskApp
 
         private void AddRemainingLog(DigaoApplication app)
         {
-            if (!app.Logs.Any() || _lastLogRecord == app.Logs.Last()) return; //everything already sync
+            if (app.Logs.Count==0 || _lastLogRecord == app.Logs.Last()) return; //everything already sync
 
             var alreadyBottom = edLog.SelectionStart == edLog.TextLength;
 
@@ -388,23 +384,17 @@ namespace DigaoDeskApp
             app.PendingLog = false;
         }
 
-        private Color LogTypeToColor(DigaoApplication.LogType type)
+        private static Color LogTypeToColor(DigaoApplication.LogType type)
         {
-            switch (type)
+            return type switch
             {
-                case DigaoApplication.LogType.INFO:
-                    return Vars.Config.Theme.AppLogNormal;
-                case DigaoApplication.LogType.ERROR:
-                    return Vars.Config.Theme.AppLogError;
-                case DigaoApplication.LogType.DYN_WARN:
-                    return Vars.Config.Theme.AppLogDynWarn;
-                case DigaoApplication.LogType.DYN_ERROR:
-                    return Vars.Config.Theme.AppLogDynError;
-                case DigaoApplication.LogType.STOP:
-                    return Vars.Config.Theme.AppLogStop;
-                default:
-                    throw new Exception("Log type invalid");
-            }
+                DigaoApplication.LogType.INFO => Vars.Config.Theme.AppLogNormal,
+                DigaoApplication.LogType.ERROR => Vars.Config.Theme.AppLogError,
+                DigaoApplication.LogType.DYN_WARN => Vars.Config.Theme.AppLogDynWarn,
+                DigaoApplication.LogType.DYN_ERROR => Vars.Config.Theme.AppLogDynError,
+                DigaoApplication.LogType.STOP => Vars.Config.Theme.AppLogStop,
+                _ => throw new Exception("Log type invalid"),
+            };
         }
 
         public bool FindInLog(bool fromCurrentPos)
@@ -445,32 +435,32 @@ namespace DigaoDeskApp
             var col = g.Columns[e.ColumnIndex];
             var app = GetAppByRow(g.Rows[e.RowIndex]);
 
-            int? imageIndex = null;
+            Bitmap img = null;
 
             if (Utils.IsSameGridColumn(col, colStatus))
             {
-                imageIndex = app.Running ? 0 : 1;
+                img = app.Running ? Resources.app_grid_running : Resources.app_grid_stopped;
             }
             else if (Utils.IsSameGridColumn(col, colLogHealth))
             {
-                if (app.LogHealth != null) imageIndex = app.LogHealth == "OK" ? 2 : 3;
+                if (app.LogHealth != null) img = app.LogHealth == "OK" ? Resources.app_grid_ok : Resources.app_grid_error;
             }
             else if (Utils.IsSameGridColumn(col, colTcpStatus))
             {
-                if (app.TcpStatus != null) imageIndex = app.TcpStatus == "UP" ? 4 : 5;
+                if (app.TcpStatus != null) img = app.TcpStatus == "UP" ? Resources.app_grid_on: Resources.app_grid_off;
             }
             else if (Utils.IsSameGridColumn(col, colLastLogTime))
             {
-                imageIndex = app.PendingLog ? 6 : 7;
+                img = app.PendingLog ? Resources.app_grid_unread : Resources.app_grid_read;
             }
 
-            if (imageIndex.HasValue)
+            if (img != null)
             {
                 e.PaintBackground(e.ClipBounds, true);
                 e.Graphics.DrawString(Convert.ToString(e.FormattedValue),
                     e.CellStyle.Font, new SolidBrush(e.State.HasFlag(DataGridViewElementStates.Selected) ? e.CellStyle.SelectionForeColor : e.CellStyle.ForeColor),
                     e.CellBounds.X + 20, e.CellBounds.Y + ((e.CellBounds.Height - e.CellStyle.Font.Height) / 2));
-                Utils.DrawGridImage(images, e, imageIndex.Value);
+                Utils.DrawGridImage(img, e);
                 e.Handled = true;
             }
         }
@@ -482,8 +472,7 @@ namespace DigaoDeskApp
 
         private void btnDownloadDefs_Click(object sender, EventArgs e)
         {
-            DefinitionsDownload dd = new();
-            if (dd.DoDownloadDialog())
+            if (DefinitionsDownload.DoDownloadDialog())
             {
                 ReloadGrid();
             }

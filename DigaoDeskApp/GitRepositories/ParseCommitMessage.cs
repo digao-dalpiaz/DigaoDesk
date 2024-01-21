@@ -1,6 +1,4 @@
 ﻿using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
 
 namespace DigaoDeskApp
 {
@@ -13,25 +11,25 @@ namespace DigaoDeskApp
             public Func<string> Function;
         }
 
-        private List<Token> _tokens;        
+        private readonly List<Token> _tokens;        
 
-        private Repository _repository;
+        private readonly Repository _repository;
 
         public ParseCommitMessage(Repository repository)
         {
             this._repository = repository;
 
-            _tokens = new()
-            {
+            _tokens =
+            [
                 new Token { Name = "branch", Function = GetBranch }
-            };
+            ];
         }
 
         private string GetBranch()
         {
             var branchName = _repository.Head.FriendlyName;
-            var x = branchName.LastIndexOf("/");
-            if (x > -1) branchName = branchName.Substring(x + 1);
+            var x = branchName.LastIndexOf('/');
+            if (x > -1) branchName = branchName[(x + 1)..];
 
             return branchName;
         }

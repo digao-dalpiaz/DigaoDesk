@@ -1,17 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.IO.Compression;
-using System.Net.Http;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
     internal class DefinitionsDownload
     {
 
-        public bool DoDownloadDialog()
+        public static bool DoDownloadDialog()
         {
             FrmDownloadDefs f = new();
             if (f.ShowDialog() == DialogResult.OK)
@@ -30,7 +25,7 @@ namespace DigaoDeskApp
             return false;
         }
 
-        private void DoDownload(string url)
+        private static void DoDownload(string url)
         {
             var AppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "DigaoDesk");
             if (!Directory.Exists(AppDataDir))

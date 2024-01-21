@@ -5,7 +5,7 @@ namespace DigaoDeskApp
     internal class BranchSelectorItem
     {
 
-        private Branch _branch;
+        private readonly Branch _branch;
 
         public BranchSelectorItem(Branch branch)
         {

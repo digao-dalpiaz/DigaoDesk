@@ -1,8 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 
 namespace DigaoDeskApp
 {
@@ -161,7 +157,7 @@ namespace DigaoDeskApp
             if (Vars.Config.Theme == null) Vars.Config.Theme = new();
             if (Vars.Config.Apps == null) Vars.Config.Apps = new();
             if (Vars.Config.Repos == null) Vars.Config.Repos = new();
-            if (Vars.Config.Repos.GitGroups == null) Vars.Config.Repos.GitGroups = new();
+            if (Vars.Config.Repos.GitGroups == null) Vars.Config.Repos.GitGroups = [];
         }
 
         public void Save()

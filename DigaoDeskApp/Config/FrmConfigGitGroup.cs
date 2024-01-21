@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     public partial class FrmConfigGitGroup : Form
     {

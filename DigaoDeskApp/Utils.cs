@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Management;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Drawing;
 using System.Text.RegularExpressions;
 
 namespace DigaoDeskApp
@@ -75,9 +69,9 @@ namespace DigaoDeskApp
             public int length;
             public int flags;
             public ShowWindowCommands showCmd;
-            public System.Drawing.Point ptMinPosition;
-            public System.Drawing.Point ptMaxPosition;
-            public System.Drawing.Rectangle rcNormalPosition;
+            public Point ptMinPosition;
+            public Point ptMaxPosition;
+            public Rectangle rcNormalPosition;
         }
 
         internal enum ShowWindowCommands : int
@@ -137,11 +131,11 @@ namespace DigaoDeskApp
         public static List<Process> GetChildProcesses(Process parent)
         {
             var query = "Select ProcessId From Win32_Process Where ParentProcessId = " + parent.Id;
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+            ManagementObjectSearcher searcher = new(query);
             ManagementObjectCollection processList = searcher.Get();
 
-            List<Process> ret = new();
-            foreach (ManagementObject mo in processList)
+            List<Process> ret = [];
+            foreach (ManagementBaseObject mo in processList)
             {
                 var pid = Convert.ToInt32(mo.GetPropertyValue("ProcessId"));
                 Process proc;
@@ -235,8 +229,10 @@ namespace DigaoDeskApp
             {
                 if (stream == null) throw new Exception(string.Format("Resouce '{0}' not found", fullResName));
 
-                using (StreamReader reader = new StreamReader(stream))
+                using (StreamReader reader = new(stream))
+                {
                     return reader.ReadToEnd();
+                }
             }
         }
 
@@ -262,11 +258,11 @@ namespace DigaoDeskApp
 
         //-----------------------------------------------------------------
 
-        public static void DrawGridImage(ImageList images, DataGridViewCellPaintingEventArgs e, int imageIndex, bool right = false)
+        public static void DrawGridImage(Bitmap image, DataGridViewCellPaintingEventArgs e, bool right = false)
         {
-            images.Draw(e.Graphics, 
-                right ? e.CellBounds.Right-3-images.ImageSize.Width : e.CellBounds.X+3, 
-                e.CellBounds.Y + ((e.CellBounds.Height - images.ImageSize.Height) / 2), imageIndex);
+            e.Graphics.DrawImage(image,            
+                right ? e.CellBounds.Right-3-image.Width : e.CellBounds.X+3, 
+                e.CellBounds.Y + ((e.CellBounds.Height - image.Height) / 2));
         }
 
         public static void SetGridDoubleBuffer(DataGridView g)

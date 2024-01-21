@@ -391,7 +391,6 @@
   "Apps_Col_LogHealth": "Saúde do log",
   "Apps_Col_TcpStatus": "Status TCP",
   "Apps_StatusBar_Info": "Pode ir tomar um café! Estou cuidando de suas aplicações.",
-  "Apps_StatusBar_Scanning": "Monitorando...",
 
   "Apps_ConfirmDelete": "Tem certeza de que deseja excluir a aplicação selecionada?",
   "Apps_FindNextNotFound": "Texto '{0}' não encontrado!",

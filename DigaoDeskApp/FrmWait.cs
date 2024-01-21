@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     public partial class FrmWait : Form
     {

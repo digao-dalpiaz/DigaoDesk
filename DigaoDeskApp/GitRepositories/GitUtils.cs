@@ -1,6 +1,4 @@
 ﻿using LibGit2Sharp;
-using System;
-using System.IO;
 
 namespace DigaoDeskApp
 {
@@ -43,41 +41,25 @@ namespace DigaoDeskApp
                 throw new Exception("Invalid remote branch name: " + remoteBranchName);
             }
 
-            return remoteBranchName.Substring(PREFIX.Length);
+            return remoteBranchName[PREFIX.Length..];
         }
 
         public static string GetFileStatusAsString(FileStatus s)
         {
-            switch (s)
+            return s switch
             {
-                case FileStatus.Nonexistent:
-                    return "Non-existent";
-                case FileStatus.Unaltered:
-                    return "Unaltered";
-                case FileStatus.NewInIndex:
-                case FileStatus.NewInWorkdir:
-                    return "New";
-                case FileStatus.ModifiedInIndex:
-                case FileStatus.ModifiedInWorkdir:
-                    return "Modified";
-                case FileStatus.DeletedFromIndex:
-                case FileStatus.DeletedFromWorkdir:
-                    return "Deleted";
-                case FileStatus.RenamedInIndex:
-                case FileStatus.RenamedInWorkdir:
-                    return "Renamed";
-                case FileStatus.TypeChangeInIndex:
-                case FileStatus.TypeChangeInWorkdir:
-                    return "Type change";
-                case FileStatus.Unreadable:
-                    return "Unreadable";
-                case FileStatus.Ignored:
-                    return "Ignored";
-                case FileStatus.Conflicted:
-                    return "Conflicted";
-                default:
-                    throw new Exception("Invalid git file status");
-            }
+                FileStatus.Nonexistent => "Non-existent",
+                FileStatus.Unaltered => "Unaltered",
+                FileStatus.NewInIndex or FileStatus.NewInWorkdir => "New",
+                FileStatus.ModifiedInIndex or FileStatus.ModifiedInWorkdir => "Modified",
+                FileStatus.DeletedFromIndex or FileStatus.DeletedFromWorkdir => "Deleted",
+                FileStatus.RenamedInIndex or FileStatus.RenamedInWorkdir => "Renamed",
+                FileStatus.TypeChangeInIndex or FileStatus.TypeChangeInWorkdir => "Type change",
+                FileStatus.Unreadable => "Unreadable",
+                FileStatus.Ignored => "Ignored",
+                FileStatus.Conflicted => "Conflicted",
+                _ => throw new Exception("Invalid git file status"),
+            };
         }
 
         public static bool IsGitFolder(string path)

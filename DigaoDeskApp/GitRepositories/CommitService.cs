@@ -1,10 +1,5 @@
 ﻿using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -30,16 +25,16 @@ namespace DigaoDeskApp
             FileStatus.TypeChangeInWorkdir |
             FileStatus.RenamedInWorkdir;
 
-        private Repository _repository;
+        private readonly Repository _repository;
 
         public CommitService(Repository repository)
         {
             this._repository = repository;
         }
 
-        private List<FileStatus> MountListOfFileStatus(FileStatus agregatedFileStatus)
+        private static List<FileStatus> MountListOfFileStatus(FileStatus agregatedFileStatus)
         {
-            List<FileStatus> lst = new();
+            List<FileStatus> lst = [];
 
             foreach (FileStatus s in Enum.GetValues(typeof(FileStatus)))
             {
@@ -68,9 +63,9 @@ namespace DigaoDeskApp
             {
                 var flags = MountListOfFileStatus(item.State);
 
-                List<FileStatus> flagsStaged = new();
-                List<FileStatus> flagsUnstaged = new();
-                List<FileStatus> flagsOther = new();
+                List<FileStatus> flagsStaged = [];
+                List<FileStatus> flagsUnstaged = [];
+                List<FileStatus> flagsOther = [];
 
                 foreach (var s in flags)
                 {
@@ -91,9 +86,9 @@ namespace DigaoDeskApp
                     }
                 }
 
-                if (flagsStaged.Any()) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new CommitItemView(item.FilePath, item.HeadToIndexRenameDetails, flagsStaged, null), true));
-                if (flagsUnstaged.Any()) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new CommitItemView(item.FilePath, /*item.IndexToWorkDirRenameDetails*/null, flagsUnstaged, flagsStaged.Any()), true));
-                if (flagsOther.Any()) lstOther.Items.Add(new CommitItemView(item.FilePath, null, flagsOther, null));
+                if (flagsStaged.Count > 0) lstStaged.SurroundAllowingCheck(() => lstStaged.Items.Add(new CommitItemView(item.FilePath, item.HeadToIndexRenameDetails, flagsStaged, null), true));
+                if (flagsUnstaged.Count > 0) lstDif.SurroundAllowingCheck(() => lstDif.Items.Add(new CommitItemView(item.FilePath, /*item.IndexToWorkDirRenameDetails*/null, flagsUnstaged, flagsStaged.Count > 0), true));
+                if (flagsOther.Count > 0) lstOther.Items.Add(new CommitItemView(item.FilePath, null, flagsOther, null));
             }
         }
 
@@ -186,12 +181,12 @@ namespace DigaoDeskApp
             return _repository.Lookup<Blob>(indexEntry.Id);
         }
 
-        private string GetTempFileNameByPath(string path, string prefix)
+        private static string GetTempFileNameByPath(string path, string prefix)
         {
             return Path.GetTempFileName() + "_" + prefix + "_" + Path.GetFileName(path);
         }
 
-        private void SaveBlobToFile(Blob blob, string filePath)
+        private static void SaveBlobToFile(Blob blob, string filePath)
         {
             FilteringOptions fo = new(""); //ensure correct CR/LF between Unix and Win
             Stream stmSource = blob.GetContentStream(fo);
@@ -202,7 +197,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private string GetNullFile()
+        private static string GetNullFile()
         {
             string tmpFile = Path.GetTempFileName();
             string tmpFileFinal = tmpFile + "_null";
@@ -211,7 +206,7 @@ namespace DigaoDeskApp
             return tmpFileFinal;
         }
 
-        private void OpenDiff(string pathOld, string pathNew)
+        private static void OpenDiff(string pathOld, string pathNew)
         {
             if (string.IsNullOrEmpty(Vars.Config.Repos.DiffProgram))
             {

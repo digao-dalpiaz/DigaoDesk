@@ -1,11 +1,6 @@
-﻿using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
+﻿using DigaoDeskApp.Properties;
+using LibGit2Sharp;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -17,7 +12,7 @@ namespace DigaoDeskApp
         private Config.CfgGitGroup _gitGroup;
 
         private List<DigaoRepository> _repos;
-        private BindingSource _gridBind;
+        private readonly BindingSource _gridBind;
 
         public RepositoryLogCtrl Log;
 
@@ -32,7 +27,7 @@ namespace DigaoDeskApp
 
             g.AutoGenerateColumns = false;
 
-            _gridBind = new();
+            _gridBind = [];
             g.DataSource = _gridBind;
 
             Log = new(edLog);
@@ -55,7 +50,7 @@ namespace DigaoDeskApp
 
             BuildShellCustomCommands();
 
-            if (Vars.Config.Repos.GitGroups.Any())
+            if (Vars.Config.Repos.GitGroups.Count > 0)
             {
                 BuildGroupMenu();
                 if (!string.IsNullOrEmpty(lastGroup))
@@ -180,14 +175,14 @@ namespace DigaoDeskApp
                 cmd.Cmd = parts.Length > 1 ? parts[1] : parts[0];
                 cmd.Parameters = parts.Length > 2 ? parts[2] : null;
 
-                var menuItem = btnShell.DropDownItems.Add(parts[0], images24.Images[1], btnShellCustomItem_Click);
+                var menuItem = btnShell.DropDownItems.Add(parts[0], Resources.repos_custom_command, btnShellCustomItem_Click);
                 menuItem.ImageScaling = ToolStripItemImageScaling.None;
                 menuItem.Tag = cmd;
             }
 
             if (btnShell.DropDownItems.Count > 0)
             {
-                ToolStripMenuItem menuItem = new(Vars.Lang.Repos_BtnShell, images24.Images[0], btnShell_Click);
+                ToolStripMenuItem menuItem = new(Vars.Lang.Repos_BtnShell, Resources.repos_command, btnShell_Click);
                 menuItem.ImageScaling = ToolStripItemImageScaling.None;
                 btnShell.DropDownItems.Insert(0, menuItem);
                 btnShell.DropDownItems.Insert(1, new ToolStripSeparator());
@@ -198,7 +193,7 @@ namespace DigaoDeskApp
         {
             foreach (var item in Vars.Config.Repos.GitGroups)
             {
-                var menuItem = menuGroup.DropDownItems.Add(item.Ident, images24.Images[2], btnItemGroup_Click);
+                var menuItem = menuGroup.DropDownItems.Add(item.Ident, Resources.repos_group_item, btnItemGroup_Click);
                 menuItem.ImageScaling = ToolStripItemImageScaling.None;
                 menuItem.Tag = item;
             }
@@ -216,7 +211,7 @@ namespace DigaoDeskApp
         {
             _gridBind.DataSource = null;
 
-            _repos = new();
+            _repos = [];
 
             menuGroup.Text = _gitGroup.Ident;
 
@@ -230,7 +225,7 @@ namespace DigaoDeskApp
 
                     var realReposList = Directory.GetDirectories(dir).Where(x => GitUtils.IsGitFolder(x)).Select(x => Path.GetFileName(x)).ToList();
 
-                    if (!realReposList.Any()) Messages.ThrowMsg(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
+                    if (realReposList.Count==0) Messages.ThrowMsg(string.Format(Vars.Lang.Repos_GitFolderNoneRepositories, dir));
 
                     //Add repositories by stored order
                     var lstConfigItems = new RepositoriesStore(_gitGroup).Load();
@@ -253,7 +248,7 @@ namespace DigaoDeskApp
                 {
                     stRepositories.Text = string.Format(Vars.Lang.Repos_StatusBar_Repositories, _repos.Count);
 
-                    if (!_repos.Any()) UpdateButtons(); //prevent buttons enabled if no git repositories
+                    if (_repos.Count==0) UpdateButtons(); //prevent buttons enabled if no git repositories
                 }
             }
             catch (Messages.MessageException exMsg)
@@ -338,7 +333,7 @@ namespace DigaoDeskApp
                 e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
                 if (GetRepositoryOfRow(g.Rows[e.RowIndex]).DoingBackgroundTask)
                 {
-                    Utils.DrawGridImage(images, e, 2, true);
+                    Utils.DrawGridImage(Resources.repos_grid_wait, e, true);
                 }
 
                 e.Handled = true;
@@ -348,7 +343,7 @@ namespace DigaoDeskApp
                 if (e.Value != null)
                 {
                     e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
-                    Utils.DrawGridImage(images, e, Utils.IsSameGridColumn(col, colUp) ? 0 : 1);
+                    Utils.DrawGridImage(Utils.IsSameGridColumn(col, colUp) ? Resources.repos_grid_up : Resources.repos_grid_down, e);
 
                     e.Handled = true;
                 }
@@ -428,7 +423,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private DigaoRepository GetRepositoryOfRow(DataGridViewRow row)
+        private static DigaoRepository GetRepositoryOfRow(DataGridViewRow row)
         {
             return row.DataBoundItem as DigaoRepository;
         }

@@ -1,12 +1,5 @@
 ﻿using LibGit2Sharp;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DigaoDeskApp
 {
@@ -21,13 +14,13 @@ namespace DigaoDeskApp
             //CheckoutNotifyFlags.Untracked |
             CheckoutNotifyFlags.Updated;
 
-        private Config.CfgGitGroup _gitGroup;
-        private string _path;
+        private readonly Config.CfgGitGroup _gitGroup;
+        private readonly string _path;
         public Repository _repoCtrl;
 
         public RepositoryConfigContents Config;
 
-        private RepositoryLogCtrl Log
+        private static RepositoryLogCtrl Log
         {
             get
             {
@@ -35,7 +28,7 @@ namespace DigaoDeskApp
             }
         }
 
-        private string _name;
+        private readonly string _name;
         public string Name
         {
             get
@@ -204,7 +197,7 @@ namespace DigaoDeskApp
                 {
                     var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(_repoCtrl.Head.Tip, masterBranch.Tip);
 
-                    List<string> props = new();
+                    List<string> props = [];
 
                     if (divergence.AheadBy.Value > 0) props.Add(string.Format(Vars.Lang.Repos_AheadFormat, divergence.AheadBy.Value));
                     if (divergence.BehindBy.Value > 0) props.Add(string.Format(Vars.Lang.Repos_BehindFormat, divergence.BehindBy.Value));
@@ -220,28 +213,25 @@ namespace DigaoDeskApp
             if (branch.IsTracking && branch.TrackedBranch.Tip == null)
             {
                 _repoCtrl.Branches.Update(branch, b => b.TrackedBranch = null);
-                if (_logGroup != null) //if using Auto Fetch, modals trigger fetch without task running
-                {
-                    _logGroup.Log(string.Format(Vars.Lang.Repos_BranchNoLongerTracked, branch.FriendlyName), LogHighlightType.ALERT);
-                }
+                _logGroup?.Log(string.Format(Vars.Lang.Repos_BranchNoLongerTracked, branch.FriendlyName), LogHighlightType.ALERT); //if using Auto Fetch, modals trigger fetch without task running
             }
         }
 
         private string GetOtherBranchesDifs()
         {
-            List<string> difs = new();
+            List<string> difs = [];
 
             foreach (var item in _repoCtrl.Branches.Where(x => !x.IsRemote && x.IsTracking && !x.IsCurrentRepositoryHead))
             {
                 if (item.TrackedBranch.Tip == null) continue;
                 var divergence = _repoCtrl.ObjectDatabase.CalculateHistoryDivergence(item.Tip, item.TrackedBranch.Tip);
 
-                List<string> props = new();
+                List<string> props = [];
 
                 if (divergence.AheadBy > 0) props.Add(string.Format(Vars.Lang.BranchDivergenceUp, divergence.AheadBy));
                 if (divergence.BehindBy > 0) props.Add(string.Format(Vars.Lang.BranchDivergenceDown, divergence.BehindBy));
 
-                if (props.Any())
+                if (props.Count > 0)
                 {
                     difs.Add(item.FriendlyName + $" ({string.Join(", ", props)})");
                 }
@@ -339,14 +329,14 @@ namespace DigaoDeskApp
                 colorFlag = Vars.Config.Theme.RepoLogStatusNone;
             }
 
-            _logGroup.Log(new LogPart[] { 
-                new LogPart($"[{notify.ToString()}] ", colorFlag), 
-                new LogPart(path, Vars.Config.Theme.RepoLogNormal) 
-            });
+            _logGroup.Log([ 
+                new($"[{notify}] ", colorFlag), 
+                new(path, Vars.Config.Theme.RepoLogNormal) 
+            ]);
             return true;
         }
 
-        private Credentials OnCredentialsProvider(string url, string usernameFromUrl, SupportedCredentialTypes types)
+        private UsernamePasswordCredentials OnCredentialsProvider(string url, string usernameFromUrl, SupportedCredentialTypes types)
         {
             if (string.IsNullOrEmpty(_gitGroup.CredUsername)) return null;
 
@@ -471,9 +461,9 @@ namespace DigaoDeskApp
                 default:
                     throw new Exception("Unknown merge result status");
             }
-            _logGroup.Log(new LogPart[] {
-                new LogPart(msg, color)
-            });
+            _logGroup.Log([
+                new(msg, color)
+            ]);
         }
 
         public void SwitchBranch()
@@ -646,9 +636,7 @@ namespace DigaoDeskApp
         {
             DoCommand(Vars.Lang.LogSync, () =>
             {
-                var masterBranch = _repoCtrl.Branches[Config.MasterBranch];
-                if (masterBranch == null) throw new Exception(Vars.Lang.SyncBranch_MasterBranchNotFound);
-
+                var masterBranch = _repoCtrl.Branches[Config.MasterBranch] ?? throw new Exception(Vars.Lang.SyncBranch_MasterBranchNotFound);
                 if (Vars.Config.Repos.GitAutoFetch && masterBranch.IsRemote)
                 {
                     _logGroup.Log(Vars.Lang.LogFetching, LogHighlightType.AGG_PROCESSING);

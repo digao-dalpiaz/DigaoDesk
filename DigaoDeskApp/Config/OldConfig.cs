@@ -1,8 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System;
-
-namespace DigaoDeskApp
+﻿namespace DigaoDeskApp
 {
     public class OldConfig
     {
@@ -29,7 +25,7 @@ namespace DigaoDeskApp
         public void ConvertToNew(Config config)
         {
             config.Repos = new();
-            config.Repos.GitGroups = new();
+            config.Repos.GitGroups = [];
 
             config.Repos.ShellProgram = ShellProgram;
             config.Repos.DiffProgram = DiffProgram;
@@ -60,7 +56,7 @@ namespace DigaoDeskApp
 
         public static void ConvertOldFiles(Config config)
         {
-            if (config.Repos.GitGroups.Any())
+            if (config.Repos.GitGroups.Count > 0)
             {
                 string dir = AppDomain.CurrentDomain.BaseDirectory;
 
