@@ -48,7 +48,7 @@ There is another function available in tray menu, allowing you to manage your gi
 
 # Installation
 
-1. Download and install [.NET 6 Desktop Runtime x64](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+1. Download and install [.NET 8 Desktop Runtime x64](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 2. Download last Digao Desk release (.exe) from [here](https://github.com/digao-dalpiaz/DigaoDesk/releases/latest)
 
@@ -135,7 +135,7 @@ When creating an Personal Access Token, you will receive an authentication hash.
 
 # Requirements
 
-This app needs .NET 6 Desktop Runtime x64.
+This app needs .NET 8 Desktop Runtime x64.
 
 # Limitations
 
