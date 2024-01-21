@@ -288,7 +288,8 @@ namespace DigaoDeskApp
 
             foreach (var r in _repos)
             {
-                if (!r._repoCtrl.Config.Get<bool>(CFG_AUTOCRLF).Value)
+                var cfg = r._repoCtrl.Config.Get<bool>(CFG_AUTOCRLF);
+                if (cfg == null || !cfg.Value)
                 {
                     r._repoCtrl.Config.Set(CFG_AUTOCRLF, true);
                     Log.FastLog(g => g.Log(string.Format(Vars.Lang.Repos_CRLFEnabled, r.Name), LogHighlightType.ALERT));
