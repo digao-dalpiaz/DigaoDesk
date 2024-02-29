@@ -126,12 +126,21 @@ When creating an App Password, you will receive an authentication hash. So, just
 
 ## GitHub Authentication
 
-To use repositories with GitHub authentication, simply create an Personal Access Token in GitHub Developer Settings.
+To use repositories with GitHub authentication, simply create a Personal Access Token in GitHub Developer Settings.
 
-When creating an Personal Access Token, you will receive an authentication hash. So, just configure the Digao Desk as follows:
+When creating a Personal Access Token, you will receive an authentication hash. So, just configure the Digao Desk as follows:
 
 - Login = GitHub account email
 - Password = GitHub personal access token hash
+
+## Azure Authentication
+
+To use repositories with Azure authentication, simply create a Personal Access Token in Azure User Settings.
+
+When creating a Personal Access Token, you will receive an authentication hash. So, just configure the Digao Desk as follows:
+
+- Login = Azure username
+- Password = Azure personal access token hash
 
 # Requirements
 
