@@ -447,7 +447,7 @@ namespace DigaoDeskApp
             }
             else if (Utils.IsSameGridColumn(col, colTcpStatus))
             {
-                if (app.TcpStatus != null) img = app.TcpStatus == "UP" ? Resources.app_grid_on: Resources.app_grid_off;
+                if (app.TcpStatus != null) img = app.TcpOnline ? Resources.app_grid_on: Resources.app_grid_off;
             }
             else if (Utils.IsSameGridColumn(col, colLastLogTime))
             {

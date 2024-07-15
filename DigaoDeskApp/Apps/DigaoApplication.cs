@@ -107,7 +107,7 @@ namespace DigaoDeskApp
             {
                 if (Running && TcpPort.HasValue)
                 {
-                    return TcpOnline ? "UP" : "DOWN";
+                    return (TcpOnline ? "UP" : "DOWN") + " [" + TcpPort + "]";
                 }
 
                 return null;
