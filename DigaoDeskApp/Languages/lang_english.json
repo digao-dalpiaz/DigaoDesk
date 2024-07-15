@@ -87,6 +87,7 @@
   "Config_Apps_MaxLogSize": "Maximum log size (bytes)",
   "Config_Apps_ClearLogWhenStartApp": "Clear previous log when start application",
 
+  "Config_Repos_RestartWndRemember": "Reload the Repositories screen to ensure the settings are applied",
   "Config_Repos_ShellProgram": "Shell program",
   "Config_Repos_DiffProgram": "Diff program",
   "Config_Repos_DiffProgramArgs": "Arguments",

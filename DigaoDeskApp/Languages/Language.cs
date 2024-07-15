@@ -92,6 +92,7 @@
         public string Config_Apps_MaxLogSize;
         public string Config_Apps_ClearLogWhenStartApp;
 
+        public string Config_Repos_RestartWndRemember;
         public string Config_Repos_ShellProgram;
         public string Config_Repos_DiffProgram;
         public string Config_Repos_DiffProgramArgs;

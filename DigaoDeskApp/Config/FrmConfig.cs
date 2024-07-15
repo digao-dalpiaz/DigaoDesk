@@ -83,6 +83,7 @@ namespace DigaoDeskApp
             lbAppsLinesLog.Text = Vars.Lang.Config_Apps_MaxLogSize;
             ckClearLogWhenStartApp.Text = Vars.Lang.Config_Apps_ClearLogWhenStartApp;
 
+            lbRestartGitWndRemember.Text = Vars.Lang.Config_Repos_RestartWndRemember;
             lbShellProgram.Text = Vars.Lang.Config_Repos_ShellProgram;
             lbDiffProgram.Text = Vars.Lang.Config_Repos_DiffProgram;
             lbDifProgramArgs.Text = Vars.Lang.Config_Repos_DiffProgramArgs;

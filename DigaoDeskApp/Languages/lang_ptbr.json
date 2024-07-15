@@ -87,6 +87,7 @@
   "Config_Apps_MaxLogSize": "Tamanho máximo de do log (bytes)",
   "Config_Apps_ClearLogWhenStartApp": "Limpar log anterior ao rodar aplicação",
 
+  "Config_Repos_RestartWndRemember": "Recarregue a tela de Repositórios para garantir que as configurações sejam aplicadas",
   "Config_Repos_ShellProgram": "Programa de linha de comando",
   "Config_Repos_DiffProgram": "Programa de comparação",
   "Config_Repos_DiffProgramArgs": "Argumentos",
