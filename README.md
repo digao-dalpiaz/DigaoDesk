@@ -146,18 +146,6 @@ When creating a Personal Access Token, you will receive an authentication hash. 
 
 This app needs .NET 8 Desktop Runtime x64.
 
-# Limitations
-
-## Git integration
-
-The git integration works only with HTTP / HTTPS remote origin in repositories. So, if you have repositories configured by SSH remote origin, you must change origin url to compatible one.
-
-Here you can get an example how to change you repository from SSH to HTTPS url:
-
-```
-git remote set-url origin https://username@domain.com/cluster/my-repository.git
-```
-
 # Applications Definitions
 
 When you are using Digao Desk in a company environment, you may have a lot of develepers using the same applications in their environment.
