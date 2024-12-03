@@ -3,7 +3,7 @@
     class Vars
     {
 
-        public const string APP_VERSION = "2.3.0";
+        public const string APP_VERSION = "2.4.0";
         public const string APP_REGKEY = @"SOFTWARE\DigaoDesk";
 
         public const string GITHUB_LINK = "https://github.com/digao-dalpiaz/DigaoDesk";
