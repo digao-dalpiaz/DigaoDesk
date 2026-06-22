@@ -30,7 +30,7 @@ namespace DigaoDeskApp
 
             _powerCtrl.Init();
             GitHubUpdater.RunTask();
-            Survey.Check();
+            //Survey.Check();
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
