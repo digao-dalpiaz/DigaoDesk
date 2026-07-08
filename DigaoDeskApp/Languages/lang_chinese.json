@@ -1,7 +1,7 @@
 ﻿{
   "AlreadyRunningMessage": "Digao Desk 已经运行！",
   "MenuVersion": "版本 {0}",
-  "MenuDonate": "Donate",
+  "MenuDonate": "捐赠",
   "MenuApplications": "应用程序",
   "MenuGitRepositories": "Git 存储库",
   "MenuSettings": "设置",
@@ -85,9 +85,9 @@
   "Config_Apps_NotifyWhenStop": "应用程序停止时通知",
   "Config_Apps_DontNotifyStopWhenActive": "当应用程序处于活动状态时不通知",
   "Config_Apps_MaxLogSize": "最大日志大小（字节）",
-  "Config_Apps_ClearLogWhenStartApp": "Clear previous log when start application",
+  "Config_Apps_ClearLogWhenStartApp": "启动应用程序时清除之前的日志",
 
-  "Config_Repos_RestartWndRemember": "Reload the Repositories screen to ensure the settings are applied",
+  "Config_Repos_RestartWndRemember": "重新加载存储库屏幕以确保设置已生效。",
   "Config_Repos_ShellProgram": "外壳程序",
   "Config_Repos_DiffProgram": "差异程序",
   "Config_Repos_DiffProgramArgs": "参数",
@@ -331,7 +331,7 @@
   "AppLog_ErrorTerminating": "终止进程错误 \"{0}\": {1}",
   "AppLog_TcpPortInUse": "TCP 端口 {0} 已在使用中",
   "AppLog_FileNotInPath": "在任何 PATH 环境变量中都找不到文件 {0}",
-  "AppLog_Restarting": "Restarting process in {0} second(s)",
+  "AppLog_Restarting": "将在 {0} 秒后重启进程",
 
   "AppTerminatedBalloonTitle": "进程已停止",
   "AppTerminatedBalloonMsg": "应用程序 \"{0}\" 已停止！",
@@ -344,8 +344,8 @@
   "AppEditor_Title_New": "新建应用程序",
   "AppEditor_Title_Edit": "编辑应用程序",
 
-  "AppEditor_TabGeneral": "General",
-  "AppEditor_TabMore": "More",
+  "AppEditor_TabGeneral": "常规",
+  "AppEditor_TabMore": "更多",
 
   "AppEditor_AppName": "应用程序名称",
   "AppEditor_CmdLine": "命令行",
@@ -355,8 +355,8 @@
   "AppEditor_EnvVarsInfo": "格式：NAME=VALUE\n新建行：CTRL+ENTER",
   "AppEditor_TcpPort": "TCP 端口",
 
-  "AppEditor_AutoRestart": "Restart the application if it stops",
-  "AppEditor_RestartWait": "Wait for restart (seconds)",
+  "AppEditor_AutoRestart": "如果应用程序停止运行，请重新启动它",
+  "AppEditor_RestartWait": "等待重启（秒）",
 
   "AppEditor_AppNameRequired": "指定应用程序名称",
   "AppEditor_CmdLineRequired": "指定应用程序文件路径",
@@ -368,7 +368,7 @@
   "Apps_Delete": "删除",
   "Apps_Reorder": "重新排序",
   "Apps_DownloadDefs": "下载定义",
-  "Apps_Filter": "过滤器",
+  "Apps_Filter": "筛选器",
   "Apps_Filter_All": "所有应用程序",
   "Apps_Filter_Running": "仅正在运行",
   "Apps_Filter_Stopped": "仅已停止",
